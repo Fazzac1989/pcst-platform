@@ -62,9 +62,17 @@ const FALLBACK_TERMS = [
 ];
 
 async function fallbackTrips(): Promise<Trip[]> {
-  const { readFileSync } = await import('node:fs');
+  const { readFileSync, existsSync } = await import('node:fs');
   const { join } = await import('node:path');
-  const raw = readFileSync(join(process.cwd(), 'reference', 'trips-seed.json'), 'utf8');
+  const seedPath = join(process.cwd(), 'reference', 'trips-seed.json');
+  if (!existsSync(seedPath)) {
+    throw new Error(
+      'Supabase env vars (NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY) are not set, ' +
+        'and the local dev fallback (reference/trips-seed.json) is not available in this environment. ' +
+        'Set the env vars in your hosting provider and redeploy.'
+    );
+  }
+  const raw = readFileSync(seedPath, 'utf8');
   const seed = JSON.parse(raw).trips as {
     slug: string; title: string; subject: string; country: string; city: string;
     duration: string; departs: string; hero_image: string; status: string;
