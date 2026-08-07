@@ -1,5 +1,18 @@
 import 'server-only';
-import { createClient } from '@/lib/supabase/server';
+import { createClient as createSupabaseClient } from '@supabase/supabase-js';
+
+/**
+ * Cookie-less anon client: public pages must stay statically renderable
+ * (generateStaticParams + on-demand revalidation), so no cookies() here.
+ * RLS restricts anon reads to published content.
+ */
+function createClient() {
+  return createSupabaseClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    { auth: { persistSession: false } }
+  );
+}
 
 export type ItineraryDay = {
   label: string | null;

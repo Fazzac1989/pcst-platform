@@ -71,7 +71,9 @@ header.nav--trip nav.menu a::after { background: var(--brass-light); }
 
 /* ---------- hero (homepage) ---------- */
 .hero { position: relative; min-height: 88vh; display: flex; align-items: flex-end; color: #fff; background: var(--ink); }
-.hero .bg { position: absolute; inset: 0; background: url('/images/hero-home.jpg') center/cover; opacity: .95; }
+.hero .bg { position: absolute; inset: 0; opacity: .95; }
+.hero .bg img { object-fit: cover; }
+img.ph, .thero .bg img { object-fit: cover; }
 .hero .scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(22, 36, 46, .55) 0%, rgba(22, 36, 46, .38) 45%, rgba(22, 36, 46, .92) 100%); }
 .hero .wrap { position: relative; padding-bottom: 88px; padding-top: 160px; width: 100%; }
 .hero .eyebrow { color: var(--brass-light); }
@@ -207,6 +209,9 @@ footer.simple .fine { font-size: 12.5px; color: rgba(244, 243, 238, .5); margin-
 .thero h1 { font-family: var(--font-fraunces), serif; font-weight: 400; font-size: clamp(36px, 5.4vw, 64px); line-height: 1.06; letter-spacing: -.01em; max-width: 18ch; margin: 14px 0 16px; }
 .tmeta { display: flex; gap: 26px; flex-wrap: wrap; font-size: 13.5px; color: rgba(255, 255, 255, .85); }
 .tmeta b { display: block; font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--brass-light); margin-bottom: 2px; font-weight: 600; }
+/* Trips index: compact dark hero band in the same language */
+.thero--index { min-height: 44vh; }
+.thero--index .wrap { padding-top: 190px; }
 main.trip-main section { padding: 88px 0; }
 .trip-main .cols { display: grid; grid-template-columns: 1.05fr .75fr; gap: 72px; align-items: start; }
 h2.st { font-family: var(--font-fraunces), serif; font-weight: 500; font-size: clamp(26px, 3.4vw, 38px); line-height: 1.14; margin: 12px 0 22px; }
