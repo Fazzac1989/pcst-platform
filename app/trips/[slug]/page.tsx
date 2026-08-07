@@ -53,6 +53,7 @@ export default async function TripPage({ params }: Props) {
               alt=""
               fill
               priority
+              quality={60}
               sizes="100vw"
               style={{ objectFit: 'cover' }}
             />

@@ -25,6 +25,7 @@ export default async function HomePage() {
             alt=""
             fill
             priority
+            quality={60}
             sizes="100vw"
             style={{ objectFit: 'cover' }}
           />

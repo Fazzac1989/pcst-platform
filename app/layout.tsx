@@ -27,11 +27,22 @@ export const metadata: Metadata = {
   description:
     'Educational travel designed, priced and supported from Dubai — safe, inspiring, professionally managed school trips for schools across the UAE and beyond.',
   icons: { icon: '/images/favicon.png', apple: '/images/favicon.png' },
+  openGraph: {
+    type: 'website',
+    siteName: 'Premium Choice School Trips',
+    title: 'Premium Choice School Trips — Educational travel, designed around your curriculum',
+    description:
+      'Safe, inspiring, professionally managed school trips designed, priced and supported from Dubai.',
+    images: [{ url: '/images/hero-home.jpg', width: 1280, height: 720 }],
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${archivo.variable} ${fraunces.variable}`}>
+      <head>
+        <link rel="preconnect" href="https://images.unsplash.com" />
+      </head>
       <body>{children}</body>
     </html>
   );

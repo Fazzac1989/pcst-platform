@@ -50,6 +50,7 @@ export default function SiteHeader({ variant = 'home' }: { variant?: 'home' | 't
             alt="Premium Choice School Trips"
             width={524}
             height={130}
+            sizes="291px"
             style={{ height: 72, width: 'auto' }}
             priority
           />
@@ -59,6 +60,7 @@ export default function SiteHeader({ variant = 'home' }: { variant?: 'home' | 't
             alt="Premium Choice School Trips"
             width={524}
             height={130}
+            sizes="355px"
             style={{ height: 88, width: 'auto' }}
             priority
           />
