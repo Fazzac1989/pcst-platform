@@ -50,8 +50,8 @@ export default function SiteHeader({ variant = 'home' }: { variant?: 'home' | 't
             alt="Premium Choice School Trips"
             width={524}
             height={130}
-            sizes="291px"
-            style={{ height: 72, width: 'auto' }}
+            sizes="323px"
+            style={{ height: 80, width: 'auto' }}
             priority
           />
           <Image
@@ -60,18 +60,25 @@ export default function SiteHeader({ variant = 'home' }: { variant?: 'home' | 't
             alt="Premium Choice School Trips"
             width={524}
             height={130}
-            sizes="355px"
-            style={{ height: 88, width: 'auto' }}
+            sizes="403px"
+            style={{ height: 100, width: 'auto' }}
             priority
           />
         </Link>
-        <nav className="menu">
-          {links.map((l) => (
-            <a key={l.anchor} href={href(l.anchor)}>
-              {l.label}
-            </a>
-          ))}
-        </nav>
+        <div className="nav-right">
+          <nav className="menu">
+            {links.map((l) => (
+              <a key={l.anchor} href={href(l.anchor)}>
+                {l.label}
+              </a>
+            ))}
+          </nav>
+          <div className="nav-cta">
+            <Link className="btn btn-admin" href="/admin">
+              Login
+            </Link>
+          </div>
+        </div>
       </div>
     </header>
   );
