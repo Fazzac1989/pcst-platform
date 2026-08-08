@@ -65,12 +65,12 @@ export default async function HomePage() {
             <p className="section-sub">Every journey, everyone cared for.</p>
             <div className="pct-brand">
               <Image
-                src="/images/logo-navy.png"
-                alt="Premium Choice School Trips"
-                width={524}
-                height={130}
-                sizes="220px"
-                style={{ width: 220, height: 'auto' }}
+                src="/images/pct-logo.png"
+                alt="PCT — Premium Choice Travel"
+                width={269}
+                height={70}
+                style={{ width: 200, height: 'auto' }}
+                unoptimized
               />
               <span>— It&apos;s in our name</span>
             </div>
