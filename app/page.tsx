@@ -407,7 +407,7 @@ export default async function HomePage() {
                   <div className="l">Ready-to-run trip itineraries</div>
                 </div>
                 <div className="stat">
-                  <div className="n">17</div>
+                  <div className="n">{subjects.length}</div>
                   <div className="l">Curriculum subject areas</div>
                 </div>
                 <div className="stat">

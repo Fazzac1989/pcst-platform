@@ -112,7 +112,7 @@ export default async function TripPage({ params }: Props) {
                     <div className="day" key={i}>
                       <div className="dnum">{day.label}</div>
                       <div>
-                        <h3>{day.title}</h3>
+                        {day.title && <h3>{day.title}</h3>}
                         <p>{day.description}</p>
                       </div>
                     </div>
