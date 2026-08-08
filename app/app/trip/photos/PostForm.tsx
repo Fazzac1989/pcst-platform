@@ -3,7 +3,23 @@
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { createAppPost } from '@/lib/app/actions';
-import { createClient } from '@/lib/supabase/client';
+
+/** Downscale to max 1600px JPEG so phone photos upload quickly. */
+async function compressImage(file: File): Promise<Blob> {
+  try {
+    const bitmap = await createImageBitmap(file);
+    const scale = Math.min(1, 1600 / Math.max(bitmap.width, bitmap.height));
+    if (scale === 1 && file.size < 1_500_000) return file;
+    const canvas = document.createElement('canvas');
+    canvas.width = Math.round(bitmap.width * scale);
+    canvas.height = Math.round(bitmap.height * scale);
+    canvas.getContext('2d')!.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+    const blob = await new Promise<Blob | null>((res) => canvas.toBlob(res, 'image/jpeg', 0.85));
+    return blob ?? file;
+  } catch {
+    return file;
+  }
+}
 
 export default function PostForm() {
   const router = useRouter();
@@ -20,14 +36,13 @@ export default function PostForm() {
     try {
       let imageUrl: string | null = null;
       if (file) {
-        const supabase = createClient();
-        const ext = (file.name.split('.').pop() || 'jpg').toLowerCase();
-        const path = `app-posts/${Date.now()}-${Math.random().toString(36).slice(2, 8)}.${ext}`;
-        const { error: upErr } = await supabase.storage.from('trip-images').upload(path, file, {
-          contentType: file.type,
-        });
-        if (upErr) throw new Error(upErr.message);
-        imageUrl = supabase.storage.from('trip-images').getPublicUrl(path).data.publicUrl;
+        const blob = await compressImage(file);
+        const form = new FormData();
+        form.append('file', blob, 'photo.jpg');
+        const res = await fetch('/api/app/upload', { method: 'POST', body: form });
+        const data = await res.json();
+        if (!data.ok) throw new Error(data.error ?? 'Upload failed.');
+        imageUrl = data.url;
       }
       const result = await createAppPost(imageUrl, caption);
       if (!result.ok) throw new Error(result.error);
