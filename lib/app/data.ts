@@ -80,9 +80,10 @@ export async function getMemberDocuments(member: AppMember): Promise<AppDocument
 /** The message channel this member participates in. */
 export async function getMemberMessages(member: AppMember): Promise<AppMessage[]> {
   const db = createAdminClient();
+  // app_messages has two FKs to app_members — disambiguate the sender join.
   let query = db
     .from('app_messages')
-    .select('id, sender_member_id, body, created_at, app_members(name)')
+    .select('id, sender_member_id, body, created_at, sender:app_members!app_messages_sender_member_id_fkey(name)')
     .eq('app_trip_id', member.tripId)
     .order('created_at')
     .limit(200);
@@ -98,7 +99,7 @@ export async function getMemberMessages(member: AppMember): Promise<AppMessage[]
   const { data } = await query;
   return (data ?? []).map((m: any) => ({
     id: m.id,
-    senderName: m.sender_member_id === null ? 'PCT Team' : (m.app_members?.name ?? 'Member'),
+    senderName: m.sender_member_id === null ? 'PCT Team' : (m.sender?.name ?? 'Member'),
     fromSelf: m.sender_member_id === member.id,
     body: m.body,
     createdAt: m.created_at,
