@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import SiteHeader from '@/components/SiteHeader';
+import SiteHeader from '@/components/SiteHeaderWithData';
 import { SiteFooterSimple } from '@/components/SiteFooter';
 import { getBookingTerms, getPublishedTrips, getTripBySlug } from '@/lib/data';
 

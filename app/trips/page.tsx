@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import SiteHeader from '@/components/SiteHeader';
+import SiteHeader from '@/components/SiteHeaderWithData';
 import { SiteFooterSimple } from '@/components/SiteFooter';
 import { getPublishedTrips, type Trip } from '@/lib/data';
 

@@ -69,6 +69,42 @@ header.nav--trip nav.menu a::after { background: var(--brass-light); }
 .nav-cta .phone { font-size: 13.5px; font-weight: 600; color: var(--ink-soft); }
 .nav-cta .btn { padding: 11px 22px; }
 .nav-right { display: flex; align-items: center; gap: 34px; }
+
+/* ---------- subjects mega menu ---------- */
+.mega-caret { font-size: 9px; opacity: .7; margin-left: 2px; }
+.mega {
+  position: absolute; top: 100%; left: 0; right: 0;
+  display: flex; justify-content: center;
+  opacity: 0; visibility: hidden; transform: translateY(-8px);
+  transition: opacity .25s ease, transform .25s ease, visibility 0s linear .25s;
+  pointer-events: none;
+}
+.mega.open {
+  opacity: 1; visibility: visible; transform: none; pointer-events: auto;
+  transition: opacity .25s ease, transform .25s ease, visibility 0s;
+}
+.mega-inner {
+  background: #fff; border: 1px solid var(--line); border-radius: 3px;
+  box-shadow: 0 34px 70px -32px rgba(22, 36, 46, .4);
+  max-width: 980px; width: calc(100% - 64px);
+  padding: 34px 44px 26px; margin-top: 10px;
+}
+.mega-head { padding-bottom: 18px; }
+.mega-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px 44px; }
+.mega-item { display: block; padding: 13px 0; border-bottom: 1px solid var(--line); }
+.mega-grid .mega-item:nth-last-child(-n+1) { border-bottom: 0; }
+.mega-item h4 { font-family: var(--font-fraunces), serif; font-weight: 500; font-size: 19px; line-height: 1.2; color: var(--ink); transition: color .25s ease; }
+.mega-item:hover h4 { color: var(--brass); }
+.mega-item span { display: block; font-size: 12.5px; color: var(--ink-soft); letter-spacing: .02em; margin-top: 3px; }
+.mega-foot {
+  margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--line);
+  display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap;
+}
+.mega-foot span { font-size: 13px; color: var(--ink-soft); }
+.mega-foot a { font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--brass); }
+.mega-foot a:hover { color: var(--ink); }
+@media (max-width: 980px) { .mega-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 720px) { .mega { display: none; } }
 /* Admin login button: ghost on transparent header, ink outline once scrolled */
 .btn-admin { border-color: rgba(255, 255, 255, .55); color: #fff; }
 .btn-admin:hover { background: rgba(255, 255, 255, .12); }

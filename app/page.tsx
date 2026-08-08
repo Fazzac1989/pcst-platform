@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import SiteHeader from '@/components/SiteHeader';
+import SiteHeader from '@/components/SiteHeaderWithData';
 import { SiteFooterFull } from '@/components/SiteFooter';
 import { getFeaturedTrips, getPublishedTripCount, getSubjects } from '@/lib/data';
 
