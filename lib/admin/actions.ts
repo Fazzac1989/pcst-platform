@@ -106,6 +106,28 @@ export async function addSubject(name: string): Promise<ActionResult> {
   return { ok: true, id: data.id };
 }
 
+export async function updateSubject(id: number, name: string): Promise<ActionResult> {
+  const db = createClient();
+  const slug = name.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+  const { error } = await db.from('subjects').update({ name: name.trim(), slug }).eq('id', id);
+  if (error) return { ok: false, error: error.message };
+  revalidatePath('/');
+  revalidatePath('/trips');
+  revalidatePath('/subjects/[slug]', 'page');
+  return { ok: true };
+}
+
+export async function updateCountry(id: number, name: string, region: string | null): Promise<ActionResult> {
+  const db = createClient();
+  const slug = name.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+  const { error } = await db.from('countries').update({ name: name.trim(), slug, region }).eq('id', id);
+  if (error) return { ok: false, error: error.message };
+  revalidatePath('/');
+  revalidatePath('/trips');
+  revalidatePath('/subjects/[slug]', 'page');
+  return { ok: true };
+}
+
 export async function deleteSubject(id: number): Promise<ActionResult> {
   const db = createClient();
   const { error } = await db.from('subjects').delete().eq('id', id);

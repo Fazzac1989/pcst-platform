@@ -263,6 +263,30 @@ h2.section-title.pct-title { font-size: clamp(24px, 3.2vw, 38px); line-height: 1
 .apt-done p { font-size: 14.5px; color: rgba(244, 243, 238, .75); }
 .apt-done p strong { color: #fff; }
 
+/* ---------- public quote page ---------- */
+.qbrand { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-bottom: 26px; }
+.qschool-logo { max-height: 64px; width: auto; background: rgba(255, 255, 255, .92); padding: 8px 14px; border-radius: 3px; }
+.qprice { width: 100%; border-collapse: collapse; font-size: 13.5px; margin-bottom: 18px; }
+.qprice td { padding: 8px 0; border-bottom: 1px solid rgba(247, 245, 240, .14); color: rgba(247, 245, 240, .8); }
+.qprice td:last-child { text-align: right; white-space: nowrap; }
+.qprice .qty { color: rgba(247, 245, 240, .5); font-size: 12px; }
+.qprice .total td { border-bottom: 0; border-top: 2px solid rgba(247, 245, 240, .35); font-weight: 600; color: #fff; font-size: 15px; }
+.qpps { text-align: center; background: rgba(25, 186, 171, .12); border: 1px solid rgba(25, 186, 171, .4); border-radius: 3px; padding: 16px; margin-bottom: 20px; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: rgba(247, 245, 240, .8); }
+.qpps span { display: block; font-family: var(--font-fraunces), serif; font-size: 26px; letter-spacing: 0; text-transform: none; color: var(--brass-light); margin-bottom: 2px; }
+.panel.cta .btn { width: 100%; justify-content: center; }
+.qgallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 40px; }
+.qgallery img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 3px; }
+.qthread { max-width: 560px; }
+.qmsgs { display: grid; gap: 12px; margin-bottom: 22px; }
+.qmsg { padding: 14px 16px; border-radius: 3px; font-size: 14.5px; line-height: 1.55; background: rgba(22, 36, 46, .05); color: var(--ink); }
+.qmsg.admin { background: rgba(25, 186, 171, .1); border-left: 2px solid var(--brass-light); }
+.qmsg-meta { font-size: 11.5px; color: var(--ink-soft); margin-bottom: 5px; letter-spacing: .03em; }
+.qthread-empty { font-size: 14px; color: var(--ink-soft); }
+.qform { display: grid; gap: 12px; }
+.qform input, .qform textarea { border: 1px solid var(--line); border-radius: 2px; padding: 12px 14px; font-size: 14.5px; font-family: var(--font-archivo), sans-serif; color: var(--ink); outline: none; transition: border-color .25s ease; }
+.qform input:focus, .qform textarea:focus { border-color: var(--brass); }
+.qform .btn { justify-self: start; }
+
 /* ---------- footer (full, homepage style) ---------- */
 footer.site { background: #16242E; color: rgba(244, 243, 238, .72); font-size: 14px; }
 footer.site .top { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 48px; padding: 72px 0 56px; }

@@ -2,7 +2,14 @@
 
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { addCountry, addSubject, deleteCountry, deleteSubject } from '@/lib/admin/actions';
+import {
+  addCountry,
+  addSubject,
+  deleteCountry,
+  deleteSubject,
+  updateCountry,
+  updateSubject,
+} from '@/lib/admin/actions';
 
 type Row = { id: number; name: string; slug: string; region?: string | null; tripCount: number };
 
@@ -20,6 +27,9 @@ export default function TaxonomyManager({
   const [region, setRegion] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  const [editingId, setEditingId] = useState<number | null>(null);
+  const [editName, setEditName] = useState('');
+  const [editRegion, setEditRegion] = useState('');
 
   async function onAdd(e: React.FormEvent) {
     e.preventDefault();
@@ -32,6 +42,28 @@ export default function TaxonomyManager({
     else {
       setName('');
       setRegion('');
+      router.refresh();
+    }
+    setBusy(false);
+  }
+
+  function startEdit(row: Row) {
+    setEditingId(row.id);
+    setEditName(row.name);
+    setEditRegion(row.region ?? '');
+    setError(null);
+  }
+
+  async function onSaveEdit(row: Row) {
+    if (!editName.trim()) return;
+    setBusy(true);
+    const result =
+      kind === 'subject'
+        ? await updateSubject(row.id, editName)
+        : await updateCountry(row.id, editName, editRegion.trim() || null);
+    if (!result.ok) setError(result.error);
+    else {
+      setEditingId(null);
       router.refresh();
     }
     setBusy(false);
@@ -92,22 +124,72 @@ export default function TaxonomyManager({
             </tr>
           </thead>
           <tbody>
-            {rows.map((row) => (
-              <tr key={row.id} className="border-b border-line last:border-0">
-                <td className="px-4 py-3 font-medium">{row.name}</td>
-                <td className="px-4 py-3 text-ink-soft">{row.slug}</td>
-                {kind === 'country' && <td className="px-4 py-3 text-ink-soft">{row.region ?? '—'}</td>}
-                <td className="px-4 py-3">{row.tripCount}</td>
-                <td className="px-4 py-3 text-right">
-                  <button
-                    onClick={() => onDelete(row)}
-                    className="text-xs text-ink-soft hover:text-danger font-semibold"
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
+            {rows.map((row) =>
+              editingId === row.id ? (
+                <tr key={row.id} className="border-b border-line last:border-0 bg-teal/5">
+                  <td className="px-4 py-2">
+                    <input
+                      className={inputCls}
+                      value={editName}
+                      onChange={(e) => setEditName(e.target.value)}
+                      autoFocus
+                    />
+                  </td>
+                  <td className="px-4 py-2 text-ink-soft text-xs">auto from name</td>
+                  {kind === 'country' && (
+                    <td className="px-4 py-2">
+                      <select
+                        className={inputCls}
+                        value={editRegion}
+                        onChange={(e) => setEditRegion(e.target.value)}
+                      >
+                        <option value="">—</option>
+                        {['Europe', 'Asia', 'Africa', 'Americas', 'Oceania', 'Middle East'].map((r) => (
+                          <option key={r}>{r}</option>
+                        ))}
+                      </select>
+                    </td>
+                  )}
+                  <td className="px-4 py-2">{row.tripCount}</td>
+                  <td className="px-4 py-2 text-right whitespace-nowrap">
+                    <button
+                      onClick={() => onSaveEdit(row)}
+                      disabled={busy}
+                      className="text-xs text-teal-deep font-semibold hover:underline mr-3 disabled:opacity-60"
+                    >
+                      Save
+                    </button>
+                    <button
+                      onClick={() => setEditingId(null)}
+                      className="text-xs text-ink-soft font-semibold hover:underline"
+                    >
+                      Cancel
+                    </button>
+                  </td>
+                </tr>
+              ) : (
+                <tr key={row.id} className="border-b border-line last:border-0">
+                  <td className="px-4 py-3 font-medium">{row.name}</td>
+                  <td className="px-4 py-3 text-ink-soft">{row.slug}</td>
+                  {kind === 'country' && <td className="px-4 py-3 text-ink-soft">{row.region ?? '—'}</td>}
+                  <td className="px-4 py-3">{row.tripCount}</td>
+                  <td className="px-4 py-3 text-right whitespace-nowrap">
+                    <button
+                      onClick={() => startEdit(row)}
+                      className="text-xs text-teal-deep hover:underline font-semibold mr-3"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      onClick={() => onDelete(row)}
+                      className="text-xs text-ink-soft hover:text-danger font-semibold"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              )
+            )}
             {rows.length === 0 && (
               <tr>
                 <td colSpan={5} className="px-4 py-8 text-center text-ink-soft">

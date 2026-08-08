@@ -85,6 +85,51 @@ export async function sendAppointmentConfirmation(d: AppointmentDetails): Promis
   );
 }
 
+export async function sendQuoteShareEmail(d: {
+  to: string;
+  teacherName: string | null;
+  schoolName: string | null;
+  quoteTitle: string;
+  ref: string;
+  link: string;
+}): Promise<boolean> {
+  const site = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
+  const logo = `${site}/images/logo-navy.png`;
+  const greeting = d.teacherName ? `Dear ${d.teacherName}` : 'Hello';
+  const html = `
+  <div style="margin:0;padding:32px 16px;background:#f4f5f6;font-family:Georgia,'Times New Roman',serif;">
+    <div style="max-width:560px;margin:0 auto;background:#ffffff;border:1px solid rgba(22,36,46,.14);border-radius:4px;overflow:hidden;">
+      <div style="padding:32px 40px 24px;border-bottom:3px solid #19BAAB;">
+        <img src="${logo}" alt="Premium Choice School Trips" width="240" style="display:block;max-width:240px;height:auto;" />
+      </div>
+      <div style="padding:32px 40px;color:#16242E;">
+        <h1 style="margin:0 0 16px;font-size:23px;font-weight:normal;line-height:1.3;">
+          ${greeting} — <em style="color:#12897E;">your personalised quote is ready.</em>
+        </h1>
+        <p style="margin:0 0 14px;font-size:15px;line-height:1.65;color:#425964;">
+          We've prepared <strong>${d.quoteTitle}</strong> (${d.ref})${d.schoolName ? ` for <strong>${d.schoolName}</strong>` : ''}.
+          You can view it online, download the PDF itinerary, and send us questions or change
+          requests directly on the page.
+        </p>
+        <p style="margin:26px 0;">
+          <a href="${d.link}" style="display:inline-block;background:#19BAAB;color:#16242E;font-family:Arial,sans-serif;font-size:14px;font-weight:bold;letter-spacing:.04em;padding:14px 28px;border-radius:2px;text-decoration:none;">
+            View your quote →
+          </a>
+        </p>
+        <p style="margin:0;font-size:13px;line-height:1.6;color:#425964;">
+          Or copy this link: <a href="${d.link}" style="color:#12897E;">${d.link}</a>
+        </p>
+      </div>
+      <div style="padding:20px 40px;background:#16242E;color:rgba(244,243,238,.72);font-size:12.5px;line-height:1.7;">
+        Premium Choice Travel · Dubai, United Arab Emirates<br/>
+        <a href="tel:+97144206965" style="color:#19BAAB;text-decoration:none;">+971 4 420 6965</a> ·
+        <a href="mailto:info@premiumchoicetravel.com" style="color:#19BAAB;text-decoration:none;">info@premiumchoicetravel.com</a>
+      </div>
+    </div>
+  </div>`;
+  return sendEmail(d.to, `Your school trip quote ${d.ref} — Premium Choice School Trips`, html);
+}
+
 export async function sendAppointmentNotification(d: AppointmentDetails): Promise<boolean> {
   const notify = process.env.APPOINTMENT_NOTIFY_EMAIL;
   if (!notify) return false;
