@@ -9,6 +9,13 @@ export function createAdminClient() {
   return createSupabaseClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.SUPABASE_SERVICE_ROLE_KEY!,
-    { auth: { autoRefreshToken: false, persistSession: false } }
+    {
+      auth: { autoRefreshToken: false, persistSession: false },
+      global: {
+        // Never let Next's data cache serve stale admin reads (e.g. fresh
+        // quote messages on the public quote page).
+        fetch: (url, options) => fetch(url, { ...options, cache: 'no-store' }),
+      },
+    }
   );
 }
