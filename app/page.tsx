@@ -63,6 +63,17 @@ export default async function HomePage() {
               inspired. <span className="pct">T</span>eachers supported.
             </h2>
             <p className="section-sub">Every journey, everyone cared for.</p>
+            <div className="pct-brand">
+              <Image
+                src="/images/logo-navy.png"
+                alt="Premium Choice School Trips"
+                width={524}
+                height={130}
+                sizes="220px"
+                style={{ width: 220, height: 'auto' }}
+              />
+              <span>— It&apos;s in our name</span>
+            </div>
             <div className="grid">
               <div className="aud-card">
                 <div className="num">For schools</div>
