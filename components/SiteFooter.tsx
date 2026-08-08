@@ -24,7 +24,7 @@ export function SiteFooterFull() {
           <div>
             <h5>Explore</h5>
             <ul>
-              <li><a href="/#destinations">Destinations</a></li>
+              <li><a href="/#subjects">Subjects</a></li>
               <li><a href="/#journey">How it works</a></li>
               <li><Link href="/trips">All trips</Link></li>
               <li><a href="#">Blog</a></li>

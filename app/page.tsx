@@ -2,15 +2,16 @@ import Image from 'next/image';
 import Link from 'next/link';
 import SiteHeader from '@/components/SiteHeader';
 import { SiteFooterFull } from '@/components/SiteFooter';
-import { getFeaturedTrips, getPublishedTripCount } from '@/lib/data';
+import { getFeaturedTrips, getPublishedTripCount, getSubjects } from '@/lib/data';
 
 // Country display names as used on the reference featured cards.
 const COUNTRY_SHORT: Record<string, string> = { 'United Kingdom': 'UK' };
 
 export default async function HomePage() {
-  const [featured, tripCount] = await Promise.all([
+  const [featured, tripCount, subjects] = await Promise.all([
     getFeaturedTrips(),
     getPublishedTripCount(),
+    getSubjects(),
   ]);
 
   return (
@@ -306,62 +307,43 @@ export default async function HomePage() {
           </div>
         </section>
 
-        {/* destinations */}
-        <section className="dest" id="destinations">
+        {/* subjects */}
+        <section className="dest" id="subjects">
           <div className="wrap">
             <div className="head">
               <div>
-                <span className="eyebrow">Destinations</span>
+                <span className="eyebrow">Subjects</span>
                 <h2 className="section-title serif">
-                  From the Gulf to <i>everywhere</i>
+                  Your curriculum, <i>out in the world</i>
                 </h2>
                 <p className="section-sub">
-                  Over 30 countries across Europe, Asia, Africa, the Americas and Oceania — all
-                  within reach of your school calendar.
+                  Every itinerary is built around a subject — tectonics in Iceland, democracy in
+                  Berlin, trade in Singapore. Pick yours and see where it takes your students.
                 </p>
               </div>
-              <a className="btn btn-ink" href="#contact">
-                View all destinations <span className="arrow">→</span>
-              </a>
+              <Link className="btn btn-ink" href="/trips">
+                View all trips <span className="arrow">→</span>
+              </Link>
             </div>
             <div className="dest-grid">
-              {[
-                {
-                  name: 'Japan',
-                  meta: 'Art · STEAM · Culture',
-                  img: 'https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?q=80&w=900&auto=format&fit=crop',
-                },
-                {
-                  name: 'USA',
-                  meta: 'Geography · Business',
-                  img: 'https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?q=80&w=900&auto=format&fit=crop',
-                },
-                {
-                  name: 'Switzerland',
-                  meta: 'Skiing · Outdoor Ed',
-                  img: 'https://images.unsplash.com/photo-1551524559-8af4e6624178?q=80&w=900&auto=format&fit=crop',
-                },
-                {
-                  name: 'Iceland',
-                  meta: 'Geography · Science',
-                  img: 'https://images.unsplash.com/photo-1504893524553-b855bce32c67?q=80&w=900&auto=format&fit=crop',
-                },
-              ].map((d) => (
-                <a className="dest-card" href="#" key={d.name}>
-                  <Image
-                    className="ph"
-                    src={d.img}
-                    alt=""
-                    fill
-                    sizes="(max-width: 1024px) 50vw, 25vw"
-                    style={{ objectFit: 'cover' }}
-                  />
+              {subjects.map((s) => (
+                <Link className="dest-card" href={`/subjects/${s.slug}`} key={s.slug}>
+                  {s.heroImage && (
+                    <Image
+                      className="ph"
+                      src={s.heroImage}
+                      alt=""
+                      fill
+                      sizes="(max-width: 1024px) 50vw, 25vw"
+                      style={{ objectFit: 'cover' }}
+                    />
+                  )}
                   <div className="fade"></div>
                   <div className="meta">
-                    <h3>{d.name}</h3>
-                    <span>{d.meta}</span>
+                    <h3>{s.name}</h3>
+                    <span>{s.countries.join(' · ')}</span>
                   </div>
-                </a>
+                </Link>
               ))}
             </div>
           </div>

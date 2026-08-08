@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 
 const NAV_LINKS = [
-  { label: 'Destinations', anchor: 'destinations' },
+  { label: 'Subjects', anchor: 'subjects' },
   { label: 'How it works', anchor: 'journey' },
   { label: 'Trips', anchor: 'trips' },
   { label: 'Health & Safety', anchor: 'safety' },
@@ -14,7 +14,7 @@ const NAV_LINKS = [
 
 // Trip pages order the menu as the reference trip template does.
 const NAV_LINKS_TRIP = [
-  { label: 'Destinations', anchor: 'destinations' },
+  { label: 'Subjects', anchor: 'subjects' },
   { label: 'Trips', anchor: 'trips' },
   { label: 'How it works', anchor: 'journey' },
   { label: 'Health & Safety', anchor: 'safety' },

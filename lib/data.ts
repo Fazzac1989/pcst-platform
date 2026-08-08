@@ -25,6 +25,7 @@ export type Trip = {
   slug: string;
   title: string;
   subject: string;
+  subjectSlug: string;
   country: string;
   city: string | null;
   durationDays: number;
@@ -88,6 +89,7 @@ async function fallbackTrips(): Promise<Trip[]> {
         slug: t.slug,
         title: t.title,
         subject: t.subject,
+        subjectSlug: t.subject.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
         country: t.country,
         city: t.city,
         durationDays: Number(m[1]),
@@ -107,7 +109,7 @@ async function fallbackTrips(): Promise<Trip[]> {
 /* ------------------------------------------------------------------ */
 
 const TRIP_SELECT =
-  'id, slug, title, city, duration_days, duration_nights, departs, hero_image, overview, includes, featured, subjects(name), countries(name), itinerary_days(label, title, description, sort_order)';
+  'id, slug, title, city, duration_days, duration_nights, departs, hero_image, overview, includes, featured, subjects(name, slug), countries(name), itinerary_days(label, title, description, sort_order)';
 
 // Supabase returns to-one relations as objects; typing loosely here keeps
 // the mapper independent of generated types.
@@ -117,6 +119,7 @@ function mapTrip(row: any): Trip {
     slug: row.slug,
     title: row.title,
     subject: row.subjects?.name ?? '',
+    subjectSlug: row.subjects?.slug ?? '',
     country: row.countries?.name ?? '',
     city: row.city,
     durationDays: row.duration_days,
@@ -174,6 +177,35 @@ export async function getBookingTerms(): Promise<string[]> {
     .order('sort_order');
   if (error) throw new Error(`getBookingTerms: ${error.message}`);
   return (data ?? []).map((t) => t.text);
+}
+
+export type SubjectSummary = {
+  name: string;
+  slug: string;
+  tripCount: number;
+  countries: string[];
+  heroImage: string | null;
+};
+
+/** Subjects that have at least one published trip, with card metadata. */
+export async function getSubjects(): Promise<SubjectSummary[]> {
+  const trips = await getPublishedTrips();
+  const map = new Map<string, SubjectSummary>();
+  for (const trip of trips) {
+    if (!trip.subjectSlug) continue;
+    const entry = map.get(trip.subjectSlug) ?? {
+      name: trip.subject,
+      slug: trip.subjectSlug,
+      tripCount: 0,
+      countries: [],
+      heroImage: null,
+    };
+    entry.tripCount += 1;
+    if (trip.country && !entry.countries.includes(trip.country)) entry.countries.push(trip.country);
+    if (!entry.heroImage && trip.heroImage) entry.heroImage = trip.heroImage;
+    map.set(trip.subjectSlug, entry);
+  }
+  return [...map.values()].sort((a, b) => a.name.localeCompare(b.name));
 }
 
 export async function getPublishedTripCount(): Promise<number> {

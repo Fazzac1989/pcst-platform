@@ -31,6 +31,7 @@ export type TripPayload = {
 function revalidatePublic(slugs: string[]) {
   revalidatePath('/');
   revalidatePath('/trips');
+  revalidatePath('/subjects/[slug]', 'page'); // subject listings reflect any trip change
   for (const slug of slugs) revalidatePath(`/trips/${slug}`);
 }
 
