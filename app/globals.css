@@ -89,6 +89,18 @@ img.ph, .thero .bg img { object-fit: cover; }
 .hero .ctas { display: flex; gap: 16px; flex-wrap: wrap; }
 
 /* ---------- audiences ---------- */
+/* PCT headline: smaller navy text, enlarged bold underlined teal initials */
+h2.section-title.pct-title { font-size: clamp(24px, 3.2vw, 38px); line-height: 1.3; }
+.pct-title .pct {
+  font-size: 1.4em;
+  font-weight: 600;
+  font-style: italic;
+  color: var(--brass);
+  text-decoration: underline;
+  text-decoration-color: var(--brass-light);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 7px;
+}
 .audiences .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; margin-top: 52px; }
 .aud-card { position: relative; background: var(--white); border: 1px solid var(--line); padding: 38px 34px 34px; border-radius: 3px; transition: transform .3s ease, box-shadow .3s ease; }
 .aud-card:hover { transform: translateY(-5px); box-shadow: 0 26px 50px -30px rgba(22, 36, 46, .3); }
