@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import AppointmentForm from '@/components/AppointmentForm';
 import SiteHeader from '@/components/SiteHeaderWithData';
 import { SiteFooterSimple } from '@/components/SiteFooter';
 import { getBookingTerms, getPublishedTrips, getTripBySlug } from '@/lib/data';
@@ -37,9 +38,6 @@ export default async function TripPage({ params }: Props) {
   if (!trip) notFound();
 
   const others = allTrips.filter((t) => t.slug !== trip.slug);
-  const mailto = `mailto:info@premiumchoicetravel.com?subject=${encodeURIComponent(
-    `Appointment request — ${trip.title}`
-  )}`;
 
   return (
     <>
@@ -139,11 +137,9 @@ export default async function TripPage({ params }: Props) {
                   <p>
                     Every itinerary can be tailored to your dates, group size, budget and
                     learning objectives. Speak to our Dubai team — we&apos;ll come back within
-                    one working day.
+                    24 hours.
                   </p>
-                  <a className="btn btn-brass" href={mailto}>
-                    Book an appointment →
-                  </a>
+                  <AppointmentForm tripSlug={trip.slug} />
                   <div className="c">
                     <div>
                       <b>Call</b> +971 4 420 6965

@@ -151,6 +151,16 @@ export async function saveBookingTerms(texts: string[]): Promise<ActionResult> {
   return { ok: true };
 }
 
+export async function setAppointmentStatus(
+  id: number,
+  status: 'new' | 'contacted' | 'closed'
+): Promise<ActionResult> {
+  const db = createClient();
+  const { error } = await db.from('appointment_requests').update({ status }).eq('id', id);
+  if (error) return { ok: false, error: error.message };
+  return { ok: true };
+}
+
 export async function deleteMediaObject(path: string): Promise<ActionResult> {
   const db = createClient();
   const { error } = await db.storage.from('trip-images').remove([path]);

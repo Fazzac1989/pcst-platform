@@ -239,6 +239,30 @@ h2.section-title.pct-title { font-size: clamp(24px, 3.2vw, 38px); line-height: 1
 .enquire .panel .contact { margin-top: 26px; font-size: 14.5px; color: rgba(244, 243, 238, .8); display: grid; gap: 8px; }
 .enquire .panel .contact strong { color: #fff; }
 
+/* ---------- appointment form (dark panels) ---------- */
+.apt-form { display: grid; gap: 14px; }
+.apt-form label { display: grid; gap: 6px; }
+.apt-form label > span { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; font-weight: 600; color: var(--brass-light); }
+.apt-form input:not([type="checkbox"]), .apt-form select {
+  background: rgba(244, 243, 238, .06); border: 1px solid rgba(244, 243, 238, .25);
+  border-radius: 2px; padding: 12px 14px; font-size: 14.5px; color: #fff;
+  font-family: var(--font-archivo), sans-serif; outline: none; transition: border-color .25s ease;
+  width: 100%;
+}
+.apt-form input:not([type="checkbox"]):focus, .apt-form select:focus { border-color: var(--brass-light); }
+.apt-form select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, rgba(244,243,238,.7) 50%), linear-gradient(135deg, rgba(244,243,238,.7) 50%, transparent 50%); background-position: calc(100% - 20px) 50%, calc(100% - 15px) 50%; background-size: 5px 5px; background-repeat: no-repeat; }
+.apt-form select option { color: var(--ink); background: #fff; }
+.apt-consent { display: flex !important; flex-direction: row; gap: 10px; align-items: flex-start; cursor: pointer; }
+.apt-consent input { margin-top: 3px; accent-color: #19BAAB; width: 15px; height: 15px; flex: none; }
+.apt-consent span { font-size: 12.5px !important; letter-spacing: 0 !important; text-transform: none !important; font-weight: 400 !important; color: rgba(244, 243, 238, .65) !important; line-height: 1.55; }
+.apt-error { font-size: 13.5px; color: #F2A9A0; }
+.apt-form .btn { justify-content: center; margin-top: 4px; }
+.apt-done { text-align: center; padding: 18px 0 8px; }
+.apt-done-mark { width: 52px; height: 52px; border-radius: 50%; background: var(--brass-light); color: var(--ink); font-size: 24px; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; }
+.apt-done h4 { font-family: var(--font-fraunces), serif; font-weight: 500; font-size: 22px; margin-bottom: 8px; }
+.apt-done p { font-size: 14.5px; color: rgba(244, 243, 238, .75); }
+.apt-done p strong { color: #fff; }
+
 /* ---------- footer (full, homepage style) ---------- */
 footer.site { background: #16242E; color: rgba(244, 243, 238, .72); font-size: 14px; }
 footer.site .top { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 48px; padding: 72px 0 56px; }

@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import AppointmentForm from '@/components/AppointmentForm';
 import SiteHeader from '@/components/SiteHeaderWithData';
 import { SiteFooterFull } from '@/components/SiteFooter';
 import { getFeaturedTrips, getPublishedTripCount, getSubjects } from '@/lib/data';
@@ -464,13 +465,8 @@ export default async function HomePage() {
               </div>
               <div className="panel">
                 <h3>Book an appointment</h3>
-                <p>Speak to our Dubai team — we&apos;ll come back to you within one working day.</p>
-                <a
-                  className="btn btn-brass"
-                  href="mailto:info@premiumchoicetravel.com?subject=Appointment%20request%20—%20Premium%20Choice%20School%20Trips"
-                >
-                  Book an appointment <span className="arrow">→</span>
-                </a>
+                <p>Speak to our Dubai team — we&apos;ll come back to you within 24 hours.</p>
+                <AppointmentForm />
                 <div className="contact">
                   <div>
                     <strong>Call</strong> +971 4 420 6965
