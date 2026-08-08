@@ -20,6 +20,7 @@ const LANGUAGES = [
   { name: 'Portuguese', code: 'pt-PT' },
   { name: 'Spanish', code: 'es-ES' },
   { name: 'Swahili', code: 'sw-KE' },
+  { name: 'Tagalog', code: 'fil-PH' },
   { name: 'Thai', code: 'th-TH' },
   { name: 'Turkish', code: 'tr-TR' },
   { name: 'Vietnamese', code: 'vi-VN' },
