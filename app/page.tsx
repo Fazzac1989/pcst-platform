@@ -59,11 +59,11 @@ export default async function HomePage() {
           <div className="wrap">
             <span className="eyebrow">Who we work with</span>
             <h2 className="section-title serif">
-              One trip, three <i>peace-of-minds</i>
+              Built into our name: <i>P</i>arents, <i>C</i>hildren, <i>T</i>eachers.
             </h2>
             <p className="section-sub">
-              Every itinerary is built to satisfy the teacher planning it, the parent approving
-              it, and the student living it.
+              Our initials made us a travel company. These three made us a school-trip
+              specialist.
             </p>
             <div className="grid">
               <div className="aud-card">
