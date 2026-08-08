@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     title: 'Premium Choice School Trips — Educational travel, designed around your curriculum',
     description:
       'Safe, inspiring, professionally managed school trips designed, priced and supported from Dubai.',
-    images: [{ url: '/images/hero-home.jpg', width: 1280, height: 720 }],
+    images: [{ url: '/images/hero-home.jpg', width: 2560, height: 1706 }],
   },
 };
 
