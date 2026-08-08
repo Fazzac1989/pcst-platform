@@ -371,6 +371,28 @@ h2.section-title.pct-title { font-size: clamp(24px, 3.2vw, 38px); line-height: 1
 .papp-msgform textarea:focus { border-color: var(--brass); }
 .papp-msgform .btn { justify-self: end; padding: 11px 22px; }
 
+/* ---------- app translator ---------- */
+.ptr-langs { display: flex; gap: 8px; align-items: flex-end; margin-bottom: 14px; }
+.ptr-langs label { flex: 1; display: grid; gap: 4px; }
+.ptr-langs label span { font-size: 10.5px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-soft); }
+.ptr-langs select { width: 100%; border: 1px solid var(--line); border-radius: 6px; padding: 10px 8px; font-size: 14px; background: #fff; color: var(--ink); font-family: var(--font-archivo), sans-serif; }
+.ptr-swap { flex: none; width: 40px; height: 40px; border: 1px solid var(--line); border-radius: 50%; background: #fff; font-size: 17px; color: var(--brass); cursor: pointer; }
+.ptr-mic { width: 100%; border: 0; border-radius: 8px; padding: 20px; font-size: 16px; font-weight: 600; font-family: var(--font-archivo), sans-serif; background: var(--ink); color: #fff; cursor: pointer; transition: background .25s ease; }
+.ptr-mic.listening { background: #B4423C; animation: ptr-pulse 1.2s infinite; }
+.ptr-mic:disabled { opacity: .6; }
+@keyframes ptr-pulse { 50% { opacity: .75; } }
+.ptr-interim { margin-top: 10px; font-size: 15px; color: var(--ink-soft); font-style: italic; }
+.ptr-note { font-size: 13px; color: var(--ink-soft); }
+.ptr-typed { display: flex; gap: 8px; margin-top: 12px; }
+.ptr-typed input { flex: 1; border: 1px solid var(--line); border-radius: 6px; padding: 11px 12px; font-size: 14.5px; outline: none; font-family: var(--font-archivo), sans-serif; }
+.ptr-typed input:focus { border-color: var(--brass); }
+.ptr-typed .btn { padding: 11px 18px; }
+.ptr-exchange { padding: 14px 16px; }
+.ptr-original { font-size: 13.5px; color: var(--ink-soft); padding-bottom: 10px; border-bottom: 1px solid var(--line); margin-bottom: 10px; }
+.ptr-original span, .ptr-translation span { display: block; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; color: var(--brass); margin-bottom: 3px; }
+.ptr-translation { font-size: 18px; line-height: 1.45; position: relative; padding-right: 40px; }
+.ptr-replay { position: absolute; right: 0; top: 12px; border: 1px solid var(--line); background: #fff; border-radius: 50%; width: 34px; height: 34px; font-size: 15px; cursor: pointer; }
+
 /* ---------- footer (full, homepage style) ---------- */
 footer.site { background: #16242E; color: rgba(244, 243, 238, .72); font-size: 14px; }
 footer.site .top { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 48px; padding: 72px 0 56px; }

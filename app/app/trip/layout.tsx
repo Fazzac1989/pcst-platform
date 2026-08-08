@@ -12,9 +12,10 @@ export default async function TripLayout({ children }: { children: React.ReactNo
 
   const tabs = [
     { href: '/app/trip', label: 'Itinerary', icon: '🗓️' },
-    { href: '/app/trip/documents', label: 'Documents', icon: '📄' },
+    { href: '/app/trip/documents', label: 'Docs', icon: '📄' },
     { href: '/app/trip/photos', label: 'Photos', icon: '📸' },
-    { href: '/app/trip/messages', label: 'Messages', icon: '💬' },
+    { href: '/app/trip/messages', label: 'Chat', icon: '💬' },
+    { href: '/app/trip/translate', label: 'Translate', icon: '🌐' },
     ...(member.role === 'teacher' ? [{ href: '/app/trip/team', label: 'Team', icon: '🧑‍🏫' }] : []),
   ];
 
