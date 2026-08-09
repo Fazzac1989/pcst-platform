@@ -5,9 +5,13 @@ import { useState } from 'react';
 import {
   addAppDocument,
   addAppMember,
+  addHighlight,
+  addScheduleItem,
   deleteAppDocument,
   deleteAppMember,
   deleteAppPost,
+  deleteHighlight,
+  deleteScheduleItem,
   sendPctReply,
   updateAppTrip,
 } from '@/lib/admin/app-actions';
@@ -21,6 +25,11 @@ const smallBtn =
 
 type Member = { id: number; role: string; name: string; loginCode: string; parentOf: number | null };
 type Doc = { id: number; kind: string; title: string; fileUrl: string; scope: string; memberId: number | null };
+type HighlightRow = { id: number; date: string; caption: string; imageUrl: string | null; sortOrder: number };
+type ScheduleRow = {
+  id: number; date: string; startTime: string; title: string; description: string;
+  meetingPlace: string | null; meetingTime: string | null; educationalContent: string | null;
+};
 
 export default function TripManager({
   trip,
@@ -28,6 +37,8 @@ export default function TripManager({
   documents,
   pctMessages,
   posts,
+  highlights,
+  schedule,
 }: {
   trip: {
     id: number; title: string; destination: string; startDate: string | null; endDate: string | null;
@@ -37,6 +48,8 @@ export default function TripManager({
   documents: Doc[];
   pctMessages: { id: number; fromTeam: boolean; senderName: string; body: string; createdAt: string }[];
   posts: { id: number; memberName: string; imageUrl: string | null; caption: string | null; createdAt: string }[];
+  highlights: HighlightRow[];
+  schedule: ScheduleRow[];
 }) {
   const router = useRouter();
   const [error, setError] = useState<string | null>(null);
@@ -52,6 +65,13 @@ export default function TripManager({
   const [newMemberRole, setNewMemberRole] = useState<'teacher' | 'student' | 'parent'>('student');
   const [newMemberName, setNewMemberName] = useState('');
   const [newMemberParentOf, setNewMemberParentOf] = useState<number | ''>('');
+  const [hlDate, setHlDate] = useState(trip.startDate ?? '');
+  const [hlCaption, setHlCaption] = useState('');
+  const [hlUploading, setHlUploading] = useState(false);
+  const [sched, setSched] = useState({
+    date: trip.startDate ?? '', startTime: '09:00', title: '', description: '',
+    meetingPlace: '', meetingTime: '', educationalContent: '',
+  });
 
   const students = members.filter((m) => m.role === 'student');
   const nameOf = (id: number | null) => members.find((m) => m.id === id)?.name ?? '';
@@ -74,6 +94,33 @@ export default function TripManager({
     a.href = URL.createObjectURL(blob);
     a.download = `${trip.title.replace(/[^\w]+/g, '-')}-app-credentials.csv`;
     a.click();
+  }
+
+  async function uploadHighlight(file: File | null) {
+    if (!hlDate || !hlCaption.trim()) {
+      setError('Highlight needs a date and a caption.');
+      return;
+    }
+    setHlUploading(true);
+    setError(null);
+    try {
+      let url: string | null = null;
+      if (file) {
+        const supabase = createClient();
+        const clean = file.name.toLowerCase().replace(/[^a-z0-9.]+/g, '-');
+        const path = `app-highlights/${trip.id}/${Date.now()}-${clean}`;
+        const { error: upErr } = await supabase.storage.from('trip-images').upload(path, file, { contentType: file.type });
+        if (upErr) throw new Error(upErr.message);
+        url = supabase.storage.from('trip-images').getPublicUrl(path).data.publicUrl;
+      }
+      const nextOrder = highlights.filter((h) => h.date === hlDate).length;
+      await act(() => addHighlight({ tripId: trip.id, date: hlDate, caption: hlCaption, imageUrl: url, sortOrder: nextOrder }));
+      setHlCaption('');
+    } catch (e: any) {
+      setError(`Upload failed: ${e.message}`);
+    } finally {
+      setHlUploading(false);
+    }
   }
 
   async function uploadDoc(file: File) {
@@ -196,7 +243,7 @@ export default function TripManager({
         ))}
         <div className="flex gap-2 flex-wrap items-end border-t border-line pt-4">
           <select className={`${inputCls} w-32`} value={docKind} onChange={(e) => setDocKind(e.target.value)}>
-            {['flight', 'hotel', 'ticket', 'map', 'sightseeing', 'other'].map((k) => (
+            {['flight', 'hotel', 'ticket', 'voucher', 'map', 'sightseeing', 'other'].map((k) => (
               <option key={k}>{k}</option>
             ))}
           </select>
@@ -215,6 +262,85 @@ export default function TripManager({
             {uploading ? 'Uploading…' : '+ Upload file'}
             <input type="file" hidden disabled={uploading} onChange={(e) => { const f = e.target.files?.[0]; if (f) uploadDoc(f); e.target.value = ''; }} />
           </label>
+        </div>
+      </div>
+
+      {/* daily schedule (app Itinerary + Learning) */}
+      <div className="border border-line rounded p-6 grid gap-3">
+        <span className={labelCls}>Daily schedule ({schedule.length}) — app Itinerary &amp; Learning</span>
+        {schedule.map((s) => (
+          <div key={s.id} className="flex items-start gap-3 text-sm border-b border-line last:border-0 pb-2">
+            <span className="text-xs text-ink-soft w-24 shrink-0">
+              {new Date(s.date + 'T00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })} · {s.startTime}
+            </span>
+            <div className="flex-1 min-w-0">
+              <div className="font-medium">{s.title}</div>
+              <div className="text-xs text-ink-soft truncate">
+                {s.meetingPlace && <>Meet: {s.meetingPlace}{s.meetingTime ? ` at ${s.meetingTime}` : ''} · </>}
+                {s.description}
+                {s.educationalContent && ' · 🎓 has learning note'}
+              </div>
+            </div>
+            <button className={smallBtn} onClick={() => act(() => deleteScheduleItem(s.id))}>✕</button>
+          </div>
+        ))}
+        {schedule.length === 0 && <p className="text-sm text-ink-soft">No timed entries yet — add the first below.</p>}
+        <div className="grid gap-2 border-t border-line pt-4">
+          <div className="flex gap-2 flex-wrap">
+            <input type="date" className={`${inputCls} w-40`} value={sched.date} onChange={(e) => setSched({ ...sched, date: e.target.value })} />
+            <input type="time" className={`${inputCls} w-28`} value={sched.startTime} onChange={(e) => setSched({ ...sched, startTime: e.target.value })} />
+            <input className={`${inputCls} flex-1 min-w-[200px]`} placeholder="Activity title (Forbidden City guided tour)" value={sched.title} onChange={(e) => setSched({ ...sched, title: e.target.value })} />
+          </div>
+          <div className="flex gap-2 flex-wrap">
+            <input className={`${inputCls} flex-1 min-w-[200px]`} placeholder="Meeting place (Hotel lobby)" value={sched.meetingPlace} onChange={(e) => setSched({ ...sched, meetingPlace: e.target.value })} />
+            <input type="time" className={`${inputCls} w-28`} value={sched.meetingTime} onChange={(e) => setSched({ ...sched, meetingTime: e.target.value })} />
+          </div>
+          <textarea rows={2} className={inputCls} placeholder="Description — what happens during this activity" value={sched.description} onChange={(e) => setSched({ ...sched, description: e.target.value })} />
+          <textarea rows={2} className={inputCls} placeholder="Learning note (optional) — the educational story used during the tour" value={sched.educationalContent} onChange={(e) => setSched({ ...sched, educationalContent: e.target.value })} />
+          <button
+            className={`${smallBtn} justify-self-start`}
+            onClick={() => {
+              if (!sched.date || !sched.startTime || !sched.title.trim()) { setError('Schedule entries need a date, time and title.'); return; }
+              act(() => addScheduleItem({
+                tripId: trip.id, date: sched.date, startTime: sched.startTime, title: sched.title,
+                description: sched.description, meetingPlace: sched.meetingPlace || null,
+                meetingTime: sched.meetingTime || null, educationalContent: sched.educationalContent || null,
+              }));
+              setSched({ ...sched, title: '', description: '', meetingPlace: '', meetingTime: '', educationalContent: '' });
+            }}
+          >
+            + Add schedule entry
+          </button>
+        </div>
+      </div>
+
+      {/* day highlights (app home rail) */}
+      <div className="border border-line rounded p-6 grid gap-3">
+        <span className={labelCls}>Day highlights ({highlights.length}) — “What’s happening today”</span>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+          {highlights.map((h) => (
+            <div key={h.id} className="border border-line rounded overflow-hidden text-xs">
+              {h.imageUrl && (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img src={h.imageUrl} alt="" className="w-full h-24 object-cover" />
+              )}
+              <div className="p-2">
+                <div className="text-ink-soft">{new Date(h.date + 'T00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })}</div>
+                <div className="font-medium truncate">{h.caption}</div>
+                <button className="text-danger font-semibold mt-1" onClick={() => act(() => deleteHighlight(h.id))}>Remove</button>
+              </div>
+            </div>
+          ))}
+          {highlights.length === 0 && <p className="text-sm text-ink-soft col-span-full">No highlights yet — they fill the image rail on the app home page.</p>}
+        </div>
+        <div className="flex gap-2 flex-wrap items-end border-t border-line pt-4">
+          <input type="date" className={`${inputCls} w-40`} value={hlDate} onChange={(e) => setHlDate(e.target.value)} />
+          <input className={`${inputCls} flex-1 min-w-[200px]`} placeholder="Caption (Morning at the Great Wall)" value={hlCaption} onChange={(e) => setHlCaption(e.target.value)} />
+          <label className={`${smallBtn} cursor-pointer`}>
+            {hlUploading ? 'Uploading…' : '+ Add with photo'}
+            <input type="file" accept="image/*" hidden disabled={hlUploading} onChange={(e) => { const f = e.target.files?.[0]; if (f) uploadHighlight(f); e.target.value = ''; }} />
+          </label>
+          <button className={smallBtn} disabled={hlUploading} onClick={() => uploadHighlight(null)}>+ Add without photo</button>
         </div>
       </div>
 

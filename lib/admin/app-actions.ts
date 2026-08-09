@@ -167,6 +167,64 @@ export async function deleteAppDocument(id: number): Promise<ActionResult> {
   return { ok: true };
 }
 
+export async function addHighlight(h: {
+  tripId: number;
+  date: string;
+  caption: string;
+  imageUrl: string | null;
+  sortOrder: number;
+}): Promise<ActionResult> {
+  const db = createClient();
+  const { error } = await db.from('app_highlights').insert({
+    app_trip_id: h.tripId,
+    date: h.date,
+    caption: h.caption.trim(),
+    image_url: h.imageUrl,
+    sort_order: h.sortOrder,
+  });
+  if (error) return { ok: false, error: error.message };
+  return { ok: true };
+}
+
+export async function deleteHighlight(id: number): Promise<ActionResult> {
+  const db = createClient();
+  const { error } = await db.from('app_highlights').delete().eq('id', id);
+  if (error) return { ok: false, error: error.message };
+  return { ok: true };
+}
+
+export async function addScheduleItem(s: {
+  tripId: number;
+  date: string;
+  startTime: string;
+  title: string;
+  description: string;
+  meetingPlace: string | null;
+  meetingTime: string | null;
+  educationalContent: string | null;
+}): Promise<ActionResult> {
+  const db = createClient();
+  const { error } = await db.from('app_schedule_items').insert({
+    app_trip_id: s.tripId,
+    date: s.date,
+    start_time: s.startTime,
+    title: s.title.trim(),
+    description: s.description.trim(),
+    meeting_place: s.meetingPlace?.trim() || null,
+    meeting_time: s.meetingTime || null,
+    educational_content: s.educationalContent?.trim() || null,
+  });
+  if (error) return { ok: false, error: error.message };
+  return { ok: true };
+}
+
+export async function deleteScheduleItem(id: number): Promise<ActionResult> {
+  const db = createClient();
+  const { error } = await db.from('app_schedule_items').delete().eq('id', id);
+  if (error) return { ok: false, error: error.message };
+  return { ok: true };
+}
+
 /** Reply to a teacher as the PCT team. */
 export async function sendPctReply(tripId: number, body: string): Promise<ActionResult> {
   const db = createClient();

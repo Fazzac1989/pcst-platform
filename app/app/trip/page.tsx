@@ -1,35 +1,78 @@
-import Image from 'next/image';
+/* eslint-disable @next/next/no-img-element */
+import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { getAppSession } from '@/lib/app/session';
 import { getDestinationWeather } from '@/lib/app/weather';
+import { getHighlights } from '@/lib/app/data';
+import Greeting from './Greeting';
+import Icon from './icons';
 
 export const dynamic = 'force-dynamic';
 
-export default async function TripItineraryPage() {
+const ROLE_TAG = { teacher: 'Command Centre', student: 'Explorer', parent: 'Family View' } as const;
+
+export default async function TripHomePage() {
   const session = await getAppSession();
   if (!session) redirect('/app');
-  const { trip } = session;
+  const { member, trip } = session;
 
-  const weather = await getDestinationWeather(trip.destination);
   const today = new Date().toISOString().slice(0, 10);
+  const [weather, highlights] = await Promise.all([
+    getDestinationWeather(trip.destination),
+    getHighlights(trip.id, today),
+  ]);
+
+  const cards =
+    member.role === 'teacher'
+      ? [
+          { href: '/app/trip/register', label: 'Student Register', icon: 'register' },
+          { href: '/app/trip/flights', label: 'Flights & E-Tickets', icon: 'plane' },
+          { href: '/app/trip/accommodation', label: 'Accommodation', icon: 'bed' },
+          { href: '/app/trip/vouchers', label: 'Vouchers', icon: 'ticket' },
+          { href: '/app/trip/broadcast', label: 'Broadcast', icon: 'megaphone' },
+          { href: '/app/trip/translate', label: 'Translate', icon: 'translate' },
+        ]
+      : [
+          { href: '/app/trip/flights', label: 'Flights & E-Tickets', icon: 'plane' },
+          { href: '/app/trip/accommodation', label: 'Accommodation', icon: 'bed' },
+          { href: '/app/trip/vouchers', label: 'Vouchers', icon: 'ticket' },
+          { href: '/app/trip/photos', label: 'Photos', icon: 'photos' },
+          { href: '/app/trip/broadcast', label: 'Announcements', icon: 'megaphone' },
+          { href: '/app/trip/translate', label: 'Translate', icon: 'translate' },
+        ];
+
+  const highlightDay =
+    highlights.date === today
+      ? 'today'
+      : new Date(highlights.date).toLocaleDateString('en-GB', { weekday: 'long', day: 'numeric', month: 'short' });
 
   return (
-    <div>
-      {trip.heroImage && (
-        <div className="papp-hero">
-          <Image src={trip.heroImage} alt="" fill sizes="100vw" style={{ objectFit: 'cover' }} priority />
-          <div className="papp-hero-fade" />
-          <div className="papp-hero-meta">
-            <div className="papp-dest">{trip.destination}</div>
-            {trip.startDate && trip.endDate && (
-              <div className="papp-dates">
-                {new Date(trip.startDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })} –{' '}
-                {new Date(trip.endDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' })}
-              </div>
-            )}
-          </div>
-        </div>
-      )}
+    <div className="papp-home">
+      <div className="papp-home-top">
+        <Greeting name={member.name} />
+        <span className="papp-role-chip">{ROLE_TAG[member.role]}</span>
+      </div>
+      <p className="papp-home-trip">
+        {trip.title}
+        {trip.startDate && trip.endDate && (
+          <>
+            {' · '}
+            {new Date(trip.startDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })} –{' '}
+            {new Date(trip.endDate).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })}
+          </>
+        )}
+      </p>
+
+      <div className="papp-cardgrid">
+        {cards.map((c) => (
+          <Link key={c.href} href={c.href} className="papp-gridcard">
+            <span className="papp-gridcard-icon">
+              <Icon name={c.icon} size={30} />
+            </span>
+            {c.label}
+          </Link>
+        ))}
+      </div>
 
       {weather && (
         <section className="papp-card">
@@ -54,19 +97,25 @@ export default async function TripItineraryPage() {
         </section>
       )}
 
-      <section className="papp-card">
-        <h2>Day by day</h2>
-        {trip.itinerary.map((day, i) => (
-          <div className="papp-day" key={i}>
-            <div className="papp-day-label">{day.label}</div>
-            <div>
-              {day.title && <h3>{day.title}</h3>}
-              <p>{day.description}</p>
-            </div>
+      {highlights.items.length > 0 && (
+        <section className="papp-happening">
+          <h2>What&apos;s happening {highlightDay}</h2>
+          <div className="papp-rail">
+            {highlights.items.map((h) => (
+              <figure className="papp-rail-card" key={h.id}>
+                {h.imageUrl ? (
+                  <img src={h.imageUrl} alt="" loading="lazy" />
+                ) : (
+                  <div className="papp-rail-blank">
+                    <Icon name="pin" size={28} />
+                  </div>
+                )}
+                <figcaption>{h.caption}</figcaption>
+              </figure>
+            ))}
           </div>
-        ))}
-        {trip.itinerary.length === 0 && <p className="papp-empty">Itinerary coming soon.</p>}
-      </section>
+        </section>
+      )}
     </div>
   );
 }

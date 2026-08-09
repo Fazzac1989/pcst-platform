@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next';
+import Splash from './Splash';
 
 export const metadata: Metadata = {
   title: { default: 'PCT Trips', template: '%s — PCT Trips' },
@@ -15,5 +16,10 @@ export const viewport: Viewport = {
 };
 
 export default function AppShellLayout({ children }: { children: React.ReactNode }) {
-  return <div className="papp">{children}</div>;
+  return (
+    <div className="papp">
+      <Splash />
+      {children}
+    </div>
+  );
 }

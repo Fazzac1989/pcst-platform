@@ -54,6 +54,28 @@ export async function createAppPost(imageUrl: string | null, caption: string): P
   return { ok: true };
 }
 
+/** Teacher broadcast: one message the whole group sees. */
+export async function sendBroadcast(body: string): Promise<{ ok: boolean; error?: string }> {
+  const session = await getAppSession();
+  if (!session) return { ok: false, error: 'Signed out — please log in again.' };
+  if (session.member.role !== 'teacher') return { ok: false, error: 'Only teachers can broadcast.' };
+  const text = body.trim().slice(0, 2000);
+  if (!text) return { ok: false, error: 'Message is empty.' };
+
+  const db = createAdminClient();
+  const { error } = await db.from('app_messages').insert({
+    app_trip_id: session.member.tripId,
+    channel: 'broadcast',
+    student_id: null,
+    sender_member_id: session.member.id,
+    body: text,
+  });
+  if (error) return { ok: false, error: error.message };
+  revalidatePath('/app/trip/broadcast');
+  revalidatePath('/app/trip/messages');
+  return { ok: true };
+}
+
 export async function sendAppMessage(body: string): Promise<{ ok: boolean; error?: string }> {
   const session = await getAppSession();
   if (!session) return { ok: false, error: 'Signed out — please log in again.' };

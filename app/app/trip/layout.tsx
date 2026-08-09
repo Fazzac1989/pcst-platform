@@ -1,33 +1,20 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { appLogout } from '@/lib/app/actions';
 import { getAppSession } from '@/lib/app/session';
-
-const ROLE_LABEL = { teacher: 'Teacher', student: 'Student', parent: 'Parent' } as const;
+import TabBar from './TabBar';
 
 export default async function TripLayout({ children }: { children: React.ReactNode }) {
   const session = await getAppSession();
   if (!session) redirect('/app');
-  const { member, trip } = session;
-
-  const tabs = [
-    { href: '/app/trip', label: 'Itinerary', icon: '🗓️' },
-    { href: '/app/trip/documents', label: 'Docs', icon: '📄' },
-    { href: '/app/trip/photos', label: 'Photos', icon: '📸' },
-    { href: '/app/trip/messages', label: 'Chat', icon: '💬' },
-    { href: '/app/trip/translate', label: 'Translate', icon: '🌐' },
-    ...(member.role === 'teacher' ? [{ href: '/app/trip/team', label: 'Team', icon: '🧑‍🏫' }] : []),
-  ];
 
   return (
     <div className="papp-shell">
       <header className="papp-head">
-        <div>
-          <div className="papp-trip-title">{trip.title}</div>
-          <div className="papp-trip-sub">
-            {member.name} · {ROLE_LABEL[member.role]}
-          </div>
-        </div>
+        <Link href="/app/trip" className="papp-head-logo">
+          <Image src="/images/logo-navy.png" alt="Premium Choice School Trips" width={132} height={44} priority />
+        </Link>
         <form action={appLogout}>
           <button className="papp-logout" title="Sign out">
             ⎋
@@ -35,14 +22,7 @@ export default async function TripLayout({ children }: { children: React.ReactNo
         </form>
       </header>
       <main className="papp-main">{children}</main>
-      <nav className="papp-tabs">
-        {tabs.map((t) => (
-          <Link key={t.href} href={t.href}>
-            <span className="papp-tab-icon">{t.icon}</span>
-            {t.label}
-          </Link>
-        ))}
-      </nav>
+      <TabBar />
     </div>
   );
 }

@@ -106,6 +106,82 @@ export async function getMemberMessages(member: AppMember): Promise<AppMessage[]
   }));
 }
 
+export type Highlight = { id: number; date: string; caption: string; imageUrl: string | null };
+
+export type ScheduleItem = {
+  id: number;
+  date: string;
+  startTime: string; // "HH:MM"
+  title: string;
+  description: string;
+  meetingPlace: string | null;
+  meetingTime: string | null;
+  educationalContent: string | null;
+};
+
+const hhmm = (t: string | null) => (t ? t.slice(0, 5) : null);
+
+/** Highlights for a given date; falls back to the next date that has any. */
+export async function getHighlights(tripId: number, isoDate: string): Promise<{ date: string; items: Highlight[] }> {
+  const db = createAdminClient();
+  const { data } = await db
+    .from('app_highlights')
+    .select('id, date, caption, image_url, sort_order')
+    .eq('app_trip_id', tripId)
+    .gte('date', isoDate)
+    .order('date')
+    .order('sort_order')
+    .limit(30);
+  const rows = data ?? [];
+  if (!rows.length) return { date: isoDate, items: [] };
+  const firstDate = rows[0].date;
+  return {
+    date: firstDate,
+    items: rows
+      .filter((r) => r.date === firstDate)
+      .map((r) => ({ id: r.id, date: r.date, caption: r.caption, imageUrl: r.image_url })),
+  };
+}
+
+export async function getSchedule(tripId: number): Promise<ScheduleItem[]> {
+  const db = createAdminClient();
+  const { data } = await db
+    .from('app_schedule_items')
+    .select('*')
+    .eq('app_trip_id', tripId)
+    .order('date')
+    .order('start_time');
+  return (data ?? []).map((r) => ({
+    id: r.id,
+    date: r.date,
+    startTime: hhmm(r.start_time)!,
+    title: r.title,
+    description: r.description,
+    meetingPlace: r.meeting_place,
+    meetingTime: hhmm(r.meeting_time),
+    educationalContent: r.educational_content,
+  }));
+}
+
+export type Broadcast = { id: number; senderName: string; body: string; createdAt: string };
+
+export async function getBroadcasts(tripId: number): Promise<Broadcast[]> {
+  const db = createAdminClient();
+  const { data } = await db
+    .from('app_messages')
+    .select('id, body, created_at, sender:app_members!app_messages_sender_member_id_fkey(name)')
+    .eq('app_trip_id', tripId)
+    .eq('channel', 'broadcast')
+    .order('created_at', { ascending: false })
+    .limit(50);
+  return (data ?? []).map((m: any) => ({
+    id: m.id,
+    senderName: m.sender?.name ?? 'Trip leader',
+    body: m.body,
+    createdAt: m.created_at,
+  }));
+}
+
 export async function getTripRoster(tripId: number): Promise<Roster[]> {
   const db = createAdminClient();
   const { data } = await db
