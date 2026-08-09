@@ -13,7 +13,7 @@ export default async function TripLayout({ children }: { children: React.ReactNo
     <div className="papp-shell">
       <header className="papp-head">
         <Link href="/app/trip" className="papp-head-logo">
-          <Image src="/images/logo-navy.png" alt="Premium Choice School Trips" width={132} height={44} priority />
+          <Image src="/images/logo-navy.png" alt="Premium Choice School Trips" width={192} height={64} priority />
         </Link>
         <form action={appLogout}>
           <button className="papp-logout" title="Sign out">

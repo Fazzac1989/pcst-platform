@@ -22,7 +22,7 @@ export default function Splash() {
   if (state === 'hidden') return null;
   return (
     <div className={`papp-splash${state === 'fading' ? ' fading' : ''}`}>
-      <Image src="/images/logo-white.png" alt="Premium Choice School Trips" width={220} height={73} priority />
+      <Image src="/images/logo-white.png" alt="Premium Choice School Trips" width={320} height={107} priority />
     </div>
   );
 }
