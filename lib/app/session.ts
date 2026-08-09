@@ -1,4 +1,5 @@
 import 'server-only';
+import { cache } from 'react';
 import { cookies } from 'next/headers';
 import { createAdminClient } from '@/lib/supabase/admin';
 
@@ -26,8 +27,11 @@ export type AppTrip = {
   status: string;
 };
 
-/** Resolve the signed-in app member from the access-code cookie. */
-export async function getAppSession(): Promise<{ member: AppMember; trip: AppTrip } | null> {
+/**
+ * Resolve the signed-in app member from the access-code cookie.
+ * Wrapped in React cache() so the layout and page share one lookup per request.
+ */
+export const getAppSession = cache(async function getAppSession(): Promise<{ member: AppMember; trip: AppTrip } | null> {
   const code = cookies().get(APP_COOKIE)?.value;
   if (!code || code.length < 8) return null;
 
@@ -63,4 +67,4 @@ export async function getAppSession(): Promise<{ member: AppMember; trip: AppTri
       status: t.status,
     },
   };
-}
+});
