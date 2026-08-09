@@ -13,6 +13,7 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 1,
+  viewportFit: 'cover', // extend under the notch so safe-area insets apply
 };
 
 export default function AppShellLayout({ children }: { children: React.ReactNode }) {
