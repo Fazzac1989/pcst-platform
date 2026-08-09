@@ -132,17 +132,47 @@ export default function Translator() {
     };
     recognition.onerror = (event: any) => {
       setListening(false);
-      if (event.error === 'not-allowed') setError('Microphone access was blocked — allow it in your browser settings.');
-      else if (event.error === 'no-speech') setError('Heard nothing — try again, a little closer to the phone.');
-      else if (event.error !== 'aborted') setError(`Could not hear you (${event.error}).`);
+      const standalone =
+        window.matchMedia?.('(display-mode: standalone)').matches || (navigator as any).standalone === true;
+      switch (event.error) {
+        case 'not-allowed':
+        case 'service-not-allowed':
+          setError(
+            standalone
+              ? 'Voice input is blocked in the installed app — open the trip in Safari or Chrome to use the microphone, or type below.'
+              : 'Microphone access was blocked — allow it in your browser settings, or type below.'
+          );
+          break;
+        case 'audio-capture':
+          setError('No working microphone found — check it is not in use by another app, or type below.');
+          break;
+        case 'network':
+          setError('The voice service could not be reached — check your connection, or type below.');
+          break;
+        case 'language-not-supported':
+          setError(`This device cannot listen in ${langName(sourceCode)} — type it below instead.`);
+          break;
+        case 'no-speech':
+          setError('Heard nothing — try again, a little closer to the phone.');
+          break;
+        case 'aborted':
+          break;
+        default:
+          setError(`Voice input failed (${event.error}) — you can type below instead.`);
+      }
     };
     recognition.onend = () => {
       setListening(false);
       setInterim('');
       if (finalText.trim()) translate(finalText);
     };
-    recognition.start();
-    setListening(true);
+    try {
+      recognition.start();
+      setListening(true);
+    } catch {
+      // start() throws if a session is already active or the device refuses
+      setError('Could not start the microphone — wait a moment and tap again, or type below.');
+    }
   }
 
   function stopListening() {
