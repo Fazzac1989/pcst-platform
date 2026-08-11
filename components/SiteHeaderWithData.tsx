@@ -1,13 +1,13 @@
 import SiteHeader from '@/components/SiteHeader';
-import { getSubjects } from '@/lib/data';
+import { getCountries, getSubjects } from '@/lib/data';
 
-/** Server wrapper: feeds the subjects mega menu from the database. */
+/** Server wrapper: feeds the subjects + countries mega menus from the database. */
 export default async function SiteHeaderWithData({
   variant = 'home',
 }: {
   variant?: 'home' | 'trip';
 }) {
-  const subjects = await getSubjects();
+  const [subjects, countries] = await Promise.all([getSubjects(), getCountries()]);
   return (
     <SiteHeader
       variant={variant}
@@ -16,6 +16,11 @@ export default async function SiteHeaderWithData({
         slug: s.slug,
         tripCount: s.tripCount,
         countries: s.countries,
+      }))}
+      countries={countries.map((c) => ({
+        name: c.name,
+        slug: c.slug,
+        tripCount: c.tripCount,
       }))}
     />
   );

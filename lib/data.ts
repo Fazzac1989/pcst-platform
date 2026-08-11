@@ -14,6 +14,9 @@ function createClient() {
   );
 }
 
+const slugify = (s: string) =>
+  s.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+
 export type ItineraryDay = {
   label: string | null;
   title: string;
@@ -27,11 +30,13 @@ export type Trip = {
   subject: string;
   subjectSlug: string;
   country: string;
+  countrySlug: string;
   city: string | null;
   durationDays: number;
   durationNights: number;
   departs: string;
   heroImage: string | null;
+  gallery: string[];
   overview: string[];
   includes: string[];
   itinerary: ItineraryDay[];
@@ -89,13 +94,15 @@ async function fallbackTrips(): Promise<Trip[]> {
         slug: t.slug,
         title: t.title,
         subject: t.subject,
-        subjectSlug: t.subject.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
+        subjectSlug: slugify(t.subject),
         country: t.country,
+        countrySlug: slugify(t.country),
         city: t.city,
         durationDays: Number(m[1]),
         durationNights: Number(m[2]),
         departs: t.departs,
         heroImage: t.hero_image,
+        gallery: [],
         overview: t.overview,
         includes: t.includes,
         itinerary: t.itinerary,
@@ -109,7 +116,9 @@ async function fallbackTrips(): Promise<Trip[]> {
 /* ------------------------------------------------------------------ */
 
 const TRIP_SELECT =
-  'id, slug, title, city, duration_days, duration_nights, departs, hero_image, overview, includes, featured, subjects(name, slug), countries(name), itinerary_days(label, title, description, sort_order)';
+  'id, slug, title, city, duration_days, duration_nights, departs, hero_image, gallery, overview, includes, featured, subjects(name, slug), countries(name, slug), itinerary_days(label, title, description, sort_order)';
+// Safety net until the gallery migration has been run on the live database.
+const TRIP_SELECT_LEGACY = TRIP_SELECT.replace('hero_image, gallery,', 'hero_image,');
 
 // Supabase returns to-one relations as objects; typing loosely here keeps
 // the mapper independent of generated types.
@@ -121,11 +130,13 @@ function mapTrip(row: any): Trip {
     subject: row.subjects?.name ?? '',
     subjectSlug: row.subjects?.slug ?? '',
     country: row.countries?.name ?? '',
+    countrySlug: row.countries?.slug ?? '',
     city: row.city,
     durationDays: row.duration_days,
     durationNights: row.duration_nights,
     departs: row.departs,
     heroImage: row.hero_image,
+    gallery: Array.isArray(row.gallery) ? row.gallery : [],
     overview: row.overview ?? [],
     includes: row.includes ?? [],
     itinerary: (row.itinerary_days ?? [])
@@ -138,11 +149,20 @@ function mapTrip(row: any): Trip {
 export async function getPublishedTrips(): Promise<Trip[]> {
   if (!hasSupabase) return fallbackTrips();
   const db = createClient();
-  const { data, error } = await db
+  let { data, error } = await db
     .from('trips')
     .select(TRIP_SELECT)
     .eq('status', 'published')
     .order('title');
+  if (error?.message.includes('gallery')) {
+    const retry = await db
+      .from('trips')
+      .select(TRIP_SELECT_LEGACY)
+      .eq('status', 'published')
+      .order('title');
+    data = retry.data as any;
+    error = retry.error;
+  }
   if (error) throw new Error(`getPublishedTrips: ${error.message}`);
   return (data ?? []).map(mapTrip);
 }
@@ -158,12 +178,22 @@ export async function getTripBySlug(slug: string): Promise<Trip | null> {
     return trips.find((t) => t.slug === slug) ?? null;
   }
   const db = createClient();
-  const { data, error } = await db
+  let { data, error } = await db
     .from('trips')
     .select(TRIP_SELECT)
     .eq('status', 'published')
     .eq('slug', slug)
     .maybeSingle();
+  if (error?.message.includes('gallery')) {
+    const retry = await db
+      .from('trips')
+      .select(TRIP_SELECT_LEGACY)
+      .eq('status', 'published')
+      .eq('slug', slug)
+      .maybeSingle();
+    data = retry.data as any;
+    error = retry.error;
+  }
   if (error) throw new Error(`getTripBySlug(${slug}): ${error.message}`);
   return data ? mapTrip(data) : null;
 }
@@ -204,6 +234,35 @@ export async function getSubjects(): Promise<SubjectSummary[]> {
     if (trip.country && !entry.countries.includes(trip.country)) entry.countries.push(trip.country);
     if (!entry.heroImage && trip.heroImage) entry.heroImage = trip.heroImage;
     map.set(trip.subjectSlug, entry);
+  }
+  return [...map.values()].sort((a, b) => a.name.localeCompare(b.name));
+}
+
+export type CountrySummary = {
+  name: string;
+  slug: string;
+  tripCount: number;
+  subjects: string[];
+  heroImage: string | null;
+};
+
+/** Countries that have at least one published trip, with card metadata. */
+export async function getCountries(): Promise<CountrySummary[]> {
+  const trips = await getPublishedTrips();
+  const map = new Map<string, CountrySummary>();
+  for (const trip of trips) {
+    if (!trip.countrySlug) continue;
+    const entry = map.get(trip.countrySlug) ?? {
+      name: trip.country,
+      slug: trip.countrySlug,
+      tripCount: 0,
+      subjects: [],
+      heroImage: null,
+    };
+    entry.tripCount += 1;
+    if (trip.subject && !entry.subjects.includes(trip.subject)) entry.subjects.push(trip.subject);
+    if (!entry.heroImage && trip.heroImage) entry.heroImage = trip.heroImage;
+    map.set(trip.countrySlug, entry);
   }
   return [...map.values()].sort((a, b) => a.name.localeCompare(b.name));
 }

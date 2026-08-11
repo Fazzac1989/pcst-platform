@@ -21,6 +21,7 @@ export type TripPayload = {
   duration_nights: number;
   departs: string;
   hero_image: string | null;
+  gallery: string[];
   overview: string[];
   includes: string[];
   itinerary: { label: string; title: string; description: string }[];
@@ -32,6 +33,7 @@ function revalidatePublic(slugs: string[]) {
   revalidatePath('/');
   revalidatePath('/trips');
   revalidatePath('/subjects/[slug]', 'page'); // subject listings reflect any trip change
+  revalidatePath('/countries/[slug]', 'page'); // country listings too
   for (const slug of slugs) revalidatePath(`/trips/${slug}`);
 }
 

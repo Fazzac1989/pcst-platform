@@ -11,8 +11,17 @@ export type MegaSubject = {
   countries: string[];
 };
 
+export type MegaCountry = {
+  name: string;
+  slug: string;
+  tripCount: number;
+};
+
+type MenuKey = 'subjects' | 'countries';
+
 const NAV_LINKS = [
   { label: 'Subjects', anchor: 'subjects' },
+  { label: 'Countries', anchor: 'countries' },
   { label: 'How it works', anchor: 'journey' },
   { label: 'Trips', anchor: 'trips' },
   { label: 'Health & Safety', anchor: 'safety' },
@@ -22,6 +31,7 @@ const NAV_LINKS = [
 // Trip pages order the menu as the reference trip template does.
 const NAV_LINKS_TRIP = [
   { label: 'Subjects', anchor: 'subjects' },
+  { label: 'Countries', anchor: 'countries' },
   { label: 'Trips', anchor: 'trips' },
   { label: 'How it works', anchor: 'journey' },
   { label: 'Health & Safety', anchor: 'safety' },
@@ -31,13 +41,15 @@ const NAV_LINKS_TRIP = [
 export default function SiteHeader({
   variant = 'home',
   subjects = [],
+  countries = [],
 }: {
   variant?: 'home' | 'trip';
   subjects?: MegaSubject[];
+  countries?: MegaCountry[];
 }) {
   const ref = useRef<HTMLElement>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const [megaOpen, setMegaOpen] = useState(false);
+  const [openMenu, setOpenMenu] = useState<MenuKey | null>(null);
 
   useEffect(() => {
     const nav = ref.current;
@@ -53,25 +65,30 @@ export default function SiteHeader({
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setMegaOpen(false);
+      if (e.key === 'Escape') setOpenMenu(null);
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, []);
 
-  const openMega = () => {
+  const openMega = (menu: MenuKey) => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
-    setMegaOpen(true);
+    setOpenMenu(menu);
   };
   const closeMegaSoon = () => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
-    closeTimer.current = setTimeout(() => setMegaOpen(false), 160);
+    closeTimer.current = setTimeout(() => setOpenMenu(null), 160);
   };
 
   const onTrip = variant === 'trip';
   const links = onTrip ? NAV_LINKS_TRIP : NAV_LINKS;
   const href = (anchor: string) => (onTrip ? `/#${anchor}` : `#${anchor}`);
-  const hasMega = subjects.length > 0;
+  const menuFor = (anchor: string): MenuKey | null =>
+    anchor === 'subjects' && subjects.length > 0
+      ? 'subjects'
+      : anchor === 'countries' && countries.length > 0
+        ? 'countries'
+        : null;
 
   return (
     <header ref={ref} className={`nav${onTrip ? ' nav--trip' : ''}`}>
@@ -100,16 +117,17 @@ export default function SiteHeader({
         </Link>
         <div className="nav-right">
           <nav className="menu">
-            {links.map((l) =>
-              l.anchor === 'subjects' && hasMega ? (
+            {links.map((l) => {
+              const menu = menuFor(l.anchor);
+              return menu ? (
                 <a
                   key={l.anchor}
-                  href={href(l.anchor)}
+                  href={menu === 'countries' ? '/trips' : href(l.anchor)}
                   aria-haspopup="true"
-                  aria-expanded={megaOpen}
-                  onMouseEnter={openMega}
+                  aria-expanded={openMenu === menu}
+                  onMouseEnter={() => openMega(menu)}
                   onMouseLeave={closeMegaSoon}
-                  onFocus={openMega}
+                  onFocus={() => openMega(menu)}
                 >
                   {l.label} <span className="mega-caret">▾</span>
                 </a>
@@ -117,8 +135,8 @@ export default function SiteHeader({
                 <a key={l.anchor} href={href(l.anchor)}>
                   {l.label}
                 </a>
-              )
-            )}
+              );
+            })}
           </nav>
           <div className="nav-cta">
             <Link className="btn btn-admin" href="/admin">
@@ -128,10 +146,10 @@ export default function SiteHeader({
         </div>
       </div>
 
-      {hasMega && (
+      {subjects.length > 0 && (
         <div
-          className={`mega${megaOpen ? ' open' : ''}`}
-          onMouseEnter={openMega}
+          className={`mega${openMenu === 'subjects' ? ' open' : ''}`}
+          onMouseEnter={() => openMega('subjects')}
           onMouseLeave={closeMegaSoon}
         >
           <div className="mega-inner">
@@ -144,7 +162,7 @@ export default function SiteHeader({
                   className="mega-item"
                   href={`/subjects/${s.slug}`}
                   key={s.slug}
-                  onClick={() => setMegaOpen(false)}
+                  onClick={() => setOpenMenu(null)}
                 >
                   <h4>{s.name}</h4>
                   <span>
@@ -156,7 +174,40 @@ export default function SiteHeader({
             </div>
             <div className="mega-foot">
               <span>Can&apos;t see your subject? We build itineraries to order.</span>
-              <Link href="/trips" onClick={() => setMegaOpen(false)}>
+              <Link href="/trips" onClick={() => setOpenMenu(null)}>
+                View all trips →
+              </Link>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {countries.length > 0 && (
+        <div
+          className={`mega${openMenu === 'countries' ? ' open' : ''}`}
+          onMouseEnter={() => openMega('countries')}
+          onMouseLeave={closeMegaSoon}
+        >
+          <div className="mega-inner">
+            <div className="mega-head">
+              <span className="eyebrow">Browse by country</span>
+            </div>
+            <div className="mega-grid mega-grid--countries">
+              {countries.map((c) => (
+                <Link
+                  className="mega-item mega-item--country"
+                  href={`/countries/${c.slug}`}
+                  key={c.slug}
+                  onClick={() => setOpenMenu(null)}
+                >
+                  <h4>{c.name}</h4>
+                  <span>{c.tripCount}</span>
+                </Link>
+              ))}
+            </div>
+            <div className="mega-foot">
+              <span>Somewhere else in mind? We design trips to any destination.</span>
+              <Link href="/trips" onClick={() => setOpenMenu(null)}>
                 View all trips →
               </Link>
             </div>

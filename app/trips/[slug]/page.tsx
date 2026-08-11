@@ -87,6 +87,26 @@ export default async function TripPage({ params }: Props) {
       </div>
 
       <main className="trip-main">
+        {trip.gallery.length > 0 && (
+          <section className="tgallery-band">
+            <div className="wrap">
+              <div className={`tgallery n${Math.min(trip.gallery.length, 6)}`}>
+                {trip.gallery.slice(0, 6).map((src, i) => (
+                  <div className="tg-item" key={i}>
+                    <Image
+                      src={src}
+                      alt={`${trip.title} — photo ${i + 1}`}
+                      fill
+                      sizes="(max-width: 720px) 78vw, (max-width: 1100px) 50vw, 33vw"
+                      style={{ objectFit: 'cover' }}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
         <section>
           <div className="wrap">
             <div className="cols">

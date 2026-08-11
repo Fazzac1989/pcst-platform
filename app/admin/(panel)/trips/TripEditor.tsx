@@ -52,6 +52,7 @@ export default function TripEditor({
       duration_nights: 4,
       departs: 'Dubai',
       hero_image: null,
+      gallery: [],
       overview: [''],
       includes: [''],
       itinerary: [{ label: 'Day 1', title: '', description: '' }],
@@ -96,20 +97,39 @@ export default function TripEditor({
     }
   }
 
+  async function uploadImage(file: File): Promise<string> {
+    const supabase = createClient();
+    const ext = file.name.split('.').pop()?.toLowerCase() || 'jpg';
+    const path = `${form.slug || 'trip'}-${Date.now()}-${Math.floor(Math.random() * 1e4)}.${ext}`;
+    const { error: upErr } = await supabase.storage.from('trip-images').upload(path, file, {
+      cacheControl: '31536000',
+      contentType: file.type,
+    });
+    if (upErr) throw new Error(upErr.message);
+    return supabase.storage.from('trip-images').getPublicUrl(path).data.publicUrl;
+  }
+
   async function onUpload(file: File) {
     setUploading(true);
     setError(null);
     try {
-      const supabase = createClient();
-      const ext = file.name.split('.').pop()?.toLowerCase() || 'jpg';
-      const path = `${form.slug || 'trip'}-${Date.now()}.${ext}`;
-      const { error: upErr } = await supabase.storage.from('trip-images').upload(path, file, {
-        cacheControl: '31536000',
-        contentType: file.type,
-      });
-      if (upErr) throw new Error(upErr.message);
-      const { data } = supabase.storage.from('trip-images').getPublicUrl(path);
-      set('hero_image', data.publicUrl);
+      set('hero_image', await uploadImage(file));
+    } catch (e: any) {
+      setError(`Upload failed: ${e.message}`);
+    } finally {
+      setUploading(false);
+    }
+  }
+
+  async function onGalleryUpload(files: File[]) {
+    setUploading(true);
+    setError(null);
+    try {
+      const room = 6 - form.gallery.length;
+      const urls: string[] = [];
+      for (const file of files.slice(0, room)) urls.push(await uploadImage(file));
+      set('gallery', [...form.gallery, ...urls].slice(0, 6));
+      if (files.length > room) setError(`Gallery holds 6 photos — ${files.length - room} skipped.`);
     } catch (e: any) {
       setError(`Upload failed: ${e.message}`);
     } finally {
@@ -306,6 +326,49 @@ export default function TripEditor({
               placeholder="…or paste an image URL"
             />
           </div>
+        </div>
+
+        {/* photo gallery */}
+        <div className="grid gap-3 border border-line rounded p-6">
+          <span className={labelCls}>Photo gallery ({form.gallery.length}/6) — shown under the hero on the trip page</span>
+          {form.gallery.length > 0 && (
+            <div className="grid grid-cols-3 gap-3">
+              {form.gallery.map((url, i) => (
+                <div key={url} className="relative border border-line rounded overflow-hidden group">
+                  {/* eslint-disable-next-line @next/next/no-img-element -- admin preview of arbitrary source */}
+                  <img src={url} alt={`Gallery ${i + 1}`} className="w-full h-28 object-cover" />
+                  <div className="absolute top-1 right-1 flex gap-1">
+                    <button type="button" className="bg-white/90 rounded px-1.5 py-0.5 text-xs font-bold" onClick={() => set('gallery', move(form.gallery, i, i - 1))} aria-label="Move earlier">←</button>
+                    <button type="button" className="bg-white/90 rounded px-1.5 py-0.5 text-xs font-bold" onClick={() => set('gallery', move(form.gallery, i, i + 1))} aria-label="Move later">→</button>
+                    <button type="button" className="bg-white/90 rounded px-1.5 py-0.5 text-xs font-bold text-danger" onClick={() => set('gallery', form.gallery.filter((_, j) => j !== i))} aria-label="Remove photo">✕</button>
+                  </div>
+                  {i === 0 && (
+                    <span className="absolute bottom-1 left-1 bg-white/90 rounded px-1.5 py-0.5 text-[10px] font-semibold text-teal-deep">Lead photo</span>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+          {form.gallery.length < 6 && (
+            <label className={`${smallBtn} cursor-pointer justify-self-start`}>
+              {uploading ? 'Uploading…' : '+ Add photos'}
+              <input
+                type="file"
+                accept="image/*"
+                multiple
+                className="hidden"
+                disabled={uploading}
+                onChange={(e) => {
+                  const files = Array.from(e.target.files ?? []);
+                  if (files.length) onGalleryUpload(files);
+                  e.target.value = '';
+                }}
+              />
+            </label>
+          )}
+          <p className="text-xs text-ink-soft">
+            The first photo leads the mosaic. Use landscape shots where possible; six photos gives the cleanest layout.
+          </p>
         </div>
 
         {/* overview */}

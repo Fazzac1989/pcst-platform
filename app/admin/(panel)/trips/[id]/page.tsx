@@ -13,7 +13,7 @@ export default async function EditTripPage({ params }: { params: { id: string } 
     db
       .from('trips')
       .select(
-        'id, slug, title, subject_id, country_id, city, duration_days, duration_nights, departs, hero_image, overview, includes, status, featured, itinerary_days(label, title, description, sort_order)'
+        'id, slug, title, subject_id, country_id, city, duration_days, duration_nights, departs, hero_image, gallery, overview, includes, status, featured, itinerary_days(label, title, description, sort_order)'
       )
       .eq('id', id)
       .maybeSingle(),
@@ -33,6 +33,7 @@ export default async function EditTripPage({ params }: { params: { id: string } 
     duration_nights: trip.duration_nights,
     departs: trip.departs,
     hero_image: trip.hero_image,
+    gallery: (trip.gallery as string[]) ?? [],
     overview: (trip.overview as string[])?.length ? (trip.overview as string[]) : [''],
     includes: (trip.includes as string[])?.length ? (trip.includes as string[]) : [''],
     itinerary: (trip.itinerary_days ?? [])
