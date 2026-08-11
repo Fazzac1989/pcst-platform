@@ -51,8 +51,18 @@ export async function saveTrip(payload: TripPayload): Promise<ActionResult> {
   const query = id
     ? db.from('trips').update(fields).eq('id', id).select('id').single()
     : db.from('trips').insert(fields).select('id').single();
-  const { data: trip, error } = await query;
+  let { data: trip, error } = await query;
+  // Safety net until the gallery migration has been run on the live database.
+  if (error?.message.includes('gallery')) {
+    const { gallery: _gallery, ...legacyFields } = fields;
+    const retry = id
+      ? await db.from('trips').update(legacyFields).eq('id', id).select('id').single()
+      : await db.from('trips').insert(legacyFields).select('id').single();
+    trip = retry.data;
+    error = retry.error;
+  }
   if (error) return { ok: false, error: error.message };
+  if (!trip) return { ok: false, error: 'Trip not saved — please try again.' };
 
   const { error: delErr } = await db.from('itinerary_days').delete().eq('trip_id', trip.id);
   if (delErr) return { ok: false, error: delErr.message };

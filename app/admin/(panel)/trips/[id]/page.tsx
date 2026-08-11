@@ -9,17 +9,23 @@ export default async function EditTripPage({ params }: { params: { id: string } 
   if (!Number.isInteger(id)) notFound();
 
   const db = createClient();
-  const [{ data: trip }, { data: subjects }, { data: countries }] = await Promise.all([
-    db
-      .from('trips')
-      .select(
-        'id, slug, title, subject_id, country_id, city, duration_days, duration_nights, departs, hero_image, gallery, overview, includes, status, featured, itinerary_days(label, title, description, sort_order)'
-      )
-      .eq('id', id)
-      .maybeSingle(),
+  const TRIP_FIELDS =
+    'id, slug, title, subject_id, country_id, city, duration_days, duration_nights, departs, hero_image, gallery, overview, includes, status, featured, itinerary_days(label, title, description, sort_order)';
+  const [tripRes, { data: subjects }, { data: countries }] = await Promise.all([
+    db.from('trips').select(TRIP_FIELDS).eq('id', id).maybeSingle(),
     db.from('subjects').select('id, name').order('name'),
     db.from('countries').select('id, name').order('name'),
   ]);
+  let trip: any = tripRes.data;
+  // Safety net until the gallery migration has been run on the live database.
+  if (tripRes.error?.message.includes('gallery')) {
+    const retry = await db
+      .from('trips')
+      .select(TRIP_FIELDS.replace('hero_image, gallery,', 'hero_image,'))
+      .eq('id', id)
+      .maybeSingle();
+    trip = retry.data;
+  }
   if (!trip) notFound();
 
   const editorTrip: EditorTrip = {
