@@ -130,6 +130,29 @@ export async function sendQuoteShareEmail(d: {
   return sendEmail(d.to, `Your school trip quote ${d.ref} — Premium Choice School Trips`, html);
 }
 
+/** Tells the team a teacher has accepted a quote. Nothing is invoiced. */
+export async function sendQuoteAcceptedNotification(d: {
+  ref: string;
+  quoteTitle: string;
+  teacherName: string;
+  schoolName: string;
+  teacherEmail: string;
+}): Promise<boolean> {
+  const notify = process.env.APPOINTMENT_NOTIFY_EMAIL;
+  if (!notify) return false;
+  const site = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
+  const html = `
+  <div style="font-family:Arial,sans-serif;font-size:14px;color:#16242E;line-height:1.6;">
+    <h2 style="margin:0 0 12px;">Quote ${d.ref} accepted</h2>
+    <p><strong>${d.teacherName}</strong> at <strong>${d.schoolName}</strong> has accepted
+    <strong>${d.quoteTitle}</strong>.</p>
+    <p>Reply to them at <a href="mailto:${d.teacherEmail}">${d.teacherEmail}</a>, or open the quote
+    in the admin: <a href="${site}/admin/quotes">${site}/admin/quotes</a></p>
+    <p style="color:#425964;">No payment has been taken — this is a notification only.</p>
+  </div>`;
+  return sendEmail(notify, `Quote ${d.ref} accepted — ${d.schoolName}`, html);
+}
+
 export async function sendAppointmentNotification(d: AppointmentDetails): Promise<boolean> {
   const notify = process.env.APPOINTMENT_NOTIFY_EMAIL;
   if (!notify) return false;

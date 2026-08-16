@@ -48,9 +48,22 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
+  // Teacher portal. /portal/login, /portal/confirm and /portal/set-password are
+  // reachable signed-out: confirm establishes the session the others rely on.
+  const isPortalPublic =
+    pathname.startsWith('/portal/login') ||
+    pathname.startsWith('/portal/confirm') ||
+    pathname.startsWith('/portal/set-password');
+
+  if (pathname.startsWith('/portal') && !isPortalPublic && !user) {
+    const url = request.nextUrl.clone();
+    url.pathname = '/portal/login';
+    return NextResponse.redirect(url);
+  }
+
   return response;
 }
 
 export const config = {
-  matcher: ['/admin/:path*', '/admin'],
+  matcher: ['/admin/:path*', '/admin', '/portal/:path*', '/portal'],
 };
