@@ -719,3 +719,74 @@ details.terms ol { padding: 0 32px 26px 50px; font-size: 13.5px; color: var(--in
   .pt-card { padding: 26px; }
   .pt-logo img { height: 44px; }
 }
+
+/* ---------- teacher portal: planning workspace ---------- */
+.pt-back { display: inline-block; font-size: 13px; font-weight: 600; color: var(--ink-soft); margin-bottom: 20px; }
+.pt-back:hover { color: var(--brass); }
+.pt-trip { display: block; background: #fff; border: 1px solid var(--line); border-radius: 4px; padding: 24px; transition: border-color .2s; }
+.pt-trip:hover { border-color: var(--brass-light); }
+.pt-trip h3 { font-family: var(--font-fraunces), serif; font-weight: 500; font-size: 20px; line-height: 1.2; margin: 10px 0 6px; }
+.pt-trip p { font-size: 13.5px; color: var(--ink-soft); }
+.pt-trip-go { display: inline-block; margin-top: 14px; font-size: 12.5px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--brass); }
+
+.pt-status { display: inline-block; font-size: 10.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; border-radius: 100px; padding: 4px 10px; background: rgba(22,36,46,.08); color: var(--ink-soft); }
+.pt-status--ready { background: rgba(25,186,171,.18); color: var(--brass); }
+.pt-status--travelling { background: var(--ink); color: #fff; }
+.pt-status--completed { background: rgba(22,36,46,.06); color: var(--ink-soft); }
+
+.pt-ws-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; flex-wrap: wrap; margin-bottom: 22px; }
+.pt-ws-head h1 { font-family: var(--font-fraunces), serif; font-weight: 500; font-size: 30px; line-height: 1.15; }
+
+.pt-progress { background: #fff; border: 1px solid var(--line); border-radius: 4px; padding: 22px 24px; margin-bottom: 24px; }
+.pt-progress-bar { height: 8px; border-radius: 100px; background: rgba(22,36,46,.1); overflow: hidden; margin-bottom: 12px; }
+.pt-progress-bar div { height: 100%; background: var(--brass-light); transition: width .4s ease; }
+.pt-progress p { font-size: 14px; color: var(--ink-soft); }
+.pt-gaps { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.pt-gaps li { font-size: 12px; background: rgba(22,36,46,.05); border-radius: 100px; padding: 5px 12px; color: var(--ink-soft); }
+.pt-gaps span { font-weight: 700; color: var(--ink); }
+.pt-warn { margin-top: 12px; font-size: 13px; color: #B4423C; background: rgba(180,66,60,.07); border-radius: 4px; padding: 10px 14px; }
+
+.pt-ws-actions { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-bottom: 20px; }
+.pt-bulk { margin-bottom: 24px; display: grid; gap: 12px; }
+.pt-bulk textarea { border: 1px solid var(--line); border-radius: 3px; padding: 12px 14px; font-size: 14px; font-family: var(--font-archivo), sans-serif; resize: vertical; }
+.pt-bulk .btn { justify-self: start; }
+
+.pt-students { display: grid; gap: 10px; }
+.pt-student { background: #fff; border: 1px solid var(--line); border-left: 3px solid rgba(180,66,60,.5); border-radius: 4px; padding: 16px 20px; display: flex; gap: 18px; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; }
+.pt-student.done { border-left-color: var(--brass-light); }
+.pt-student-name { background: none; border: 0; padding: 0; font-family: var(--font-fraunces), serif; font-size: 17px; color: var(--ink); cursor: pointer; text-align: left; }
+.pt-student-name:hover { color: var(--brass); }
+.pt-student-meta { font-size: 12.5px; color: var(--ink-soft); margin-top: 3px; }
+.pt-flags { display: flex; gap: 6px; margin-top: 7px; }
+.pt-flag { font-size: 10.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; background: rgba(22,36,46,.07); color: var(--ink-soft); border-radius: 100px; padding: 3px 9px; }
+.pt-flag--med { background: rgba(180,66,60,.1); color: #B4423C; }
+.pt-missing { font-size: 12px; color: #B4423C; margin-top: 7px; }
+.pt-docs { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+.pt-doc { display: flex; gap: 8px; align-items: center; font-size: 12.5px; }
+.pt-doc-label { font-size: 10.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-soft); }
+.pt-upload { font-size: 12.5px; font-weight: 600; color: var(--brass); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.pt-remove { color: #B4423C; }
+
+.pt-rooms { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 12px; }
+.pt-room { background: #fff; border: 1px solid var(--line); border-radius: 4px; padding: 16px 18px; }
+.pt-room.unassigned { border-style: dashed; }
+.pt-room h3 { font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft); display: flex; justify-content: space-between; margin-bottom: 8px; }
+.pt-room h3 span { color: var(--brass); }
+.pt-room ul { list-style: none; display: grid; gap: 4px; font-size: 13.5px; }
+
+.pt-modal { position: fixed; inset: 0; z-index: 60; background: rgba(22,36,46,.6); display: flex; align-items: flex-start; justify-content: center; padding: 40px 16px; overflow-y: auto; }
+.pt-modal-inner { position: relative; background: #fff; border-radius: 4px; padding: 36px; width: 100%; max-width: 620px; }
+.pt-modal-inner h2 { font-family: var(--font-fraunces), serif; font-weight: 500; font-size: 24px; margin-bottom: 20px; }
+.pt-field-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.pt-field-grid label { display: grid; gap: 5px; }
+.pt-field-grid label.wide { grid-column: 1 / -1; }
+.pt-field-grid span { font-size: 11px; font-weight: 600; letter-spacing: .09em; text-transform: uppercase; color: var(--ink-soft); }
+.pt-field-grid input, .pt-field-grid textarea { border: 1px solid var(--line); border-radius: 3px; padding: 10px 12px; font-size: 14px; font-family: var(--font-archivo), sans-serif; outline: none; }
+.pt-field-grid input:focus, .pt-field-grid textarea:focus { border-color: var(--brass-light); }
+.pt-modal-actions { display: flex; gap: 14px; align-items: center; margin-top: 22px; }
+
+@media (max-width: 620px) {
+  .pt-field-grid { grid-template-columns: 1fr; }
+  .pt-modal-inner { padding: 26px 20px; }
+  .pt-student { flex-direction: column; gap: 12px; }
+}

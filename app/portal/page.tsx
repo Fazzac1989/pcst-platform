@@ -1,6 +1,8 @@
+import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { portalSignOut } from '@/lib/portal/actions';
+import { tripsForTeacher } from '@/lib/portal/planning';
 import { getPortalTeacher } from '@/lib/portal/session';
 import { quoteTotal, perStudent, formatMoney, type QuoteLine } from '@/lib/quotes';
 import QuoteCard from './QuoteCard';
@@ -10,6 +12,10 @@ export const dynamic = 'force-dynamic';
 export default async function PortalDashboard() {
   const teacher = await getPortalTeacher();
   if (!teacher) redirect('/portal/login');
+
+  // The planning workspace arrives with its own migration; until it is run the
+  // dashboard simply shows quotes.
+  const trips = await tripsForTeacher(teacher.id).catch(() => []);
 
   const db = createAdminClient();
   const { data } = await db
@@ -63,7 +69,7 @@ export default async function PortalDashboard() {
         </form>
       </div>
 
-      {quotes.length === 0 ? (
+      {quotes.length === 0 && trips.length === 0 ? (
         <div className="pt-card">
           <h2>No quotes yet</h2>
           <p className="pt-lede">
@@ -101,16 +107,27 @@ export default async function PortalDashboard() {
         </>
       )}
 
-      <section className="pt-section">
-        <h2>Coming soon</h2>
-        <div className="pt-card pt-card--muted">
-          <p className="pt-lede">
-            Student lists, passport and consent-form uploads, rooming and dietary details will
-            appear here next, so all your trip paperwork lives in one place. For now, send anything
-            you have to <a href="mailto:info@premiumchoicetravel.com">info@premiumchoicetravel.com</a>.
-          </p>
-        </div>
-      </section>
+      {trips.length > 0 && (
+        <section className="pt-section">
+          <h2>
+            Your trips <span>{trips.length}</span>
+          </h2>
+          <div className="pt-grid">
+            {trips.map((t) => (
+              <Link key={t.id} href={`/portal/trips/${t.id}`} className="pt-trip">
+                <span className={`pt-status pt-status--${t.status}`}>{t.status}</span>
+                <h3>{t.title}</h3>
+                <p>
+                  {[t.travelDates, t.paperworkDue ? `paperwork due ${new Date(t.paperworkDue).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })}` : null]
+                    .filter(Boolean)
+                    .join(' · ') || 'Dates to confirm'}
+                </p>
+                <span className="pt-trip-go">Open the planner →</span>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
     </div>
   );
 }
