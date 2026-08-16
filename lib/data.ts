@@ -25,6 +25,32 @@ export type ItineraryDay = {
   imageAlt: string;
 };
 
+/** At-a-glance country facts shown beside the trip overview. */
+export type CountryFacts = {
+  capital: string | null;
+  currency: string | null;
+  languages: string | null;
+  timezone: string | null;
+  population: string | null;
+  avgTempC: number | null;
+  bestTime: string | null;
+};
+
+/** Null when the country has no facts filled in, so callers can skip the panel. */
+export function mapCountryFacts(row: any): CountryFacts | null {
+  if (!row) return null;
+  const facts: CountryFacts = {
+    capital: row.capital ?? null,
+    currency: row.currency ?? null,
+    languages: row.languages ?? null,
+    timezone: row.timezone ?? null,
+    population: row.population ?? null,
+    avgTempC: row.avg_temp_c === null || row.avg_temp_c === undefined ? null : Number(row.avg_temp_c),
+    bestTime: row.best_time ?? null,
+  };
+  return Object.values(facts).some((v) => v !== null && v !== '') ? facts : null;
+}
+
 /** A gallery photo with the alt text that describes it. */
 export type GalleryImage = {
   url: string;
@@ -51,6 +77,7 @@ export type Trip = {
   subjectSlug: string;
   country: string;
   countrySlug: string;
+  countryFacts: CountryFacts | null;
   city: string | null;
   durationDays: number;
   durationNights: number;
@@ -118,6 +145,7 @@ async function fallbackTrips(): Promise<Trip[]> {
         subjectSlug: slugify(t.subject),
         country: t.country,
         countrySlug: slugify(t.country),
+        countryFacts: null,
         city: t.city,
         durationDays: Number(m[1]),
         durationNights: Number(m[2]),
@@ -138,15 +166,30 @@ async function fallbackTrips(): Promise<Trip[]> {
 /* ------------------------------------------------------------------ */
 
 const TRIP_SELECT =
-  'id, slug, title, city, duration_days, duration_nights, departs, hero_image, hero_alt, gallery, overview, includes, featured, subjects(name, slug), countries(name, slug), itinerary_days(label, title, description, sort_order, image_url, image_alt)';
-// Safety net until the image migrations have been run on the live database.
-const TRIP_SELECT_LEGACY = TRIP_SELECT.replace(
-  'hero_image, hero_alt, gallery,',
-  'hero_image,'
-).replace(', image_url, image_alt)', ')');
-/** True when a query failed only because an image migration is still pending. */
-const isMissingImageColumn = (message: string | undefined) =>
-  Boolean(message && ['gallery', 'hero_alt', 'image_url', 'image_alt'].some((c) => message.includes(c)));
+  'id, slug, title, city, duration_days, duration_nights, departs, hero_image, hero_alt, gallery, overview, includes, featured, subjects(name, slug), countries(name, slug, capital, currency, languages, timezone, population, avg_temp_c, best_time), itinerary_days(label, title, description, sort_order, image_url, image_alt)';
+// Safety net until the newer migrations have been run on the live database.
+const TRIP_SELECT_LEGACY = TRIP_SELECT.replace('hero_image, hero_alt, gallery,', 'hero_image,')
+  .replace(', image_url, image_alt)', ')')
+  .replace(
+    'countries(name, slug, capital, currency, languages, timezone, population, avg_temp_c, best_time)',
+    'countries(name, slug)'
+  );
+/** Columns added by migrations the live database may not have run yet. */
+const PENDING_COLUMNS = [
+  'gallery',
+  'hero_alt',
+  'image_url',
+  'image_alt',
+  'capital',
+  'currency',
+  'languages',
+  'timezone',
+  'population',
+  'avg_temp_c',
+  'best_time',
+];
+const isMissingNewColumn = (message: string | undefined) =>
+  Boolean(message && PENDING_COLUMNS.some((c) => message.includes(c)));
 
 // Supabase returns to-one relations as objects; typing loosely here keeps
 // the mapper independent of generated types.
@@ -159,6 +202,7 @@ function mapTrip(row: any): Trip {
     subjectSlug: row.subjects?.slug ?? '',
     country: row.countries?.name ?? '',
     countrySlug: row.countries?.slug ?? '',
+    countryFacts: mapCountryFacts(row.countries),
     city: row.city,
     durationDays: row.duration_days,
     durationNights: row.duration_nights,
@@ -189,7 +233,7 @@ export async function getPublishedTrips(): Promise<Trip[]> {
     .select(TRIP_SELECT)
     .eq('status', 'published')
     .order('title');
-  if (isMissingImageColumn(error?.message)) {
+  if (isMissingNewColumn(error?.message)) {
     const retry = await db
       .from('trips')
       .select(TRIP_SELECT_LEGACY)
@@ -219,7 +263,7 @@ export async function getTripBySlug(slug: string): Promise<Trip | null> {
     .eq('status', 'published')
     .eq('slug', slug)
     .maybeSingle();
-  if (isMissingImageColumn(error?.message)) {
+  if (isMissingNewColumn(error?.message)) {
     const retry = await db
       .from('trips')
       .select(TRIP_SELECT_LEGACY)

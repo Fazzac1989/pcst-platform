@@ -40,6 +40,22 @@ export default async function TripPage({ params }: Props) {
 
   const others = allTrips.filter((t) => t.slug !== trip.slug);
 
+  // Only the facts that are actually filled in — the panel is hidden when empty.
+  const cf = trip.countryFacts;
+  const facts = (
+    [
+      ['Capital', cf?.capital],
+      ['Language', cf?.languages],
+      ['Currency', cf?.currency],
+      ['Time zone', cf?.timezone],
+      ['Population', cf?.population],
+      ['Average temp', cf?.avgTempC === null || cf?.avgTempC === undefined ? null : `${cf.avgTempC}°C`],
+      ['Best months', cf?.bestTime],
+    ] as const
+  )
+    .filter(([, value]) => Boolean(value))
+    .map(([label, value]) => ({ label, value: value as string }));
+
   return (
     <>
       <SiteHeader variant="trip" />
@@ -110,15 +126,37 @@ export default async function TripPage({ params }: Props) {
 
         <section className="trip-overview">
           <div className="wrap">
-            <span className="eyebrow">Overview</span>
-            <h2 className="st serif">
-              About this <i>trip</i>
-            </h2>
-            {trip.overview.map((para, i) => (
-              <p className="ovp" key={i}>
-                {para}
-              </p>
-            ))}
+            <div className="ov-cols">
+              <div>
+                <span className="eyebrow">Overview</span>
+                <h2 className="st serif">
+                  About this <i>trip</i>
+                </h2>
+                {trip.overview.map((para, i) => (
+                  <p className="ovp" key={i}>
+                    {para}
+                  </p>
+                ))}
+              </div>
+              {facts.length > 0 && (
+                <aside className="cfacts" aria-label={`${trip.country} at a glance`}>
+                  <h3>
+                    {trip.country} <span>at a glance</span>
+                  </h3>
+                  <dl>
+                    {facts.map(({ label, value }) => (
+                      <div key={label}>
+                        <dt>{label}</dt>
+                        <dd>{value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                  <Link className="cfacts-link" href={`/countries/${trip.countrySlug}`}>
+                    All {trip.country} trips →
+                  </Link>
+                </aside>
+              )}
+            </div>
           </div>
         </section>
 
