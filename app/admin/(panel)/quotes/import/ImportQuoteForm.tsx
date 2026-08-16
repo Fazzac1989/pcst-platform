@@ -5,7 +5,10 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { parseQuoteDocument, type QuoteImportResult } from '@/lib/admin/import-actions';
 import { saveQuote } from '@/lib/admin/quote-actions';
-import { formatMoney } from '@/lib/quotes';
+
+// lib/quotes.ts is server-only, so keep a local copy of the money formatter.
+const formatMoney = (currency: string, n: number) =>
+  `${currency} ${n.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 
 const inputCls =
   'border border-line rounded px-3 py-2 text-sm text-ink outline-none focus:border-teal bg-white w-full';
