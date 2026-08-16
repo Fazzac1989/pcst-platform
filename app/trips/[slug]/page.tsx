@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import AppointmentModal from '@/components/AppointmentModal';
+import ViewTracker from '@/components/ViewTracker';
 import SiteHeader from '@/components/SiteHeaderWithData';
 import { SiteFooterSimple } from '@/components/SiteFooter';
 import { getBookingTerms, getPublishedTrips, getTripBySlug } from '@/lib/data';
@@ -59,6 +60,7 @@ export default async function TripPage({ params }: Props) {
   return (
     <>
       <SiteHeader variant="trip" />
+      <ViewTracker tripId={trip.id} />
 
       <div className="thero">
         <div className="bg">

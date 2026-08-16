@@ -4,6 +4,7 @@ import { redirect } from 'next/navigation';
 import { createClient } from '@/lib/supabase/server';
 
 const NAV = [
+  { href: '/admin/analytics', label: 'Analytics' },
   { href: '/admin/appointments', label: 'Appointments' },
   { href: '/admin/quotes', label: 'Quotes' },
   { href: '/admin/app', label: 'App Trips' },
