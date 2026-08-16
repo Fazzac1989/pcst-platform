@@ -46,18 +46,35 @@ const SYSTEM = `You provide accurate, at-a-glance country facts for a school-tra
 
 Give the widely accepted, present-day answer a well-informed travel consultant would give — the current capital, not a historical one; the language a visitor will actually hear, not a list of every regional official language. Keep every value short enough to sit in a narrow panel.
 
-Figures must be approximate and rounded ("68 million", not "67,981,000") so they stay correct as time passes. If the name given is not a country — a city, a region, or two countries joined together — set is_country to false and leave the other fields as empty strings.`;
+Figures must be approximate and rounded ("68 million", not "67,981,000") so they stay correct as time passes.
+
+Treat any destination that travels as its own place — a sovereign state, but also a territory or special administrative region such as Hong Kong, Macau or Gibraltar — as a country and fill in its facts. Only set is_country to false when the name is a city within a country, a region spanning several countries, or two countries joined together; then leave the other fields as empty strings.
+
+For capital, give the plain city name a traveller would recognise, with no parenthetical qualifiers.`;
 
 /** Average annual temperature from Open-Meteo's measured record for the capital. */
 async function averageTemperature(capital: string, country: string): Promise<number | null> {
   try {
-    const geo = await fetch(
-      `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(
-        capital
-      )}&count=1&language=en&format=json`,
-      { next: { revalidate: 86400 } }
-    );
-    const place = (await geo.json())?.results?.[0];
+    // Capitals sometimes arrive qualified ("Pretoria (administrative)") or as a
+    // pair ("Sri Jayawardenepura Kotte, Colombo") — geocoding needs a bare name.
+    const candidates = [
+      capital.replace(/\s*\([^)]*\)/g, '').split(/[,/]/)[0].trim(),
+      capital.match(/\(([^)]+)\)/)?.[1]?.trim(),
+      capital.trim(),
+      country.trim(), // last resort: the country itself resolves to its main city
+    ].filter((c): c is string => Boolean(c));
+
+    let place: any = null;
+    for (const name of candidates) {
+      const geo = await fetch(
+        `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(
+          name
+        )}&count=1&language=en&format=json`,
+        { next: { revalidate: 86400 } }
+      );
+      place = (await geo.json())?.results?.[0];
+      if (place) break;
+    }
     if (!place) return null;
 
     const archive = await fetch(

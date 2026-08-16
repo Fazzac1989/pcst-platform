@@ -110,6 +110,27 @@ async function extractText(file: File): Promise<string> {
   throw new Error(`Unsupported file type "${name.split('.').pop()}" — upload a .docx, .txt or .md.`);
 }
 
+/** Read the source text out of an upload or a paste, with friendly errors. */
+async function readSource(formData: FormData): Promise<{ text: string } | { error: string }> {
+  let source = String(formData.get('text') ?? '').trim();
+  const file = formData.get('file');
+  if (!source && file instanceof File && file.size > 0) {
+    if (file.size > 8 * 1024 * 1024) {
+      return { error: 'That file is over 8MB — try removing embedded images first.' };
+    }
+    try {
+      source = (await extractText(file)).trim();
+    } catch (e: any) {
+      return { error: e.message };
+    }
+  }
+  if (!source) return { error: 'Upload a document or paste the text.' };
+  if (source.length < 80) {
+    return { error: 'That document looks empty — is the text in an image or a scan?' };
+  }
+  return { text: source };
+}
+
 /** Loose match so "Great Britain" finds "United Kingdom"-style near misses by name. */
 function findByName<T extends { id: number; name: string }>(rows: T[], value: string): T | null {
   const needle = value.trim().toLowerCase();
@@ -132,23 +153,9 @@ export async function parseTripDocument(formData: FormData): Promise<ImportResul
   } = await db.auth.getUser();
   if (!user) return { ok: false, error: 'Signed out — please log in again.' };
 
-  // Source text: an uploaded document, or text pasted straight into the box.
-  let source = String(formData.get('text') ?? '').trim();
-  const file = formData.get('file');
-  if (!source && file instanceof File && file.size > 0) {
-    if (file.size > 8 * 1024 * 1024) {
-      return { ok: false, error: 'That file is over 8MB — try removing embedded images first.' };
-    }
-    try {
-      source = (await extractText(file)).trim();
-    } catch (e: any) {
-      return { ok: false, error: e.message };
-    }
-  }
-  if (!source) return { ok: false, error: 'Upload a document or paste the itinerary text.' };
-  if (source.length < 80) {
-    return { ok: false, error: 'That document looks empty — is the text in an image or a table?' };
-  }
+  const read = await readSource(formData);
+  if ('error' in read) return { ok: false, error: read.error };
+  const source = read.text;
 
   const [{ data: subjects }, { data: countries }] = await Promise.all([
     db.from('subjects').select('id, name').order('name'),
@@ -220,4 +227,166 @@ Extract the trip.`,
     countryMatch: { id: countryRow?.id ?? null, name: countryRow?.name ?? draft.country },
     notes,
   };
+}
+
+/* ------------------------------------------------------------------ */
+/* Quotations                                                          */
+/* ------------------------------------------------------------------ */
+
+export type ParsedQuote = {
+  title: string;
+  school_name: string;
+  teacher_name: string;
+  teacher_email: string;
+  travel_dates: string;
+  pupils: number;
+  staff: number;
+  currency: string;
+  notes: string;
+  itinerary: { label: string; title: string; description: string }[];
+  lines: { description: string; qty: number; unit_cost: number }[];
+  terms: string[];
+};
+
+export type QuoteImportResult =
+  | { ok: true; draft: ParsedQuote; notes: string[] }
+  | { ok: false; error: string };
+
+const QUOTE_SCHEMA = {
+  type: 'object',
+  properties: {
+    title: { type: 'string', description: 'Trip title for the quote, e.g. "Geography Trip to Iceland"' },
+    school_name: { type: 'string', description: 'Client school; empty string if not stated' },
+    teacher_name: { type: 'string', description: 'Lead teacher / contact; empty string if not stated' },
+    teacher_email: { type: 'string', description: 'Contact email; empty string if not stated' },
+    travel_dates: { type: 'string', description: 'e.g. "14–18 October 2026"; empty string if not stated' },
+    pupils: { type: 'integer', description: 'Number of students; 0 if not stated' },
+    staff: { type: 'integer', description: 'Number of accompanying staff; 0 if not stated' },
+    currency: {
+      type: 'string',
+      description: 'Three-letter code of the costs in the document, e.g. AED, GBP, EUR, USD.',
+    },
+    notes: { type: 'string', description: 'Any caveats worth surfacing to the teacher. Empty if none.' },
+    itinerary: {
+      type: 'array',
+      description: 'Day-by-day plan if the document has one, else an empty array.',
+      items: {
+        type: 'object',
+        properties: {
+          label: { type: 'string' },
+          title: { type: 'string' },
+          description: { type: 'string' },
+        },
+        required: ['label', 'title', 'description'],
+        additionalProperties: false,
+      },
+    },
+    lines: {
+      type: 'array',
+      description: 'One entry per chargeable item, in the order the document lists them.',
+      items: {
+        type: 'object',
+        properties: {
+          description: { type: 'string', description: 'What the charge is for' },
+          qty: { type: 'integer', description: 'Quantity; 1 when the figure is a single total' },
+          unit_cost: {
+            type: 'number',
+            description: 'Supplier cost per unit, before any markup. Numbers only, no symbols.',
+          },
+        },
+        required: ['description', 'qty', 'unit_cost'],
+        additionalProperties: false,
+      },
+    },
+    terms: { type: 'array', items: { type: 'string' }, description: 'Payment/cancellation terms, one per line.' },
+  },
+  required: [
+    'title',
+    'school_name',
+    'teacher_name',
+    'teacher_email',
+    'travel_dates',
+    'pupils',
+    'staff',
+    'currency',
+    'notes',
+    'itinerary',
+    'lines',
+    'terms',
+  ],
+  additionalProperties: false,
+} as const;
+
+const QUOTE_SYSTEM = `You turn a supplier costing sheet or draft quotation into structured data for a school-travel company's quote builder.
+
+Extract only what the document states. Never invent prices, dates or inclusions.
+
+The costings matter most, so read them carefully:
+- Record the SUPPLIER or NET cost per unit — the company's own cost, before any markup or commission. If the document shows both a cost and a selling price, take the cost. If it shows only one figure, take that and rely on the reviewer to confirm.
+- Strip currency symbols and thousands separators: "AED 1,250.00" becomes 1250.
+- When a figure is a per-person price, set qty to the number of people it applies to and unit_cost to the per-person figure. When it is a single lump sum, set qty to 1 and unit_cost to the total.
+- Do not include totals, subtotals, VAT summary lines or grand totals as line items — those are calculated from the lines. Include a tax or fee only when it is a genuine separate chargeable item.
+
+Use British English. Keep line descriptions short and specific ("Return flights Dubai–Keflavik", not "Flights as per itinerary above").`;
+
+/** Read a supplier costing sheet or draft quotation into a reviewable quote. */
+export async function parseQuoteDocument(formData: FormData): Promise<QuoteImportResult> {
+  if (!process.env.ANTHROPIC_API_KEY) {
+    return { ok: false, error: 'The Claude API key is not configured on this environment.' };
+  }
+
+  const db = createClient();
+  const {
+    data: { user },
+  } = await db.auth.getUser();
+  if (!user) return { ok: false, error: 'Signed out — please log in again.' };
+
+  const read = await readSource(formData);
+  if ('error' in read) return { ok: false, error: read.error };
+
+  const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+
+  let draft: ParsedQuote;
+  try {
+    const response = await client.messages.create({
+      model: 'claude-opus-5',
+      max_tokens: 16000,
+      output_config: { effort: 'medium', format: { type: 'json_schema', schema: QUOTE_SCHEMA } },
+      system: QUOTE_SYSTEM,
+      messages: [
+        {
+          role: 'user',
+          content: `Here is the costing document:\n\n---\n${read.text.slice(0, 120_000)}\n---\n\nExtract the quotation.`,
+        },
+      ],
+    });
+
+    if (response.stop_reason === 'refusal') {
+      return { ok: false, error: 'Claude declined to process this document.' };
+    }
+    if (response.stop_reason === 'max_tokens') {
+      return { ok: false, error: 'The document is too long — split it and import each quote separately.' };
+    }
+    const text = response.content.find((b) => b.type === 'text');
+    if (!text || text.type !== 'text') return { ok: false, error: 'Claude returned no content — try again.' };
+    draft = JSON.parse(text.text) as ParsedQuote;
+  } catch (e: any) {
+    if (e instanceof Anthropic.AuthenticationError) {
+      return { ok: false, error: 'The Claude API key was rejected — check ANTHROPIC_API_KEY.' };
+    }
+    if (e instanceof Anthropic.RateLimitError) {
+      return { ok: false, error: 'Claude is rate limited right now — wait a moment and retry.' };
+    }
+    return { ok: false, error: `Could not read that document: ${e.message}` };
+  }
+
+  const notes: string[] = [];
+  if (!draft.lines.length) notes.push('No costings were found — add the lines by hand in the builder.');
+  if (!draft.itinerary.length) notes.push('No day-by-day itinerary was found.');
+  if (!draft.pupils) notes.push('Pupil numbers were not stated — set them so the per-student price calculates.');
+  if (!draft.travel_dates) notes.push('Travel dates were not stated.');
+  if (draft.lines.some((l) => !l.unit_cost)) notes.push('Some lines came through with a zero cost — check them.');
+  notes.push('Costs are read as supplier cost before markup — confirm against the source before publishing.');
+
+  return { ok: true, draft, notes };
 }

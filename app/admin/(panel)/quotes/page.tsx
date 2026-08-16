@@ -40,12 +40,20 @@ export default async function AdminQuotesPage() {
             {rows.length} quotes · {rows.filter((r) => r.status === 'published').length} published
           </p>
         </div>
-        <Link
-          href="/admin/quotes/new"
-          className="bg-teal text-ink font-semibold text-sm px-5 py-2.5 rounded-sm hover:bg-teal-hover transition-colors"
-        >
-          New quote
-        </Link>
+        <div className="flex gap-3 items-center">
+          <Link
+            href="/admin/quotes/import"
+            className="border border-ink text-ink font-semibold text-sm px-5 py-2.5 rounded-sm hover:bg-ink hover:text-white transition-colors"
+          >
+            Import from document
+          </Link>
+          <Link
+            href="/admin/quotes/new"
+            className="bg-teal text-ink font-semibold text-sm px-5 py-2.5 rounded-sm hover:bg-teal-hover transition-colors"
+          >
+            New quote
+          </Link>
+        </div>
       </div>
 
       <div className="border border-line rounded overflow-x-auto">
