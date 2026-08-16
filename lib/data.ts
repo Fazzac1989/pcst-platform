@@ -21,6 +21,8 @@ export type ItineraryDay = {
   label: string | null;
   title: string;
   description: string;
+  imageUrl: string | null;
+  imageAlt: string;
 };
 
 /** A gallery photo with the alt text that describes it. */
@@ -125,7 +127,7 @@ async function fallbackTrips(): Promise<Trip[]> {
         gallery: [],
         overview: t.overview,
         includes: t.includes,
-        itinerary: t.itinerary,
+        itinerary: t.itinerary.map((d) => ({ ...d, imageUrl: null, imageAlt: '' })),
         featured: FEATURED.has(t.slug),
       };
     });
@@ -136,9 +138,15 @@ async function fallbackTrips(): Promise<Trip[]> {
 /* ------------------------------------------------------------------ */
 
 const TRIP_SELECT =
-  'id, slug, title, city, duration_days, duration_nights, departs, hero_image, hero_alt, gallery, overview, includes, featured, subjects(name, slug), countries(name, slug), itinerary_days(label, title, description, sort_order)';
-// Safety net until the gallery migration has been run on the live database.
-const TRIP_SELECT_LEGACY = TRIP_SELECT.replace('hero_image, hero_alt, gallery,', 'hero_image,');
+  'id, slug, title, city, duration_days, duration_nights, departs, hero_image, hero_alt, gallery, overview, includes, featured, subjects(name, slug), countries(name, slug), itinerary_days(label, title, description, sort_order, image_url, image_alt)';
+// Safety net until the image migrations have been run on the live database.
+const TRIP_SELECT_LEGACY = TRIP_SELECT.replace(
+  'hero_image, hero_alt, gallery,',
+  'hero_image,'
+).replace(', image_url, image_alt)', ')');
+/** True when a query failed only because an image migration is still pending. */
+const isMissingImageColumn = (message: string | undefined) =>
+  Boolean(message && ['gallery', 'hero_alt', 'image_url', 'image_alt'].some((c) => message.includes(c)));
 
 // Supabase returns to-one relations as objects; typing loosely here keeps
 // the mapper independent of generated types.
@@ -162,7 +170,13 @@ function mapTrip(row: any): Trip {
     includes: row.includes ?? [],
     itinerary: (row.itinerary_days ?? [])
       .sort((a: any, b: any) => a.sort_order - b.sort_order)
-      .map((d: any) => ({ label: d.label, title: d.title, description: d.description })),
+      .map((d: any) => ({
+        label: d.label,
+        title: d.title,
+        description: d.description,
+        imageUrl: d.image_url ?? null,
+        imageAlt: d.image_alt ?? '',
+      })),
     featured: row.featured,
   };
 }
@@ -175,7 +189,7 @@ export async function getPublishedTrips(): Promise<Trip[]> {
     .select(TRIP_SELECT)
     .eq('status', 'published')
     .order('title');
-  if (error?.message.includes('gallery') || error?.message.includes('hero_alt')) {
+  if (isMissingImageColumn(error?.message)) {
     const retry = await db
       .from('trips')
       .select(TRIP_SELECT_LEGACY)
@@ -205,7 +219,7 @@ export async function getTripBySlug(slug: string): Promise<Trip | null> {
     .eq('status', 'published')
     .eq('slug', slug)
     .maybeSingle();
-  if (error?.message.includes('gallery') || error?.message.includes('hero_alt')) {
+  if (isMissingImageColumn(error?.message)) {
     const retry = await db
       .from('trips')
       .select(TRIP_SELECT_LEGACY)

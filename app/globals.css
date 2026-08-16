@@ -589,3 +589,55 @@ details.terms ol { padding: 0 32px 26px 50px; font-size: 13.5px; color: var(--in
   .tgallery, .tgallery.n4, .tgallery.n6 { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 8px; padding-bottom: 4px; }
   .tgallery .tg-item, .tgallery.n4 .tg-item, .tgallery.n6 .tg-item { flex: 0 0 78%; aspect-ratio: 4 / 3; scroll-snap-align: start; }
 }
+
+/* ---------- trip page: itinerary with sticky day panel ---------- */
+.trip-main section.trip-overview { padding: 72px 0 24px; }
+.trip-main section.trip-itinerary { padding: 24px 0 72px; }
+.itin-cols { grid-template-columns: 1.05fr .8fr; gap: 64px; }
+.itin-days .day { cursor: default; outline: none; transition: opacity .3s ease; }
+/* Dim the days the reader is not on, so the panel and text feel connected. */
+@media (min-width: 981px) {
+  .itin-days .day { opacity: .55; }
+  .itin-days .day.active, .itin-days:hover .day:hover { opacity: 1; }
+  .itin-days .day.active .dnum { color: var(--brass-light); }
+  .itin-days .day:focus-visible { opacity: 1; outline: 2px solid var(--brass-light); outline-offset: 6px; border-radius: 3px; }
+}
+.itin-panel { position: relative; width: 100%; aspect-ratio: 4 / 5; border-radius: 4px; overflow: hidden; background: var(--ink); margin: 0; }
+.itin-panel img { animation: itin-fade .45s ease; }
+@keyframes itin-fade { from { opacity: 0; } to { opacity: 1; } }
+.itin-panel figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 42px 20px 18px; color: #fff; font-family: var(--font-fraunces), serif; font-size: 18px; line-height: 1.25; background: linear-gradient(180deg, transparent, rgba(22, 36, 46, .88)); }
+.itin-panel figcaption span { display: block; font-family: var(--font-archivo), sans-serif; font-size: 11px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; color: var(--brass-light); margin-bottom: 4px; }
+/* Inline day photo — mobile only; the sticky panel covers desktop. */
+.day-inline-photo { display: none; position: relative; width: 100%; aspect-ratio: 3 / 2; border-radius: 4px; overflow: hidden; margin-top: 14px; background: rgba(22, 36, 46, .06); }
+
+/* Compact booking call-to-action */
+.apt-cta .btn { width: 100%; justify-content: center; }
+.apt-cta p { margin-bottom: 18px; }
+.apt-cta p strong { color: #fff; }
+
+/* Booking dialog */
+.apt-dialog { border: 0; padding: 0; background: transparent; max-width: 520px; width: calc(100% - 32px); max-height: 90vh; }
+.apt-dialog::backdrop { background: rgba(22, 36, 46, .6); backdrop-filter: blur(3px); }
+.apt-dialog-inner { position: relative; background: #fff; border-radius: 4px; padding: 40px; max-height: 90vh; overflow-y: auto; }
+.apt-dialog-inner h3 { font-family: var(--font-fraunces), serif; font-weight: 500; font-size: 27px; margin: 10px 0 8px; }
+.apt-dialog-lede { font-size: 14.5px; color: var(--ink-soft); margin-bottom: 22px; }
+.apt-dialog-close { position: absolute; top: 16px; right: 16px; width: 34px; height: 34px; border: 1px solid var(--line); background: #fff; border-radius: 50%; font-size: 14px; color: var(--ink-soft); cursor: pointer; transition: .2s; }
+.apt-dialog-close:hover { border-color: var(--ink); color: var(--ink); }
+
+/* What's included — full-width band below the itinerary */
+.inc-band { background: var(--white); border-top: 1px solid var(--line); }
+.inc-grid { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px 44px; margin: 6px 0 40px; }
+.inc-grid li { display: flex; gap: 12px; align-items: flex-start; font-size: 15px; color: var(--ink-soft); }
+.inc-grid .tick { flex: none; width: 20px; height: 20px; font-size: 11px; }
+
+@media (max-width: 1100px) { .inc-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 980px) {
+  .itin-cols { grid-template-columns: 1fr; gap: 40px; }
+  .itin-panel { display: none; }
+  .day-inline-photo { display: block; }
+  .itin-cols .side { position: static; order: 2; }
+}
+@media (max-width: 620px) {
+  .inc-grid { grid-template-columns: 1fr; }
+  .apt-dialog-inner { padding: 28px 22px; }
+}

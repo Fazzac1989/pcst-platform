@@ -25,7 +25,13 @@ export type TripPayload = {
   gallery: { url: string; alt: string }[];
   overview: string[];
   includes: string[];
-  itinerary: { label: string; title: string; description: string }[];
+  itinerary: {
+    label: string;
+    title: string;
+    description: string;
+    image_url: string | null;
+    image_alt: string;
+  }[];
   status: 'draft' | 'published' | 'archived';
   featured: boolean;
 };
@@ -68,15 +74,21 @@ export async function saveTrip(payload: TripPayload): Promise<ActionResult> {
   const { error: delErr } = await db.from('itinerary_days').delete().eq('trip_id', trip.id);
   if (delErr) return { ok: false, error: delErr.message };
   if (itinerary.length) {
-    const { error: insErr } = await db.from('itinerary_days').insert(
-      itinerary.map((d, i) => ({
-        trip_id: trip.id,
-        sort_order: i + 1,
-        label: d.label || null,
-        title: d.title,
-        description: d.description,
-      }))
-    );
+    const rows = itinerary.map((d, i) => ({
+      trip_id: trip.id,
+      sort_order: i + 1,
+      label: d.label || null,
+      title: d.title,
+      description: d.description,
+      image_url: d.image_url,
+      image_alt: d.image_alt || null,
+    }));
+    let { error: insErr } = await db.from('itinerary_days').insert(rows);
+    // Safety net until the day-image migration has been run.
+    if (insErr?.message.includes('image_url') || insErr?.message.includes('image_alt')) {
+      const legacy = rows.map(({ image_url: _u, image_alt: _a, ...rest }) => rest);
+      ({ error: insErr } = await db.from('itinerary_days').insert(legacy));
+    }
     if (insErr) return { ok: false, error: insErr.message };
   }
 

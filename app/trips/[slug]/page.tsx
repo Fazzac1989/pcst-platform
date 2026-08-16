@@ -2,10 +2,11 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import AppointmentForm from '@/components/AppointmentForm';
+import AppointmentModal from '@/components/AppointmentModal';
 import SiteHeader from '@/components/SiteHeaderWithData';
 import { SiteFooterSimple } from '@/components/SiteFooter';
 import { getBookingTerms, getPublishedTrips, getTripBySlug } from '@/lib/data';
+import ItineraryPanel from './ItineraryPanel';
 
 type Props = { params: { slug: string } };
 
@@ -107,81 +108,58 @@ export default async function TripPage({ params }: Props) {
           </section>
         )}
 
-        <section>
+        <section className="trip-overview">
           <div className="wrap">
-            <div className="cols">
-              <div>
-                <span className="eyebrow">Overview</span>
-                <h2 className="st serif">
-                  About this <i>trip</i>
-                </h2>
-                {trip.overview.map((para, i) => (
-                  <p className="ovp" key={i}>
-                    {para}
-                  </p>
+            <span className="eyebrow">Overview</span>
+            <h2 className="st serif">
+              About this <i>trip</i>
+            </h2>
+            {trip.overview.map((para, i) => (
+              <p className="ovp" key={i}>
+                {para}
+              </p>
+            ))}
+          </div>
+        </section>
+
+        <section className="trip-itinerary">
+          <div className="wrap">
+            <span className="eyebrow">Day by day</span>
+            <h2 className="st serif">
+              The <i>itinerary</i>
+            </h2>
+            <ItineraryPanel
+              itinerary={trip.itinerary}
+              fallbackImage={trip.heroImage ?? trip.gallery[0]?.url ?? null}
+              fallbackAlt={trip.heroAlt || trip.gallery[0]?.alt || ''}
+            >
+              <AppointmentModal tripSlug={trip.slug} />
+            </ItineraryPanel>
+          </div>
+        </section>
+
+        <section className="inc-band">
+          <div className="wrap">
+            <span className="eyebrow">What&apos;s included</span>
+            <h2 className="st serif">
+              Everything in the <i>price</i>
+            </h2>
+            <ul className="inc-grid">
+              {trip.includes.map((item, i) => (
+                <li key={i}>
+                  <span className="tick">✓</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <details className="terms">
+              <summary>Booking terms &amp; conditions</summary>
+              <ol>
+                {terms.map((t, i) => (
+                  <li key={i}>{t}</li>
                 ))}
-
-                <span className="eyebrow" style={{ display: 'block', marginTop: 44 }}>
-                  Day by day
-                </span>
-                <h2 className="st serif">
-                  The <i>itinerary</i>
-                </h2>
-                <div className="days">
-                  {trip.itinerary.map((day, i) => (
-                    <div className="day" key={i}>
-                      <div className="dnum">{day.label}</div>
-                      <div>
-                        {day.title && <h3>{day.title}</h3>}
-                        <p>{day.description}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                <div style={{ marginTop: 44 }}>
-                  <details className="terms">
-                    <summary>Booking terms &amp; conditions</summary>
-                    <ol>
-                      {terms.map((t, i) => (
-                        <li key={i}>{t}</li>
-                      ))}
-                    </ol>
-                  </details>
-                </div>
-              </div>
-
-              <div className="side">
-                <div className="panel cta">
-                  <h3>Book an appointment</h3>
-                  <p>
-                    Every itinerary can be tailored to your dates, group size, budget and
-                    learning objectives. Speak to our Dubai team — we&apos;ll come back within
-                    24 hours.
-                  </p>
-                  <AppointmentForm tripSlug={trip.slug} />
-                  <div className="c">
-                    <div>
-                      <b>Call</b> +971 4 420 6965
-                    </div>
-                    <div>
-                      <b>Email</b> info@premiumchoicetravel.com
-                    </div>
-                  </div>
-                </div>
-                <div className="panel">
-                  <h4>What&apos;s included</h4>
-                  <ul>
-                    {trip.includes.map((item, i) => (
-                      <li key={i}>
-                        <span className="tick">✓</span>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div>
+              </ol>
+            </details>
           </div>
         </section>
 

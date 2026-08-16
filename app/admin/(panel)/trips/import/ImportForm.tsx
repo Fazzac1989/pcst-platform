@@ -84,7 +84,7 @@ export default function ImportForm({ configured }: { configured: boolean }) {
       gallery: [],
       overview: draft.overview,
       includes: draft.includes,
-      itinerary: draft.itinerary,
+      itinerary: draft.itinerary.map((d) => ({ ...d, image_url: null, image_alt: '' })),
       status: 'draft',
       featured: false,
     });

@@ -56,7 +56,7 @@ export default function TripEditor({
       gallery: [],
       overview: [''],
       includes: [''],
-      itinerary: [{ label: 'Day 1', title: '', description: '' }],
+      itinerary: [{ label: 'Day 1', title: '', description: '', image_url: null, image_alt: '' }],
       status: 'draft',
       featured: false,
     }
@@ -465,15 +465,80 @@ export default function TripEditor({
                   set('itinerary', form.itinerary.map((d, j) => (j === i ? { ...d, description: e.target.value } : d)))
                 }
               />
+              <div className="flex gap-3 items-start flex-wrap">
+                {day.image_url && (
+                  // eslint-disable-next-line @next/next/no-img-element -- admin preview of arbitrary source
+                  <img src={day.image_url} alt={day.image_alt || `Day ${i + 1}`} className="w-28 h-20 object-cover rounded border border-line" />
+                )}
+                <div className="grid gap-2 flex-1 min-w-[220px]">
+                  <div className="flex gap-2">
+                    <label className={`${smallBtn} cursor-pointer whitespace-nowrap`}>
+                      {uploading ? 'Uploading…' : day.image_url ? 'Replace photo' : '+ Day photo'}
+                      <input
+                        type="file"
+                        accept="image/*"
+                        hidden
+                        disabled={uploading}
+                        onChange={async (e) => {
+                          const f = e.target.files?.[0];
+                          e.target.value = '';
+                          if (!f) return;
+                          setUploading(true);
+                          setError(null);
+                          try {
+                            const url = await uploadImage(f);
+                            set('itinerary', form.itinerary.map((d, j) => (j === i ? { ...d, image_url: url } : d)));
+                          } catch (err: any) {
+                            setError(`Upload failed: ${err.message}`);
+                          } finally {
+                            setUploading(false);
+                          }
+                        }}
+                      />
+                    </label>
+                    {day.image_url && (
+                      <button
+                        type="button"
+                        className={smallBtn}
+                        onClick={() =>
+                          set('itinerary', form.itinerary.map((d, j) => (j === i ? { ...d, image_url: null, image_alt: '' } : d)))
+                        }
+                      >
+                        Remove
+                      </button>
+                    )}
+                  </div>
+                  {day.image_url && (
+                    <input
+                      className={`${inputCls} text-xs ${day.image_alt.trim() ? '' : 'bg-danger/5'}`}
+                      value={day.image_alt}
+                      placeholder="Alt text — describe this photo"
+                      onChange={(e) =>
+                        set('itinerary', form.itinerary.map((d, j) => (j === i ? { ...d, image_alt: e.target.value } : d)))
+                      }
+                    />
+                  )}
+                </div>
+              </div>
             </div>
           ))}
+          <p className="text-xs text-ink-soft">
+            Day photos appear in a panel beside the itinerary on the trip page, changing as the
+            reader moves down the days. Days without one fall back to the hero image.
+          </p>
           <button
             type="button"
             className={`${smallBtn} justify-self-start`}
             onClick={() =>
               set('itinerary', [
                 ...form.itinerary,
-                { label: `Day ${form.itinerary.length + 1}`, title: '', description: '' },
+                {
+                  label: `Day ${form.itinerary.length + 1}`,
+                  title: '',
+                  description: '',
+                  image_url: null,
+                  image_alt: '',
+                },
               ])
             }
           >

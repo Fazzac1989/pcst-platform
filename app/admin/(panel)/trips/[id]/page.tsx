@@ -11,7 +11,7 @@ export default async function EditTripPage({ params }: { params: { id: string } 
 
   const db = createClient();
   const TRIP_FIELDS =
-    'id, slug, title, subject_id, country_id, city, duration_days, duration_nights, departs, hero_image, hero_alt, gallery, overview, includes, status, featured, itinerary_days(label, title, description, sort_order)';
+    'id, slug, title, subject_id, country_id, city, duration_days, duration_nights, departs, hero_image, hero_alt, gallery, overview, includes, status, featured, itinerary_days(label, title, description, sort_order, image_url, image_alt)';
   const [tripRes, { data: subjects }, { data: countries }] = await Promise.all([
     db.from('trips').select(TRIP_FIELDS).eq('id', id).maybeSingle(),
     db.from('subjects').select('id, name').order('name'),
@@ -19,10 +19,18 @@ export default async function EditTripPage({ params }: { params: { id: string } 
   ]);
   let trip: any = tripRes.data;
   // Safety net until the gallery migration has been run on the live database.
-  if (tripRes.error?.message.includes('gallery') || tripRes.error?.message.includes('hero_alt')) {
+  const pendingImageMigration = ['gallery', 'hero_alt', 'image_url', 'image_alt'].some((c) =>
+    tripRes.error?.message.includes(c)
+  );
+  if (pendingImageMigration) {
     const retry = await db
       .from('trips')
-      .select(TRIP_FIELDS.replace('hero_image, hero_alt, gallery,', 'hero_image,'))
+      .select(
+        TRIP_FIELDS.replace('hero_image, hero_alt, gallery,', 'hero_image,').replace(
+          ', image_url, image_alt)',
+          ')'
+        )
+      )
       .eq('id', id)
       .maybeSingle();
     trip = retry.data;
@@ -46,7 +54,13 @@ export default async function EditTripPage({ params }: { params: { id: string } 
     includes: (trip.includes as string[])?.length ? (trip.includes as string[]) : [''],
     itinerary: (trip.itinerary_days ?? [])
       .sort((a: any, b: any) => a.sort_order - b.sort_order)
-      .map((d: any) => ({ label: d.label ?? '', title: d.title, description: d.description })),
+      .map((d: any) => ({
+        label: d.label ?? '',
+        title: d.title,
+        description: d.description,
+        image_url: d.image_url ?? null,
+        image_alt: d.image_alt ?? '',
+      })),
     status: trip.status,
     featured: trip.featured,
   };
