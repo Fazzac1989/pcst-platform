@@ -21,7 +21,8 @@ export type TripPayload = {
   duration_nights: number;
   departs: string;
   hero_image: string | null;
-  gallery: string[];
+  hero_alt: string | null;
+  gallery: { url: string; alt: string }[];
   overview: string[];
   includes: string[];
   itinerary: { label: string; title: string; description: string }[];
@@ -53,8 +54,8 @@ export async function saveTrip(payload: TripPayload): Promise<ActionResult> {
     : db.from('trips').insert(fields).select('id').single();
   let { data: trip, error } = await query;
   // Safety net until the gallery migration has been run on the live database.
-  if (error?.message.includes('gallery')) {
-    const { gallery: _gallery, ...legacyFields } = fields;
+  if (error?.message.includes('gallery') || error?.message.includes('hero_alt')) {
+    const { gallery: _gallery, hero_alt: _heroAlt, ...legacyFields } = fields;
     const retry = id
       ? await db.from('trips').update(legacyFields).eq('id', id).select('id').single()
       : await db.from('trips').insert(legacyFields).select('id').single();

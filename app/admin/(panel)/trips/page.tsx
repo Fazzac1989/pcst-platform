@@ -37,12 +37,20 @@ export default async function AdminTripsPage() {
             {rows.length} trips · {rows.filter((r) => r.status === 'published').length} published
           </p>
         </div>
-        <Link
-          href="/admin/trips/new"
-          className="bg-teal text-ink font-semibold text-sm px-5 py-2.5 rounded-sm hover:bg-teal-hover transition-colors"
-        >
-          New trip
-        </Link>
+        <div className="flex gap-3 items-center">
+          <Link
+            href="/admin/trips/import"
+            className="border border-ink text-ink font-semibold text-sm px-5 py-2.5 rounded-sm hover:bg-ink hover:text-white transition-colors"
+          >
+            Import from document
+          </Link>
+          <Link
+            href="/admin/trips/new"
+            className="bg-teal text-ink font-semibold text-sm px-5 py-2.5 rounded-sm hover:bg-teal-hover transition-colors"
+          >
+            New trip
+          </Link>
+        </div>
       </div>
       <TripsTable rows={rows} subjects={(subjects ?? []).map((s) => s.name)} />
     </div>

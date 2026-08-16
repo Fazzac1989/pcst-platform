@@ -48,7 +48,7 @@ export default async function TripPage({ params }: Props) {
           {trip.heroImage && (
             <Image
               src={trip.heroImage}
-              alt=""
+              alt={trip.heroAlt}
               fill
               priority
               quality={60}
@@ -91,11 +91,11 @@ export default async function TripPage({ params }: Props) {
           <section className="tgallery-band">
             <div className="wrap">
               <div className={`tgallery n${Math.min(trip.gallery.length, 6)}`}>
-                {trip.gallery.slice(0, 6).map((src, i) => (
+                {trip.gallery.slice(0, 6).map((image, i) => (
                   <div className="tg-item" key={i}>
                     <Image
-                      src={src}
-                      alt={`${trip.title} — photo ${i + 1}`}
+                      src={image.url}
+                      alt={image.alt}
                       fill
                       sizes="(max-width: 720px) 78vw, (max-width: 1100px) 50vw, 33vw"
                       style={{ objectFit: 'cover' }}

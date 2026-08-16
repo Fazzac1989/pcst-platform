@@ -52,6 +52,7 @@ export default function TripEditor({
       duration_nights: 4,
       departs: 'Dubai',
       hero_image: null,
+      hero_alt: '',
       gallery: [],
       overview: [''],
       includes: [''],
@@ -126,9 +127,9 @@ export default function TripEditor({
     setError(null);
     try {
       const room = 6 - form.gallery.length;
-      const urls: string[] = [];
-      for (const file of files.slice(0, room)) urls.push(await uploadImage(file));
-      set('gallery', [...form.gallery, ...urls].slice(0, 6));
+      const added: { url: string; alt: string }[] = [];
+      for (const file of files.slice(0, room)) added.push({ url: await uploadImage(file), alt: '' });
+      set('gallery', [...form.gallery, ...added].slice(0, 6));
       if (files.length > room) setError(`Gallery holds 6 photos — ${files.length - room} skipped.`);
     } catch (e: any) {
       setError(`Upload failed: ${e.message}`);
@@ -326,28 +327,56 @@ export default function TripEditor({
               placeholder="…or paste an image URL"
             />
           </div>
+          <label className="grid gap-1.5">
+            <span className={labelCls}>Alt text</span>
+            <input
+              className={inputCls}
+              value={form.hero_alt ?? ''}
+              onChange={(e) => set('hero_alt', e.target.value)}
+              placeholder="Students on the Great Wall of China at sunrise"
+            />
+            <span className="text-xs text-ink-soft">
+              Describe what is in the photo for screen readers and search engines. Skip
+              &ldquo;photo of&rdquo; — just say what is happening.
+            </span>
+          </label>
         </div>
 
         {/* photo gallery */}
         <div className="grid gap-3 border border-line rounded p-6">
           <span className={labelCls}>Photo gallery ({form.gallery.length}/6) — shown under the hero on the trip page</span>
           {form.gallery.length > 0 && (
-            <div className="grid grid-cols-3 gap-3">
-              {form.gallery.map((url, i) => (
-                <div key={url} className="relative border border-line rounded overflow-hidden group">
-                  {/* eslint-disable-next-line @next/next/no-img-element -- admin preview of arbitrary source */}
-                  <img src={url} alt={`Gallery ${i + 1}`} className="w-full h-28 object-cover" />
-                  <div className="absolute top-1 right-1 flex gap-1">
-                    <button type="button" className="bg-white/90 rounded px-1.5 py-0.5 text-xs font-bold" onClick={() => set('gallery', move(form.gallery, i, i - 1))} aria-label="Move earlier">←</button>
-                    <button type="button" className="bg-white/90 rounded px-1.5 py-0.5 text-xs font-bold" onClick={() => set('gallery', move(form.gallery, i, i + 1))} aria-label="Move later">→</button>
-                    <button type="button" className="bg-white/90 rounded px-1.5 py-0.5 text-xs font-bold text-danger" onClick={() => set('gallery', form.gallery.filter((_, j) => j !== i))} aria-label="Remove photo">✕</button>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              {form.gallery.map((image, i) => (
+                <div key={image.url} className="border border-line rounded overflow-hidden">
+                  <div className="relative">
+                    {/* eslint-disable-next-line @next/next/no-img-element -- admin preview of arbitrary source */}
+                    <img src={image.url} alt={image.alt || `Gallery ${i + 1}`} className="w-full h-28 object-cover" />
+                    <div className="absolute top-1 right-1 flex gap-1">
+                      <button type="button" className="bg-white/90 rounded px-1.5 py-0.5 text-xs font-bold" onClick={() => set('gallery', move(form.gallery, i, i - 1))} aria-label="Move earlier">←</button>
+                      <button type="button" className="bg-white/90 rounded px-1.5 py-0.5 text-xs font-bold" onClick={() => set('gallery', move(form.gallery, i, i + 1))} aria-label="Move later">→</button>
+                      <button type="button" className="bg-white/90 rounded px-1.5 py-0.5 text-xs font-bold text-danger" onClick={() => set('gallery', form.gallery.filter((_, j) => j !== i))} aria-label="Remove photo">✕</button>
+                    </div>
+                    {i === 0 && (
+                      <span className="absolute bottom-1 left-1 bg-white/90 rounded px-1.5 py-0.5 text-[10px] font-semibold text-teal-deep">Lead photo</span>
+                    )}
                   </div>
-                  {i === 0 && (
-                    <span className="absolute bottom-1 left-1 bg-white/90 rounded px-1.5 py-0.5 text-[10px] font-semibold text-teal-deep">Lead photo</span>
-                  )}
+                  <input
+                    className={`${inputCls} border-0 border-t rounded-none text-xs ${image.alt.trim() ? '' : 'bg-danger/5'}`}
+                    value={image.alt}
+                    placeholder="Alt text — describe this photo"
+                    onChange={(e) =>
+                      set('gallery', form.gallery.map((g, j) => (j === i ? { ...g, alt: e.target.value } : g)))
+                    }
+                  />
                 </div>
               ))}
             </div>
+          )}
+          {form.gallery.some((g) => !g.alt.trim()) && (
+            <p className="text-xs text-danger">
+              Photos highlighted in red still need alt text — add it before publishing.
+            </p>
           )}
           {form.gallery.length < 6 && (
             <label className={`${smallBtn} cursor-pointer justify-self-start`}>

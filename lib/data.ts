@@ -23,6 +23,24 @@ export type ItineraryDay = {
   description: string;
 };
 
+/** A gallery photo with the alt text that describes it. */
+export type GalleryImage = {
+  url: string;
+  alt: string;
+};
+
+/** Accepts both the object form and bare URL strings from older rows. */
+export function normalizeGallery(value: unknown): GalleryImage[] {
+  if (!Array.isArray(value)) return [];
+  return value.flatMap((entry) => {
+    if (typeof entry === 'string') return [{ url: entry, alt: '' }];
+    if (entry && typeof entry === 'object' && typeof (entry as any).url === 'string') {
+      return [{ url: (entry as any).url, alt: String((entry as any).alt ?? '') }];
+    }
+    return [];
+  });
+}
+
 export type Trip = {
   id: number;
   slug: string;
@@ -36,7 +54,8 @@ export type Trip = {
   durationNights: number;
   departs: string;
   heroImage: string | null;
-  gallery: string[];
+  heroAlt: string;
+  gallery: GalleryImage[];
   overview: string[];
   includes: string[];
   itinerary: ItineraryDay[];
@@ -102,6 +121,7 @@ async function fallbackTrips(): Promise<Trip[]> {
         durationNights: Number(m[2]),
         departs: t.departs,
         heroImage: t.hero_image,
+        heroAlt: '',
         gallery: [],
         overview: t.overview,
         includes: t.includes,
@@ -116,9 +136,9 @@ async function fallbackTrips(): Promise<Trip[]> {
 /* ------------------------------------------------------------------ */
 
 const TRIP_SELECT =
-  'id, slug, title, city, duration_days, duration_nights, departs, hero_image, gallery, overview, includes, featured, subjects(name, slug), countries(name, slug), itinerary_days(label, title, description, sort_order)';
+  'id, slug, title, city, duration_days, duration_nights, departs, hero_image, hero_alt, gallery, overview, includes, featured, subjects(name, slug), countries(name, slug), itinerary_days(label, title, description, sort_order)';
 // Safety net until the gallery migration has been run on the live database.
-const TRIP_SELECT_LEGACY = TRIP_SELECT.replace('hero_image, gallery,', 'hero_image,');
+const TRIP_SELECT_LEGACY = TRIP_SELECT.replace('hero_image, hero_alt, gallery,', 'hero_image,');
 
 // Supabase returns to-one relations as objects; typing loosely here keeps
 // the mapper independent of generated types.
@@ -136,7 +156,8 @@ function mapTrip(row: any): Trip {
     durationNights: row.duration_nights,
     departs: row.departs,
     heroImage: row.hero_image,
-    gallery: Array.isArray(row.gallery) ? row.gallery : [],
+    heroAlt: row.hero_alt ?? '',
+    gallery: normalizeGallery(row.gallery),
     overview: row.overview ?? [],
     includes: row.includes ?? [],
     itinerary: (row.itinerary_days ?? [])
@@ -154,7 +175,7 @@ export async function getPublishedTrips(): Promise<Trip[]> {
     .select(TRIP_SELECT)
     .eq('status', 'published')
     .order('title');
-  if (error?.message.includes('gallery')) {
+  if (error?.message.includes('gallery') || error?.message.includes('hero_alt')) {
     const retry = await db
       .from('trips')
       .select(TRIP_SELECT_LEGACY)
@@ -184,7 +205,7 @@ export async function getTripBySlug(slug: string): Promise<Trip | null> {
     .eq('status', 'published')
     .eq('slug', slug)
     .maybeSingle();
-  if (error?.message.includes('gallery')) {
+  if (error?.message.includes('gallery') || error?.message.includes('hero_alt')) {
     const retry = await db
       .from('trips')
       .select(TRIP_SELECT_LEGACY)

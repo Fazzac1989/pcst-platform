@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import { normalizeGallery } from '@/lib/data';
 import { createClient } from '@/lib/supabase/server';
 import TripEditor, { type EditorTrip } from '../TripEditor';
 
@@ -10,7 +11,7 @@ export default async function EditTripPage({ params }: { params: { id: string } 
 
   const db = createClient();
   const TRIP_FIELDS =
-    'id, slug, title, subject_id, country_id, city, duration_days, duration_nights, departs, hero_image, gallery, overview, includes, status, featured, itinerary_days(label, title, description, sort_order)';
+    'id, slug, title, subject_id, country_id, city, duration_days, duration_nights, departs, hero_image, hero_alt, gallery, overview, includes, status, featured, itinerary_days(label, title, description, sort_order)';
   const [tripRes, { data: subjects }, { data: countries }] = await Promise.all([
     db.from('trips').select(TRIP_FIELDS).eq('id', id).maybeSingle(),
     db.from('subjects').select('id, name').order('name'),
@@ -18,10 +19,10 @@ export default async function EditTripPage({ params }: { params: { id: string } 
   ]);
   let trip: any = tripRes.data;
   // Safety net until the gallery migration has been run on the live database.
-  if (tripRes.error?.message.includes('gallery')) {
+  if (tripRes.error?.message.includes('gallery') || tripRes.error?.message.includes('hero_alt')) {
     const retry = await db
       .from('trips')
-      .select(TRIP_FIELDS.replace('hero_image, gallery,', 'hero_image,'))
+      .select(TRIP_FIELDS.replace('hero_image, hero_alt, gallery,', 'hero_image,'))
       .eq('id', id)
       .maybeSingle();
     trip = retry.data;
@@ -39,7 +40,8 @@ export default async function EditTripPage({ params }: { params: { id: string } 
     duration_nights: trip.duration_nights,
     departs: trip.departs,
     hero_image: trip.hero_image,
-    gallery: (trip.gallery as string[]) ?? [],
+    hero_alt: trip.hero_alt ?? '',
+    gallery: normalizeGallery(trip.gallery),
     overview: (trip.overview as string[])?.length ? (trip.overview as string[]) : [''],
     includes: (trip.includes as string[])?.length ? (trip.includes as string[]) : [''],
     itinerary: (trip.itinerary_days ?? [])
