@@ -317,6 +317,53 @@ export async function getSubjects(): Promise<SubjectSummary[]> {
   return [...map.values()].sort((a, b) => a.name.localeCompare(b.name));
 }
 
+export type CuratedImage = {
+  id: number;
+  role: string;
+  url: string;
+  alt: string;
+  caption: string | null;
+  width: number | null;
+  height: number | null;
+  focalX: number;
+  focalY: number;
+  photographer: string | null;
+  licence: string | null;
+  sourceUrl: string | null;
+  attributionRequired: boolean;
+};
+
+/**
+ * Curated photography for a trip. Returns an empty array when the trip_images
+ * migration has not been run, so pages fall back to the legacy fields.
+ */
+export async function getCuratedImages(tripId: number): Promise<CuratedImage[]> {
+  if (!hasSupabase) return [];
+  const db = createClient();
+  const { data, error } = await db
+    .from('trip_images')
+    .select('id, role, url, alt_text, caption, width, height, focal_x, focal_y, photographer, licence, source_url, attribution_required, sort_order')
+    .eq('trip_id', tripId)
+    .eq('approved', true)
+    .order('sort_order');
+  if (error) return [];
+  return (data ?? []).map((r: any) => ({
+    id: r.id,
+    role: r.role,
+    url: r.url,
+    alt: r.alt_text ?? '',
+    caption: r.caption,
+    width: r.width,
+    height: r.height,
+    focalX: Number(r.focal_x ?? 0.5),
+    focalY: Number(r.focal_y ?? 0.5),
+    photographer: r.photographer,
+    licence: r.licence,
+    sourceUrl: r.source_url,
+    attributionRequired: Boolean(r.attribution_required),
+  }));
+}
+
 export type CountrySummary = {
   name: string;
   slug: string;

@@ -11,6 +11,7 @@ const NAV = [
   { href: '/admin/planning', label: 'Trip Planning' },
   { href: '/admin/app', label: 'App Trips' },
   { href: '/admin/trips', label: 'Trips' },
+  { href: '/admin/images', label: 'Photography' },
   { href: '/admin/subjects', label: 'Subjects' },
   { href: '/admin/countries', label: 'Countries' },
   { href: '/admin/media', label: 'Media' },

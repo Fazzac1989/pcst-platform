@@ -6,8 +6,9 @@ import AppointmentModal from '@/components/AppointmentModal';
 import ViewTracker from '@/components/ViewTracker';
 import SiteHeader from '@/components/SiteHeaderWithData';
 import { SiteFooterSimple } from '@/components/SiteFooter';
-import { getBookingTerms, getPublishedTrips, getTripBySlug } from '@/lib/data';
+import { getBookingTerms, getCuratedImages, getPublishedTrips, getTripBySlug } from '@/lib/data';
 import ItineraryPanel from './ItineraryPanel';
+import TripGallery, { type GalleryItem } from './TripGallery';
 
 type Props = { params: { slug: string } };
 
@@ -39,6 +40,28 @@ export default async function TripPage({ params }: Props) {
   ]);
   if (!trip) notFound();
 
+  // Curated photography wins where it exists; otherwise fall back to the
+  // legacy gallery field so nothing regresses before the reset is finished.
+  const curated = await getCuratedImages(trip.id);
+  const curatedHero = curated.find((c) => c.role === 'hero') ?? null;
+  const curatedGallery = curated.filter((c) => c.role === 'gallery');
+  const heroUrl = curatedHero?.url ?? trip.heroImage;
+  const heroAlt = curatedHero?.alt ?? trip.heroAlt;
+  const galleryItems: GalleryItem[] = (
+    curatedGallery.length > 0
+      ? curatedGallery
+      : trip.gallery.map((g) => ({ ...g, caption: null, photographer: null, licence: null, sourceUrl: null, focalX: 0.5, focalY: 0.5 }))
+  ).map((g: any) => ({
+    url: g.url,
+    alt: g.alt,
+    caption: g.caption ?? null,
+    photographer: g.photographer ?? null,
+    licence: g.licence ?? null,
+    sourceUrl: g.sourceUrl ?? null,
+    focalX: g.focalX ?? 0.5,
+    focalY: g.focalY ?? 0.5,
+  }));
+
   const others = allTrips.filter((t) => t.slug !== trip.slug);
 
   // Only the facts that are actually filled in — the panel is hidden when empty.
@@ -64,15 +87,20 @@ export default async function TripPage({ params }: Props) {
 
       <div className="thero">
         <div className="bg">
-          {trip.heroImage && (
+          {heroUrl && (
             <Image
-              src={trip.heroImage}
-              alt={trip.heroAlt}
+              src={heroUrl}
+              alt={heroAlt}
               fill
               priority
-              quality={60}
+              quality={65}
               sizes="100vw"
-              style={{ objectFit: 'cover' }}
+              style={{
+                objectFit: 'cover',
+                objectPosition: curatedHero
+                  ? `${curatedHero.focalX * 100}% ${curatedHero.focalY * 100}%`
+                  : 'center',
+              }}
             />
           )}
         </div>
@@ -106,22 +134,10 @@ export default async function TripPage({ params }: Props) {
       </div>
 
       <main className="trip-main">
-        {trip.gallery.length > 0 && (
+        {galleryItems.length > 0 && (
           <section className="tgallery-band">
             <div className="wrap">
-              <div className={`tgallery n${Math.min(trip.gallery.length, 6)}`}>
-                {trip.gallery.slice(0, 6).map((image, i) => (
-                  <div className="tg-item" key={i}>
-                    <Image
-                      src={image.url}
-                      alt={image.alt}
-                      fill
-                      sizes="(max-width: 720px) 78vw, (max-width: 1100px) 50vw, 33vw"
-                      style={{ objectFit: 'cover' }}
-                    />
-                  </div>
-                ))}
-              </div>
+              <TripGallery images={galleryItems} tripTitle={trip.title} />
             </div>
           </section>
         )}
