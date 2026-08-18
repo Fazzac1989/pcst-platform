@@ -268,8 +268,26 @@ async function store(trip, role, chosen, sortOrder) {
 
 /* ---------- run ---------- */
 
-const slugs = process.argv.slice(2);
-if (!slugs.length) throw new Error('Pass one or more trip slugs.');
+const args = process.argv.slice(2);
+let slugs = args.filter((a) => !a.startsWith('--'));
+
+if (args.includes('--all')) {
+  // Published trips only, and skip any already repopulated unless --force.
+  const { data: published } = await db
+    .from('trips')
+    .select('id, slug, title')
+    .eq('status', 'published')
+    .order('title');
+  const { data: done } = await db.from('trip_images').select('trip_id');
+  const doneIds = new Set((done ?? []).map((d) => d.trip_id));
+  const pool = args.includes('--force')
+    ? (published ?? [])
+    : (published ?? []).filter((t) => !doneIds.has(t.id));
+  slugs = pool.map((t) => t.slug);
+  console.log(`${slugs.length} trips to process (${published?.length ?? 0} published, ${doneIds.size} already done)`);
+}
+
+if (!slugs.length) throw new Error('Pass one or more trip slugs, or --all');
 
 for (const slug of slugs) {
   const { data: row } = await db
