@@ -312,20 +312,27 @@ async function store(trip, role, chosen, sortOrder) {
 const args = process.argv.slice(2);
 let slugs = args.filter((a) => !a.startsWith('--'));
 
-if (args.includes('--all')) {
-  // Published trips only, and skip any already repopulated unless --force.
-  const { data: published } = await db
+if (args.includes('--all') || args.includes('--drafts')) {
+  // --all covers published trips; --drafts covers drafts as well.
+  const statuses = args.includes('--drafts')
+    ? args.includes('--all')
+      ? ['published', 'draft']
+      : ['draft']
+    : ['published'];
+  const { data: pool0 } = await db
     .from('trips')
-    .select('id, slug, title')
-    .eq('status', 'published')
+    .select('id, slug, title, status')
+    .in('status', statuses)
     .order('title');
   const { data: done } = await db.from('trip_images').select('trip_id');
   const doneIds = new Set((done ?? []).map((d) => d.trip_id));
   const pool = args.includes('--force')
-    ? (published ?? [])
-    : (published ?? []).filter((t) => !doneIds.has(t.id));
+    ? (pool0 ?? [])
+    : (pool0 ?? []).filter((t) => !doneIds.has(t.id));
   slugs = pool.map((t) => t.slug);
-  console.log(`${slugs.length} trips to process (${published?.length ?? 0} published, ${doneIds.size} already done)`);
+  console.log(
+    `${slugs.length} trips to process (${pool0?.length ?? 0} matching ${statuses.join('/')}, ${doneIds.size} already done)`
+  );
 }
 
 if (!slugs.length) throw new Error('Pass one or more trip slugs, or --all');
