@@ -1,4 +1,4 @@
-/**
+﻿/**
  * School Trips image audit.
  *
  * Reads every image reference used by the public School Trips site, records it
@@ -257,13 +257,13 @@ console.log('  Hosts in use:');
 for (const h of hosts) console.log(`    ${h} — ${count((r) => r.host === h)}`);
 console.log('');
 
-console.log('COVERAGE AGAINST THE 7-IMAGE STANDARD (published trips)');
+console.log('COVERAGE AGAINST THE STANDARD: 1 hero + 5 gallery (published trips)');
 line('With a hero image', coverage.filter((c) => c.hero).length + ' / ' + coverage.length);
 line('With hero alt text', coverage.filter((c) => c.heroAlt).length + ' / ' + coverage.length);
-line('With 6+ gallery images', coverage.filter((c) => c.gallery >= 6).length + ' / ' + coverage.length);
+line('With 5+ gallery images', coverage.filter((c) => c.gallery >= 5).length + ' / ' + coverage.length);
 line('With any gallery image', coverage.filter((c) => c.gallery > 0).length + ' / ' + coverage.length);
 line('With any itinerary image', coverage.filter((c) => c.itinerary > 0).length + ' / ' + coverage.length);
-line('Meeting the 7-image minimum', coverage.filter((c) => c.hero && c.gallery >= 6).length + ' / ' + coverage.length);
+line('Meeting the 6-image standard', coverage.filter((c) => c.hero && c.gallery >= 5).length + ' / ' + coverage.length);
 console.log('');
 
 if (duplicates.length) {

@@ -57,13 +57,19 @@ async function searchRaw(gsrsearch, limit = 30) {
   }
 }
 
+// Commons holds a great deal of art and cartography alongside photography.
+// A 19th-century oil painting once became a country hero, so screen the
+// obvious cases out before anything reaches the picker.
+const ARTWORK = /(painting|portrait of|oil on canvas|engraving|etching|lithograph|woodcut|watercolou?r|drawing|sketch|illustration|diagram|schematic|blueprint|\bmap\b|atlas|poster|coat of arms|banknote|postage stamp|\bcoin\b|logo|emblem|\bflag of\b|scale model|replica of|\b1[0-8]\d\d\b)/i;
+
 async function search(query, { minWidth = 2400, minRatio = 0.5, maxRatio = 3 } = {}) {
   const keep = (l) =>
     l.filter(
       (c) =>
         c.mime !== 'image/svg+xml' && c.width >= minWidth &&
         c.licence && FREE.test(c.licence) && !BLOCKED.test(c.licence) &&
-        c.ratio >= minRatio && c.ratio <= maxRatio
+        c.ratio >= minRatio && c.ratio <= maxRatio &&
+        !ARTWORK.test(`${c.title} ${c.description ?? ''}`)
     );
   const [quality, all] = await Promise.all([
     searchRaw(`filetype:bitmap incategory:"Quality images" ${query}`).then(keep),
@@ -230,10 +236,14 @@ async function pickImage(candidates, label, country, usedSubjects) {
           schema: {
             type: 'object',
             properties: {
+              suitable: {
+                type: 'boolean',
+                description: 'False if none of the candidates is an acceptable photograph for this role.',
+              },
               index: { type: 'integer' },
               alt_text: { type: 'string' },
             },
-            required: ['index', 'alt_text'],
+            required: ['suitable', 'index', 'alt_text'],
             additionalProperties: false,
           },
         },
@@ -264,6 +274,8 @@ async function pickImage(candidates, label, country, usedSubjects) {
     });
     const block = res.content.find((b) => b.type === 'text');
     const out = JSON.parse(block.text);
+    // Leave the slot empty rather than publish something the picker rejected.
+    if (out.suitable === false) return null;
     return { candidate: pool[Math.max(0, Math.min(pool.length - 1, out.index))], altText: out.alt_text ?? '' };
   } catch {
     return { candidate: pool[0], altText: '' };
@@ -339,7 +351,10 @@ for (const slug of slugs) {
     if (!candidates.length) { console.log(`  --  ${role.label.padEnd(32)} nothing free for "${query}"`); continue; }
 
     const chosen = await pickImage(candidates, role.label, country, used);
-    if (!chosen) continue;
+    if (!chosen) {
+      console.log(`  --  ${role.label.padEnd(32)} no acceptable photograph among the candidates`);
+      continue;
+    }
     used.push(chosen.candidate.title.replace(/\.(jpg|jpeg|png)$/i, '').slice(0, 70));
 
     try {

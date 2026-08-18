@@ -59,6 +59,11 @@ async function searchRaw(gsrsearch, limit = 30) {
  * well-exposed photographs. Search that first for a genuine quality signal,
  * then fall back to the whole archive if it is too thin.
  */
+// Commons holds a great deal of art and cartography alongside photography.
+// A 19th-century oil painting once became a country hero, so screen the
+// obvious cases out before anything reaches the picker.
+const ARTWORK = /(painting|portrait of|oil on canvas|engraving|etching|lithograph|woodcut|watercolou?r|drawing|sketch|illustration|diagram|schematic|blueprint|\bmap\b|atlas|poster|coat of arms|banknote|postage stamp|\bcoin\b|logo|emblem|\bflag of\b|scale model|replica of|\b1[0-8]\d\d\b)/i;
+
 async function search(query, { minWidth = 2400, minRatio = 0.5, maxRatio = 3, limit = 30 } = {}) {
   const keep = (list) =>
     list.filter(
@@ -66,7 +71,8 @@ async function search(query, { minWidth = 2400, minRatio = 0.5, maxRatio = 3, li
         c.mime !== 'image/svg+xml' &&
         c.width >= minWidth &&
         c.licence && FREE.test(c.licence) && !BLOCKED.test(c.licence) &&
-        c.ratio >= minRatio && c.ratio <= maxRatio
+        c.ratio >= minRatio && c.ratio <= maxRatio &&
+        !ARTWORK.test(`${c.title} ${c.description ?? ''}`)
     );
 
   // Search both, but never let the small Quality pool crowd out relevance:
@@ -180,11 +186,15 @@ async function pick(candidates, { label, query }, trip, alreadyUsed, usedSubject
           schema: {
             type: 'object',
             properties: {
+              suitable: {
+                type: 'boolean',
+                description: 'False if none of the candidates is an acceptable photograph for this role.',
+              },
               index: { type: 'integer', description: 'Zero-based index of the best candidate.' },
               alt_text: { type: 'string', description: 'One sentence, under 120 chars, describing what is visible. No "Photo of".' },
               reason: { type: 'string', description: 'Under 90 characters.' },
             },
-            required: ['index', 'alt_text', 'reason'],
+            required: ['suitable', 'index', 'alt_text', 'reason'],
             additionalProperties: false,
           },
         },
@@ -224,6 +234,8 @@ async function pick(candidates, { label, query }, trip, alreadyUsed, usedSubject
     });
     const block = res.content.find((b) => b.type === 'text');
     const out = JSON.parse(block.text);
+    // Leave the slot empty rather than publish something the picker rejected.
+    if (out.suitable === false) return null;
     const chosen = pool[Math.max(0, Math.min(pool.length - 1, out.index))];
     return { candidate: chosen, altText: out.alt_text?.slice(0, 200) ?? '', reason: out.reason };
   } catch {
@@ -353,7 +365,10 @@ for (const slug of slugs) {
       continue;
     }
     const chosen = await pick(candidates, plan, trip, used, usedSubjects);
-    if (!chosen) { console.log(`  --  ${plan.label.padEnd(34)} nothing left`); continue; }
+    if (!chosen) {
+      console.log(`  --  ${plan.label.padEnd(34)} no acceptable photograph among the candidates`);
+      continue;
+    }
     used.add(chosen.candidate.sourceUrl);
     usedSubjects.push(chosen.candidate.title.replace(/\.(jpg|jpeg|png)$/i, '').slice(0, 70));
     try {
