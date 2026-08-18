@@ -418,9 +418,12 @@ footer.simple .fine { font-size: 12.5px; color: rgba(244, 243, 238, .5); margin-
 /* ============================================================
    Trip page (ported from trip reference)
    ============================================================ */
-.thero { position: relative; min-height: 66vh; display: flex; align-items: flex-end; color: #fff; background: var(--ink); }
-.thero .bg { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: .9; }
-.thero .scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(22, 36, 46, .55) 0%, rgba(22, 36, 46, .35) 45%, rgba(22, 36, 46, .92) 100%); }
+/* A shallower band crops less out of a 3:2 photograph, so the subject stays
+   readable instead of looking magnified. */
+.thero { position: relative; min-height: 60vh; display: flex; align-items: flex-end; color: #fff; background: var(--ink); }
+.thero .bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+/* Only as much gradient as the headline needs; the photograph stays vibrant. */
+.thero .scrim { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(22, 36, 46, .28) 0%, rgba(22, 36, 46, .12) 40%, rgba(22, 36, 46, .82) 100%); }
 .thero .wrap { position: relative; padding: 170px 32px 64px; width: 100%; }
 .thero .eyebrow { color: var(--brass-light); }
 .thero h1 { font-family: var(--font-fraunces), serif; font-weight: 400; font-size: clamp(36px, 5.4vw, 64px); line-height: 1.06; letter-spacing: -.01em; max-width: 18ch; margin: 14px 0 16px; }
@@ -798,13 +801,14 @@ details.terms ol { padding: 0 32px 26px 50px; font-size: 13.5px; color: var(--in
 .tgal-item:hover img { transform: scale(1.04); }
 .tgal-item:focus-visible { outline: 2px solid var(--brass-light); outline-offset: 3px; }
 /* Lead image takes a 2x2 block; the rest fill around it. */
+/* Five images: a large lead on the left, four in a 2x2 block beside it. */
 .tgal .tgal-item:first-child { grid-column: span 2; grid-row: span 2; }
 .tgal.n1 .tgal-item:first-child { grid-column: span 4; }
 .tgal.n2 .tgal-item { grid-column: span 2; grid-row: span 2; }
 .tgal.n3 .tgal-item:not(:first-child) { grid-column: span 2; }
 .tgal.n4 { grid-auto-rows: 200px; }
 .tgal.n4 .tgal-item:first-child { grid-column: span 2; grid-row: span 2; }
-.tgal.n5 .tgal-item:nth-child(4), .tgal.n5 .tgal-item:nth-child(5) { grid-column: span 1; }
+.tgal.n5 { grid-auto-rows: 186px; }
 .tgal-more { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(22,36,46,.62); color: #fff; font-weight: 600; font-size: 15px; letter-spacing: .04em; }
 
 .lbox { position: fixed; inset: 0; z-index: 90; background: rgba(10,16,20,.94); display: flex; align-items: center; justify-content: center; padding: 32px 16px; }

@@ -50,8 +50,8 @@ export default function TripGallery({ images, tripTitle }: { images: GalleryItem
 
   return (
     <>
-      <div className={`tgal n${Math.min(count, 6)}`}>
-        {images.slice(0, 6).map((img, i) => (
+      <div className={`tgal n${Math.min(count, 5)}`}>
+        {images.slice(0, 5).map((img, i) => (
           <button
             key={img.url}
             className="tgal-item"
@@ -68,7 +68,7 @@ export default function TripGallery({ images, tripTitle }: { images: GalleryItem
                 objectPosition: `${(img.focalX ?? 0.5) * 100}% ${(img.focalY ?? 0.5) * 100}%`,
               }}
             />
-            {i === 5 && count > 6 && <span className="tgal-more">+{count - 6} more</span>}
+            {i === 4 && count > 5 && <span className="tgal-more">+{count - 5} more</span>}
           </button>
         ))}
       </div>

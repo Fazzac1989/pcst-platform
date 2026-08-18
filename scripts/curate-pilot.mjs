@@ -26,10 +26,10 @@ const FREE = /^(cc0|cc[- ]by([- ]sa)?([- ]\d(\.\d)?)?|public domain|pdm)/i;
 const BLOCKED = /(nc|nd|fair use|non[- ]free)/i;
 const strip = (s) => (s ? String(s).replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim() : null);
 
-async function search(query, { minWidth = 1600, landscapeOnly = false, limit = 24 } = {}) {
+async function searchRaw(gsrsearch, limit = 30) {
   const url =
     `${API}?action=query&format=json&generator=search` +
-    `&gsrsearch=${encodeURIComponent(`filetype:bitmap ${query}`)}&gsrnamespace=6&gsrlimit=${limit}` +
+    `&gsrsearch=${encodeURIComponent(gsrsearch)}&gsrnamespace=6&gsrlimit=${limit}` +
     `&prop=imageinfo&iiprop=url|size|extmetadata|mime&iiurlwidth=1200`;
   try {
     const j = await (await fetch(url, { headers: UA })).json();
@@ -48,25 +48,51 @@ async function search(query, { minWidth = 1600, landscapeOnly = false, limit = 2
           sourceUrl: `https://commons.wikimedia.org/wiki/${encodeURIComponent(p.title)}`,
         };
       })
-      .filter((c) =>
-        c && c.mime !== 'image/svg+xml' && c.width >= minWidth &&
-        c.licence && FREE.test(c.licence) && !BLOCKED.test(c.licence) &&
-        c.ratio <= 3 && c.ratio >= 0.5 && (!landscapeOnly || c.ratio >= 1.2)
-      )
-      .sort((a, b) => b.width - a.width);
+      .filter(Boolean);
   } catch {
     return [];
   }
 }
 
+/**
+ * Commons reviewers maintain a Quality images category: technically sound,
+ * well-exposed photographs. Search that first for a genuine quality signal,
+ * then fall back to the whole archive if it is too thin.
+ */
+async function search(query, { minWidth = 2400, minRatio = 0.5, maxRatio = 3, limit = 30 } = {}) {
+  const keep = (list) =>
+    list.filter(
+      (c) =>
+        c.mime !== 'image/svg+xml' &&
+        c.width >= minWidth &&
+        c.licence && FREE.test(c.licence) && !BLOCKED.test(c.licence) &&
+        c.ratio >= minRatio && c.ratio <= maxRatio
+    );
+
+  // Search both, but never let the small Quality pool crowd out relevance:
+  // the whole archive is where the on-itinerary subjects actually live.
+  const [quality, all] = await Promise.all([
+    searchRaw(`filetype:bitmap incategory:"Quality images" ${query}`, limit).then(keep),
+    searchRaw(`filetype:bitmap ${query}`, limit).then(keep),
+  ]);
+  const qualityUrls = new Set(quality.map((c) => c.sourceUrl));
+
+  const seen = new Set();
+  return [...quality, ...all]
+    .filter((c) => (seen.has(c.sourceUrl) ? false : seen.add(c.sourceUrl)))
+    .map((c) => ({ ...c, qualityReviewed: qualityUrls.has(c.sourceUrl) }))
+    .sort((a, b) => Number(b.qualityReviewed) - Number(a.qualityReviewed) || b.width - a.width);
+}
+
 const ROLES = [
-  { role: 'hero', label: 'Hero — the trip at a glance', landscapeOnly: true, minWidth: 2000 },
-  { role: 'gallery', label: 'Iconic destination' },
-  { role: 'gallery', label: 'Educational experience' },
-  { role: 'gallery', label: 'Student experience / activity' },
-  { role: 'gallery', label: 'Culture & local life' },
-  { role: 'gallery', label: 'Adventure & experience' },
-  { role: 'gallery', label: 'Wow — the aspirational shot', landscapeOnly: true },
+  // Heroes crop into a cinematic band, so only genuinely wide sources survive
+  // it without looking magnified.
+  { role: 'hero', label: 'Hero — the trip at a glance', minWidth: 3000, minRatio: 1.7, maxRatio: 2.6 },
+  { role: 'gallery', label: 'Iconic destination', minWidth: 2400 },
+  { role: 'gallery', label: 'Educational experience', minWidth: 2400 },
+  { role: 'gallery', label: 'Culture and local life', minWidth: 2400 },
+  { role: 'gallery', label: 'Adventure and experience', minWidth: 2400 },
+  { role: 'gallery', label: 'Wow - the aspirational shot', minWidth: 2400, minRatio: 1.3 },
 ];
 
 /**
@@ -89,7 +115,7 @@ async function plans(trip) {
             properties: {
               queries: {
                 type: 'array',
-                description: 'Exactly seven searches, one per role, in the order given.',
+                description: 'One search per role, in the order given, and the same number of them.',
                 items: {
                   type: 'object',
                   properties: {
@@ -114,7 +140,7 @@ async function plans(trip) {
         'Hard rules: never leave the destination. For a city trip, stay in or immediately around that city — ' +
         'never substitute scenery from elsewhere in the country. Match the trip subject: a geography trip wants ' +
         'landforms, a politics trip wants parliaments and memorials, an art trip wants galleries and ' +
-        'architecture. Give seven different subjects; do not repeat one landmark across roles.',
+        'architecture. Give a different subject for every role; never repeat a landmark across roles.',
       messages: [
         {
           role: 'user',
@@ -127,18 +153,21 @@ async function plans(trip) {
     });
     const block = res.content.find((b) => b.type === 'text');
     const out = JSON.parse(block.text);
-    if (Array.isArray(out.queries) && out.queries.length >= 7) {
+    if (Array.isArray(out.queries) && out.queries.length >= ROLES.length) {
       return ROLES.map((r, i) => ({ ...r, query: out.queries[i].query }));
     }
-  } catch {
-    /* fall through */
+    throw new Error(`planner returned ${out.queries?.length ?? 0} queries, expected ${ROLES.length}`);
+  } catch (e) {
+    // A silent fallback here once filled a whole page with one landmark, so
+    // make it loud rather than quietly degrading the result.
+    console.log(`  !!  query planner failed (${e.message}) — falling back to generic terms`);
   }
   return ROLES.map((r) => ({ ...r, query: `${fallbackPlace} landmark` }));
 }
 
 /** Rank by fit to the role, using the only signal available: text metadata. */
-async function pick(candidates, { label, query }, trip, alreadyUsed) {
-  const pool = candidates.filter((c) => !alreadyUsed.has(c.sourceUrl)).slice(0, 8);
+async function pick(candidates, { label, query }, trip, alreadyUsed, usedSubjects = []) {
+  const pool = candidates.filter((c) => !alreadyUsed.has(c.sourceUrl)).slice(0, 10);
   if (pool.length === 0) return null;
   try {
     const res = await claude.messages.create({
@@ -161,21 +190,33 @@ async function pick(candidates, { label, query }, trip, alreadyUsed) {
         },
       },
       system:
-        'You are choosing photography for a premium school-travel website. Pick the candidate that best fits the ' +
-        'stated role for this specific trip: it must clearly show the right place and the right subject matter. ' +
-        'Prefer wide, uncluttered, daylight views of the actual landmark or landscape over close-ups of details, ' +
-        'signs, plaques, interiors of unrelated buildings, or images whose description suggests people posing. ' +
-        'Reject anything that looks like a diagram, map, reconstruction or artwork of the place rather than a ' +
-        'photograph of it. Write British English alt text describing only what the file title and description ' +
-        'support — never invent detail.',
+        'You are the photography director for a premium school-travel website. Pick the candidate with the most ' +
+        'visual impact that still clearly shows the right place and the right subject.\n\n' +
+        'Favour, in order: a wide establishing view where the landmark fills the frame and is instantly ' +
+        'recognisable; bright natural daylight, blue sky, strong colour, golden hour or dramatic weather; ' +
+        'a clean composition with an obvious subject.\n\n' +
+        'Reject: dull grey or overcast scenes, night shots unless the place is famous after dark, close-ups of ' +
+        'architectural details, signs, plaques or statues, cramped interiors, cluttered frames, construction ' +
+        'scaffolding, images dominated by parked cars or crowds, and anything that is a diagram, map, plan, ' +
+        'painting or model rather than a photograph.\n\n' +
+        'A file title mentioning a general view, panorama, skyline or aerial usually beats one naming a small ' +
+        'detail. Write British English alt text describing only what the title and description support — never ' +
+        'invent detail.',
       messages: [
         {
           role: 'user',
           content:
             `Trip: ${trip.title}\nSubject: ${trip.subject}\nDestination: ${trip.city ?? trip.country}\n` +
-            `Role needed: ${label}\nSearch used: "${query}"\n\nCandidates:\n` +
+            `Role needed: ${label}\nSearch used: "${query}"\n` +
+            (usedSubjects.length
+              ? `\nAlready used on this page — choose a DIFFERENT subject, not another view of these:\n` +
+                usedSubjects.map((s) => `  - ${s}`).join('\n') + '\n'
+              : '') +
+            `\nCandidates:\n` +
             pool.map((c, i) =>
-              `[${i}] ${c.title}\n     ${c.width}x${c.height}, ${c.licence}\n     ${c.description ?? '(no description)'}`
+              `[${i}] ${c.title}\n     ${c.width}x${c.height}, ${c.licence}` +
+              `${c.qualityReviewed ? ', reviewed as a Commons Quality image' : ''}\n` +
+              `     ${c.description ?? '(no description)'}`
             ).join('\n'),
         },
       ],
@@ -253,27 +294,38 @@ for (const slug of slugs) {
   await db.from('trip_images').delete().eq('trip_id', trip.id);
 
   const used = new Set();
+  const usedSubjects = [];
   let order = 0;
   for (const plan of await plans(trip)) {
-    const candidates = await search(plan.query, {
-      minWidth: plan.minWidth ?? 1600,
-      landscapeOnly: Boolean(plan.landscapeOnly),
-    });
+    // Try the ideal constraints, then loosen rather than leave a slot empty.
+    const attempts = [
+      { minWidth: plan.minWidth ?? 2400, minRatio: plan.minRatio ?? 0.5, maxRatio: plan.maxRatio ?? 3 },
+      { minWidth: Math.round((plan.minWidth ?? 2400) * 0.8), minRatio: (plan.minRatio ?? 0.5) - 0.2, maxRatio: (plan.maxRatio ?? 3) + 0.3 },
+      { minWidth: 1800, minRatio: 0.5, maxRatio: 3 },
+    ];
+    let candidates = [];
+    let relaxed = 0;
+    for (const [i, opts] of attempts.entries()) {
+      candidates = await search(plan.query, opts);
+      if (candidates.length) { relaxed = i; break; }
+    }
     if (!candidates.length) {
       console.log(`  --  ${plan.label.padEnd(34)} nothing free for "${plan.query}"`);
       continue;
     }
-    const chosen = await pick(candidates, plan, trip, used);
+    const chosen = await pick(candidates, plan, trip, used, usedSubjects);
     if (!chosen) { console.log(`  --  ${plan.label.padEnd(34)} nothing left`); continue; }
     used.add(chosen.candidate.sourceUrl);
+    usedSubjects.push(chosen.candidate.title.replace(/\.(jpg|jpeg|png)$/i, '').slice(0, 70));
     try {
       const { bytes } = await store(trip, plan.role, chosen, order++);
       console.log(
         `  OK  ${plan.label.padEnd(34)} ${String(chosen.candidate.width).padStart(5)}px ` +
-        `${String(Math.round(bytes / 1024)).padStart(4)}KB ${(chosen.candidate.licence ?? '?').padEnd(13)} ` +
-        `${(chosen.candidate.photographer ?? 'unknown').slice(0, 22)}`
+        `r${chosen.candidate.ratio.toFixed(2)} ${String(Math.round(bytes / 1024)).padStart(4)}KB ` +
+        `${(chosen.candidate.licence ?? '?').padEnd(13)} ${(chosen.candidate.photographer ?? 'unknown').slice(0, 20)}` +
+        `${chosen.candidate.qualityReviewed ? ' [QI]' : ''}${relaxed ? ` [relaxed x${relaxed}]` : ''}`
       );
-      console.log(`        alt: ${chosen.altText || '(none drafted)'}`);
+      console.log(`        q: "${plan.query}"  |  alt: ${chosen.altText || '(none drafted)'}`);
     } catch (e) {
       console.log(`  !!  ${plan.label.padEnd(34)} ${e.message}`);
     }
