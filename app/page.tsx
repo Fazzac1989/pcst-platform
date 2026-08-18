@@ -298,10 +298,11 @@ export default async function HomePage() {
               <div className="appvisual">
                 <Image
                   className="appshot"
-                  src="/images/app-screenshot.jpg"
-                  alt="Premium Choice Trips app — home screen"
-                  width={600}
-                  height={720}
+                  src="/images/app-screenshot.png"
+                  alt="The School Trips app home screen, showing a teacher's trip dashboard with student register, flights, accommodation, vouchers, broadcast and translate, above the London weather forecast"
+                  width={1179}
+                  height={2556}
+                  sizes="(max-width: 900px) 60vw, 320px"
                 />
               </div>
             </div>
