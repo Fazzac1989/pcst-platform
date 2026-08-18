@@ -28,16 +28,39 @@ const MIN_GALLERY_WIDTH = 1600;
 const refs = [];
 const add = (r) => refs.push(r);
 
-const [{ data: trips }, { data: days }, { data: countries }, { data: subjects }] = await Promise.all([
+const [{ data: trips }, { data: days }, { data: countries }, { data: subjects }, curatedRes] = await Promise.all([
   db.from('trips').select('id, slug, title, status, hero_image, hero_alt, gallery, subjects(name), countries(name)').order('id'),
   db.from('itinerary_days').select('id, trip_id, sort_order, label, title, image_url, image_alt').order('trip_id'),
   db.from('countries').select('id, name, slug'),
   db.from('subjects').select('id, name, slug'),
+  db.from('trip_images').select('*').eq('approved', true).order('trip_id').order('sort_order'),
 ]);
 
 const tripById = new Map((trips ?? []).map((t) => [t.id, t]));
 
+// Curated images supersede the legacy fields wherever a trip has them.
+const curated = curatedRes?.error ? [] : curatedRes.data ?? [];
+const curatedByTrip = new Map();
+for (const c of curated) {
+  (curatedByTrip.get(c.trip_id) ?? curatedByTrip.set(c.trip_id, []).get(c.trip_id)).push(c);
+}
+for (const c of curated) {
+  const t = tripById.get(c.trip_id);
+  add({
+    page: t ? `/trips/${t.slug}` : `trip#${c.trip_id}`,
+    route: 'app/trips/[slug]/page.tsx',
+    component: c.role === 'hero' ? 'thero' : 'tgal',
+    table: 'trip_images', recordId: c.id, field: 'url', role: c.role,
+    url: c.url, alt: c.alt_text ?? '', status: t?.status ?? 'unknown',
+    trip: t?.title ?? null, curated: true,
+    licence: c.licence, photographer: c.photographer, source: c.source,
+    subject: t?.subjects?.name ?? null, country: t?.countries?.name ?? null,
+  });
+}
+
 for (const t of trips ?? []) {
+  // Skip legacy references for trips that have been repopulated.
+  if (curatedByTrip.has(t.id)) continue;
   if (t.hero_image) {
     add({
       page: `/trips/${t.slug}`, route: 'app/trips/[slug]/page.tsx', component: 'thero',
@@ -140,7 +163,7 @@ for (const r of refs) {
     p.reachable && !p.width && 'dimensions-unknown',
     !r.alt?.trim() && 'missing-alt',
     r.hotlinked && 'hotlinked-not-hosted',
-    'no-licence-metadata',
+    !r.licence && 'no-licence-metadata',
   ].filter(Boolean);
 }
 
@@ -157,6 +180,20 @@ const duplicates = [...byUrl.entries()].filter(([, v]) => v.length > 1);
 
 const published = (trips ?? []).filter((t) => t.status === 'published');
 const coverage = published.map((t) => {
+  const cur = curatedByTrip.get(t.id) ?? [];
+  if (cur.length) {
+    const dayImgsC = (days ?? []).filter((d) => d.trip_id === t.id && d.image_url).length;
+    return {
+      id: t.id, slug: t.slug, title: t.title,
+      subject: t.subjects?.name ?? null, country: t.countries?.name ?? null,
+      curated: true,
+      hero: cur.some((c) => c.role === 'hero'),
+      heroAlt: cur.some((c) => c.role === 'hero' && c.alt_text?.trim()),
+      gallery: cur.filter((c) => c.role === 'gallery').length,
+      itinerary: dayImgsC,
+      total: cur.length + dayImgsC,
+    };
+  }
   const gallery = Array.isArray(t.gallery) ? t.gallery.filter((g) => (typeof g === 'string' ? g : g?.url)) : [];
   const dayImgs = (days ?? []).filter((d) => d.trip_id === t.id && d.image_url).length;
   return {
@@ -210,7 +247,8 @@ line('Hotlinked (not self-hosted)', count((r) => r.hotlinked));
 line('Missing alt text', count((r) => !r.alt?.trim()));
 line('Below minimum width', count((r) => r.issues.some((i) => i.startsWith('below-min-width'))));
 line('Dimensions undetectable', count((r) => r.issues.includes('dimensions-unknown')));
-line('Missing licence metadata', refs.length);
+line('Missing licence metadata', count((r) => !r.licence));
+line('Curated (rights recorded)', count((r) => r.curated));
 line('Duplicate URLs (distinct)', duplicates.length);
 console.log('');
 
