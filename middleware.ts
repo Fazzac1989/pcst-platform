@@ -42,10 +42,21 @@ export async function middleware(request: NextRequest) {
     url.pathname = '/admin/login';
     return NextResponse.redirect(url);
   }
+  // Only bounce an admin away from the login form. A teacher-portal session is
+  // also a Supabase session, and sending those to /admin left them stranded on
+  // the not-authorised screen with no way back to the admin login.
   if (isLogin && user) {
-    const url = request.nextUrl.clone();
-    url.pathname = '/admin';
-    return NextResponse.redirect(url);
+    const { data: profile } = await supabase
+      .from('profiles')
+      .select('role')
+      .eq('id', user.id)
+      .maybeSingle();
+    if (profile?.role === 'admin') {
+      const url = request.nextUrl.clone();
+      url.pathname = '/admin';
+      return NextResponse.redirect(url);
+    }
+    // Signed in as someone else: let them reach the form and sign in properly.
   }
 
   // Teacher portal. /portal/login, /portal/confirm and /portal/set-password are

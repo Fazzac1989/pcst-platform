@@ -79,11 +79,11 @@ async function search(query, { minWidth = 2400, minRatio = 0.5, maxRatio = 3 } =
 
 const ROLES = [
   { role: 'hero', label: 'Hero — the country at a glance', minWidth: 3000, minRatio: 1.7, maxRatio: 2.6 },
-  { role: 'gallery', label: 'Iconic landmark' },
-  { role: 'gallery', label: 'Educational attraction' },
-  { role: 'gallery', label: 'Culture and daily life' },
-  { role: 'gallery', label: 'Landscape and nature' },
-  { role: 'gallery', label: 'Architecture or cityscape' },
+  { role: 'gallery', label: 'Iconic landmark — the postcard shot' },
+  { role: 'gallery', label: 'Food — colourful local dishes, markets or street food' },
+  { role: 'gallery', label: 'Walking and exploring — streets, old towns, students on foot' },
+  { role: 'gallery', label: 'Adventure — the active, outdoor, memorable side' },
+  { role: 'gallery', label: 'Culture — festivals, traditions, crafts, performance' },
 ];
 
 const scaled = (title, w) =>
@@ -141,7 +141,11 @@ const CONTENT_SCHEMA = {
     },
     image_queries: {
       type: 'array',
-      description: 'One Wikimedia Commons search per image role, in the order given. Name a real landmark or place, 2-5 words. All different.',
+      description:
+        'One Wikimedia Commons search per image role, in the order given, all different. Name a real, ' +
+        'photographable subject in 2-5 words. For food, name a dish or a named market. For walking, name a ' +
+        'street, old town or trail. For adventure, name the activity and place. For culture, name a festival, ' +
+        'craft or performance tradition.',
       items: { type: 'string' },
     },
   },
@@ -203,12 +207,18 @@ async function pickImage(candidates, label, country, usedSubjects) {
         },
       },
       system:
-        'You are the photography director for a premium school-travel website. Pick the candidate with the most ' +
-        'visual impact that clearly shows the right place. Favour bright natural daylight, strong colour, and ' +
-        'wide establishing views where the subject fills the frame. Reject dull overcast scenes, close-ups of ' +
-        'details, signs or statues, cluttered frames, scaffolding, and anything that is a map, plan, painting ' +
-        'or model rather than a photograph. Write British English alt text describing only what the title and ' +
-        'description support.',
+        'You are the photography director for a premium school-travel website. These pictures have to make a ' +
+        'teenager want to go and a parent feel confident.\n\n' +
+        'Colour and light come first. Strongly prefer images whose title or description indicates bright ' +
+        'daylight, blue sky, sunshine, vivid colour, blossom, autumn colour, festival, lanterns, market ' +
+        'produce, painted buildings, sunset or clear mountain air. An image that is merely correct but flat, ' +
+        'grey, overcast, dim or monochrome should lose to a livelier one every time.\n\n' +
+        'Then relevance: it must genuinely show the stated role for this country.\n\n' +
+        'Reject outright: night shots unless the role is explicitly about lights, grey or rainy scenes, ' +
+        'close-ups of signs, plaques, statues or architectural details, museum object photographs on plain ' +
+        'backgrounds, empty rooms, building sites, scaffolding, and anything that is a map, plan, diagram, ' +
+        'painting, engraving or scale model rather than a photograph.\n\n' +
+        'Write British English alt text describing only what the title and description support.',
       messages: [
         {
           role: 'user',

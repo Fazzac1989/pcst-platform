@@ -88,11 +88,11 @@ const ROLES = [
   // Heroes crop into a cinematic band, so only genuinely wide sources survive
   // it without looking magnified.
   { role: 'hero', label: 'Hero — the trip at a glance', minWidth: 3000, minRatio: 1.7, maxRatio: 2.6 },
-  { role: 'gallery', label: 'Iconic destination', minWidth: 2400 },
-  { role: 'gallery', label: 'Educational experience', minWidth: 2400 },
-  { role: 'gallery', label: 'Culture and local life', minWidth: 2400 },
-  { role: 'gallery', label: 'Adventure and experience', minWidth: 2400 },
-  { role: 'gallery', label: 'Wow - the aspirational shot', minWidth: 2400, minRatio: 1.3 },
+  { role: 'gallery', label: 'Iconic landmark - the postcard shot', minWidth: 2400 },
+  { role: 'gallery', label: 'Food - colourful local dishes, markets or street food', minWidth: 2000 },
+  { role: 'gallery', label: 'Walking and exploring - streets, old towns, students on foot', minWidth: 2000 },
+  { role: 'gallery', label: 'Adventure - the active, outdoor, memorable side', minWidth: 2400 },
+  { role: 'gallery', label: 'Culture - festivals, traditions, crafts, performance', minWidth: 2000 },
 ];
 
 /**
@@ -190,18 +190,19 @@ async function pick(candidates, { label, query }, trip, alreadyUsed, usedSubject
         },
       },
       system:
-        'You are the photography director for a premium school-travel website. Pick the candidate with the most ' +
-        'visual impact that still clearly shows the right place and the right subject.\n\n' +
-        'Favour, in order: a wide establishing view where the landmark fills the frame and is instantly ' +
-        'recognisable; bright natural daylight, blue sky, strong colour, golden hour or dramatic weather; ' +
-        'a clean composition with an obvious subject.\n\n' +
-        'Reject: dull grey or overcast scenes, night shots unless the place is famous after dark, close-ups of ' +
-        'architectural details, signs, plaques or statues, cramped interiors, cluttered frames, construction ' +
-        'scaffolding, images dominated by parked cars or crowds, and anything that is a diagram, map, plan, ' +
-        'painting or model rather than a photograph.\n\n' +
-        'A file title mentioning a general view, panorama, skyline or aerial usually beats one naming a small ' +
-        'detail. Write British English alt text describing only what the title and description support — never ' +
-        'invent detail.',
+        'You are the photography director for a premium school-travel website. These pictures have to make a ' +
+        'teenager want to go and a parent feel confident.\n\n' +
+        'Colour and light come first. Strongly prefer images whose title or description indicates bright ' +
+        'daylight, blue sky, sunshine, vivid colour, blossom, autumn colour, festival, lanterns, market ' +
+        'produce, painted buildings, sunset or clear mountain air. An image that is merely correct but flat, ' +
+        'grey, overcast, dim or monochrome should lose to a livelier one every time.\n\n' +
+        'Then relevance: it must genuinely show the stated role for this trip.\n\n' +
+        'Reject outright: night shots unless the role is explicitly about lights, grey or rainy scenes, ' +
+        'close-ups of signs, plaques, statues or architectural details, museum object photographs on plain ' +
+        'backgrounds, empty rooms, building sites, scaffolding, and anything that is a map, plan, diagram, ' +
+        'painting, engraving or scale model rather than a photograph.\n\n' +
+        'Write British English alt text describing only what the title and description support — never invent ' +
+        'detail.',
       messages: [
         {
           role: 'user',
