@@ -364,6 +364,63 @@ export async function getCuratedImages(tripId: number): Promise<CuratedImage[]> 
   }));
 }
 
+export type CountryContent = {
+  intro: string | null;
+  educationNotes: string | null;
+  curriculumLinks: { subject: string; note: string }[];
+  climateSummary: string | null;
+  seasons: { season: string; months: string; note: string }[];
+  safetyNotes: string | null;
+  gettingThere: string | null;
+  usefulPhrases: { phrase: string; meaning: string }[];
+};
+
+/** Editorial content for a country master page, or null if not written yet. */
+export async function getCountryContent(slug: string): Promise<CountryContent | null> {
+  if (!hasSupabase) return null;
+  const db = createClient();
+  const { data, error } = await db
+    .from('countries')
+    .select('intro, education_notes, curriculum_links, climate_summary, seasons, safety_notes, getting_there, useful_phrases')
+    .eq('slug', slug)
+    .maybeSingle();
+  if (error || !data) return null;
+  const content: CountryContent = {
+    intro: data.intro,
+    educationNotes: data.education_notes,
+    curriculumLinks: Array.isArray(data.curriculum_links) ? (data.curriculum_links as any) : [],
+    climateSummary: data.climate_summary,
+    seasons: Array.isArray(data.seasons) ? (data.seasons as any) : [],
+    safetyNotes: data.safety_notes,
+    gettingThere: data.getting_there,
+    usefulPhrases: Array.isArray(data.useful_phrases) ? (data.useful_phrases as any) : [],
+  };
+  const written = content.intro || content.educationNotes || content.climateSummary;
+  return written ? content : null;
+}
+
+/** A country's own photography, replacing the borrowed trip hero. */
+export async function getCountryImages(slug: string): Promise<CuratedImage[]> {
+  if (!hasSupabase) return [];
+  const db = createClient();
+  const { data: country } = await db.from('countries').select('id').eq('slug', slug).maybeSingle();
+  if (!country) return [];
+  const { data, error } = await db
+    .from('country_images')
+    .select('id, role, url, alt_text, caption, width, height, focal_x, focal_y, photographer, licence, source_url, attribution_required, sort_order')
+    .eq('country_id', country.id)
+    .eq('approved', true)
+    .order('sort_order');
+  if (error) return [];
+  return (data ?? []).map((r: any) => ({
+    id: r.id, role: r.role, url: r.url, alt: r.alt_text ?? '', caption: r.caption,
+    width: r.width, height: r.height,
+    focalX: Number(r.focal_x ?? 0.5), focalY: Number(r.focal_y ?? 0.42),
+    photographer: r.photographer, licence: r.licence, sourceUrl: r.source_url,
+    attributionRequired: Boolean(r.attribution_required),
+  }));
+}
+
 export type CountrySummary = {
   name: string;
   slug: string;
