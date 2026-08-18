@@ -89,6 +89,38 @@ const ROLES = [
 const scaled = (title, w) =>
   `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(title)}?width=${w}`;
 
+/**
+ * Commons matches all the words in a query, so a four-word phrase like
+ * "Bushwalking Blue Mountains Three Sisters" often finds nothing while
+ * "Blue Mountains" finds plenty. Try the specific phrase, then broaden.
+ */
+function queryVariants(query, countryName) {
+  const words = query.trim().split(/\s+/);
+  const out = [query];
+  for (let n = words.length - 1; n >= 2; n--) out.push(words.slice(0, n).join(' '));
+  // Proper nouns usually carry the subject, so try those alone.
+  const proper = words.filter((w) => /^[A-ZÞÐÁÉÍÓÚÖÆ]/.test(w));
+  if (proper.length >= 2) out.push(proper.slice(0, 3).join(' '));
+  out.push(`${countryName} ${words[words.length - 1]}`);
+  return [...new Set(out)];
+}
+
+/** Search across progressively broader queries and looser constraints. */
+async function findCandidates(query, role, countryName) {
+  const constraints = [
+    { minWidth: role.minWidth ?? 2400, minRatio: role.minRatio ?? 0.5, maxRatio: role.maxRatio ?? 3 },
+    { minWidth: Math.round((role.minWidth ?? 2400) * 0.8), minRatio: (role.minRatio ?? 0.5) - 0.2, maxRatio: (role.maxRatio ?? 3) + 0.3 },
+    { minWidth: 1800 },
+  ];
+  for (const q of queryVariants(query, countryName)) {
+    for (const opts of constraints) {
+      const found = await search(q, opts);
+      if (found.length) return { candidates: found, usedQuery: q };
+    }
+  }
+  return { candidates: [], usedQuery: query };
+}
+
 /* ---------------- editorial content ---------------- */
 
 const CONTENT_SCHEMA = {
@@ -303,16 +335,7 @@ for (const slug of slugs) {
   let order = 0;
   for (const [i, role] of ROLES.entries()) {
     const query = content.image_queries[i] ?? `${country.name} landmark`;
-    const attempts = [
-      { minWidth: role.minWidth ?? 2400, minRatio: role.minRatio ?? 0.5, maxRatio: role.maxRatio ?? 3 },
-      { minWidth: Math.round((role.minWidth ?? 2400) * 0.8), minRatio: (role.minRatio ?? 0.5) - 0.2, maxRatio: (role.maxRatio ?? 3) + 0.3 },
-      { minWidth: 1800 },
-    ];
-    let candidates = [];
-    for (const opts of attempts) {
-      candidates = await search(query, opts);
-      if (candidates.length) break;
-    }
+    const { candidates, usedQuery } = await findCandidates(query, role, country.name);
     if (!candidates.length) { console.log(`  --  ${role.label.padEnd(32)} nothing free for "${query}"`); continue; }
 
     const chosen = await pickImage(candidates, role.label, country, used);
@@ -340,7 +363,7 @@ for (const slug of slugs) {
       });
       if (error) throw new Error(error.message);
       console.log(`  OK  ${role.label.padEnd(32)} ${String(chosen.candidate.width).padStart(5)}px r${chosen.candidate.ratio.toFixed(2)} ${(chosen.candidate.licence ?? '?').padEnd(13)}${chosen.candidate.qualityReviewed ? ' [QI]' : ''}`);
-      console.log(`        q: "${query}"`);
+      console.log(`        q: "${usedQuery}"${usedQuery !== query ? ` (broadened from "${query}")` : ''}`);
     } catch (e) {
       console.log(`  !!  ${role.label.padEnd(32)} ${e.message}`);
     }

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Populate curated photography for a set of trips.
  *
  *   node scripts/curate-pilot.mjs iceland japan-art-design-technology berlin
@@ -234,6 +234,35 @@ async function pick(candidates, { label, query }, trip, alreadyUsed, usedSubject
 const scaled = (title, width) =>
   `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(title)}?width=${width}`;
 
+/**
+ * Commons matches every word, so a long phrase often finds nothing while a
+ * shorter one finds plenty. Try the specific phrase first, then broaden.
+ */
+function queryVariants(query, placeName) {
+  const words = query.trim().split(/\s+/);
+  const out = [query];
+  for (let n = words.length - 1; n >= 2; n--) out.push(words.slice(0, n).join(' '));
+  const proper = words.filter((w) => /^[A-ZÞÐÁÉÍÓÚÖÆ]/.test(w));
+  if (proper.length >= 2) out.push(proper.slice(0, 3).join(' '));
+  out.push(`${placeName} ${words[words.length - 1]}`);
+  return [...new Set(out)];
+}
+
+async function findCandidates(query, plan, placeName) {
+  const constraints = [
+    { minWidth: plan.minWidth ?? 2400, minRatio: plan.minRatio ?? 0.5, maxRatio: plan.maxRatio ?? 3 },
+    { minWidth: Math.round((plan.minWidth ?? 2400) * 0.8), minRatio: (plan.minRatio ?? 0.5) - 0.2, maxRatio: (plan.maxRatio ?? 3) + 0.3 },
+    { minWidth: 1800 },
+  ];
+  for (const q of queryVariants(query, placeName)) {
+    for (const opts of constraints) {
+      const found = await search(q, opts);
+      if (found.length) return { candidates: found, usedQuery: q };
+    }
+  }
+  return { candidates: [], usedQuery: query };
+}
+
 async function store(trip, role, chosen, sortOrder) {
   const { candidate, altText } = chosen;
   const targetWidth = role === 'hero' ? 2600 : 1800;
@@ -316,18 +345,9 @@ for (const slug of slugs) {
   const usedSubjects = [];
   let order = 0;
   for (const plan of await plans(trip)) {
-    // Try the ideal constraints, then loosen rather than leave a slot empty.
-    const attempts = [
-      { minWidth: plan.minWidth ?? 2400, minRatio: plan.minRatio ?? 0.5, maxRatio: plan.maxRatio ?? 3 },
-      { minWidth: Math.round((plan.minWidth ?? 2400) * 0.8), minRatio: (plan.minRatio ?? 0.5) - 0.2, maxRatio: (plan.maxRatio ?? 3) + 0.3 },
-      { minWidth: 1800, minRatio: 0.5, maxRatio: 3 },
-    ];
-    let candidates = [];
-    let relaxed = 0;
-    for (const [i, opts] of attempts.entries()) {
-      candidates = await search(plan.query, opts);
-      if (candidates.length) { relaxed = i; break; }
-    }
+    // Broaden the wording and loosen the constraints rather than leave a gap.
+    const place = trip.city?.split(/[·,/]/)[0]?.trim() || trip.country || trip.title;
+    const { candidates, usedQuery } = await findCandidates(plan.query, plan, place);
     if (!candidates.length) {
       console.log(`  --  ${plan.label.padEnd(34)} nothing free for "${plan.query}"`);
       continue;
@@ -342,9 +362,9 @@ for (const slug of slugs) {
         `  OK  ${plan.label.padEnd(34)} ${String(chosen.candidate.width).padStart(5)}px ` +
         `r${chosen.candidate.ratio.toFixed(2)} ${String(Math.round(bytes / 1024)).padStart(4)}KB ` +
         `${(chosen.candidate.licence ?? '?').padEnd(13)} ${(chosen.candidate.photographer ?? 'unknown').slice(0, 20)}` +
-        `${chosen.candidate.qualityReviewed ? ' [QI]' : ''}${relaxed ? ` [relaxed x${relaxed}]` : ''}`
+        `${chosen.candidate.qualityReviewed ? ' [QI]' : ''}`
       );
-      console.log(`        q: "${plan.query}"  |  alt: ${chosen.altText || '(none drafted)'}`);
+      console.log(`        q: "${usedQuery}"  |  alt: ${chosen.altText || '(none drafted)'}`);
     } catch (e) {
       console.log(`  !!  ${plan.label.padEnd(34)} ${e.message}`);
     }
