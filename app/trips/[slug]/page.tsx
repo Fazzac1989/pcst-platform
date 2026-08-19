@@ -201,12 +201,9 @@ export default async function TripPage({ params }: Props) {
               The <i>itinerary</i>
             </h2>
             {hasStructured ? (
-              <div className="itin-cols itin-cols--structured">
-                <ItineraryTimeline days={itineraryDays} tripHighlights={tripHighlights} />
-                <div className="side">
-                  <AppointmentModal tripSlug={trip.slug} />
-                </div>
-              </div>
+              <ItineraryTimeline days={itineraryDays} tripHighlights={tripHighlights}>
+                <AppointmentModal tripSlug={trip.slug} />
+              </ItineraryTimeline>
             ) : (
               <ItineraryPanel
                 itinerary={trip.itinerary}

@@ -14,9 +14,12 @@ import { buildJourney, legLabel, type ItineraryDayView } from '@/lib/itinerary/s
 export default function ItineraryTimeline({
   days,
   tripHighlights,
+  children,
 }: {
   days: ItineraryDayView[];
   tripHighlights: string[];
+  /** The booking card, placed beside the timeline rather than above it. */
+  children?: React.ReactNode;
 }) {
   const [open, setOpen] = useState<Set<number>>(new Set());
   const journey = useMemo(() => buildJourney(days), [days]);
@@ -34,13 +37,13 @@ export default function ItineraryTimeline({
       {(journey.length > 1 || tripHighlights.length > 0) && (
         <div className="itin-overview">
           {journey.length > 1 && (
-            <nav className="journey" aria-label="Where this trip goes">
+            <nav className="itin-journey" aria-label="Where this trip goes">
               <span className="itin-label">Your journey</span>
               <ol>
                 {journey.map((leg) => (
                   <li key={`${leg.location}-${leg.fromDay}`}>
-                    <span className="journey-place">{leg.location}</span>
-                    <span className="journey-days">{legLabel(leg)}</span>
+                    <span className="itin-journey-place">{leg.location}</span>
+                    <span className="itin-journey-days">{legLabel(leg)}</span>
                   </li>
                 ))}
               </ol>
@@ -59,16 +62,18 @@ export default function ItineraryTimeline({
         </div>
       )}
 
-      <div className="itin-controls">
-        <button
-          type="button"
-          onClick={() => setOpen(allOpen ? new Set() : new Set(days.map((d) => d.id)))}
-        >
-          {allOpen ? 'Collapse all days' : 'Expand all days'}
-        </button>
-      </div>
+      <div className="itin-body">
+        <div className="itin-main">
+          <div className="itin-controls">
+            <button
+              type="button"
+              onClick={() => setOpen(allOpen ? new Set() : new Set(days.map((d) => d.id)))}
+            >
+              {allOpen ? 'Collapse all days' : 'Expand all days'}
+            </button>
+          </div>
 
-      <ol className="itin-list">
+          <ol className="itin-list">
         {days.map((day, i) => {
           const s = day.structured;
           const isOpen = open.has(day.id);
@@ -174,7 +179,10 @@ export default function ItineraryTimeline({
             </li>
           );
         })}
-      </ol>
+          </ol>
+        </div>
+        {children && <div className="side">{children}</div>}
+      </div>
     </div>
   );
 }
