@@ -17,6 +17,7 @@
 export const PAGE_TYPES = [
   'cover',
   'brandIntroduction',
+  'contents',
   'textEditorial',
   'subjectDivider',
   'destinationDivider',
@@ -207,6 +208,7 @@ export const isSingleLeaf = (p: BrochurePage) =>
 export const PAGE_LABELS: Record<PageType, string> = {
   cover: 'Cover',
   brandIntroduction: 'Introduction',
+  contents: 'Contents',
   textEditorial: 'Editorial',
   subjectDivider: 'Subject divider',
   destinationDivider: 'Destination divider',

@@ -3,7 +3,7 @@
 /* eslint-disable @next/next/no-img-element -- brochure pages are fixed-ratio leaves, not responsive layout images */
 import type { Brochure, BrochurePage } from '@/lib/brochure/schema';
 import type { BrochureTrip } from '@/lib/brochure/data';
-import { CONTACT_EMAIL, CONTACT_PHONE, STANDARD_COPY } from '@/lib/brochure/standard-copy';
+import { CONTACT_EMAIL, CONTACT_PHONE, STANDARD_COPY, isBlankPage } from '@/lib/brochure/standard-copy';
 
 /**
  * One printed leaf.
@@ -15,6 +15,8 @@ import { CONTACT_EMAIL, CONTACT_PHONE, STANDARD_COPY } from '@/lib/brochure/stan
  * or 720px on a desktop spread.
  */
 
+export type Chapter = { index: number; label: string; kind: string };
+
 export type PageProps = {
   page: BrochurePage;
   brochure: Brochure;
@@ -22,6 +24,9 @@ export type PageProps = {
   brochureQrSvg: string | null;
   pageNumber: number;
   onTripClick?: (tripId: number, href: string) => void;
+  /** For the contents page, which is a real leaf rather than a side panel. */
+  chapters?: Chapter[];
+  onJump?: (pageIndex: number) => void;
 };
 
 const Cta = ({
@@ -56,10 +61,22 @@ export default function BrochurePageView({
   brochureQrSvg,
   pageNumber,
   onTripClick,
+  chapters,
+  onJump,
 }: PageProps) {
   const c = page.content ?? {};
   const trip = page.tripId ? trips[page.tripId] : null;
   const bg = page.backgroundImage ?? trip?.heroImage ?? null;
+
+  // A padding leaf exists only to keep spreads aligned. Rather than a blank
+  // sheet, it carries the mark — which is what a printed brochure does.
+  if (isBlankPage(c as Record<string, unknown>)) {
+    return (
+      <article className="bp bp-mark">
+        <img src="/images/logo-white.png" alt="" />
+      </article>
+    );
+  }
 
   const tripCta =
     trip && c.ctaHref ? (
@@ -152,6 +169,25 @@ export default function BrochurePageView({
         </article>
       );
     }
+
+    /* ─────────────────────────────  contents ───────────────────────────── */
+    case 'contents':
+      return (
+        <article className="bp bp-contents">
+          <p className="bp-eyebrow">Contents</p>
+          <h2 className="bp-h2">What&apos;s inside</h2>
+          <ul>
+            {(chapters ?? []).map((ch) => (
+              <li key={ch.index} className={ch.kind.includes('Divider') ? 'is-section' : ''}>
+                <button type="button" onClick={() => onJump?.(ch.index)}>
+                  <span>{ch.label}</span>
+                  <em>{ch.index + 1}</em>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </article>
+      );
 
     /* ───────────────────────────── dividers ───────────────────────────── */
     case 'subjectDivider':

@@ -196,11 +196,11 @@ export default function Flipbook({ brochure, pages, trips, brochureQrSvg }: Prop
     () =>
       pages
         .map((p, i) => ({ page: p, i }))
+        // The cover and the contents page itself are not entries in the contents.
         .filter(
           ({ page: p }) =>
             p.pageType === 'subjectDivider' ||
             p.pageType === 'destinationDivider' ||
-            p.pageType === 'cover' ||
             p.pageType === 'brandIntroduction' ||
             p.pageType === 'tripHero' ||
             p.pageType === 'safety' ||
@@ -229,9 +229,15 @@ export default function Flipbook({ brochure, pages, trips, brochureQrSvg }: Prop
         brochureQrSvg={brochureQrSvg}
         pageNumber={n}
         onTripClick={onTripClick}
+        chapters={chapters}
+        onJump={jump}
       />
     ) : (
-      <div className="bp bp-blank" />
+      // The leaf facing the cover. Carries the mark rather than sitting blank.
+      <div className="bp bp-mark">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/images/logo-white.png" alt="" />
+      </div>
     );
 
   const leftNumber = spread ? (index === 0 ? 1 : (index - 1) * 2 + 2) : index + 1;
