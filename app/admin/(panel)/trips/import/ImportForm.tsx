@@ -1,10 +1,11 @@
-'use client';
+﻿'use client';
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { addCountry, addSubject, saveTrip } from '@/lib/admin/actions';
 import { parseTripDocument, type ImportResult } from '@/lib/admin/import-actions';
+import { structureTrip } from '@/lib/admin/itinerary-actions';
 
 const inputCls =
   'border border-line rounded px-3 py-2 text-sm text-ink outline-none focus:border-teal bg-white w-full';
@@ -21,7 +22,7 @@ export default function ImportForm({ configured }: { configured: boolean }) {
   const router = useRouter();
   const [file, setFile] = useState<File | null>(null);
   const [text, setText] = useState('');
-  const [busy, setBusy] = useState<'read' | 'create' | null>(null);
+  const [busy, setBusy] = useState<'read' | 'create' | 'structure' | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<Parsed | null>(null);
 
@@ -93,6 +94,20 @@ export default function ImportForm({ configured }: { configured: boolean }) {
       setBusy(null);
       return;
     }
+
+    // Build the scannable day cards straight away, so an imported trip is
+    // ready to publish rather than needing a second manual pass.
+    if (saved.id && draft.itinerary.length) {
+      setBusy('structure');
+      const structured = await structureTrip(saved.id);
+      if (!structured.ok) {
+        // The trip exists either way; the page just falls back to plain days.
+        setError(`Trip created, but the day summaries failed: ${structured.error}`);
+        setBusy(null);
+        return;
+      }
+    }
+
     router.push(`/admin/trips/${saved.id}`);
     router.refresh();
   }
@@ -128,6 +143,58 @@ export default function ImportForm({ configured }: { configured: boolean }) {
             Word (.docx), plain text or Markdown. Old .doc files need saving as .docx first.
           </span>
         </label>
+
+        <details className="border border-line rounded p-4 text-sm">
+          <summary className="cursor-pointer font-semibold text-teal-deep">
+            What the document needs to contain
+          </summary>
+          <div className="grid gap-3 mt-3 text-ink-soft">
+            <p>
+              Plain prose is fine — no template required. These are the things the importer looks
+              for, and what happens if they are missing.
+            </p>
+            <ul className="grid gap-2 pl-5 list-disc marker:text-teal">
+              <li>
+                <b className="text-ink">Start each day with a heading</b> containing the word Day
+                and its number — <em>Day 1</em>, <em>DAY 3 — Tokyo</em>, <em>Day 4: Nikko</em>. This
+                is the single most important thing: it is how the days get split apart.
+              </li>
+              <li>
+                <b className="text-ink">Write each day as normal paragraphs.</b> Bullet lists work
+                too, but prose gives better summaries.
+              </li>
+              <li>
+                <b className="text-ink">Name the places you actually visit.</b> Museums, landmarks,
+                districts, stations. Named places become the day&apos;s highlights and drive the
+                icons and the journey rail.
+              </li>
+              <li>
+                <b className="text-ink">Keep your hedges exactly as you mean them.</b> Phrases like
+                <em> subject to availability</em>, <em>weather permitting</em> or
+                <em> depending on flight times</em> are detected and shown on the page. If an
+                activity is not guaranteed, say so in the document.
+              </li>
+              <li>
+                <b className="text-ink">Leave deliberately vague items vague.</b> If you write
+                &ldquo;a selected engineering experience&rdquo;, it stays that way — it will never
+                be turned into a named company.
+              </li>
+              <li>
+                <b className="text-ink">State meals and notable transport.</b> Breakfast, lunch and
+                dinner are captured quietly; a Shinkansen or ferry becomes a highlight.
+              </li>
+              <li>
+                <b className="text-ink">Somewhere near the top</b>, give the destination, the
+                subject, the duration and where it departs from. Anything missing is flagged for
+                you to fill in rather than guessed.
+              </li>
+            </ul>
+            <p>
+              Internal notes, margins and quote references are ignored, so you can upload your
+              operator document as-is.
+            </p>
+          </div>
+        </details>
 
         <label className="grid gap-1.5">
           <span className={labelCls}>…or paste the itinerary text</span>
@@ -245,7 +312,7 @@ export default function ImportForm({ configured }: { configured: boolean }) {
               disabled={busy !== null}
               className="bg-teal text-ink font-semibold text-sm px-6 py-3 rounded-sm hover:bg-teal-hover transition-colors disabled:opacity-60"
             >
-              {busy === 'create' ? 'Creating draft…' : 'Create draft trip'}
+              {busy === 'create' ? 'Creating draft…' : busy === 'structure' ? 'Building day summaries…' : 'Create draft trip'}
             </button>
             <button onClick={() => setResult(null)} className={smallBtn} disabled={busy !== null}>
               Discard

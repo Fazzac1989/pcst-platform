@@ -138,11 +138,7 @@ export default function SiteHeader({
               );
             })}
           </nav>
-          <div className="nav-cta">
-            <Link className="btn btn-admin" href="/admin">
-              Login
-            </Link>
-          </div>
+          {/* Staff sign-in lives on the Premium Choice Travel admin, not here. */}
         </div>
       </div>
 
