@@ -29,7 +29,10 @@ const DAY_SCHEMA = {
     },
     primary_location: {
       type: 'string',
-      description: 'The single town or city the day is mostly spent in, e.g. "Tokyo".',
+      description:
+        'Exactly ONE town or city, e.g. "Tokyo". Never a pair, never "Tokyo and Nikko", never a ' +
+        'region or country. On a day that travels between places, give the destination — where the ' +
+        'group ends up that night. This drives a journey rail, so it must be a single place name.',
     },
     highlights: {
       type: 'array',

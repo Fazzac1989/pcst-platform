@@ -106,6 +106,24 @@ for (const slug of slugs) {
       }).eq('id', trip.id);
       console.log(`   trip: ${journey.map((j) => j.location).join(' -> ')}`);
       console.log(`   highlights: ${highlights.join(' · ')}`);
+
+      // This script writes outside Next, so the cached page would otherwise
+      // keep serving the pre-extraction render until the next deploy.
+      const site = process.env.NEXT_PUBLIC_SITE_URL;
+      const secret = process.env.REVALIDATE_SECRET;
+      if (site && secret) {
+        try {
+          const res = await fetch(
+            `${site}/api/revalidate?secret=${encodeURIComponent(secret)}&slug=${encodeURIComponent(trip.slug)}`,
+            { method: 'POST' }
+          );
+          console.log(`   revalidated: ${res.ok ? 'yes' : `no (${res.status})`}`);
+        } catch {
+          console.log('   revalidated: no (site unreachable)');
+        }
+      } else {
+        console.log('   revalidate skipped: set NEXT_PUBLIC_SITE_URL and REVALIDATE_SECRET');
+      }
     } catch (e) {
       console.log(`   trip rollup FAILED — ${e.message}`);
     }
