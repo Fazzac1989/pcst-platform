@@ -146,6 +146,9 @@ export default async function TripPage({ params }: Props) {
               {trip.departs}
             </div>
           </div>
+          <a className="tpdf" href={`/trips/${trip.slug}/pdf`} target="_blank" rel="noreferrer">
+            Download this itinerary as a PDF
+          </a>
         </div>
       </div>
 
