@@ -11,8 +11,23 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ ok: false, error: 'Invalid secret' }, { status: 401 });
   }
   const slug = request.nextUrl.searchParams.get('slug');
+  const scope = request.nextUrl.searchParams.get('scope');
+
+  const revalidated: string[] = ['/', '/trips'];
   revalidatePath('/');
   revalidatePath('/trips');
-  if (slug) revalidatePath(`/trips/${slug}`);
-  return NextResponse.json({ ok: true, revalidated: ['/', '/trips', slug && `/trips/${slug}`].filter(Boolean) });
+  if (slug) {
+    revalidatePath(`/trips/${slug}`);
+    revalidated.push(`/trips/${slug}`);
+  }
+
+  // Renaming a subject or country changes every page that lists it, not just
+  // the trips themselves.
+  if (scope === 'taxonomy') {
+    revalidatePath('/countries/[slug]', 'page');
+    revalidatePath('/subjects/[slug]', 'page');
+    revalidated.push('/countries/[slug]', '/subjects/[slug]');
+  }
+
+  return NextResponse.json({ ok: true, revalidated });
 }
