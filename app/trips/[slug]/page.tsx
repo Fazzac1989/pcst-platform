@@ -6,8 +6,16 @@ import AppointmentModal from '@/components/AppointmentModal';
 import ViewTracker from '@/components/ViewTracker';
 import SiteHeader from '@/components/SiteHeaderWithData';
 import { SiteFooterSimple } from '@/components/SiteFooter';
-import { getBookingTerms, getCuratedImages, getPublishedTrips, getTripBySlug } from '@/lib/data';
+import {
+  getBookingTerms,
+  getCuratedImages,
+  getItineraryDays,
+  getPublishedTrips,
+  getTripBySlug,
+  getTripHighlights,
+} from '@/lib/data';
 import ItineraryPanel from './ItineraryPanel';
+import ItineraryTimeline from './ItineraryTimeline';
 import TripGallery, { type GalleryItem } from './TripGallery';
 
 type Props = { params: { slug: string } };
@@ -39,6 +47,14 @@ export default async function TripPage({ params }: Props) {
     getBookingTerms(),
   ]);
   if (!trip) notFound();
+
+  // The structured timeline replaces the old day list only once a trip has been
+  // through extraction; until then the previous presentation stands.
+  const [itineraryDays, tripHighlights] = await Promise.all([
+    getItineraryDays(trip.id),
+    getTripHighlights(trip.id),
+  ]);
+  const hasStructured = itineraryDays.some((d) => d.structured);
 
   // Curated photography wins where it exists; otherwise fall back to the
   // legacy gallery field so nothing regresses before the reset is finished.
@@ -184,13 +200,22 @@ export default async function TripPage({ params }: Props) {
             <h2 className="st serif">
               The <i>itinerary</i>
             </h2>
-            <ItineraryPanel
-              itinerary={trip.itinerary}
-              fallbackImage={trip.heroImage ?? trip.gallery[0]?.url ?? null}
-              fallbackAlt={trip.heroAlt || trip.gallery[0]?.alt || ''}
-            >
-              <AppointmentModal tripSlug={trip.slug} />
-            </ItineraryPanel>
+            {hasStructured ? (
+              <div className="itin-cols itin-cols--structured">
+                <ItineraryTimeline days={itineraryDays} tripHighlights={tripHighlights} />
+                <div className="side">
+                  <AppointmentModal tripSlug={trip.slug} />
+                </div>
+              </div>
+            ) : (
+              <ItineraryPanel
+                itinerary={trip.itinerary}
+                fallbackImage={trip.heroImage ?? trip.gallery[0]?.url ?? null}
+                fallbackAlt={trip.heroAlt || trip.gallery[0]?.alt || ''}
+              >
+                <AppointmentModal tripSlug={trip.slug} />
+              </ItineraryPanel>
+            )}
           </div>
         </section>
 

@@ -1,5 +1,6 @@
 import 'server-only';
 import { createClient as createSupabaseClient } from '@supabase/supabase-js';
+import { mapStructured, type ItineraryDayView } from '@/lib/itinerary/schema';
 
 /**
  * Cookie-less anon client: public pages must stay statically renderable
@@ -315,6 +316,40 @@ export async function getSubjects(): Promise<SubjectSummary[]> {
     map.set(trip.subjectSlug, entry);
   }
   return [...map.values()].sort((a, b) => a.name.localeCompare(b.name));
+}
+
+/**
+ * Days with their structured presentation layer, for the new timeline.
+ * Returns an empty array if the structured columns are not present yet, so the
+ * trip page falls back to the previous rendering.
+ */
+export async function getItineraryDays(tripId: number): Promise<ItineraryDayView[]> {
+  if (!hasSupabase) return [];
+  const db = createClient();
+  const { data, error } = await db
+    .from('itinerary_days')
+    .select('*')
+    .eq('trip_id', tripId)
+    .order('sort_order');
+  if (error) return [];
+  return (data ?? []).map((r: any) => ({
+    id: r.id,
+    sortOrder: r.sort_order,
+    label: r.label,
+    title: r.title,
+    description: r.description,
+    imageUrl: r.image_url ?? null,
+    imageAlt: r.image_alt ?? '',
+    structured: mapStructured(r),
+  }));
+}
+
+export async function getTripHighlights(tripId: number): Promise<string[]> {
+  if (!hasSupabase) return [];
+  const db = createClient();
+  const { data, error } = await db.from('trips').select('trip_highlights').eq('id', tripId).maybeSingle();
+  if (error || !data) return [];
+  return Array.isArray(data.trip_highlights) ? (data.trip_highlights as string[]) : [];
 }
 
 export type CuratedImage = {
