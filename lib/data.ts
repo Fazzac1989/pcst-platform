@@ -298,6 +298,23 @@ export type SubjectSummary = {
 };
 
 /** Subjects that have at least one published trip, with card metadata. */
+/**
+ * The subject's own write-up, shown at the top of its public page. Null while
+ * unwritten — and while the subject_description migration has not been run —
+ * so the page simply skips the section.
+ */
+export async function getSubjectDescription(slug: string): Promise<string | null> {
+  if (!hasSupabase) return null;
+  const db = createClient();
+  const { data, error } = await db
+    .from('subjects')
+    .select('description')
+    .eq('slug', slug)
+    .maybeSingle();
+  if (error || !data) return null;
+  return (data.description as string | null)?.trim() || null;
+}
+
 export async function getSubjects(): Promise<SubjectSummary[]> {
   const trips = await getPublishedTrips();
   const map = new Map<string, SubjectSummary>();

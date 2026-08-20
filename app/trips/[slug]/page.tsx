@@ -78,7 +78,12 @@ export default async function TripPage({ params }: Props) {
     focalY: g.focalY ?? 0.5,
   }));
 
-  const others = allTrips.filter((t) => t.slug !== trip.slug);
+  // Two or three genuine alternatives in the same subject, not a wall of every
+  // trip we sell. A teacher reading a History itinerary is weighing History
+  // options, so that is what the page offers next.
+  const alternatives = allTrips
+    .filter((t) => t.subjectSlug === trip.subjectSlug && t.slug !== trip.slug)
+    .slice(0, 3);
 
   // Only the facts that are actually filled in — the panel is hidden when empty.
   const cf = trip.countryFacts;
@@ -146,9 +151,6 @@ export default async function TripPage({ params }: Props) {
               {trip.departs}
             </div>
           </div>
-          <a className="tpdf" href={`/trips/${trip.slug}/pdf`} target="_blank" rel="noreferrer">
-            Download this itinerary as a PDF
-          </a>
         </div>
       </div>
 
@@ -244,22 +246,33 @@ export default async function TripPage({ params }: Props) {
           </div>
         </section>
 
-        <section className="others">
-          <div className="wrap">
-            <span className="eyebrow">Keep exploring</span>
-            <h2 className="st serif">
-              More trips your students <i>will remember</i>
-            </h2>
-            <div className="olinks">
-              {others.map((t) => (
-                <Link href={`/trips/${t.slug}`} key={t.slug}>
-                  {t.title}
-                </Link>
-              ))}
-              <Link href="/#trips">← All featured trips</Link>
+        {alternatives.length > 0 && (
+          <section className="others">
+            <div className="wrap">
+              <span className="eyebrow">{trip.subject}</span>
+              <h2 className="st serif">
+                Also worth <i>considering</i>
+              </h2>
+              <div className="altgrid">
+                {alternatives.map((t) => (
+                  <Link href={`/trips/${t.slug}`} key={t.slug} className="altcard">
+                    <span className="altcard-img">
+                      {t.heroImage && (
+                        <Image src={t.heroImage} alt="" fill sizes="(max-width: 700px) 100vw, 33vw" style={{ objectFit: 'cover' }} />
+                      )}
+                    </span>
+                    <span className="altcard-body">
+                      <strong>{t.title}</strong>
+                      <span>
+                        {t.country} · {t.durationDays} days
+                      </span>
+                    </span>
+                  </Link>
+                ))}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
       </main>
 
       <SiteFooterSimple />
