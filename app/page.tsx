@@ -374,47 +374,31 @@ export default async function HomePage() {
           </div>
         </section>
 
-        {/* the app — one trip, everyone connected */}
+        {/* the app — your travel companion */}
         <section className="connect" id="app">
           <div className="wrap">
             <span className="eyebrow">The Premium Choice difference</span>
             <h2 className="section-title serif">
-              Before. During. <i>After.</i>
+              Your travel <i>companion</i>
             </h2>
             <p className="section-sub">
-              One trip. Everyone connected. Our app gives teachers, parents and students each their
-              own view of the same journey — before departure, on the ground and after the group is
-              home.
+              Before, during and after — one trip, everyone connected. Teachers, parents and
+              students each get their own view of the same journey.
             </p>
 
             <div className="phones">
               {[
-                {
-                  role: 'Teacher',
-                  tagline: 'Run the trip',
-                  items: ['Student register', 'Headcount', 'Documents', 'Emergency contacts', 'Flights', 'Rooms', 'Vouchers', 'Broadcast', 'Translation'],
-                },
-                {
-                  role: 'Parent',
-                  tagline: 'Follow the journey',
-                  items: ['Live status', 'Daily updates', 'Photos', 'Itinerary', 'Flight information', 'Notifications', 'Emergency information'],
-                },
-                {
-                  role: 'Student',
-                  tagline: 'Experience the journey',
-                  items: ["What's happening today", 'Learning challenges', 'Maps', 'Destination content', 'Assignments', 'Trip journal', 'Photos'],
-                },
+                { role: 'Teacher', tagline: 'Run the trip', img: '/images/app-teacher.png', alt: "The teacher's home screen: student register, flights, accommodation, vouchers, broadcast and translation above the destination weather" },
+                { role: 'Parent', tagline: 'Follow the journey', img: '/images/app-parent.png', alt: "The itinerary screen a parent follows: each day's activities laid out from arrival onwards" },
+                { role: 'Student', tagline: 'Experience the journey', img: '/images/app-student.png', alt: "The student's Explorer home screen: flights, accommodation, vouchers, photos, announcements and translation" },
               ].map((p) => (
-                <div className="phone" key={p.role}>
-                  <div className="phone-screen">
-                    <span className="phone-notch" aria-hidden="true"></span>
-                    <span className="phone-role">{p.role}</span>
-                    <span className="phone-tagline">{p.tagline}</span>
-                    <ul>
-                      {p.items.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
+                <div className="phone-col" key={p.role}>
+                  <span className="phone-role">{p.role}</span>
+                  <span className="phone-tagline">{p.tagline}</span>
+                  <div className="phone">
+                    <div className="phone-shot">
+                      <Image src={p.img} alt={p.alt} width={640} height={1387} sizes="(max-width: 900px) 80vw, 300px" />
+                    </div>
                   </div>
                 </div>
               ))}

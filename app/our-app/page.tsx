@@ -2,9 +2,9 @@ import type { Metadata } from 'next';
 import InfoPage from '@/components/InfoPage';
 
 export const metadata: Metadata = {
-  title: 'Our app',
+  title: 'Your travel companion',
   description:
-    'One trip, everyone connected: the Premium Choice School Trips app gives teachers, parents and students each their own view of the same journey.',
+    'Your travel companion: the Premium Choice School Trips app gives teachers, parents and students each their own view of the same journey.',
 };
 
 // Note: /app belongs to the travelling app itself (code-based sign-in for
@@ -13,8 +13,8 @@ export default function OurAppPage() {
   return (
     <InfoPage
       eyebrow="Our app"
-      title="One trip. Everyone connected."
-      heroLine="Three views of the same journey — teacher, parent and student"
+      title="Your travel companion"
+      heroLine="One trip, everyone connected — teacher, parent and student"
       lede="Every journey we run travels with its own app. Teachers get the controls, parents get the reassurance, students get the experience — all connected to the same live trip, before departure, on the ground and after the group is home."
       sections={[
         {

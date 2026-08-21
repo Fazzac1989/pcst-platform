@@ -157,44 +157,36 @@ h2.section-title.pct-title { font-size: clamp(24px, 3.2vw, 38px); line-height: 1
    the three views read as one product. */
 .connect { background: var(--cream); border-bottom: 1px solid var(--line); }
 .connect .section-sub { max-width: 62ch; }
-.phones { display: grid; grid-template-columns: repeat(3, 1fr); gap: 34px; margin-top: 56px; align-items: start; }
-.phone {
-  background: var(--ink); border-radius: 34px; padding: 12px;
-  box-shadow: 0 34px 60px -30px rgba(22, 36, 46, .5);
-}
-.phone:nth-child(2) { transform: translateY(-18px); }
-.phone-screen {
-  position: relative; background: #fff; border-radius: 24px;
-  padding: 34px 22px 24px; min-height: 100%;
-}
-.phone-notch {
-  position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
-  width: 74px; height: 8px; border-radius: 999px; background: var(--ink); opacity: .16;
-}
+.phones { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 56px; align-items: start; }
+.phone-col { display: grid; justify-items: center; text-align: center; }
+.phone-col:nth-child(2) { transform: translateY(-18px); }
 .phone-role {
-  display: inline-block; font-size: 10.5px; letter-spacing: .26em; text-transform: uppercase;
+  font-size: 11px; letter-spacing: .28em; text-transform: uppercase;
   font-weight: 700; color: var(--brass); margin-bottom: 4px;
 }
 .phone-tagline {
-  display: block; font-family: var(--font-fraunces), serif; font-weight: 500;
-  font-size: 21px; line-height: 1.2; margin-bottom: 16px;
+  font-family: var(--font-fraunces), serif; font-weight: 500;
+  font-size: 22px; line-height: 1.2; margin-bottom: 20px;
 }
-.phone-screen ul { display: grid; gap: 7px; }
-.phone-screen li {
-  display: flex; align-items: center; gap: 10px;
-  background: var(--cream); border: 1px solid var(--line); border-radius: 10px;
-  padding: 9px 12px; font-size: 13px; font-weight: 500; color: var(--ink);
+.phone {
+  width: min(100%, 300px);
+  background: var(--ink); border-radius: 34px; padding: 11px;
+  box-shadow: 0 34px 60px -30px rgba(22, 36, 46, .5);
 }
-.phone-screen li::before {
-  content: ""; width: 7px; height: 7px; border-radius: 50%;
-  background: var(--brass-light); flex: 0 0 auto;
+/* The screenshot is tall; show the top of the screen and let it fade out, the
+   way app showcases crop rather than shrinking the UI to unreadability. */
+.phone-shot { position: relative; border-radius: 24px; overflow: hidden; height: 500px; background: #fff; }
+.phone-shot img { width: 100%; height: auto; display: block; }
+.phone-shot::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 90px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #fff);
 }
 .connect-foot { margin-top: 44px; text-align: center; }
 .connect-foot a { font-weight: 700; font-size: 14px; letter-spacing: .06em; text-transform: uppercase; color: var(--brass); border-bottom: 2px solid var(--brass-light); padding-bottom: 4px; }
 .connect-foot a:hover { color: var(--ink); }
 @media (max-width: 900px) {
-  .phones { grid-template-columns: 1fr; max-width: 340px; margin-left: auto; margin-right: auto; }
-  .phone:nth-child(2) { transform: none; }
+  .phones { grid-template-columns: 1fr; max-width: 360px; margin-left: auto; margin-right: auto; }
+  .phone-col:nth-child(2) { transform: none; }
 }
 .audiences .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; margin-top: 52px; }
 .aud-card { position: relative; background: var(--white); border: 1px solid var(--line); padding: 38px 34px 34px; border-radius: 3px; transition: transform .3s ease, box-shadow .3s ease; }

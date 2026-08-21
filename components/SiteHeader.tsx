@@ -23,7 +23,6 @@ type MenuKey = 'subjects' | 'countries';
 // school leaders) and About live in the footer and on Why Premium Choice, so
 // the header stays scannable.
 const NAV_LINKS = [
-  { label: 'Trips', anchor: 'trips', href: '/trips' },
   { label: 'Subjects', anchor: 'subjects' },
   { label: 'Destinations', anchor: 'countries' },
   { label: 'Why Premium Choice', anchor: 'why', href: '/why-premium-choice' },
