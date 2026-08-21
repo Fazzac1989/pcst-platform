@@ -3,17 +3,39 @@ import Link from 'next/link';
 import AppointmentForm from '@/components/AppointmentForm';
 import SiteHeader from '@/components/SiteHeaderWithData';
 import { SiteFooterFull } from '@/components/SiteFooter';
-import { getFeaturedTrips, getPublishedTripCount, getSubjects } from '@/lib/data';
+import { getFeaturedTrips, getPublishedTripCount, getPublishedTrips, getSubjects } from '@/lib/data';
 
 // Country display names as used on the reference featured cards.
 const COUNTRY_SHORT: Record<string, string> = { 'United Kingdom': 'UK' };
 
+/** The less predictable destinations and themes lead the spotlight band. */
+const DISTINCTIVE_COUNTRIES = ['Mongolia', 'New Zealand', 'Australia', 'Nepal', 'Vietnam', 'Iceland', 'Japan', 'South Africa'];
+const DISTINCTIVE_SUBJECTS = ['Volunteering', 'Outdoor Education', 'Skiing', 'STEAM'];
+
 export default async function HomePage() {
-  const [featured, tripCount, subjects] = await Promise.all([
+  const [featured, allPublished, tripCount, subjects] = await Promise.all([
     getFeaturedTrips(),
+    getPublishedTrips(),
     getPublishedTripCount(),
     getSubjects(),
   ]);
+
+  // The spotlight shows trips marked featured in the admin, topped up with the
+  // most distinctive journeys — one per country — so it never sits empty and
+  // never reads as six city breaks.
+  const spotlight = [...featured];
+  if (spotlight.length < 6) {
+    const score = (t: (typeof allPublished)[number]) =>
+      (DISTINCTIVE_COUNTRIES.indexOf(t.country) >= 0 ? 10 - DISTINCTIVE_COUNTRIES.indexOf(t.country) : 0) +
+      (DISTINCTIVE_SUBJECTS.includes(t.subject) ? 6 : 0);
+    const seenCountries = new Set(spotlight.map((t) => t.country));
+    for (const t of [...allPublished].sort((a, b) => score(b) - score(a))) {
+      if (spotlight.length >= 6) break;
+      if (spotlight.some((x) => x.slug === t.slug) || seenCountries.has(t.country)) continue;
+      spotlight.push(t);
+      seenCountries.add(t.country);
+    }
+  }
 
   return (
     <>
@@ -36,13 +58,11 @@ export default async function HomePage() {
         <div className="wrap">
           <span className="eyebrow">Premium Choice School Trips</span>
           <h1>
-            The future of school travel <i>starts here</i>
+            Educational journeys, <i>expertly delivered</i>
           </h1>
           <p className="lede">
-            Founded by Paul Farrell of Premium Choice Travel, we bring decades of travel
-            expertise, trusted relationships and destination knowledge into a new generation of
-            school trips — safe, inspiring, professionally managed journeys that let students
-            learn beyond the classroom.
+            Educational journeys created with experience, care and a genuine understanding of what
+            schools, students and parents need.
           </p>
           <div className="ctas">
             <a className="btn btn-brass" href="#trips">
@@ -56,7 +76,36 @@ export default async function HomePage() {
       </div>
 
       <main className="site">
-        {/* audiences */}
+        {/* introduction */}
+        <section className="manifesto">
+          <div className="wrap">
+            <span className="eyebrow">Premium Choice School Trips</span>
+            <h2 className="section-title serif">
+              The future of school travel <i>starts here</i>
+            </h2>
+            <div className="intro-copy">
+              <p className="section-sub full">
+                Led by Paul Farrell, a travel professional with more than 20 years of experience in
+                the Middle East, Premium Choice School Trips combines extensive destination
+                knowledge, trusted international partnerships and a highly personal approach to
+                school travel.
+              </p>
+              <p className="section-sub full">
+                We work closely with our customers to understand their objectives and create a
+                journey that is engaging, rewarding and appropriate for all students.
+              </p>
+              <p className="section-sub full">
+                From the first conversation through to the group&apos;s safe return, every detail is
+                carefully considered and professionally managed. Our aim is to make the planning
+                process straightforward for teachers while creating meaningful experiences that help
+                students discover new places, encounter different cultures and develop confidence,
+                independence and a broader understanding of the world beyond the classroom.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* audiences — in PCT order, each card leading with its letter */}
         <section className="audiences">
           <div className="wrap">
             <span className="eyebrow">Who we work with</span>
@@ -78,19 +127,10 @@ export default async function HomePage() {
             </div>
             <div className="grid">
               <div className="aud-card">
-                <div className="num">For schools</div>
-                <h3>Teachers &amp; trip leaders</h3>
-                <p>
-                  Curriculum-mapped itineraries, transparent pricing, full risk assessments and a
-                  dedicated coordinator from first enquiry to landing home.
-                </p>
-                <a className="link" href="#contact">
-                  Book an appointment →
-                </a>
-              </div>
-              <div className="aud-card">
                 <div className="num">For parents</div>
-                <h3>Families &amp; guardians</h3>
+                <h3>
+                  <span className="pct">P</span>arents
+                </h3>
                 <p>
                   Vetted accommodation, comprehensive insurance, 24/7 in-destination support and
                   clear communication before and during every trip.
@@ -100,68 +140,67 @@ export default async function HomePage() {
                 </a>
               </div>
               <div className="aud-card">
-                <div className="num">For students</div>
-                <h3>The travellers themselves</h3>
+                <div className="num">For children</div>
+                <h3>
+                  <span className="pct">C</span>hildren
+                </h3>
                 <p>
                   Real fieldwork in Iceland, debates in Berlin, ancient history in Petra —
                   experiences that turn coursework into memory.
                 </p>
                 <a className="link" href="#trips">
-                  See where you could go →
+                  See where they could go →
+                </a>
+              </div>
+              <div className="aud-card">
+                <div className="num">For teachers</div>
+                <h3>
+                  <span className="pct">T</span>eachers
+                </h3>
+                <p>
+                  Curriculum-mapped itineraries, transparent pricing, full risk assessments and a
+                  dedicated coordinator from first enquiry to landing home.
+                </p>
+                <a className="link" href="#contact">
+                  Book an appointment →
                 </a>
               </div>
             </div>
           </div>
         </section>
 
-        {/* manifesto */}
-        <section className="manifesto">
+        {/* tailored journeys — one condensed story rather than two competing boxes */}
+        <section className="manifesto manifesto--tailored">
           <div className="wrap">
-            <div className="mangrid">
-              <div>
-                <span className="eyebrow">More than a school trip</span>
-                <h2 className="section-title serif">
-                  Stories students remember <i>long after they leave school</i>
-                </h2>
-                <p className="section-sub full">
-                  We design and deliver bespoke educational trips, curriculum-linked experiences,
-                  cultural journeys, sports tours, adventure programmes and international school
-                  travel — for schools looking for something more than a standard package.
-                </p>
-                <p className="section-sub full">
-                  That means moving beyond generic itineraries and repetitive sightseeing. Every
-                  trip is built with purpose, combining education, discovery, culture, adventure
-                  and unforgettable experiences in a way that feels relevant to today&apos;s
-                  students — whether they&apos;re exploring history where it happened, competing
-                  on an international sports tour, or developing confidence through adventure.
-                </p>
-              </div>
-              <div>
-                <span className="eyebrow">What makes us different</span>
-                <h2 className="section-title serif">
-                  Designed around the school — <i>not taken from a shelf</i>
-                </h2>
-                <p className="section-sub full">
-                  Traditional school travel can feel rigid: fixed programmes, limited
-                  flexibility, the same itineraries year after year. We combine the experience
-                  and buying power of an established travel company with the creativity,
-                  flexibility and technology of a modern school travel specialist.
-                </p>
-                <p className="section-sub full">
-                  We work closely with teachers and school leaders to understand learning
-                  objectives, budget, destinations and student needs before creating a programme
-                  specifically for them — and our network of trusted partners unlocks exclusive
-                  access, specialist workshops and once-in-a-lifetime experiences, with safety,
-                  communication and organisation at the heart of it all.
-                </p>
-              </div>
+            <span className="eyebrow">What makes us different</span>
+            <h2 className="section-title serif">
+              Designed around your school — <i>never off the shelf</i>
+            </h2>
+            <div className="intro-copy">
+              <p className="section-sub full">
+                We create purposeful school journeys that take learning beyond the classroom and
+                introduce students to new places, cultures, ideas and experiences. We engage
+                directly with teachers and trip leaders, listening carefully to what they want to
+                achieve and working with them to design a journey that is exactly right for their
+                school and students — not simply selected from a standard itinerary.
+              </p>
+              <p className="section-sub full">
+                By moving beyond repetitive sightseeing, each journey becomes an opportunity for
+                discovery, personal growth and shared experience. Whether students are exploring
+                history where it happened, competing on an international sports tour or developing
+                confidence through adventure, they return with greater independence, broader
+                perspectives and memories that remain with them long after they leave school.
+              </p>
+              <p className="section-sub full">
+                Our growing portfolio includes journeys all over the world, covering the widest
+                range of curriculum areas, educational themes and student interests.
+              </p>
             </div>
             <p className="serif closing">
-              Travel that educates. Experiences that <i>inspire.</i>
-              <br />
               <span>
-                This is not simply school travel. This is a new way for students to experience
-                the world.
+                Whatever your school&apos;s objectives, we design a programme that brings them to
+                life in some of the world&apos;s most exciting destinations — creating experiences
+                students will remember, share and talk about for years to come.
               </span>
             </p>
           </div>
@@ -174,7 +213,7 @@ export default async function HomePage() {
               <div>
                 <span className="eyebrow">Featured itineraries</span>
                 <h2 className="section-title serif">
-                  Trips our schools <i>keep rebooking</i>
+                  A spotlight on some of our most <i>distinctive journeys</i>
                 </h2>
               </div>
               <Link className="btn btn-ink" href="/trips">
@@ -182,7 +221,7 @@ export default async function HomePage() {
               </Link>
             </div>
             <div className="trip-grid">
-              {featured.map((trip) => (
+              {spotlight.slice(0, 6).map((trip) => (
                 <Link className="trip" href={`/trips/${trip.slug}`} key={trip.slug}>
                   {trip.heroImage && (
                     <Image
@@ -213,49 +252,53 @@ export default async function HomePage() {
         {/* booking journey */}
         <section className="journey" id="journey">
           <div className="wrap">
-            <span className="eyebrow">How it works</span>
+            <span className="eyebrow">The Premium Choice approach</span>
             <h2 className="section-title serif">
-              From first meeting to <i>touchdown home</i>
+              From the first conversation to <i>their safe return</i>
             </h2>
             <p className="section-sub">
-              One dedicated team from the first conversation to the moment students return —
-              with technology that keeps everyone informed at every step.
+              Our experienced and dedicated team supports your school throughout the entire
+              journey, keeping teachers, trip leaders and families informed from the earliest
+              planning stage until every student returns home.
             </p>
 
             <div className="jline">
               <div className="jstage">
                 <div className="jnum">i.</div>
-                <h3>First meeting</h3>
+                <h3>Listen and understand</h3>
                 <p>
-                  We sit down with your teachers and school leaders to understand learning
-                  objectives, budget, destination preferences, student needs and ambitions —
-                  before anything is designed.
+                  We engage directly with teachers, trip leaders and school leaders to understand
+                  what they want from the journey, including their objectives, preferred
+                  destinations, budget, student needs and expectations.
                 </p>
               </div>
               <div className="jstage">
                 <div className="jnum">ii.</div>
-                <h3>Design &amp; proposal</h3>
+                <h3>Design and propose</h3>
                 <p>
-                  A programme created specifically for your school — tailored itinerary,
-                  transparent per-student pricing, and the documentation your leadership team and
-                  parents will ask for.
+                  We create a programme specifically around your trip objectives, with a carefully
+                  planned itinerary, transparent per-student pricing and the information required
+                  by school leadership teams and parents.
                 </p>
               </div>
               <div className="jstage">
                 <div className="jnum">iii.</div>
-                <h3>Planning &amp; preparation</h3>
+                <h3>Plan and prepare</h3>
                 <p>
-                  We handle bookings, flights, visas, full risk assessments and insurance — and
-                  support parent information evenings so every family travels with confidence.
+                  Once approved, we coordinate the travel arrangements, accommodation, activities,
+                  insurance and visa requirements. We also provide the supporting documentation and
+                  information needed to help teachers prepare students and communicate confidently
+                  with parents.
                 </p>
               </div>
               <div className="jstage">
                 <div className="jnum">iv.</div>
-                <h3>Travel &amp; beyond</h3>
+                <h3>Travel and return</h3>
                 <p>
-                  Expert guides and 24/7 support in-destination, live communication home
-                  throughout the trip, and a post-trip review to capture the learning and plan
-                  what&apos;s next.
+                  Throughout the journey, your group is supported by experienced local partners and
+                  has access to 24-hour assistance. We remain closely involved until the group
+                  returns home safely — then visit the trip coordinators for their feedback and to
+                  discuss future plans.
                 </p>
               </div>
             </div>
@@ -341,9 +384,10 @@ export default async function HomePage() {
                     />
                   )}
                   <div className="fade"></div>
+                  {/* Just the subject name: the card is the invitation, the
+                      subject page is the detail. */}
                   <div className="meta">
                     <h3>{s.name}</h3>
-                    <span>{s.countries.join(' · ')}</span>
                   </div>
                 </Link>
               ))}

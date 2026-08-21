@@ -33,7 +33,7 @@ export function SiteFooterFull() {
           <div>
             <h5>Company</h5>
             <ul>
-              <li><a href="/#safety">Health &amp; Safety</a></li>
+              <li><Link href="/safety">Health &amp; Safety</Link></li>
               <li><a href="#">About us</a></li>
               <li><a href="#">Terms &amp; Conditions</a></li>
               <li><a href="/#contact">Contact us</a></li>
