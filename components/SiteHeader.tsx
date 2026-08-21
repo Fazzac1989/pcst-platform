@@ -93,24 +93,27 @@ export default function SiteHeader({
   return (
     <header ref={ref} className={`nav${onTrip ? ' nav--trip' : ''}`}>
       <div className="wrap">
-        {/* The parent PCT identity leads; School Trips is set as live text so it
-            stays sharp at any size. "Powered by Premium Choice Travel" reads
-            from the PCT mark itself. */}
-        <Link className="logo brandlock" href="/">
+        <Link className="logo" href="/" style={{ display: 'flex', alignItems: 'center' }}>
           <Image
-            className="pctmark"
-            src="/images/pct-logo.png"
-            alt="PCT — Premium Choice Travel"
-            width={269}
-            height={70}
+            className="logo-solid"
+            src="/images/logo-navy.png"
+            alt="Premium Choice School Trips"
+            width={524}
+            height={130}
+            sizes="323px"
+            style={{ height: 80, width: 'auto' }}
             priority
           />
-          <span className="brand-divider" aria-hidden="true"></span>
-          <span className="brand-text">
-            <em>Premium Choice</em>
-            <strong>School Trips</strong>
-            <small>Powered by Premium Choice Travel</small>
-          </span>
+          <Image
+            className="logo-light"
+            src="/images/logo-white.png"
+            alt="Premium Choice School Trips"
+            width={524}
+            height={130}
+            sizes="403px"
+            style={{ height: 100, width: 'auto' }}
+            priority
+          />
         </Link>
         <div className="nav-right">
           <nav className="menu">

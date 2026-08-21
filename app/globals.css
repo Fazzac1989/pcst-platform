@@ -1,4 +1,4 @@
-﻿@tailwind base;
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -51,28 +51,6 @@ header.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; background
 header.nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 104px; transition: height .3s ease; }
 header.nav .logo-solid { display: none; }
 header.nav .logo-light { display: block; }
-
-/* Brand lockup: PCT mark leads, School Trips set as live text, powered-by underneath.
-   Over the dark hero the PCT mark renders monochrome white; once the header turns
-   solid it returns to full colour. */
-.brandlock { display: flex; align-items: center; gap: 18px; }
-.brandlock .pctmark { width: 132px; height: auto; filter: brightness(0) invert(1); transition: filter .3s ease; }
-.brand-divider { width: 1px; height: 52px; background: rgba(255, 255, 255, .4); transition: background .3s ease; }
-.brand-text { display: grid; line-height: 1.1; color: #fff; transition: color .3s ease; }
-.brand-text em { font-style: normal; font-size: 10px; letter-spacing: .34em; text-transform: uppercase; font-weight: 600; opacity: .85; }
-.brand-text strong { font-family: var(--font-fraunces), serif; font-weight: 500; font-size: 27px; letter-spacing: .01em; margin-top: 2px; }
-.brand-text small { font-size: 8.5px; letter-spacing: .18em; text-transform: uppercase; opacity: .6; margin-top: 4px; }
-header.nav.scrolled .brandlock .pctmark { filter: none; }
-header.nav.scrolled .brand-divider { background: var(--line); }
-header.nav.scrolled .brand-text { color: var(--ink); }
-@media (max-width: 900px) {
-  .brandlock { gap: 12px; }
-  .brandlock .pctmark { width: 92px; }
-  .brand-divider { height: 40px; }
-  .brand-text strong { font-size: 20px; }
-  /* Doubly-qualified: the generic .logo small rule appears later in this file. */
-  .brandlock .brand-text small { display: none; }
-}
 header.nav nav.menu a { color: #fff; }
 header.nav.scrolled { background: rgba(255, 255, 255, .97); border-bottom-color: var(--line); box-shadow: 0 10px 30px -18px rgba(22, 36, 46, .25); }
 header.nav.scrolled .wrap { height: 84px; }
