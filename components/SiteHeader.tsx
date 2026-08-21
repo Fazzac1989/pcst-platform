@@ -19,12 +19,12 @@ export type MegaCountry = {
 
 type MenuKey = 'subjects' | 'countries';
 
-// Health, Safety & Security is a page of its own, not a homepage anchor.
 const NAV_LINKS = [
   { label: 'Subjects', anchor: 'subjects' },
   { label: 'Countries', anchor: 'countries' },
+  { label: 'How it works', anchor: 'journey' },
   { label: 'Trips', anchor: 'trips' },
-  { label: 'Health, Safety & Security', anchor: 'safety', href: '/safety' },
+  { label: 'Health & Safety', anchor: 'safety' },
   { label: 'Contact', anchor: 'contact' },
 ];
 
@@ -33,7 +33,8 @@ const NAV_LINKS_TRIP = [
   { label: 'Subjects', anchor: 'subjects' },
   { label: 'Countries', anchor: 'countries' },
   { label: 'Trips', anchor: 'trips' },
-  { label: 'Health, Safety & Security', anchor: 'safety', href: '/safety' },
+  { label: 'How it works', anchor: 'journey' },
+  { label: 'Health & Safety', anchor: 'safety' },
   { label: 'Contact', anchor: 'contact' },
 ];
 
@@ -81,8 +82,7 @@ export default function SiteHeader({
 
   const onTrip = variant === 'trip';
   const links = onTrip ? NAV_LINKS_TRIP : NAV_LINKS;
-  const href = (l: { anchor: string; href?: string }) =>
-    l.href ?? (onTrip ? `/#${l.anchor}` : `#${l.anchor}`);
+  const href = (anchor: string) => (onTrip ? `/#${anchor}` : `#${anchor}`);
   const menuFor = (anchor: string): MenuKey | null =>
     anchor === 'subjects' && subjects.length > 0
       ? 'subjects'
@@ -122,7 +122,7 @@ export default function SiteHeader({
               return menu ? (
                 <a
                   key={l.anchor}
-                  href={menu === 'countries' ? '/trips' : href(l)}
+                  href={menu === 'countries' ? '/trips' : href(l.anchor)}
                   aria-haspopup="true"
                   aria-expanded={openMenu === menu}
                   onMouseEnter={() => openMega(menu)}
@@ -132,7 +132,7 @@ export default function SiteHeader({
                   {l.label} <span className="mega-caret">▾</span>
                 </a>
               ) : (
-                <a key={l.anchor} href={href(l)}>
+                <a key={l.anchor} href={href(l.anchor)}>
                   {l.label}
                 </a>
               );

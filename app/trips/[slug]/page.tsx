@@ -169,7 +169,7 @@ export default async function TripPage({ params }: Props) {
               <div>
                 <span className="eyebrow">Overview</span>
                 <h2 className="st serif">
-                  About your <i>trip</i>
+                  About this <i>trip</i>
                 </h2>
                 {trip.overview.map((para, i) => (
                   <p className="ovp" key={i}>
@@ -182,10 +182,8 @@ export default async function TripPage({ params }: Props) {
                   <h3>
                     {trip.country} <span>at a glance</span>
                   </h3>
-                  {/* The full country guide lives on the country page; this is a
-                      pointer to it, not a copy of it. */}
                   <dl>
-                    {facts.slice(0, 3).map(({ label, value }) => (
+                    {facts.map(({ label, value }) => (
                       <div key={label}>
                         <dt>{label}</dt>
                         <dd>{value}</dd>
@@ -193,7 +191,7 @@ export default async function TripPage({ params }: Props) {
                     ))}
                   </dl>
                   <Link className="cfacts-link" href={`/countries/${trip.countrySlug}`}>
-                    More about {trip.country} →
+                    All {trip.country} trips →
                   </Link>
                 </aside>
               )}
@@ -205,7 +203,7 @@ export default async function TripPage({ params }: Props) {
           <div className="wrap">
             <span className="eyebrow">Day by day</span>
             <h2 className="st serif">
-              Your <i>itinerary</i>
+              The <i>itinerary</i>
             </h2>
             {hasStructured ? (
               <ItineraryTimeline days={itineraryDays} tripHighlights={tripHighlights}>
@@ -227,7 +225,7 @@ export default async function TripPage({ params }: Props) {
           <div className="wrap">
             <span className="eyebrow">What&apos;s included</span>
             <h2 className="st serif">
-              Included in your <i>journey</i>
+              Everything in the <i>price</i>
             </h2>
             <ul className="inc-grid">
               {trip.includes.map((item, i) => (

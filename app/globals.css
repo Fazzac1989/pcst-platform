@@ -1,4 +1,4 @@
-@tailwind base;
+﻿@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -501,35 +501,6 @@ details.terms ol { padding: 0 32px 26px 50px; font-size: 13.5px; color: var(--in
 }
 .smap-explore:hover { background: #1558B8; }
 .smap-credit { font-size: 10.5px; color: var(--ink-soft); opacity: .6; margin-top: 8px; text-align: right; }
-/* Kept deliberately compact: the map is a signpost, not the page. */
-.smap-shell { max-width: 760px; }
-
-/* Clickable country names in a trip-hero meta row */
-.tmeta-links a { color: inherit; border-bottom: 1px solid rgba(255, 255, 255, .35); transition: color .2s, border-color .2s; }
-.tmeta-links a:hover { color: var(--brass-light); border-color: var(--brass-light); }
-.filter-clear { font-weight: 600; color: var(--brass-deep); border-bottom: 1px solid currentColor; }
-
-/* Homepage introduction and tailored sections: columned editorial text */
-.intro-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 56px; margin-top: 10px; }
-.intro-cols p:first-child { grid-column: 1 / -1; max-width: 72ch; }
-@media (max-width: 860px) { .intro-cols { grid-template-columns: 1fr; } }
-.manifesto--tailored .closing { margin-top: 42px; }
-
-/* ── Health, Safety & Security ─────────────────────────────────────── */
-.safety-intro { padding-bottom: 0 !important; }
-.safety-intro .ovp { max-width: 68ch; }
-.safety-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
-@media (max-width: 900px) { .safety-grid { grid-template-columns: 1fr; } }
-.safety-card { border: 1px solid var(--line); border-radius: 4px; background: #fff; padding: 34px 36px; }
-.safety-num { font-family: var(--font-fraunces), serif; font-style: italic; font-size: 17px; color: var(--brass); display: block; margin-bottom: 10px; }
-.safety-card h3 { font-family: var(--font-fraunces), serif; font-weight: 500; font-size: 22px; margin-bottom: 10px; }
-.safety-card > p { font-size: 14.5px; color: var(--ink-soft); line-height: 1.65; }
-.safety-card ul { display: grid; gap: 10px; margin-top: 16px; }
-.safety-card li { display: flex; gap: 10px; font-size: 14px; color: var(--ink-soft); line-height: 1.5; }
-.safety-card .tick { color: var(--brass); font-weight: 700; flex: 0 0 auto; }
-.safety-close { background: var(--ink); color: #F7F5F0; text-align: center; }
-.safety-close .st { color: #fff; }
-.safety-close .ovp { color: rgba(247, 245, 240, .8); max-width: 58ch; margin: 0 auto 30px; }
 
 /* ============================================================
    Trips index (same visual language: serif rows, teal hover)

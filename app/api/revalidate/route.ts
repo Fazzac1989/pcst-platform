@@ -13,10 +13,9 @@ export async function POST(request: NextRequest) {
   const slug = request.nextUrl.searchParams.get('slug');
   const scope = request.nextUrl.searchParams.get('scope');
 
-  const revalidated: string[] = ['/', '/trips', '/safety'];
+  const revalidated: string[] = ['/', '/trips'];
   revalidatePath('/');
   revalidatePath('/trips');
-  revalidatePath('/safety');
   if (slug) {
     revalidatePath(`/trips/${slug}`);
     revalidated.push(`/trips/${slug}`);

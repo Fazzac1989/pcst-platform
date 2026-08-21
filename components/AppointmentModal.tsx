@@ -31,14 +31,13 @@ export default function AppointmentModal({ tripSlug }: { tripSlug?: string }) {
   return (
     <>
       <div className="panel cta apt-cta">
-        <h3>Start planning your school&apos;s journey</h3>
+        <h3>Speak to our team</h3>
         <p>
-          Every itinerary can be tailored to your preferred dates, group size, budget and
-          objectives. Tell us what you have in mind and a member of our team will respond within{' '}
-          <strong>one working day</strong>.
+          Every itinerary can be tailored to your dates, group size, budget and learning
+          objectives. We come back to you within <strong>24 hours</strong>.
         </p>
         <button className="btn btn-brass" onClick={() => setOpen(true)}>
-          Arrange a consultation <span className="arrow">→</span>
+          Book an appointment <span className="arrow">→</span>
         </button>
         <div className="c">
           <div>
@@ -53,7 +52,7 @@ export default function AppointmentModal({ tripSlug }: { tripSlug?: string }) {
       <dialog
         ref={ref}
         className="apt-dialog"
-        aria-label="Arrange a consultation"
+        aria-label="Book an appointment"
         onClick={(e) => {
           // Clicking the backdrop (the dialog element itself) closes it.
           if (e.target === ref.current) setOpen(false);
@@ -63,11 +62,10 @@ export default function AppointmentModal({ tripSlug }: { tripSlug?: string }) {
           <button className="apt-dialog-close" onClick={() => setOpen(false)} aria-label="Close">
             ✕
           </button>
-          <span className="eyebrow">Arrange a consultation</span>
+          <span className="eyebrow">Book an appointment</span>
           <h3>Tell us about your trip</h3>
           <p className="apt-dialog-lede">
-            Choose how you&apos;d like to meet — by telephone, video call or at your school — and
-            our team will be in touch within one working day.
+            Choose how you&apos;d like to meet and our Dubai team will be in touch within 24 hours.
           </p>
           {open && <AppointmentForm tripSlug={tripSlug} />}
         </div>

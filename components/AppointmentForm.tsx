@@ -43,8 +43,8 @@ export default function AppointmentForm({ tripSlug }: { tripSlug?: string }) {
         <div className="apt-done-mark">✓</div>
         <h4>Thank you, {name.split(' ')[0]}!</h4>
         <p>
-          Your request is in. We&apos;ve emailed you a confirmation, and a member of our team will
-          respond within <strong>one working day</strong>.
+          Your request is in. We&apos;ve emailed you a confirmation, and our Dubai team will come
+          back to you within <strong>24 hours</strong>.
         </p>
       </div>
     );
@@ -65,7 +65,7 @@ export default function AppointmentForm({ tripSlug }: { tripSlug?: string }) {
         <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required autoComplete="email" />
       </label>
       <label>
-        <span>How would you like to meet?</span>
+        <span>Appointment type</span>
         <select value={appointmentType} onChange={(e) => setAppointmentType(e.target.value)} required>
           <option value="" disabled>
             Choose…
@@ -97,12 +97,12 @@ export default function AppointmentForm({ tripSlug }: { tripSlug?: string }) {
         />
         <span>
           I consent to Premium Choice School Trips storing these details to arrange my
-          consultation and respond to my enquiry.
+          appointment and respond to my enquiry.
         </span>
       </label>
       {error && <p className="apt-error">{error}</p>}
       <button className="btn btn-brass" type="submit" disabled={state === 'busy'}>
-        {state === 'busy' ? 'Sending…' : 'Arrange a consultation'}{' '}
+        {state === 'busy' ? 'Sending…' : 'Book an appointment'}{' '}
         {state !== 'busy' && <span className="arrow">→</span>}
       </button>
     </form>
