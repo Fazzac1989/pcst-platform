@@ -5,7 +5,7 @@ import { revalidatePath } from 'next/cache';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { createClient } from '@/lib/supabase/server';
 import { searchCommons, queriesForTrip, type Candidate } from '@/lib/images/commons';
-import { searchShutterstock, licenseShutterstock, isShutterstockCandidate, shutterstockId } from '@/lib/images/shutterstock';
+import { searchShutterstock, licenseShutterstock, isShutterstockCandidate, shutterstockId, ShutterstockBusyError } from '@/lib/images/shutterstock';
 import type { ActionResult } from './actions';
 
 const BUCKET = 'trip-images';
@@ -52,13 +52,19 @@ export async function shortlistForTrip(tripId: number): Promise<
   const plans = queriesForTrip(meta);
   const shortlists: Shortlist[] = [];
   for (const p of plans) {
-    // Shutterstock is the primary source; Commons remains the fallback when
-    // the token is missing or a search comes back empty.
-    let candidates = await searchShutterstock(p.query, {
-      minWidth: p.role === 'hero' ? 2400 : 1600,
-      landscapeOnly: p.landscapeOnly,
-      limit: 18,
-    });
+    // Shutterstock is the primary source; Commons remains the fallback only
+    // when the token is missing or a search genuinely finds nothing.
+    let candidates: Candidate[] = [];
+    try {
+      candidates = await searchShutterstock(p.query, {
+        minWidth: p.role === 'hero' ? 2400 : 1600,
+        landscapeOnly: p.landscapeOnly,
+        limit: 18,
+      });
+    } catch (e) {
+      if (e instanceof ShutterstockBusyError) return { ok: false, error: e.message };
+      throw e;
+    }
     if (!candidates.length) {
       candidates = await searchCommons(p.query, {
         minWidth: p.role === 'hero' ? 2400 : 1600,
@@ -80,9 +86,16 @@ export async function searchImages(
   const denied = await requireAdmin();
   if (denied) return { ok: false, error: denied };
   if (!query.trim()) return { ok: false, error: 'Enter something to search for.' };
-  let candidates = await searchShutterstock(query, { minWidth: 1600, landscapeOnly, limit: 24 });
-  if (!candidates.length) candidates = await searchCommons(query, { minWidth: 1600, landscapeOnly, limit: 24 });
-  return { ok: true, candidates: candidates.slice(0, 12) };
+  try {
+    const candidates = await searchShutterstock(query, { minWidth: 1600, landscapeOnly, limit: 24 });
+    if (candidates.length) return { ok: true, candidates: candidates.slice(0, 12) };
+  } catch (e) {
+    // Quota spent — say so rather than silently serving Commons.
+    if (e instanceof ShutterstockBusyError) return { ok: false, error: e.message };
+    throw e;
+  }
+  const commons = await searchCommons(query, { minWidth: 1600, landscapeOnly, limit: 24 });
+  return { ok: true, candidates: commons.slice(0, 12) };
 }
 
 /** A scaled copy, so we store a web-sized file rather than a 20MB original. */

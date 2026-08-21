@@ -17,16 +17,22 @@ export const isShutterstockCandidate = (c: Pick<Candidate, 'title'>) =>
   c.title.startsWith('shutterstock:');
 export const shutterstockId = (c: Pick<Candidate, 'title'>) => c.title.slice('shutterstock:'.length);
 
-async function ssFetch(url: string, init?: RequestInit): Promise<Response> {
-  for (let i = 0; i < 5; i++) {
-    const res = await fetch(url, {
-      ...init,
-      headers: { Authorization: `Bearer ${token()}`, 'Content-Type': 'application/json', ...(init?.headers ?? {}) },
-    });
-    if (res.status !== 429) return res;
-    await new Promise((r) => setTimeout(r, 15_000));
+/** Thrown when the API's hourly quota is spent, so callers can say so honestly. */
+export class ShutterstockBusyError extends Error {
+  constructor() {
+    super('Shutterstock’s hourly search allowance is used up right now — try again in a few minutes.');
+    this.name = 'ShutterstockBusyError';
   }
-  throw new Error('Shutterstock is rate limited right now — try again in a few minutes.');
+}
+
+async function ssFetch(url: string, init?: RequestInit): Promise<Response> {
+  const res = await fetch(url, {
+    ...init,
+    headers: { Authorization: `Bearer ${token()}`, 'Content-Type': 'application/json', ...(init?.headers ?? {}) },
+  });
+  // Interactive admin use: never queue for minutes — fail fast and honestly.
+  if (res.status === 429) throw new ShutterstockBusyError();
+  return res;
 }
 
 export async function searchShutterstock(
