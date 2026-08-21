@@ -1,4 +1,4 @@
-﻿@tailwind base;
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -12,6 +12,7 @@
   --ink-soft: #425964;     /* soft navy */
   --paper: #FFFFFF;        /* white */
   --white: #FFFFFF;
+  --cream: #F5F1E8;        /* warm band, as on the Premium Choice Travel site */
   --brass: #12897E;        /* deep teal (small text/labels) */
   --brass-light: #19BAAB;  /* brand teal */
   --line: rgba(22, 36, 46, .14);
@@ -148,6 +149,8 @@ h2.section-title.pct-title { font-size: clamp(24px, 3.2vw, 38px); line-height: 1
 }
 .pct-brand { margin-top: 28px; display: flex; align-items: center; gap: 14px; }
 .pct-brand span { font-family: var(--font-fraunces), serif; font-style: italic; font-size: 15px; color: var(--brass); white-space: nowrap; }
+/* Cream band, so the page alternates white / cream as on the group site. */
+.audiences { background: var(--cream); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .audiences .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; margin-top: 52px; }
 .aud-card { position: relative; background: var(--white); border: 1px solid var(--line); padding: 38px 34px 34px; border-radius: 3px; transition: transform .3s ease, box-shadow .3s ease; }
 .aud-card:hover { transform: translateY(-5px); box-shadow: 0 26px 50px -30px rgba(22, 36, 46, .3); }
@@ -164,7 +167,7 @@ h2.section-title.pct-title { font-size: clamp(24px, 3.2vw, 38px); line-height: 1
 @media (max-width: 900px) { .mangrid { grid-template-columns: 1fr !important; gap: 44px !important; } }
 
 /* ---------- featured trips ---------- */
-.trips-band { background: var(--white); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.trips-band { background: var(--cream); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .trips-band .head { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; flex-wrap: wrap; }
 .trip-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 56px; }
 .trip { position: relative; border-radius: 3px; overflow: hidden; background: var(--ink); color: #fff; aspect-ratio: 4/5; display: flex; align-items: flex-end; }
@@ -218,7 +221,7 @@ h2.section-title.pct-title { font-size: clamp(24px, 3.2vw, 38px); line-height: 1
 .dest-card span { font-size: 12px; color: rgba(255, 255, 255, .72); letter-spacing: .06em; }
 
 /* ---------- trust ---------- */
-.trust { background: var(--white); border-top: 1px solid var(--line); }
+.trust { background: var(--cream); border-top: 1px solid var(--line); }
 .trust .cols { display: grid; grid-template-columns: 1.1fr .9fr; gap: 80px; align-items: center; }
 .trust ul { list-style: none; margin-top: 30px; display: grid; gap: 20px; }
 .trust li { display: flex; gap: 16px; align-items: flex-start; font-size: 15.5px; color: var(--ink-soft); }
@@ -506,8 +509,26 @@ details.terms ol { padding: 0 32px 26px 50px; font-size: 13.5px; color: var(--in
 .smap-explore:hover { background: #1558B8; }
 .smap-credit { font-size: 10.5px; color: var(--ink-soft); opacity: .6; margin-top: 8px; text-align: right; }
 
-/* Homepage introduction and tailored sections: single readable column */
+/* Homepage introduction and tailored sections: copy beside a composed pair of
+   destination photographs, mirrored between sections so the page alternates. */
 .intro-copy { max-width: 76ch; display: grid; gap: 4px; margin-top: 10px; }
+.split { display: grid; grid-template-columns: 1.05fr .85fr; gap: 24px 76px; align-items: center; }
+.split--flip > div:first-child { order: 2; }
+.split--flip > .imgstack { order: 1; }
+.imgstack { position: relative; padding-bottom: 56px; }
+.imgstack-main { position: relative; display: block; width: 88%; margin-left: auto; aspect-ratio: 4 / 5; border-radius: 3px; overflow: hidden; }
+.split--flip .imgstack-main { margin-left: 0; margin-right: auto; }
+.imgstack-small {
+  position: absolute; bottom: 0; left: 0; width: 52%; aspect-ratio: 4 / 3;
+  border-radius: 3px; overflow: hidden;
+  border: 6px solid #fff; box-shadow: 0 24px 50px -24px rgba(22, 36, 46, .45);
+}
+.split--flip .imgstack-small { left: auto; right: 0; }
+@media (max-width: 900px) {
+  .split { grid-template-columns: 1fr; }
+  .split--flip > div:first-child, .split--flip > .imgstack { order: initial; }
+  .imgstack { max-width: 480px; margin-top: 26px; }
+}
 /* Centred as a set piece: balanced wrapping, its own measure, the supporting
    line on its own centred block beneath. */
 .manifesto--tailored .closing { margin: 48px auto 0; max-width: 30ch; text-align: center; text-wrap: balance; }

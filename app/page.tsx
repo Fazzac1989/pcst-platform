@@ -22,6 +22,32 @@ export default async function HomePage() {
     getSubjects(),
   ]);
 
+  // Editorial imagery for the two text sections, drawn from the curated trip
+  // photography already hosted and licensed — one pair per section, each image
+  // from a different country so the page shows range rather than repetition.
+  const withHero = allPublished.filter((t) => t.heroImage);
+  const pickPair = (wanted: string[], exclude: Set<string>) => {
+    const pair: (typeof withHero)[number][] = [];
+    for (const country of wanted) {
+      const hit = withHero.find((t) => t.country === country && !exclude.has(t.slug));
+      if (hit && pair.length < 2) {
+        pair.push(hit);
+        exclude.add(hit.slug);
+      }
+    }
+    for (const t of withHero) {
+      if (pair.length >= 2) break;
+      if (!exclude.has(t.slug) && !pair.some((p) => p.country === t.country)) {
+        pair.push(t);
+        exclude.add(t.slug);
+      }
+    }
+    return pair;
+  };
+  const usedForSections = new Set<string>();
+  const introImages = pickPair(['Japan', 'Iceland'], usedForSections);
+  const tailoredImages = pickPair(['South Africa', 'New Zealand'], usedForSections);
+
   // The spotlight shows trips marked featured in the admin, topped up with the
   // most distinctive journeys — one per country — so it never sits empty and
   // never reads as six city breaks.
@@ -79,31 +105,50 @@ export default async function HomePage() {
       </div>
 
       <main className="site">
-        {/* introduction */}
+        {/* introduction — copy left, destination photography right */}
         <section className="manifesto">
           <div className="wrap">
-            <span className="eyebrow">Premium Choice School Trips</span>
-            <h2 className="section-title serif">
-              The future of school travel <i>starts here</i>
-            </h2>
-            <div className="intro-copy">
-              <p className="section-sub full">
-                Led by Paul Farrell, a travel professional with more than 20 years of experience in
-                the Middle East, Premium Choice School Trips combines extensive destination
-                knowledge, trusted international partnerships and a highly personal approach to
-                school travel.
-              </p>
-              <p className="section-sub full">
-                We work closely with our customers to understand their objectives and create a
-                journey that is engaging, rewarding and appropriate for all students.
-              </p>
-              <p className="section-sub full">
-                From the first conversation through to the group&apos;s safe return, every detail is
-                carefully considered and professionally managed. Our aim is to make the planning
-                process straightforward for teachers while creating meaningful experiences that help
-                students discover new places, encounter different cultures and develop confidence,
-                independence and a broader understanding of the world beyond the classroom.
-              </p>
+            <div className="split">
+              <div>
+                <span className="eyebrow">Premium Choice School Trips</span>
+                <h2 className="section-title serif">
+                  The future of school travel <i>starts here</i>
+                </h2>
+                <div className="intro-copy">
+                  <p className="section-sub full">
+                    Led by Paul Farrell, a travel professional with more than 20 years of experience
+                    in the Middle East, Premium Choice School Trips combines extensive destination
+                    knowledge, trusted international partnerships and a highly personal approach to
+                    school travel.
+                  </p>
+                  <p className="section-sub full">
+                    We work closely with our customers to understand their objectives and create a
+                    journey that is engaging, rewarding and appropriate for all students.
+                  </p>
+                  <p className="section-sub full">
+                    From the first conversation through to the group&apos;s safe return, every detail
+                    is carefully considered and professionally managed. Our aim is to make the
+                    planning process straightforward for teachers while creating meaningful
+                    experiences that help students discover new places, encounter different cultures
+                    and develop confidence, independence and a broader understanding of the world
+                    beyond the classroom.
+                  </p>
+                </div>
+              </div>
+              {introImages.length > 0 && (
+                <div className="imgstack" aria-hidden="true">
+                  {introImages[0] && (
+                    <span className="imgstack-main">
+                      <Image src={introImages[0].heroImage!} alt="" fill sizes="(max-width: 900px) 90vw, 40vw" style={{ objectFit: 'cover' }} />
+                    </span>
+                  )}
+                  {introImages[1] && (
+                    <span className="imgstack-small">
+                      <Image src={introImages[1].heroImage!} alt="" fill sizes="(max-width: 900px) 50vw, 22vw" style={{ objectFit: 'cover' }} />
+                    </span>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </section>
@@ -172,32 +217,51 @@ export default async function HomePage() {
           </div>
         </section>
 
-        {/* tailored journeys — one condensed story rather than two competing boxes */}
+        {/* tailored journeys — mirrored split so the page alternates as it scrolls */}
         <section className="manifesto manifesto--tailored">
           <div className="wrap">
-            <span className="eyebrow">What makes us different</span>
-            <h2 className="section-title serif">
-              Designed around your school — <i>never off the shelf</i>
-            </h2>
-            <div className="intro-copy">
-              <p className="section-sub full">
-                We create purposeful school journeys that take learning beyond the classroom and
-                introduce students to new places, cultures, ideas and experiences. We engage
-                directly with teachers and trip leaders, listening carefully to what they want to
-                achieve and working with them to design a journey that is exactly right for their
-                school and students — not simply selected from a standard itinerary.
-              </p>
-              <p className="section-sub full">
-                By moving beyond repetitive sightseeing, each journey becomes an opportunity for
-                discovery, personal growth and shared experience. Whether students are exploring
-                history where it happened, competing on an international sports tour or developing
-                confidence through adventure, they return with greater independence, broader
-                perspectives and memories that remain with them long after they leave school.
-              </p>
-              <p className="section-sub full">
-                Our growing portfolio includes journeys all over the world, covering the widest
-                range of curriculum areas, educational themes and student interests.
-              </p>
+            <div className="split split--flip">
+              <div>
+                <span className="eyebrow">What makes us different</span>
+                <h2 className="section-title serif">
+                  Designed around your school — <i>never off the shelf</i>
+                </h2>
+                <div className="intro-copy">
+                  <p className="section-sub full">
+                    We create purposeful school journeys that take learning beyond the classroom and
+                    introduce students to new places, cultures, ideas and experiences. We engage
+                    directly with teachers and trip leaders, listening carefully to what they want
+                    to achieve and working with them to design a journey that is exactly right for
+                    their school and students — not simply selected from a standard itinerary.
+                  </p>
+                  <p className="section-sub full">
+                    By moving beyond repetitive sightseeing, each journey becomes an opportunity for
+                    discovery, personal growth and shared experience. Whether students are exploring
+                    history where it happened, competing on an international sports tour or
+                    developing confidence through adventure, they return with greater independence,
+                    broader perspectives and memories that remain with them long after they leave
+                    school.
+                  </p>
+                  <p className="section-sub full">
+                    Our growing portfolio includes journeys all over the world, covering the widest
+                    range of curriculum areas, educational themes and student interests.
+                  </p>
+                </div>
+              </div>
+              {tailoredImages.length > 0 && (
+                <div className="imgstack" aria-hidden="true">
+                  {tailoredImages[0] && (
+                    <span className="imgstack-main">
+                      <Image src={tailoredImages[0].heroImage!} alt="" fill sizes="(max-width: 900px) 90vw, 40vw" style={{ objectFit: 'cover' }} />
+                    </span>
+                  )}
+                  {tailoredImages[1] && (
+                    <span className="imgstack-small">
+                      <Image src={tailoredImages[1].heroImage!} alt="" fill sizes="(max-width: 900px) 50vw, 22vw" style={{ objectFit: 'cover' }} />
+                    </span>
+                  )}
+                </div>
+              )}
             </div>
             <p className="serif closing">
               Whatever your school&apos;s objectives, we design a programme that
