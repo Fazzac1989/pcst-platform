@@ -5,7 +5,8 @@ import { notFound } from 'next/navigation';
 import SiteHeader from '@/components/SiteHeaderWithData';
 import { SiteFooterSimple } from '@/components/SiteFooter';
 import { getPublishedTrips, getSubjectDescription, getSubjects } from '@/lib/data';
-import SubjectWorldMap, { type MapCountry } from '@/components/SubjectWorldMap';
+// The interactive world map is retired from this page; the component stays in
+// components/SubjectWorldMap.tsx should it be wanted again.
 
 type Props = { params: { slug: string } };
 
@@ -35,16 +36,6 @@ export default async function SubjectPage({ params }: Props) {
 
   const trips = allTrips.filter((t) => t.subjectSlug === subject.slug);
   const others = subjects.filter((s) => s.slug !== subject.slug);
-
-  // One map entry per country, carrying the trips it offers for this subject.
-  const mapCountries: MapCountry[] = [];
-  for (const t of trips) {
-    if (!t.country) continue;
-    const entry = mapCountries.find((c) => c.name === t.country);
-    const item = { slug: t.slug, title: t.title, image: t.heroImage };
-    if (entry) entry.trips.push(item);
-    else mapCountries.push({ name: t.country, trips: [item] });
-  }
 
   return (
     <>
@@ -94,19 +85,6 @@ export default async function SubjectPage({ params }: Props) {
                 Why travel for <i>{subject.name}</i>
               </h2>
               <p className="ovp">{description}</p>
-            </div>
-          </section>
-        )}
-
-        {mapCountries.length > 0 && (
-          <section className="subject-map">
-            <div className="wrap">
-              <span className="eyebrow">Where we go</span>
-              <h2 className="st serif">
-                {subject.name} around <i>the world</i>
-              </h2>
-              <p className="ovp">Rest on a highlighted country to see the trip it offers.</p>
-              <SubjectWorldMap countries={mapCountries} />
             </div>
           </section>
         )}

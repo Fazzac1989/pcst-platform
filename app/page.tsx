@@ -202,7 +202,6 @@ export default async function HomePage() {
             <p className="serif closing">
               Whatever your school&apos;s objectives, we design a programme that
               <i> brings them to life.</i>
-              <br />
               <span>
                 In some of the world&apos;s most exciting destinations — creating experiences
                 students will remember, share and talk about for years to come.
