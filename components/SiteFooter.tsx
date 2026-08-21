@@ -24,18 +24,26 @@ export function SiteFooterFull() {
           <div>
             <h5>Explore</h5>
             <ul>
+              <li><Link href="/trips">Trips</Link></li>
               <li><a href="/#subjects">Subjects</a></li>
-              <li><a href="/#journey">How it works</a></li>
-              <li><Link href="/trips">All trips</Link></li>
-              <li><a href="#">Blog</a></li>
+              <li><a href="/#trips">Journey inspiration</a></li>
+              <li><Link href="/our-app">Our app</Link></li>
+            </ul>
+          </div>
+          <div>
+            <h5>For you</h5>
+            <ul>
+              <li><Link href="/for-teachers">For teachers</Link></li>
+              <li><Link href="/for-parents">For parents</Link></li>
+              <li><Link href="/for-school-leaders">For school leaders</Link></li>
+              <li><Link href="/why-premium-choice">Why Premium Choice</Link></li>
             </ul>
           </div>
           <div>
             <h5>Company</h5>
             <ul>
-              <li><Link href="/safety">Health &amp; Safety</Link></li>
-              <li><a href="#">About us</a></li>
-              <li><a href="#">Terms &amp; Conditions</a></li>
+              <li><Link href="/safety">Safety &amp; Safeguarding</Link></li>
+              <li><Link href="/about">About us</Link></li>
               <li><a href="/#contact">Contact us</a></li>
             </ul>
           </div>

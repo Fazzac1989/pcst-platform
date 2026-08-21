@@ -19,25 +19,20 @@ export type MegaCountry = {
 
 type MenuKey = 'subjects' | 'countries';
 
-// Health & Safety is a page of its own; everything else stays a homepage anchor.
+// The primary information architecture. The audience pages (teachers, parents,
+// school leaders) and About live in the footer and on Why Premium Choice, so
+// the header stays scannable.
 const NAV_LINKS = [
+  { label: 'Trips', anchor: 'trips', href: '/trips' },
   { label: 'Subjects', anchor: 'subjects' },
-  { label: 'Countries', anchor: 'countries' },
-  { label: 'How it works', anchor: 'journey' },
-  { label: 'Trips', anchor: 'trips' },
-  { label: 'Health & Safety', anchor: 'safety', href: '/safety' },
+  { label: 'Destinations', anchor: 'countries' },
+  { label: 'Why Premium Choice', anchor: 'why', href: '/why-premium-choice' },
+  { label: 'Our App', anchor: 'app', href: '/our-app' },
+  { label: 'Safety & Safeguarding', anchor: 'safety', href: '/safety' },
   { label: 'Contact', anchor: 'contact' },
 ];
 
-// Trip pages order the menu as the reference trip template does.
-const NAV_LINKS_TRIP = [
-  { label: 'Subjects', anchor: 'subjects' },
-  { label: 'Countries', anchor: 'countries' },
-  { label: 'Trips', anchor: 'trips' },
-  { label: 'How it works', anchor: 'journey' },
-  { label: 'Health & Safety', anchor: 'safety', href: '/safety' },
-  { label: 'Contact', anchor: 'contact' },
-];
+const NAV_LINKS_TRIP = NAV_LINKS;
 
 export default function SiteHeader({
   variant = 'home',

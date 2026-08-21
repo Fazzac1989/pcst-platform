@@ -371,44 +371,58 @@ export default async function HomePage() {
               </div>
             </div>
 
-            <div className="appband">
-              <div className="appcopy">
-                <span className="eyebrow" style={{ color: 'var(--brass-light)' }}>
-                  On-travel value adds
-                </span>
-                <h3 className="serif apphead">
-                  The whole trip, in <i>everyone&apos;s pocket</i>
-                </h3>
-                <p>
-                  Our mobile app connects students, teachers and parents to the journey — before,
-                  during and after travel.
-                </p>
-                <div className="appfeatures">
-                  <div>
-                    <b>For teachers</b>Live itinerary, group documents, headcounts and instant
-                    contact with our team.
-                  </div>
-                  <div>
-                    <b>For parents</b>Real-time trip updates and photo moments, so home always
-                    knows all is well.
-                  </div>
-                  <div>
-                    <b>For students</b>Daily schedule, learning resources, and everything they
-                    need without paper handouts.
+          </div>
+        </section>
+
+        {/* the app — one trip, everyone connected */}
+        <section className="connect" id="app">
+          <div className="wrap">
+            <span className="eyebrow">The Premium Choice difference</span>
+            <h2 className="section-title serif">
+              Before. During. <i>After.</i>
+            </h2>
+            <p className="section-sub">
+              One trip. Everyone connected. Our app gives teachers, parents and students each their
+              own view of the same journey — before departure, on the ground and after the group is
+              home.
+            </p>
+
+            <div className="phones">
+              {[
+                {
+                  role: 'Teacher',
+                  tagline: 'Run the trip',
+                  items: ['Student register', 'Headcount', 'Documents', 'Emergency contacts', 'Flights', 'Rooms', 'Vouchers', 'Broadcast', 'Translation'],
+                },
+                {
+                  role: 'Parent',
+                  tagline: 'Follow the journey',
+                  items: ['Live status', 'Daily updates', 'Photos', 'Itinerary', 'Flight information', 'Notifications', 'Emergency information'],
+                },
+                {
+                  role: 'Student',
+                  tagline: 'Experience the journey',
+                  items: ["What's happening today", 'Learning challenges', 'Maps', 'Destination content', 'Assignments', 'Trip journal', 'Photos'],
+                },
+              ].map((p) => (
+                <div className="phone" key={p.role}>
+                  <div className="phone-screen">
+                    <span className="phone-notch" aria-hidden="true"></span>
+                    <span className="phone-role">{p.role}</span>
+                    <span className="phone-tagline">{p.tagline}</span>
+                    <ul>
+                      {p.items.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
-              </div>
-              <div className="appvisual">
-                <Image
-                  className="appshot"
-                  src="/images/app-screenshot.png"
-                  alt="The School Trips app home screen, showing a teacher's trip dashboard with student register, flights, accommodation, vouchers, broadcast and translate, above the London weather forecast"
-                  width={1179}
-                  height={2556}
-                  sizes="(max-width: 900px) 60vw, 320px"
-                />
-              </div>
+              ))}
             </div>
+
+            <p className="connect-foot">
+              <Link href="/our-app">More about the app →</Link>
+            </p>
           </div>
         </section>
 

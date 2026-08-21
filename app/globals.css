@@ -151,6 +151,51 @@ h2.section-title.pct-title { font-size: clamp(24px, 3.2vw, 38px); line-height: 1
 .pct-brand span { font-family: var(--font-fraunces), serif; font-style: italic; font-size: 15px; color: var(--brass); white-space: nowrap; }
 /* Cream band, so the page alternates white / cream as on the group site. */
 .audiences { background: var(--cream); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+
+/* ── The app: one trip, everyone connected ────────────────────────────
+   Three phones, one per audience, drawn in CSS rather than screenshots so
+   the three views read as one product. */
+.connect { background: var(--cream); border-bottom: 1px solid var(--line); }
+.connect .section-sub { max-width: 62ch; }
+.phones { display: grid; grid-template-columns: repeat(3, 1fr); gap: 34px; margin-top: 56px; align-items: start; }
+.phone {
+  background: var(--ink); border-radius: 34px; padding: 12px;
+  box-shadow: 0 34px 60px -30px rgba(22, 36, 46, .5);
+}
+.phone:nth-child(2) { transform: translateY(-18px); }
+.phone-screen {
+  position: relative; background: #fff; border-radius: 24px;
+  padding: 34px 22px 24px; min-height: 100%;
+}
+.phone-notch {
+  position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+  width: 74px; height: 8px; border-radius: 999px; background: var(--ink); opacity: .16;
+}
+.phone-role {
+  display: inline-block; font-size: 10.5px; letter-spacing: .26em; text-transform: uppercase;
+  font-weight: 700; color: var(--brass); margin-bottom: 4px;
+}
+.phone-tagline {
+  display: block; font-family: var(--font-fraunces), serif; font-weight: 500;
+  font-size: 21px; line-height: 1.2; margin-bottom: 16px;
+}
+.phone-screen ul { display: grid; gap: 7px; }
+.phone-screen li {
+  display: flex; align-items: center; gap: 10px;
+  background: var(--cream); border: 1px solid var(--line); border-radius: 10px;
+  padding: 9px 12px; font-size: 13px; font-weight: 500; color: var(--ink);
+}
+.phone-screen li::before {
+  content: ""; width: 7px; height: 7px; border-radius: 50%;
+  background: var(--brass-light); flex: 0 0 auto;
+}
+.connect-foot { margin-top: 44px; text-align: center; }
+.connect-foot a { font-weight: 700; font-size: 14px; letter-spacing: .06em; text-transform: uppercase; color: var(--brass); border-bottom: 2px solid var(--brass-light); padding-bottom: 4px; }
+.connect-foot a:hover { color: var(--ink); }
+@media (max-width: 900px) {
+  .phones { grid-template-columns: 1fr; max-width: 340px; margin-left: auto; margin-right: auto; }
+  .phone:nth-child(2) { transform: none; }
+}
 .audiences .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; margin-top: 52px; }
 .aud-card { position: relative; background: var(--white); border: 1px solid var(--line); padding: 38px 34px 34px; border-radius: 3px; transition: transform .3s ease, box-shadow .3s ease; }
 .aud-card:hover { transform: translateY(-5px); box-shadow: 0 26px 50px -30px rgba(22, 36, 46, .3); }
@@ -409,7 +454,7 @@ h2.section-title.pct-title { font-size: clamp(24px, 3.2vw, 38px); line-height: 1
 
 /* ---------- footer (full, homepage style) ---------- */
 footer.site { background: #16242E; color: rgba(244, 243, 238, .72); font-size: 14px; }
-footer.site .top { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 48px; padding: 72px 0 56px; }
+footer.site .top { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr; gap: 44px; padding: 72px 0 56px; }
 footer.site h5 { font-size: 11.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--brass-light); margin-bottom: 18px; font-weight: 600; }
 footer.site ul { list-style: none; display: grid; gap: 10px; }
 footer.site a:hover { color: #fff; }
@@ -571,6 +616,9 @@ details.terms ol { padding: 0 32px 26px 50px; font-size: 13.5px; color: var(--in
 .safety-close { background: var(--ink); color: #F7F5F0; text-align: center; }
 .safety-close .st { color: #fff; }
 .safety-close .ovp { color: rgba(247, 245, 240, .8); max-width: 58ch; margin: 0 auto 30px; }
+.info-related { margin-top: 30px; font-size: 13.5px; color: rgba(247, 245, 240, .6); }
+.info-related a { color: rgba(247, 245, 240, .85); border-bottom: 1px solid rgba(247, 245, 240, .35); }
+.info-related a:hover { color: var(--brass-light); border-color: var(--brass-light); }
 
 /* ============================================================
    Trips index (same visual language: serif rows, teal hover)
