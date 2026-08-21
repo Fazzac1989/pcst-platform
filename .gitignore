@@ -31,3 +31,6 @@ supabase/.temp
 # approved design inputs (has its own nested .git — kept out of this repo)
 /reference/
 
+
+# Source photography originals live outside the repo
+/assets/
