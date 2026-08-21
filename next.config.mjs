@@ -13,6 +13,22 @@ const nextConfig = {
       { protocol: 'https', hostname: '**.supabase.co', pathname: '/storage/v1/object/public/**' },
     ],
   },
+  async redirects() {
+    // School Trips is managed in the Premium Choice Travel group console —
+    // this platform's own admin is retired (remove these entries to restore it).
+    return [
+      {
+        source: '/admin',
+        destination: 'https://premium-choice-travel.vercel.app/admin/school-trips',
+        permanent: false,
+      },
+      {
+        source: '/admin/:path*',
+        destination: 'https://premium-choice-travel.vercel.app/admin/school-trips',
+        permanent: false,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
