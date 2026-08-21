@@ -206,7 +206,7 @@ export default function ImageCurator({
         <form onSubmit={runSearch} className="flex gap-2 items-end flex-wrap mb-4">
           <label className="grid gap-1 flex-1 min-w-[260px]">
             <span className="text-xs font-semibold uppercase tracking-widest text-teal-deep">
-              Search Commons yourself
+              Search Shutterstock yourself
             </span>
             <input
               className={inputCls}

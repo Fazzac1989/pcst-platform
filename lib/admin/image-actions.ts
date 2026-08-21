@@ -5,6 +5,7 @@ import { revalidatePath } from 'next/cache';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { createClient } from '@/lib/supabase/server';
 import { searchCommons, queriesForTrip, type Candidate } from '@/lib/images/commons';
+import { searchShutterstock, licenseShutterstock, isShutterstockCandidate, shutterstockId } from '@/lib/images/shutterstock';
 import type { ActionResult } from './actions';
 
 const BUCKET = 'trip-images';
@@ -51,11 +52,20 @@ export async function shortlistForTrip(tripId: number): Promise<
   const plans = queriesForTrip(meta);
   const shortlists: Shortlist[] = [];
   for (const p of plans) {
-    const candidates = await searchCommons(p.query, {
+    // Shutterstock is the primary source; Commons remains the fallback when
+    // the token is missing or a search comes back empty.
+    let candidates = await searchShutterstock(p.query, {
       minWidth: p.role === 'hero' ? 2400 : 1600,
       landscapeOnly: p.landscapeOnly,
       limit: 18,
     });
+    if (!candidates.length) {
+      candidates = await searchCommons(p.query, {
+        minWidth: p.role === 'hero' ? 2400 : 1600,
+        landscapeOnly: p.landscapeOnly,
+        limit: 18,
+      });
+    }
     shortlists.push({ role: p.role, label: p.label, query: p.query, candidates: candidates.slice(0, 8) });
   }
 
@@ -70,7 +80,8 @@ export async function searchImages(
   const denied = await requireAdmin();
   if (denied) return { ok: false, error: denied };
   if (!query.trim()) return { ok: false, error: 'Enter something to search for.' };
-  const candidates = await searchCommons(query, { minWidth: 1600, landscapeOnly, limit: 24 });
+  let candidates = await searchShutterstock(query, { minWidth: 1600, landscapeOnly, limit: 24 });
+  if (!candidates.length) candidates = await searchCommons(query, { minWidth: 1600, landscapeOnly, limit: 24 });
   return { ok: true, candidates: candidates.slice(0, 12) };
 }
 
@@ -126,14 +137,20 @@ export async function approveImage(input: {
   const { data: trip } = await db.from('trips').select('id, slug, title').eq('id', input.tripId).maybeSingle();
   if (!trip) return { ok: false, error: 'Trip not found.' };
 
+  const fromShutterstock = isShutterstockCandidate(input.candidate);
   const targetWidth = input.role === 'hero' ? 3000 : 2000;
   let bytes: Buffer;
   try {
-    const res = await fetch(scaledUrl(input.candidate.title, targetWidth), {
-      headers: { 'User-Agent': 'PremiumChoiceSchoolTrips/1.0 (info@premiumchoicetravel.com)' },
-    });
-    if (!res.ok) return { ok: false, error: `Could not download that image (${res.status}).` };
-    bytes = Buffer.from(await res.arrayBuffer());
+    if (fromShutterstock) {
+      // Licenses the image on the account's plan, then downloads the clean file.
+      bytes = await licenseShutterstock(shutterstockId(input.candidate));
+    } else {
+      const res = await fetch(scaledUrl(input.candidate.title, targetWidth), {
+        headers: { 'User-Agent': 'PremiumChoiceSchoolTrips/1.0 (info@premiumchoicetravel.com)' },
+      });
+      if (!res.ok) return { ok: false, error: `Could not download that image (${res.status}).` };
+      bytes = Buffer.from(await res.arrayBuffer());
+    }
   } catch (e: any) {
     return { ok: false, error: `Download failed: ${e.message}` };
   }
@@ -167,11 +184,13 @@ export async function approveImage(input: {
     width: input.candidate.width,
     height: input.candidate.height,
     bytes: bytes.length,
-    source: 'Wikimedia Commons',
+    source: fromShutterstock ? 'Shutterstock' : 'Wikimedia Commons',
     source_url: input.candidate.sourceUrl,
     photographer: input.candidate.photographer,
     licence: input.candidate.licence,
-    attribution_required: !/^(cc0|public domain|pdm)/i.test(input.candidate.licence ?? ''),
+    attribution_required: fromShutterstock
+      ? false
+      : !/^(cc0|public domain|pdm)/i.test(input.candidate.licence ?? ''),
     downloaded_at: new Date().toISOString(),
     sort_order: input.sortOrder,
     approved: true,
