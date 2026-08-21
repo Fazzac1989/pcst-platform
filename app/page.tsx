@@ -1,7 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import AppointmentForm from '@/components/AppointmentForm';
+import ScrollReveal from '@/components/ScrollReveal';
 import SiteHeader from '@/components/SiteHeaderWithData';
+import SubjectIcon from '@/components/SubjectIcon';
 import { SiteFooterFull } from '@/components/SiteFooter';
 import { getFeaturedTrips, getPublishedTripCount, getPublishedTrips, getSubjects } from '@/lib/data';
 
@@ -40,6 +42,7 @@ export default async function HomePage() {
   return (
     <>
       <SiteHeader variant="home" />
+      <ScrollReveal />
 
       {/* hero */}
       <div className="hero">
@@ -197,9 +200,11 @@ export default async function HomePage() {
               </p>
             </div>
             <p className="serif closing">
+              Whatever your school&apos;s objectives, we design a programme that
+              <i> brings them to life.</i>
+              <br />
               <span>
-                Whatever your school&apos;s objectives, we design a programme that brings them to
-                life in some of the world&apos;s most exciting destinations — creating experiences
+                In some of the world&apos;s most exciting destinations — creating experiences
                 students will remember, share and talk about for years to come.
               </span>
             </p>
@@ -329,14 +334,6 @@ export default async function HomePage() {
                     need without paper handouts.
                   </div>
                 </div>
-                <div className="storebtns">
-                  <a className="storebtn" href="#">
-                    &#63743; App Store
-                  </a>
-                  <a className="storebtn" href="#">
-                    &#9654; Google Play
-                  </a>
-                </div>
               </div>
               <div className="appvisual">
                 <Image
@@ -370,25 +367,15 @@ export default async function HomePage() {
                 View all trips <span className="arrow">→</span>
               </Link>
             </div>
-            <div className="dest-grid">
+            {/* Compact icon tiles, four across: the card is the invitation,
+                the subject page is the detail. */}
+            <div className="subject-tiles">
               {subjects.map((s) => (
-                <Link className="dest-card" href={`/subjects/${s.slug}`} key={s.slug}>
-                  {s.heroImage && (
-                    <Image
-                      className="ph"
-                      src={s.heroImage}
-                      alt=""
-                      fill
-                      sizes="(max-width: 1024px) 50vw, 25vw"
-                      style={{ objectFit: 'cover' }}
-                    />
-                  )}
-                  <div className="fade"></div>
-                  {/* Just the subject name: the card is the invitation, the
-                      subject page is the detail. */}
-                  <div className="meta">
-                    <h3>{s.name}</h3>
-                  </div>
+                <Link className="subject-tile" href={`/subjects/${s.slug}`} key={s.slug}>
+                  <span className="subject-tile-icon">
+                    <SubjectIcon subject={s.name} />
+                  </span>
+                  <h3>{s.name}</h3>
                 </Link>
               ))}
             </div>
