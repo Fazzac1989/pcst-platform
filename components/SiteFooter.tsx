@@ -25,7 +25,7 @@ export function SiteFooterFull() {
             <h5>Explore</h5>
             <ul>
               <li><a href="/#subjects">Subjects</a></li>
-              <li><a href="/#journey">How it works</a></li>
+              <li><a href="/#journey">With you at every stage</a></li>
               <li><Link href="/trips">All trips</Link></li>
               <li><a href="#">Blog</a></li>
             </ul>
@@ -33,7 +33,7 @@ export function SiteFooterFull() {
           <div>
             <h5>Company</h5>
             <ul>
-              <li><a href="/#safety">Health &amp; Safety</a></li>
+              <li><Link href="/safety">Health, Safety &amp; Security</Link></li>
               <li><a href="#">About us</a></li>
               <li><a href="#">Terms &amp; Conditions</a></li>
               <li><a href="/#contact">Contact us</a></li>

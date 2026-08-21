@@ -5,9 +5,13 @@ import { notFound } from 'next/navigation';
 import SiteHeader from '@/components/SiteHeaderWithData';
 import { SiteFooterSimple } from '@/components/SiteFooter';
 import { getPublishedTrips, getSubjectDescription, getSubjects } from '@/lib/data';
+import { getSiteSettings } from '@/lib/settings';
 import SubjectWorldMap, { type MapCountry } from '@/components/SubjectWorldMap';
 
-type Props = { params: { slug: string } };
+type Props = { params: { slug: string }; searchParams: { country?: string } };
+
+const slugifyName = (s: string) =>
+  s.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 
 export async function generateStaticParams() {
   const subjects = await getSubjects();
@@ -24,11 +28,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function SubjectPage({ params }: Props) {
-  const [subjects, allTrips, description] = await Promise.all([
+export default async function SubjectPage({ params, searchParams }: Props) {
+  const [subjects, allTrips, description, settings] = await Promise.all([
     getSubjects(),
     getPublishedTrips(),
     getSubjectDescription(params.slug),
+    getSiteSettings(),
   ]);
   const subject = subjects.find((s) => s.slug === params.slug);
   if (!subject) notFound();
@@ -45,6 +50,13 @@ export default async function SubjectPage({ params }: Props) {
     if (entry) entry.trips.push(item);
     else mapCountries.push({ name: t.country, trips: [item] });
   }
+
+  // ?country= narrows the grid to one destination without losing the subject
+  // context — the Country → Subject → Trips journey works in both directions.
+  const countryFilter = searchParams.country
+    ? mapCountries.find((c) => slugifyName(c.name) === searchParams.country)?.name ?? null
+    : null;
+  const visibleTrips = countryFilter ? trips.filter((t) => t.country === countryFilter) : trips;
 
   return (
     <>
@@ -75,11 +87,18 @@ export default async function SubjectPage({ params }: Props) {
             </div>
             <div>
               <b>Countries</b>
-              {subject.countries.join(' · ')}
+              <span className="tmeta-links">
+                {subject.countries.map((c, i) => (
+                  <span key={c}>
+                    {i > 0 && ' · '}
+                    <Link href={`/subjects/${subject.slug}?country=${slugifyName(c)}`}>{c}</Link>
+                  </span>
+                ))}
+              </span>
             </div>
             <div>
-              <b>Departs</b>
-              Dubai
+              <b>Departures</b>
+              Airports throughout the UAE
             </div>
           </div>
         </div>
@@ -98,7 +117,9 @@ export default async function SubjectPage({ params }: Props) {
           </section>
         )}
 
-        {mapCountries.length > 0 && (
+        {/* The map is a navigation aid, kept compact and switchable from the
+            admin; the clickable country links above do the same job in a line. */}
+        {settings.flags.subjectMap && !countryFilter && mapCountries.length > 1 && (
           <section className="subject-map">
             <div className="wrap">
               <span className="eyebrow">Where we go</span>
@@ -106,19 +127,38 @@ export default async function SubjectPage({ params }: Props) {
                 {subject.name} around <i>the world</i>
               </h2>
               <p className="ovp">Rest on a highlighted country to see the trip it offers.</p>
-              <SubjectWorldMap countries={mapCountries} />
+              <div className="smap-shell">
+                <SubjectWorldMap countries={mapCountries} />
+              </div>
             </div>
           </section>
         )}
 
-        <section>
+        <section id="trips">
           <div className="wrap">
             <span className="eyebrow">Where {subject.name} comes alive</span>
             <h2 className="st serif">
-              Choose your <i>destination</i>
+              {countryFilter ? (
+                <>
+                  {subject.name} trips in <i>{countryFilter}</i>
+                </>
+              ) : (
+                <>
+                  Choose your <i>destination</i>
+                </>
+              )}
             </h2>
+            {countryFilter && (
+              <p className="ovp">
+                Showing {visibleTrips.length} {subject.name} trip
+                {visibleTrips.length === 1 ? '' : 's'} in {countryFilter}.{' '}
+                <Link href={`/subjects/${subject.slug}`} className="filter-clear">
+                  View every destination →
+                </Link>
+              </p>
+            )}
             <div className="trip-grid">
-              {trips.map((trip) => (
+              {visibleTrips.map((trip) => (
                 <Link className="trip" href={`/trips/${trip.slug}`} key={trip.slug}>
                   {trip.heroImage && (
                     <Image

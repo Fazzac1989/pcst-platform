@@ -47,8 +47,8 @@ export default async function TripsIndexPage() {
               {subjects.length} curriculum areas
             </div>
             <div>
-              <b>Departs</b>
-              Dubai
+              <b>Departures</b>
+              Airports throughout the UAE
             </div>
           </div>
         </div>

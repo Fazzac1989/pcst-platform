@@ -9,6 +9,7 @@ import {
   getCountryContent,
   getCountryImages,
   getPublishedTrips,
+  getSubjects,
 } from '@/lib/data';
 import TripGallery, { type GalleryItem } from '@/app/trips/[slug]/TripGallery';
 
@@ -30,17 +31,40 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function CountryPage({ params }: Props) {
-  const [countries, allTrips, content, images] = await Promise.all([
+  const [countries, allTrips, content, images, subjects] = await Promise.all([
     getCountries(),
     getPublishedTrips(),
     getCountryContent(params.slug),
     getCountryImages(params.slug),
+    getSubjects(),
   ]);
   const country = countries.find((c) => c.slug === params.slug);
   if (!country) notFound();
 
   const trips = allTrips.filter((t) => t.countrySlug === country.slug);
   const others = countries.filter((c) => c.slug !== country.slug);
+
+  // Country → Subject → Trips: a curriculum link becomes a real link whenever a
+  // matching subject page exists, carrying the country context with it.
+  const subjectLink = (name: string) => {
+    const match = subjects.find((s) => s.name.toLowerCase() === name.toLowerCase());
+    return match ? `/subjects/${match.slug}?country=${country.slug}` : null;
+  };
+
+  // The country's at-a-glance facts belong here, not repeated on every trip.
+  const cf = trips[0]?.countryFacts;
+  const facts = (
+    [
+      ['Capital', cf?.capital],
+      ['Language', cf?.languages],
+      ['Currency', cf?.currency],
+      ['Time zone', cf?.timezone],
+      ['Population', cf?.population],
+      ['Average temp', cf?.avgTempC === null || cf?.avgTempC === undefined ? null : `${cf.avgTempC}°C`],
+    ] as const
+  )
+    .filter(([, value]) => Boolean(value))
+    .map(([label, value]) => ({ label, value: value as string }));
 
   // The country's own hero, falling back to a trip's while pages are unbuilt.
   const ownHero = images.find((i) => i.role === 'hero') ?? null;
@@ -85,11 +109,21 @@ export default async function CountryPage({ params }: Props) {
             </div>
             <div>
               <b>Subjects</b>
-              {country.subjects.join(' · ')}
+              <span className="tmeta-links">
+                {country.subjects.map((name, i) => {
+                  const link = subjectLink(name);
+                  return (
+                    <span key={name}>
+                      {i > 0 && ' · '}
+                      {link ? <Link href={link}>{name}</Link> : name}
+                    </span>
+                  );
+                })}
+              </span>
             </div>
             <div>
-              <b>Departs</b>
-              Dubai
+              <b>Departures</b>
+              Airports throughout the UAE
             </div>
           </div>
         </div>
@@ -114,21 +148,26 @@ export default async function CountryPage({ params }: Props) {
                   {content.educationNotes && <p className="ovp">{content.educationNotes}</p>}
                 </div>
                 <aside className="cmaster-side">
-                  <h3>Practical notes</h3>
-                  <dl>
-                    {content.gettingThere && (
-                      <div>
-                        <dt>Getting there</dt>
-                        <dd>{content.gettingThere}</dd>
-                      </div>
-                    )}
-                    {content.safetyNotes && (
-                      <div>
-                        <dt>Safety &amp; health</dt>
-                        <dd>{content.safetyNotes}</dd>
-                      </div>
-                    )}
-                  </dl>
+                  <h3>
+                    {country.name} <span style={{ fontWeight: 400 }}>at a glance</span>
+                  </h3>
+                  {/* The single home of the country facts — trip pages point
+                      here rather than repeating them. */}
+                  {facts.length > 0 && (
+                    <dl>
+                      {facts.map(({ label, value }) => (
+                        <div key={label}>
+                          <dt>{label}</dt>
+                          <dd>{value}</dd>
+                        </div>
+                      ))}
+                    </dl>
+                  )}
+                  {/* Generic safety copy lives on its own page now, not
+                      repeated per country; the notes stay in the database. */}
+                  <Link className="cfacts-link" href="/safety">
+                    Health, Safety &amp; Security →
+                  </Link>
                 </aside>
               </div>
 
@@ -138,20 +177,27 @@ export default async function CountryPage({ params }: Props) {
                     Curriculum <i>links</i>
                   </h2>
                   <div className="cmaster-subjects">
-                    {content.curriculumLinks.map((c) => (
-                      <div key={c.subject}>
-                        <h4>{c.subject}</h4>
-                        <p>{c.note}</p>
-                      </div>
-                    ))}
+                    {content.curriculumLinks.map((c) => {
+                      const link = subjectLink(c.subject);
+                      return (
+                        <div key={c.subject}>
+                          <h4>
+                            {link ? <Link href={link}>{c.subject} →</Link> : c.subject}
+                          </h4>
+                          <p>{c.note}</p>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               )}
 
               {(content.climateSummary || content.seasons.length > 0) && (
                 <div className="cmaster-block">
+                  {/* Informational, not prescriptive: school travel is set by
+                      term dates and exam periods, not by the weather. */}
                   <h2 className="st serif">
-                    When to <i>travel</i>
+                    Seasonal <i>considerations</i>
                   </h2>
                   {content.climateSummary && <p className="ovp">{content.climateSummary}</p>}
                   {content.seasons.length > 0 && (

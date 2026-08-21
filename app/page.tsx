@@ -3,17 +3,41 @@ import Link from 'next/link';
 import AppointmentForm from '@/components/AppointmentForm';
 import SiteHeader from '@/components/SiteHeaderWithData';
 import { SiteFooterFull } from '@/components/SiteFooter';
-import { getFeaturedTrips, getPublishedTripCount, getSubjects } from '@/lib/data';
+import { getFeaturedTrips, getPublishedTripCount, getPublishedTrips, getSubjects } from '@/lib/data';
+import { getSiteSettings } from '@/lib/settings';
 
-// Country display names as used on the reference featured cards.
+// Country display names as used on the featured cards.
 const COUNTRY_SHORT: Record<string, string> = { 'United Kingdom': 'UK' };
 
+/** The less predictable destinations and themes lead the inspiration band. */
+const DISTINCTIVE_COUNTRIES = ['Mongolia', 'New Zealand', 'Australia', 'Nepal', 'Vietnam', 'Iceland', 'Japan', 'South Africa'];
+const DISTINCTIVE_SUBJECTS = ['Volunteering', 'Outdoor Education', 'Skiing', 'STEAM'];
+
 export default async function HomePage() {
-  const [featured, tripCount, subjects] = await Promise.all([
+  const [featured, allPublished, tripCount, subjects, s] = await Promise.all([
     getFeaturedTrips(),
+    getPublishedTrips(),
     getPublishedTripCount(),
     getSubjects(),
+    getSiteSettings(),
   ]);
+
+  // Journey inspiration: the trips marked featured in the admin, topped up with
+  // the most distinctive journeys — one per country, unusual destinations first —
+  // so the band never sits empty and never reads as six city breaks.
+  const inspiration = [...featured];
+  if (inspiration.length < 6) {
+    const score = (t: (typeof allPublished)[number]) =>
+      (DISTINCTIVE_COUNTRIES.indexOf(t.country) >= 0 ? 10 - DISTINCTIVE_COUNTRIES.indexOf(t.country) : 0) +
+      (DISTINCTIVE_SUBJECTS.includes(t.subject) ? 6 : 0);
+    const seenCountries = new Set(inspiration.map((t) => t.country));
+    for (const t of [...allPublished].sort((a, b) => score(b) - score(a))) {
+      if (inspiration.length >= 6) break;
+      if (inspiration.some((x) => x.slug === t.slug) || seenCountries.has(t.country)) continue;
+      inspiration.push(t);
+      seenCountries.add(t.country);
+    }
+  }
 
   return (
     <>
@@ -34,37 +58,46 @@ export default async function HomePage() {
         </div>
         <div className="scrim"></div>
         <div className="wrap">
-          <span className="eyebrow">Premium Choice School Trips</span>
+          <span className="eyebrow">{s.hero.eyebrow}</span>
           <h1>
-            The future of school travel <i>starts here</i>
+            {s.hero.headline} <i>{s.hero.headlineAccent}</i>
           </h1>
-          <p className="lede">
-            Founded by Paul Farrell of Premium Choice Travel, we bring decades of travel
-            expertise, trusted relationships and destination knowledge into a new generation of
-            school trips — safe, inspiring, professionally managed journeys that let students
-            learn beyond the classroom.
-          </p>
+          <p className="lede">{s.hero.lede}</p>
           <div className="ctas">
             <a className="btn btn-brass" href="#trips">
-              Browse trips <span className="arrow">→</span>
+              {s.hero.ctaPrimary} <span className="arrow">→</span>
             </a>
             <a className="btn btn-ghost" href="#contact">
-              Book an appointment
+              {s.hero.ctaSecondary}
             </a>
           </div>
         </div>
       </div>
 
       <main className="site">
-        {/* audiences */}
+        {/* introduction */}
+        <section className="manifesto">
+          <div className="wrap">
+            <span className="eyebrow">{s.intro.eyebrow}</span>
+            <h2 className="section-title serif">
+              {s.intro.headline} <i>{s.intro.headlineAccent}</i>
+            </h2>
+            <div className="intro-cols">
+              {s.intro.paragraphs.map((p, i) => (
+                <p className="section-sub full" key={i}>
+                  {p}
+                </p>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* PCT — one journey, three perspectives */}
         <section className="audiences">
           <div className="wrap">
-            <span className="eyebrow">Who we work with</span>
-            <h2 className="section-title serif pct-title">
-              <span className="pct">P</span>arents reassured. <span className="pct">C</span>hildren
-              inspired. <span className="pct">T</span>eachers supported.
-            </h2>
-            <p className="section-sub">Every journey, everyone cared for.</p>
+            <span className="eyebrow">Why we are called PCT</span>
+            <h2 className="section-title serif">{s.pct.headline}</h2>
+            <p className="section-sub">{s.pct.sub}</p>
             <div className="pct-brand">
               <Image
                 src="/images/pct-logo.png"
@@ -74,107 +107,71 @@ export default async function HomePage() {
                 style={{ width: 200, height: 'auto' }}
                 unoptimized
               />
-              <span>— It&apos;s in our name</span>
+              <span>— it&apos;s in our name</span>
             </div>
             <div className="grid">
               <div className="aud-card">
-                <div className="num">For schools</div>
-                <h3>Teachers &amp; trip leaders</h3>
-                <p>
-                  Curriculum-mapped itineraries, transparent pricing, full risk assessments and a
-                  dedicated coordinator from first enquiry to landing home.
-                </p>
-                <a className="link" href="#contact">
-                  Book an appointment →
-                </a>
-              </div>
-              <div className="aud-card">
-                <div className="num">For parents</div>
-                <h3>Families &amp; guardians</h3>
-                <p>
-                  Vetted accommodation, comprehensive insurance, 24/7 in-destination support and
-                  clear communication before and during every trip.
-                </p>
-                <a className="link" href="#safety">
+                <div className="num">
+                  <span className="pct">P</span> is for
+                </div>
+                <h3>Parents</h3>
+                <p>{s.pct.parents}</p>
+                <Link className="link" href="/safety">
                   How we keep them safe →
+                </Link>
+              </div>
+              <div className="aud-card">
+                <div className="num">
+                  <span className="pct">C</span> is for
+                </div>
+                <h3>Children</h3>
+                <p>{s.pct.children}</p>
+                <a className="link" href="#trips">
+                  See where they could go →
                 </a>
               </div>
               <div className="aud-card">
-                <div className="num">For students</div>
-                <h3>The travellers themselves</h3>
-                <p>
-                  Real fieldwork in Iceland, debates in Berlin, ancient history in Petra —
-                  experiences that turn coursework into memory.
-                </p>
-                <a className="link" href="#trips">
-                  See where you could go →
+                <div className="num">
+                  <span className="pct">T</span> is for
+                </div>
+                <h3>Teachers</h3>
+                <p>{s.pct.teachers}</p>
+                <a className="link" href="#contact">
+                  Arrange a consultation →
                 </a>
               </div>
             </div>
           </div>
         </section>
 
-        {/* manifesto */}
-        <section className="manifesto">
+        {/* tailored journeys */}
+        <section className="manifesto manifesto--tailored">
           <div className="wrap">
-            <div className="mangrid">
-              <div>
-                <span className="eyebrow">More than a school trip</span>
-                <h2 className="section-title serif">
-                  Stories students remember <i>long after they leave school</i>
-                </h2>
-                <p className="section-sub full">
-                  We design and deliver bespoke educational trips, curriculum-linked experiences,
-                  cultural journeys, sports tours, adventure programmes and international school
-                  travel — for schools looking for something more than a standard package.
+            <span className="eyebrow">Tailored journeys</span>
+            <h2 className="section-title serif">
+              {s.tailored.headline} <i>{s.tailored.headlineAccent}</i>
+            </h2>
+            <div className="intro-cols">
+              {s.tailored.paragraphs.map((p, i) => (
+                <p className="section-sub full" key={i}>
+                  {p}
                 </p>
-                <p className="section-sub full">
-                  That means moving beyond generic itineraries and repetitive sightseeing. Every
-                  trip is built with purpose, combining education, discovery, culture, adventure
-                  and unforgettable experiences in a way that feels relevant to today&apos;s
-                  students — whether they&apos;re exploring history where it happened, competing
-                  on an international sports tour, or developing confidence through adventure.
-                </p>
-              </div>
-              <div>
-                <span className="eyebrow">What makes us different</span>
-                <h2 className="section-title serif">
-                  Designed around the school — <i>not taken from a shelf</i>
-                </h2>
-                <p className="section-sub full">
-                  Traditional school travel can feel rigid: fixed programmes, limited
-                  flexibility, the same itineraries year after year. We combine the experience
-                  and buying power of an established travel company with the creativity,
-                  flexibility and technology of a modern school travel specialist.
-                </p>
-                <p className="section-sub full">
-                  We work closely with teachers and school leaders to understand learning
-                  objectives, budget, destinations and student needs before creating a programme
-                  specifically for them — and our network of trusted partners unlocks exclusive
-                  access, specialist workshops and once-in-a-lifetime experiences, with safety,
-                  communication and organisation at the heart of it all.
-                </p>
-              </div>
+              ))}
             </div>
             <p className="serif closing">
-              Travel that educates. Experiences that <i>inspire.</i>
-              <br />
-              <span>
-                This is not simply school travel. This is a new way for students to experience
-                the world.
-              </span>
+              <span>{s.tailored.closing}</span>
             </p>
           </div>
         </section>
 
-        {/* featured trips */}
+        {/* journey inspiration */}
         <section className="trips-band" id="trips">
           <div className="wrap">
             <div className="head">
               <div>
-                <span className="eyebrow">Featured itineraries</span>
+                <span className="eyebrow">{s.inspiration.eyebrow}</span>
                 <h2 className="section-title serif">
-                  Trips our schools <i>keep rebooking</i>
+                  {s.inspiration.headline} <i>{s.inspiration.headlineAccent}</i>
                 </h2>
               </div>
               <Link className="btn btn-ink" href="/trips">
@@ -182,7 +179,7 @@ export default async function HomePage() {
               </Link>
             </div>
             <div className="trip-grid">
-              {featured.map((trip) => (
+              {inspiration.slice(0, 6).map((trip) => (
                 <Link className="trip" href={`/trips/${trip.slug}`} key={trip.slug}>
                   {trip.heroImage && (
                     <Image
@@ -210,102 +207,75 @@ export default async function HomePage() {
           </div>
         </section>
 
-        {/* booking journey */}
+        {/* with you at every stage */}
         <section className="journey" id="journey">
           <div className="wrap">
-            <span className="eyebrow">How it works</span>
+            <span className="eyebrow">{s.stages.eyebrow}</span>
             <h2 className="section-title serif">
-              From first meeting to <i>touchdown home</i>
+              {s.stages.headline} <i>{s.stages.headlineAccent}</i>
             </h2>
-            <p className="section-sub">
-              One dedicated team from the first conversation to the moment students return —
-              with technology that keeps everyone informed at every step.
-            </p>
+            <p className="section-sub">{s.stages.sub}</p>
 
             <div className="jline">
-              <div className="jstage">
-                <div className="jnum">i.</div>
-                <h3>First meeting</h3>
-                <p>
-                  We sit down with your teachers and school leaders to understand learning
-                  objectives, budget, destination preferences, student needs and ambitions —
-                  before anything is designed.
-                </p>
-              </div>
-              <div className="jstage">
-                <div className="jnum">ii.</div>
-                <h3>Design &amp; proposal</h3>
-                <p>
-                  A programme created specifically for your school — tailored itinerary,
-                  transparent per-student pricing, and the documentation your leadership team and
-                  parents will ask for.
-                </p>
-              </div>
-              <div className="jstage">
-                <div className="jnum">iii.</div>
-                <h3>Planning &amp; preparation</h3>
-                <p>
-                  We handle bookings, flights, visas, full risk assessments and insurance — and
-                  support parent information evenings so every family travels with confidence.
-                </p>
-              </div>
-              <div className="jstage">
-                <div className="jnum">iv.</div>
-                <h3>Travel &amp; beyond</h3>
-                <p>
-                  Expert guides and 24/7 support in-destination, live communication home
-                  throughout the trip, and a post-trip review to capture the learning and plan
-                  what&apos;s next.
-                </p>
-              </div>
+              {s.stages.steps.map((step, i) => (
+                <div className="jstage" key={i}>
+                  <div className="jnum">{String(i + 1).padStart(2, '0')}</div>
+                  <h3>{step.title}</h3>
+                  <p>{step.text}</p>
+                </div>
+              ))}
             </div>
 
-            <div className="appband">
-              <div className="appcopy">
-                <span className="eyebrow" style={{ color: 'var(--brass-light)' }}>
-                  On-travel value adds
-                </span>
-                <h3 className="serif apphead">
-                  The whole trip, in <i>everyone&apos;s pocket</i>
-                </h3>
-                <p>
-                  Our mobile app connects students, teachers and parents to the journey — before,
-                  during and after travel.
-                </p>
-                <div className="appfeatures">
-                  <div>
-                    <b>For teachers</b>Live itinerary, group documents, headcounts and instant
-                    contact with our team.
+            {/* The app exists but is not being announced yet: the band stays in
+                the codebase and returns the day the flag is switched on. */}
+            {s.flags.appPromotion && (
+              <div className="appband">
+                <div className="appcopy">
+                  <span className="eyebrow" style={{ color: 'var(--brass-light)' }}>
+                    On-travel value adds
+                  </span>
+                  <h3 className="serif apphead">
+                    The whole trip, in <i>everyone&apos;s pocket</i>
+                  </h3>
+                  <p>
+                    Our mobile app connects students, teachers and parents to the journey — before,
+                    during and after travel.
+                  </p>
+                  <div className="appfeatures">
+                    <div>
+                      <b>For teachers</b>Live itinerary, group documents, headcounts and instant
+                      contact with our team.
+                    </div>
+                    <div>
+                      <b>For parents</b>Real-time trip updates and photo moments, so home always
+                      knows all is well.
+                    </div>
+                    <div>
+                      <b>For students</b>Daily schedule, learning resources, and everything they
+                      need without paper handouts.
+                    </div>
                   </div>
-                  <div>
-                    <b>For parents</b>Real-time trip updates and photo moments, so home always
-                    knows all is well.
-                  </div>
-                  <div>
-                    <b>For students</b>Daily schedule, learning resources, and everything they
-                    need without paper handouts.
+                  <div className="storebtns">
+                    <a className="storebtn" href="#">
+                      &#63743; App Store
+                    </a>
+                    <a className="storebtn" href="#">
+                      &#9654; Google Play
+                    </a>
                   </div>
                 </div>
-                <div className="storebtns">
-                  <a className="storebtn" href="#">
-                    &#63743; App Store
-                  </a>
-                  <a className="storebtn" href="#">
-                    &#9654; Google Play
-                  </a>
+                <div className="appvisual">
+                  <Image
+                    className="appshot"
+                    src="/images/app-screenshot.png"
+                    alt="The School Trips app home screen, showing a teacher's trip dashboard"
+                    width={1179}
+                    height={2556}
+                    sizes="(max-width: 900px) 60vw, 320px"
+                  />
                 </div>
               </div>
-              <div className="appvisual">
-                <Image
-                  className="appshot"
-                  src="/images/app-screenshot.png"
-                  alt="The School Trips app home screen, showing a teacher's trip dashboard with student register, flights, accommodation, vouchers, broadcast and translate, above the London weather forecast"
-                  width={1179}
-                  height={2556}
-                  sizes="(max-width: 900px) 60vw, 320px"
-                />
-              </div>
-            </div>
+            )}
           </div>
         </section>
 
@@ -328,12 +298,12 @@ export default async function HomePage() {
               </Link>
             </div>
             <div className="dest-grid">
-              {subjects.map((s) => (
-                <Link className="dest-card" href={`/subjects/${s.slug}`} key={s.slug}>
-                  {s.heroImage && (
+              {subjects.map((sub) => (
+                <Link className="dest-card" href={`/subjects/${sub.slug}`} key={sub.slug}>
+                  {sub.heroImage && (
                     <Image
                       className="ph"
-                      src={s.heroImage}
+                      src={sub.heroImage}
                       alt=""
                       fill
                       sizes="(max-width: 1024px) 50vw, 25vw"
@@ -342,8 +312,8 @@ export default async function HomePage() {
                   )}
                   <div className="fade"></div>
                   <div className="meta">
-                    <h3>{s.name}</h3>
-                    <span>{s.countries.join(' · ')}</span>
+                    <h3>{sub.name}</h3>
+                    <span>{sub.countries.join(' · ')}</span>
                   </div>
                 </Link>
               ))}
@@ -356,7 +326,7 @@ export default async function HomePage() {
           <div className="wrap">
             <div className="cols">
               <div>
-                <span className="eyebrow">Health &amp; safety</span>
+                <span className="eyebrow">Health, Safety &amp; Security</span>
                 <h2 className="section-title serif">
                   Safety isn&apos;t a page on our site.
                   <br />
@@ -366,35 +336,36 @@ export default async function HomePage() {
                   <li>
                     <span className="tick">✓</span>
                     <div>
-                      <strong>Full risk assessments for every trip</strong>Written documentation
-                      supplied to your school before departure, covering transport, accommodation
-                      and every activity.
+                      <strong>Risk assessment and careful planning</strong>Every journey assessed
+                      across transport, accommodation, activities and destination-specific risks,
+                      with documentation for your school.
                     </div>
                   </li>
                   <li>
                     <span className="tick">✓</span>
                     <div>
-                      <strong>Comprehensive travel insurance</strong>Every traveller covered —
-                      medical, cancellation and curtailment — with clear policy documents for
-                      parents.
+                      <strong>Insurance and assistance</strong>Travel insurance with clear policy
+                      documentation, and straightforward procedures for obtaining support.
                     </div>
                   </li>
                   <li>
                     <span className="tick">✓</span>
                     <div>
-                      <strong>24/7 support while travelling</strong>A dedicated contact in Dubai
-                      and on the ground in-destination, for the entire duration of the trip.
+                      <strong>24-hour support while travelling</strong>Our Dubai team and
+                      experienced local partners, for the entire duration of the journey.
                     </div>
                   </li>
                   <li>
                     <span className="tick">✓</span>
                     <div>
-                      <strong>Vetted partners worldwide</strong>Accommodation, coaches and guides
-                      selected and reviewed to school-group standards in every country we
-                      operate.
+                      <strong>Trusted partners worldwide</strong>Accommodation, transport, guides
+                      and activity providers selected and reviewed to school-group standards.
                     </div>
                   </li>
                 </ul>
+                <Link className="btn btn-ink" href="/safety" style={{ marginTop: 26 }}>
+                  How we look after every student <span className="arrow">→</span>
+                </Link>
               </div>
               <div className="stats">
                 <div className="stat">
@@ -422,58 +393,37 @@ export default async function HomePage() {
           </div>
         </section>
 
-        {/* enquire */}
+        {/* start planning */}
         <section className="enquire" id="contact">
           <div className="wrap">
             <div className="cols">
               <div>
-                <span className="eyebrow">Get started</span>
+                <span className="eyebrow">Start planning your journey</span>
                 <h2 className="section-title serif">
-                  From staff-room idea to <i>boarding pass</i>
+                  {s.planning.headline} <i>{s.planning.headlineAccent}</i>
                 </h2>
                 <div className="steps">
-                  <div className="step">
-                    <span className="sn">i.</span>
-                    <div>
-                      <h4>Book an appointment</h4>
-                      <p>
-                        Tell us your subject, dates and budget — by phone, email or a meeting at
-                        your school. No commitment.
-                      </p>
+                  {s.planning.steps.map((step, i) => (
+                    <div className="step" key={i}>
+                      <span className="sn">{['i.', 'ii.', 'iii.'][i] ?? `${i + 1}.`}</span>
+                      <div>
+                        <h4>{step.title}</h4>
+                        <p>{step.text}</p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="step">
-                    <span className="sn">ii.</span>
-                    <div>
-                      <h4>Receive a tailored proposal</h4>
-                      <p>
-                        Itinerary, pricing per student, and everything your leadership team and
-                        parents will ask about.
-                      </p>
-                    </div>
-                  </div>
-                  <div className="step">
-                    <span className="sn">iii.</span>
-                    <div>
-                      <h4>We handle the rest</h4>
-                      <p>
-                        Bookings, documentation, risk assessments and on-trip support — while you
-                        focus on teaching.
-                      </p>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
               <div className="panel">
-                <h3>Book an appointment</h3>
-                <p>Speak to our Dubai team — we&apos;ll come back to you within 24 hours.</p>
+                <h3>{s.planning.panelTitle}</h3>
+                <p>{s.planning.panelSub}</p>
                 <AppointmentForm />
                 <div className="contact">
                   <div>
-                    <strong>Call</strong> +971 4 420 6965
+                    <strong>Call</strong> {s.contact.phone}
                   </div>
                   <div>
-                    <strong>Email</strong> info@premiumchoicetravel.com
+                    <strong>Email</strong> {s.contact.email}
                   </div>
                 </div>
               </div>

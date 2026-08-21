@@ -19,12 +19,12 @@ export type MegaCountry = {
 
 type MenuKey = 'subjects' | 'countries';
 
+// Health, Safety & Security is a page of its own, not a homepage anchor.
 const NAV_LINKS = [
   { label: 'Subjects', anchor: 'subjects' },
   { label: 'Countries', anchor: 'countries' },
-  { label: 'How it works', anchor: 'journey' },
   { label: 'Trips', anchor: 'trips' },
-  { label: 'Health & Safety', anchor: 'safety' },
+  { label: 'Health, Safety & Security', anchor: 'safety', href: '/safety' },
   { label: 'Contact', anchor: 'contact' },
 ];
 
@@ -33,8 +33,7 @@ const NAV_LINKS_TRIP = [
   { label: 'Subjects', anchor: 'subjects' },
   { label: 'Countries', anchor: 'countries' },
   { label: 'Trips', anchor: 'trips' },
-  { label: 'How it works', anchor: 'journey' },
-  { label: 'Health & Safety', anchor: 'safety' },
+  { label: 'Health, Safety & Security', anchor: 'safety', href: '/safety' },
   { label: 'Contact', anchor: 'contact' },
 ];
 
@@ -82,7 +81,8 @@ export default function SiteHeader({
 
   const onTrip = variant === 'trip';
   const links = onTrip ? NAV_LINKS_TRIP : NAV_LINKS;
-  const href = (anchor: string) => (onTrip ? `/#${anchor}` : `#${anchor}`);
+  const href = (l: { anchor: string; href?: string }) =>
+    l.href ?? (onTrip ? `/#${l.anchor}` : `#${l.anchor}`);
   const menuFor = (anchor: string): MenuKey | null =>
     anchor === 'subjects' && subjects.length > 0
       ? 'subjects'
@@ -93,27 +93,24 @@ export default function SiteHeader({
   return (
     <header ref={ref} className={`nav${onTrip ? ' nav--trip' : ''}`}>
       <div className="wrap">
-        <Link className="logo" href="/" style={{ display: 'flex', alignItems: 'center' }}>
+        {/* The parent PCT identity leads; School Trips is set as live text so it
+            stays sharp at any size. "Powered by Premium Choice Travel" reads
+            from the PCT mark itself. */}
+        <Link className="logo brandlock" href="/">
           <Image
-            className="logo-solid"
-            src="/images/logo-navy.png"
-            alt="Premium Choice School Trips"
-            width={524}
-            height={130}
-            sizes="323px"
-            style={{ height: 80, width: 'auto' }}
+            className="pctmark"
+            src="/images/pct-logo.png"
+            alt="PCT — Premium Choice Travel"
+            width={269}
+            height={70}
             priority
           />
-          <Image
-            className="logo-light"
-            src="/images/logo-white.png"
-            alt="Premium Choice School Trips"
-            width={524}
-            height={130}
-            sizes="403px"
-            style={{ height: 100, width: 'auto' }}
-            priority
-          />
+          <span className="brand-divider" aria-hidden="true"></span>
+          <span className="brand-text">
+            <em>Premium Choice</em>
+            <strong>School Trips</strong>
+            <small>Powered by Premium Choice Travel</small>
+          </span>
         </Link>
         <div className="nav-right">
           <nav className="menu">
@@ -122,7 +119,7 @@ export default function SiteHeader({
               return menu ? (
                 <a
                   key={l.anchor}
-                  href={menu === 'countries' ? '/trips' : href(l.anchor)}
+                  href={menu === 'countries' ? '/trips' : href(l)}
                   aria-haspopup="true"
                   aria-expanded={openMenu === menu}
                   onMouseEnter={() => openMega(menu)}
@@ -132,7 +129,7 @@ export default function SiteHeader({
                   {l.label} <span className="mega-caret">▾</span>
                 </a>
               ) : (
-                <a key={l.anchor} href={href(l.anchor)}>
+                <a key={l.anchor} href={href(l)}>
                   {l.label}
                 </a>
               );
