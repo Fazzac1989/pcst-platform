@@ -7,12 +7,14 @@ import ViewTracker from '@/components/ViewTracker';
 import SiteHeader from '@/components/SiteHeaderWithData';
 import { SiteFooterSimple } from '@/components/SiteFooter';
 import {
+  citySlug,
   getBookingTerms,
   getCuratedImages,
   getItineraryDays,
   getPublishedTrips,
   getTripBySlug,
   getTripHighlights,
+  isSingleCity,
 } from '@/lib/data';
 import { getDestinationNotes } from '@/lib/destination-notes';
 import { packingList } from '@/lib/packing';
@@ -131,12 +133,16 @@ export default async function TripPage({ params }: Props) {
           <div className="tmeta">
             <div>
               <b>Country</b>
-              {trip.country}
+              <Link href={`/countries/${trip.countrySlug}`}>{trip.country}</Link>
             </div>
             {trip.city && (
               <div>
                 <b>City</b>
-                {trip.city}
+                {isSingleCity(trip.city) ? (
+                  <Link href={`/cities/${citySlug(trip.city)}`}>{trip.city}</Link>
+                ) : (
+                  trip.city
+                )}
               </div>
             )}
             <div>

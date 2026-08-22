@@ -470,6 +470,53 @@ export async function getCountryContent(slug: string): Promise<CountryContent | 
   return written ? content : null;
 }
 
+/**
+ * True when a trip is based in exactly one city rather than a route — only
+ * those trips feed the city pages, so "Tokyo · Kyoto" never becomes a city.
+ */
+export function isSingleCity(city: string | null): city is string {
+  if (!city) return false;
+  const c = city.trim();
+  if (!c) return false;
+  return !/[,·&/+]| and | to /i.test(c);
+}
+
+export const citySlug = (city: string) => slugify(city.trim());
+
+export type CitySummary = {
+  name: string;
+  slug: string;
+  country: string;
+  countrySlug: string;
+  tripCount: number;
+  heroImage: string | null;
+  subjects: string[];
+};
+
+/** Cities derived from published single-city trips, one entry per city. */
+export async function getCities(): Promise<CitySummary[]> {
+  const trips = await getPublishedTrips();
+  const map = new Map<string, CitySummary>();
+  for (const trip of trips) {
+    if (!isSingleCity(trip.city)) continue;
+    const slug = citySlug(trip.city);
+    const entry = map.get(slug) ?? {
+      name: trip.city.trim(),
+      slug,
+      country: trip.country,
+      countrySlug: trip.countrySlug,
+      tripCount: 0,
+      heroImage: null,
+      subjects: [],
+    };
+    entry.tripCount += 1;
+    if (!entry.heroImage && trip.heroImage) entry.heroImage = trip.heroImage;
+    if (trip.subject && !entry.subjects.includes(trip.subject)) entry.subjects.push(trip.subject);
+    map.set(slug, entry);
+  }
+  return [...map.values()].sort((a, b) => a.name.localeCompare(b.name));
+}
+
 /** At-a-glance facts for a country page, or null when nothing is filled in. */
 export async function getCountryFacts(slug: string): Promise<CountryFacts | null> {
   if (!hasSupabase) return null;

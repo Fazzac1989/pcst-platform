@@ -811,6 +811,10 @@ details.terms ol { padding: 0 32px 26px 50px; font-size: 13.5px; color: var(--in
 .cfacts-link { display: inline-block; margin-top: 18px; font-size: 12.5px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--brass); }
 .cfacts-link:hover { color: var(--ink); }
 
+/* Hero metadata values that link somewhere keep the hero's colour but show it. */
+.tmeta a { color: inherit; text-decoration: underline; text-decoration-color: rgba(255, 255, 255, .45); text-underline-offset: 3px; transition: text-decoration-color .2s ease; }
+.tmeta a:hover { text-decoration-color: currentColor; }
+
 /* The packing checklist variant of the facts panel on trip pages. */
 .cfacts--pack .packgroup { padding: 15px 0; border-bottom: 1px solid var(--line); }
 .cfacts--pack .packgroup:last-of-type { border-bottom: 0; }
