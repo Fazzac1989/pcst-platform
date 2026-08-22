@@ -470,6 +470,19 @@ export async function getCountryContent(slug: string): Promise<CountryContent | 
   return written ? content : null;
 }
 
+/** At-a-glance facts for a country page, or null when nothing is filled in. */
+export async function getCountryFacts(slug: string): Promise<CountryFacts | null> {
+  if (!hasSupabase) return null;
+  const db = createClient();
+  const { data, error } = await db
+    .from('countries')
+    .select('capital, currency, languages, timezone, population, avg_temp_c, best_time')
+    .eq('slug', slug)
+    .maybeSingle();
+  if (error || !data) return null;
+  return mapCountryFacts(data);
+}
+
 /** A country's own photography, replacing the borrowed trip hero. */
 export async function getCountryImages(slug: string): Promise<CuratedImage[]> {
   if (!hasSupabase) return [];

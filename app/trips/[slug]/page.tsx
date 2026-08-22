@@ -14,6 +14,8 @@ import {
   getTripBySlug,
   getTripHighlights,
 } from '@/lib/data';
+import { getDestinationNotes } from '@/lib/destination-notes';
+import { packingList } from '@/lib/packing';
 import ItineraryPanel from './ItineraryPanel';
 import ItineraryTimeline from './ItineraryTimeline';
 import TripGallery, { type GalleryItem } from './TripGallery';
@@ -85,21 +87,16 @@ export default async function TripPage({ params }: Props) {
     .filter((t) => t.subjectSlug === trip.subjectSlug && t.slug !== trip.slug)
     .slice(0, 3);
 
-  // Only the facts that are actually filled in — the panel is hidden when empty.
-  const cf = trip.countryFacts;
-  const facts = (
-    [
-      ['Capital', cf?.capital],
-      ['Language', cf?.languages],
-      ['Currency', cf?.currency],
-      ['Time zone', cf?.timezone],
-      ['Population', cf?.population],
-      ['Average temp', cf?.avgTempC === null || cf?.avgTempC === undefined ? null : `${cf.avgTempC}°C`],
-      ['Best months', cf?.bestTime],
-    ] as const
-  )
-    .filter(([, value]) => Boolean(value))
-    .map(([label, value]) => ({ label, value: value as string }));
+  // The country facts panel moved to the country pages; the trip carries the
+  // things a traveller acts on — what to pack, and how to behave when there.
+  const packing = packingList({
+    subject: trip.subject,
+    country: trip.country,
+    countrySlug: trip.countrySlug,
+    durationDays: trip.durationDays,
+    avgTempC: trip.countryFacts?.avgTempC ?? null,
+  });
+  const culture = getDestinationNotes(trip.countrySlug)?.culture ?? [];
 
   return (
     <>
@@ -177,24 +174,27 @@ export default async function TripPage({ params }: Props) {
                   </p>
                 ))}
               </div>
-              {facts.length > 0 && (
-                <aside className="cfacts" aria-label={`${trip.country} at a glance`}>
-                  <h3>
-                    {trip.country} <span>at a glance</span>
-                  </h3>
-                  <dl>
-                    {facts.map(({ label, value }) => (
-                      <div key={label}>
-                        <dt>{label}</dt>
-                        <dd>{value}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                  <Link className="cfacts-link" href={`/countries/${trip.countrySlug}`}>
-                    All {trip.country} trips →
-                  </Link>
-                </aside>
-              )}
+              <aside className="cfacts cfacts--pack" aria-label="What to pack">
+                <h3>
+                  What to pack <span>{trip.subject} · {trip.country}</span>
+                </h3>
+                {packing.map((group) => (
+                  <div className="packgroup" key={group.title}>
+                    <h4>{group.title}</h4>
+                    <ul>
+                      {group.items.map((item) => (
+                        <li key={item}>
+                          <span className="tick">✓</span>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+                <Link className="cfacts-link" href={`/countries/${trip.countrySlug}`}>
+                  {trip.country} at a glance →
+                </Link>
+              </aside>
             </div>
           </div>
         </section>
@@ -245,6 +245,26 @@ export default async function TripPage({ params }: Props) {
             </details>
           </div>
         </section>
+
+        {culture.length > 0 && (
+          <section className="culture-band">
+            <div className="wrap">
+              <span className="eyebrow">Cultural awareness</span>
+              <h2 className="st serif">
+                Customs &amp; norms in <i>{trip.country}</i>
+              </h2>
+              <p className="ovp">
+                A little cultural fluency goes a long way — these are the habits your hosts will
+                notice and appreciate.
+              </p>
+              <ul className="culture-grid">
+                {culture.map((note) => (
+                  <li key={note}>{note}</li>
+                ))}
+              </ul>
+            </div>
+          </section>
+        )}
 
         {alternatives.length > 0 && (
           <section className="others">

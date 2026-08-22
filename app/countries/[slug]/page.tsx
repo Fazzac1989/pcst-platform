@@ -7,9 +7,11 @@ import { SiteFooterSimple } from '@/components/SiteFooter';
 import {
   getCountries,
   getCountryContent,
+  getCountryFacts,
   getCountryImages,
   getPublishedTrips,
 } from '@/lib/data';
+import { getDestinationNotes, plugSummary } from '@/lib/destination-notes';
 import TripGallery, { type GalleryItem } from '@/app/trips/[slug]/TripGallery';
 
 type Props = { params: { slug: string } };
@@ -30,14 +32,33 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function CountryPage({ params }: Props) {
-  const [countries, allTrips, content, images] = await Promise.all([
+  const [countries, allTrips, content, images, countryFacts] = await Promise.all([
     getCountries(),
     getPublishedTrips(),
     getCountryContent(params.slug),
     getCountryImages(params.slug),
+    getCountryFacts(params.slug),
   ]);
   const country = countries.find((c) => c.slug === params.slug);
   if (!country) notFound();
+
+  // The at-a-glance panel, moved here from the trip pages. Mains electricity
+  // comes from the hand-maintained destination notes rather than the database.
+  const destNotes = getDestinationNotes(country.slug);
+  const facts = (
+    [
+      ['Capital', countryFacts?.capital],
+      ['Language', countryFacts?.languages],
+      ['Currency', countryFacts?.currency],
+      ['Time zone', countryFacts?.timezone],
+      ['Population', countryFacts?.population],
+      ['Average temp', countryFacts?.avgTempC === null || countryFacts?.avgTempC === undefined ? null : `${countryFacts.avgTempC}°C`],
+      ['Best months', countryFacts?.bestTime],
+      ['Plugs & voltage', destNotes ? plugSummary(destNotes) : null],
+    ] as const
+  )
+    .filter(([, value]) => Boolean(value))
+    .map(([label, value]) => ({ label, value: value as string }));
 
   const trips = allTrips.filter((t) => t.countrySlug === country.slug);
   const others = countries.filter((c) => c.slug !== country.slug);
@@ -104,35 +125,33 @@ export default async function CountryPage({ params }: Props) {
           </section>
         )}
 
-        {content && (
+        {(content || facts.length > 0) && (
           <section className="cmaster">
             <div className="wrap">
               <div className="cmaster-lead">
                 <div>
                   <span className="eyebrow">Why {country.name}</span>
-                  {content.intro && <p className="cmaster-intro">{content.intro}</p>}
-                  {content.educationNotes && <p className="ovp">{content.educationNotes}</p>}
+                  {content?.intro && <p className="cmaster-intro">{content.intro}</p>}
+                  {content?.educationNotes && <p className="ovp">{content.educationNotes}</p>}
                 </div>
-                <aside className="cmaster-side">
-                  <h3>Practical notes</h3>
-                  <dl>
-                    {content.gettingThere && (
-                      <div>
-                        <dt>Getting there</dt>
-                        <dd>{content.gettingThere}</dd>
-                      </div>
-                    )}
-                    {content.safetyNotes && (
-                      <div>
-                        <dt>Safety &amp; health</dt>
-                        <dd>{content.safetyNotes}</dd>
-                      </div>
-                    )}
-                  </dl>
-                </aside>
+                {facts.length > 0 && (
+                  <aside className="cfacts" aria-label={`${country.name} at a glance`}>
+                    <h3>
+                      {country.name} <span>at a glance</span>
+                    </h3>
+                    <dl>
+                      {facts.map(({ label, value }) => (
+                        <div key={label}>
+                          <dt>{label}</dt>
+                          <dd>{value}</dd>
+                        </div>
+                      ))}
+                    </dl>
+                  </aside>
+                )}
               </div>
 
-              {content.curriculumLinks.length > 0 && (
+              {content && content.curriculumLinks.length > 0 && (
                 <div className="cmaster-block">
                   <h2 className="st serif">
                     Curriculum <i>links</i>
@@ -148,7 +167,7 @@ export default async function CountryPage({ params }: Props) {
                 </div>
               )}
 
-              {(content.climateSummary || content.seasons.length > 0) && (
+              {content && (content.climateSummary || content.seasons.length > 0) && (
                 <div className="cmaster-block">
                   <h2 className="st serif">
                     When to <i>travel</i>
@@ -168,7 +187,7 @@ export default async function CountryPage({ params }: Props) {
                 </div>
               )}
 
-              {content.usefulPhrases.length > 0 && (
+              {content && content.usefulPhrases.length > 0 && (
                 <div className="cmaster-block">
                   <h2 className="st serif">
                     A few <i>words</i>
