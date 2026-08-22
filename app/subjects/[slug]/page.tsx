@@ -4,30 +4,33 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import SiteHeader from '@/components/SiteHeaderWithData';
 import { SiteFooterSimple } from '@/components/SiteFooter';
-import { getPublishedTrips, getSubjectDescription, getSubjects } from '@/lib/data';
+import { getAllSubjects, getPublishedTrips, getSubjectDescription } from '@/lib/data';
 // The interactive world map is retired from this page; the component stays in
 // components/SubjectWorldMap.tsx should it be wanted again.
 
 type Props = { params: { slug: string } };
 
 export async function generateStaticParams() {
-  const subjects = await getSubjects();
+  const subjects = await getAllSubjects();
   return subjects.map((s) => ({ slug: s.slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const subjects = await getSubjects();
+  const subjects = await getAllSubjects();
   const subject = subjects.find((s) => s.slug === params.slug);
   if (!subject) return {};
   return {
     title: `${subject.name} school trips`,
-    description: `${subject.tripCount} curriculum-built ${subject.name} itineraries across ${subject.countries.join(', ')} — designed, priced and supported from Dubai.`,
+    description:
+      subject.tripCount > 0
+        ? `${subject.tripCount} curriculum-built ${subject.name} itineraries across ${subject.countries.join(', ')} — designed, priced and supported from Dubai.`
+        : `Curriculum-built ${subject.name} journeys, designed to order — priced and supported from Dubai.`,
   };
 }
 
 export default async function SubjectPage({ params }: Props) {
   const [subjects, allTrips, description] = await Promise.all([
-    getSubjects(),
+    getAllSubjects(),
     getPublishedTrips(),
     getSubjectDescription(params.slug),
   ]);
@@ -62,12 +65,14 @@ export default async function SubjectPage({ params }: Props) {
           <div className="tmeta">
             <div>
               <b>Itineraries</b>
-              {subject.tripCount} ready to run
+              {subject.tripCount > 0 ? `${subject.tripCount} ready to run` : 'Designed to order'}
             </div>
-            <div>
-              <b>Countries</b>
-              {subject.countries.join(' · ')}
-            </div>
+            {subject.countries.length > 0 && (
+              <div>
+                <b>Countries</b>
+                {subject.countries.join(' · ')}
+              </div>
+            )}
             <div>
               <b>Departs</b>
               Dubai
@@ -95,6 +100,13 @@ export default async function SubjectPage({ params }: Props) {
             <h2 className="st serif">
               Choose your <i>destination</i>
             </h2>
+            {trips.length === 0 && (
+              <p className="ovp">
+                Our {subject.name} journeys are designed to order — tell us your objectives, dates
+                and budget and we will build the itinerary around them.{' '}
+                <Link href="/#contact">Book an appointment →</Link>
+              </p>
+            )}
             <div className="trip-grid">
               {trips.map((trip) => (
                 <Link className="trip" href={`/trips/${trip.slug}`} key={trip.slug}>

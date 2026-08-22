@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
+import SubjectIcon from '@/components/SubjectIcon';
 
 export type MegaSubject = {
   name: string;
@@ -151,16 +152,15 @@ export default function SiteHeader({
             <div className="mega-grid">
               {subjects.map((s) => (
                 <Link
-                  className="mega-item"
+                  className="mega-item mega-item--subject"
                   href={`/subjects/${s.slug}`}
                   key={s.slug}
                   onClick={() => setOpenMenu(null)}
                 >
-                  <h4>{s.name}</h4>
-                  <span>
-                    {s.tripCount} {s.tripCount === 1 ? 'itinerary' : 'itineraries'} ·{' '}
-                    {s.countries.join(' · ')}
+                  <span className="mega-item-icon" aria-hidden="true">
+                    <SubjectIcon subject={s.name} size={22} />
                   </span>
+                  <h4>{s.name}</h4>
                 </Link>
               ))}
             </div>

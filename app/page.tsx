@@ -116,10 +116,8 @@ export default async function HomePage() {
                 </h2>
                 <div className="intro-copy">
                   <p className="section-sub full">
-                    Led by Paul Farrell, a travel professional with more than 20 years of experience
-                    in the Middle East, Premium Choice School Trips combines extensive destination
-                    knowledge, trusted international partnerships and a highly personal approach to
-                    school travel.
+                    Premium Choice School Trips combines extensive destination knowledge, trusted
+                    international partnerships and a highly personal approach to school travel.
                   </p>
                   <p className="section-sub full">
                     We work closely with our customers to understand their objectives and create a
@@ -322,7 +320,7 @@ export default async function HomePage() {
           <div className="wrap">
             <span className="eyebrow">The Premium Choice approach</span>
             <h2 className="section-title serif">
-              From the first conversation to <i>their safe return</i>
+              From the first conversation to <i>your safe return</i>
             </h2>
             <p className="section-sub">
               Our experienced and dedicated team supports your school throughout the entire
@@ -382,15 +380,15 @@ export default async function HomePage() {
               Your travel <i>companion</i>
             </h2>
             <p className="section-sub">
-              Before, during and after — one trip, everyone connected. Teachers, parents and
-              students each get their own view of the same journey.
+              Before, during and after — one trip, everyone connected. Parents, children and
+              teachers each get their own view of the same journey.
             </p>
 
             <div className="phones">
               {[
-                { role: 'Teacher', tagline: 'Run the trip', img: '/images/app-teacher.png', alt: "The teacher's home screen: student register, flights, accommodation, vouchers, broadcast and translation above the destination weather" },
                 { role: 'Parent', tagline: 'Follow the journey', img: '/images/app-parent.png', alt: "The itinerary screen a parent follows: each day's activities laid out from arrival onwards" },
-                { role: 'Student', tagline: 'Experience the journey', img: '/images/app-student.png', alt: "The student's Explorer home screen: flights, accommodation, vouchers, photos, announcements and translation" },
+                { role: 'Child', tagline: 'Experience the journey', img: '/images/app-student.png', alt: "The child's Explorer home screen: flights, accommodation, vouchers, photos, announcements and translation" },
+                { role: 'Teacher', tagline: 'Run the trip', img: '/images/app-teacher.png', alt: "The teacher's home screen: student register, flights, accommodation, vouchers, broadcast and translation above the destination weather" },
               ].map((p) => (
                 <div className="phone-col" key={p.role}>
                   <span className="phone-role">{p.role}</span>
@@ -450,9 +448,9 @@ export default async function HomePage() {
               <div>
                 <span className="eyebrow">Health &amp; safety</span>
                 <h2 className="section-title serif">
-                  Safety isn&apos;t a page on our site.
+                  Every destination. Every activity. Every decision.
                   <br />
-                  It&apos;s <i>the itinerary itself.</i>
+                  <i>Safety comes first.</i>
                 </h2>
                 <ul>
                   <li>

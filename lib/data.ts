@@ -336,6 +336,25 @@ export async function getSubjects(): Promise<SubjectSummary[]> {
 }
 
 /**
+ * Every subject in the catalogue, including those without a published trip
+ * yet. Trip-derived stats are overlaid where they exist, so a subject page or
+ * menu can show counts when available without dropping the rest of the
+ * curriculum.
+ */
+export async function getAllSubjects(): Promise<SubjectSummary[]> {
+  const withTrips = await getSubjects();
+  if (!hasSupabase) return withTrips;
+  const db = createClient();
+  const { data, error } = await db.from('subjects').select('name, slug').order('name');
+  if (error || !data) return withTrips;
+  const bySlug = new Map(withTrips.map((s) => [s.slug, s]));
+  return data.map(
+    (r: any) =>
+      bySlug.get(r.slug) ?? { name: r.name, slug: r.slug, tripCount: 0, countries: [], heroImage: null }
+  );
+}
+
+/**
  * Days with their structured presentation layer, for the new timeline.
  * Returns an empty array if the structured columns are not present yet, so the
  * trip page falls back to the previous rendering.

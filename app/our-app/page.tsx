@@ -18,16 +18,6 @@ export default function OurAppPage() {
       lede="Every journey we run travels with its own app. Teachers get the controls, parents get the reassurance, students get the experience — all connected to the same live trip, before departure, on the ground and after the group is home."
       sections={[
         {
-          title: 'Teacher — run the trip',
-          intro: 'The command centre, in your pocket.',
-          points: [
-            'Student register and headcount',
-            'Documents and emergency contacts',
-            'Flights, rooms and vouchers',
-            'Broadcast messaging and translation',
-          ],
-        },
-        {
           title: 'Parent — follow the journey',
           intro: 'Home always knows all is well.',
           points: [
@@ -38,13 +28,23 @@ export default function OurAppPage() {
           ],
         },
         {
-          title: 'Student — experience the journey',
+          title: 'Child — experience the journey',
           intro: 'The trip in their hands, with the learning built in.',
           points: [
             "What's happening today and maps",
             'Learning challenges and assignments',
             'Destination content',
             'Trip journal and photos',
+          ],
+        },
+        {
+          title: 'Teacher — run the trip',
+          intro: 'The command centre, in your pocket.',
+          points: [
+            'Student register and headcount',
+            'Documents and emergency contacts',
+            'Flights, rooms and vouchers',
+            'Broadcast messaging and translation',
           ],
         },
         {

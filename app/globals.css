@@ -101,6 +101,12 @@ header.nav--trip nav.menu a::after { background: var(--brass-light); }
 .mega-item h4 { font-family: var(--font-fraunces), serif; font-weight: 500; font-size: 17.5px; line-height: 1.25; color: var(--ink); transition: color .25s ease; }
 .mega-item:hover h4 { color: var(--brass); }
 .mega-item span { display: block; font-size: 12.5px; color: var(--ink-soft); letter-spacing: .02em; margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* Subject entries mirror the homepage tiles: icon and name, nothing else. */
+.mega-item--subject { display: flex; align-items: center; gap: 12px; padding: 9px 0; }
+.mega-item--subject h4 { font-size: 16.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mega-item-icon { color: var(--brass); flex: none; display: grid; place-items: center; transition: color .25s ease; }
+.mega-item--subject:hover .mega-item-icon { color: var(--ink); }
 /* Countries menu: tighter four-column list, name + itinerary count on one line */
 .mega-grid--countries { grid-template-columns: repeat(6, 1fr); gap: 2px 28px; }
 @media (max-width: 1150px) { .mega-grid--countries { grid-template-columns: repeat(5, 1fr); } }

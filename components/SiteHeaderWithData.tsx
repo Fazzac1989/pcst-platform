@@ -1,5 +1,5 @@
 import SiteHeader from '@/components/SiteHeader';
-import { getCountries, getSubjects } from '@/lib/data';
+import { getAllSubjects, getCountries } from '@/lib/data';
 
 /** Server wrapper: feeds the subjects + countries mega menus from the database. */
 export default async function SiteHeaderWithData({
@@ -7,7 +7,7 @@ export default async function SiteHeaderWithData({
 }: {
   variant?: 'home' | 'trip';
 }) {
-  const [subjects, countries] = await Promise.all([getSubjects(), getCountries()]);
+  const [subjects, countries] = await Promise.all([getAllSubjects(), getCountries()]);
   return (
     <SiteHeader
       variant={variant}
