@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import SubjectIcon from '@/components/SubjectIcon';
+import { COUNTRY_META, CONTINENT_ORDER } from '@/lib/country-meta';
 
 export type MegaSubject = {
   name: string;
@@ -184,18 +185,48 @@ export default function SiteHeader({
             <div className="mega-head">
               <span className="eyebrow">Browse by country</span>
             </div>
-            <div className="mega-grid mega-grid--countries">
-              {countries.map((c) => (
-                <Link
-                  className="mega-item mega-item--country"
-                  href={`/countries/${c.slug}`}
-                  key={c.slug}
-                  onClick={() => setOpenMenu(null)}
-                >
-                  <h4>{c.name}</h4>
-                  <span>{c.tripCount}</span>
-                </Link>
-              ))}
+            <div className="mega-continents">
+              {[...CONTINENT_ORDER, 'More destinations']
+                .map((continent) => ({
+                  continent,
+                  items: countries.filter((c) =>
+                    continent === 'More destinations'
+                      ? !COUNTRY_META[c.slug]
+                      : COUNTRY_META[c.slug]?.continent === continent
+                  ),
+                }))
+                .filter((g) => g.items.length > 0)
+                .map((g) => (
+                  <div className="mega-continent" key={g.continent}>
+                    <h5>{g.continent}</h5>
+                    <ul>
+                      {g.items.map((c) => (
+                        <li key={c.slug}>
+                          <Link
+                            className="mega-item mega-item--country"
+                            href={`/countries/${c.slug}`}
+                            onClick={() => setOpenMenu(null)}
+                          >
+                            <span className="flags" aria-hidden="true">
+                              {(COUNTRY_META[c.slug]?.flags ?? []).map((code) => (
+                                // eslint-disable-next-line @next/next/no-img-element
+                                <img
+                                  key={code}
+                                  src={`https://flagcdn.com/w40/${code}.png`}
+                                  alt=""
+                                  width={21}
+                                  height={16}
+                                  loading="lazy"
+                                />
+                              ))}
+                            </span>
+                            <h4>{c.name}</h4>
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
             </div>
             <div className="mega-foot">
               <span>Somewhere else in mind? We design trips to any destination.</span>

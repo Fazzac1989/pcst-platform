@@ -108,10 +108,19 @@ header.nav--trip nav.menu a::after { background: var(--brass-light); }
 .mega-item-icon { color: var(--brass); flex: none; display: grid; place-items: center; transition: color .25s ease; }
 .mega-item--subject:hover .mega-item-icon { color: var(--ink); }
 /* Countries menu: tighter four-column list, name + itinerary count on one line */
-.mega-grid--countries { grid-template-columns: repeat(6, 1fr); gap: 2px 28px; }
-@media (max-width: 1150px) { .mega-grid--countries { grid-template-columns: repeat(5, 1fr); } }
-.mega-item--country { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; padding: 7px 0; }
-.mega-item--country span { flex: none; margin-top: 0; font-size: 11px; color: var(--brass); font-weight: 600; }
+/* Destinations grouped by continent: header above, flagged countries below. */
+.mega-continents { display: grid; grid-template-columns: repeat(6, 1fr); gap: 20px 30px; align-items: start; }
+.mega-continent h5 {
+  font-size: 10.5px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--brass); padding-bottom: 8px; margin-bottom: 6px; border-bottom: 1px solid var(--line);
+}
+.mega-continent ul { list-style: none; display: grid; gap: 1px; }
+.mega-item--country { display: flex; align-items: center; gap: 10px; padding: 5px 0; border-bottom: 0; }
+.mega-item--country .flags { display: flex; gap: 3px; flex: none; }
+.mega-item--country .flags img { width: 21px; height: auto; border-radius: 2px; box-shadow: 0 0 0 1px rgba(22, 36, 46, .12); display: block; }
+.mega-item--country h4 { font-size: 15px; line-height: 1.25; }
+@media (max-width: 1150px) { .mega-continents { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 860px) { .mega-continents { grid-template-columns: 1fr 1fr; } }
 .mega-foot {
   margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--line);
   display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap;
