@@ -7,11 +7,6 @@ export type GalleryItem = {
   url: string;
   alt: string;
   caption?: string | null;
-  photographer?: string | null;
-  licence?: string | null;
-  sourceUrl?: string | null;
-  focalX?: number;
-  focalY?: number;
 };
 
 /**
@@ -63,10 +58,7 @@ export default function TripGallery({ images, tripTitle }: { images: GalleryItem
               alt={img.alt}
               fill
               sizes="(max-width: 720px) 78vw, (max-width: 1100px) 50vw, 33vw"
-              style={{
-                objectFit: 'cover',
-                objectPosition: `${(img.focalX ?? 0.5) * 100}% ${(img.focalY ?? 0.5) * 100}%`,
-              }}
+              style={{ objectFit: 'cover' }}
             />
             {i === 4 && count > 5 && <span className="tgal-more">+{count - 5} more</span>}
           </button>
@@ -118,18 +110,6 @@ export default function TripGallery({ images, tripTitle }: { images: GalleryItem
                 {open! + 1} / {count}
               </span>
               {(current.caption || current.alt) && <p>{current.caption || current.alt}</p>}
-              {current.photographer && (
-                <small>
-                  {current.sourceUrl ? (
-                    <a href={current.sourceUrl} target="_blank" rel="noreferrer noopener">
-                      {current.photographer}
-                    </a>
-                  ) : (
-                    current.photographer
-                  )}
-                  {current.licence ? ` · ${current.licence}` : ''}
-                </small>
-              )}
             </figcaption>
           </figure>
 

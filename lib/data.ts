@@ -388,53 +388,6 @@ export async function getTripHighlights(tripId: number): Promise<string[]> {
   return Array.isArray(data.trip_highlights) ? (data.trip_highlights as string[]) : [];
 }
 
-export type CuratedImage = {
-  id: number;
-  role: string;
-  url: string;
-  alt: string;
-  caption: string | null;
-  width: number | null;
-  height: number | null;
-  focalX: number;
-  focalY: number;
-  photographer: string | null;
-  licence: string | null;
-  sourceUrl: string | null;
-  attributionRequired: boolean;
-};
-
-/**
- * Curated photography for a trip. Returns an empty array when the trip_images
- * migration has not been run, so pages fall back to the legacy fields.
- */
-export async function getCuratedImages(tripId: number): Promise<CuratedImage[]> {
-  if (!hasSupabase) return [];
-  const db = createClient();
-  const { data, error } = await db
-    .from('trip_images')
-    .select('id, role, url, alt_text, caption, width, height, focal_x, focal_y, photographer, licence, source_url, attribution_required, sort_order')
-    .eq('trip_id', tripId)
-    .eq('approved', true)
-    .order('sort_order');
-  if (error) return [];
-  return (data ?? []).map((r: any) => ({
-    id: r.id,
-    role: r.role,
-    url: r.url,
-    alt: r.alt_text ?? '',
-    caption: r.caption,
-    width: r.width,
-    height: r.height,
-    focalX: Number(r.focal_x ?? 0.5),
-    focalY: Number(r.focal_y ?? 0.5),
-    photographer: r.photographer,
-    licence: r.licence,
-    sourceUrl: r.source_url,
-    attributionRequired: Boolean(r.attribution_required),
-  }));
-}
-
 export type CountryContent = {
   intro: string | null;
   educationNotes: string | null;
@@ -514,7 +467,66 @@ export async function getCities(): Promise<CitySummary[]> {
     if (trip.subject && !entry.subjects.includes(trip.subject)) entry.subjects.push(trip.subject);
     map.set(slug, entry);
   }
+
+  // A city's own hero, once one has been uploaded, beats the borrowed trip
+  // photograph the list falls back to.
+  if (hasSupabase && map.size > 0) {
+    const { data } = await createClient().from('cities').select('slug, hero_image');
+    for (const row of data ?? []) {
+      const entry = map.get(row.slug);
+      if (entry && row.hero_image) entry.heroImage = row.hero_image;
+    }
+  }
   return [...map.values()].sort((a, b) => a.name.localeCompare(b.name));
+}
+
+export type CityContent = {
+  intro: string | null;
+  educationNotes: string | null;
+  curriculumLinks: { subject: string; note: string }[];
+  climateSummary: string | null;
+  seasons: { season: string; months: string; note: string }[];
+  gettingAround: string | null;
+  usefulPhrases: { phrase: string; meaning: string }[];
+};
+
+/** Editorial content for a city page, or null if not written yet. */
+export async function getCityContent(slug: string): Promise<CityContent | null> {
+  if (!hasSupabase) return null;
+  const db = createClient();
+  const { data, error } = await db
+    .from('cities')
+    .select('intro, education_notes, curriculum_links, climate_summary, seasons, getting_around, useful_phrases')
+    .eq('slug', slug)
+    .maybeSingle();
+  if (error || !data) return null;
+  const content: CityContent = {
+    intro: data.intro,
+    educationNotes: data.education_notes,
+    curriculumLinks: Array.isArray(data.curriculum_links) ? (data.curriculum_links as any) : [],
+    climateSummary: data.climate_summary,
+    seasons: Array.isArray(data.seasons) ? (data.seasons as any) : [],
+    gettingAround: data.getting_around,
+    usefulPhrases: Array.isArray(data.useful_phrases) ? (data.useful_phrases as any) : [],
+  };
+  const written = content.intro || content.educationNotes || content.climateSummary;
+  return written ? content : null;
+}
+
+/** A city's own photography, uploaded on its admin page. */
+export async function getCityImages(slug: string): Promise<OwnImages> {
+  if (!hasSupabase) return EMPTY_IMAGES;
+  const db = createClient();
+  const { data, error } = await db
+    .from('cities')
+    .select('hero_image, hero_alt, gallery')
+    .eq('slug', slug)
+    .maybeSingle();
+  if (error || !data) return EMPTY_IMAGES;
+  return {
+    hero: data.hero_image ? { url: data.hero_image, alt: data.hero_alt ?? '' } : null,
+    gallery: normalizeGallery(data.gallery),
+  };
 }
 
 /** At-a-glance facts for a country page, or null when nothing is filled in. */
@@ -530,26 +542,29 @@ export async function getCountryFacts(slug: string): Promise<CountryFacts | null
   return mapCountryFacts(data);
 }
 
-/** A country's own photography, replacing the borrowed trip hero. */
-export async function getCountryImages(slug: string): Promise<CuratedImage[]> {
-  if (!hasSupabase) return [];
+/** The photography a record owns: one hero plus an ordered gallery. */
+export type OwnImages = { hero: GalleryImage | null; gallery: GalleryImage[] };
+
+const EMPTY_IMAGES: OwnImages = { hero: null, gallery: [] };
+
+/**
+ * A country's own photography, uploaded on its admin page. Returns nothing
+ * when the columns have not been added yet, so the page falls back to a
+ * borrowed trip hero rather than failing.
+ */
+export async function getCountryImages(slug: string): Promise<OwnImages> {
+  if (!hasSupabase) return EMPTY_IMAGES;
   const db = createClient();
-  const { data: country } = await db.from('countries').select('id').eq('slug', slug).maybeSingle();
-  if (!country) return [];
   const { data, error } = await db
-    .from('country_images')
-    .select('id, role, url, alt_text, caption, width, height, focal_x, focal_y, photographer, licence, source_url, attribution_required, sort_order')
-    .eq('country_id', country.id)
-    .eq('approved', true)
-    .order('sort_order');
-  if (error) return [];
-  return (data ?? []).map((r: any) => ({
-    id: r.id, role: r.role, url: r.url, alt: r.alt_text ?? '', caption: r.caption,
-    width: r.width, height: r.height,
-    focalX: Number(r.focal_x ?? 0.5), focalY: Number(r.focal_y ?? 0.42),
-    photographer: r.photographer, licence: r.licence, sourceUrl: r.source_url,
-    attributionRequired: Boolean(r.attribution_required),
-  }));
+    .from('countries')
+    .select('hero_image, hero_alt, gallery')
+    .eq('slug', slug)
+    .maybeSingle();
+  if (error || !data) return EMPTY_IMAGES;
+  return {
+    hero: data.hero_image ? { url: data.hero_image, alt: data.hero_alt ?? '' } : null,
+    gallery: normalizeGallery(data.gallery),
+  };
 }
 
 export type CountrySummary = {

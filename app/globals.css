@@ -1078,7 +1078,20 @@ details.terms ol { padding: 0 32px 26px 50px; font-size: 13.5px; color: var(--in
 .itin-place { color: var(--brass); }
 .itin-card h3 { font-family: var(--font-fraunces), serif; font-weight: 500; font-size: clamp(21px, 2.6vw, 27px); line-height: 1.18; margin: 8px 0 0; }
 .itin-summary { font-size: 15.5px; color: var(--ink-soft); margin-top: 10px; max-width: 56ch; }
-.itin-photo { position: relative; width: 100%; aspect-ratio: 16 / 9; border-radius: 5px; overflow: hidden; margin-top: 20px; background: rgba(22,36,46,.06); }
+/* The day photograph rides the rail as a thumbnail, expanding on click. */
+.itin-rail { flex-direction: column; align-items: center; gap: 12px; }
+.itin-thumb {
+  position: relative; width: 72px; height: 72px; border-radius: 4px; overflow: hidden;
+  border: 1px solid var(--line); background: rgba(22, 36, 46, .06); cursor: zoom-in; padding: 0;
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+.itin-thumb:hover, .itin-thumb:focus-visible { transform: scale(1.06); border-color: var(--brass); box-shadow: 0 10px 22px -14px rgba(22, 36, 46, .55); }
+.itin-thumb-zoom {
+  position: absolute; inset: auto 0 0 auto; width: 20px; height: 20px; display: grid; place-items: center;
+  background: rgba(22, 36, 46, .72); color: #fff; font-size: 10px; border-top-left-radius: 4px;
+  opacity: 0; transition: opacity .25s ease;
+}
+.itin-thumb:hover .itin-thumb-zoom, .itin-thumb:focus-visible .itin-thumb-zoom { opacity: 1; }
 
 .itin-highlights { list-style: none; display: grid; gap: 14px; margin-top: 22px; }
 .itin-highlights li { display: grid; grid-template-columns: 26px 1fr; gap: 12px; align-items: start; }
@@ -1109,7 +1122,13 @@ details.terms ol { padding: 0 32px 26px 50px; font-size: 13.5px; color: var(--in
 @media (max-width: 860px) {
   .itin-overview { grid-template-columns: 1fr; gap: 28px; }
   .itin-day { grid-template-columns: 1fr; }
-  .itin-rail { display: none; }
+  /* No room for a rail on mobile: keep the thumbnail, drop the number and line
+     (the card head already says "Day 1 of 7"). */
+  .itin-rail { flex-direction: row; justify-content: flex-start; padding: 0 0 14px; }
+  .itin-rail::before { display: none; }
+  .itin-daynum { display: none; }
+  .itin-rail:has(.itin-thumb) { padding-bottom: 14px; }
+  .itin-rail:not(:has(.itin-thumb)) { display: none; }
   .itin-card { padding: 0 0 34px; max-width: none; border-bottom: 1px solid var(--line); margin-bottom: 34px; }
   .itin-list > .itin-day:last-child .itin-card { border-bottom: 0; }
   .itin-journey ol { flex-direction: column; }

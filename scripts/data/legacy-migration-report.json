@@ -1,0 +1,1853 @@
+{
+  "generatedAt": "2026-08-23T13:44:41.209Z",
+  "applied": true,
+  "matched": [
+    {
+      "slug": "jordan",
+      "tripId": 6,
+      "legacyTitle": "History Trip to Jordan",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=25",
+      "score": 0.887,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/banner/1721130413EE-Jordan-ME-Main-image.jpg",
+        "width": 1920,
+        "height": 480
+      },
+      "gallery": [
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/0Jordan%201.jpg",
+          "width": 1000,
+          "height": 677
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/1Jordan%202.jpg",
+          "width": 1000,
+          "height": 677
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/2jordan%205.jpg",
+          "width": 1000,
+          "height": 677
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/3Jordan%207.jpg",
+          "width": 1000,
+          "height": 677
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/4Jordan%208.jpg",
+          "width": 1000,
+          "height": 677
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/5Jordan%209.jpg",
+          "width": 1000,
+          "height": 677
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/6Jrdan%203.jpg",
+          "width": 1000,
+          "height": 677
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/7Jrdan%204.jpg",
+          "width": 1000,
+          "height": 677
+        }
+      ],
+      "droppedTooSmall": 0
+    },
+    {
+      "slug": "geography-trip-to-east-coast-usa",
+      "tripId": 13,
+      "legacyTitle": "Geography Trip to East Coast USA",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=4",
+      "score": 1,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/banner/16563355891496690479-new-york-tourist-attractions.jpg",
+        "width": 2000,
+        "height": 1000
+      },
+      "gallery": [],
+      "droppedTooSmall": 6
+    },
+    {
+      "slug": "athens",
+      "tripId": 1,
+      "legacyTitle": "History Trip to Athens",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=16",
+      "score": 0.887,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/banner/1721135064adapted-excursions-in-athens-banner.jpg",
+        "width": 1920,
+        "height": 590
+      },
+      "gallery": [
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/2the-athenian-treasury-is-one-of-the-most-impressive-buildings-on-the-site-shutterstock_671954305_0.jpg",
+          "width": 1920,
+          "height": 1280
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/0Must-Visit-Attractions-in-Athens.jpg",
+          "width": 1544,
+          "height": 1026
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/0Monastiraki-Athens.jpg",
+          "width": 1024,
+          "height": 683
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/1Monastiraki-Square.jpg",
+          "width": 1024,
+          "height": 684
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/2Must-Visit-Attractions-in-Athens.jpg",
+          "width": 1544,
+          "height": 1026
+        }
+      ],
+      "droppedTooSmall": 5
+    },
+    {
+      "slug": "barcelona-language-trip",
+      "tripId": 36,
+      "legacyTitle": "Barcelona Language Trip",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=70",
+      "score": 1.12,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/banner/1721369531park-guell-barcelona_shutterstock.jpg",
+        "width": 4000,
+        "height": 1200
+      },
+      "gallery": [
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/5moving-to-barcelona.jpg",
+          "width": 1200,
+          "height": 857
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/2barcelona-travel-tips-money-saving.jpg",
+          "width": 1360,
+          "height": 942
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/3Basilica-de-la-Sagrada-Familia.jpg",
+          "width": 1100,
+          "height": 825
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/6spanien_madrid_enforex_lesson03_JM.jpg",
+          "width": 1440,
+          "height": 960
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/019A8914.jpg",
+          "width": 2048,
+          "height": 1366
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/5large.jpg",
+          "width": 1500,
+          "height": 1000
+        }
+      ],
+      "droppedTooSmall": 6
+    },
+    {
+      "slug": "battlefields-trip-london-france-and-belgium",
+      "tripId": 14,
+      "legacyTitle": "Battlefields Trip - London , France & Belgium",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=5",
+      "score": 1.12,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/banner/1545819103bayernwald-german-trenches-kemmel-belgium-footage-022414205_prevstill1500x1000---.jpeg",
+        "width": 1920,
+        "height": 1080
+      },
+      "gallery": [],
+      "droppedTooSmall": 8
+    },
+    {
+      "slug": "brussels-space-and-science-trip",
+      "tripId": 16,
+      "legacyTitle": "Brussels Space and Science Tripcience trip",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=11",
+      "score": 1.02,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/banner/1721196387Brussels.jpg",
+        "width": 1920,
+        "height": 533
+      },
+      "gallery": [],
+      "droppedTooSmall": 8
+    },
+    {
+      "slug": "community-service-trip-to-cambodia",
+      "tripId": 21,
+      "legacyTitle": "Community Service trip to Cambodia",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=43",
+      "score": 1.12,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/5DbRts53W4AAOD2r%20-%20Copy.jpeg",
+        "width": 1710,
+        "height": 1140
+      },
+      "gallery": [
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/3computers2%20-%20Copy.jpg",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/4computers2.jpg",
+          "width": 1280,
+          "height": 960
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/6DbRtwCGWAAA_13z%20-%20Copy.jpeg",
+          "width": 1710,
+          "height": 1140
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/7Photo-from-Sophak-1024x788.jpg",
+          "width": 1024,
+          "height": 788
+        }
+      ],
+      "droppedTooSmall": 4
+    },
+    {
+      "slug": "service-learning-cape-town",
+      "tripId": 38,
+      "legacyTitle": "Service learning - Cape Town",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=73",
+      "score": 1.12,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/019d11d27f03b34609077f5008cd1f371.jpg",
+        "width": 1857,
+        "height": 1393
+      },
+      "gallery": [
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/21661681189546.jpg",
+          "width": 1050,
+          "height": 700
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/7listening-to-a-story-min.jpg",
+          "width": 1110,
+          "height": 693
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/8Sth-Africa-website6.jpg",
+          "width": 1600,
+          "height": 1000
+        }
+      ],
+      "droppedTooSmall": 7
+    },
+    {
+      "slug": "community-service-zambia",
+      "tripId": 37,
+      "legacyTitle": "Community Service Zambia",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=72",
+      "score": 1.12,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/banner/1689252246d1.jpg",
+        "width": 1600,
+        "height": 560
+      },
+      "gallery": [
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/0African-Impact-1.jpg",
+          "width": 1152,
+          "height": 864
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/3Mosi%20oa%20Tunya%20Vic%20Falls%20midflow.jpg",
+          "width": 1000,
+          "height": 667
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/4South-Luangwa-National-Park-places-to-visit-in-Zambia-Africa.jpg",
+          "width": 1200,
+          "height": 804
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/5victoria-falls-zimbabwe-ZIMTOUR0920-ca7abb30c4a24ac3bdb79c776a573c7e.jpg",
+          "width": 1500,
+          "height": 1000
+        }
+      ],
+      "droppedTooSmall": 3
+    },
+    {
+      "slug": "steam-educational-trip-to-orlando",
+      "tripId": 47,
+      "legacyTitle": "STEAM EDUCATIONAL TRIP TO ORLANDO",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=88",
+      "score": 1.12,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/0231114-orbite.jpg",
+        "width": 2560,
+        "height": 1707
+      },
+      "gallery": [
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/3Photo_1KSC-Kennedy-Space-Center-Gateway-Deep-Space-Complex-2.jpg",
+          "width": 1440,
+          "height": 1080
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/4pic-apollo-saturn-v-command-and-service-module_orig.jpg",
+          "width": 1100,
+          "height": 733
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/1apollosaturnvcenterindooraerial_low.jpg",
+          "width": 1000,
+          "height": 667
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/8kennedy_space_center_nasa_globe.jpg",
+          "width": 1024,
+          "height": 769
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/9Kennedy-Space-Center-Entrance-1024x683.jpg",
+          "width": 1024,
+          "height": 683
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/14Our-Globetrotters-Universal-Studios-Orlando-vs-Hollywood.jpg",
+          "width": 1080,
+          "height": 720
+        }
+      ],
+      "droppedTooSmall": 6
+    },
+    {
+      "slug": "japan-geography",
+      "tripId": 5,
+      "legacyTitle": "Geography Trip to Japan",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=8",
+      "score": 1.12,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/banner/1658984933japan.jpg",
+        "width": 1700,
+        "height": 535
+      },
+      "gallery": [],
+      "droppedTooSmall": 8
+    },
+    {
+      "slug": "hongkong-business-studies",
+      "tripId": 44,
+      "legacyTitle": "Hongkong Business Studies",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=84",
+      "score": 1,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/1-1x-1.jpg",
+        "width": 2000,
+        "height": 1333
+      },
+      "gallery": [
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/00_80xlaPXRf0QYCLxq.jpg",
+          "width": 1400,
+          "height": 933
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/36242c75aa310fd2bec7f541c.jpeg",
+          "width": 1200,
+          "height": 800
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/41019746.jpg",
+          "width": 1050,
+          "height": 700
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/54055042_orig.jpg",
+          "width": 1100,
+          "height": 730
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/643643238990_b02d9b783c_b.jpg",
+          "width": 1024,
+          "height": 683
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/720240105140441212099contentPhoto1.jpg",
+          "width": 1000,
+          "height": 681
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/9ats.jpg",
+          "width": 1140,
+          "height": 806
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/11caption.jpg",
+          "width": 1200,
+          "height": 900
+        }
+      ],
+      "droppedTooSmall": 6
+    },
+    {
+      "slug": "hue-hoi-an-heritage-tour",
+      "tripId": 19,
+      "legacyTitle": "Hue- Hoi An Heritage Tour",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=33",
+      "score": 1.12,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/banner/1554271543Hanoi-51500x1000hochi.jpg",
+        "width": 1920,
+        "height": 1080
+      },
+      "gallery": [],
+      "droppedTooSmall": 8
+    },
+    {
+      "slug": "india-adventure-and-community-service",
+      "tripId": 31,
+      "legacyTitle": "India Adventure and Community Service",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=59",
+      "score": 1.12,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/04247d37049d85cda908cbc1eeaa77cee.jpg",
+        "width": 4425,
+        "height": 3156
+      },
+      "gallery": [
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/0blog-post-himalya-campaign-update.jpg",
+          "width": 1728,
+          "height": 1296
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/2communityservicemeta.jpg",
+          "width": 1200,
+          "height": 1200
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/5Trekkers-in-village-copy-1920px.jpg",
+          "width": 1920,
+          "height": 1275
+        }
+      ],
+      "droppedTooSmall": 7
+    },
+    {
+      "slug": "street-children-project-delhi",
+      "tripId": 30,
+      "legacyTitle": "Street Children - Project Delhi",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=58",
+      "score": 1.12,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/1Taj-Mahal.jpg",
+        "width": 2500,
+        "height": 1666
+      },
+      "gallery": [],
+      "droppedTooSmall": 5
+    },
+    {
+      "slug": "japan-design-and-technology",
+      "tripId": 49,
+      "legacyTitle": "Japan Design and Technology",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=90",
+      "score": 1.12,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/16Meiji-Jingu-Celebrates-Centennial-020.jpg19%20July.jpg",
+        "width": 5037,
+        "height": 3570
+      },
+      "gallery": [
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/11103-0838_ginza-tokyo-japan.jpg19july.jpg",
+          "width": 1980,
+          "height": 1321
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/3210330_08.jpg19july.jpg",
+          "width": 1120,
+          "height": 747
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/44132399_m.jpg19july.jpg",
+          "width": 1920,
+          "height": 1440
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/571335383-Japan-Tokyo-City-Akihabara-District-Electric-town.jpg19july.jpg",
+          "width": 1100,
+          "height": 733
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/8a-tosho-gu-is-a-shinto-shrine-in-which-japans-first-shogun-v0-f8j0e9a0wn9c1.webp19july.webp",
+          "width": 1080,
+          "height": 719
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/9best-tourist-attractions-in-japan-itsukushima-shrine.jpg",
+          "width": 1360,
+          "height": 942
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/12IMG_7202-2-1024x768.jpg19july.jpg",
+          "width": 1024,
+          "height": 768
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/15meijijingu_15-1024x724.jpeg19july.jpeg",
+          "width": 1024,
+          "height": 724
+        }
+      ],
+      "droppedTooSmall": 6
+    },
+    {
+      "slug": "japan-art-design-technology",
+      "tripId": 4,
+      "legacyTitle": "Japan Art, Design and Technology trip",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=86",
+      "score": 1,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/0Tokyo%20skytree.jpg8july.jpg",
+        "width": 2000,
+        "height": 1333
+      },
+      "gallery": [
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/38july.jpg",
+          "width": 1600,
+          "height": 1067
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/52021_04_IMG_2535-2.jpg4july.jpg",
+          "width": 1000,
+          "height": 667
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/9best-tourist-attractions-in-japan-itsukushima-shrine.jpg",
+          "width": 1360,
+          "height": 942
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/11Disneyland-Tokyo.jpg8july.jpg",
+          "width": 1500,
+          "height": 1001
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/13fastest-high-speed-trains.jpg8july.jpg",
+          "width": 1500,
+          "height": 1001
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/14featured-image-shutterstock_426322717.jpg4july.jpg",
+          "width": 1920,
+          "height": 1312
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/15Gion-Traditional-houses-in-Gion-district.jpg8july.jpg",
+          "width": 1200,
+          "height": 800
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/19kato_kimono_kitsuke03.jpg8july.jpg",
+          "width": 1024,
+          "height": 768
+        }
+      ],
+      "droppedTooSmall": 7
+    },
+    {
+      "slug": "japan-art-trip",
+      "tripId": 34,
+      "legacyTitle": "Japan Art Trip",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=64",
+      "score": 1,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/19Manga%2BDrawing.jpeg",
+        "width": 2500,
+        "height": 1667
+      },
+      "gallery": [
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/29aad32adac82eb1b5d83247d5e2794ae.jpg",
+          "width": 1920,
+          "height": 1427
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/3030.jpg",
+          "width": 1200,
+          "height": 800
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/5088d27a8372076adfe15b88e79456762.jpg",
+          "width": 1599,
+          "height": 1146
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/771316559-Shibuya-crossing-Tokyo-Japan-Asia.jpg",
+          "width": 1100,
+          "height": 736
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/10Chiharu-Shiota-The-Key-in-the-Hand-2015-photo-by-Sunhi-Mang_04_webcover-1920x1200.jpg",
+          "width": 1920,
+          "height": 1200
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/11dbd4e355a68248a691f74e3d5815aa8e.jpg",
+          "width": 1600,
+          "height": 1000
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/17hakone-open-air-art-museum-5.jpg",
+          "width": 2000,
+          "height": 1335
+        }
+      ],
+      "droppedTooSmall": 11
+    },
+    {
+      "slug": "kenya-children-care-volunteering",
+      "tripId": 33,
+      "legacyTitle": "Kenya Children Care - Volunteering",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=63",
+      "score": 1.12,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/banner/1666678026product-5b5b3125b241f.%5B1600%5D.jpeg",
+        "width": 1600,
+        "height": 660
+      },
+      "gallery": [],
+      "droppedTooSmall": 8
+    },
+    {
+      "slug": "les-elfes-ski-trip",
+      "tripId": 28,
+      "legacyTitle": "Les Elfes Ski Trip.",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=55",
+      "score": 1.12,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/banner/1656594661Ski-Snowboard.jpg",
+        "width": 1920,
+        "height": 600
+      },
+      "gallery": [],
+      "droppedTooSmall": 5
+    },
+    {
+      "slug": "london-film-and-drama-trip",
+      "tripId": 42,
+      "legacyTitle": "London Film & Drama Trip",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=81",
+      "score": 1,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/4Harry-Potter-London-Studio-11-of-32.jpg5juky.jpg",
+        "width": 2048,
+        "height": 1365
+      },
+      "gallery": [
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/1acting3.jpg5JULY.jpg",
+          "width": 1500,
+          "height": 1000
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/3download-5.jpg5july.jpg",
+          "width": 1200,
+          "height": 800
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/5london-eye-river-cruise-3.jpg5%20july.jpg",
+          "width": 1280,
+          "height": 924
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/9ref_britmuseum_05.jpg5July.jpg",
+          "width": 1300,
+          "height": 1000
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/0Michael-J-Fox-Christopher-Lloyd-012824-a69932bdb0be4c4fb97d3d8260729b58.jpg5july.jpg",
+          "width": 1500,
+          "height": 1000
+        }
+      ],
+      "droppedTooSmall": 9
+    },
+    {
+      "slug": "london-musical-trip",
+      "tripId": 54,
+      "legacyTitle": "London Musical Trip",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=96",
+      "score": 1.12,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/6Edward-Gardner-and-the-London-Philharmonic-Orchestra-3-c-Mark-Allan-scaled.jpg",
+        "width": 2560,
+        "height": 1703
+      },
+      "gallery": [
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/06x4%20Front%20of%20College%20Phil%20June%2022.jpg",
+          "width": 1798,
+          "height": 1274
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/5dcb974_15e31560f061456c8a6041574606c766~mv2.jpg",
+          "width": 1920,
+          "height": 1080
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/7eton-college-1806x1200.jpg",
+          "width": 1806,
+          "height": 1200
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/9london-fully-guided-houses-of-parliament-tour-with-special-access-no-wait-westminster-abbey-tour-hero-slider-medium.jpg",
+          "width": 2000,
+          "height": 1333
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/10maxresdefault.jpg",
+          "width": 1280,
+          "height": 720
+        }
+      ],
+      "droppedTooSmall": 6
+    },
+    {
+      "slug": "london",
+      "tripId": 7,
+      "legacyTitle": "English Literature Trip to London",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=15",
+      "score": 0.77,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/210011f000001h36pq7220.jpg",
+        "width": 4000,
+        "height": 2667
+      },
+      "gallery": [
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/3BM-Reading-Room.jpg",
+          "width": 2866,
+          "height": 2000
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/4Great-Hall-costumes.jpg",
+          "width": 1200,
+          "height": 811
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/07aa80c03-b63b-4dd4-b95b-e35fa225d982.jpg",
+          "width": 1600,
+          "height": 1067
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/3bush-o-graphy-ujiiuat1hz0-unsplash.jpg",
+          "width": 1032,
+          "height": 773
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/4ccimage-shutterstock_1011533713.jpg",
+          "width": 1000,
+          "height": 664
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/7top-london-24.jpg",
+          "width": 1000,
+          "height": 750
+        }
+      ],
+      "droppedTooSmall": 3
+    },
+    {
+      "slug": "mathematics-trip",
+      "tripId": 48,
+      "legacyTitle": "Mathematics Trip",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=89",
+      "score": 1.12,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/7Famous-Wiener-Ringstrasse-with-historic-Burgtheater-shutterstock_273264044-2.jpg",
+        "width": 4000,
+        "height": 2775
+      },
+      "gallery": [
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/14.jpg",
+          "width": 1500,
+          "height": 1125
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/3269_gallery.jpg",
+          "width": 1920,
+          "height": 1261
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/4Canva-Belvedere-Palace-in-Vienna-1270x847.jpg",
+          "width": 1270,
+          "height": 847
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/6ESAU_cnXkAE6rOu.jpeg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/8IMG_20190209_140221239-1024x768.jpg",
+          "width": 1024,
+          "height": 768
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/9Team-1-at-work-middle-school.jpg",
+          "width": 1024,
+          "height": 768
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/10ViennaSisiMuseum%2CHofburgPalaceandGardensWalkingTour.jpg",
+          "width": 1284,
+          "height": 855
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/11Vienna-St.-Stephan-Cathedral.jpg",
+          "width": 1280,
+          "height": 1194
+        }
+      ],
+      "droppedTooSmall": 2
+    },
+    {
+      "slug": "paris",
+      "tripId": 8,
+      "legacyTitle": "Mathematics Trip to Paris",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=23",
+      "score": 1.12,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/0100d1f000001gotrn1CB8.jpg",
+        "width": 3888,
+        "height": 2592
+      },
+      "gallery": [
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/1250cc80f-220d-4b1a-89f6-2b83f5673627-9707-paris-bateaux-mouches-late-evening-seine-river-dinner-cruise-with-live-music-12.jpg",
+          "width": 1600,
+          "height": 999
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/2a64f32eb-2f13-47d8-832f-ac6262743f8c.jpg",
+          "width": 1600,
+          "height": 1066
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/3city-of-science-industry-paris-private-tour.jpg",
+          "width": 1920,
+          "height": 1162
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/4Seine-River-in-Paris-1024x685.jpg",
+          "width": 1024,
+          "height": 685
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/5shutterstock_1722045943.jpg",
+          "width": 1000,
+          "height": 667
+        }
+      ],
+      "droppedTooSmall": 5
+    },
+    {
+      "slug": "musical-trip-to-vienna",
+      "tripId": 18,
+      "legacyTitle": "Musical Trip to Vienna",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=26",
+      "score": 1.12,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/banner/172110565396.jpg",
+        "width": 3200,
+        "height": 1120
+      },
+      "gallery": [
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/0Vie%201.jpg",
+          "width": 1000,
+          "height": 677
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/1Vie%202.jpg",
+          "width": 1000,
+          "height": 677
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/2vie%203.jpg",
+          "width": 1000,
+          "height": 677
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/3Vie%204.jpg",
+          "width": 1000,
+          "height": 677
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/4Vie%205.jpg",
+          "width": 1000,
+          "height": 677
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/5vie%206.jpg",
+          "width": 1000,
+          "height": 677
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/6vie%209.jpg",
+          "width": 1000,
+          "height": 677
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/7vie%2010.jpg",
+          "width": 1000,
+          "height": 677
+        }
+      ],
+      "droppedTooSmall": 0
+    },
+    {
+      "slug": "nepal-volunteering",
+      "tripId": 24,
+      "legacyTitle": "Nepal volunteering",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=50",
+      "score": 1.12,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/4scenery-of-patan-durbar-square-in-patan-nepal-photo.jpg",
+        "width": 2934,
+        "height": 1960
+      },
+      "gallery": [],
+      "droppedTooSmall": 4
+    },
+    {
+      "slug": "new-york-media-and-film-studies",
+      "tripId": 41,
+      "legacyTitle": "New York Media & Film Studies",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=80",
+      "score": 1,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/08.2.jpg",
+        "width": 1920,
+        "height": 1280
+      },
+      "gallery": [
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/0MoMA-Museum-of-Modern-Art-in-New-York-Installation.jpeg4july.jpeg",
+          "width": 1400,
+          "height": 950
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/1statue-of-liberty-nyc-usa-shutterstock_1723292638.jpg4july.jpg",
+          "width": 1500,
+          "height": 1000
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/0-1x-1.jpg4july.jpg",
+          "width": 1500,
+          "height": 1000
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/1525.jpg4july.jpg",
+          "width": 1600,
+          "height": 1067
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/021_cel_pathyway_program_-_new_york_film_academy_-_los_angeles_-_header.jpg",
+          "width": 1200,
+          "height": 800
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/1123780-12.jpg",
+          "width": 1200,
+          "height": 800
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/2A-FamilyFriendly-Film-and-TV-Bus-Tour-of-NYC-bf8a229269c645bf8a2070b2bbc083a2.jpg",
+          "width": 1200,
+          "height": 801
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/5MOVIE%20%20TOUR.jpg",
+          "width": 1848,
+          "height": 1120
+        }
+      ],
+      "droppedTooSmall": 4
+    },
+    {
+      "slug": "creative-arts-and-musical-theatre-tour-to-new-york",
+      "tripId": 51,
+      "legacyTitle": "Creative Arts and Musical Theatre tour to New York",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=92",
+      "score": 1.12,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/0h0cmcdafxha4rascmrl5.jpg",
+        "width": 2500,
+        "height": 1406
+      },
+      "gallery": [
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/0231009-new-york-911-memorial-pool-mn-1550-0f3b47.jpg",
+          "width": 1500,
+          "height": 1000
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/0statue-of-liberty-nyc-usa-shutterstock_1723292638.jpg",
+          "width": 1500,
+          "height": 1000
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/020220930_190539%2B2.jpg",
+          "width": 1500,
+          "height": 933
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/090642768-new-york-city-september-28-2017-view-of-radio-city-music-hall-in-manhattan-seen-at-night-with-lights.jpg",
+          "width": 1300,
+          "height": 866
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/0Creatively_Wild.jpg",
+          "width": 2251,
+          "height": 1688
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/0GettyImages-541359708-592cd6a65f9b585950db8cf7.jpg",
+          "width": 1500,
+          "height": 1000
+        }
+      ],
+      "droppedTooSmall": 1
+    },
+    {
+      "slug": "salalah-oman",
+      "tripId": 55,
+      "legacyTitle": "Salalah Oman",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=97",
+      "score": 1,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/banner/1730191346view-mountains-sea-al-mughsail-salalah-sultanate-oman.jpg",
+        "width": 1440,
+        "height": 600
+      },
+      "gallery": [
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/03-1-1024x683.jpg",
+          "width": 1024,
+          "height": 683
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/3oman-4432360_1280.jpg",
+          "width": 1280,
+          "height": 853
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/4Salalah-city-beach-attractions.jpg",
+          "width": 1344,
+          "height": 768
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/5Top-10-Things-to-Do-in-Salalah.jpg",
+          "width": 1344,
+          "height": 768
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/6Unique-things-to-do-in-Salalah-for-active-travelers-and-nature-lovers.jpg",
+          "width": 1344,
+          "height": 768
+        }
+      ],
+      "droppedTooSmall": 2
+    },
+    {
+      "slug": "paris-and-nice-language-trip",
+      "tripId": 35,
+      "legacyTitle": "Paris and Nice Language trip",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=69",
+      "score": 1.12,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/18P1000883.jpg.crdownload",
+        "width": 3456,
+        "height": 2592
+      },
+      "gallery": [
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/04ed9f247-792c-416d-8ddf-0049ae3059a1.jpg",
+          "width": 1600,
+          "height": 1066
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/16dc0785c-693b-431f-a4e6-ab440d24b208.jpg",
+          "width": 1600,
+          "height": 1066
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/211cab0ff-9d0b-4fda-b9d8-6f5463e11d9f.jpg",
+          "width": 1600,
+          "height": 1066
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/41000_F_309755327_bCJiJafyimvOk6vTvG6DKDL8CTTPpKEH.jpg",
+          "width": 1000,
+          "height": 667
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/6a60c7ed4-cc5d-478e-98fa-0c4210ed2908.jpg",
+          "width": 1600,
+          "height": 1066
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/8Castle-Hill-Colline-du-Chateau-1.jpg",
+          "width": 1920,
+          "height": 1280
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/9DSCF5729.jpg",
+          "width": 1620,
+          "height": 1080
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/10Enjoy-Paris-with-ACCORD-1-scaled.jpg",
+          "width": 1000,
+          "height": 666
+        }
+      ],
+      "droppedTooSmall": 6
+    },
+    {
+      "slug": "berlin",
+      "tripId": 2,
+      "legacyTitle": "Political trip to Berlin",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=21",
+      "score": 1.12,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/banner/1721135675wide_fullhd_14798621115_bcba1d1e7b_o.jpg",
+        "width": 1920,
+        "height": 800
+      },
+      "gallery": [],
+      "droppedTooSmall": 7
+    },
+    {
+      "slug": "prague-business",
+      "tripId": 9,
+      "legacyTitle": "Business Studies - Prague",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=75",
+      "score": 0.86,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/banner/1721106724banner_img_czech_republic_15017250990.jpg",
+        "width": 1920,
+        "height": 520
+      },
+      "gallery": [
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/01573728309_shutterstock_230107657.jpg.jpg",
+          "width": 1200,
+          "height": 800
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/2ccimage-shutterstock_1801325800.jpg",
+          "width": 1000,
+          "height": 668
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/3Old-Town-Square-in-Prague-Czechia.jpg",
+          "width": 1200,
+          "height": 675
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/5prague-tourist-attractions.jpg",
+          "width": 1200,
+          "height": 813
+        }
+      ],
+      "droppedTooSmall": 3
+    },
+    {
+      "slug": "an-australian-adventure",
+      "tripId": 32,
+      "legacyTitle": "An Australian Adventure",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=62",
+      "score": 1.12,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/5CurrumbinWildlifeSanctuaryTicketinGoldCoast-KlookUnitedStates.jpg",
+        "width": 3000,
+        "height": 2000
+      },
+      "gallery": [
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/3Brisbane%20Whale%20Watching%2056ca7a2fb8ccb0cf29a1fc16%204X3.jpeg",
+          "width": 2048,
+          "height": 1536
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/2dolphin_feeding_3547_02_lg.jpg",
+          "width": 1024,
+          "height": 842
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/2AA-Aboriginal-Camp-Program.jpg",
+          "width": 2016,
+          "height": 1512
+        }
+      ],
+      "droppedTooSmall": 4
+    },
+    {
+      "slug": "religious-trip-to-rome",
+      "tripId": 17,
+      "legacyTitle": "Religious Trip to Rome",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=24",
+      "score": 1,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/banner/1721131676it.jpg",
+        "width": 1900,
+        "height": 475
+      },
+      "gallery": [],
+      "droppedTooSmall": 8
+    },
+    {
+      "slug": "rugby-tour-to-dublin",
+      "tripId": 26,
+      "legacyTitle": "Rugby Tour to Dublin",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=52",
+      "score": 1,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/1rock-of-cashel_county-tipperary_w6t057.jpg",
+        "width": 3238,
+        "height": 2426
+      },
+      "gallery": [
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/2Anchor-Studio-38.jpg",
+          "width": 1000,
+          "height": 667
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/5pairc-ui-chaoimh-1024x674.png",
+          "width": 1024,
+          "height": 674
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/024-of-the-Best-Free-Things-to-Do-in-Dublin-Dubh-Linn-Gardens-IMG_0547.jpg",
+          "width": 1800,
+          "height": 1200
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/1best-places-to-visit-in-Ireland-11.jpg",
+          "width": 1125,
+          "height": 750
+        }
+      ],
+      "droppedTooSmall": 3
+    },
+    {
+      "slug": "school-football-tour-to-holland",
+      "tripId": 27,
+      "legacyTitle": "School Football Tour to Holland",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=53",
+      "score": 1,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/0Netherlands%202%20Anne%20Frank.jpg",
+        "width": 2160,
+        "height": 1296
+      },
+      "gallery": [
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/0Netherlands%203%20Ajax%20arena.webp",
+          "width": 1680,
+          "height": 1050
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/0Netherlands%201.jpg",
+          "width": 1024,
+          "height": 576
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/0Netherlands%204%20Blue%20Boat%20Cruise.jpg",
+          "width": 1330,
+          "height": 454
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/072889_fullimage_view%20of%20a%20canal%20in%20leiden%20shutterstock%20minder%20kerk_1150x663%20(1).jpg",
+          "width": 1150,
+          "height": 663
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/1Cruises-on-the-canals-are-must-do-in-Amsterdam%20(1).jpg",
+          "width": 1200,
+          "height": 800
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/2GettyImages-726782617-5949239c3df78c537bd29b47.jpg",
+          "width": 1885,
+          "height": 1414
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/3places-to-visit-in-netherlands-1920x1080.jpg",
+          "width": 1920,
+          "height": 1080
+        }
+      ],
+      "droppedTooSmall": 0
+    },
+    {
+      "slug": "singapore-business",
+      "tripId": 10,
+      "legacyTitle": "Singapore Business Studies",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=82",
+      "score": 0.86,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/banner/17201874282-days-in-singapore_banner.jpg",
+        "width": 1920,
+        "height": 600
+      },
+      "gallery": [
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/033696i4f6a53a042a477e9c8150f8643b1c4e1.jpg",
+          "width": 1280,
+          "height": 905
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/1260384695.jpg",
+          "width": 1024,
+          "height": 768
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/4c17b3cec4bf20176b895338ecac39725-singapore%20cable%20car.jpg",
+          "width": 1600,
+          "height": 1000
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/6Naruto-The-Gallery-at-Universal-Studios-Singapore-Park-Entrance-Naruto-and-Sasuke-Sculptures.jpg",
+          "width": 1000,
+          "height": 667
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/8RiverCruisebyWaterB.jpg",
+          "width": 1295,
+          "height": 863
+        }
+      ],
+      "droppedTooSmall": 7
+    },
+    {
+      "slug": "volunteering-trip-to-sri-lanka",
+      "tripId": 39,
+      "legacyTitle": "Volunteering Trip to Sri Lanka",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=76",
+      "score": 1.12,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/0GOAT-Volunteers-Sri-Lanka-Asia-Pre-School-Teaching-Volunteering-5.jpg",
+        "width": 4472,
+        "height": 2981
+      },
+      "gallery": [
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/3helping-kindergarten-kids.jpg",
+          "width": 4272,
+          "height": 2848
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/6Prj_Sri_Lanka_family_volunteering_meeting_kids.jpg",
+          "width": 1024,
+          "height": 683
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/8sri-lanka.1200.jpg",
+          "width": 1200,
+          "height": 800
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/1GOAT-Volunteers-Sri-Lanka-Asia-School-Teaching-Volunteering-3.jpg",
+          "width": 3292,
+          "height": 2195
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/2Prj_Sri_Lanka_family_volunteering_meeting_kids%20(1).jpg",
+          "width": 1024,
+          "height": 683
+        }
+      ],
+      "droppedTooSmall": 5
+    },
+    {
+      "slug": "japan-business-studies",
+      "tripId": 40,
+      "legacyTitle": "Japan Business Studies",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=79",
+      "score": 1,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/0featured-image-shutterstock_426322717.jpg4july.jpg",
+        "width": 1920,
+        "height": 1312
+      },
+      "gallery": [
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/21200px-Tokyo_Stock_Exchange_Main_Building_(1988).jpg4kjuly.jpg",
+          "width": 1200,
+          "height": 789
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/32021_04_IMG_2535-2.jpg4july.jpg",
+          "width": 1000,
+          "height": 667
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/207-National-Museum-of-Nature-and-Science-Tokyo-Global-Gallery.jpg",
+          "width": 1200,
+          "height": 800
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/5best-tourist-attractions-in-japan-itsukushima-shrine.jpg",
+          "width": 1360,
+          "height": 942
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/3Kinkakuji-Far-Shot-Pond.jpg4july.jpg",
+          "width": 1000,
+          "height": 667
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/4PXL_20230527_040613089.jpg4july.jpg",
+          "width": 1024,
+          "height": 771
+        }
+      ],
+      "droppedTooSmall": 5
+    },
+    {
+      "slug": "umrah",
+      "tripId": 53,
+      "legacyTitle": "Umrah",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=95",
+      "score": 1,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/4ccl.jpg",
+        "width": 2000,
+        "height": 1334
+      },
+      "gallery": [],
+      "droppedTooSmall": 7
+    },
+    {
+      "slug": "stunning-geography-trip-to-iceland",
+      "tripId": 46,
+      "legacyTitle": "Geography Trip to Iceland",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=1",
+      "score": 0.98,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/7Iceland%2BKirkjufellsfoss.jpg",
+        "width": 2250,
+        "height": 1502
+      },
+      "gallery": [
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/12000x1333_ice_caves_crystal_cave_gallery_3_einarolafurmatthiasson.jpg",
+          "width": 1152,
+          "height": 768
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/4geography_iceland_feb2020-6-1024x768.jpg",
+          "width": 1024,
+          "height": 768
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/5GettyImages-581058797-356881f19d464e79a4c03ff11eded6d4.jpg",
+          "width": 2121,
+          "height": 1414
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/6GettyImages-1225799378.webp",
+          "width": 2121,
+          "height": 1414
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/8Strokkur-Eruption-Summer-2-263961432893384_crop_1280_1024.jpg",
+          "width": 1280,
+          "height": 1024
+        }
+      ],
+      "droppedTooSmall": 2
+    },
+    {
+      "slug": "fantastic-japan-skiing-and-tour-trip",
+      "tripId": 50,
+      "legacyTitle": "Fantastic Japan skiing and tour trip",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=91",
+      "score": 1.12,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/4IMG_6279-scaled-1.jpg13%20Aug.jpg",
+        "width": 2560,
+        "height": 1523
+      },
+      "gallery": [
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/065fd7960b8729Rich-Andy-Hemingway-and-Andy-Evans-in-Japan.jpg13%20Aug.jpg",
+          "width": 2136,
+          "height": 1536
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/1143909820.jpg%2013%20Aug.jpg",
+          "width": 1182,
+          "height": 887
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/2E7I09522021_Niseko_Photography_D-greenjacket.jpg13%20Aug.jpg",
+          "width": 1620,
+          "height": 1080
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/3featured_img_rent-or-buy-ski-equipment.jpg13%20Aug.jpg",
+          "width": 1600,
+          "height": 1067
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/5japan-skiing.jpg13%20Aug.jpg",
+          "width": 1200,
+          "height": 900
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/6luxury-ski-holiday-in-japan.jpg13%20Aug.jpg",
+          "width": 1280,
+          "height": 853
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/7tokyo-ski-resort-iwappara-21.jpg13%20Aug.jpg",
+          "width": 1400,
+          "height": 1050
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/210795.jpg",
+          "width": 1024,
+          "height": 768
+        }
+      ],
+      "droppedTooSmall": 4
+    },
+    {
+      "slug": "uganda-volunteering-trip",
+      "tripId": 25,
+      "legacyTitle": "Uganda volunteering trip.",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=51",
+      "score": 1.12,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/4Picture-119.jpg",
+        "width": 2048,
+        "height": 1536
+      },
+      "gallery": [
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/2Kara-Tunga-Tours-Life-in-Manyatta-5-1024x683.jpeg",
+          "width": 1024,
+          "height": 683
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/5product-5b505d6aa3b2e.%5B1090%5D.jpeg",
+          "width": 1090,
+          "height": 724
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/2Semliki-National-Park-1024x756%20(1).jpg",
+          "width": 1024,
+          "height": 756
+        }
+      ],
+      "droppedTooSmall": 5
+    },
+    {
+      "slug": "north-and-south-vietnam-experience",
+      "tripId": 52,
+      "legacyTitle": "North and South Vietnam experience",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=94",
+      "score": 1.12,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/banner/1724680585Huc_Bridge_Hanoi_Vietnam_Shutterstock_CCMelinda_Nagy_eomiei.jpg",
+        "width": 2000,
+        "height": 920
+      },
+      "gallery": [
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/01000_F_270966955_fw6BG5Fe9nAD5iyckrgjdvXwfTmkDxji.jpg",
+          "width": 1000,
+          "height": 664
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/2caption.jpg",
+          "width": 1200,
+          "height": 800
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/8shutterstock_537369721_20190829123546_20190829123613.jpg",
+          "width": 1000,
+          "height": 668
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/10ThangLongWaterPuppetShowTicketinHanoi.jpg",
+          "width": 1024,
+          "height": 768
+        }
+      ],
+      "droppedTooSmall": 7
+    },
+    {
+      "slug": "volunteering-trip-to-kenya",
+      "tripId": 23,
+      "legacyTitle": "Volunteering trip to Kenya",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=49",
+      "score": 1.12,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/banner/1656337346samburu_women_kenya.jpg",
+        "width": 2560,
+        "height": 1440
+      },
+      "gallery": [
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/0990c94085154ca8b37f5f567c29b3ab5.jpg",
+          "width": 1024,
+          "height": 720
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/1kenya-volunteering-activities.jpg",
+          "width": 1082,
+          "height": 788
+        },
+        {
+          "url": "https://premiumchoiceschooltrips.com/cms/lib/galimages/0shutterstock_1085243321.jpg",
+          "width": 1024,
+          "height": 685
+        }
+      ],
+      "droppedTooSmall": 6
+    },
+    {
+      "slug": "washington-new-york-business",
+      "tripId": 11,
+      "legacyTitle": "Washington & New York Business Trip",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=42",
+      "score": 1,
+      "hero": {
+        "url": "https://premiumchoiceschooltrips.com/cms/lib/banner/16548499621616316097_167477.jpeg",
+        "width": 1440,
+        "height": 600
+      },
+      "gallery": [],
+      "droppedTooSmall": 8
+    }
+  ],
+  "unmatchedLegacy": [],
+  "untouchedTrips": [
+    {
+      "slug": "iceland",
+      "title": "Iceland Geography - Fire, Ice & Changing Landscapes"
+    },
+    {
+      "slug": "china-trip",
+      "title": "China Trip"
+    },
+    {
+      "slug": "japan-art-design-and-technology",
+      "title": "Japan Art Design and Technology"
+    },
+    {
+      "slug": "florida-business-studies-trip",
+      "title": "Florida Enterprise, Innovation & Adventure"
+    },
+    {
+      "slug": "studio-london",
+      "title": "Studio London"
+    },
+    {
+      "slug": "westminster-and-the-art-of-argument",
+      "title": "Westminster & the Art of Argument"
+    },
+    {
+      "slug": "the-uae-story-heritage-innovation-adventure",
+      "title": "The UAE Story — Heritage, Innovation & Adventure"
+    },
+    {
+      "slug": "the-uae-story-heritage-innovation-adventure-2",
+      "title": "The UAE Story — Heritage, Innovation & Adventure"
+    },
+    {
+      "slug": "art-culture-study-tour-seoul",
+      "title": "Art & Culture Study Tour — Seoul"
+    },
+    {
+      "slug": "bali-educational-adventure",
+      "title": "Bali Conservation, Culture & Community in Action"
+    },
+    {
+      "slug": "rocksport-experiential-trip-mussoorie-india",
+      "title": "Rocksport Experiential Trip — Mussoorie, India"
+    },
+    {
+      "slug": "mongolia-life-on-the-steppe",
+      "title": "Mongolia — Life on the Steppe"
+    }
+  ],
+  "problems": [
+    {
+      "trip": "American Icons & Heritage",
+      "slug": "geography-trip-to-east-coast-usa",
+      "legacy": "Geography Trip to East Coast USA",
+      "part": "gallery",
+      "issue": "only 2 legacy gallery images clear 1000px (6 too small), so the current gallery is kept"
+    },
+    {
+      "trip": "Barcelona Uncovered! Gaudí, Football & Mediterranean Adventure",
+      "slug": "barcelona-art-trip",
+      "legacy": "Barcelona Art Trip",
+      "part": "hero",
+      "issue": "best legacy image is only 1320×605 — under the 1400px hero floor, so the current hero is kept"
+    },
+    {
+      "trip": "Barcelona Uncovered! Gaudí, Football & Mediterranean Adventure",
+      "slug": "barcelona-art-trip",
+      "legacy": "Barcelona Art Trip",
+      "part": "gallery",
+      "issue": "only 0 legacy gallery images clear 1000px (8 too small), so the current gallery is kept"
+    },
+    {
+      "trip": "Battlefields Trip - London , France & Belgium",
+      "slug": "battlefields-trip-london-france-and-belgium",
+      "legacy": "Battlefields Trip - London , France & Belgium",
+      "part": "gallery",
+      "issue": "only 0 legacy gallery images clear 1000px (8 too small), so the current gallery is kept"
+    },
+    {
+      "trip": "Belgium Space & Science Adventure",
+      "slug": "brussels-space-and-science-trip",
+      "legacy": "Brussels Space and Science Tripcience trip",
+      "part": "gallery",
+      "issue": "only 0 legacy gallery images clear 1000px (8 too small), so the current gallery is kept"
+    },
+    {
+      "trip": "Geography Trip to Japan",
+      "slug": "japan-geography",
+      "legacy": "Geography Trip to Japan",
+      "part": "gallery",
+      "issue": "only 0 legacy gallery images clear 1000px (8 too small), so the current gallery is kept"
+    },
+    {
+      "trip": "Hue- Hoi An Heritage Tour",
+      "slug": "hue-hoi-an-heritage-tour",
+      "legacy": "Hue- Hoi An Heritage Tour",
+      "part": "gallery",
+      "issue": "only 0 legacy gallery images clear 1000px (8 too small), so the current gallery is kept"
+    },
+    {
+      "trip": "India: Your real opportunity to make a positive difference",
+      "slug": "street-children-project-delhi",
+      "legacy": "Street Children - Project Delhi",
+      "part": "gallery",
+      "issue": "only 1 legacy gallery image clear 1000px (5 too small), so the current gallery is kept"
+    },
+    {
+      "trip": "Kenya Community & Safari Adventure",
+      "slug": "kenya-children-care-volunteering",
+      "legacy": "Kenya Children Care - Volunteering",
+      "part": "gallery",
+      "issue": "only 1 legacy gallery image clear 1000px (8 too small), so the current gallery is kept"
+    },
+    {
+      "trip": "Language trip to Paris",
+      "slug": "language-trip-to-paris",
+      "legacy": "Language trip to Paris",
+      "part": "hero",
+      "issue": "best legacy image is only 1232×821 — under the 1400px hero floor, so the current hero is kept"
+    },
+    {
+      "trip": "Language trip to Paris",
+      "slug": "language-trip-to-paris",
+      "legacy": "Language trip to Paris",
+      "part": "gallery",
+      "issue": "only 1 legacy gallery image clear 1000px (9 too small), so the current gallery is kept"
+    },
+    {
+      "trip": "Les Elfes Ski Trip",
+      "slug": "les-elfes-ski-trip",
+      "legacy": "Les Elfes Ski Trip.",
+      "part": "gallery",
+      "issue": "only 2 legacy gallery images clear 1000px (5 too small), so the current gallery is kept"
+    },
+    {
+      "trip": "Nepal, a trip of Culture, Community & Adventure",
+      "slug": "nepal-volunteering",
+      "legacy": "Nepal volunteering",
+      "part": "gallery",
+      "issue": "only 2 legacy gallery images clear 1000px (4 too small), so the current gallery is kept"
+    },
+    {
+      "trip": "New Zealand North Island, Adventure, Culture & Discovery",
+      "slug": "adventure-trip-to-new-zealand",
+      "legacy": "Adventure trip to New Zealand",
+      "part": "hero",
+      "issue": "best legacy image is only 1200×569 — under the 1400px hero floor, so the current hero is kept"
+    },
+    {
+      "trip": "New Zealand North Island, Adventure, Culture & Discovery",
+      "slug": "adventure-trip-to-new-zealand",
+      "legacy": "Adventure trip to New Zealand",
+      "part": "gallery",
+      "issue": "only 0 legacy gallery images clear 1000px (8 too small), so the current gallery is kept"
+    },
+    {
+      "trip": "Political Trip to Berlin",
+      "slug": "berlin",
+      "legacy": "Political trip to Berlin",
+      "part": "gallery",
+      "issue": "only 1 legacy gallery image clear 1000px (7 too small), so the current gallery is kept"
+    },
+    {
+      "trip": "Religious Trip to Rome",
+      "slug": "religious-trip-to-rome",
+      "legacy": "Religious Trip to Rome",
+      "part": "gallery",
+      "issue": "only 0 legacy gallery images clear 1000px (8 too small), so the current gallery is kept"
+    },
+    {
+      "trip": "Space Camp Turkey",
+      "slug": "space-camp-turkey",
+      "legacy": "Space Camp Turkey",
+      "part": "hero",
+      "issue": "best legacy image is only 1280×470 — under the 1400px hero floor, so the current hero is kept"
+    },
+    {
+      "trip": "Space Camp Turkey",
+      "slug": "space-camp-turkey",
+      "legacy": "Space Camp Turkey",
+      "part": "gallery",
+      "issue": "only 0 legacy gallery images clear 1000px (7 too small), so the current gallery is kept"
+    },
+    {
+      "trip": "The Sacred Journeys of Makkah & Madinah",
+      "slug": "umrah",
+      "legacy": "Umrah",
+      "part": "gallery",
+      "issue": "only 0 legacy gallery images clear 1000px (7 too small), so the current gallery is kept"
+    },
+    {
+      "trip": "Washington & New York Business Experience",
+      "slug": "washington-new-york-business",
+      "legacy": "Washington & New York Business Trip",
+      "part": "gallery",
+      "issue": "only 0 legacy gallery images clear 1000px (8 too small), so the current gallery is kept"
+    }
+  ]
+}

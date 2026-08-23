@@ -107,18 +107,20 @@ export async function loadBrochure(
     const { data: tripRows } = await db
       .from('trips')
       .select(
-        `id, slug, title, city, duration_days, duration_nights, hero_image, journey,
+        `id, slug, title, city, duration_days, duration_nights, hero_image, gallery, journey,
          subjects(name), countries(name),
-         itinerary_days(sort_order, label, title, display_title, summary, primary_location),
-         trip_images(role, url, sort_order)`
+         itinerary_days(sort_order, label, title, display_title, summary, primary_location)`
       )
       .in('id', tripIds);
 
     for (const t of (tripRows ?? []) as any[]) {
-      const images = ((t.trip_images ?? []) as any[]).sort(
-        (a, b) => (a.sort_order ?? 0) - (b.sort_order ?? 0)
-      );
-      const hero = images.find((i) => i.role === 'hero')?.url ?? t.hero_image ?? null;
+      // The trip's own photography, the same set the public page shows.
+      const gallery = Array.isArray(t.gallery)
+        ? (t.gallery as any[])
+            .map((g) => (typeof g === 'string' ? g : g?.url))
+            .filter((u): u is string => typeof u === 'string')
+        : [];
+      const hero = t.hero_image ?? null;
 
       trips[t.id] = {
         id: t.id,
@@ -130,7 +132,7 @@ export async function loadBrochure(
         durationDays: t.duration_days ?? 0,
         durationNights: t.duration_nights ?? 0,
         heroImage: hero,
-        images: images.filter((i) => i.role === 'gallery').map((i) => i.url),
+        images: gallery,
         journey: ((t.journey ?? []) as any[]).map((j) => ({
           location: j.location,
           fromDay: j.from_day,

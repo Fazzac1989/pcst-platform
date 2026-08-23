@@ -3,7 +3,6 @@ import { createElement } from 'react';
 import { renderToBuffer } from '@react-pdf/renderer';
 import {
   getBookingTerms,
-  getCuratedImages,
   getItineraryDays,
   getTripBySlug,
   getTripHighlights,
@@ -40,16 +39,15 @@ export async function GET(_request: Request, { params }: { params: { slug: strin
     return NextResponse.json({ ok: false, error: 'Trip not found' }, { status: 404 });
   }
 
-  const [days, highlights, curated, terms] = await Promise.all([
+  const [days, highlights, terms] = await Promise.all([
     getItineraryDays(trip.id),
     getTripHighlights(trip.id),
-    getCuratedImages(trip.id),
     getBookingTerms(),
   ]);
 
-  const hero = curated.find((c) => c.role === 'hero')?.url ?? trip.heroImage;
-  const gallery = curated.filter((c) => c.role === 'gallery').map((c) => c.url);
-  const fallbackGallery = trip.gallery.map((g) => g.url);
+  const hero = trip.heroImage;
+  const gallery = trip.gallery.map((g) => g.url);
+  const fallbackGallery = gallery;
 
   const f = trip.countryFacts;
   const countryFacts = !f

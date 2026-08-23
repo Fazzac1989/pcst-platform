@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { ChevronDown, GraduationCap, Info, UtensilsCrossed } from 'lucide-react';
 import { HighlightIcon } from '@/lib/itinerary/icons';
 import { buildJourney, legLabel, type ItineraryDayView } from '@/lib/itinerary/schema';
@@ -24,6 +24,38 @@ export default function ItineraryTimeline({
   const [open, setOpen] = useState<Set<number>>(new Set());
   const journey = useMemo(() => buildJourney(days), [days]);
 
+  // Day photographs page as one set, so the lightbox walks the trip in order
+  // regardless of which thumbnail opened it.
+  const photos = useMemo(
+    () =>
+      days
+        .map((d, i) => ({ url: d.imageUrl, alt: d.imageAlt, dayNumber: i + 1, title: d.structured?.displayTitle || d.title }))
+        .filter((p): p is { url: string; alt: string; dayNumber: number; title: string } => Boolean(p.url)),
+    [days]
+  );
+  const [lightbox, setLightbox] = useState<number | null>(null);
+  const step = useCallback(
+    (delta: number) =>
+      setLightbox((i) => (i === null ? null : (i + delta + photos.length) % photos.length)),
+    [photos.length]
+  );
+
+  useEffect(() => {
+    if (lightbox === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setLightbox(null);
+      if (e.key === 'ArrowRight') step(1);
+      if (e.key === 'ArrowLeft') step(-1);
+    };
+    window.addEventListener('keydown', onKey);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [lightbox, step]);
+
   const toggle = (id: number) =>
     setOpen((prev) => {
       const next = new Set(prev);
@@ -31,6 +63,7 @@ export default function ItineraryTimeline({
       return next;
     });
   const allOpen = open.size === days.length;
+  const shown = lightbox === null ? null : photos[lightbox];
 
   return (
     <div className="itin">
@@ -80,8 +113,25 @@ export default function ItineraryTimeline({
           const panelId = `day-detail-${day.id}`;
           return (
             <li className="itin-day" key={day.id}>
-              <div className="itin-rail" aria-hidden="true">
-                <span className="itin-daynum">{String(i + 1).padStart(2, '0')}</span>
+              <div className="itin-rail">
+                <span className="itin-daynum" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+                {day.imageUrl && (
+                  <button
+                    type="button"
+                    className="itin-thumb"
+                    onClick={() => setLightbox(photos.findIndex((p) => p.dayNumber === i + 1))}
+                    aria-label={`View the photograph for day ${i + 1}`}
+                  >
+                    <Image
+                      src={day.imageUrl}
+                      alt={day.imageAlt}
+                      fill
+                      sizes="72px"
+                      style={{ objectFit: 'cover' }}
+                    />
+                    <span className="itin-thumb-zoom" aria-hidden="true">⤢</span>
+                  </button>
+                )}
               </div>
 
               <article className="itin-card">
@@ -93,18 +143,6 @@ export default function ItineraryTimeline({
                   <h3>{s?.displayTitle || day.title}</h3>
                   {s?.summary && <p className="itin-summary">{s.summary}</p>}
                 </header>
-
-                {day.imageUrl && (
-                  <div className="itin-photo">
-                    <Image
-                      src={day.imageUrl}
-                      alt={day.imageAlt}
-                      fill
-                      sizes="(max-width: 860px) 100vw, 620px"
-                      style={{ objectFit: 'cover' }}
-                    />
-                  </div>
-                )}
 
                 {s && s.highlights.length > 0 && (
                   <ul className="itin-highlights">
@@ -183,6 +221,46 @@ export default function ItineraryTimeline({
         </div>
         {children && <div className="side">{children}</div>}
       </div>
+
+      {shown && (
+        <div
+          className="lbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Itinerary photographs"
+          onClick={(e) => e.target === e.currentTarget && setLightbox(null)}
+        >
+          <button className="lbox-close" onClick={() => setLightbox(null)} aria-label="Close">
+            ✕
+          </button>
+          {photos.length > 1 && (
+            <>
+              <button className="lbox-nav prev" onClick={() => step(-1)} aria-label="Previous day">
+                ‹
+              </button>
+              <button className="lbox-nav next" onClick={() => step(1)} aria-label="Next day">
+                ›
+              </button>
+            </>
+          )}
+          <figure className="lbox-figure">
+            <Image
+              key={shown.url}
+              src={shown.url}
+              alt={shown.alt}
+              width={1800}
+              height={1200}
+              sizes="90vw"
+              style={{ width: 'auto', height: 'auto', maxWidth: '100%', maxHeight: '78vh', objectFit: 'contain' }}
+              priority
+            />
+            <figcaption>
+              <span className="lbox-count">Day {shown.dayNumber}</span>
+              <p>{shown.title}</p>
+            </figcaption>
+          </figure>
+        </div>
+      )}
     </div>
   );
 }

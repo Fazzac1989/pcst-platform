@@ -4,7 +4,15 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import SiteHeader from '@/components/SiteHeaderWithData';
 import { SiteFooterSimple } from '@/components/SiteFooter';
-import { citySlug, getCities, getPublishedTrips, isSingleCity } from '@/lib/data';
+import {
+  citySlug,
+  getCities,
+  getCityContent,
+  getCityImages,
+  getPublishedTrips,
+  isSingleCity,
+} from '@/lib/data';
+import TripGallery, { type GalleryItem } from '@/app/trips/[slug]/TripGallery';
 
 /**
  * City pages are derived entirely from the published catalogue: any city that
@@ -31,12 +39,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function CityPage({ params }: Props) {
-  const [cities, allTrips] = await Promise.all([getCities(), getPublishedTrips()]);
+  const [cities, allTrips, content, images] = await Promise.all([
+    getCities(),
+    getPublishedTrips(),
+    getCityContent(params.slug),
+    getCityImages(params.slug),
+  ]);
   const city = cities.find((c) => c.slug === params.slug);
   if (!city) notFound();
 
   const trips = allTrips.filter((t) => isSingleCity(t.city) && citySlug(t.city) === city.slug);
   const others = cities.filter((c) => c.slug !== city.slug);
+  const heroUrl = images.hero?.url ?? city.heroImage;
+  const gallery: GalleryItem[] = images.gallery;
 
   return (
     <>
@@ -44,10 +59,10 @@ export default async function CityPage({ params }: Props) {
 
       <div className="thero thero--index">
         <div className="bg">
-          {city.heroImage && (
+          {heroUrl && (
             <Image
-              src={city.heroImage}
-              alt=""
+              src={heroUrl}
+              alt={images.hero?.alt ?? ''}
               fill
               priority
               quality={68}
@@ -82,6 +97,91 @@ export default async function CityPage({ params }: Props) {
       </div>
 
       <main className="trip-main">
+        {gallery.length > 0 && (
+          <section className="tgallery-band">
+            <div className="wrap">
+              <TripGallery images={gallery} tripTitle={city.name} />
+            </div>
+          </section>
+        )}
+
+        {content && (
+          <section className="cmaster">
+            <div className="wrap">
+              <div className="cmaster-lead">
+                <div>
+                  <span className="eyebrow">Why {city.name}</span>
+                  {content.intro && <p className="cmaster-intro">{content.intro}</p>}
+                  {content.educationNotes && <p className="ovp">{content.educationNotes}</p>}
+                </div>
+                {content.gettingAround && (
+                  <aside className="cmaster-side">
+                    <h3>Getting around</h3>
+                    <dl>
+                      <div>
+                        <dt>{city.name} on foot and by transport</dt>
+                        <dd>{content.gettingAround}</dd>
+                      </div>
+                    </dl>
+                  </aside>
+                )}
+              </div>
+
+              {content.curriculumLinks.length > 0 && (
+                <div className="cmaster-block">
+                  <h2 className="st serif">
+                    Curriculum <i>links</i>
+                  </h2>
+                  <div className="cmaster-subjects">
+                    {content.curriculumLinks.map((c) => (
+                      <div key={c.subject}>
+                        <h4>{c.subject}</h4>
+                        <p>{c.note}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {(content.climateSummary || content.seasons.length > 0) && (
+                <div className="cmaster-block">
+                  <h2 className="st serif">
+                    When to <i>travel</i>
+                  </h2>
+                  {content.climateSummary && <p className="ovp">{content.climateSummary}</p>}
+                  {content.seasons.length > 0 && (
+                    <div className="cmaster-seasons">
+                      {content.seasons.map((s) => (
+                        <div key={s.season}>
+                          <h4>{s.season}</h4>
+                          <span>{s.months}</span>
+                          <p>{s.note}</p>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {content.usefulPhrases.length > 0 && (
+                <div className="cmaster-block">
+                  <h2 className="st serif">
+                    A few <i>words</i>
+                  </h2>
+                  <div className="cmaster-phrases">
+                    {content.usefulPhrases.map((p) => (
+                      <div key={p.phrase}>
+                        <strong>{p.phrase}</strong>
+                        <span>{p.meaning}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          </section>
+        )}
+
         <section>
           <div className="wrap">
             <span className="eyebrow">Learning in {city.name}</span>

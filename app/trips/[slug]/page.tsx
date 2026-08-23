@@ -9,7 +9,6 @@ import { SiteFooterSimple } from '@/components/SiteFooter';
 import {
   citySlug,
   getBookingTerms,
-  getCuratedImages,
   getItineraryDays,
   getPublishedTrips,
   getTripBySlug,
@@ -60,27 +59,11 @@ export default async function TripPage({ params }: Props) {
   ]);
   const hasStructured = itineraryDays.some((d) => d.structured);
 
-  // Curated photography wins where it exists; otherwise fall back to the
-  // legacy gallery field so nothing regresses before the reset is finished.
-  const curated = await getCuratedImages(trip.id);
-  const curatedHero = curated.find((c) => c.role === 'hero') ?? null;
-  const curatedGallery = curated.filter((c) => c.role === 'gallery');
-  const heroUrl = curatedHero?.url ?? trip.heroImage;
-  const heroAlt = curatedHero?.alt ?? trip.heroAlt;
-  const galleryItems: GalleryItem[] = (
-    curatedGallery.length > 0
-      ? curatedGallery
-      : trip.gallery.map((g) => ({ ...g, caption: null, photographer: null, licence: null, sourceUrl: null, focalX: 0.5, focalY: 0.5 }))
-  ).map((g: any) => ({
-    url: g.url,
-    alt: g.alt,
-    caption: g.caption ?? null,
-    photographer: g.photographer ?? null,
-    licence: g.licence ?? null,
-    sourceUrl: g.sourceUrl ?? null,
-    focalX: g.focalX ?? 0.5,
-    focalY: g.focalY ?? 0.5,
-  }));
+  // The trip owns its photography: whatever is on the trip in the admin is
+  // what the page shows, so removing an image there removes it here.
+  const heroUrl = trip.heroImage;
+  const heroAlt = trip.heroAlt;
+  const galleryItems: GalleryItem[] = trip.gallery;
 
   // Two or three genuine alternatives in the same subject, not a wall of every
   // trip we sell. A teacher reading a History itinerary is weighing History
@@ -115,12 +98,7 @@ export default async function TripPage({ params }: Props) {
               priority
               quality={65}
               sizes="100vw"
-              style={{
-                objectFit: 'cover',
-                objectPosition: curatedHero
-                  ? `${curatedHero.focalX * 100}% ${curatedHero.focalY * 100}%`
-                  : 'center',
-              }}
+              style={{ objectFit: 'cover' }}
             />
           )}
         </div>

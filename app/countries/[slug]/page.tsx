@@ -64,15 +64,9 @@ export default async function CountryPage({ params }: Props) {
   const others = countries.filter((c) => c.slug !== country.slug);
 
   // The country's own hero, falling back to a trip's while pages are unbuilt.
-  const ownHero = images.find((i) => i.role === 'hero') ?? null;
-  const heroUrl = ownHero?.url ?? country.heroImage;
-  const gallery: GalleryItem[] = images
-    .filter((i) => i.role === 'gallery')
-    .map((i) => ({
-      url: i.url, alt: i.alt, caption: i.caption,
-      photographer: i.photographer, licence: i.licence, sourceUrl: i.sourceUrl,
-      focalX: i.focalX, focalY: i.focalY,
-    }));
+  const heroUrl = images.hero?.url ?? country.heroImage;
+  const heroAlt = images.hero?.alt ?? '';
+  const gallery: GalleryItem[] = images.gallery;
 
   return (
     <>
@@ -83,15 +77,12 @@ export default async function CountryPage({ params }: Props) {
           {heroUrl && (
             <Image
               src={heroUrl}
-              alt={ownHero?.alt ?? ''}
+              alt={heroAlt}
               fill
               priority
               quality={68}
               sizes="100vw"
-              style={{
-                objectFit: 'cover',
-                objectPosition: ownHero ? `${ownHero.focalX * 100}% ${ownHero.focalY * 100}%` : 'center',
-              }}
+              style={{ objectFit: 'cover' }}
             />
           )}
         </div>
