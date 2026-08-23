@@ -74,7 +74,7 @@ export default async function SiteFooterWithData() {
             <h5>Company</h5>
             <ul>
               <li><Link href="/safety">Safety &amp; Safeguarding</Link></li>
-              <li><Link href="/about">About us</Link></li>
+              <li><Link href="/about">Our story</Link></li>
               <li><a href="/#contact">Contact us</a></li>
             </ul>
           </div>
