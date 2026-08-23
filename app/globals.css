@@ -1078,12 +1078,13 @@ details.terms ol { padding: 0 32px 26px 50px; font-size: 13.5px; color: var(--in
 .itin-place { color: var(--brass); }
 .itin-card h3 { font-family: var(--font-fraunces), serif; font-weight: 500; font-size: clamp(21px, 2.6vw, 27px); line-height: 1.18; margin: 8px 0 0; }
 .itin-summary { font-size: 15.5px; color: var(--ink-soft); margin-top: 10px; max-width: 56ch; }
-/* The day photograph sits opposite its title, expanding on click. */
-.itin-card-head { display: flex; align-items: flex-start; gap: 22px; }
-.itin-card-headtext { flex: 1; min-width: 0; }
+/* The day photograph rides the rail below its number, pulled up so it sits
+   level with the day title rather than trailing beneath it. */
+/* justify-content on the base rule centres along the main axis, which becomes
+   vertical here — without resetting it the photograph drifts down the card. */
+.itin-rail { flex-direction: column; align-items: center; justify-content: flex-start; gap: 5px; }
 .itin-thumb {
-  position: relative; flex: 0 0 auto; width: 96px; height: 96px; margin-top: 2px;
-  border-radius: 4px; overflow: hidden;
+  position: relative; width: 72px; height: 72px; border-radius: 4px; overflow: hidden;
   border: 1px solid var(--line); background: rgba(22, 36, 46, .06); cursor: zoom-in; padding: 0;
   transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
 }
@@ -1124,9 +1125,12 @@ details.terms ol { padding: 0 32px 26px 50px; font-size: 13.5px; color: var(--in
 @media (max-width: 860px) {
   .itin-overview { grid-template-columns: 1fr; gap: 28px; }
   .itin-day { grid-template-columns: 1fr; }
-  .itin-rail { display: none; }
-  .itin-card-head { gap: 16px; }
-  .itin-thumb { width: 76px; height: 76px; }
+  /* No room for a rail on mobile: keep the thumbnail, drop the number and line
+     (the card head already says "Day 1 of 7"). */
+  .itin-rail { flex-direction: row; justify-content: flex-start; padding: 0 0 14px; }
+  .itin-rail::before { display: none; }
+  .itin-daynum { display: none; }
+  .itin-rail:not(:has(.itin-thumb)) { display: none; }
   .itin-card { padding: 0 0 34px; max-width: none; border-bottom: 1px solid var(--line); margin-bottom: 34px; }
   .itin-list > .itin-day:last-child .itin-card { border-bottom: 0; }
   .itin-journey ol { flex-direction: column; }
