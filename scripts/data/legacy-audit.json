@@ -1,0 +1,1305 @@
+{
+  "generatedAt": "2026-08-23T15:18:33.524Z",
+  "legacyTripCount": 55,
+  "databaseTripCount": 63,
+  "missingFromNewSystem": [
+    {
+      "title": "Bentota",
+      "country": "Admin",
+      "subject": "Geography",
+      "url": "https://premiumchoiceschooltrips.com/trips&id=93",
+      "hero": "https://premiumchoiceschooltrips.com/cms/lib/menu/1656859403Gokyo-Ri-view.jpg",
+      "gallery": []
+    }
+  ],
+  "trips": [
+    {
+      "slug": "adventure-trip-to-new-zealand",
+      "title": "New Zealand North Island, Adventure, Culture & Discovery",
+      "status": "published",
+      "legacyTitle": "Adventure trip to New Zealand",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=41",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "Shutterstock (curated)",
+        "fromLegacy": false,
+        "legacyBest": "1200×569"
+      },
+      "gallery": {
+        "count": 4,
+        "fromLegacy": 0,
+        "sources": [
+          "Shutterstock (curated)"
+        ],
+        "legacyUsableAvailable": 0,
+        "legacyTotal": 8,
+        "couldAdd": 0
+      }
+    },
+    {
+      "slug": "an-australian-adventure",
+      "title": "Queensland Eco Adventure",
+      "status": "published",
+      "legacyTitle": "An Australian Adventure",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=62",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "1600×850"
+      },
+      "gallery": {
+        "count": 3,
+        "fromLegacy": 3,
+        "sources": [
+          "legacy site"
+        ],
+        "legacyUsableAvailable": 4,
+        "legacyTotal": 8,
+        "couldAdd": 1
+      }
+    },
+    {
+      "slug": "athens",
+      "title": "Ancient Greece: Athens, Delphi & Mycenae",
+      "status": "published",
+      "legacyTitle": "History Trip to Athens",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=16",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "1920×590"
+      },
+      "gallery": {
+        "count": 5,
+        "fromLegacy": 5,
+        "sources": [
+          "legacy site"
+        ],
+        "legacyUsableAvailable": 5,
+        "legacyTotal": 10,
+        "couldAdd": 0
+      }
+    },
+    {
+      "slug": "barcelona-art-trip",
+      "title": "Barcelona Uncovered! Gaudí, Football & Mediterranean Adventure",
+      "status": "published",
+      "legacyTitle": "Barcelona Art Trip",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=9",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "uploaded",
+        "fromLegacy": false,
+        "legacyBest": "1320×605"
+      },
+      "gallery": {
+        "count": 5,
+        "fromLegacy": 0,
+        "sources": [
+          "Shutterstock (curated)",
+          "uploaded"
+        ],
+        "legacyUsableAvailable": 0,
+        "legacyTotal": 8,
+        "couldAdd": 0
+      }
+    },
+    {
+      "slug": "barcelona-language-trip",
+      "title": "Barcelona's Celebration of Spanish Culture, Language & Adventure",
+      "status": "published",
+      "legacyTitle": "Barcelona Language Trip",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=70",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "4000×1200"
+      },
+      "gallery": {
+        "count": 6,
+        "fromLegacy": 6,
+        "sources": [
+          "legacy site"
+        ],
+        "legacyUsableAvailable": 6,
+        "legacyTotal": 12,
+        "couldAdd": 0
+      }
+    },
+    {
+      "slug": "battlefields-trip-london-france-and-belgium",
+      "title": "Battlefields Trip - London , France & Belgium",
+      "status": "draft",
+      "legacyTitle": "Battlefields Trip - London , France & Belgium",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=5",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "1920×1080"
+      },
+      "gallery": {
+        "count": 4,
+        "fromLegacy": 0,
+        "sources": [
+          "Shutterstock (curated)"
+        ],
+        "legacyUsableAvailable": 0,
+        "legacyTotal": 8,
+        "couldAdd": 0
+      }
+    },
+    {
+      "slug": "berlin",
+      "title": "Political Trip to Berlin",
+      "status": "draft",
+      "legacyTitle": "Political trip to Berlin",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=21",
+      "matchedBy": "title",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "1920×800"
+      },
+      "gallery": {
+        "count": 5,
+        "fromLegacy": 1,
+        "sources": [
+          "Shutterstock (curated)",
+          "legacy site"
+        ],
+        "legacyUsableAvailable": 1,
+        "legacyTotal": 8,
+        "couldAdd": 0
+      }
+    },
+    {
+      "slug": "brussels-space-and-science-trip",
+      "title": "Belgium Space & Science Adventure",
+      "status": "published",
+      "legacyTitle": "Brussels Space and Science Tripcience trip",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=11",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "1920×533"
+      },
+      "gallery": {
+        "count": 4,
+        "fromLegacy": 0,
+        "sources": [
+          "Shutterstock (curated)"
+        ],
+        "legacyUsableAvailable": 0,
+        "legacyTotal": 8,
+        "couldAdd": 0
+      }
+    },
+    {
+      "slug": "community-service-trip-to-cambodia",
+      "title": "Cambodia: Heritage, Community & Service",
+      "status": "published",
+      "legacyTitle": "Community Service trip to Cambodia",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=43",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "1400×500"
+      },
+      "gallery": {
+        "count": 4,
+        "fromLegacy": 4,
+        "sources": [
+          "legacy site"
+        ],
+        "legacyUsableAvailable": 5,
+        "legacyTotal": 9,
+        "couldAdd": 1
+      }
+    },
+    {
+      "slug": "community-service-zambia",
+      "title": "Community Service Zambia",
+      "status": "draft",
+      "legacyTitle": "Community Service Zambia",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=72",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "1600×560"
+      },
+      "gallery": {
+        "count": 4,
+        "fromLegacy": 4,
+        "sources": [
+          "legacy site"
+        ],
+        "legacyUsableAvailable": 4,
+        "legacyTotal": 7,
+        "couldAdd": 0
+      }
+    },
+    {
+      "slug": "creative-arts-and-musical-theatre-tour-to-new-york",
+      "title": "New York performing arts adventure",
+      "status": "published",
+      "legacyTitle": "Creative Arts and Musical Theatre tour to New York",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=92",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "1920×1080"
+      },
+      "gallery": {
+        "count": 6,
+        "fromLegacy": 6,
+        "sources": [
+          "legacy site"
+        ],
+        "legacyUsableAvailable": 7,
+        "legacyTotal": 8,
+        "couldAdd": 1
+      }
+    },
+    {
+      "slug": "fantastic-japan-skiing-and-tour-trip",
+      "title": "Tokyo Lights and Hakuba Heights",
+      "status": "published",
+      "legacyTitle": "Fantastic Japan skiing and tour trip",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=91",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "1600×525"
+      },
+      "gallery": {
+        "count": 8,
+        "fromLegacy": 8,
+        "sources": [
+          "legacy site"
+        ],
+        "legacyUsableAvailable": 9,
+        "legacyTotal": 13,
+        "couldAdd": 1
+      }
+    },
+    {
+      "slug": "florida-business-studies-trip",
+      "title": "Florida Enterprise, Innovation & Adventure",
+      "status": "published",
+      "legacyTitle": "Florida Business Studies Trip",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=85",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "1600×700"
+      },
+      "gallery": {
+        "count": 4,
+        "fromLegacy": 0,
+        "sources": [
+          "Shutterstock (curated)"
+        ],
+        "legacyUsableAvailable": 0,
+        "legacyTotal": 0,
+        "couldAdd": 0
+      }
+    },
+    {
+      "slug": "geography-trip-to-east-coast-usa",
+      "title": "American Icons & Heritage",
+      "status": "published",
+      "legacyTitle": "Geography Trip to East Coast USA",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=4",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "2000×1000"
+      },
+      "gallery": {
+        "count": 6,
+        "fromLegacy": 2,
+        "sources": [
+          "Shutterstock (curated)",
+          "legacy site"
+        ],
+        "legacyUsableAvailable": 2,
+        "legacyTotal": 8,
+        "couldAdd": 0
+      }
+    },
+    {
+      "slug": "hongkong-business-studies",
+      "title": "Hong Kong Business & Innovation",
+      "status": "published",
+      "legacyTitle": "Hongkong Business Studies",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=84",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "1162×456"
+      },
+      "gallery": {
+        "count": 9,
+        "fromLegacy": 9,
+        "sources": [
+          "legacy site"
+        ],
+        "legacyUsableAvailable": 10,
+        "legacyTotal": 16,
+        "couldAdd": 1
+      }
+    },
+    {
+      "slug": "hue-hoi-an-heritage-tour",
+      "title": "Hue- Hoi An Heritage Tour",
+      "status": "draft",
+      "legacyTitle": "Hue- Hoi An Heritage Tour",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=33",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "1920×1080"
+      },
+      "gallery": {
+        "count": 4,
+        "fromLegacy": 0,
+        "sources": [
+          "Shutterstock (curated)"
+        ],
+        "legacyUsableAvailable": 0,
+        "legacyTotal": 8,
+        "couldAdd": 0
+      }
+    },
+    {
+      "slug": "iceland",
+      "title": "Iceland Geography - Fire, Ice & Changing Landscapes",
+      "status": "published",
+      "legacyTitle": "Geography Trip to Iceland",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=1",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "1200×400"
+      },
+      "gallery": {
+        "count": 5,
+        "fromLegacy": 5,
+        "sources": [
+          "legacy site"
+        ],
+        "legacyUsableAvailable": 6,
+        "legacyTotal": 8,
+        "couldAdd": 1
+      }
+    },
+    {
+      "slug": "india-adventure-and-community-service",
+      "title": "India Adventure and Community Service",
+      "status": "draft",
+      "legacyTitle": "India Adventure and Community Service",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=59",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "1000×444"
+      },
+      "gallery": {
+        "count": 3,
+        "fromLegacy": 3,
+        "sources": [
+          "legacy site"
+        ],
+        "legacyUsableAvailable": 4,
+        "legacyTotal": 11,
+        "couldAdd": 1
+      }
+    },
+    {
+      "slug": "japan-art-design-and-technology",
+      "title": "Japan Art Design and Technology",
+      "status": "draft",
+      "legacyTitle": "Japan Art, Design and Technology trip",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=86",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "1600×560"
+      },
+      "gallery": {
+        "count": 10,
+        "fromLegacy": 10,
+        "sources": [
+          "legacy site"
+        ],
+        "legacyUsableAvailable": 9,
+        "legacyTotal": 16,
+        "couldAdd": 0
+      }
+    },
+    {
+      "slug": "japan-art-design-technology",
+      "title": "Japan, Where Tradition Meets Tomorrow",
+      "status": "published",
+      "legacyTitle": "Japan Art Design and Technology",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=83",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "1500×500"
+      },
+      "gallery": {
+        "count": 8,
+        "fromLegacy": 8,
+        "sources": [
+          "legacy site"
+        ],
+        "legacyUsableAvailable": 13,
+        "legacyTotal": 21,
+        "couldAdd": 5
+      }
+    },
+    {
+      "slug": "japan-art-trip",
+      "title": "Japan's Art, Culture & Technology",
+      "status": "published",
+      "legacyTitle": "Japan Art Trip",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=64",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "1920×640"
+      },
+      "gallery": {
+        "count": 7,
+        "fromLegacy": 7,
+        "sources": [
+          "legacy site"
+        ],
+        "legacyUsableAvailable": 8,
+        "legacyTotal": 19,
+        "couldAdd": 1
+      }
+    },
+    {
+      "slug": "japan-business-studies",
+      "title": "The  Business, Innovation & Culture of Japan",
+      "status": "published",
+      "legacyTitle": "Japan Business Studies",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=79",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "1680×656"
+      },
+      "gallery": {
+        "count": 6,
+        "fromLegacy": 6,
+        "sources": [
+          "legacy site"
+        ],
+        "legacyUsableAvailable": 7,
+        "legacyTotal": 12,
+        "couldAdd": 1
+      }
+    },
+    {
+      "slug": "japan-design-and-technology",
+      "title": "Japan,  Future, Heritage and Hiroshima",
+      "status": "published",
+      "legacyTitle": "Japan Design and Technology",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=90",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "1970×449"
+      },
+      "gallery": {
+        "count": 9,
+        "fromLegacy": 9,
+        "sources": [
+          "legacy site"
+        ],
+        "legacyUsableAvailable": 10,
+        "legacyTotal": 16,
+        "couldAdd": 1
+      }
+    },
+    {
+      "slug": "japan-geography",
+      "title": "Geography Trip to Japan",
+      "status": "draft",
+      "legacyTitle": "Geography Trip to Japan",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=8",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "1700×535"
+      },
+      "gallery": {
+        "count": 4,
+        "fromLegacy": 0,
+        "sources": [
+          "Shutterstock (curated)"
+        ],
+        "legacyUsableAvailable": 0,
+        "legacyTotal": 8,
+        "couldAdd": 0
+      }
+    },
+    {
+      "slug": "jordan",
+      "title": " Ancient Wonders & Desert Adventures of Jordan",
+      "status": "published",
+      "legacyTitle": "History Trip to Jordan",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=25",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "1920×480"
+      },
+      "gallery": {
+        "count": 8,
+        "fromLegacy": 8,
+        "sources": [
+          "legacy site"
+        ],
+        "legacyUsableAvailable": 8,
+        "legacyTotal": 8,
+        "couldAdd": 0
+      }
+    },
+    {
+      "slug": "kenya-children-care-volunteering",
+      "title": "Kenya Community & Safari Adventure",
+      "status": "published",
+      "legacyTitle": "Kenya Children Care - Volunteering",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=63",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "1600×660"
+      },
+      "gallery": {
+        "count": 5,
+        "fromLegacy": 1,
+        "sources": [
+          "Shutterstock (curated)",
+          "legacy site"
+        ],
+        "legacyUsableAvailable": 1,
+        "legacyTotal": 9,
+        "couldAdd": 0
+      }
+    },
+    {
+      "slug": "language-trip-to-paris",
+      "title": "Language trip to Paris",
+      "status": "draft",
+      "legacyTitle": "Language trip to Paris",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=48",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "Shutterstock (curated)",
+        "fromLegacy": false,
+        "legacyBest": "1000×390"
+      },
+      "gallery": {
+        "count": 5,
+        "fromLegacy": 1,
+        "sources": [
+          "Shutterstock (curated)",
+          "legacy site"
+        ],
+        "legacyUsableAvailable": 1,
+        "legacyTotal": 10,
+        "couldAdd": 0
+      }
+    },
+    {
+      "slug": "les-elfes-ski-trip",
+      "title": "Les Elfes Ski Trip",
+      "status": "draft",
+      "legacyTitle": "Les Elfes Ski Trip.",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=55",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "1920×600"
+      },
+      "gallery": {
+        "count": 6,
+        "fromLegacy": 2,
+        "sources": [
+          "Shutterstock (curated)",
+          "legacy site"
+        ],
+        "legacyUsableAvailable": 2,
+        "legacyTotal": 7,
+        "couldAdd": 0
+      }
+    },
+    {
+      "slug": "london",
+      "title": "London's Stories, Stage & Royal Heritage",
+      "status": "published",
+      "legacyTitle": "English Literature Trip to London",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=15",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "900×346"
+      },
+      "gallery": {
+        "count": 6,
+        "fromLegacy": 6,
+        "sources": [
+          "legacy site"
+        ],
+        "legacyUsableAvailable": 7,
+        "legacyTotal": 10,
+        "couldAdd": 1
+      }
+    },
+    {
+      "slug": "london-film-and-drama-trip",
+      "title": "London Film & Drama Trip",
+      "status": "draft",
+      "legacyTitle": "London Film & Drama Trip",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=81",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "1920×600"
+      },
+      "gallery": {
+        "count": 5,
+        "fromLegacy": 5,
+        "sources": [
+          "legacy site"
+        ],
+        "legacyUsableAvailable": 6,
+        "legacyTotal": 15,
+        "couldAdd": 1
+      }
+    },
+    {
+      "slug": "london-musical-trip",
+      "title": "London Live, The Ultimate Music & West End Experience",
+      "status": "published",
+      "legacyTitle": "London Musical Trip",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=96",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "1920×800"
+      },
+      "gallery": {
+        "count": 5,
+        "fromLegacy": 5,
+        "sources": [
+          "legacy site"
+        ],
+        "legacyUsableAvailable": 6,
+        "legacyTotal": 12,
+        "couldAdd": 1
+      }
+    },
+    {
+      "slug": "mathematics-trip",
+      "title": "Mathematics Trip",
+      "status": "draft",
+      "legacyTitle": "Mathematics Trip",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=89",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "1920×600"
+      },
+      "gallery": {
+        "count": 8,
+        "fromLegacy": 8,
+        "sources": [
+          "legacy site"
+        ],
+        "legacyUsableAvailable": 9,
+        "legacyTotal": 11,
+        "couldAdd": 1
+      }
+    },
+    {
+      "slug": "musical-trip-to-vienna",
+      "title": "Musical Trip to Vienna",
+      "status": "published",
+      "legacyTitle": "Musical Trip to Vienna",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=26",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "3200×1120"
+      },
+      "gallery": {
+        "count": 8,
+        "fromLegacy": 8,
+        "sources": [
+          "legacy site"
+        ],
+        "legacyUsableAvailable": 8,
+        "legacyTotal": 8,
+        "couldAdd": 0
+      }
+    },
+    {
+      "slug": "nepal-volunteering",
+      "title": "Nepal, a trip of Culture, Community & Adventure",
+      "status": "published",
+      "legacyTitle": "Nepal volunteering",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=50",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "1090×605"
+      },
+      "gallery": {
+        "count": 6,
+        "fromLegacy": 2,
+        "sources": [
+          "Shutterstock (curated)",
+          "legacy site"
+        ],
+        "legacyUsableAvailable": 3,
+        "legacyTotal": 7,
+        "couldAdd": 1
+      }
+    },
+    {
+      "slug": "new-york-media-and-film-studies",
+      "title": "New York Film & Theatre",
+      "status": "published",
+      "legacyTitle": "New York Media & Film Studies",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=80",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": null
+      },
+      "gallery": {
+        "count": 8,
+        "fromLegacy": 8,
+        "sources": [
+          "legacy site"
+        ],
+        "legacyUsableAvailable": 9,
+        "legacyTotal": 13,
+        "couldAdd": 1
+      }
+    },
+    {
+      "slug": "north-and-south-vietnam-experience",
+      "title": "Vietnam: Culture, History and Adventure",
+      "status": "published",
+      "legacyTitle": "North and South Vietnam experience",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=94",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "2000×920"
+      },
+      "gallery": {
+        "count": 4,
+        "fromLegacy": 4,
+        "sources": [
+          "legacy site"
+        ],
+        "legacyUsableAvailable": 4,
+        "legacyTotal": 11,
+        "couldAdd": 0
+      }
+    },
+    {
+      "slug": "paris",
+      "title": "Mathematics Trip to Paris",
+      "status": "draft",
+      "legacyTitle": "Mathematics Trip to Paris",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=23",
+      "matchedBy": "title",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "640×360"
+      },
+      "gallery": {
+        "count": 5,
+        "fromLegacy": 5,
+        "sources": [
+          "legacy site"
+        ],
+        "legacyUsableAvailable": 6,
+        "legacyTotal": 11,
+        "couldAdd": 1
+      }
+    },
+    {
+      "slug": "paris-and-nice-language-trip",
+      "title": "Paris and Nice Language trip",
+      "status": "published",
+      "legacyTitle": "Paris and Nice Language trip",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=69",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "1600×544"
+      },
+      "gallery": {
+        "count": 9,
+        "fromLegacy": 9,
+        "sources": [
+          "legacy site"
+        ],
+        "legacyUsableAvailable": 10,
+        "legacyTotal": 16,
+        "couldAdd": 1
+      }
+    },
+    {
+      "slug": "prague-business",
+      "title": "Prague Culture & Innovation",
+      "status": "published",
+      "legacyTitle": "Business Studies - Prague",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=75",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "1920×520"
+      },
+      "gallery": {
+        "count": 4,
+        "fromLegacy": 4,
+        "sources": [
+          "legacy site"
+        ],
+        "legacyUsableAvailable": 4,
+        "legacyTotal": 7,
+        "couldAdd": 0
+      }
+    },
+    {
+      "slug": "religious-trip-to-rome",
+      "title": "Religious Trip to Rome",
+      "status": "draft",
+      "legacyTitle": "Religious Trip to Rome",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=24",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "1900×475"
+      },
+      "gallery": {
+        "count": 4,
+        "fromLegacy": 0,
+        "sources": [
+          "Shutterstock (curated)"
+        ],
+        "legacyUsableAvailable": 0,
+        "legacyTotal": 8,
+        "couldAdd": 0
+      }
+    },
+    {
+      "slug": "rugby-tour-to-dublin",
+      "title": "Rugby Tour to Dublin",
+      "status": "draft",
+      "legacyTitle": "Rugby Tour to Dublin",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=52",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "1400×700"
+      },
+      "gallery": {
+        "count": 4,
+        "fromLegacy": 4,
+        "sources": [
+          "legacy site"
+        ],
+        "legacyUsableAvailable": 5,
+        "legacyTotal": 8,
+        "couldAdd": 1
+      }
+    },
+    {
+      "slug": "salalah-oman",
+      "title": "Oman's Mountains, Desert & Coastal Adventures",
+      "status": "published",
+      "legacyTitle": "Salalah Oman",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=97",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "1440×600"
+      },
+      "gallery": {
+        "count": 5,
+        "fromLegacy": 5,
+        "sources": [
+          "legacy site"
+        ],
+        "legacyUsableAvailable": 5,
+        "legacyTotal": 7,
+        "couldAdd": 0
+      }
+    },
+    {
+      "slug": "school-football-tour-to-holland",
+      "title": "School Football Tour to The Netherlands",
+      "status": "published",
+      "legacyTitle": "School Football Tour to Holland",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=53",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "1600×691"
+      },
+      "gallery": {
+        "count": 7,
+        "fromLegacy": 7,
+        "sources": [
+          "legacy site"
+        ],
+        "legacyUsableAvailable": 8,
+        "legacyTotal": 8,
+        "couldAdd": 1
+      }
+    },
+    {
+      "slug": "service-learning-cape-town",
+      "title": "Cape Town Community Impact, Culture & Adventure",
+      "status": "published",
+      "legacyTitle": "Service learning - Cape Town",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=73",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "1440×393"
+      },
+      "gallery": {
+        "count": 3,
+        "fromLegacy": 3,
+        "sources": [
+          "legacy site"
+        ],
+        "legacyUsableAvailable": 4,
+        "legacyTotal": 11,
+        "couldAdd": 1
+      }
+    },
+    {
+      "slug": "singapore-business",
+      "title": "Singapore, a trip of Business, Innovation & Cultural Discovery",
+      "status": "published",
+      "legacyTitle": "Singapore Business Studies",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=82",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "1920×600"
+      },
+      "gallery": {
+        "count": 5,
+        "fromLegacy": 5,
+        "sources": [
+          "legacy site"
+        ],
+        "legacyUsableAvailable": 5,
+        "legacyTotal": 12,
+        "couldAdd": 0
+      }
+    },
+    {
+      "slug": "space-camp-turkey",
+      "title": "Space Camp Turkey",
+      "status": "draft",
+      "legacyTitle": "Space Camp Turkey",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=56",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "Wikimedia",
+        "fromLegacy": false,
+        "legacyBest": "1280×470"
+      },
+      "gallery": {
+        "count": 4,
+        "fromLegacy": 0,
+        "sources": [
+          "Shutterstock (curated)"
+        ],
+        "legacyUsableAvailable": 0,
+        "legacyTotal": 7,
+        "couldAdd": 0
+      }
+    },
+    {
+      "slug": "steam-educational-trip-to-orlando",
+      "title": "Florida Discovery & Adventure",
+      "status": "published",
+      "legacyTitle": "STEAM EDUCATIONAL TRIP TO ORLANDO",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=88",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "1940×462"
+      },
+      "gallery": {
+        "count": 6,
+        "fromLegacy": 6,
+        "sources": [
+          "legacy site"
+        ],
+        "legacyUsableAvailable": 7,
+        "legacyTotal": 13,
+        "couldAdd": 1
+      }
+    },
+    {
+      "slug": "street-children-project-delhi",
+      "title": "India: Your real opportunity to make a positive difference",
+      "status": "published",
+      "legacyTitle": "Street Children - Project Delhi",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=58",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "1920×1080"
+      },
+      "gallery": {
+        "count": 6,
+        "fromLegacy": 1,
+        "sources": [
+          "uploaded",
+          "legacy site"
+        ],
+        "legacyUsableAvailable": 2,
+        "legacyTotal": 7,
+        "couldAdd": 1
+      }
+    },
+    {
+      "slug": "stunning-geography-trip-to-iceland",
+      "title": "The stunning Volcanoes and Glaciers of Iceland with some amazing adventures",
+      "status": "published",
+      "legacyTitle": "Stunning Geography trip to Iceland",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=87",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "1600×700"
+      },
+      "gallery": {
+        "count": 5,
+        "fromLegacy": 5,
+        "sources": [
+          "legacy site"
+        ],
+        "legacyUsableAvailable": 0,
+        "legacyTotal": 0,
+        "couldAdd": 0
+      }
+    },
+    {
+      "slug": "uganda-volunteering-trip",
+      "title": "Uganda - Community, Conservation & Cultural Heritage",
+      "status": "published",
+      "legacyTitle": "Uganda volunteering trip.",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=51",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "1600×660"
+      },
+      "gallery": {
+        "count": 3,
+        "fromLegacy": 3,
+        "sources": [
+          "legacy site"
+        ],
+        "legacyUsableAvailable": 4,
+        "legacyTotal": 9,
+        "couldAdd": 1
+      }
+    },
+    {
+      "slug": "umrah",
+      "title": "The Sacred Journeys of Makkah & Madinah",
+      "status": "published",
+      "legacyTitle": "Umrah",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=95",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "1440×696"
+      },
+      "gallery": {
+        "count": 4,
+        "fromLegacy": 0,
+        "sources": [
+          "Shutterstock (curated)"
+        ],
+        "legacyUsableAvailable": 1,
+        "legacyTotal": 8,
+        "couldAdd": 1
+      }
+    },
+    {
+      "slug": "volunteering-trip-to-kenya",
+      "title": "Volunteering trip to Kenya",
+      "status": "draft",
+      "legacyTitle": "Volunteering trip to Kenya",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=49",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "2560×1440"
+      },
+      "gallery": {
+        "count": 3,
+        "fromLegacy": 3,
+        "sources": [
+          "legacy site"
+        ],
+        "legacyUsableAvailable": 3,
+        "legacyTotal": 9,
+        "couldAdd": 0
+      }
+    },
+    {
+      "slug": "volunteering-trip-to-sri-lanka",
+      "title": "Sri Lanka: People, Purpose & Adventure",
+      "status": "published",
+      "legacyTitle": "Volunteering Trip to Sri Lanka",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=76",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "1600×660"
+      },
+      "gallery": {
+        "count": 5,
+        "fromLegacy": 5,
+        "sources": [
+          "legacy site"
+        ],
+        "legacyUsableAvailable": 6,
+        "legacyTotal": 11,
+        "couldAdd": 1
+      }
+    },
+    {
+      "slug": "washington-new-york-business",
+      "title": "Washington & New York Business Experience",
+      "status": "published",
+      "legacyTitle": "Washington & New York Business Trip",
+      "legacyUrl": "https://premiumchoiceschooltrips.com/trips&id=42",
+      "matchedBy": "slug",
+      "hero": {
+        "source": "legacy site",
+        "fromLegacy": true,
+        "legacyBest": "1440×600"
+      },
+      "gallery": {
+        "count": 4,
+        "fromLegacy": 0,
+        "sources": [
+          "Shutterstock (curated)"
+        ],
+        "legacyUsableAvailable": 0,
+        "legacyTotal": 8,
+        "couldAdd": 0
+      }
+    }
+  ],
+  "newOnly": [
+    {
+      "slug": "china-trip",
+      "title": "China Trip"
+    },
+    {
+      "slug": "studio-london",
+      "title": "Studio London"
+    },
+    {
+      "slug": "westminster-and-the-art-of-argument",
+      "title": "Westminster & the Art of Argument"
+    },
+    {
+      "slug": "the-uae-story-heritage-innovation-adventure",
+      "title": "The UAE Story — Heritage, Innovation & Adventure"
+    },
+    {
+      "slug": "the-uae-story-heritage-innovation-adventure-2",
+      "title": "The UAE Story — Heritage, Innovation & Adventure"
+    },
+    {
+      "slug": "art-culture-study-tour-seoul",
+      "title": "Art & Culture Study Tour — Seoul"
+    },
+    {
+      "slug": "bali-educational-adventure",
+      "title": "Bali Conservation, Culture & Community in Action"
+    },
+    {
+      "slug": "rocksport-experiential-trip-mussoorie-india",
+      "title": "Rocksport Experiential Trip — Mussoorie, India"
+    },
+    {
+      "slug": "mongolia-life-on-the-steppe",
+      "title": "Mongolia — Life on the Steppe"
+    }
+  ]
+}
