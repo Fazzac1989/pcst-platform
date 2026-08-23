@@ -22,31 +22,41 @@ export default async function HomePage() {
     getSubjects(),
   ]);
 
-  // Editorial imagery for the two text sections, drawn from the curated trip
-  // photography already hosted and licensed — one pair per section, each image
-  // from a different country so the page shows range rather than repetition.
-  const withHero = allPublished.filter((t) => t.heroImage);
-  const pickPair = (wanted: string[], exclude: Set<string>) => {
-    const pair: (typeof withHero)[number][] = [];
-    for (const country of wanted) {
-      const hit = withHero.find((t) => t.country === country && !exclude.has(t.slug));
-      if (hit && pair.length < 2) {
-        pair.push(hit);
-        exclude.add(hit.slug);
-      }
-    }
-    for (const t of withHero) {
-      if (pair.length >= 2) break;
-      if (!exclude.has(t.slug) && !pair.some((p) => p.country === t.country)) {
-        pair.push(t);
-        exclude.add(t.slug);
-      }
-    }
-    return pair;
+  /**
+   * Editorial imagery for the two text sections.
+   *
+   * Chosen rather than derived. These four frames are the only photography on
+   * the page above the spotlight, so they carry a lot: between them they show
+   * ancient history, art, geography and adventure, which is the range the copy
+   * beside them claims. Picking automatically gave whatever happened to sit at
+   * a fixed index — some of it 650px wide, some of it a parallax banner from
+   * the old site that cropped to a meaningless slice.
+   *
+   * Each is named by trip and file so a swap in the admin is visible here;
+   * if one goes missing the trip's first gallery photograph stands in.
+   */
+  const FEATURES = {
+    introMain: { slug: 'athens', file: 'gallery-5' },
+    introInset: { slug: 'creative-arts-and-musical-theatre-tour-to-new-york', file: 'gallery-5' },
+    tailoredMain: { slug: 'iceland', file: 'gallery-5' },
+    tailoredInset: { slug: 'fantastic-japan-skiing-and-tour-trip', file: 'gallery-1' },
+  } as const;
+
+  type Feature = { url: string; alt: string };
+  const feature = (pick: { slug: string; file: string }): Feature | null => {
+    const trip = allPublished.find((t) => t.slug === pick.slug);
+    if (!trip) return null;
+    const named = trip.gallery.find((g) => g.url.includes(`/${pick.file}.`));
+    const shot = named ?? trip.gallery[0];
+    if (shot?.url) return { url: shot.url, alt: shot.alt || trip.title };
+    return trip.heroImage ? { url: trip.heroImage, alt: trip.heroAlt || trip.title } : null;
   };
-  const usedForSections = new Set<string>();
-  const introImages = pickPair(['Japan', 'Iceland'], usedForSections);
-  const tailoredImages = pickPair(['South Africa', 'New Zealand'], usedForSections);
+  const introImages = [feature(FEATURES.introMain), feature(FEATURES.introInset)].filter(
+    (f): f is Feature => f !== null
+  );
+  const tailoredImages = [feature(FEATURES.tailoredMain), feature(FEATURES.tailoredInset)].filter(
+    (f): f is Feature => f !== null
+  );
 
   // The spotlight shows trips marked featured in the admin, topped up with the
   // most distinctive journeys — one per country — so it never sits empty and
@@ -137,12 +147,12 @@ export default async function HomePage() {
                 <div className="imgstack" aria-hidden="true">
                   {introImages[0] && (
                     <span className="imgstack-main">
-                      <Image src={introImages[0].heroImage!} alt="" fill sizes="(max-width: 900px) 90vw, 40vw" style={{ objectFit: 'cover' }} />
+                      <Image src={introImages[0].url} alt={introImages[0].alt} fill sizes="(max-width: 900px) 90vw, 42vw" style={{ objectFit: 'cover' }} />
                     </span>
                   )}
                   {introImages[1] && (
                     <span className="imgstack-small">
-                      <Image src={introImages[1].heroImage!} alt="" fill sizes="(max-width: 900px) 50vw, 22vw" style={{ objectFit: 'cover' }} />
+                      <Image src={introImages[1].url} alt={introImages[1].alt} fill sizes="(max-width: 900px) 46vw, 20vw" style={{ objectFit: 'cover' }} />
                     </span>
                   )}
                 </div>
@@ -250,12 +260,12 @@ export default async function HomePage() {
                 <div className="imgstack" aria-hidden="true">
                   {tailoredImages[0] && (
                     <span className="imgstack-main">
-                      <Image src={tailoredImages[0].heroImage!} alt="" fill sizes="(max-width: 900px) 90vw, 40vw" style={{ objectFit: 'cover' }} />
+                      <Image src={tailoredImages[0].url} alt={tailoredImages[0].alt} fill sizes="(max-width: 900px) 90vw, 42vw" style={{ objectFit: 'cover' }} />
                     </span>
                   )}
                   {tailoredImages[1] && (
                     <span className="imgstack-small">
-                      <Image src={tailoredImages[1].heroImage!} alt="" fill sizes="(max-width: 900px) 50vw, 22vw" style={{ objectFit: 'cover' }} />
+                      <Image src={tailoredImages[1].url} alt={tailoredImages[1].alt} fill sizes="(max-width: 900px) 46vw, 20vw" style={{ objectFit: 'cover' }} />
                     </span>
                   )}
                 </div>
