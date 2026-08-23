@@ -34,3 +34,6 @@ supabase/.temp
 
 # Source photography originals live outside the repo
 /assets/
+
+# Audit contact sheets: regenerate with scripts/build-contact-sheets.mjs
+scripts/data/contact/
