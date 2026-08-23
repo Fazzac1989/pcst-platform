@@ -32,18 +32,21 @@ export default async function HomePage() {
    * a fixed index — some of it 650px wide, some of it a parallax banner from
    * the old site that cropped to a meaningless slice.
    *
-   * Each is named by trip and file so a swap in the admin is visible here;
-   * if one goes missing the trip's first gallery photograph stands in.
+   * A pick is either a brand asset held in public/images, or a trip and a
+   * gallery filename — the latter so a swap in the admin is visible here, with
+   * that trip's first photograph standing in if the named file goes.
    */
   const FEATURES = {
-    introMain: { slug: 'athens', file: 'gallery-5' },
+    introMain: { src: '/images/feature-rome.jpg', alt: 'The Colosseum in Rome above a crowded street' },
     introInset: { slug: 'creative-arts-and-musical-theatre-tour-to-new-york', file: 'gallery-5' },
     tailoredMain: { slug: 'iceland', file: 'gallery-5' },
     tailoredInset: { slug: 'fantastic-japan-skiing-and-tour-trip', file: 'gallery-1' },
   } as const;
 
   type Feature = { url: string; alt: string };
-  const feature = (pick: { slug: string; file: string }): Feature | null => {
+  type Pick = { src: string; alt: string } | { slug: string; file: string };
+  const feature = (pick: Pick): Feature | null => {
+    if ('src' in pick) return { url: pick.src, alt: pick.alt };
     const trip = allPublished.find((t) => t.slug === pick.slug);
     if (!trip) return null;
     const named = trip.gallery.find((g) => g.url.includes(`/${pick.file}.`));
