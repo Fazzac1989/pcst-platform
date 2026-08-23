@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import SiteHeader from '@/components/SiteHeaderWithData';
-import { SiteFooterSimple } from '@/components/SiteFooter';
+import SiteFooter from '@/components/SiteFooterWithData';
 import { getAllSubjects, getPublishedTrips, getSubjectDescription } from '@/lib/data';
 // The interactive world map is retired from this page; the component stays in
 // components/SubjectWorldMap.tsx should it be wanted again.
@@ -65,7 +65,9 @@ export default async function SubjectPage({ params }: Props) {
           <div className="tmeta">
             <div>
               <b>Itineraries</b>
-              {subject.tripCount > 0 ? `${subject.tripCount} ready to run` : 'Designed to order'}
+              {subject.tripCount > 0
+                ? `${subject.tripCount} ${subject.tripCount === 1 ? 'itinerary' : 'itineraries'}`
+                : 'Designed to order'}
             </div>
             {subject.countries.length > 0 && (
               <div>
@@ -152,7 +154,7 @@ export default async function SubjectPage({ params }: Props) {
         </section>
       </main>
 
-      <SiteFooterSimple />
+      <SiteFooter />
     </>
   );
 }

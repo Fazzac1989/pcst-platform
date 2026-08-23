@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import SiteHeader from '@/components/SiteHeaderWithData';
-import { SiteFooterSimple } from '@/components/SiteFooter';
+import SiteFooter from '@/components/SiteFooterWithData';
 
 /**
  * The shared shell for the information pages — Why Premium Choice, the
@@ -112,7 +112,7 @@ export default function InfoPage({
         </section>
       </main>
 
-      <SiteFooterSimple />
+      <SiteFooter />
     </>
   );
 }

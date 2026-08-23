@@ -498,6 +498,21 @@ footer.site h5 { font-size: 11.5px; letter-spacing: .2em; text-transform: upperc
 footer.site ul { list-style: none; display: grid; gap: 10px; }
 footer.site a:hover { color: #fff; }
 footer.site .brand p { margin-top: 14px; max-width: 34ch; font-size: 13.5px; }
+/* The full site map: every subject, country and city, one click from anywhere. */
+.sitemap { border-top: 1px solid rgba(244, 243, 238, .12); padding: 34px 0 8px; display: grid; gap: 26px; }
+.sitemap-group h5 { margin-bottom: 13px; }
+.sitemap-group h5 span { color: rgba(244, 243, 238, .4); letter-spacing: .08em; margin-left: 6px; }
+.sitemap-links { display: flex; flex-wrap: wrap; gap: 9px 20px; }
+.sitemap-links a { font-size: 13px; color: rgba(244, 243, 238, .68); }
+.sitemap-links a:hover { color: #fff; }
+/* Ninety-odd links stack into one column on a phone, so they need to sit
+   closer together than they do across a desktop row. */
+@media (max-width: 700px) {
+  .sitemap { padding-top: 26px; gap: 20px; }
+  .sitemap-links { gap: 7px 14px; }
+  .sitemap-links a { font-size: 12.5px; }
+}
+
 footer.site .bottom { border-top: 1px solid rgba(244, 243, 238, .12); padding: 22px 0; display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; font-size: 12.5px; color: rgba(244, 243, 238, .5); }
 
 /* ---------- footer (compact, trip page style) ---------- */

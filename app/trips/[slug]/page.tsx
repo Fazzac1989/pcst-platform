@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation';
 import AppointmentModal from '@/components/AppointmentModal';
 import ViewTracker from '@/components/ViewTracker';
 import SiteHeader from '@/components/SiteHeaderWithData';
-import { SiteFooterSimple } from '@/components/SiteFooter';
+import SiteFooter from '@/components/SiteFooterWithData';
 import {
   citySlug,
   getBookingTerms,
@@ -297,7 +297,7 @@ export default async function TripPage({ params }: Props) {
         )}
       </main>
 
-      <SiteFooterSimple />
+      <SiteFooter />
     </>
   );
 }

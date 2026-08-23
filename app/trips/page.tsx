@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import SiteHeader from '@/components/SiteHeaderWithData';
-import { SiteFooterSimple } from '@/components/SiteFooter';
+import SiteFooter from '@/components/SiteFooterWithData';
 import { getPublishedTrips } from '@/lib/data';
 import TripsExplorer, { type ExplorerTrip } from './TripsExplorer';
 
@@ -81,7 +81,7 @@ export default async function TripsIndexPage() {
         </section>
       </main>
 
-      <SiteFooterSimple />
+      <SiteFooter />
     </>
   );
 }

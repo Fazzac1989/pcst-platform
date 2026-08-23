@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import SiteHeader from '@/components/SiteHeaderWithData';
-import { SiteFooterSimple } from '@/components/SiteFooter';
+import SiteFooter from '@/components/SiteFooterWithData';
 import {
   citySlug,
   getCities,
@@ -82,7 +82,7 @@ export default async function CityPage({ params }: Props) {
             </div>
             <div>
               <b>Itineraries</b>
-              {city.tripCount} ready to run
+              {city.tripCount} {city.tripCount === 1 ? 'itinerary' : 'itineraries'}
             </div>
             <div>
               <b>Subjects</b>
@@ -233,7 +233,7 @@ export default async function CityPage({ params }: Props) {
         </section>
       </main>
 
-      <SiteFooterSimple />
+      <SiteFooter />
     </>
   );
 }

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import SiteHeader from '@/components/SiteHeaderWithData';
-import { SiteFooterSimple } from '@/components/SiteFooter';
+import SiteFooter from '@/components/SiteFooterWithData';
 import { getSafetyPage } from '@/lib/settings';
 
 export const metadata: Metadata = {
@@ -94,7 +94,7 @@ export default async function SafetyPage() {
         </section>
       </main>
 
-      <SiteFooterSimple />
+      <SiteFooter />
     </>
   );
 }

@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import SiteHeader from '@/components/SiteHeaderWithData';
-import { SiteFooterSimple } from '@/components/SiteFooter';
+import SiteFooter from '@/components/SiteFooterWithData';
 import {
   getCountries,
   getCountryContent,
@@ -94,7 +94,7 @@ export default async function CountryPage({ params }: Props) {
           <div className="tmeta">
             <div>
               <b>Itineraries</b>
-              {country.tripCount} ready to run
+              {country.tripCount} {country.tripCount === 1 ? 'itinerary' : 'itineraries'}
             </div>
             <div>
               <b>Subjects</b>
@@ -249,7 +249,7 @@ export default async function CountryPage({ params }: Props) {
         </section>
       </main>
 
-      <SiteFooterSimple />
+      <SiteFooter />
     </>
   );
 }

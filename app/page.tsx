@@ -4,7 +4,7 @@ import AppointmentForm from '@/components/AppointmentForm';
 import ScrollReveal from '@/components/ScrollReveal';
 import SiteHeader from '@/components/SiteHeaderWithData';
 import SubjectIcon from '@/components/SubjectIcon';
-import { SiteFooterFull } from '@/components/SiteFooter';
+import SiteFooter from '@/components/SiteFooterWithData';
 import { getFeaturedTrips, getPublishedTripCount, getPublishedTrips, getSubjects } from '@/lib/data';
 
 // Country display names as used on the reference featured cards.
@@ -572,7 +572,7 @@ export default async function HomePage() {
         </section>
       </main>
 
-      <SiteFooterFull />
+      <SiteFooter />
     </>
   );
 }

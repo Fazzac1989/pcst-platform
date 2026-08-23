@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import { SiteFooterSimple } from '@/components/SiteFooter';
+import SiteFooter from '@/components/SiteFooterWithData';
 import { formatMoney, getQuoteByToken, lineTotal, perStudent, quoteTotal, sellUnit } from '@/lib/quotes';
 import MessageThread from './MessageThread';
 
@@ -192,7 +192,7 @@ export default async function PublicQuotePage({ params }: Props) {
         </section>
       </main>
 
-      <SiteFooterSimple />
+      <SiteFooter />
     </>
   );
 }
