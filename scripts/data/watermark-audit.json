@@ -1,0 +1,462 @@
+{
+  "auditedAt": "2026-08-23T19:04:10.600Z",
+  "totalAudited": 598,
+  "findings": [
+    {
+      "issue": "Stock or photographer watermark",
+      "slug": "barcelona-language-trip",
+      "images": [
+        {
+          "n": 55,
+          "role": "gallery 7",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/barcelona-language-trip/gallery-7.jpg"
+        }
+      ]
+    },
+    {
+      "issue": "Stock or photographer watermark",
+      "slug": "battlefields-trip-london-france-and-belgium",
+      "images": [
+        {
+          "n": 68,
+          "role": "gallery 7",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/battlefields-trip-london-france-and-belgium/gallery-7.jpg"
+        }
+      ]
+    },
+    {
+      "issue": "Stock or photographer watermark",
+      "slug": "brussels-space-and-science-trip",
+      "images": [
+        {
+          "n": 82,
+          "role": "gallery 3",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/brussels-space-and-science-trip/gallery-3.jpg"
+        }
+      ]
+    },
+    {
+      "issue": "Stock or photographer watermark",
+      "slug": "creative-arts-and-musical-theatre-tour-to-new-york",
+      "images": [
+        {
+          "n": 111,
+          "role": "gallery 4",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/creative-arts-and-musical-theatre-tour-to-new-york/gallery-4.jpg"
+        },
+        {
+          "n": 112,
+          "role": "gallery 5",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/creative-arts-and-musical-theatre-tour-to-new-york/gallery-5.jpg"
+        },
+        {
+          "n": 113,
+          "role": "gallery 6",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/creative-arts-and-musical-theatre-tour-to-new-york/gallery-6.jpg"
+        }
+      ]
+    },
+    {
+      "issue": "Stock or photographer watermark",
+      "slug": "hongkong-business-studies",
+      "images": [
+        {
+          "n": 147,
+          "role": "gallery 5",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/hongkong-business-studies/gallery-5.jpg"
+        }
+      ]
+    },
+    {
+      "issue": "Stock or photographer watermark",
+      "slug": "iceland",
+      "images": [
+        {
+          "n": 169,
+          "role": "gallery 2",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/iceland/gallery-2.jpg"
+        },
+        {
+          "n": 170,
+          "role": "gallery 3",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/iceland/gallery-3.jpg"
+        }
+      ]
+    },
+    {
+      "issue": "Stock or photographer watermark",
+      "slug": "india-adventure-and-community-service",
+      "images": [
+        {
+          "n": 177,
+          "role": "gallery 2",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/india-adventure-and-community-service/gallery-2.jpg"
+        }
+      ]
+    },
+    {
+      "issue": "Stock or photographer watermark",
+      "slug": "japan-art-design-and-technology",
+      "images": [
+        {
+          "n": 194,
+          "role": "gallery 8",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/japan-art-design-and-technology/gallery-8.jpg"
+        }
+      ]
+    },
+    {
+      "issue": "Stock or photographer watermark",
+      "slug": "japan-art-trip",
+      "images": [
+        {
+          "n": 239,
+          "role": "gallery 16",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/japan-art-trip/gallery-16.jpg"
+        },
+        {
+          "n": 240,
+          "role": "gallery 17",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/japan-art-trip/gallery-17.jpg"
+        }
+      ]
+    },
+    {
+      "issue": "Stock or photographer watermark",
+      "slug": "japan-business-studies",
+      "images": [
+        {
+          "n": 242,
+          "role": "gallery 1",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/japan-business-studies/gallery-1.jpg"
+        }
+      ]
+    },
+    {
+      "issue": "Stock or photographer watermark",
+      "slug": "jordan",
+      "images": [
+        {
+          "n": 286,
+          "role": "gallery 8",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/jordan/gallery-8.jpg"
+        }
+      ]
+    },
+    {
+      "issue": "Stock or photographer watermark",
+      "slug": "london",
+      "images": [
+        {
+          "n": 314,
+          "role": "gallery 2",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london/gallery-2.jpg"
+        },
+        {
+          "n": 315,
+          "role": "gallery 3",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london/gallery-3.jpg"
+        }
+      ]
+    },
+    {
+      "issue": "Stock or photographer watermark",
+      "slug": "nepal-volunteering",
+      "images": [
+        {
+          "n": 373,
+          "role": "hero",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/nepal-volunteering/hero.jpg"
+        }
+      ]
+    },
+    {
+      "issue": "Stock or photographer watermark",
+      "slug": "new-york-media-and-film-studies",
+      "images": [
+        {
+          "n": 386,
+          "role": "gallery 6",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/new-york-media-and-film-studies/gallery-6.jpg"
+        }
+      ]
+    },
+    {
+      "issue": "Stock or photographer watermark",
+      "slug": "singapore-business",
+      "images": [
+        {
+          "n": 494,
+          "role": "gallery 7",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/singapore-business/gallery-7.jpg"
+        }
+      ]
+    },
+    {
+      "issue": "Stock or photographer watermark",
+      "slug": "stunning-geography-trip-to-iceland",
+      "images": [
+        {
+          "n": 534,
+          "role": "gallery 1",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/stunning-geography-trip-to-iceland/gallery-1.jpg"
+        }
+      ]
+    },
+    {
+      "issue": "Faint mark — worth a look",
+      "slug": "an-australian-adventure",
+      "images": [
+        {
+          "n": 10,
+          "role": "hero",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/an-australian-adventure/hero.jpg"
+        }
+      ]
+    },
+    {
+      "issue": "Faint mark — worth a look",
+      "slug": "japan-art-design-technology",
+      "images": [
+        {
+          "n": 215,
+          "role": "gallery 8",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/japan-art-design-technology/gallery-8.jpg"
+        },
+        {
+          "n": 220,
+          "role": "gallery 13",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/japan-art-design-technology/gallery-13.jpg"
+        }
+      ]
+    },
+    {
+      "issue": "Faint mark — worth a look",
+      "slug": "japan-business-studies",
+      "images": [
+        {
+          "n": 250,
+          "role": "gallery 9",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/japan-business-studies/gallery-9.jpg"
+        }
+      ]
+    },
+    {
+      "issue": "Faint mark — worth a look",
+      "slug": "singapore-business",
+      "images": [
+        {
+          "n": 487,
+          "role": "hero",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/singapore-business/hero.jpg"
+        }
+      ]
+    },
+    {
+      "issue": "Faint mark — worth a look",
+      "slug": "volunteering-trip-to-kenya",
+      "images": [
+        {
+          "n": 573,
+          "role": "gallery 8",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/volunteering-trip-to-kenya/gallery-8.jpg"
+        }
+      ]
+    },
+    {
+      "issue": "Third-party poster, logo or promo art (not a photograph)",
+      "slug": "jordan",
+      "images": [
+        {
+          "n": 283,
+          "role": "gallery 5",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/jordan/gallery-5.jpg"
+        }
+      ]
+    },
+    {
+      "issue": "Third-party poster, logo or promo art (not a photograph)",
+      "slug": "london",
+      "images": [
+        {
+          "n": 317,
+          "role": "gallery 5",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london/gallery-5.jpg"
+        }
+      ]
+    },
+    {
+      "issue": "Third-party poster, logo or promo art (not a photograph)",
+      "slug": "london-film-and-drama-trip",
+      "images": [
+        {
+          "n": 323,
+          "role": "gallery 2",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london-film-and-drama-trip/gallery-2.jpg"
+        },
+        {
+          "n": 327,
+          "role": "gallery 6",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london-film-and-drama-trip/gallery-6.jpg"
+        },
+        {
+          "n": 333,
+          "role": "gallery 12",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london-film-and-drama-trip/gallery-12.jpg"
+        },
+        {
+          "n": 334,
+          "role": "gallery 13",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london-film-and-drama-trip/gallery-13.jpg"
+        }
+      ]
+    },
+    {
+      "issue": "Third-party poster, logo or promo art (not a photograph)",
+      "slug": "london-musical-trip",
+      "images": [
+        {
+          "n": 342,
+          "role": "gallery 6",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london-musical-trip/gallery-6.jpg"
+        },
+        {
+          "n": 347,
+          "role": "gallery 11",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london-musical-trip/gallery-11.jpg"
+        }
+      ]
+    },
+    {
+      "issue": "Third-party poster, logo or promo art (not a photograph)",
+      "slug": "new-york-media-and-film-studies",
+      "images": [
+        {
+          "n": 391,
+          "role": "gallery 11",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/new-york-media-and-film-studies/gallery-11.jpg"
+        }
+      ]
+    },
+    {
+      "issue": "Third-party poster, logo or promo art (not a photograph)",
+      "slug": "singapore-business",
+      "images": [
+        {
+          "n": 488,
+          "role": "gallery 1",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/singapore-business/gallery-1.jpg"
+        },
+        {
+          "n": 493,
+          "role": "gallery 6",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/singapore-business/gallery-6.jpg"
+        }
+      ]
+    },
+    {
+      "issue": "Third-party poster, logo or promo art (not a photograph)",
+      "slug": "washington-new-york-business",
+      "images": [
+        {
+          "n": 586,
+          "role": "gallery 1",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/washington-new-york-business/gallery-1.jpg"
+        },
+        {
+          "n": 588,
+          "role": "gallery 3",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/washington-new-york-business/gallery-3.jpg"
+        }
+      ]
+    },
+    {
+      "issue": "Broken — image will not load",
+      "slug": "berlin",
+      "images": [
+        {
+          "n": 78,
+          "role": "gallery 8",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/berlin/gallery-8.webp"
+        }
+      ]
+    },
+    {
+      "issue": "Broken — image will not load",
+      "slug": "iceland",
+      "images": [
+        {
+          "n": 173,
+          "role": "gallery 6",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/iceland/gallery-6.webp"
+        }
+      ]
+    },
+    {
+      "issue": "Broken — image will not load",
+      "slug": "japan-design-and-technology",
+      "images": [
+        {
+          "n": 260,
+          "role": "gallery 7",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/japan-design-and-technology/gallery-7.webp"
+        }
+      ]
+    },
+    {
+      "issue": "Broken — image will not load",
+      "slug": "nepal-volunteering",
+      "images": [
+        {
+          "n": 377,
+          "role": "gallery 4",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/nepal-volunteering/gallery-4.webp"
+        }
+      ]
+    },
+    {
+      "issue": "Broken — image will not load",
+      "slug": "school-football-tour-to-holland",
+      "images": [
+        {
+          "n": 469,
+          "role": "gallery 1",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/school-football-tour-to-holland/gallery-1.webp"
+        }
+      ]
+    },
+    {
+      "issue": "Broken — image will not load",
+      "slug": "stunning-geography-trip-to-iceland",
+      "images": [
+        {
+          "n": 537,
+          "role": "gallery 4",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/stunning-geography-trip-to-iceland/gallery-4.webp"
+        }
+      ]
+    },
+    {
+      "issue": "Unsuitable — wrong subject or unusable quality",
+      "slug": "rocksport-experiential-trip-mussoorie-india",
+      "images": [
+        {
+          "n": 451,
+          "role": "gallery 4",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/64/g3-1654873336.jpg"
+        }
+      ]
+    },
+    {
+      "issue": "Unsuitable — wrong subject or unusable quality",
+      "slug": "westminster-and-the-art-of-argument",
+      "images": [
+        {
+          "n": 598,
+          "role": "gallery 4",
+          "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/57/g3-220682587.jpg"
+        }
+      ]
+    }
+  ]
+}
