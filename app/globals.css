@@ -221,15 +221,17 @@ h2.section-title.pct-title { font-size: clamp(24px, 3.2vw, 38px); line-height: 1
 /* ---------- featured trips ---------- */
 .trips-band { background: var(--cream); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .trips-band .head { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; flex-wrap: wrap; }
-.trip-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 56px; }
-.trip { position: relative; border-radius: 3px; overflow: hidden; background: var(--ink); color: #fff; aspect-ratio: 4/5; display: flex; align-items: flex-end; }
+.trip-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+.trip { position: relative; border-radius: 10px; overflow: hidden; background: var(--ink); color: #fff; aspect-ratio: 4/3; display: flex; align-items: flex-end; }
 .trip .ph { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform .6s ease, opacity .4s; opacity: .85; }
 .trip:hover .ph { transform: scale(1.05); }
-.trip .fade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(22, 36, 46, 0) 35%, rgba(22, 36, 46, .9) 100%); }
-.trip .meta { position: relative; padding: 26px; }
-.trip .tag { display: inline-block; font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase; font-weight: 600; background: rgba(255, 255, 255, .16); backdrop-filter: blur(4px); padding: 6px 12px; border-radius: 2px; margin-bottom: 12px; }
-.trip h3 { font-family: var(--font-fraunces), serif; font-weight: 500; font-size: 24px; line-height: 1.15; margin-bottom: 6px; }
-.trip .dur { font-size: 13px; color: rgba(255, 255, 255, .75); }
+/* Shorter cards leave less room for the gradient, so it starts later and
+   finishes darker — the title still has to read over a bright photograph. */
+.trip .fade { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(22, 36, 46, 0) 42%, rgba(22, 36, 46, .92) 100%); }
+.trip .meta { position: relative; padding: 18px 20px; }
+.trip .tag { display: inline-block; font-size: 9.5px; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; background: rgba(255, 255, 255, .16); backdrop-filter: blur(4px); padding: 5px 10px; border-radius: 3px; margin-bottom: 9px; }
+.trip h3 { font-family: var(--font-fraunces), serif; font-weight: 500; font-size: 19px; line-height: 1.2; margin-bottom: 4px; }
+.trip .dur { font-size: 12px; color: rgba(255, 255, 255, .75); }
 
 /* ---------- booking journey ---------- */
 .journey { background: var(--ink); color: #F7F5F0; }
