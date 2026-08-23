@@ -113,35 +113,37 @@ export default function ItineraryTimeline({
           const panelId = `day-detail-${day.id}`;
           return (
             <li className="itin-day" key={day.id}>
-              <div className="itin-rail">
-                <span className="itin-daynum" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
-                {day.imageUrl && (
-                  <button
-                    type="button"
-                    className="itin-thumb"
-                    onClick={() => setLightbox(photos.findIndex((p) => p.dayNumber === i + 1))}
-                    aria-label={`View the photograph for day ${i + 1}`}
-                  >
-                    <Image
-                      src={day.imageUrl}
-                      alt={day.imageAlt}
-                      fill
-                      sizes="72px"
-                      style={{ objectFit: 'cover' }}
-                    />
-                    <span className="itin-thumb-zoom" aria-hidden="true">⤢</span>
-                  </button>
-                )}
+              <div className="itin-rail" aria-hidden="true">
+                <span className="itin-daynum">{String(i + 1).padStart(2, '0')}</span>
               </div>
 
               <article className="itin-card">
                 <header className="itin-card-head">
-                  <p className="itin-meta">
-                    <span>Day {i + 1} of {days.length}</span>
-                    {s?.primaryLocation && <span className="itin-place">{s.primaryLocation}</span>}
-                  </p>
-                  <h3>{s?.displayTitle || day.title}</h3>
-                  {s?.summary && <p className="itin-summary">{s.summary}</p>}
+                  <div className="itin-card-headtext">
+                    <p className="itin-meta">
+                      <span>Day {i + 1} of {days.length}</span>
+                      {s?.primaryLocation && <span className="itin-place">{s.primaryLocation}</span>}
+                    </p>
+                    <h3>{s?.displayTitle || day.title}</h3>
+                    {s?.summary && <p className="itin-summary">{s.summary}</p>}
+                  </div>
+                  {day.imageUrl && (
+                    <button
+                      type="button"
+                      className="itin-thumb"
+                      onClick={() => setLightbox(photos.findIndex((p) => p.dayNumber === i + 1))}
+                      aria-label={`View the photograph for day ${i + 1}`}
+                    >
+                      <Image
+                        src={day.imageUrl}
+                        alt={day.imageAlt}
+                        fill
+                        sizes="96px"
+                        style={{ objectFit: 'cover' }}
+                      />
+                      <span className="itin-thumb-zoom" aria-hidden="true">⤢</span>
+                    </button>
+                  )}
                 </header>
 
                 {s && s.highlights.length > 0 && (
