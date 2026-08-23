@@ -34,10 +34,21 @@ const db = createClient(URL, KEY, { auth: { persistSession: false, autoRefreshTo
 
 const APPLY = process.argv.includes('--apply');
 const ONLY = process.argv.find((a) => a.startsWith('--only='))?.split('=')[1] ?? null;
+/** Leave every hero exactly as it is and only rebuild galleries. */
+const GALLERY_ONLY = process.argv.includes('--gallery-only');
 const BUCKET = 'trip-images';
 const MIN_HERO_WIDTH = 1400;
-const MIN_GALLERY_WIDTH = 1000;
-const MAX_GALLERY = 10;
+
+/**
+ * The gallery floor is deliberately low. These are the photographs the
+ * business chose for each trip, and the mosaic renders a tile at roughly a
+ * third of the page — about 480px — so a 500px original is honest at that
+ * size. Holding out for 1000px threw away more than half the gallery, which
+ * is the wrong trade: a complete set of the operator's own pictures beats a
+ * sparse one of stock. Only true thumbnails are left behind.
+ */
+const MIN_GALLERY_WIDTH = 500;
+const MAX_GALLERY = 20;
 
 const norm = (s) =>
   (s ?? '')
@@ -168,8 +179,9 @@ for (const m of matches.sort((a, b) => a.t.title.localeCompare(b.t.title))) {
   // something worse — the point is better pictures, not older ones.
   const byWidth = [...all].sort((a, b) => (b.width ?? 0) - (a.width ?? 0));
   const best = byWidth[0];
-  const hero = (best.width ?? 0) >= MIN_HERO_WIDTH ? best : null;
-  if (!hero) {
+  const heroCandidate = (best.width ?? 0) >= MIN_HERO_WIDTH ? best : null;
+  const hero = GALLERY_ONLY ? null : heroCandidate;
+  if (!GALLERY_ONLY && !hero) {
     problems.push({
       trip: m.t.title, slug: m.t.slug, legacy: m.l.title, part: 'hero',
       issue: `best legacy image is only ${best.width}×${best.height} — under the ${MIN_HERO_WIDTH}px hero floor, so the current hero is kept`,
@@ -177,8 +189,10 @@ for (const m of matches.sort((a, b) => a.t.title.localeCompare(b.t.title))) {
   }
 
   // Keep the legacy running order for the gallery; it is an edit, not a pile.
+  // Whatever became the hero is skipped here so it does not appear twice,
+  // whether or not this run is touching heroes.
   const gallery = m.l.gallery
-    .filter((g) => g.ok !== false && (g.width ?? 0) >= MIN_GALLERY_WIDTH && g.url !== hero?.url)
+    .filter((g) => g.ok !== false && (g.width ?? 0) >= MIN_GALLERY_WIDTH && g.url !== heroCandidate?.url)
     .slice(0, MAX_GALLERY);
   const dropped = m.l.gallery.filter((g) => (g.width ?? 0) < MIN_GALLERY_WIDTH || g.ok === false).length;
 
