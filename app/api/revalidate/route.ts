@@ -27,7 +27,8 @@ export async function POST(request: NextRequest) {
   if (scope === 'taxonomy') {
     revalidatePath('/countries/[slug]', 'page');
     revalidatePath('/subjects/[slug]', 'page');
-    revalidated.push('/countries/[slug]', '/subjects/[slug]');
+    revalidatePath('/cities/[slug]', 'page');
+    revalidated.push('/countries/[slug]', '/subjects/[slug]', '/cities/[slug]');
   }
 
   return NextResponse.json({ ok: true, revalidated });

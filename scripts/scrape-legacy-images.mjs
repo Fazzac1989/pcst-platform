@@ -13,7 +13,7 @@
  *
  * Output: scripts/data/legacy-images.json — read by migrate-legacy-images.mjs.
  */
-import { writeFileSync, mkdirSync } from 'node:fs';
+import { writeFileSync, mkdirSync, existsSync, readFileSync } from 'node:fs';
 import { dirname } from 'node:path';
 
 const BASE = 'https://premiumchoiceschooltrips.com';
@@ -135,10 +135,54 @@ async function scrapeTrip(id) {
 
 /* ------------------------------------------------------------------ */
 
-const index = await get(`${BASE}/trips`);
-if (!index) throw new Error('Could not load the trips index.');
-const ids = [...new Set([...index.matchAll(/trips&(?:amp;)?id=(\d+)/g)].map((m) => Number(m[1])))].sort((a, b) => a - b);
-console.log(`${ids.length} trips listed on the legacy site\n`);
+/**
+ * Discovery does not trust /trips alone. Four trips are reachable only by
+ * their own URL — they have dropped off the index and every filter — so the
+ * id range is probed as well.
+ */
+const MAX_PROBE_ID = Number(process.argv.find((a) => a.startsWith('--max='))?.split('=')[1] ?? 130);
+const found = new Set();
+const filters = new Set();
+
+for (const seed of ['/trips', '/', '/countries', '/subjects']) {
+  const html = await get(BASE + seed);
+  if (!html) continue;
+  for (const m of html.matchAll(/trips&(?:amp;)?id=(\d+)/g)) found.add(Number(m[1]));
+  for (const m of html.matchAll(/trips&(?:amp;)?(cid|sid)=(\d+)/g)) filters.add(`${m[1]}=${m[2]}`);
+}
+console.log(`${found.size} ids on the index pages; walking ${filters.size} country/subject filters…`);
+
+for (const f of filters) {
+  const html = await get(`${BASE}/trips&${f}`);
+  if (html) for (const m of html.matchAll(/trips&(?:amp;)?id=(\d+)/g)) found.add(Number(m[1]));
+}
+console.log(`${found.size} ids after the filters; probing 1–${MAX_PROBE_ID} for unlisted trips…`);
+
+let unlisted = 0;
+for (let id = 1; id <= MAX_PROBE_ID; id++) {
+  if (found.has(id)) continue;
+  const html = await get(`${BASE}/trips&id=${id}`, 1);
+  if (!html) continue;
+  const title = strip(html.match(/<section class="parallax-window2[\s\S]*?<h1>([\s\S]*?)<\/h1>/i)?.[1] ?? '');
+  if (title && !/^school trips$/i.test(title)) {
+    found.add(id);
+    unlisted++;
+  }
+}
+const ids = [...found].sort((a, b) => a - b);
+console.log(`${unlisted} unlisted trip(s) recovered — ${ids.length} legacy trips in total\n`);
+
+// Reuse measurements from a previous run; only new images cost a download.
+const cached = new Map();
+if (existsSync(OUT)) {
+  try {
+    for (const t of JSON.parse(readFileSync(OUT, 'utf8')).trips) {
+      for (const img of [t.hero, ...t.gallery].filter(Boolean)) {
+        if (img.width || img.ok === false) cached.set(img.url, { ok: img.ok, bytes: img.bytes, width: img.width, height: img.height });
+      }
+    }
+  } catch { /* a corrupt cache is just a slower run */ }
+}
 
 const trips = [];
 for (const id of ids) {
@@ -153,7 +197,8 @@ for (const id of ids) {
 
 if (PROBE) {
   console.log('\nMeasuring images…');
-  const seen = new Map();
+  const seen = new Map(cached);
+  let fresh = 0;
   for (const trip of trips) {
     for (const img of [trip.hero, ...trip.gallery].filter(Boolean)) {
       if (seen.has(img.url)) Object.assign(img, seen.get(img.url));
@@ -161,10 +206,11 @@ if (PROBE) {
         const info = await probe(img.url);
         seen.set(img.url, info);
         Object.assign(img, info);
+        fresh++;
       }
     }
   }
-  console.log(`measured ${seen.size} distinct images`);
+  console.log(`measured ${seen.size} distinct images (${fresh} newly downloaded)`);
 }
 
 mkdirSync(dirname(OUT), { recursive: true });

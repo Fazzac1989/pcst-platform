@@ -37,7 +37,7 @@ const ONLY = process.argv.find((a) => a.startsWith('--only='))?.split('=')[1] ??
 const BUCKET = 'trip-images';
 const MIN_HERO_WIDTH = 1400;
 const MIN_GALLERY_WIDTH = 1000;
-const MAX_GALLERY = 8;
+const MAX_GALLERY = 10;
 
 const norm = (s) =>
   (s ?? '')
@@ -181,15 +181,22 @@ for (const m of matches.sort((a, b) => a.t.title.localeCompare(b.t.title))) {
     .filter((g) => g.ok !== false && (g.width ?? 0) >= MIN_GALLERY_WIDTH && g.url !== hero?.url)
     .slice(0, MAX_GALLERY);
   const dropped = m.l.gallery.filter((g) => (g.width ?? 0) < MIN_GALLERY_WIDTH || g.ok === false).length;
-  const useGallery = gallery.length >= 3;
-  if (!useGallery) {
+
+  // Enough of the original set to stand on its own — use it. Otherwise add
+  // what there is to what the trip already has, rather than trading a full
+  // gallery for a thin one.
+  const current = Array.isArray(m.t.gallery)
+    ? m.t.gallery.map((g) => (typeof g === 'string' ? g : g?.url)).filter(Boolean)
+    : [];
+  const mode = gallery.length >= 3 ? 'replace' : gallery.length > 0 ? 'append' : 'keep';
+  if (mode === 'keep' && m.l.gallery.length > 0) {
     problems.push({
       trip: m.t.title, slug: m.t.slug, legacy: m.l.title, part: 'gallery',
-      issue: `only ${gallery.length} legacy gallery image${gallery.length === 1 ? '' : 's'} clear ${MIN_GALLERY_WIDTH}px (${dropped} too small), so the current gallery is kept`,
+      issue: `none of the ${m.l.gallery.length} legacy gallery images clear ${MIN_GALLERY_WIDTH}px, so the current gallery is kept`,
     });
   }
 
-  if (hero || useGallery) plan.push({ match: m, hero, gallery: useGallery ? gallery : [], dropped });
+  if (hero || mode !== 'keep') plan.push({ match: m, hero, gallery, mode, current, dropped });
 }
 
 /* --- report ------------------------------------------------------ */
@@ -202,7 +209,8 @@ for (const p of plan) {
   if (ONLY && p.match.t.slug !== ONLY) continue;
   console.log(
     `  ${p.match.t.slug.padEnd(46)} ← ${p.match.l.title.slice(0, 34).padEnd(34)} ` +
-      `hero ${p.hero ? `${p.hero.width}×${p.hero.height}` : 'kept'}  gallery ${p.gallery.length || 'kept'}` +
+      `hero ${p.hero ? `${p.hero.width}×${p.hero.height}` : 'kept'}  ` +
+      `gallery ${p.mode === 'keep' ? 'kept' : `${p.mode} ${p.gallery.length}`}` +
       (p.dropped ? `  (${p.dropped} too small)` : '') +
       `  [${p.match.how} ${p.match.score.toFixed(2)}]`
   );
@@ -282,21 +290,31 @@ for (const p of plan) {
       patch.hero_image = await mirror(p.hero.url, slug, 'hero');
       patch.hero_alt = p.match.t.title;
     }
-    const gallery = [];
+    const mirrored = [];
     for (const [i, g] of p.gallery.entries()) {
       try {
-        gallery.push({ url: await mirror(g.url, slug, `gallery-${i + 1}`), alt: `${p.match.t.title}` });
+        mirrored.push({ url: await mirror(g.url, slug, `gallery-${i + 1}`), alt: `${p.match.t.title}` });
       } catch (e) {
         failures.push(`${slug} gallery ${i + 1}: ${e.message}`);
       }
     }
-    if (gallery.length >= 3) patch.gallery = gallery;
+
+    if (p.mode === 'replace' && mirrored.length >= 3) {
+      patch.gallery = mirrored;
+    } else if (p.mode === 'append' && mirrored.length > 0) {
+      const have = new Set(p.current);
+      patch.gallery = [
+        ...p.current.map((url) => ({ url, alt: p.match.t.title })),
+        ...mirrored.filter((g) => !have.has(g.url)),
+      ].slice(0, MAX_GALLERY);
+    }
     if (Object.keys(patch).length === 0) continue;
 
     const { error: wErr } = await db.from('trips').update(patch).eq('id', p.match.t.id);
     if (wErr) throw new Error(wErr.message);
     done++;
-    console.log(`  ✓ ${slug} — ${p.hero ? 'hero' : 'hero kept'} + ${patch.gallery ? `${gallery.length} gallery` : 'gallery kept'}`);
+    const galleryNote = patch.gallery ? `${p.mode} → ${patch.gallery.length} gallery` : 'gallery kept';
+    console.log(`  ✓ ${slug} — ${p.hero ? 'hero' : 'hero kept'} + ${galleryNote}`);
   } catch (e) {
     failures.push(`${slug}: ${e.message}`);
     console.log(`  ✗ ${slug} — ${e.message}`);
