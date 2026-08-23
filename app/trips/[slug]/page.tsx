@@ -9,12 +9,14 @@ import { SiteFooterSimple } from '@/components/SiteFooter';
 import {
   citySlug,
   getBookingTerms,
+  getCountries,
   getItineraryDays,
   getPublishedTrips,
   getTripBySlug,
   getTripHighlights,
   isSingleCity,
 } from '@/lib/data';
+import { countrySlugsFor } from '@/lib/country-meta';
 import { getDestinationNotes } from '@/lib/destination-notes';
 import { packingList } from '@/lib/packing';
 import ItineraryPanel from './ItineraryPanel';
@@ -83,6 +85,13 @@ export default async function TripPage({ params }: Props) {
   });
   const culture = getDestinationNotes(trip.countrySlug)?.culture ?? [];
 
+  // A multi-country tour is filed under one combined record but visits several
+  // countries, and each of those has its own page to link to.
+  const countries = await getCountries();
+  const countryLinks = countrySlugsFor(trip.countrySlug)
+    .map((slug) => ({ slug, name: countries.find((c) => c.slug === slug)?.name ?? trip.country }))
+    .filter((c) => countries.some((x) => x.slug === c.slug));
+
   return (
     <>
       <SiteHeader variant="trip" />
@@ -110,8 +119,15 @@ export default async function TripPage({ params }: Props) {
           <h1>{trip.title}</h1>
           <div className="tmeta">
             <div>
-              <b>Country</b>
-              <Link href={`/countries/${trip.countrySlug}`}>{trip.country}</Link>
+              <b>{countryLinks.length > 1 ? 'Countries' : 'Country'}</b>
+              <span>
+                {countryLinks.map((c, i) => (
+                  <span key={c.slug}>
+                    {i > 0 && ' · '}
+                    <Link href={`/countries/${c.slug}`}>{c.name}</Link>
+                  </span>
+                ))}
+              </span>
             </div>
             {trip.city && (
               <div>
@@ -175,9 +191,11 @@ export default async function TripPage({ params }: Props) {
                     </ul>
                   </div>
                 ))}
-                <Link className="cfacts-link" href={`/countries/${trip.countrySlug}`}>
-                  {trip.country} at a glance →
-                </Link>
+                {countryLinks[0] && (
+                  <Link className="cfacts-link" href={`/countries/${countryLinks[0].slug}`}>
+                    {countryLinks[0].name} at a glance →
+                  </Link>
+                )}
               </aside>
             </div>
           </div>

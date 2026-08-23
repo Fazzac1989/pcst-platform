@@ -10,6 +10,7 @@ import {
   getCountryFacts,
   getCountryImages,
   getPublishedTrips,
+  tripsForCountry,
 } from '@/lib/data';
 import { getDestinationNotes, plugSummary } from '@/lib/destination-notes';
 import TripGallery, { type GalleryItem } from '@/app/trips/[slug]/TripGallery';
@@ -60,7 +61,7 @@ export default async function CountryPage({ params }: Props) {
     .filter(([, value]) => Boolean(value))
     .map(([label, value]) => ({ label, value: value as string }));
 
-  const trips = allTrips.filter((t) => t.countrySlug === country.slug);
+  const trips = tripsForCountry(allTrips, country.slug);
   const others = countries.filter((c) => c.slug !== country.slug);
 
   // The country's own hero, falling back to a trip's while pages are unbuilt.

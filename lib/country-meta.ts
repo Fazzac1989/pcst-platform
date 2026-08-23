@@ -4,7 +4,18 @@
  * multi-country routes carry one flag per leg.
  */
 
-export type CountryMeta = { continent: string; flags: string[] };
+export type CountryMeta = {
+  continent: string;
+  flags: string[];
+  /**
+   * A destination that is really several countries. The catalogue files a
+   * multi-country tour under one record — the battlefields tour is filed under
+   * "London, France & Belgium" — but nobody browses for that. Listing the real
+   * countries here keeps the combined entry out of the menu and puts its trips
+   * on each of those countries' pages instead.
+   */
+  partOf?: string[];
+};
 
 /** Display order for the menu — the Middle East sits apart from Asia because groups depart from Dubai. */
 export const CONTINENT_ORDER = [
@@ -26,7 +37,11 @@ export const COUNTRY_META: Record<string, CountryMeta> = {
   iceland: { continent: 'Europe', flags: ['is'] },
   ireland: { continent: 'Europe', flags: ['ie'] },
   italy: { continent: 'Europe', flags: ['it'] },
-  'london-france-and-belgium': { continent: 'Europe', flags: ['gb', 'fr', 'be'] },
+  'london-france-and-belgium': {
+    continent: 'Europe',
+    flags: ['gb', 'fr', 'be'],
+    partOf: ['united-kingdom', 'france', 'belgium'],
+  },
   netherlands: { continent: 'Europe', flags: ['nl'] },
   spain: { continent: 'Europe', flags: ['es'] },
   switzerland: { continent: 'Europe', flags: ['ch'] },
@@ -61,3 +76,18 @@ export const COUNTRY_META: Record<string, CountryMeta> = {
 
   usa: { continent: 'North America', flags: ['us'] },
 };
+
+/**
+ * The country pages a trip belongs on. Usually just its own country; for a
+ * multi-country tour, every country it actually visits.
+ */
+export function countrySlugsFor(slug: string): string[] {
+  const parts = COUNTRY_META[slug]?.partOf;
+  return parts && parts.length > 0 ? parts : [slug];
+}
+
+/** Where a trip's country label should link to. */
+export const primaryCountrySlug = (slug: string) => countrySlugsFor(slug)[0];
+
+/** True for a record that only exists to hold a multi-country tour. */
+export const isCombinedCountry = (slug: string) => Boolean(COUNTRY_META[slug]?.partOf?.length);

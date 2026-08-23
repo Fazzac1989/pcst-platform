@@ -15,6 +15,8 @@ function createClient() {
   );
 }
 
+import { countrySlugsFor, isCombinedCountry, primaryCountrySlug } from '@/lib/country-meta';
+
 const slugify = (s: string) =>
   s.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 
@@ -453,11 +455,14 @@ export async function getCities(): Promise<CitySummary[]> {
   for (const trip of trips) {
     if (!isSingleCity(trip.city)) continue;
     const slug = citySlug(trip.city);
+    // A city inside a multi-country tour links to the first real country, not
+    // to the combined record, which has no page.
+    const parentSlug = primaryCountrySlug(trip.countrySlug);
     const entry = map.get(slug) ?? {
       name: trip.city.trim(),
       slug,
-      country: trip.country,
-      countrySlug: trip.countrySlug,
+      country: parentSlug === trip.countrySlug ? trip.country : parentSlug.replace(/-/g, ' '),
+      countrySlug: parentSlug,
       tripCount: 0,
       heroImage: null,
       subjects: [],
@@ -575,25 +580,44 @@ export type CountrySummary = {
   heroImage: string | null;
 };
 
-/** Countries that have at least one published trip, with card metadata. */
+/**
+ * Countries that have at least one published trip, with card metadata.
+ *
+ * A multi-country tour counts towards each country it visits rather than
+ * towards the combined record it is filed under, so the battlefields tour
+ * appears on the United Kingdom, France and Belgium pages and "London, France
+ * & Belgium" never appears as a destination of its own.
+ */
 export async function getCountries(): Promise<CountrySummary[]> {
   const trips = await getPublishedTrips();
   const map = new Map<string, CountrySummary>();
+  const names = new Map<string, string>();
+  for (const trip of trips) {
+    if (trip.countrySlug && !isCombinedCountry(trip.countrySlug)) names.set(trip.countrySlug, trip.country);
+  }
+
   for (const trip of trips) {
     if (!trip.countrySlug) continue;
-    const entry = map.get(trip.countrySlug) ?? {
-      name: trip.country,
-      slug: trip.countrySlug,
-      tripCount: 0,
-      subjects: [],
-      heroImage: null,
-    };
-    entry.tripCount += 1;
-    if (trip.subject && !entry.subjects.includes(trip.subject)) entry.subjects.push(trip.subject);
-    if (!entry.heroImage && trip.heroImage) entry.heroImage = trip.heroImage;
-    map.set(trip.countrySlug, entry);
+    for (const slug of countrySlugsFor(trip.countrySlug)) {
+      const entry = map.get(slug) ?? {
+        name: names.get(slug) ?? trip.country,
+        slug,
+        tripCount: 0,
+        subjects: [],
+        heroImage: null,
+      };
+      entry.tripCount += 1;
+      if (trip.subject && !entry.subjects.includes(trip.subject)) entry.subjects.push(trip.subject);
+      if (!entry.heroImage && trip.heroImage) entry.heroImage = trip.heroImage;
+      map.set(slug, entry);
+    }
   }
   return [...map.values()].sort((a, b) => a.name.localeCompare(b.name));
+}
+
+/** Every trip that belongs on a given country's page. */
+export function tripsForCountry<T extends { countrySlug: string }>(trips: T[], slug: string): T[] {
+  return trips.filter((t) => countrySlugsFor(t.countrySlug).includes(slug));
 }
 
 export async function getPublishedTripCount(): Promise<number> {
