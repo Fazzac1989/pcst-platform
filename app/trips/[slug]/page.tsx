@@ -21,7 +21,8 @@ import { getDestinationNotes } from '@/lib/destination-notes';
 import { packingList } from '@/lib/packing';
 import ItineraryPanel from './ItineraryPanel';
 import ItineraryTimeline from './ItineraryTimeline';
-import TripGallery, { type GalleryItem } from './TripGallery';
+// TripGallery still serves the country and city pages; trip pages no longer
+// carry a gallery of their own.
 
 type Props = { params: { slug: string } };
 
@@ -65,7 +66,6 @@ export default async function TripPage({ params }: Props) {
   // what the page shows, so removing an image there removes it here.
   const heroUrl = trip.heroImage;
   const heroAlt = trip.heroAlt;
-  const galleryItems: GalleryItem[] = trip.gallery;
 
   // Two or three genuine alternatives in the same subject, not a wall of every
   // trip we sell. A teacher reading a History itinerary is weighing History
@@ -152,14 +152,6 @@ export default async function TripPage({ params }: Props) {
       </div>
 
       <main className="trip-main">
-        {galleryItems.length > 0 && (
-          <section className="tgallery-band">
-            <div className="wrap">
-              <TripGallery images={galleryItems} tripTitle={trip.title} />
-            </div>
-          </section>
-        )}
-
         <section className="trip-overview">
           <div className="wrap">
             <div className="ov-cols">
