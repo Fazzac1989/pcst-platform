@@ -1,0 +1,2309 @@
+{
+  "generatedAt": "2026-08-25T23:10:17.653Z",
+  "days": [
+    {
+      "trip": "adventure-trip-to-new-zealand",
+      "tripTitle": "New Zealand North Island, Adventure, Culture & Discovery",
+      "status": "published",
+      "country": "New Zealand",
+      "day": 3,
+      "dayTitle": "Coastal Walks and Surfing Adventures",
+      "place": "Mount Maunganui",
+      "query": "Mount Maunganui New Zealand",
+      "candidates": [
+        {
+          "id": "1734278618",
+          "description": "Wide shot view of coast town Mount Maunganui and Tauranga Harbour, Bay of Plenty, New Zealand",
+          "preview": "https://image.shutterstock.com/image-photo/wide-shot-view-coast-town-150nw-1734278618.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1734278618"
+        },
+        {
+          "id": "1146043547",
+          "description": "Beach with tourist walking on the sand. View from Mount Maunganui, Tauranga, New Zealand",
+          "preview": "https://image.shutterstock.com/image-photo/beach-tourist-walking-on-sand-150nw-1146043547.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1146043547"
+        }
+      ]
+    },
+    {
+      "trip": "adventure-trip-to-new-zealand",
+      "tripTitle": "New Zealand North Island, Adventure, Culture & Discovery",
+      "status": "published",
+      "country": "New Zealand",
+      "day": 5,
+      "dayTitle": "Kiwi Conservation and ZORB",
+      "place": "Rotorua",
+      "query": "Rotorua New Zealand",
+      "candidates": [
+        {
+          "id": "1780549778",
+          "description": "Thermal waterfall on Kerosene creek, Rotorua, New Zealand. Unusual natural landscapes",
+          "preview": "https://image.shutterstock.com/image-photo/thermal-waterfall-on-kerosene-creek-150nw-1780549778.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1780549778"
+        },
+        {
+          "id": "1764542156",
+          "description": "Thermal waterfall on Kerosene creek, Rotorua, New Zealand. Unusual natural landscapes",
+          "preview": "https://image.shutterstock.com/image-photo/thermal-waterfall-on-kerosene-creek-150nw-1764542156.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1764542156"
+        },
+        {
+          "id": "1852254397",
+          "description": "A closeup shot of a thermal lake at the Wai-o-Tapu, Rotorua, New Zealand",
+          "preview": "https://image.shutterstock.com/image-photo/closeup-shot-thermal-lake-waiotapu-150nw-1852254397.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1852254397"
+        }
+      ]
+    },
+    {
+      "trip": "adventure-trip-to-new-zealand",
+      "tripTitle": "New Zealand North Island, Adventure, Culture & Discovery",
+      "status": "published",
+      "country": "New Zealand",
+      "day": 8,
+      "dayTitle": "Coromandel Coast and Fishing Challenge",
+      "place": "Coromandel",
+      "query": "Scenic journey to the Coromandel Peninsula Coromandel",
+      "candidates": [
+        {
+          "id": "1290238474",
+          "description": "Nazare blossoming coast panorama (Portugal). Misty view.",
+          "preview": "https://image.shutterstock.com/image-photo/nazare-blossoming-coast-panorama-portugal-150nw-1290238474.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1290238474"
+        },
+        {
+          "id": "1101423935",
+          "description": "dromedary used as beast of burden to transport goods or tourist through the desert sand dunes",
+          "preview": "https://image.shutterstock.com/image-photo/dromedary-used-beast-burden-transport-150nw-1101423935.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1101423935"
+        },
+        {
+          "id": "472281307",
+          "description": "Beautiful mountain panorama in Dolomites, Italy. Walking around Tre Cime di Lavaredo is a great journey.",
+          "preview": "https://image.shutterstock.com/image-photo/beautiful-mountain-panorama-dolomites-italy-150nw-472281307.jpg",
+          "page": "https://www.shutterstock.com/image-photo/472281307"
+        }
+      ]
+    },
+    {
+      "trip": "an-australian-adventure",
+      "tripTitle": "Queensland Eco Adventure",
+      "status": "published",
+      "country": "Australia",
+      "day": 5,
+      "dayTitle": "Brisbane Heritage to Bush Skills",
+      "place": "Kooralbyn",
+      "query": "Historical tour of Brisbane Kooralbyn",
+      "candidates": [
+        {
+          "id": "323348927",
+          "description": "Coral Bay, Western Australia",
+          "preview": "https://image.shutterstock.com/image-photo/coral-bay-western-australia-150nw-323348927.jpg",
+          "page": "https://www.shutterstock.com/image-photo/323348927"
+        },
+        {
+          "id": "167674277",
+          "description": "Boat Bay, Great Ocean Road, Victoria, Australia",
+          "preview": "https://image.shutterstock.com/image-photo/boat-bay-great-ocean-road-150nw-167674277.jpg",
+          "page": "https://www.shutterstock.com/image-photo/167674277"
+        },
+        {
+          "id": "279459680",
+          "description": "Coral Bay, Western Australia",
+          "preview": "https://image.shutterstock.com/image-photo/coral-bay-western-australia-150nw-279459680.jpg",
+          "page": "https://www.shutterstock.com/image-photo/279459680"
+        }
+      ]
+    },
+    {
+      "trip": "an-australian-adventure",
+      "tripTitle": "Queensland Eco Adventure",
+      "status": "published",
+      "country": "Australia",
+      "day": 7,
+      "dayTitle": "Wildlife Conservation & Aquaduck Adventure",
+      "place": "Gold Coast",
+      "query": "Currumbin Wildlife Sanctuary Gold Coast",
+      "candidates": [
+        {
+          "id": "279446363",
+          "description": "Dunes at Ningaloo Coast, Cape Range National Park, Western Australia",
+          "preview": "https://image.shutterstock.com/image-photo/dunes-ningaloo-coast-cape-range-150nw-279446363.jpg",
+          "page": "https://www.shutterstock.com/image-photo/279446363"
+        },
+        {
+          "id": "637965091",
+          "description": "Pacific coast landscape in Australia - Surfers Paradise in Gold Coast.",
+          "preview": "https://image.shutterstock.com/image-photo/pacific-coast-landscape-australia-surfers-150nw-637965091.jpg",
+          "page": "https://www.shutterstock.com/image-photo/637965091"
+        },
+        {
+          "id": "1217651125",
+          "description": "Cows and swans around Witmarsum, Friesland The Netherlands",
+          "preview": "https://image.shutterstock.com/image-photo/cows-swans-around-witmarsum-friesland-150nw-1217651125.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1217651125"
+        }
+      ]
+    },
+    {
+      "trip": "art-culture-study-tour-seoul",
+      "tripTitle": "Art & Culture Study Tour — Seoul",
+      "status": "published",
+      "country": "South Korea",
+      "day": 3,
+      "dayTitle": "Modern Seoul and K-Pop",
+      "place": "Seoul",
+      "query": "Visit to a local school Seoul",
+      "candidates": [
+        {
+          "id": "712044091",
+          "description": "Seoul cityscape, South Korea",
+          "preview": "https://image.shutterstock.com/image-photo/seoul-cityscape-south-korea-150nw-712044091.jpg",
+          "page": "https://www.shutterstock.com/image-photo/712044091"
+        },
+        {
+          "id": "712044127",
+          "description": "Seoul cityscape, South Korea",
+          "preview": "https://image.shutterstock.com/image-photo/seoul-cityscape-south-korea-150nw-712044127.jpg",
+          "page": "https://www.shutterstock.com/image-photo/712044127"
+        },
+        {
+          "id": "1664316628",
+          "description": "Pretty young caucasian woman go for a walk at park with coffee and laptop",
+          "preview": "https://image.shutterstock.com/image-photo/pretty-young-caucasian-woman-go-150nw-1664316628.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1664316628"
+        }
+      ]
+    },
+    {
+      "trip": "art-culture-study-tour-seoul",
+      "tripTitle": "Art & Culture Study Tour — Seoul",
+      "status": "published",
+      "country": "South Korea",
+      "day": 4,
+      "dayTitle": "Peace and Division at the DMZ",
+      "place": "Demilitarized Zone",
+      "query": "3rd Infiltration Tunnel Demilitarized Zone",
+      "candidates": [
+        {
+          "id": "1109305532",
+          "description": "Carefree group of diverse young girlfriends having fun while walking arm in arm together down a walkway in the city at n",
+          "preview": "https://image.shutterstock.com/image-photo/carefree-group-diverse-young-girlfriends-150nw-1109305532.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1109305532"
+        },
+        {
+          "id": "391489546",
+          "description": "people, technology and leisure concept - close up of young women or teenage friends taking selfie with smartphones at ho",
+          "preview": "https://image.shutterstock.com/image-photo/people-technology-leisure-concept-close-150nw-391489546.jpg",
+          "page": "https://www.shutterstock.com/image-photo/391489546"
+        },
+        {
+          "id": "1521108500",
+          "description": "fitness, sport and healthy lifestyle concept - young men or male friends running outdoors",
+          "preview": "https://image.shutterstock.com/image-photo/fitness-sport-healthy-lifestyle-concept-150nw-1521108500.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1521108500"
+        }
+      ]
+    },
+    {
+      "trip": "art-culture-study-tour-seoul",
+      "tripTitle": "Art & Culture Study Tour — Seoul",
+      "status": "published",
+      "country": "South Korea",
+      "day": 5,
+      "dayTitle": "Culinary Arts & Youth Culture",
+      "place": "Seoul",
+      "query": "Seoul South Korea",
+      "candidates": [
+        {
+          "id": "1637172970",
+          "description": "Happy asian girls making video story for social network app outdoor - Young women friends having fun making live feed - ",
+          "preview": "https://image.shutterstock.com/image-photo/happy-asian-girls-making-video-150nw-1637172970.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1637172970"
+        },
+        {
+          "id": "1388898497",
+          "description": "Happy asian friends using smartphones at bus station - Young students people having fun with technology trends after sch",
+          "preview": "https://image.shutterstock.com/image-photo/happy-asian-friends-using-smartphones-150nw-1388898497.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1388898497"
+        },
+        {
+          "id": "1283723851",
+          "description": "Asian social influencer woman using smartphone with coral background - Happy chinese girl having fun with new trends tec",
+          "preview": "https://image.shutterstock.com/image-photo/asian-social-influencer-woman-using-150nw-1283723851.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1283723851"
+        }
+      ]
+    },
+    {
+      "trip": "art-culture-study-tour-seoul",
+      "tripTitle": "Art & Culture Study Tour — Seoul",
+      "status": "published",
+      "country": "South Korea",
+      "day": 6,
+      "dayTitle": "A World of Fun at Lotte World",
+      "place": "Seoul",
+      "query": "Lotte World Seoul",
+      "candidates": [
+        {
+          "id": "676889308",
+          "description": "Namhansanseong - UNESCO World Heritage Site",
+          "preview": "https://image.shutterstock.com/image-photo/namhansanseong-unesco-world-heritage-site-150nw-676889308.jpg",
+          "page": "https://www.shutterstock.com/image-photo/676889308"
+        },
+        {
+          "id": "676889350",
+          "description": "Namhansanseong - UNESCO World Heritage Site",
+          "preview": "https://image.shutterstock.com/image-photo/namhansanseong-unesco-world-heritage-site-150nw-676889350.jpg",
+          "page": "https://www.shutterstock.com/image-photo/676889350"
+        },
+        {
+          "id": "676889371",
+          "description": "Namhansanseong - UNESCO World Heritage Site",
+          "preview": "https://image.shutterstock.com/image-photo/namhansanseong-unesco-world-heritage-site-150nw-676889371.jpg",
+          "page": "https://www.shutterstock.com/image-photo/676889371"
+        }
+      ]
+    },
+    {
+      "trip": "art-culture-study-tour-seoul",
+      "tripTitle": "Art & Culture Study Tour — Seoul",
+      "status": "published",
+      "country": "South Korea",
+      "day": 7,
+      "dayTitle": "Art, Views and Departure",
+      "place": "Seoul",
+      "query": "N Seoul Tower Observatory Seoul",
+      "candidates": [
+        {
+          "id": "464567102",
+          "description": "Summer landscape and Astronomical Pulkovo observatory in St.Petersburg, Russia.",
+          "preview": "https://image.shutterstock.com/image-photo/summer-landscape-astronomical-pulkovo-observatory-150nw-464567102.jpg",
+          "page": "https://www.shutterstock.com/image-photo/464567102"
+        },
+        {
+          "id": "1838720782",
+          "description": "Mount John astronomical observatory in Canterbury, New Zealand.",
+          "preview": "https://image.shutterstock.com/image-photo/mount-john-astronomical-observatory-canterbury-150nw-1838720782.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1838720782"
+        },
+        {
+          "id": "464227007",
+          "description": "View of the Astronomical Pulkovo observatory in St.Petersburg, Russia.",
+          "preview": "https://image.shutterstock.com/image-photo/view-astronomical-pulkovo-observatory-stpetersburg-150nw-464227007.jpg",
+          "page": "https://www.shutterstock.com/image-photo/464227007"
+        }
+      ]
+    },
+    {
+      "trip": "bali-educational-adventure",
+      "tripTitle": "Bali Conservation, Culture & Community in Action",
+      "status": "published",
+      "country": "Indonesia",
+      "day": 2,
+      "dayTitle": "Blue Lagoon Reefs and Care Packages",
+      "place": "Padang Bai",
+      "query": "Blue Lagoon snorkelling sessions Padang Bai",
+      "candidates": [
+        {
+          "id": "1054724828",
+          "description": "Blue Lagoon, Koh Phi Phi - photo of this amazing lagoon before going to Maya Bay",
+          "preview": "https://image.shutterstock.com/image-photo/blue-lagoon-koh-phi-photo-150nw-1054724828.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1054724828"
+        },
+        {
+          "id": "132787751",
+          "description": "The traditional Sri Lanka's boat for fishing on the beach",
+          "preview": "https://image.shutterstock.com/image-photo/traditional-sri-lankas-boat-fishing-150nw-132787751.jpg",
+          "page": "https://www.shutterstock.com/image-photo/132787751"
+        },
+        {
+          "id": "390423187",
+          "description": "Snorkeling on the Koh Phi Phi island - Beautiful bay in Krabi Province Thailand ",
+          "preview": "https://image.shutterstock.com/image-photo/snorkeling-on-koh-phi-island-150nw-390423187.jpg",
+          "page": "https://www.shutterstock.com/image-photo/390423187"
+        }
+      ]
+    },
+    {
+      "trip": "bali-educational-adventure",
+      "tripTitle": "Bali Conservation, Culture & Community in Action",
+      "status": "published",
+      "country": "Indonesia",
+      "day": 3,
+      "dayTitle": "Sunrise Above the Volcano",
+      "place": "Mount Batur",
+      "query": "Guided ascent of Mount Batur Mount Batur",
+      "candidates": [
+        {
+          "id": "1063060220",
+          "description": "business people, technology and corporate concept - happy smiling businesswoman calling on smartphone and walking upstai",
+          "preview": "https://image.shutterstock.com/image-photo/business-people-technology-corporate-concept-150nw-1063060220.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1063060220"
+        },
+        {
+          "id": "1066497161",
+          "description": "business people, technology and corporate concept - happy smiling businesswoman calling on smartphone and walking upstai",
+          "preview": "https://image.shutterstock.com/image-photo/business-people-technology-corporate-concept-150nw-1066497161.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1066497161"
+        },
+        {
+          "id": "49115944",
+          "description": "Business woman talking on the phone at the office",
+          "preview": "https://image.shutterstock.com/image-photo/business-woman-talking-on-phone-150nw-49115944.jpg",
+          "page": "https://www.shutterstock.com/image-photo/49115944"
+        }
+      ]
+    },
+    {
+      "trip": "bali-educational-adventure",
+      "tripTitle": "Bali Conservation, Culture & Community in Action",
+      "status": "published",
+      "country": "Indonesia",
+      "day": 4,
+      "dayTitle": "Subak Cycling and White Water",
+      "place": "Bali",
+      "query": "Bali Indonesia",
+      "candidates": [
+        {
+          "id": "1964683249",
+          "description": "Woman enjoying panoramic landscape view on a rainforest in Bali, Indonesia.\t\r",
+          "preview": "https://image.shutterstock.com/image-photo/woman-enjoying-panoramic-landscape-view-150nw-1964683249.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1964683249"
+        },
+        {
+          "id": "1048849103",
+          "description": "Happy surfers running with surf boards on the beach - Sporty people having fun in sunny day - Extreme sport, travel, vac",
+          "preview": "https://image.shutterstock.com/image-photo/happy-surfers-running-surf-boards-150nw-1048849103.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1048849103"
+        },
+        {
+          "id": "200010464",
+          "description": "Pura Ulun Danu temple, Bali, Indonesia",
+          "preview": "https://image.shutterstock.com/image-photo/pura-ulun-danu-temple-bali-150nw-200010464.jpg",
+          "page": "https://www.shutterstock.com/image-photo/200010464"
+        }
+      ]
+    },
+    {
+      "trip": "bali-educational-adventure",
+      "tripTitle": "Bali Conservation, Culture & Community in Action",
+      "status": "published",
+      "country": "Indonesia",
+      "day": 5,
+      "dayTitle": "Coast, Mangroves & Coral",
+      "place": "Sanur",
+      "query": "Sanur Indonesia",
+      "candidates": [
+        {
+          "id": "1778936909",
+          "description": "An aerial shot of the Karang beach surrounded by the sea and greenery in Sanur, Bali",
+          "preview": "https://image.shutterstock.com/image-photo/aerial-shot-karang-beach-surrounded-150nw-1778936909.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1778936909"
+        },
+        {
+          "id": "272068613",
+          "description": "Bali sign with beach background",
+          "preview": "https://image.shutterstock.com/image-photo/bali-sign-beach-background-150nw-272068613.jpg",
+          "page": "https://www.shutterstock.com/image-photo/272068613"
+        }
+      ]
+    },
+    {
+      "trip": "bali-educational-adventure",
+      "tripTitle": "Bali Conservation, Culture & Community in Action",
+      "status": "published",
+      "country": "Indonesia",
+      "day": 6,
+      "dayTitle": "A Final Taste of Bali",
+      "place": "Kuta",
+      "query": "Local market in Kuta Kuta",
+      "candidates": [
+        {
+          "id": "1676265445",
+          "description": "asia female tourists wearing hat holding camera and smartphone take photo vlog live . Beautiful woman visiting Damnoen S",
+          "preview": "https://image.shutterstock.com/image-photo/asia-female-tourists-wearing-hat-150nw-1676265445.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1676265445"
+        },
+        {
+          "id": "1084491431",
+          "description": "Local Indonesian market in Berastagi North Sumatra.",
+          "preview": "https://image.shutterstock.com/image-photo/local-indonesian-market-berastagi-north-150nw-1084491431.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1084491431"
+        },
+        {
+          "id": "1663856311",
+          "description": "asia female tourists wearing hat holding camera and smartphone take photo with floating market background copy space . B",
+          "preview": "https://image.shutterstock.com/image-photo/asia-female-tourists-wearing-hat-150nw-1663856311.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1663856311"
+        }
+      ]
+    },
+    {
+      "trip": "barcelona-art-trip",
+      "tripTitle": "Barcelona Uncovered! Gaudí, Football & Mediterranean Adventure",
+      "status": "published",
+      "country": "Spain",
+      "day": 3,
+      "dayTitle": "Paella, Park Güell & a Waterfront Cruise",
+      "place": "Barcelona",
+      "query": "Ciutadella Park Barcelona",
+      "candidates": [
+        {
+          "id": "339755975",
+          "description": "Barcelona - Ciutadella park. Filtered color style.",
+          "preview": "https://image.shutterstock.com/image-photo/barcelona-ciutadella-park-filtered-color-150nw-339755975.jpg",
+          "page": "https://www.shutterstock.com/image-photo/339755975"
+        },
+        {
+          "id": "1055743058",
+          "description": "Barcelona, Spain. Famous Parc de la Ciutadella.",
+          "preview": "https://image.shutterstock.com/image-photo/barcelona-spain-famous-parc-de-150nw-1055743058.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1055743058"
+        },
+        {
+          "id": "689911387",
+          "description": "Barcelona, Spain. Parc de la Ciutadella. Retro colors filtered style.",
+          "preview": "https://image.shutterstock.com/image-photo/barcelona-spain-parc-de-la-150nw-689911387.jpg",
+          "page": "https://www.shutterstock.com/image-photo/689911387"
+        }
+      ]
+    },
+    {
+      "trip": "barcelona-art-trip",
+      "tripTitle": "Barcelona Uncovered! Gaudí, Football & Mediterranean Adventure",
+      "status": "published",
+      "country": "Spain",
+      "day": 4,
+      "dayTitle": "Wildlife, Montjuïc & Flamenco",
+      "place": "Barcelona",
+      "query": "Barcelona Zoo Barcelona",
+      "candidates": [
+        {
+          "id": "771626743",
+          "description": "Underwater photo of octopus in tropical sandy beach with clear waters",
+          "preview": "https://image.shutterstock.com/image-photo/underwater-photo-octopus-tropical-sandy-150nw-771626743.jpg",
+          "page": "https://www.shutterstock.com/image-photo/771626743"
+        },
+        {
+          "id": "1215582115",
+          "description": "Sea level underwater scuba photo of octopus swimming in tropical turquoise mediterranean sandy beach",
+          "preview": "https://image.shutterstock.com/image-photo/sea-level-underwater-scuba-photo-150nw-1215582115.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1215582115"
+        },
+        {
+          "id": "157914920",
+          "description": "Dwarf mongoose in the zoo. Blurred background.",
+          "preview": "https://image.shutterstock.com/image-photo/dwarf-mongoose-zoo-blurred-background-150nw-157914920.jpg",
+          "page": "https://www.shutterstock.com/image-photo/157914920"
+        }
+      ]
+    },
+    {
+      "trip": "barcelona-art-trip",
+      "tripTitle": "Barcelona Uncovered! Gaudí, Football & Mediterranean Adventure",
+      "status": "published",
+      "country": "Spain",
+      "day": 5,
+      "dayTitle": "Dalí's Surreal Figueres",
+      "place": "Figueres",
+      "query": "Figueres Spain",
+      "candidates": [
+        {
+          "id": "1726728154",
+          "description": "Underwater Mediterranean sea Ibiza Balearic islands Spain. Es Figueral beach.",
+          "preview": "https://image.shutterstock.com/image-photo/underwater-mediterranean-sea-ibiza-balearic-150nw-1726728154.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1726728154"
+        },
+        {
+          "id": "1679809531",
+          "description": "Ibiza Balearic islands Spain. Es Figueral beach.",
+          "preview": "https://image.shutterstock.com/image-photo/ibiza-balearic-islands-spain-es-150nw-1679809531.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1679809531"
+        },
+        {
+          "id": "1684480579",
+          "description": "Ibiza Balearic islands Spain. Es Figueral beach.",
+          "preview": "https://image.shutterstock.com/image-photo/ibiza-balearic-islands-spain-es-150nw-1684480579.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1684480579"
+        }
+      ]
+    },
+    {
+      "trip": "barcelona-art-trip",
+      "tripTitle": "Barcelona Uncovered! Gaudí, Football & Mediterranean Adventure",
+      "status": "published",
+      "country": "Spain",
+      "day": 6,
+      "dayTitle": "Gaudí, Picasso & Final Farewell",
+      "place": "Barcelona",
+      "query": "Casa Milà (La Pedrera) Barcelona",
+      "candidates": [
+        {
+          "id": "1482753380",
+          "description": "Hiker with backpack crossing rocky terrain in Pedra Grande Atibaia São",
+          "preview": "https://image.shutterstock.com/image-photo/hiker-backpack-crossing-rocky-terrain-150nw-1482753380.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1482753380"
+        },
+        {
+          "id": "1180717759",
+          "description": "Baby girl play at outdoor playground",
+          "preview": "https://image.shutterstock.com/image-photo/baby-girl-play-outdoor-playground-150nw-1180717759.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1180717759"
+        },
+        {
+          "id": "722059510",
+          "description": "Beautiful happy woman in sexy Santa Claus clothes.",
+          "preview": "https://image.shutterstock.com/image-photo/beautiful-happy-woman-sexy-santa-150nw-722059510.jpg",
+          "page": "https://www.shutterstock.com/image-photo/722059510"
+        }
+      ]
+    },
+    {
+      "trip": "barcelona-art-trip",
+      "tripTitle": "Barcelona Uncovered! Gaudí, Football & Mediterranean Adventure",
+      "status": "published",
+      "country": "Spain",
+      "day": 7,
+      "dayTitle": "Farewell to Barcelona",
+      "place": "Barcelona",
+      "query": "Barcelona Spain",
+      "candidates": [
+        {
+          "id": "2254116339",
+          "description": "Happy couple having fun walking in Barcelona during travel vacations - Soft focus on man face",
+          "preview": "https://image.shutterstock.com/image-photo/happy-couple-having-fun-walking-150nw-2254116339.jpg",
+          "page": "https://www.shutterstock.com/image-photo/2254116339"
+        },
+        {
+          "id": "2255485089",
+          "description": "Happy hispanic people having fun with electric bike outdoor - Focus on faces",
+          "preview": "https://image.shutterstock.com/image-photo/happy-hispanic-people-having-fun-150nw-2255485089.jpg",
+          "page": "https://www.shutterstock.com/image-photo/2255485089"
+        },
+        {
+          "id": "1549664822",
+          "description": "Happy couple having fun walking in Barcelona - Young people enjoying time together in Barceloneta - Travel, love, youth ",
+          "preview": "https://image.shutterstock.com/image-photo/happy-couple-having-fun-walking-150nw-1549664822.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1549664822"
+        }
+      ]
+    },
+    {
+      "trip": "battlefields-trip-london-france-and-belgium",
+      "tripTitle": "Battlefields Trip - London , France & Belgium",
+      "status": "published",
+      "country": "London, France & Belgium",
+      "day": 8,
+      "dayTitle": "Homeward Journey",
+      "place": "London",
+      "query": "London London, France & Belgium",
+      "candidates": []
+    },
+    {
+      "trip": "community-service-trip-to-cambodia",
+      "tripTitle": "Cambodia: Heritage, Community & Service",
+      "status": "published",
+      "country": "Cambodia",
+      "day": 2,
+      "dayTitle": "History, Heritage and the Capital",
+      "place": "Phnom Penh",
+      "query": "Choeung Ek Genocidal Centre Phnom Penh",
+      "candidates": [
+        {
+          "id": "267074330",
+          "description": "Cambodia map close up",
+          "preview": "https://image.shutterstock.com/image-photo/cambodia-map-close-150nw-267074330.jpg",
+          "page": "https://www.shutterstock.com/image-photo/267074330"
+        },
+        {
+          "id": "1570388257",
+          "description": "Banteay Samre, Angkor, Siem Reap, Cambodia",
+          "preview": "https://image.shutterstock.com/image-photo/banteay-samre-angkor-siem-reap-150nw-1570388257.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1570388257"
+        },
+        {
+          "id": "1570355464",
+          "description": "Sculptures at the South Gate of Angkor Thom, Siem Reap, Cambodia",
+          "preview": "https://image.shutterstock.com/image-photo/sculptures-south-gate-angkor-thom-150nw-1570355464.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1570355464"
+        }
+      ]
+    },
+    {
+      "trip": "community-service-trip-to-cambodia",
+      "tripTitle": "Cambodia: Heritage, Community & Service",
+      "status": "published",
+      "country": "Cambodia",
+      "day": 6,
+      "dayTitle": "Khmer Food, Friendship and Apsara Dance",
+      "place": "Siem Reap",
+      "query": "Traditional Cambodian rice-noodle making Siem Reap",
+      "candidates": [
+        {
+          "id": "133486358",
+          "description": "Crispy noodles in Thailand",
+          "preview": "https://image.shutterstock.com/image-photo/crispy-noodles-thailand-150nw-133486358.jpg",
+          "page": "https://www.shutterstock.com/image-photo/133486358"
+        },
+        {
+          "id": "1313758121",
+          "description": "Taiwan traditional rice noodles at the small restaurant",
+          "preview": "https://image.shutterstock.com/image-photo/taiwan-traditional-rice-noodles-small-150nw-1313758121.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1313758121"
+        },
+        {
+          "id": "262216100",
+          "description": "Thai style noodles (Pad Thai) (Thai cuisine)",
+          "preview": "https://image.shutterstock.com/image-photo/thai-style-noodles-pad-cuisine-150nw-262216100.jpg",
+          "page": "https://www.shutterstock.com/image-photo/262216100"
+        }
+      ]
+    },
+    {
+      "trip": "community-service-zambia",
+      "tripTitle": "Community Service Zambia",
+      "status": "published",
+      "country": "Zambia",
+      "day": 2,
+      "dayTitle": "Village Life and Heritage",
+      "place": "Livingstone",
+      "query": "Livingstone Zambia",
+      "candidates": [
+        {
+          "id": "154275494",
+          "description": "Victoria Falls (or Mosi-oa-Tunya - the Smoke that Thunders) waterfall in southern Africa on the Zambezi River at the bor",
+          "preview": "https://image.shutterstock.com/image-photo/victoria-falls-or-mosioatunya-smoke-150nw-154275494.jpg",
+          "page": "https://www.shutterstock.com/image-photo/154275494"
+        },
+        {
+          "id": "154275746",
+          "description": "Victoria Falls (or Mosi-oa-Tunya - the Smoke that Thunders) waterfall in southern Africa on the Zambezi River at the bor",
+          "preview": "https://image.shutterstock.com/image-photo/victoria-falls-or-mosioatunya-smoke-150nw-154275746.jpg",
+          "page": "https://www.shutterstock.com/image-photo/154275746"
+        },
+        {
+          "id": "160428695",
+          "description": "Victoria Falls (or Mosi-oa-Tunya - the Smoke that Thunders) waterfall in southern Africa on the Zambezi River at the bor",
+          "preview": "https://image.shutterstock.com/image-photo/victoria-falls-or-mosioatunya-smoke-150nw-160428695.jpg",
+          "page": "https://www.shutterstock.com/image-photo/160428695"
+        }
+      ]
+    },
+    {
+      "trip": "creative-arts-and-musical-theatre-tour-to-new-york",
+      "tripTitle": "New York performing arts adventure",
+      "status": "published",
+      "country": "USA",
+      "day": 1,
+      "dayTitle": "Arrival in Manhattan",
+      "place": "New York City",
+      "query": "Journey into Manhattan New York City",
+      "candidates": [
+        {
+          "id": "109271822",
+          "description": "Central Park & Lower East Side, New York",
+          "preview": "https://image.shutterstock.com/image-photo/central-park-lower-east-side-150nw-109271822.jpg",
+          "page": "https://www.shutterstock.com/image-photo/109271822"
+        },
+        {
+          "id": "1838062576",
+          "description": "Driving a car in the scenic Central Park, Manhattan, New York, USA",
+          "preview": "https://image.shutterstock.com/image-photo/driving-car-scenic-central-park-150nw-1838062576.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1838062576"
+        },
+        {
+          "id": "1840883038",
+          "description": "Looking through a dashcam car camera installed on a windshield with view of Central Park, Manhattan, New York, USA",
+          "preview": "https://image.shutterstock.com/image-photo/looking-through-dashcam-car-camera-150nw-1840883038.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1840883038"
+        }
+      ]
+    },
+    {
+      "trip": "creative-arts-and-musical-theatre-tour-to-new-york",
+      "tripTitle": "New York performing arts adventure",
+      "status": "published",
+      "country": "USA",
+      "day": 4,
+      "dayTitle": "Broadway Masterclass and Live Jazz",
+      "place": "New York",
+      "query": "Theatrical workshop with Broadway professionals New York",
+      "candidates": [
+        {
+          "id": "251733631",
+          "description": "startup, education, fashion and office concept - smiling designers drawing sketches and adjusting dress on mannequin in ",
+          "preview": "https://image.shutterstock.com/image-photo/startup-education-fashion-office-concept-150nw-251733631.jpg",
+          "page": "https://www.shutterstock.com/image-photo/251733631"
+        },
+        {
+          "id": "646197853",
+          "description": "Teamwork designer concept : Fashion designer working near mannequin in office",
+          "preview": "https://image.shutterstock.com/image-photo/teamwork-designer-concept-fashion-working-150nw-646197853.jpg",
+          "page": "https://www.shutterstock.com/image-photo/646197853"
+        },
+        {
+          "id": "201840634",
+          "description": "startup, education, fashion and office concept - smiling fashion designers working in office",
+          "preview": "https://image.shutterstock.com/image-photo/startup-education-fashion-office-concept-150nw-201840634.jpg",
+          "page": "https://www.shutterstock.com/image-photo/201840634"
+        }
+      ]
+    },
+    {
+      "trip": "creative-arts-and-musical-theatre-tour-to-new-york",
+      "tripTitle": "New York performing arts adventure",
+      "status": "published",
+      "country": "USA",
+      "day": 5,
+      "dayTitle": "Famous Faces and Artistic Discoveries",
+      "place": "New York",
+      "query": "Madame Tussauds New York New York",
+      "candidates": [
+        {
+          "id": "342454409",
+          "description": "Senior businessman and secretary with a laptop in the office",
+          "preview": "https://image.shutterstock.com/image-photo/senior-businessman-secretary-laptop-office-150nw-342454409.jpg",
+          "page": "https://www.shutterstock.com/image-photo/342454409"
+        },
+        {
+          "id": "640863004",
+          "description": "Youngs is working in office building background",
+          "preview": "https://image.shutterstock.com/image-photo/youngs-working-office-building-background-150nw-640863004.jpg",
+          "page": "https://www.shutterstock.com/image-photo/640863004"
+        },
+        {
+          "id": "1911367450",
+          "description": "two young women conduct a coaching session in a home office in a light interior with a laptop and flowers on the table, ",
+          "preview": "https://image.shutterstock.com/image-photo/two-young-women-conduct-coaching-150nw-1911367450.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1911367450"
+        }
+      ]
+    },
+    {
+      "trip": "creative-arts-and-musical-theatre-tour-to-new-york",
+      "tripTitle": "New York performing arts adventure",
+      "status": "published",
+      "country": "USA",
+      "day": 6,
+      "dayTitle": "Designing Ideas, Discovering Our World",
+      "place": "New York",
+      "query": "Cooper Hewitt, Smithsonian Design Museum New York",
+      "candidates": [
+        {
+          "id": "1997840537",
+          "description": "Stunned female decorator busy doing repair of interior paints walls with brush and roller wears hardhat transparent glas",
+          "preview": "https://image.shutterstock.com/image-photo/stunned-female-decorator-busy-doing-150nw-1997840537.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1997840537"
+        },
+        {
+          "id": "1897376116",
+          "description": "Black mobile phone, smartphone with connected headphones. Using electronics equipment",
+          "preview": "https://image.shutterstock.com/image-photo/black-mobile-phone-smartphone-connected-150nw-1897376116.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1897376116"
+        },
+        {
+          "id": "1655853670",
+          "description": "Mature man worker working on diary farm, agriculture industry.",
+          "preview": "https://image.shutterstock.com/image-photo/mature-man-worker-working-on-150nw-1655853670.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1655853670"
+        }
+      ]
+    },
+    {
+      "trip": "creative-arts-and-musical-theatre-tour-to-new-york",
+      "tripTitle": "New York performing arts adventure",
+      "status": "published",
+      "country": "USA",
+      "day": 7,
+      "dayTitle": "Brooklyn Art and Broadway Magic",
+      "place": "New York City",
+      "query": "Brooklyn Museum New York City",
+      "candidates": [
+        {
+          "id": "552386896",
+          "description": "Blurred lights of Brooklyn New York at twilight",
+          "preview": "https://image.shutterstock.com/image-photo/blurred-lights-brooklyn-new-york-150nw-552386896.jpg",
+          "page": "https://www.shutterstock.com/image-photo/552386896"
+        },
+        {
+          "id": "462754549",
+          "description": "Brooklyn Bridge over the East River in New York City",
+          "preview": "https://image.shutterstock.com/image-photo/brooklyn-bridge-over-east-river-150nw-462754549.jpg",
+          "page": "https://www.shutterstock.com/image-photo/462754549"
+        },
+        {
+          "id": "460940350",
+          "description": "Brooklyn Bridge over the East River in New York City",
+          "preview": "https://image.shutterstock.com/image-photo/brooklyn-bridge-over-east-river-150nw-460940350.jpg",
+          "page": "https://www.shutterstock.com/image-photo/460940350"
+        }
+      ]
+    },
+    {
+      "trip": "creative-arts-and-musical-theatre-tour-to-new-york",
+      "tripTitle": "New York performing arts adventure",
+      "status": "published",
+      "country": "USA",
+      "day": 9,
+      "dayTitle": "Broadway Secrets and Skyline Views",
+      "place": "New York",
+      "query": "Behind the Emerald Curtain New York",
+      "candidates": [
+        {
+          "id": "293514401",
+          "description": "African American businessman traveling in New York. Wearing black flower patterned shirt, tie, shoes, a young guy sittin",
+          "preview": "https://image.shutterstock.com/image-photo/african-american-businessman-traveling-new-150nw-293514401.jpg",
+          "page": "https://www.shutterstock.com/image-photo/293514401"
+        },
+        {
+          "id": "524431042",
+          "description": "Two young serious basketball players standing back to back with hands crossed",
+          "preview": "https://image.shutterstock.com/image-photo/two-young-serious-basketball-players-150nw-524431042.jpg",
+          "page": "https://www.shutterstock.com/image-photo/524431042"
+        },
+        {
+          "id": "1567881232",
+          "description": "People waiting behind velvet rope",
+          "preview": "https://image.shutterstock.com/image-photo/people-waiting-behind-velvet-rope-150nw-1567881232.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1567881232"
+        }
+      ]
+    },
+    {
+      "trip": "creative-arts-and-musical-theatre-tour-to-new-york",
+      "tripTitle": "New York performing arts adventure",
+      "status": "published",
+      "country": "USA",
+      "day": 10,
+      "dayTitle": "Central Park on Screen",
+      "place": "New York",
+      "query": "Central Park television and movie locations walking tour New York",
+      "candidates": [
+        {
+          "id": "647024461",
+          "description": "Aerial view of Midtown Manhattan, NY and Central Park",
+          "preview": "https://image.shutterstock.com/image-photo/aerial-view-midtown-manhattan-ny-150nw-647024461.jpg",
+          "page": "https://www.shutterstock.com/image-photo/647024461"
+        },
+        {
+          "id": "1381349057",
+          "description": "Bow Bridge in New York City, Central Park Manhattan",
+          "preview": "https://image.shutterstock.com/image-photo/bow-bridge-new-york-city-150nw-1381349057.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1381349057"
+        },
+        {
+          "id": "1463739449",
+          "description": "Beautiful landscape from Central Park, New York City",
+          "preview": "https://image.shutterstock.com/image-photo/beautiful-landscape-central-park-new-150nw-1463739449.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1463739449"
+        }
+      ]
+    },
+    {
+      "trip": "florida-business-studies-trip",
+      "tripTitle": "Florida Enterprise, Innovation & Adventure",
+      "status": "published",
+      "country": "USA",
+      "day": 3,
+      "dayTitle": "Wildlife and the Road to Orlando",
+      "place": "Orlando",
+      "query": "Orlando USA",
+      "candidates": [
+        {
+          "id": "241289374",
+          "description": "Orlando, Florida, USA downtown skyline at Eola Lake.",
+          "preview": "https://image.shutterstock.com/image-photo/orlando-florida-usa-downtown-skyline-150nw-241289374.jpg",
+          "page": "https://www.shutterstock.com/image-photo/241289374"
+        },
+        {
+          "id": "241289380",
+          "description": "Orlando, Florida, USA downtown city skyline on Eola Lake.",
+          "preview": "https://image.shutterstock.com/image-photo/orlando-florida-usa-downtown-city-150nw-241289380.jpg",
+          "page": "https://www.shutterstock.com/image-photo/241289380"
+        },
+        {
+          "id": "295706774",
+          "description": "Orlando, Florida, USA skyline at Eola Lake.",
+          "preview": "https://image.shutterstock.com/image-photo/orlando-florida-usa-skyline-eola-150nw-295706774.jpg",
+          "page": "https://www.shutterstock.com/image-photo/295706774"
+        }
+      ]
+    },
+    {
+      "trip": "florida-business-studies-trip",
+      "tripTitle": "Florida Enterprise, Innovation & Adventure",
+      "status": "published",
+      "country": "USA",
+      "day": 4,
+      "dayTitle": "Journey into Space",
+      "place": "Kennedy Space Center",
+      "query": "Space Shuttle Atlantis exhibit Kennedy Space Center",
+      "candidates": [
+        {
+          "id": "1365415757",
+          "description": "Pull cart in the desert",
+          "preview": "https://image.shutterstock.com/image-photo/pull-cart-desert-150nw-1365415757.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1365415757"
+        },
+        {
+          "id": "1481117468",
+          "description": "A scale model of an American spaceship and an Astronaut that holds true meaning to the advancements made in recent histo",
+          "preview": "https://image.shutterstock.com/image-photo/scale-model-american-spaceship-astronaut-150nw-1481117468.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1481117468"
+        },
+        {
+          "id": "1638490546",
+          "description": "close up of a red coral tree flower in tropical Costa Rica",
+          "preview": "https://image.shutterstock.com/image-photo/close-red-coral-tree-flower-150nw-1638490546.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1638490546"
+        }
+      ]
+    },
+    {
+      "trip": "florida-business-studies-trip",
+      "tripTitle": "Florida Enterprise, Innovation & Adventure",
+      "status": "published",
+      "country": "USA",
+      "day": 5,
+      "dayTitle": "Magic Kingdom Adventures",
+      "place": "Orlando",
+      "query": "Orlando USA",
+      "candidates": [
+        {
+          "id": "241289374",
+          "description": "Orlando, Florida, USA downtown skyline at Eola Lake.",
+          "preview": "https://image.shutterstock.com/image-photo/orlando-florida-usa-downtown-skyline-150nw-241289374.jpg",
+          "page": "https://www.shutterstock.com/image-photo/241289374"
+        },
+        {
+          "id": "241289380",
+          "description": "Orlando, Florida, USA downtown city skyline on Eola Lake.",
+          "preview": "https://image.shutterstock.com/image-photo/orlando-florida-usa-downtown-city-150nw-241289380.jpg",
+          "page": "https://www.shutterstock.com/image-photo/241289380"
+        },
+        {
+          "id": "295706774",
+          "description": "Orlando, Florida, USA skyline at Eola Lake.",
+          "preview": "https://image.shutterstock.com/image-photo/orlando-florida-usa-skyline-eola-150nw-295706774.jpg",
+          "page": "https://www.shutterstock.com/image-photo/295706774"
+        }
+      ]
+    },
+    {
+      "trip": "florida-business-studies-trip",
+      "tripTitle": "Florida Enterprise, Innovation & Adventure",
+      "status": "published",
+      "country": "USA",
+      "day": 6,
+      "dayTitle": "Innovation Around the World",
+      "place": "Orlando",
+      "query": "Orlando USA",
+      "candidates": [
+        {
+          "id": "241289374",
+          "description": "Orlando, Florida, USA downtown skyline at Eola Lake.",
+          "preview": "https://image.shutterstock.com/image-photo/orlando-florida-usa-downtown-skyline-150nw-241289374.jpg",
+          "page": "https://www.shutterstock.com/image-photo/241289374"
+        },
+        {
+          "id": "241289380",
+          "description": "Orlando, Florida, USA downtown city skyline on Eola Lake.",
+          "preview": "https://image.shutterstock.com/image-photo/orlando-florida-usa-downtown-city-150nw-241289380.jpg",
+          "page": "https://www.shutterstock.com/image-photo/241289380"
+        },
+        {
+          "id": "295706774",
+          "description": "Orlando, Florida, USA skyline at Eola Lake.",
+          "preview": "https://image.shutterstock.com/image-photo/orlando-florida-usa-skyline-eola-150nw-295706774.jpg",
+          "page": "https://www.shutterstock.com/image-photo/295706774"
+        }
+      ]
+    },
+    {
+      "trip": "geography-trip-to-east-coast-usa",
+      "tripTitle": "American Icons & Heritage",
+      "status": "published",
+      "country": "USA",
+      "day": 5,
+      "dayTitle": "Liberty Bell and Independence Hall",
+      "place": "Philadelphia",
+      "query": "Liberty Bell Philadelphia",
+      "candidates": [
+        {
+          "id": "1455630440",
+          "description": "Liberty Bell seen through glass building in Philadelphia PA",
+          "preview": "https://image.shutterstock.com/image-photo/liberty-bell-seen-through-glass-150nw-1455630440.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1455630440"
+        }
+      ]
+    },
+    {
+      "trip": "geography-trip-to-east-coast-usa",
+      "tripTitle": "American Icons & Heritage",
+      "status": "published",
+      "country": "USA",
+      "day": 6,
+      "dayTitle": "Monuments of Washington DC",
+      "place": "Washington DC",
+      "query": "Potomac River sightseeing cruise Washington DC",
+      "candidates": [
+        {
+          "id": "275416412",
+          "description": "Georgetown, Washington, DC skyline on the Potomac River.",
+          "preview": "https://image.shutterstock.com/image-photo/georgetown-washington-dc-skyline-on-150nw-275416412.jpg",
+          "page": "https://www.shutterstock.com/image-photo/275416412"
+        },
+        {
+          "id": "388944667",
+          "description": "Central Embankment Gdansk and old Motlawa river.",
+          "preview": "https://image.shutterstock.com/image-photo/central-embankment-gdansk-old-motlawa-150nw-388944667.jpg",
+          "page": "https://www.shutterstock.com/image-photo/388944667"
+        },
+        {
+          "id": "1140064364",
+          "description": "Tourist ship on the Vltava river",
+          "preview": "https://image.shutterstock.com/image-photo/tourist-ship-on-vltava-river-150nw-1140064364.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1140064364"
+        }
+      ]
+    },
+    {
+      "trip": "hongkong-business-studies",
+      "tripTitle": "Hong Kong Business & Innovation",
+      "status": "published",
+      "country": "Hong Kong",
+      "day": 1,
+      "dayTitle": "Arrival in Hong Kong",
+      "place": "Hong Kong",
+      "query": "Start exploring Hong Kong Hong Kong",
+      "candidates": [
+        {
+          "id": "1749253316",
+          "description": "Hong Kong Victoria Harbour view; Hong Kong Cityscape;",
+          "preview": "https://image.shutterstock.com/image-photo/hong-kong-victoria-harbour-view-150nw-1749253316.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1749253316"
+        },
+        {
+          "id": "227489647",
+          "description": "Hong Kong, China city skyline from the Peak.",
+          "preview": "https://image.shutterstock.com/image-photo/hong-kong-china-city-skyline-150nw-227489647.jpg",
+          "page": "https://www.shutterstock.com/image-photo/227489647"
+        },
+        {
+          "id": "1413444101",
+          "description": "Hong Kong skyline, View From Victoria Harbour",
+          "preview": "https://image.shutterstock.com/image-photo/hong-kong-skyline-view-victoria-150nw-1413444101.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1413444101"
+        }
+      ]
+    },
+    {
+      "trip": "india-adventure-and-community-service",
+      "tripTitle": "India Adventure and Community Service",
+      "status": "published",
+      "country": "India",
+      "day": 2,
+      "dayTitle": "Palampur's Tea-Growing Heritage",
+      "place": "Palampur",
+      "query": "Palampur India",
+      "candidates": []
+    },
+    {
+      "trip": "japan-geography",
+      "tripTitle": "Geography Trip to Japan",
+      "status": "published",
+      "country": "Japan",
+      "day": 2,
+      "dayTitle": "Exploring Tokyo",
+      "place": "Tokyo",
+      "query": "Tokyo Big Bus Tour Tokyo",
+      "candidates": [
+        {
+          "id": "263648555",
+          "description": "friendship, travel, vacation, summer and people concept - group of smiling friends with map traveling by tour bus",
+          "preview": "https://image.shutterstock.com/image-photo/friendship-travel-vacation-summer-people-150nw-263648555.jpg",
+          "page": "https://www.shutterstock.com/image-photo/263648555"
+        },
+        {
+          "id": "408648961",
+          "description": "A middle-aged couple sitting on a sightseeing bus, taking photographs",
+          "preview": "https://image.shutterstock.com/image-photo/middleaged-couple-sitting-on-sightseeing-150nw-408648961.jpg",
+          "page": "https://www.shutterstock.com/image-photo/408648961"
+        },
+        {
+          "id": "145888",
+          "description": "Panned Sightseeing london bus",
+          "preview": "https://image.shutterstock.com/image-photo/panned-sightseeing-london-bus-150nw-145888.jpg",
+          "page": "https://www.shutterstock.com/image-photo/145888"
+        }
+      ]
+    },
+    {
+      "trip": "japan-geography",
+      "tripTitle": "Geography Trip to Japan",
+      "status": "published",
+      "country": "Japan",
+      "day": 5,
+      "dayTitle": "Bullet Train to Kyoto",
+      "place": "Kyoto",
+      "query": "Shinkansen bullet train to Kyoto Kyoto",
+      "candidates": [
+        {
+          "id": "261188717",
+          "description": "Detail of a stylish young woman posing in the city streets",
+          "preview": "https://image.shutterstock.com/image-photo/detail-stylish-young-woman-posing-150nw-261188717.jpg",
+          "page": "https://www.shutterstock.com/image-photo/261188717"
+        },
+        {
+          "id": "746365828",
+          "description": "A girl with blond hair is walking near the business center in Moscow. Japanese fashion.",
+          "preview": "https://image.shutterstock.com/image-photo/girl-blond-hair-walking-near-150nw-746365828.jpg",
+          "page": "https://www.shutterstock.com/image-photo/746365828"
+        },
+        {
+          "id": "292166504",
+          "description": "Girl hippie in the summer",
+          "preview": "https://image.shutterstock.com/image-photo/girl-hippie-summer-150nw-292166504.jpg",
+          "page": "https://www.shutterstock.com/image-photo/292166504"
+        }
+      ]
+    },
+    {
+      "trip": "japan-geography",
+      "tripTitle": "Geography Trip to Japan",
+      "status": "published",
+      "country": "Japan",
+      "day": 8,
+      "dayTitle": "Hiroshima: Memory and Recovery",
+      "place": "Hiroshima",
+      "query": "Hiroshima Japan",
+      "candidates": [
+        {
+          "id": "1774271831",
+          "description": "Great orange Torii gate of Itsukushima, Miyajima island, Japan",
+          "preview": "https://image.shutterstock.com/image-photo/great-orange-torii-gate-itsukushima-150nw-1774271831.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1774271831"
+        },
+        {
+          "id": "83142040",
+          "description": "The Floating Otorii gate at Miyajima, Japan.",
+          "preview": "https://image.shutterstock.com/image-photo/floating-otorii-gate-miyajima-japan-150nw-83142040.jpg",
+          "page": "https://www.shutterstock.com/image-photo/83142040"
+        },
+        {
+          "id": "373701244",
+          "description": "Miyajima Island, Hiroshima, Japan at the buddha lined pathways at Daisho-in Temple grounds.",
+          "preview": "https://image.shutterstock.com/image-photo/miyajima-island-hiroshima-japan-buddha-150nw-373701244.jpg",
+          "page": "https://www.shutterstock.com/image-photo/373701244"
+        }
+      ]
+    },
+    {
+      "trip": "jordan",
+      "tripTitle": " Ancient Wonders & Desert Adventures of Jordan",
+      "status": "published",
+      "country": "Jordan",
+      "day": 5,
+      "dayTitle": "Mosaics, Mount Nebo & the Dead Sea",
+      "place": "Dead Sea",
+      "query": "St George's Church Dead Sea",
+      "candidates": [
+        {
+          "id": "416351638",
+          "description": "Church of St. George. Santorini.",
+          "preview": "https://image.shutterstock.com/image-photo/church-st-george-santorini-150nw-416351638.jpg",
+          "page": "https://www.shutterstock.com/image-photo/416351638"
+        },
+        {
+          "id": "1335775337",
+          "description": "Our Lady of the Rocks and Saint George Islands as seen from Perast, Montenegro",
+          "preview": "https://image.shutterstock.com/image-photo/our-lady-rocks-saint-george-150nw-1335775337.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1335775337"
+        },
+        {
+          "id": "1941200545",
+          "description": "Ancient vintage church of St George in Polonechka village, Brest region, Belarus. ",
+          "preview": "https://image.shutterstock.com/image-photo/ancient-vintage-church-st-george-150nw-1941200545.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1941200545"
+        }
+      ]
+    },
+    {
+      "trip": "kenya-children-care-volunteering",
+      "tripTitle": "Kenya Community & Safari Adventure",
+      "status": "published",
+      "country": "Kenya",
+      "day": 1,
+      "dayTitle": "Nairobi Conservation Welcome",
+      "place": "Nairobi",
+      "query": "Nairobi Kenya",
+      "candidates": [
+        {
+          "id": "1864633222",
+          "description": "A young woman living with HIV embracing her friend at a park in Nairobi, Kenya",
+          "preview": "https://image.shutterstock.com/image-photo/young-woman-living-hiv-embracing-150nw-1864633222.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1864633222"
+        },
+        {
+          "id": "1864633120",
+          "description": "Young woman living with HIV hugging her friend at a park in Nairobi, Kenya",
+          "preview": "https://image.shutterstock.com/image-photo/young-woman-living-hiv-hugging-150nw-1864633120.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1864633120"
+        },
+        {
+          "id": "1864633231",
+          "description": "Healthy young woman living with HIV hugging her friend at a park in Nairobi, Kenya",
+          "preview": "https://image.shutterstock.com/image-photo/healthy-young-woman-living-hiv-150nw-1864633231.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1864633231"
+        }
+      ]
+    },
+    {
+      "trip": "kenya-children-care-volunteering",
+      "tripTitle": "Kenya Community & Safari Adventure",
+      "status": "published",
+      "country": "Kenya",
+      "day": 3,
+      "dayTitle": "Great Rift Valley to the Mara",
+      "place": "Masai Mara",
+      "query": "Great Rift Valley Viewpoint Masai Mara",
+      "candidates": [
+        {
+          "id": "1022897188",
+          "description": "Masai village in Ngorongoro crater. Small Masai huts in African savanna, Tanzania",
+          "preview": "https://image.shutterstock.com/image-photo/masai-village-ngorongoro-crater-small-150nw-1022897188.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1022897188"
+        },
+        {
+          "id": "1024591708",
+          "description": "Distant view of Masai tribal village at Ngorongoro crater in Tanzania",
+          "preview": "https://image.shutterstock.com/image-photo/distant-view-masai-tribal-village-150nw-1024591708.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1024591708"
+        },
+        {
+          "id": "117718279",
+          "description": "African landscape with wildebeests, Maasai Mara, Kenya",
+          "preview": "https://image.shutterstock.com/image-photo/african-landscape-wildebeests-maasai-mara-150nw-117718279.jpg",
+          "page": "https://www.shutterstock.com/image-photo/117718279"
+        }
+      ]
+    },
+    {
+      "trip": "kenya-children-care-volunteering",
+      "tripTitle": "Kenya Community & Safari Adventure",
+      "status": "published",
+      "country": "Kenya",
+      "day": 4,
+      "dayTitle": "Full Day in the Masai Mara",
+      "place": "Masai Mara",
+      "query": "Full-day safari game drives Masai Mara",
+      "candidates": [
+        {
+          "id": "119385649",
+          "description": "Zebras and wildebeests in the Maasai Mara National Park, Kenya",
+          "preview": "https://image.shutterstock.com/image-photo/zebras-wildebeests-maasai-mara-national-150nw-119385649.jpg",
+          "page": "https://www.shutterstock.com/image-photo/119385649"
+        },
+        {
+          "id": "205950775",
+          "description": "Vintage style image of an African Lioness in the Maasai Mara National Park, Kenya",
+          "preview": "https://image.shutterstock.com/image-photo/vintage-style-image-african-lioness-150nw-205950775.jpg",
+          "page": "https://www.shutterstock.com/image-photo/205950775"
+        },
+        {
+          "id": "1741682213",
+          "description": "Wildebeests in heavy rain, Masai Mara",
+          "preview": "https://image.shutterstock.com/image-photo/wildebeests-heavy-rain-masai-mara-150nw-1741682213.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1741682213"
+        }
+      ]
+    },
+    {
+      "trip": "kenya-children-care-volunteering",
+      "tripTitle": "Kenya Community & Safari Adventure",
+      "status": "published",
+      "country": "Kenya",
+      "day": 5,
+      "dayTitle": "One Final Safari & Farewell",
+      "place": "Masai Mara",
+      "query": "Sunrise Game Drive Masai Mara",
+      "candidates": [
+        {
+          "id": "1928246255",
+          "description": "Spectacular sunset in Tsavo East National Park, Kenya",
+          "preview": "https://image.shutterstock.com/image-photo/spectacular-sunset-tsavo-east-national-150nw-1928246255.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1928246255"
+        },
+        {
+          "id": "721050658",
+          "description": "Lion in the morning light, Masai Mara",
+          "preview": "https://image.shutterstock.com/image-photo/lion-morning-light-masai-mara-150nw-721050658.jpg",
+          "page": "https://www.shutterstock.com/image-photo/721050658"
+        },
+        {
+          "id": "1164324913",
+          "description": "Happy smiling athletic woman with arms outstretched ",
+          "preview": "https://image.shutterstock.com/image-photo/happy-smiling-athletic-woman-arms-150nw-1164324913.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1164324913"
+        }
+      ]
+    },
+    {
+      "trip": "london",
+      "tripTitle": "London's Stories, Stage & Royal Heritage",
+      "status": "published",
+      "country": "United Kingdom",
+      "day": 5,
+      "dayTitle": "Harry Potter & the West End",
+      "place": "London",
+      "query": "Warner Bros. Studio Tour London – The Making of Harry Potter London",
+      "candidates": [
+        {
+          "id": "1487030987",
+          "description": "Girl doing exercises on a sports equipment. The dancer on the pylon in the studio.",
+          "preview": "https://image.shutterstock.com/image-photo/girl-doing-exercises-on-sports-150nw-1487030987.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1487030987"
+        },
+        {
+          "id": "69781159",
+          "description": "potter on the potters wheel",
+          "preview": "https://image.shutterstock.com/image-photo/potter-on-potters-wheel-150nw-69781159.jpg",
+          "page": "https://www.shutterstock.com/image-photo/69781159"
+        },
+        {
+          "id": "1034771065",
+          "description": "Female artisan creatively sculpting a piece of clay turning on a pottery wheel while sitting in her ceramic studio ",
+          "preview": "https://image.shutterstock.com/image-photo/female-artisan-creatively-sculpting-piece-150nw-1034771065.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1034771065"
+        }
+      ]
+    },
+    {
+      "trip": "london-film-and-drama-trip",
+      "tripTitle": "London Film & Drama Trip",
+      "status": "published",
+      "country": "United Kingdom",
+      "day": 4,
+      "dayTitle": "Behind the Wizarding World",
+      "place": "Watford",
+      "query": "Watford United Kingdom",
+      "candidates": []
+    },
+    {
+      "trip": "mathematics-trip",
+      "tripTitle": "Mathematics Trip",
+      "status": "draft",
+      "country": "Austria",
+      "day": 5,
+      "dayTitle": "Semmering Alpine Pass",
+      "place": "Semmering",
+      "query": "Semmering Railway Semmering",
+      "candidates": [
+        {
+          "id": "419851411",
+          "description": "Semmering railway with surrounding mountain scenery, Krauselklause viaduct in front of Polleroswand. In the background t",
+          "preview": "https://image.shutterstock.com/image-photo/semmering-railway-surrounding-mountain-scenery-150nw-419851411.jpg",
+          "page": "https://www.shutterstock.com/image-photo/419851411"
+        },
+        {
+          "id": "419734852",
+          "description": "detail of semmeringbahn railroad leading through a dense forest in austria",
+          "preview": "https://image.shutterstock.com/image-photo/detail-semmeringbahn-railroad-leading-through-150nw-419734852.jpg",
+          "page": "https://www.shutterstock.com/image-photo/419734852"
+        }
+      ]
+    },
+    {
+      "trip": "mongolia-life-on-the-steppe",
+      "tripTitle": "Mongolia — Life on the Steppe",
+      "status": "published",
+      "country": "Mongolia",
+      "day": 3,
+      "dayTitle": "Kharakhorum: Empires & Living Crafts",
+      "place": "Kharakhorum",
+      "query": "Kharakhorum Mongolia",
+      "candidates": []
+    },
+    {
+      "trip": "mongolia-life-on-the-steppe",
+      "tripTitle": "Mongolia — Life on the Steppe",
+      "status": "published",
+      "country": "Mongolia",
+      "day": 4,
+      "dayTitle": "Sand Dunes, Camels & Wild Horses",
+      "place": "Khustai National Park",
+      "query": "Khognokhan Nature Reserve Khustai National Park",
+      "candidates": [
+        {
+          "id": "1063535582",
+          "description": "Kuthodaw pagoda near Mandalay, Myanmar",
+          "preview": "https://image.shutterstock.com/image-photo/kuthodaw-pagoda-near-mandalay-myanmar-150nw-1063535582.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1063535582"
+        },
+        {
+          "id": "569618893",
+          "description": "Trekking in Nepal, Himalayas",
+          "preview": "https://image.shutterstock.com/image-photo/trekking-nepal-himalayas-150nw-569618893.jpg",
+          "page": "https://www.shutterstock.com/image-photo/569618893"
+        },
+        {
+          "id": "1548409541",
+          "description": "Namche Bazaar village on the way to Everest Base. Nepal. Asia.",
+          "preview": "https://image.shutterstock.com/image-photo/namche-bazaar-village-on-way-150nw-1548409541.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1548409541"
+        }
+      ]
+    },
+    {
+      "trip": "mongolia-life-on-the-steppe",
+      "tripTitle": "Mongolia — Life on the Steppe",
+      "status": "published",
+      "country": "Mongolia",
+      "day": 5,
+      "dayTitle": "Living Nomadic Heritage",
+      "place": "Nomadic Cultural Heritage Center",
+      "query": "Nomadic Cultural Heritage Center Nomadic Cultural Heritage Center",
+      "candidates": [
+        {
+          "id": "1481678414",
+          "description": "Yurts of nomadic peoples of Siberia in Russia. Portable dwelling Buryat tribes with a samovar and cups inside. The tent ",
+          "preview": "https://image.shutterstock.com/image-photo/yurts-nomadic-peoples-siberia-russia-150nw-1481678414.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1481678414"
+        },
+        {
+          "id": "2086732813",
+          "description": "Woman prepare traditional pasta - Black and white editing",
+          "preview": "https://image.shutterstock.com/image-photo/woman-prepare-traditional-pasta-black-150nw-2086732813.jpg",
+          "page": "https://www.shutterstock.com/image-photo/2086732813"
+        },
+        {
+          "id": "1965451711",
+          "description": "family, art and craft concept - mother spending time with her little daughter with glue making applique of color paper a",
+          "preview": "https://image.shutterstock.com/image-photo/family-art-craft-concept-mother-150nw-1965451711.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1965451711"
+        }
+      ]
+    },
+    {
+      "trip": "mongolia-life-on-the-steppe",
+      "tripTitle": "Mongolia — Life on the Steppe",
+      "status": "published",
+      "country": "Mongolia",
+      "day": 7,
+      "dayTitle": "Departure",
+      "place": "Ulaanbaatar",
+      "query": "Ulaanbaatar Mongolia",
+      "candidates": [
+        {
+          "id": "1348478813",
+          "description": "Mongolia, Ulaanbaatar. Panarama is the capital of Mongolia, the city of Ulaanbaatar. Aerial Photography",
+          "preview": "https://image.shutterstock.com/image-photo/mongolia-ulaanbaatar-panarama-capital-city-150nw-1348478813.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1348478813"
+        },
+        {
+          "id": "1326492398",
+          "description": "Mongolia, Ulaanbaatar. Panarama is the capital of Mongolia, the city of Ulaanbaatar. Aerial Photography",
+          "preview": "https://image.shutterstock.com/image-photo/mongolia-ulaanbaatar-panarama-capital-city-150nw-1326492398.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1326492398"
+        },
+        {
+          "id": "1252571215",
+          "description": "Mongolia, Ulaanbaatar. Panarama is the capital of Mongolia, the city of Ulaanbaatar. Aerial Photography",
+          "preview": "https://image.shutterstock.com/image-photo/mongolia-ulaanbaatar-panarama-capital-city-150nw-1252571215.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1252571215"
+        }
+      ]
+    },
+    {
+      "trip": "musical-trip-to-vienna",
+      "tripTitle": "Musical Trip to Vienna",
+      "status": "published",
+      "country": "Austria",
+      "day": 4,
+      "dayTitle": "Salzburg and the Story of Mozart",
+      "place": "Salzburg",
+      "query": "Historic centre of Salzburg Salzburg",
+      "candidates": [
+        {
+          "id": "15505489",
+          "description": "View of city of Salzburg in Austria",
+          "preview": "https://image.shutterstock.com/image-photo/view-city-salzburg-austria-150nw-15505489.jpg",
+          "page": "https://www.shutterstock.com/image-photo/15505489"
+        },
+        {
+          "id": "655583599",
+          "description": "Aerial view of a suburb of the Austrian city Salzburg where family houses are surrounded with forests, meadows and hills",
+          "preview": "https://image.shutterstock.com/image-photo/aerial-view-suburb-austrian-city-150nw-655583599.jpg",
+          "page": "https://www.shutterstock.com/image-photo/655583599"
+        },
+        {
+          "id": "1199363302",
+          "description": "Salzburg Cathedral in Austria",
+          "preview": "https://image.shutterstock.com/image-photo/salzburg-cathedral-austria-150nw-1199363302.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1199363302"
+        }
+      ]
+    },
+    {
+      "trip": "musical-trip-to-vienna",
+      "tripTitle": "Musical Trip to Vienna",
+      "status": "published",
+      "country": "Austria",
+      "day": 5,
+      "dayTitle": "Vienna's Music Comes Alive",
+      "place": "Vienna",
+      "query": "Vienna's concert halls, theatres and musical institutions Vienna",
+      "candidates": [
+        {
+          "id": "682263622",
+          "description": "The Wiener Rathaus Vienna City Hall, Austria ",
+          "preview": "https://image.shutterstock.com/image-photo/wiener-rathaus-vienna-city-hall-150nw-682263622.jpg",
+          "page": "https://www.shutterstock.com/image-photo/682263622"
+        },
+        {
+          "id": "682263610",
+          "description": "The Wiener Rathaus Vienna City Hall, Austria ",
+          "preview": "https://image.shutterstock.com/image-photo/wiener-rathaus-vienna-city-hall-150nw-682263610.jpg",
+          "page": "https://www.shutterstock.com/image-photo/682263610"
+        },
+        {
+          "id": "682263625",
+          "description": "The Wiener Rathaus Vienna City Hall, Austria ",
+          "preview": "https://image.shutterstock.com/image-photo/wiener-rathaus-vienna-city-hall-150nw-682263625.jpg",
+          "page": "https://www.shutterstock.com/image-photo/682263625"
+        }
+      ]
+    },
+    {
+      "trip": "nepal-volunteering",
+      "tripTitle": "Nepal, a trip of Culture, Community & Adventure",
+      "status": "published",
+      "country": "Nepal",
+      "day": 6,
+      "dayTitle": "Completing the Project",
+      "place": "Kathmandu",
+      "query": "Kathmandu Nepal",
+      "candidates": [
+        {
+          "id": "1968915946",
+          "description": "Buddhist stupa in Himalaya mountains, Nepal",
+          "preview": "https://image.shutterstock.com/image-photo/buddhist-stupa-himalaya-mountains-nepal-150nw-1968915946.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1968915946"
+        },
+        {
+          "id": "1046255482",
+          "description": "Hazy Kathmandu Nepal",
+          "preview": "https://image.shutterstock.com/image-photo/hazy-kathmandu-nepal-150nw-1046255482.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1046255482"
+        },
+        {
+          "id": "1307688661",
+          "description": "Spiritual prayer candles at temple in Kathmandu, Nepal\n",
+          "preview": "https://image.shutterstock.com/image-photo/spiritual-prayer-candles-temple-kathmandu-150nw-1307688661.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1307688661"
+        }
+      ]
+    },
+    {
+      "trip": "nepal-volunteering",
+      "tripTitle": "Nepal, a trip of Culture, Community & Adventure",
+      "status": "published",
+      "country": "Nepal",
+      "day": 7,
+      "dayTitle": "Farewell to Nepal",
+      "place": "Kathmandu",
+      "query": "Kathmandu Nepal",
+      "candidates": [
+        {
+          "id": "1968915946",
+          "description": "Buddhist stupa in Himalaya mountains, Nepal",
+          "preview": "https://image.shutterstock.com/image-photo/buddhist-stupa-himalaya-mountains-nepal-150nw-1968915946.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1968915946"
+        },
+        {
+          "id": "1046255482",
+          "description": "Hazy Kathmandu Nepal",
+          "preview": "https://image.shutterstock.com/image-photo/hazy-kathmandu-nepal-150nw-1046255482.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1046255482"
+        },
+        {
+          "id": "1307688661",
+          "description": "Spiritual prayer candles at temple in Kathmandu, Nepal\n",
+          "preview": "https://image.shutterstock.com/image-photo/spiritual-prayer-candles-temple-kathmandu-150nw-1307688661.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1307688661"
+        }
+      ]
+    },
+    {
+      "trip": "new-york-media-and-film-studies",
+      "tripTitle": "New York Film & Theatre",
+      "status": "published",
+      "country": "USA",
+      "day": 4,
+      "dayTitle": "Brooklyn and the Big Screen",
+      "place": "Brooklyn",
+      "query": "Brooklyn Bridge Brooklyn",
+      "candidates": [
+        {
+          "id": "1271763946",
+          "description": "Brooklyn Bridge New York City with snowflakes falling during winter snow storm",
+          "preview": "https://image.shutterstock.com/image-photo/brooklyn-bridge-new-york-city-150nw-1271763946.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1271763946"
+        },
+        {
+          "id": "268301438",
+          "description": "Estaiada Bridge in Sao Paulo, Brazil ",
+          "preview": "https://image.shutterstock.com/image-photo/estaiada-bridge-sao-paulo-brazil-150nw-268301438.jpg",
+          "page": "https://www.shutterstock.com/image-photo/268301438"
+        },
+        {
+          "id": "706512082",
+          "description": "US New York Brooklyn Bridge",
+          "preview": "https://image.shutterstock.com/image-photo/us-new-york-brooklyn-bridge-150nw-706512082.jpg",
+          "page": "https://www.shutterstock.com/image-photo/706512082"
+        }
+      ]
+    },
+    {
+      "trip": "new-york-media-and-film-studies",
+      "tripTitle": "New York Film & Theatre",
+      "status": "published",
+      "country": "USA",
+      "day": 7,
+      "dayTitle": "Campus and Creative Careers",
+      "place": "New York",
+      "query": "New York University New York",
+      "candidates": [
+        {
+          "id": "2269588621",
+          "description": "Happy friends having fun inside underground metropolitan station - Soft focus on right girl face",
+          "preview": "https://image.shutterstock.com/image-photo/happy-friends-having-fun-inside-150nw-2269588621.jpg",
+          "page": "https://www.shutterstock.com/image-photo/2269588621"
+        },
+        {
+          "id": "1633342024",
+          "description": "Young woman make up with tropical palm leaves",
+          "preview": "https://image.shutterstock.com/image-photo/young-woman-make-tropical-palm-150nw-1633342024.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1633342024"
+        },
+        {
+          "id": "1493339840",
+          "description": "Happy friends from diverse cultures and races taking selfie - Students having fun with technology trends at erasmus univ",
+          "preview": "https://image.shutterstock.com/image-photo/happy-friends-diverse-cultures-races-150nw-1493339840.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1493339840"
+        }
+      ]
+    },
+    {
+      "trip": "new-york-media-and-film-studies",
+      "tripTitle": "New York Film & Theatre",
+      "status": "published",
+      "country": "USA",
+      "day": 8,
+      "dayTitle": "Central Park and Home",
+      "place": "New York",
+      "query": "Central Park New York",
+      "candidates": [
+        {
+          "id": "1844954260",
+          "description": "Gapstow Bridge in Central Park  in spring early morning with flowers",
+          "preview": "https://image.shutterstock.com/image-photo/gapstow-bridge-central-park-spring-150nw-1844954260.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1844954260"
+        },
+        {
+          "id": "1821816734",
+          "description": "Central Park in New York City in the summer",
+          "preview": "https://image.shutterstock.com/image-photo/central-park-new-york-city-150nw-1821816734.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1821816734"
+        },
+        {
+          "id": "1917164711",
+          "description": "Central Park in winter  after snow storm",
+          "preview": "https://image.shutterstock.com/image-photo/central-park-winter-after-snow-150nw-1917164711.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1917164711"
+        }
+      ]
+    },
+    {
+      "trip": "north-and-south-vietnam-experience",
+      "tripTitle": "Vietnam: Culture, History and Adventure",
+      "status": "published",
+      "country": "Vietnam",
+      "day": 8,
+      "dayTitle": "A Fond Farewell",
+      "place": "Ho Chi Minh City",
+      "query": "Ho Chi Minh City",
+      "candidates": [
+        {
+          "id": "1177904407",
+          "description": "Freshly caught fish and other seafood for sale. Local delicacies displayed on a counter at a vintage Asian market of Ben",
+          "preview": "https://image.shutterstock.com/image-photo/freshly-caught-fish-other-seafood-150nw-1177904407.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1177904407"
+        },
+        {
+          "id": "1194336955",
+          "description": "Young couple dressed in formal clothing holding hands in the Notre Dame Square in Ho Chi Minh City. Romantic afternoon o",
+          "preview": "https://image.shutterstock.com/image-photo/young-couple-dressed-formal-clothing-150nw-1194336955.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1194336955"
+        },
+        {
+          "id": "1177901266",
+          "description": "Freshly caught fish and other seafood for sale. Local delicacies displayed on a counter at a vintage Asian market of Ben",
+          "preview": "https://image.shutterstock.com/image-photo/freshly-caught-fish-other-seafood-150nw-1177901266.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1177901266"
+        }
+      ]
+    },
+    {
+      "trip": "prague-business",
+      "tripTitle": "Prague Culture & Innovation",
+      "status": "published",
+      "country": "Czech Republic",
+      "day": 2,
+      "dayTitle": "Josefov and Prague Castle",
+      "place": "Prague",
+      "query": "Josefov, Prague's historic Jewish Quarter Prague",
+      "candidates": [
+        {
+          "id": "1538721629",
+          "description": "Autumn Prague City with St. Nicholas' Cathedral and colorful Nature with Trees from the Hill Petrin, Czech Republic",
+          "preview": "https://image.shutterstock.com/image-photo/autumn-prague-city-st-nicholas-150nw-1538721629.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1538721629"
+        },
+        {
+          "id": "1486752884",
+          "description": "External view of the Old New Synagogue, also called Altneuschu. Situated in Josefov, Prague, it's Europe's oldest active",
+          "preview": "https://image.shutterstock.com/image-photo/external-view-old-new-synagogue-150nw-1486752884.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1486752884"
+        },
+        {
+          "id": "1486752926",
+          "description": "View of the Old Jewish Cemetery and it's many gravestones - Prague, Czech Republic",
+          "preview": "https://image.shutterstock.com/image-photo/view-old-jewish-cemetery-many-150nw-1486752926.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1486752926"
+        }
+      ]
+    },
+    {
+      "trip": "prague-business",
+      "tripTitle": "Prague Culture & Innovation",
+      "status": "published",
+      "country": "Czech Republic",
+      "day": 4,
+      "dayTitle": "Economics & Škoda Production",
+      "place": "Mladá Boleslav",
+      "query": "Economics lecture at CERGE-EI Mladá Boleslav",
+      "candidates": [
+        {
+          "id": "759823498",
+          "description": "A casual middle aged businessman and a young assistant businesswoman working on laptop together and consulting in the bo",
+          "preview": "https://image.shutterstock.com/image-photo/casual-middle-aged-businessman-young-150nw-759823498.jpg",
+          "page": "https://www.shutterstock.com/image-photo/759823498"
+        },
+        {
+          "id": "216785830",
+          "description": "A couple lying down on a pier.",
+          "preview": "https://image.shutterstock.com/image-photo/couple-lying-down-on-pier-150nw-216785830.jpg",
+          "page": "https://www.shutterstock.com/image-photo/216785830"
+        },
+        {
+          "id": "1097298824",
+          "description": "Couples Concept. Lovers are playing in the living room. Couples are shopping through the Internet. Lovers are playing a ",
+          "preview": "https://image.shutterstock.com/image-photo/couples-concept-lovers-playing-living-150nw-1097298824.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1097298824"
+        }
+      ]
+    },
+    {
+      "trip": "salalah-oman",
+      "tripTitle": "Oman's Mountains, Desert & Coastal Adventures",
+      "status": "published",
+      "country": "Oman",
+      "day": 1,
+      "dayTitle": "Welcome to Salalah",
+      "place": "Salalah",
+      "query": "Salalah Oman",
+      "candidates": []
+    },
+    {
+      "trip": "salalah-oman",
+      "tripTitle": "Oman's Mountains, Desert & Coastal Adventures",
+      "status": "published",
+      "country": "Oman",
+      "day": 3,
+      "dayTitle": "Across the Empty Quarter",
+      "place": "Shisr",
+      "query": "Shisr Oman",
+      "candidates": []
+    },
+    {
+      "trip": "service-learning-cape-town",
+      "tripTitle": "Cape Town Community Impact, Culture & Adventure",
+      "status": "published",
+      "country": "South Africa",
+      "day": 3,
+      "dayTitle": "Apartheid Histories and Robben Island",
+      "place": "Cape Town",
+      "query": "District Six Museum Cape Town",
+      "candidates": [
+        {
+          "id": "1507416356",
+          "description": "Portrait of woman with a notebook looking at pictures at museum of arts",
+          "preview": "https://image.shutterstock.com/image-photo/portrait-woman-notebook-looking-pictures-150nw-1507416356.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1507416356"
+        },
+        {
+          "id": "1482481817",
+          "description": "Portrait of woman with a guide looking at pictures at museum of arts",
+          "preview": "https://image.shutterstock.com/image-photo/portrait-woman-guide-looking-pictures-150nw-1482481817.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1482481817"
+        },
+        {
+          "id": "1507416497",
+          "description": "Mature woman visitor looking art object in art gallery museum",
+          "preview": "https://image.shutterstock.com/image-photo/mature-woman-visitor-looking-art-150nw-1507416497.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1507416497"
+        }
+      ]
+    },
+    {
+      "trip": "service-learning-cape-town",
+      "tripTitle": "Cape Town Community Impact, Culture & Adventure",
+      "status": "published",
+      "country": "South Africa",
+      "day": 5,
+      "dayTitle": "Table Mountain Summit",
+      "place": "Cape Town",
+      "query": "Table Mountain cable car Cape Town",
+      "candidates": [
+        {
+          "id": "1410050339",
+          "description": "Landscape photo of a cable car going up a steep mountain with cliffs, the city, Lion's Head and the ocean in the backgro",
+          "preview": "https://image.shutterstock.com/image-photo/landscape-photo-cable-car-going-150nw-1410050339.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1410050339"
+        },
+        {
+          "id": "1410049652",
+          "description": "Landscape photo of a cable car going up a steep mountain with cliffs, the city, Lion's Head and the ocean in the backgro",
+          "preview": "https://image.shutterstock.com/image-photo/landscape-photo-cable-car-going-150nw-1410049652.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1410049652"
+        },
+        {
+          "id": "154275626",
+          "description": "Table Mountain above Cape Town in South Africa",
+          "preview": "https://image.shutterstock.com/image-photo/table-mountain-above-cape-town-150nw-154275626.jpg",
+          "page": "https://www.shutterstock.com/image-photo/154275626"
+        }
+      ]
+    },
+    {
+      "trip": "space-camp-turkey",
+      "tripTitle": "Space Camp Turkey",
+      "status": "draft",
+      "country": "Turkey",
+      "day": 2,
+      "dayTitle": "Ephesus and the Stars",
+      "place": "Ephesus",
+      "query": "Şirince Ephesus",
+      "candidates": [
+        {
+          "id": "1513969352",
+          "description": "Vacation in Turkey view of House of Virgin Mary during summer with tourist model",
+          "preview": "https://image.shutterstock.com/image-photo/vacation-turkey-view-house-virgin-150nw-1513969352.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1513969352"
+        }
+      ]
+    },
+    {
+      "trip": "steam-educational-trip-to-orlando",
+      "tripTitle": "Florida Discovery & Adventure",
+      "status": "published",
+      "country": "USA",
+      "day": 6,
+      "dayTitle": "Wild Florida Airboat Adventure",
+      "place": "Boggy Creek",
+      "query": "Airboat adventure through the headwaters of the Florida Everglades Boggy Creek",
+      "candidates": [
+        {
+          "id": "690942706",
+          "description": "Exploring Everglades City and Chokoloskee",
+          "preview": "https://image.shutterstock.com/image-photo/exploring-everglades-city-chokoloskee-150nw-690942706.jpg",
+          "page": "https://www.shutterstock.com/image-photo/690942706"
+        },
+        {
+          "id": "1110819689",
+          "description": "Panoramic aerial view of Everglades Swamps, Florida - USA.",
+          "preview": "https://image.shutterstock.com/image-photo/panoramic-aerial-view-everglades-swamps-150nw-1110819689.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1110819689"
+        },
+        {
+          "id": "1110819623",
+          "description": "Panoramic aerial view of Everglades Swamps in Florida - USA.",
+          "preview": "https://image.shutterstock.com/image-photo/panoramic-aerial-view-everglades-swamps-150nw-1110819623.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1110819623"
+        }
+      ]
+    },
+    {
+      "trip": "steam-educational-trip-to-orlando",
+      "tripTitle": "Florida Discovery & Adventure",
+      "status": "published",
+      "country": "USA",
+      "day": 7,
+      "dayTitle": "Manatees of Crystal River",
+      "place": "Crystal River",
+      "query": "Snorkelling with manatees Crystal River",
+      "candidates": [
+        {
+          "id": "686315896",
+          "description": "Dugong. The guy makes selfie with Dugong. Red sea. Marsa Alam.",
+          "preview": "https://image.shutterstock.com/image-photo/dugong-guy-makes-selfie-red-150nw-686315896.jpg",
+          "page": "https://www.shutterstock.com/image-photo/686315896"
+        },
+        {
+          "id": "759510211",
+          "description": "Business people in the office consulting a project.",
+          "preview": "https://image.shutterstock.com/image-photo/business-people-office-consulting-project-150nw-759510211.jpg",
+          "page": "https://www.shutterstock.com/image-photo/759510211"
+        },
+        {
+          "id": "439851967",
+          "description": "Two co-workers are sitting in corporation environment and smiling to each other",
+          "preview": "https://image.shutterstock.com/image-photo/two-coworkers-sitting-corporation-environment-150nw-439851967.jpg",
+          "page": "https://www.shutterstock.com/image-photo/439851967"
+        }
+      ]
+    },
+    {
+      "trip": "street-children-project-delhi",
+      "tripTitle": "India: Your real opportunity to make a positive difference",
+      "status": "published",
+      "country": "India",
+      "day": 2,
+      "dayTitle": "The Magnificent Taj Mahal",
+      "place": "Agra",
+      "query": "Taj Mahal Agra",
+      "candidates": [
+        {
+          "id": "1649388340",
+          "description": "The Taj Mahal mausoleum located in Agra, India",
+          "preview": "https://image.shutterstock.com/image-photo/taj-mahal-mausoleum-located-agra-150nw-1649388340.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1649388340"
+        },
+        {
+          "id": "1649356225",
+          "description": "Design of precious stones on the marble walls of Taj Mahal, Agra, India",
+          "preview": "https://image.shutterstock.com/image-photo/design-precious-stones-on-marble-150nw-1649356225.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1649356225"
+        },
+        {
+          "id": "1650262795",
+          "description": "Taj Mahal India Seven Wonders Travel Destination",
+          "preview": "https://image.shutterstock.com/image-photo/taj-mahal-india-seven-wonders-150nw-1650262795.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1650262795"
+        }
+      ]
+    },
+    {
+      "trip": "the-uae-story-heritage-innovation-adventure",
+      "tripTitle": "The UAE Story — Heritage, Innovation & Adventure",
+      "status": "published",
+      "country": null,
+      "day": 1,
+      "dayTitle": "From Creek to Union",
+      "place": "Dubai",
+      "query": "Al Fahidi Historical Neighbourhood Dubai",
+      "candidates": [
+        {
+          "id": "1574436301",
+          "description": "Woman walking in old Dubai, UAE. Traditional Arab street and mosque. Female tourist in historical Al Fahidi neighbourhoo",
+          "preview": "https://image.shutterstock.com/image-photo/woman-walking-old-dubai-uae-150nw-1574436301.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1574436301"
+        },
+        {
+          "id": "1574436307",
+          "description": "Woman walking in old Dubai, UAE. Traditional Arab street and mosque. Female tourist in historical Al Fahidi neighbourhoo",
+          "preview": "https://image.shutterstock.com/image-photo/woman-walking-old-dubai-uae-150nw-1574436307.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1574436307"
+        },
+        {
+          "id": "1574436679",
+          "description": "Woman walking in old Dubai, UAE. Traditional Arab street and mosque. Female tourist in historical Al Fahidi neighbourhoo",
+          "preview": "https://image.shutterstock.com/image-photo/woman-walking-old-dubai-uae-150nw-1574436679.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1574436679"
+        }
+      ]
+    },
+    {
+      "trip": "the-uae-story-heritage-innovation-adventure",
+      "tripTitle": "The UAE Story — Heritage, Innovation & Adventure",
+      "status": "published",
+      "country": null,
+      "day": 3,
+      "dayTitle": "Sharjah — Culture Beneath the Sand",
+      "place": "Sharjah",
+      "query": "Sharjah Museum of Islamic Civilization Sharjah",
+      "candidates": [
+        {
+          "id": "152703413",
+          "description": "arab architecture on grand mosque, abu dhabi",
+          "preview": "https://image.shutterstock.com/image-photo/arab-architecture-on-grand-mosque-150nw-152703413.jpg",
+          "page": "https://www.shutterstock.com/image-photo/152703413"
+        },
+        {
+          "id": "1580030593",
+          "description": "Shah-i-Zinda, Samarkand, Uzbekistan, HDR Image",
+          "preview": "https://image.shutterstock.com/image-photo/shahizinda-samarkand-uzbekistan-hdr-image-150nw-1580030593.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1580030593"
+        },
+        {
+          "id": "1557085820",
+          "description": "Shah-i-Zinda, Necropolis in Samarkand, HDR image",
+          "preview": "https://image.shutterstock.com/image-photo/shahizinda-necropolis-samarkand-hdr-image-150nw-1557085820.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1557085820"
+        }
+      ]
+    },
+    {
+      "trip": "the-uae-story-heritage-innovation-adventure",
+      "tripTitle": "The UAE Story — Heritage, Innovation & Adventure",
+      "status": "published",
+      "country": null,
+      "day": 4,
+      "dayTitle": "Faith, Leadership & Nationhood",
+      "place": "Abu Dhabi",
+      "query": "Sheikh Zayed Grand Mosque Abu Dhabi",
+      "candidates": [
+        {
+          "id": "463208567",
+          "description": "mosque in abu dhabi",
+          "preview": "https://image.shutterstock.com/image-photo/mosque-abu-dhabi-150nw-463208567.jpg",
+          "page": "https://www.shutterstock.com/image-photo/463208567"
+        },
+        {
+          "id": "1071031112",
+          "description": "Night reflections of Abu Dhabi Sheikh Zayed Mosque, UAE.",
+          "preview": "https://image.shutterstock.com/image-photo/night-reflections-abu-dhabi-sheikh-150nw-1071031112.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1071031112"
+        },
+        {
+          "id": "152703380",
+          "description": "arab architecture on grand mosque, abu dhabi",
+          "preview": "https://image.shutterstock.com/image-photo/arab-architecture-on-grand-mosque-150nw-152703380.jpg",
+          "page": "https://www.shutterstock.com/image-photo/152703380"
+        }
+      ]
+    },
+    {
+      "trip": "the-uae-story-heritage-innovation-adventure",
+      "tripTitle": "The UAE Story — Heritage, Innovation & Adventure",
+      "status": "published",
+      "country": null,
+      "day": 5,
+      "dayTitle": "Art, Identity & Living Heritage",
+      "place": "Abu Dhabi",
+      "query": "Louvre Abu Dhabi Abu Dhabi",
+      "candidates": [
+        {
+          "id": "131892155",
+          "description": "Building and recreation area of the luxury hotel, Saadiyat island, Abu Dhabi, UAE",
+          "preview": "https://image.shutterstock.com/image-photo/building-recreation-area-luxury-hotel-150nw-131892155.jpg",
+          "page": "https://www.shutterstock.com/image-photo/131892155"
+        },
+        {
+          "id": "479319808",
+          "description": "View of the Souk Madinat Jumeirah, Dubai, UAE",
+          "preview": "https://image.shutterstock.com/image-photo/view-souk-madinat-jumeirah-dubai-150nw-479319808.jpg",
+          "page": "https://www.shutterstock.com/image-photo/479319808"
+        },
+        {
+          "id": "391814485",
+          "description": "summer holidays, tourism, vacation, travel and dating concept - happy couple in shades over dubai city background",
+          "preview": "https://image.shutterstock.com/image-photo/summer-holidays-tourism-vacation-travel-150nw-391814485.jpg",
+          "page": "https://www.shutterstock.com/image-photo/391814485"
+        }
+      ]
+    },
+    {
+      "trip": "the-uae-story-heritage-innovation-adventure",
+      "tripTitle": "The UAE Story — Heritage, Innovation & Adventure",
+      "status": "published",
+      "country": null,
+      "day": 6,
+      "dayTitle": "Al Ain — The Oasis City",
+      "place": "Al Ain",
+      "query": "Al Ain Oasis Al Ain",
+      "candidates": [
+        {
+          "id": "1590327184",
+          "description": "Camel market at the oasis Al Ain, Emirate of Abu Dhabi, United Arab Emirates",
+          "preview": "https://image.shutterstock.com/image-photo/camel-market-oasis-al-ain-150nw-1590327184.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1590327184"
+        },
+        {
+          "id": "1590329512",
+          "description": "Camel market at the oasis Al Ain, Emirate of Abu Dhabi, United Arab Emirates",
+          "preview": "https://image.shutterstock.com/image-photo/camel-market-oasis-al-ain-150nw-1590329512.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1590329512"
+        },
+        {
+          "id": "1590327364",
+          "description": "Oasis at Wahibi Sands, Wahiba Sands, Oman",
+          "preview": "https://image.shutterstock.com/image-photo/oasis-wahibi-sands-wahiba-oman-150nw-1590327364.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1590327364"
+        }
+      ]
+    },
+    {
+      "trip": "the-uae-story-heritage-innovation-adventure-2",
+      "tripTitle": "The UAE Story — Heritage, Innovation & Adventure",
+      "status": "published",
+      "country": "United Arab Emirates",
+      "day": 1,
+      "dayTitle": "From Creek to Union",
+      "place": "Dubai",
+      "query": "Al Fahidi Historical Neighbourhood Dubai",
+      "candidates": [
+        {
+          "id": "1574436301",
+          "description": "Woman walking in old Dubai, UAE. Traditional Arab street and mosque. Female tourist in historical Al Fahidi neighbourhoo",
+          "preview": "https://image.shutterstock.com/image-photo/woman-walking-old-dubai-uae-150nw-1574436301.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1574436301"
+        },
+        {
+          "id": "1574436307",
+          "description": "Woman walking in old Dubai, UAE. Traditional Arab street and mosque. Female tourist in historical Al Fahidi neighbourhoo",
+          "preview": "https://image.shutterstock.com/image-photo/woman-walking-old-dubai-uae-150nw-1574436307.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1574436307"
+        },
+        {
+          "id": "1574436679",
+          "description": "Woman walking in old Dubai, UAE. Traditional Arab street and mosque. Female tourist in historical Al Fahidi neighbourhoo",
+          "preview": "https://image.shutterstock.com/image-photo/woman-walking-old-dubai-uae-150nw-1574436679.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1574436679"
+        }
+      ]
+    },
+    {
+      "trip": "the-uae-story-heritage-innovation-adventure-2",
+      "tripTitle": "The UAE Story — Heritage, Innovation & Adventure",
+      "status": "published",
+      "country": "United Arab Emirates",
+      "day": 3,
+      "dayTitle": "Sharjah — Culture Beneath the Sand",
+      "place": "Sharjah",
+      "query": "Sharjah Museum of Islamic Civilization or comparable heritage programme Sharjah",
+      "candidates": [
+        {
+          "id": "1962048373",
+          "description": "Happy Asian Muslim girl wearing hijab and looking at the camera, Portrait of Islam kid study online via the internet on ",
+          "preview": "https://image.shutterstock.com/image-photo/happy-asian-muslim-girl-wearing-150nw-1962048373.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1962048373"
+        },
+        {
+          "id": "152703413",
+          "description": "arab architecture on grand mosque, abu dhabi",
+          "preview": "https://image.shutterstock.com/image-photo/arab-architecture-on-grand-mosque-150nw-152703413.jpg",
+          "page": "https://www.shutterstock.com/image-photo/152703413"
+        },
+        {
+          "id": "509435821",
+          "description": "Hassan II Mosque Casablanca, Morocco",
+          "preview": "https://image.shutterstock.com/image-photo/hassan-ii-mosque-casablanca-morocco-150nw-509435821.jpg",
+          "page": "https://www.shutterstock.com/image-photo/509435821"
+        }
+      ]
+    },
+    {
+      "trip": "the-uae-story-heritage-innovation-adventure-2",
+      "tripTitle": "The UAE Story — Heritage, Innovation & Adventure",
+      "status": "published",
+      "country": "United Arab Emirates",
+      "day": 4,
+      "dayTitle": "Faith, Leadership & Nationhood",
+      "place": "Abu Dhabi",
+      "query": "Sheikh Zayed Grand Mosque Abu Dhabi",
+      "candidates": [
+        {
+          "id": "463208567",
+          "description": "mosque in abu dhabi",
+          "preview": "https://image.shutterstock.com/image-photo/mosque-abu-dhabi-150nw-463208567.jpg",
+          "page": "https://www.shutterstock.com/image-photo/463208567"
+        },
+        {
+          "id": "1071031112",
+          "description": "Night reflections of Abu Dhabi Sheikh Zayed Mosque, UAE.",
+          "preview": "https://image.shutterstock.com/image-photo/night-reflections-abu-dhabi-sheikh-150nw-1071031112.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1071031112"
+        },
+        {
+          "id": "152703380",
+          "description": "arab architecture on grand mosque, abu dhabi",
+          "preview": "https://image.shutterstock.com/image-photo/arab-architecture-on-grand-mosque-150nw-152703380.jpg",
+          "page": "https://www.shutterstock.com/image-photo/152703380"
+        }
+      ]
+    },
+    {
+      "trip": "the-uae-story-heritage-innovation-adventure-2",
+      "tripTitle": "The UAE Story — Heritage, Innovation & Adventure",
+      "status": "published",
+      "country": "United Arab Emirates",
+      "day": 5,
+      "dayTitle": "Art, Identity & Living Heritage",
+      "place": "Abu Dhabi",
+      "query": "Louvre Abu Dhabi Abu Dhabi",
+      "candidates": [
+        {
+          "id": "131892155",
+          "description": "Building and recreation area of the luxury hotel, Saadiyat island, Abu Dhabi, UAE",
+          "preview": "https://image.shutterstock.com/image-photo/building-recreation-area-luxury-hotel-150nw-131892155.jpg",
+          "page": "https://www.shutterstock.com/image-photo/131892155"
+        },
+        {
+          "id": "479319808",
+          "description": "View of the Souk Madinat Jumeirah, Dubai, UAE",
+          "preview": "https://image.shutterstock.com/image-photo/view-souk-madinat-jumeirah-dubai-150nw-479319808.jpg",
+          "page": "https://www.shutterstock.com/image-photo/479319808"
+        },
+        {
+          "id": "391814485",
+          "description": "summer holidays, tourism, vacation, travel and dating concept - happy couple in shades over dubai city background",
+          "preview": "https://image.shutterstock.com/image-photo/summer-holidays-tourism-vacation-travel-150nw-391814485.jpg",
+          "page": "https://www.shutterstock.com/image-photo/391814485"
+        }
+      ]
+    },
+    {
+      "trip": "the-uae-story-heritage-innovation-adventure-2",
+      "tripTitle": "The UAE Story — Heritage, Innovation & Adventure",
+      "status": "published",
+      "country": "United Arab Emirates",
+      "day": 6,
+      "dayTitle": "Al Ain — The Oasis City",
+      "place": "Al Ain",
+      "query": "Al Ain Oasis Al Ain",
+      "candidates": [
+        {
+          "id": "1590327184",
+          "description": "Camel market at the oasis Al Ain, Emirate of Abu Dhabi, United Arab Emirates",
+          "preview": "https://image.shutterstock.com/image-photo/camel-market-oasis-al-ain-150nw-1590327184.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1590327184"
+        },
+        {
+          "id": "1590329512",
+          "description": "Camel market at the oasis Al Ain, Emirate of Abu Dhabi, United Arab Emirates",
+          "preview": "https://image.shutterstock.com/image-photo/camel-market-oasis-al-ain-150nw-1590329512.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1590329512"
+        },
+        {
+          "id": "1590327364",
+          "description": "Oasis at Wahibi Sands, Wahiba Sands, Oman",
+          "preview": "https://image.shutterstock.com/image-photo/oasis-wahibi-sands-wahiba-oman-150nw-1590327364.jpg",
+          "page": "https://www.shutterstock.com/image-photo/1590327364"
+        }
+      ]
+    }
+  ]
+}
