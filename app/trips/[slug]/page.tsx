@@ -93,37 +93,45 @@ export default async function TripPage({ params }: Props) {
     .filter((c) => countries.some((x) => x.slug === c.slug));
 
   /**
-   * The packing checklist rides the itinerary's sticky column rather than
-   * sitting beside the overview. It is far taller than most overviews — 700px
-   * against 349px on the Rome trip — and as a grid sibling it set the height
-   * of the whole section, leaving a 375px hole between the last paragraph and
-   * the itinerary. Beside the days is also where it belongs: this is what to
-   * pack for those days.
+   * The packing checklist is a band of its own rather than a column beside
+   * something. Beside the overview it set the section's height and left a
+   * 375px hole; inside the itinerary's sticky column it stopped the booking
+   * card following the reader down a long itinerary and left the right-hand
+   * side empty. Its three groups fall naturally into three columns, and it
+   * sits with the customs notes — the two things a teacher reads while
+   * preparing rather than while choosing.
    */
-  const packList = (
-    <aside className="cfacts cfacts--pack" aria-label="What to pack">
-      <h3>
-        What to pack <span>{trip.subject} · {trip.country}</span>
-      </h3>
-      {packing.map((group) => (
-        <div className="packgroup" key={group.title}>
-          <h4>{group.title}</h4>
-          <ul>
-            {group.items.map((item) => (
-              <li key={item}>
-                <span className="tick">✓</span>
-                {item}
-              </li>
-            ))}
-          </ul>
+  const packBand = (
+    <section className="pack-band">
+      <div className="wrap">
+        <span className="eyebrow">Before you go</span>
+        <h2 className="st serif">
+          What to <i>pack</i>
+        </h2>
+        <div className="pack-grid">
+          {packing.map((group) => (
+            <div className="packgroup" key={group.title}>
+              <h4>{group.title}</h4>
+              <ul>
+                {group.items.map((item) => (
+                  <li key={item}>
+                    <span className="tick">✓</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
-      ))}
-      {countryLinks[0] && (
-        <Link className="cfacts-link" href={`/countries/${countryLinks[0].slug}`}>
-          {countryLinks[0].name} at a glance →
-        </Link>
-      )}
-    </aside>
+        {countryLinks[0] && (
+          <p className="pack-foot">
+            <Link href={`/countries/${countryLinks[0].slug}`}>
+              {countryLinks[0].name} at a glance — plugs, currency, best months →
+            </Link>
+          </p>
+        )}
+      </div>
+    </section>
   );
 
   return (
@@ -209,7 +217,6 @@ export default async function TripPage({ params }: Props) {
             {hasStructured ? (
               <ItineraryTimeline days={itineraryDays} tripHighlights={tripHighlights}>
                 <AppointmentModal tripSlug={trip.slug} />
-                {packList}
               </ItineraryTimeline>
             ) : (
               <ItineraryPanel
@@ -218,7 +225,6 @@ export default async function TripPage({ params }: Props) {
                 fallbackAlt={trip.heroAlt || trip.gallery[0]?.alt || ''}
               >
                 <AppointmentModal tripSlug={trip.slug} />
-                {packList}
               </ItineraryPanel>
             )}
           </div>
@@ -248,6 +254,8 @@ export default async function TripPage({ params }: Props) {
             </details>
           </div>
         </section>
+
+        {packBand}
 
         {culture.length > 0 && (
           <section className="culture-band">
