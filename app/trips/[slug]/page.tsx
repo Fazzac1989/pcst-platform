@@ -92,6 +92,40 @@ export default async function TripPage({ params }: Props) {
     .map((slug) => ({ slug, name: countries.find((c) => c.slug === slug)?.name ?? trip.country }))
     .filter((c) => countries.some((x) => x.slug === c.slug));
 
+  /**
+   * The packing checklist rides the itinerary's sticky column rather than
+   * sitting beside the overview. It is far taller than most overviews — 700px
+   * against 349px on the Rome trip — and as a grid sibling it set the height
+   * of the whole section, leaving a 375px hole between the last paragraph and
+   * the itinerary. Beside the days is also where it belongs: this is what to
+   * pack for those days.
+   */
+  const packList = (
+    <aside className="cfacts cfacts--pack" aria-label="What to pack">
+      <h3>
+        What to pack <span>{trip.subject} · {trip.country}</span>
+      </h3>
+      {packing.map((group) => (
+        <div className="packgroup" key={group.title}>
+          <h4>{group.title}</h4>
+          <ul>
+            {group.items.map((item) => (
+              <li key={item}>
+                <span className="tick">✓</span>
+                {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+      {countryLinks[0] && (
+        <Link className="cfacts-link" href={`/countries/${countryLinks[0].slug}`}>
+          {countryLinks[0].name} at a glance →
+        </Link>
+      )}
+    </aside>
+  );
+
   return (
     <>
       <SiteHeader variant="trip" />
@@ -154,42 +188,15 @@ export default async function TripPage({ params }: Props) {
       <main className="trip-main">
         <section className="trip-overview">
           <div className="wrap">
-            <div className="ov-cols">
-              <div>
-                <span className="eyebrow">Overview</span>
-                <h2 className="st serif">
-                  About this <i>trip</i>
-                </h2>
-                {trip.overview.map((para, i) => (
-                  <p className="ovp" key={i}>
-                    {para}
-                  </p>
-                ))}
-              </div>
-              <aside className="cfacts cfacts--pack" aria-label="What to pack">
-                <h3>
-                  What to pack <span>{trip.subject} · {trip.country}</span>
-                </h3>
-                {packing.map((group) => (
-                  <div className="packgroup" key={group.title}>
-                    <h4>{group.title}</h4>
-                    <ul>
-                      {group.items.map((item) => (
-                        <li key={item}>
-                          <span className="tick">✓</span>
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-                {countryLinks[0] && (
-                  <Link className="cfacts-link" href={`/countries/${countryLinks[0].slug}`}>
-                    {countryLinks[0].name} at a glance →
-                  </Link>
-                )}
-              </aside>
-            </div>
+            <span className="eyebrow">Overview</span>
+            <h2 className="st serif">
+              About this <i>trip</i>
+            </h2>
+            {trip.overview.map((para, i) => (
+              <p className="ovp" key={i}>
+                {para}
+              </p>
+            ))}
           </div>
         </section>
 
@@ -202,6 +209,7 @@ export default async function TripPage({ params }: Props) {
             {hasStructured ? (
               <ItineraryTimeline days={itineraryDays} tripHighlights={tripHighlights}>
                 <AppointmentModal tripSlug={trip.slug} />
+                {packList}
               </ItineraryTimeline>
             ) : (
               <ItineraryPanel
@@ -210,6 +218,7 @@ export default async function TripPage({ params }: Props) {
                 fallbackAlt={trip.heroAlt || trip.gallery[0]?.alt || ''}
               >
                 <AppointmentModal tripSlug={trip.slug} />
+                {packList}
               </ItineraryPanel>
             )}
           </div>
