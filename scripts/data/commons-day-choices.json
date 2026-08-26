@@ -1,0 +1,1656 @@
+[
+  {
+    "trip": "adventure-trip-to-new-zealand",
+    "day": 5,
+    "subject": "Kiwi Conservation and ZORB — National Kiwi Hatchery, Rotorua",
+    "alt": "A North Island brown kiwi, the endangered national bird raised at Rotorua's hatchery",
+    "pick": {
+      "title": "File:Apteryx mantelli -Rotorua, North Island, New Zealand-8a.jpg",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Apteryx_mantelli_-Rotorua,_North_Island,_New_Zealand-8a.jpg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Apteryx_mantelli_-Rotorua%2C_North_Island%2C_New_Zealand-8a.jpg/1920px-Apteryx_mantelli_-Rotorua%2C_North_Island%2C_New_Zealand-8a.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 4608,
+      "height": 3456,
+      "mime": "image/jpeg",
+      "license": "cc-by-2.0",
+      "licenseShort": "CC BY 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+      "author": "The.Rohit",
+      "assessed": false
+    },
+    "runnersUp": [
+      {
+        "title": "File:Apteryx mantelli 106965242.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Apteryx_mantelli_106965242.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Apteryx_mantelli_106965242.jpg/1920px-Apteryx_mantelli_106965242.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 2048,
+        "height": 1278,
+        "mime": "image/jpeg",
+        "license": "cc0",
+        "licenseShort": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "author": "Peter de Lange",
+        "assessed": false
+      },
+      {
+        "title": "File:Apteryx mantelli 248655158.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Apteryx_mantelli_248655158.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Apteryx_mantelli_248655158.jpg/1920px-Apteryx_mantelli_248655158.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 2048,
+        "height": 1536,
+        "mime": "image/jpeg",
+        "license": "cc-by-4.0",
+        "licenseShort": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "author": "Kelvin Perrie",
+        "assessed": false
+      },
+      {
+        "title": "File:Apteryx mantelli 1841361.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Apteryx_mantelli_1841361.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Apteryx_mantelli_1841361.jpg/1920px-Apteryx_mantelli_1841361.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 2048,
+        "height": 1152,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-4.0",
+        "licenseShort": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "author": "Tony Steer",
+        "assessed": false
+      }
+    ]
+  },
+  {
+    "trip": "adventure-trip-to-new-zealand",
+    "day": 8,
+    "subject": "Coromandel Coast and Fishing Challenge — Hauraki Gulf",
+    "alt": "The rock arch and white-sand beach at Cathedral Cove on the Coromandel Peninsula",
+    "pick": {
+      "title": "File:Cathedral Cove 06.jpg",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Cathedral_Cove_06.jpg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Cathedral_Cove_06.jpg/1920px-Cathedral_Cove_06.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 4484,
+      "height": 2899,
+      "mime": "image/jpeg",
+      "license": "cc-by-sa-4.0",
+      "licenseShort": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "Krzysztof Golik",
+      "assessed": true
+    },
+    "runnersUp": [
+      {
+        "title": "File:Cathedral Cove 08.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Cathedral_Cove_08.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Cathedral_Cove_08.jpg/1920px-Cathedral_Cove_08.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 4086,
+        "height": 2697,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-4.0",
+        "licenseShort": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "author": "Krzysztof Golik",
+        "assessed": true
+      },
+      {
+        "title": "File:Cathedral Cove 03.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Cathedral_Cove_03.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Cathedral_Cove_03.jpg/1920px-Cathedral_Cove_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 4935,
+        "height": 3139,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-4.0",
+        "licenseShort": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "author": "Krzysztof Golik",
+        "assessed": true
+      },
+      {
+        "title": "File:Cathedral Cove 05.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Cathedral_Cove_05.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Cathedral_Cove_05.jpg/1920px-Cathedral_Cove_05.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 4175,
+        "height": 2824,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-4.0",
+        "licenseShort": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "author": "Krzysztof Golik",
+        "assessed": true
+      }
+    ]
+  },
+  {
+    "trip": "an-australian-adventure",
+    "day": 5,
+    "subject": "Brisbane Heritage to Bush Skills — Scenic Rim, kangaroo spotting, dark skies",
+    "alt": "An eastern grey kangaroo pausing in open Australian bush country",
+    "pick": {
+      "title": "File:Two Eastern grey kangaroos crouching in grass - DPLA - 620d73d0af48098f44b750f88ce29cac.jpg",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Two_Eastern_grey_kangaroos_crouching_in_grass_-_DPLA_-_620d73d0af48098f44b750f88ce29cac.jpg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/5/57/Two_Eastern_grey_kangaroos_crouching_in_grass_-_DPLA_-_620d73d0af48098f44b750f88ce29cac.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "width": 1568,
+      "height": 1050,
+      "mime": "image/jpeg",
+      "license": "cc-by-sa-4.0",
+      "licenseShort": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "Garst, Warren, 1922-2016, photographer",
+      "assessed": false
+    },
+    "runnersUp": []
+  },
+  {
+    "trip": "an-australian-adventure",
+    "day": 7,
+    "subject": "Wildlife Conservation & Aquaduck — Currumbin Wildlife Sanctuary, Gold Coast",
+    "alt": "Rainbow lorikeets at Currumbin Wildlife Sanctuary on the Gold Coast",
+    "pick": {
+      "title": "File:Train at Currumbin Wildlife Sanctuary, Gold Coast, Queensland, Australia.jpg",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Train_at_Currumbin_Wildlife_Sanctuary,_Gold_Coast,_Queensland,_Australia.jpg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Train_at_Currumbin_Wildlife_Sanctuary%2C_Gold_Coast%2C_Queensland%2C_Australia.jpg/1920px-Train_at_Currumbin_Wildlife_Sanctuary%2C_Gold_Coast%2C_Queensland%2C_Australia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 5000,
+      "height": 3336,
+      "mime": "image/jpeg",
+      "license": "cc-by-4.0",
+      "licenseShort": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "author": "Jack Bain",
+      "assessed": false
+    },
+    "runnersUp": []
+  },
+  {
+    "trip": "art-culture-study-tour-seoul",
+    "day": 3,
+    "subject": "Modern Seoul and K-Pop — COEX Starfield Library, Bukchon Hanok Village",
+    "alt": "The towering bookshelves of the Starfield Library inside Seoul's COEX mall",
+    "pick": {
+      "title": "File:Library in Seoul (53608020746).jpg",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Library_in_Seoul_(53608020746).jpg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Library_in_Seoul_%2853608020746%29.jpg/1920px-Library_in_Seoul_%2853608020746%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 7360,
+      "height": 4912,
+      "mime": "image/jpeg",
+      "license": "pd",
+      "licenseShort": "Public domain",
+      "licenseUrl": null,
+      "author": "chsyang",
+      "assessed": false
+    },
+    "runnersUp": [
+      {
+        "title": "File:Library in Seoul (53608036346).jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Library_in_Seoul_(53608036346).jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Library_in_Seoul_%2853608036346%29.jpg/1920px-Library_in_Seoul_%2853608036346%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 7360,
+        "height": 4912,
+        "mime": "image/jpeg",
+        "license": "pd",
+        "licenseShort": "Public domain",
+        "licenseUrl": null,
+        "author": "chsyang",
+        "assessed": false
+      }
+    ]
+  },
+  {
+    "trip": "art-culture-study-tour-seoul",
+    "day": 4,
+    "subject": "Peace and Division at the DMZ — 3rd Infiltration Tunnel, observatories",
+    "alt": "The Korean Demilitarized Zone, the fortified border dividing the peninsula",
+    "pick": {
+      "title": "File:Chairman of the Joint Chiefs of Staff Navy Adm. Mike Mullen, center of group, tours the Demilitarized Zone separating North and South Korea in Panmunjom, Republic of Korea 071105-N-TT977-151.jpg",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Chairman_of_the_Joint_Chiefs_of_Staff_Navy_Adm._Mike_Mullen,_center_of_group,_tours_the_Demilitarized_Zone_separating_North_and_South_Korea_in_Panmunjom,_Republic_of_Korea_071105-N-TT977-151.jpg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Chairman_of_the_Joint_Chiefs_of_Staff_Navy_Adm._Mike_Mullen%2C_center_of_group%2C_tours_the_Demilitarized_Zone_separating_North_and_South_Korea_in_Panmunjom%2C_Republic_of_Korea_071105-N-TT977-151.jpg/1920px-thumbnail.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 4052,
+      "height": 2693,
+      "mime": "image/jpeg",
+      "license": "pd",
+      "licenseShort": "Public domain",
+      "licenseUrl": null,
+      "author": "MC1 CHAD J. MCNEELEY",
+      "assessed": false
+    },
+    "runnersUp": [
+      {
+        "title": "File:A member of the ROK (Republic of Korea) Army keeps a watchful eye on North Korea from Observation Post (OP) oullette located in the Demilitarized Zone 981008-F-CP197-503.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:A_member_of_the_ROK_(Republic_of_Korea)_Army_keeps_a_watchful_eye_on_North_Korea_from_Observation_Post_(OP)_oullette_located_in_the_Demilitarized_Zone_981008-F-CP197-503.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/8/80/A_member_of_the_ROK_%28Republic_of_Korea%29_Army_keeps_a_watchful_eye_on_North_Korea_from_Observation_Post_%28OP%29_oullette_located_in_the_Demilitarized_Zone_981008-F-CP197-503.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "width": 1268,
+        "height": 1012,
+        "mime": "image/jpeg",
+        "license": "pd",
+        "licenseShort": "Public domain",
+        "licenseUrl": null,
+        "author": "SRA Jeffrey Allen",
+        "assessed": false
+      },
+      {
+        "title": "File:Demilitarized Zone (DMZ) Joint Security Area (JSA) Looking Into North Korea (28819154694).jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Demilitarized_Zone_(DMZ)_Joint_Security_Area_(JSA)_Looking_Into_North_Korea_(28819154694).jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Demilitarized_Zone_%28DMZ%29_Joint_Security_Area_%28JSA%29_Looking_Into_North_Korea_%2828819154694%29.jpg/1920px-Demilitarized_Zone_%28DMZ%29_Joint_Security_Area_%28JSA%29_Looking_Into_North_Korea_%2828819154694%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 4160,
+        "height": 3088,
+        "mime": "image/jpeg",
+        "license": "cc-by-2.0",
+        "licenseShort": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "author": "Travis Wise from Bay Area, California, United States",
+        "assessed": false
+      },
+      {
+        "title": "File:Republic of Korea Army soldiers stand resolute at the iconic Joint Security Area where South and North Korean soldiers stand face to face across the Korean Demilitarized Zone, Panmunjom, South Korea, June 19, 2018.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Republic_of_Korea_Army_soldiers_stand_resolute_at_the_iconic_Joint_Security_Area_where_South_and_North_Korean_soldiers_stand_face_to_face_across_the_Korean_Demilitarized_Zone,_Panmunjom,_South_Korea,_June_19,_2018.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Republic_of_Korea_Army_soldiers_stand_resolute_at_the_iconic_Joint_Security_Area_where_South_and_North_Korean_soldiers_stand_face_to_face_across_the_Korean_Demilitarized_Zone%2C_Panmunjom%2C_South_Korea%2C_June_19%2C_2018.jpg/1920px-thumbnail.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 4297,
+        "height": 3224,
+        "mime": "image/jpeg",
+        "license": "pd",
+        "licenseShort": "Public domain",
+        "licenseUrl": null,
+        "author": "U.S. Department of Defense Current Photos Staff Sgt. Richard Colletta/20th Public Affairs Detachment",
+        "assessed": false
+      }
+    ]
+  },
+  {
+    "trip": "art-culture-study-tour-seoul",
+    "day": 6,
+    "subject": "A World of Fun at Lotte World — indoor theme park, parades",
+    "alt": "Lotte World in Seoul, one of the world's largest indoor theme parks",
+    "pick": {
+      "title": "File:Lotte World morning view 8.jpg",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Lotte_World_morning_view_8.jpg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Lotte_World_morning_view_8.jpg/1920px-Lotte_World_morning_view_8.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 6000,
+      "height": 4100,
+      "mime": "image/jpeg",
+      "license": "cc-by-sa-4.0",
+      "licenseShort": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "kallerna",
+      "assessed": true
+    },
+    "runnersUp": [
+      {
+        "title": "File:Lotte World morning view 7.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Lotte_World_morning_view_7.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Lotte_World_morning_view_7.jpg/1920px-Lotte_World_morning_view_7.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 4870,
+        "height": 3000,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-4.0",
+        "licenseShort": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "author": "kallerna",
+        "assessed": true
+      },
+      {
+        "title": "File:Lotte World day view 5.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Lotte_World_day_view_5.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Lotte_World_day_view_5.jpg/1920px-Lotte_World_day_view_5.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 8200,
+        "height": 4500,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-4.0",
+        "licenseShort": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "author": "kallerna",
+        "assessed": true
+      },
+      {
+        "title": "File:Lotte World day view 8.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Lotte_World_day_view_8.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Lotte_World_day_view_8.jpg/1920px-Lotte_World_day_view_8.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 5090,
+        "height": 3400,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-4.0",
+        "licenseShort": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "author": "kallerna",
+        "assessed": true
+      }
+    ]
+  },
+  {
+    "trip": "art-culture-study-tour-seoul",
+    "day": 7,
+    "subject": "Art, Views and Departure — N Seoul Tower, Leeum Museum",
+    "alt": "N Seoul Tower rising from Namsan above the city",
+    "pick": {
+      "title": "File:N Seoul Tower view 2.jpg",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:N_Seoul_Tower_view_2.jpg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/N_Seoul_Tower_view_2.jpg/1920px-N_Seoul_Tower_view_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 4600,
+      "height": 2500,
+      "mime": "image/jpeg",
+      "license": "cc-by-sa-4.0",
+      "licenseShort": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "kallerna",
+      "assessed": true
+    },
+    "runnersUp": [
+      {
+        "title": "File:Namsan Tower sunset, Seoul.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Namsan_Tower_sunset,_Seoul.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Namsan_Tower_sunset%2C_Seoul.jpg/1920px-Namsan_Tower_sunset%2C_Seoul.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 2808,
+        "height": 2098,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-4.0",
+        "licenseShort": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "author": "Rtflakfizer",
+        "assessed": false
+      },
+      {
+        "title": "File:N-Seoul-Tower and Namsan Park (26876783888).jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:N-Seoul-Tower_and_Namsan_Park_(26876783888).jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/N-Seoul-Tower_and_Namsan_Park_%2826876783888%29.jpg/1920px-N-Seoul-Tower_and_Namsan_Park_%2826876783888%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 4032,
+        "height": 3024,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-2.0",
+        "licenseShort": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "author": "FLASHPACKER TRAVELGUIDE",
+        "assessed": false
+      },
+      {
+        "title": "File:Seoul Aerial Shot 08.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Seoul_Aerial_Shot_08.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Seoul_Aerial_Shot_08.jpg/1920px-Seoul_Aerial_Shot_08.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 5463,
+        "height": 3624,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-2.0",
+        "licenseShort": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "author": "Republic of Korea",
+        "assessed": false
+      }
+    ]
+  },
+  {
+    "trip": "bali-educational-adventure",
+    "day": 2,
+    "subject": "Blue Lagoon Reefs — snorkelling the coral gardens at Padang Bai",
+    "alt": "Snorkellers over the coral gardens of Bali's Blue Lagoon at Padang Bai",
+    "pick": {
+      "title": "File:The Red You Don T See (220480685).jpeg",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:The_Red_You_Don_T_See_(220480685).jpeg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/The_Red_You_Don_T_See_%28220480685%29.jpeg/1920px-The_Red_You_Don_T_See_%28220480685%29.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 2048,
+      "height": 1365,
+      "mime": "image/jpeg",
+      "license": "cc-by-3.0",
+      "licenseShort": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "author": "Tilonaut",
+      "assessed": false
+    },
+    "runnersUp": [
+      {
+        "title": "File:Placid Darkness (220482471).jpeg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Placid_Darkness_(220482471).jpeg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Placid_Darkness_%28220482471%29.jpeg/1920px-Placid_Darkness_%28220482471%29.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 2048,
+        "height": 1365,
+        "mime": "image/jpeg",
+        "license": "cc-by-3.0",
+        "licenseShort": "CC BY 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+        "author": "Tilonaut",
+        "assessed": false
+      },
+      {
+        "title": "File:No Strut Left (220482457).jpeg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:No_Strut_Left_(220482457).jpeg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/No_Strut_Left_%28220482457%29.jpeg/1920px-No_Strut_Left_%28220482457%29.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 2048,
+        "height": 1365,
+        "mime": "image/jpeg",
+        "license": "cc-by-3.0",
+        "licenseShort": "CC BY 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+        "author": "Tilonaut",
+        "assessed": false
+      },
+      {
+        "title": "File:A Home Too Cozy To Leave (220482455).jpeg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:A_Home_Too_Cozy_To_Leave_(220482455).jpeg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/A_Home_Too_Cozy_To_Leave_%28220482455%29.jpeg/1920px-A_Home_Too_Cozy_To_Leave_%28220482455%29.jpeg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 2048,
+        "height": 1365,
+        "mime": "image/jpeg",
+        "license": "cc-by-3.0",
+        "licenseShort": "CC BY 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+        "author": "Tilonaut",
+        "assessed": false
+      }
+    ]
+  },
+  {
+    "trip": "bali-educational-adventure",
+    "day": 3,
+    "subject": "Sunrise Above the Volcano — Mount Batur ascent and crater rim",
+    "alt": "Sunrise over the caldera from the summit of Mount Batur",
+    "pick": {
+      "title": "File:Sunrise at Mt Batur, Bali.jpg",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Sunrise_at_Mt_Batur,_Bali.jpg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Sunrise_at_Mt_Batur%2C_Bali.jpg/1920px-Sunrise_at_Mt_Batur%2C_Bali.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 4032,
+      "height": 3024,
+      "mime": "image/jpeg",
+      "license": "cc-by-sa-4.0",
+      "licenseShort": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "Olderthangoogle",
+      "assessed": false
+    },
+    "runnersUp": [
+      {
+        "title": "File:Sunrise from Mount Batur.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Sunrise_from_Mount_Batur.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Sunrise_from_Mount_Batur.jpg/1920px-Sunrise_from_Mount_Batur.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 7173,
+        "height": 3862,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-4.0",
+        "licenseShort": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "author": "Aaron Rentfrew",
+        "assessed": false
+      },
+      {
+        "title": "File:Sunrise on Mount Batur - panoramio.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Sunrise_on_Mount_Batur_-_panoramio.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Sunrise_on_Mount_Batur_-_panoramio.jpg/1920px-Sunrise_on_Mount_Batur_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 4282,
+        "height": 2925,
+        "mime": "image/jpeg",
+        "license": "cc-by-3.0",
+        "licenseShort": "CC BY 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+        "author": "Alexey Komarov",
+        "assessed": false
+      },
+      {
+        "title": "File:Sunrise on Mount Batur - panoramio (4).jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Sunrise_on_Mount_Batur_-_panoramio_(4).jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Sunrise_on_Mount_Batur_-_panoramio_%284%29.jpg/1920px-Sunrise_on_Mount_Batur_-_panoramio_%284%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 4677,
+        "height": 3118,
+        "mime": "image/jpeg",
+        "license": "cc-by-3.0",
+        "licenseShort": "CC BY 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+        "author": "Alexey Komarov",
+        "assessed": false
+      }
+    ]
+  },
+  {
+    "trip": "bali-educational-adventure",
+    "day": 4,
+    "subject": "Subak Cycling and White Water — UNESCO rice terraces",
+    "alt": "Bali's terraced rice paddies, shaped by the UNESCO-listed Subak irrigation system",
+    "pick": {
+      "title": "File:Rice terraces, Bali.jpg",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Rice_terraces,_Bali.jpg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Rice_terraces%2C_Bali.jpg/1920px-Rice_terraces%2C_Bali.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 4032,
+      "height": 2688,
+      "mime": "image/jpeg",
+      "license": "cc-by-4.0",
+      "licenseShort": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "author": "Vyacheslav Argenberg",
+      "assessed": true
+    },
+    "runnersUp": [
+      {
+        "title": "File:Tegallalang rice terraces SF0001.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Tegallalang_rice_terraces_SF0001.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Tegallalang_rice_terraces_SF0001.jpg/1920px-Tegallalang_rice_terraces_SF0001.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 4032,
+        "height": 2268,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-4.0",
+        "licenseShort": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "author": "Stefan Fussan",
+        "assessed": false
+      },
+      {
+        "title": "File:Tegallalang Rice Terraces Bali.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Tegallalang_Rice_Terraces_Bali.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Tegallalang_Rice_Terraces_Bali.jpg/1920px-Tegallalang_Rice_Terraces_Bali.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 6016,
+        "height": 4000,
+        "mime": "image/jpeg",
+        "license": "cc-by-4.0",
+        "licenseShort": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "author": "Philip Nalangan",
+        "assessed": false
+      },
+      {
+        "title": "File:Tegallalang Rice Terraces Bali 1.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Tegallalang_Rice_Terraces_Bali_1.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Tegallalang_Rice_Terraces_Bali_1.jpg/1920px-Tegallalang_Rice_Terraces_Bali_1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 6016,
+        "height": 4000,
+        "mime": "image/jpeg",
+        "license": "cc-by-4.0",
+        "licenseShort": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "author": "Philip Nalangan",
+        "assessed": false
+      }
+    ]
+  },
+  {
+    "trip": "bali-educational-adventure",
+    "day": 5,
+    "subject": "Coast, Mangroves & Coral — marine conservation at Sanur Beach",
+    "alt": "Traditional boats on the calm shoreline at Sanur Beach, Bali",
+    "pick": {
+      "title": "File:Morning in Sanur Beach, Bali.jpg",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Morning_in_Sanur_Beach,_Bali.jpg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Morning_in_Sanur_Beach%2C_Bali.jpg/1920px-Morning_in_Sanur_Beach%2C_Bali.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 4128,
+      "height": 3096,
+      "mime": "image/jpeg",
+      "license": "cc-by-sa-4.0",
+      "licenseShort": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "Danangtrihartanto",
+      "assessed": false
+    },
+    "runnersUp": [
+      {
+        "title": "File:Sanur Beach, Bali, Indonesia - panoramio.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Sanur_Beach,_Bali,_Indonesia_-_panoramio.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Sanur_Beach%2C_Bali%2C_Indonesia_-_panoramio.jpg/1920px-Sanur_Beach%2C_Bali%2C_Indonesia_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 3888,
+        "height": 2592,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-3.0",
+        "licenseShort": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "author": "ronnie.muhadi",
+        "assessed": false
+      },
+      {
+        "title": "File:Sanur Beach, Bali, Indonesia - panoramio - ronnie.muhadi.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Sanur_Beach,_Bali,_Indonesia_-_panoramio_-_ronnie.muhadi.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Sanur_Beach%2C_Bali%2C_Indonesia_-_panoramio_-_ronnie.muhadi.jpg/1920px-Sanur_Beach%2C_Bali%2C_Indonesia_-_panoramio_-_ronnie.muhadi.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 3888,
+        "height": 2592,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-3.0",
+        "licenseShort": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "author": "ronnie.muhadi",
+        "assessed": false
+      },
+      {
+        "title": "File:Sanur Beach (boats).jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Sanur_Beach_(boats).jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Sanur_Beach_%28boats%29.jpg/1920px-Sanur_Beach_%28boats%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 2272,
+        "height": 1704,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-3.0",
+        "licenseShort": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "author": "Dan arndt (talk)",
+        "assessed": false
+      }
+    ]
+  },
+  {
+    "trip": "bali-educational-adventure",
+    "day": 6,
+    "subject": "A Final Taste of Bali — bargaining in a Kuta market",
+    "alt": "Stalls of Balinese handicrafts and produce at a traditional market",
+    "pick": {
+      "title": "File:Historic Jatki and Trzeci Ksiezyc Dwa Brzegi festival club, Kazimierz Dolny, June 2025, SOULinPIX 087.jpg",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Historic_Jatki_and_Trzeci_Ksiezyc_Dwa_Brzegi_festival_club,_Kazimierz_Dolny,_June_2025,_SOULinPIX_087.jpg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Historic_Jatki_and_Trzeci_Ksiezyc_Dwa_Brzegi_festival_club%2C_Kazimierz_Dolny%2C_June_2025%2C_SOULinPIX_087.jpg/1920px-Historic_Jatki_and_Trzeci_Ksiezyc_Dwa_Brzegi_festival_club%2C_Kazimierz_Dolny%2C_June_2025%2C_SOULinPIX_087.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 7008,
+      "height": 4672,
+      "mime": "image/jpeg",
+      "license": "cc-by-4.0",
+      "licenseShort": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "author": "Krzysztof Popławski",
+      "assessed": false
+    },
+    "runnersUp": []
+  },
+  {
+    "trip": "barcelona-art-trip",
+    "day": 5,
+    "subject": "Dalí's Surreal Figueres — the Dalí Theatre-Museum",
+    "alt": "The egg-topped red towers of the Dalí Theatre-Museum in Figueres",
+    "pick": {
+      "title": "File:Dali Theatre and Museum in Figueres (1).jpg",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Dali_Theatre_and_Museum_in_Figueres_(1).jpg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Dali_Theatre_and_Museum_in_Figueres_%281%29.jpg/1920px-Dali_Theatre_and_Museum_in_Figueres_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 4733,
+      "height": 3819,
+      "mime": "image/jpeg",
+      "license": "cc-by-sa-4.0",
+      "licenseShort": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "Krzysztof Golik",
+      "assessed": false
+    },
+    "runnersUp": [
+      {
+        "title": "File:Figueres - Teatre-Museu Dalí 0104.JPG",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Figueres_-_Teatre-Museu_Dal%C3%AD_0104.JPG",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Figueres_-_Teatre-Museu_Dal%C3%AD_0104.JPG/1920px-Figueres_-_Teatre-Museu_Dal%C3%AD_0104.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 2304,
+        "height": 1728,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-4.0",
+        "licenseShort": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "author": "Phyrexian",
+        "assessed": false
+      },
+      {
+        "title": "File:Figueres 2015 10 11 0392 (23181728535).jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Figueres_2015_10_11_0392_(23181728535).jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Figueres_2015_10_11_0392_%2823181728535%29.jpg/1920px-Figueres_2015_10_11_0392_%2823181728535%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 7360,
+        "height": 4912,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-2.0",
+        "licenseShort": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "author": "Harvey Barrison from Massapequa, NY, USA",
+        "assessed": false
+      },
+      {
+        "title": "File:Figueres 2015 10 11 3327 (22885970160).jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Figueres_2015_10_11_3327_(22885970160).jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Figueres_2015_10_11_3327_%2822885970160%29.jpg/1920px-Figueres_2015_10_11_3327_%2822885970160%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 3655,
+        "height": 2400,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-2.0",
+        "licenseShort": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "author": "Harvey Barrison from Massapequa, NY, USA",
+        "assessed": false
+      }
+    ]
+  },
+  {
+    "trip": "community-service-trip-to-cambodia",
+    "day": 6,
+    "subject": "Khmer Food, Friendship and Apsara Dance — Siem Reap",
+    "alt": "A classical Apsara dancer in traditional Khmer costume",
+    "pick": {
+      "title": "File:DKoehl Siem Reap Angkor Village Apsara Theatre 2023.jpg",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:DKoehl_Siem_Reap_Angkor_Village_Apsara_Theatre_2023.jpg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/DKoehl_Siem_Reap_Angkor_Village_Apsara_Theatre_2023.jpg/1920px-DKoehl_Siem_Reap_Angkor_Village_Apsara_Theatre_2023.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 4160,
+      "height": 3120,
+      "mime": "image/jpeg",
+      "license": "cc-by-3.0",
+      "licenseShort": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "author": "Dan Koehl",
+      "assessed": false
+    },
+    "runnersUp": [
+      {
+        "title": "File:Apsara dance Khmer Cambodian.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Apsara_dance_Khmer_Cambodian.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Apsara_dance_Khmer_Cambodian.jpg/1920px-Apsara_dance_Khmer_Cambodian.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 4080,
+        "height": 1836,
+        "mime": "image/jpeg",
+        "license": "cc-by-4.0",
+        "licenseShort": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "author": "MoonsMoon",
+        "assessed": false
+      },
+      {
+        "title": "File:Siem-Reap Khmer Dance of Cambodia in 2014 (1).jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Siem-Reap_Khmer_Dance_of_Cambodia_in_2014_(1).jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Siem-Reap_Khmer_Dance_of_Cambodia_in_2014_%281%29.jpg/1920px-Siem-Reap_Khmer_Dance_of_Cambodia_in_2014_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 3415,
+        "height": 2147,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-4.0",
+        "licenseShort": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "author": "Pierre André Leclercq",
+        "assessed": false
+      },
+      {
+        "title": "File:Featured Apsara Dancers Siem Reap 20091118 01.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Featured_Apsara_Dancers_Siem_Reap_20091118_01.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Featured_Apsara_Dancers_Siem_Reap_20091118_01.jpg/1920px-Featured_Apsara_Dancers_Siem_Reap_20091118_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 4288,
+        "height": 2848,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-4.0",
+        "licenseShort": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "author": "Viguent",
+        "assessed": false
+      }
+    ]
+  },
+  {
+    "trip": "florida-business-studies-trip",
+    "day": 3,
+    "subject": "Wildlife and the Road to Orlando — Jungle Island, Miami",
+    "alt": "Bright macaws like those met at Miami's Jungle Island",
+    "pick": {
+      "title": "File:Two different macaws -Jungle Island -Miami-6a.jpg",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Two_different_macaws_-Jungle_Island_-Miami-6a.jpg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Two_different_macaws_-Jungle_Island_-Miami-6a.jpg/1920px-Two_different_macaws_-Jungle_Island_-Miami-6a.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 3648,
+      "height": 2736,
+      "mime": "image/jpeg",
+      "license": "cc-by-sa-2.0",
+      "licenseShort": "CC BY-SA 2.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+      "author": "Keith Allison",
+      "assessed": false
+    },
+    "runnersUp": [
+      {
+        "title": "File:Aratinga solstitialis -Jungle Island -Miami -USA.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Aratinga_solstitialis_-Jungle_Island_-Miami_-USA.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Aratinga_solstitialis_-Jungle_Island_-Miami_-USA.jpg/1920px-Aratinga_solstitialis_-Jungle_Island_-Miami_-USA.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 2764,
+        "height": 1803,
+        "mime": "image/jpeg",
+        "license": "cc-by-2.0",
+        "licenseShort": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "author": "Richard",
+        "assessed": false
+      },
+      {
+        "title": "File:Ara hybrid -Jungle Island, Miami, Florida, USA -upper body-8a.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Ara_hybrid_-Jungle_Island,_Miami,_Florida,_USA_-upper_body-8a.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Ara_hybrid_-Jungle_Island%2C_Miami%2C_Florida%2C_USA_-upper_body-8a.jpg/1920px-Ara_hybrid_-Jungle_Island%2C_Miami%2C_Florida%2C_USA_-upper_body-8a.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 3872,
+        "height": 2592,
+        "mime": "image/jpeg",
+        "license": "cc-by-2.0",
+        "licenseShort": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "author": "Humberto Moreno",
+        "assessed": false
+      },
+      {
+        "title": "File:Amazona oratrix -Jungle Island, Miami, Florida, USA -upper body-8a.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Amazona_oratrix_-Jungle_Island,_Miami,_Florida,_USA_-upper_body-8a.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Amazona_oratrix_-Jungle_Island%2C_Miami%2C_Florida%2C_USA_-upper_body-8a.jpg/1920px-Amazona_oratrix_-Jungle_Island%2C_Miami%2C_Florida%2C_USA_-upper_body-8a.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 3872,
+        "height": 2592,
+        "mime": "image/jpeg",
+        "license": "cc-by-2.0",
+        "licenseShort": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "author": "Humberto Moreno",
+        "assessed": false
+      }
+    ]
+  },
+  {
+    "trip": "florida-business-studies-trip",
+    "day": 5,
+    "subject": "Magic Kingdom Adventures — Cinderella Castle and fireworks",
+    "alt": "Cinderella Castle at the heart of Walt Disney World's Magic Kingdom",
+    "pick": {
+      "title": "File:Cinderella Castle @ Magic Kingdom.jpg",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Cinderella_Castle_@_Magic_Kingdom.jpg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Cinderella_Castle_%40_Magic_Kingdom.jpg/1920px-Cinderella_Castle_%40_Magic_Kingdom.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 2848,
+      "height": 2134,
+      "mime": "image/jpeg",
+      "license": "cc-by-sa-3.0",
+      "licenseShort": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "author": "Rstoplabe14 Carlos Cruz",
+      "assessed": false
+    },
+    "runnersUp": [
+      {
+        "title": "File:Cinderella Castle, Magic Kingdom 2.JPG",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Cinderella_Castle,_Magic_Kingdom_2.JPG",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Cinderella_Castle%2C_Magic_Kingdom_2.JPG/1920px-Cinderella_Castle%2C_Magic_Kingdom_2.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 2272,
+        "height": 1704,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-3.0",
+        "licenseShort": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "author": "CyberXRef",
+        "assessed": false
+      },
+      {
+        "title": "File:Cinderella Castle, Magic Kingdom 4.JPG",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Cinderella_Castle,_Magic_Kingdom_4.JPG",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Cinderella_Castle%2C_Magic_Kingdom_4.JPG/1920px-Cinderella_Castle%2C_Magic_Kingdom_4.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 2272,
+        "height": 1704,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-3.0",
+        "licenseShort": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "author": "CyberXRef",
+        "assessed": false
+      },
+      {
+        "title": "File:Cinderella Castle, Magic Kingdom 5.JPG",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Cinderella_Castle,_Magic_Kingdom_5.JPG",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Cinderella_Castle%2C_Magic_Kingdom_5.JPG/1920px-Cinderella_Castle%2C_Magic_Kingdom_5.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 2272,
+        "height": 1704,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-3.0",
+        "licenseShort": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "author": "CyberXRef",
+        "assessed": false
+      }
+    ]
+  },
+  {
+    "trip": "florida-business-studies-trip",
+    "day": 6,
+    "subject": "Innovation Around the World — EPCOT, Spaceship Earth, World Showcase",
+    "alt": "The geodesic sphere of Spaceship Earth at EPCOT",
+    "pick": {
+      "title": "File:Spaceship Earth tiles (close).jpg",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Spaceship_Earth_tiles_(close).jpg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/3/33/Spaceship_Earth_tiles_%28close%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "width": 1600,
+      "height": 1200,
+      "mime": "image/jpeg",
+      "license": "cc-by-sa-4.0",
+      "licenseShort": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "Benjamin D. Esham (bdesham)",
+      "assessed": true
+    },
+    "runnersUp": [
+      {
+        "title": "File:Spaceship Earth at night.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Spaceship_Earth_at_night.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Spaceship_Earth_at_night.jpg/1920px-Spaceship_Earth_at_night.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 2399,
+        "height": 1920,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-4.0",
+        "licenseShort": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "author": "Benjamin D. Esham (bdesham)",
+        "assessed": true
+      },
+      {
+        "title": "File:Spaceship Earth 2.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Spaceship_Earth_2.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Spaceship_Earth_2.jpg/1920px-Spaceship_Earth_2.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 2401,
+        "height": 1920,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-4.0",
+        "licenseShort": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "author": "Katie Rommel-Esham (contact via bdesham)",
+        "assessed": false
+      },
+      {
+        "title": "File:Spaceship Earth at Epcot-1983.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Spaceship_Earth_at_Epcot-1983.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Spaceship_Earth_at_Epcot-1983.jpg/1920px-Spaceship_Earth_at_Epcot-1983.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 3100,
+        "height": 2102,
+        "mime": "image/jpeg",
+        "license": "cc-by-4.0",
+        "licenseShort": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "author": "Richard Guy Wilson",
+        "assessed": false
+      }
+    ]
+  },
+  {
+    "trip": "geography-trip-to-east-coast-usa",
+    "day": 5,
+    "subject": "Liberty Bell and Independence Hall — Philadelphia",
+    "alt": "Independence Hall in Philadelphia, where the Declaration and Constitution were debated",
+    "pick": {
+      "title": "File:Exterior of the Independence Hall, Aug 2019.jpg",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Exterior_of_the_Independence_Hall,_Aug_2019.jpg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Exterior_of_the_Independence_Hall%2C_Aug_2019.jpg/1920px-Exterior_of_the_Independence_Hall%2C_Aug_2019.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 5568,
+      "height": 3712,
+      "mime": "image/jpeg",
+      "license": "cc-by-sa-3.0",
+      "licenseShort": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "author": "Mys 721tx",
+      "assessed": false
+    },
+    "runnersUp": [
+      {
+        "title": "File:Independence Hall, Philadelphia 20240528.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Independence_Hall,_Philadelphia_20240528.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Independence_Hall%2C_Philadelphia_20240528.jpg/1920px-Independence_Hall%2C_Philadelphia_20240528.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 3840,
+        "height": 2560,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-4.0",
+        "licenseShort": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "author": "颐园居",
+        "assessed": false
+      },
+      {
+        "title": "File:Tourism at Independence Hall Philadelphia.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Tourism_at_Independence_Hall_Philadelphia.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Tourism_at_Independence_Hall_Philadelphia.jpg/1920px-Tourism_at_Independence_Hall_Philadelphia.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 3996,
+        "height": 2969,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-4.0",
+        "licenseShort": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "author": "Myotus",
+        "assessed": false
+      },
+      {
+        "title": "File:Independence Hall 008.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Independence_Hall_008.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Independence_Hall_008.jpg/1920px-Independence_Hall_008.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 6000,
+        "height": 4000,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-4.0",
+        "licenseShort": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "author": "Foolish Productions Photography",
+        "assessed": false
+      }
+    ]
+  },
+  {
+    "trip": "jordan",
+    "day": 5,
+    "subject": "Mosaics, Mount Nebo & the Dead Sea",
+    "alt": "The still blue water and salt-crusted shore of the Dead Sea",
+    "pick": {
+      "title": "File:Dead Sea, Jordan 02.jpg",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Dead_Sea,_Jordan_02.jpg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Dead_Sea%2C_Jordan_02.jpg/1920px-Dead_Sea%2C_Jordan_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 3456,
+      "height": 2592,
+      "mime": "image/jpeg",
+      "license": "cc-by-sa-3.0",
+      "licenseShort": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "author": "Bernard Gagnon",
+      "assessed": true
+    },
+    "runnersUp": [
+      {
+        "title": "File:Dead Sea sunrise.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Dead_Sea_sunrise.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Dead_Sea_sunrise.jpg/1920px-Dead_Sea_sunrise.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 2360,
+        "height": 1090,
+        "mime": "image/jpeg",
+        "license": "cc-by-3.0-de",
+        "licenseShort": "CC BY 3.0 de",
+        "licenseUrl": "https://creativecommons.org/licenses/by/3.0/de/deed.en",
+        "author": "High Contrast",
+        "assessed": true
+      },
+      {
+        "title": "File:Bethany, Jericho, Dead Sea, and Jordan. Dead Sea shore. (Castle-like erosion formations) LOC matpc.21992.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Bethany,_Jericho,_Dead_Sea,_and_Jordan._Dead_Sea_shore._(Castle-like_erosion_formations)_LOC_matpc.21992.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Bethany%2C_Jericho%2C_Dead_Sea%2C_and_Jordan._Dead_Sea_shore._%28Castle-like_erosion_formations%29_LOC_matpc.21992.jpg/1920px-Bethany%2C_Jericho%2C_Dead_Sea%2C_and_Jordan._Dead_Sea_shore._%28Castle-like_erosion_formations%29_LOC_matpc.21992.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 4620,
+        "height": 3486,
+        "mime": "image/jpeg",
+        "license": "pd",
+        "licenseShort": "Public domain",
+        "licenseUrl": null,
+        "author": "Matson Collection",
+        "assessed": false
+      },
+      {
+        "title": "File:Dead Sea, Jordanian Shore.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Dead_Sea,_Jordanian_Shore.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Dead_Sea%2C_Jordanian_Shore.jpg/1920px-Dead_Sea%2C_Jordanian_Shore.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 2048,
+        "height": 1536,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-4.0",
+        "licenseShort": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "author": "Alexandermcnabb",
+        "assessed": false
+      }
+    ]
+  },
+  {
+    "trip": "kenya-children-care-volunteering",
+    "day": 5,
+    "subject": "One Final Safari & Farewell — sunrise game drive, Masai Mara",
+    "alt": "First light over the golden plains of the Masai Mara",
+    "pick": {
+      "title": "File:Maasai Mara National Reserve Kenya.jpg",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Maasai_Mara_National_Reserve_Kenya.jpg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/5/57/Maasai_Mara_National_Reserve_Kenya.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "width": 1500,
+      "height": 1000,
+      "mime": "image/jpeg",
+      "license": "cc-by-sa-4.0",
+      "licenseShort": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "Svein-Magne Tunli - tunliweb.no",
+      "assessed": false
+    },
+    "runnersUp": [
+      {
+        "title": "File:Maasai Mara Game reserve.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Maasai_Mara_Game_reserve.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Maasai_Mara_Game_reserve.jpg/1920px-Maasai_Mara_Game_reserve.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 5184,
+        "height": 3456,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-4.0",
+        "licenseShort": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "author": "Brian Gitonga",
+        "assessed": false
+      },
+      {
+        "title": "File:Sun rise at Maasai MARA.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Sun_rise_at_Maasai_MARA.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Sun_rise_at_Maasai_MARA.jpg/1920px-Sun_rise_at_Maasai_MARA.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 5184,
+        "height": 3456,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-4.0",
+        "licenseShort": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "author": "Brian Gitonga",
+        "assessed": false
+      },
+      {
+        "title": "File:Sunrise with trees silhouette in the maasai mara.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Sunrise_with_trees_silhouette_in_the_maasai_mara.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Sunrise_with_trees_silhouette_in_the_maasai_mara.jpg/1920px-Sunrise_with_trees_silhouette_in_the_maasai_mara.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 6000,
+        "height": 4000,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-4.0",
+        "licenseShort": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "author": "Bett Duncan",
+        "assessed": false
+      }
+    ]
+  },
+  {
+    "trip": "mongolia-life-on-the-steppe",
+    "day": 3,
+    "subject": "Kharakhorum: Empires & Living Crafts — Erdene Zuu Monastery",
+    "alt": "The white stupa walls of Erdene Zuu Monastery at Kharakhorum",
+    "pick": {
+      "title": "File:Złota Stupa w klasztorze Erdene Dzuu 01.jpg",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Z%C5%82ota_Stupa_w_klasztorze_Erdene_Dzuu_01.jpg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Z%C5%82ota_Stupa_w_klasztorze_Erdene_Dzuu_01.jpg/1920px-Z%C5%82ota_Stupa_w_klasztorze_Erdene_Dzuu_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 2980,
+      "height": 1987,
+      "mime": "image/jpeg",
+      "license": "cc-by-sa-4.0",
+      "licenseShort": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "Marcin Konsek",
+      "assessed": true
+    },
+    "runnersUp": [
+      {
+        "title": "File:Erdene Zuu Monastery 08.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Erdene_Zuu_Monastery_08.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Erdene_Zuu_Monastery_08.jpg/1920px-Erdene_Zuu_Monastery_08.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 4702,
+        "height": 3135,
+        "mime": "image/jpeg",
+        "license": "cc0",
+        "licenseShort": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "author": "Bernard Gagnon",
+        "assessed": true
+      },
+      {
+        "title": "File:Erdene Zuu Monastery 06.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Erdene_Zuu_Monastery_06.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Erdene_Zuu_Monastery_06.jpg/1920px-Erdene_Zuu_Monastery_06.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 4770,
+        "height": 3180,
+        "mime": "image/jpeg",
+        "license": "cc0",
+        "licenseShort": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "author": "Bernard Gagnon",
+        "assessed": true
+      },
+      {
+        "title": "File:Sklep z pamiątkami i muzeum w klasztorze Erdene Dzuu 01.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Sklep_z_pami%C4%85tkami_i_muzeum_w_klasztorze_Erdene_Dzuu_01.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Sklep_z_pami%C4%85tkami_i_muzeum_w_klasztorze_Erdene_Dzuu_01.jpg/1920px-Sklep_z_pami%C4%85tkami_i_muzeum_w_klasztorze_Erdene_Dzuu_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 2792,
+        "height": 1860,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-4.0",
+        "licenseShort": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "author": "Marcin Konsek",
+        "assessed": true
+      }
+    ]
+  },
+  {
+    "trip": "mongolia-life-on-the-steppe",
+    "day": 4,
+    "subject": "Sand Dunes, Camels & Wild Horses — Elsen Tasarkhai, Khustai takhi",
+    "alt": "Takhi — Przewalski's wild horses — grazing the Mongolian steppe at Khustai",
+    "pick": {
+      "title": "File:Herders. in Khustain Nuruu National Park (Mongolia) (2).jpg",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Herders._in_Khustain_Nuruu_National_Park_(Mongolia)_(2).jpg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Herders._in_Khustain_Nuruu_National_Park_%28Mongolia%29_%282%29.jpg/1920px-Herders._in_Khustain_Nuruu_National_Park_%28Mongolia%29_%282%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 4000,
+      "height": 1758,
+      "mime": "image/jpeg",
+      "license": "cc-by-4.0",
+      "licenseShort": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "author": "Pierre André Leclercq",
+      "assessed": true
+    },
+    "runnersUp": [
+      {
+        "title": "File:Mongolie Reserve Khustain Nuruu National Park (3).jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Mongolie_Reserve_Khustain_Nuruu_National_Park_(3).jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Mongolie_Reserve_Khustain_Nuruu_National_Park_%283%29.jpg/1920px-Mongolie_Reserve_Khustain_Nuruu_National_Park_%283%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 4000,
+        "height": 3000,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-4.0",
+        "licenseShort": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "author": "PIERRE ANDRE LECLERCQ",
+        "assessed": true
+      },
+      {
+        "title": "File:Khustain Nuruu National Park (7).JPG",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Khustain_Nuruu_National_Park_(7).JPG",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Khustain_Nuruu_National_Park_%287%29.JPG/1920px-Khustain_Nuruu_National_Park_%287%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 4000,
+        "height": 3000,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-4.0",
+        "licenseShort": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "author": "Pierre André Leclercq",
+        "assessed": true
+      },
+      {
+        "title": "File:Mongolian Wild Horse (8368865828).jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Mongolian_Wild_Horse_(8368865828).jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Mongolian_Wild_Horse_%288368865828%29.jpg/1920px-Mongolian_Wild_Horse_%288368865828%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 2048,
+        "height": 1536,
+        "mime": "image/jpeg",
+        "license": "cc-by-2.0",
+        "licenseShort": "CC BY 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/2.0",
+        "author": "A. Omer Karamollaoglu from Ankara, Turkey",
+        "assessed": false
+      }
+    ]
+  },
+  {
+    "trip": "mongolia-life-on-the-steppe",
+    "day": 7,
+    "subject": "Departure — a final Mongolian morning in Ulaanbaatar",
+    "alt": "Sükhbaatar Square at the centre of Ulaanbaatar on a clear morning",
+    "pick": {
+      "title": "File:Sükhbaatar Square.jpg",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:S%C3%BCkhbaatar_Square.jpg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/S%C3%BCkhbaatar_Square.jpg/1920px-S%C3%BCkhbaatar_Square.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 3792,
+      "height": 2208,
+      "mime": "image/jpeg",
+      "license": "cc0",
+      "licenseShort": "CC0",
+      "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "author": "Bernard Gagnon",
+      "assessed": true
+    },
+    "runnersUp": [
+      {
+        "title": "File:Sükhbaatar Square Ulaanbaatar July 2013.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:S%C3%BCkhbaatar_Square_Ulaanbaatar_July_2013.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/S%C3%BCkhbaatar_Square_Ulaanbaatar_July_2013.jpg/1920px-S%C3%BCkhbaatar_Square_Ulaanbaatar_July_2013.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 2592,
+        "height": 1456,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-3.0",
+        "licenseShort": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "author": "Krokus",
+        "assessed": false
+      },
+      {
+        "title": "File:New Years Decorations at Sukhbaatar Square.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:New_Years_Decorations_at_Sukhbaatar_Square.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/New_Years_Decorations_at_Sukhbaatar_Square.jpg/1920px-New_Years_Decorations_at_Sukhbaatar_Square.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 4752,
+        "height": 3168,
+        "mime": "image/jpeg",
+        "license": "cc-by-4.0",
+        "licenseShort": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "author": "Chinneeb",
+        "assessed": false
+      },
+      {
+        "title": "File:2024-10-18 Ulaanbaatar, Sükhbaatar Square.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:2024-10-18_Ulaanbaatar,_S%C3%BCkhbaatar_Square.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/2024-10-18_Ulaanbaatar%2C_S%C3%BCkhbaatar_Square.jpg/1920px-2024-10-18_Ulaanbaatar%2C_S%C3%BCkhbaatar_Square.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 5086,
+        "height": 3390,
+        "mime": "image/jpeg",
+        "license": "cc-by-4.0",
+        "licenseShort": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "author": "Alexkom000",
+        "assessed": false
+      }
+    ]
+  },
+  {
+    "trip": "musical-trip-to-vienna",
+    "day": 4,
+    "subject": "Salzburg and the Story of Mozart — old town beneath the fortress",
+    "alt": "Salzburg's church towers and old town beneath the Hohensalzburg fortress",
+    "pick": {
+      "title": "File:Old Town Salzburg across the Salzach river.jpg",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Old_Town_Salzburg_across_the_Salzach_river.jpg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Old_Town_Salzburg_across_the_Salzach_river.jpg/1920px-Old_Town_Salzburg_across_the_Salzach_river.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 5538,
+      "height": 3692,
+      "mime": "image/jpeg",
+      "license": "cc-by-sa-3.0",
+      "licenseShort": "CC BY-SA 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+      "author": "Jiuguang Wang",
+      "assessed": true
+    },
+    "runnersUp": [
+      {
+        "title": "File:Salzburg pano 2659-18-3246-1.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Salzburg_pano_2659-18-3246-1.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Salzburg_pano_2659-18-3246-1.jpg/1920px-Salzburg_pano_2659-18-3246-1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 7199,
+        "height": 3246,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-4.0",
+        "licenseShort": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "author": "Isiwal",
+        "assessed": true
+      },
+      {
+        "title": "File:Old Town Salzburg across the Salzach river1.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Old_Town_Salzburg_across_the_Salzach_river1.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Old_Town_Salzburg_across_the_Salzach_river1.jpg/1920px-Old_Town_Salzburg_across_the_Salzach_river1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 5539,
+        "height": 3693,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-2.0",
+        "licenseShort": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "author": "Jiuguang Wang",
+        "assessed": false
+      },
+      {
+        "title": "File:View of Salzburg town from Salzburg Fortress.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:View_of_Salzburg_town_from_Salzburg_Fortress.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/View_of_Salzburg_town_from_Salzburg_Fortress.jpg/1920px-View_of_Salzburg_town_from_Salzburg_Fortress.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 4278,
+        "height": 2674,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-2.0",
+        "licenseShort": "CC BY-SA 2.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0",
+        "author": "mendhak",
+        "assessed": false
+      }
+    ]
+  },
+  {
+    "trip": "salalah-oman",
+    "day": 3,
+    "subject": "Across the Empty Quarter — dunes, Shisr and desert stars",
+    "alt": "Wind-sculpted dunes of the Rub' al Khali, the Empty Quarter",
+    "pick": {
+      "title": "File:Uruq Bani Ma'arid Reserve, Saudi Arabia (2025).jpg",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Uruq_Bani_Ma%27arid_Reserve,_Saudi_Arabia_(2025).jpg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Uruq_Bani_Ma%27arid_Reserve%2C_Saudi_Arabia_%282025%29.jpg/1920px-Uruq_Bani_Ma%27arid_Reserve%2C_Saudi_Arabia_%282025%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 7680,
+      "height": 4691,
+      "mime": "image/jpeg",
+      "license": "cc-by-sa-4.0",
+      "licenseShort": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "Saudi Press Agency (SPA)",
+      "assessed": true
+    },
+    "runnersUp": [
+      {
+        "title": "File:Rub al Khali 002.JPG",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Rub_al_Khali_002.JPG",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Rub_al_Khali_002.JPG/1920px-Rub_al_Khali_002.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 3553,
+        "height": 1987,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-3.0",
+        "licenseShort": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "author": "Nepenthes",
+        "assessed": false
+      },
+      {
+        "title": "File:Ar-Rub' Al-Khali (Oman) kz03.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Ar-Rub%27_Al-Khali_(Oman)_kz03.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Ar-Rub%27_Al-Khali_%28Oman%29_kz03.jpg/1920px-Ar-Rub%27_Al-Khali_%28Oman%29_kz03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 8032,
+        "height": 6024,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-4.0",
+        "licenseShort": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "author": "Krzysztof Ziarnek, Kenraiz",
+        "assessed": false
+      },
+      {
+        "title": "File:Ar-Rub' Al-Khali (Oman) kz01.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Ar-Rub%27_Al-Khali_(Oman)_kz01.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Ar-Rub%27_Al-Khali_%28Oman%29_kz01.jpg/1920px-Ar-Rub%27_Al-Khali_%28Oman%29_kz01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 7749,
+        "height": 5812,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-4.0",
+        "licenseShort": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "author": "Krzysztof Ziarnek, Kenraiz",
+        "assessed": false
+      }
+    ]
+  },
+  {
+    "trip": "service-learning-cape-town",
+    "day": 3,
+    "subject": "Apartheid Histories and Robben Island",
+    "alt": "The former prison on Robben Island, where Nelson Mandela was held",
+    "pick": {
+      "title": "File:Maximum Security Prison, Robben Island (02).jpg",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Maximum_Security_Prison,_Robben_Island_(02).jpg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Maximum_Security_Prison%2C_Robben_Island_%2802%29.jpg/1920px-Maximum_Security_Prison%2C_Robben_Island_%2802%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 3872,
+      "height": 2574,
+      "mime": "image/jpeg",
+      "license": "cc-by-sa-4.0",
+      "licenseShort": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "Moheen Reeyad",
+      "assessed": true
+    },
+    "runnersUp": [
+      {
+        "title": "File:B-Section courtyard, Maximum Security Prison, Robben Island (01).jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:B-Section_courtyard,_Maximum_Security_Prison,_Robben_Island_(01).jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/B-Section_courtyard%2C_Maximum_Security_Prison%2C_Robben_Island_%2801%29.jpg/1920px-B-Section_courtyard%2C_Maximum_Security_Prison%2C_Robben_Island_%2801%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 3872,
+        "height": 2574,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-4.0",
+        "licenseShort": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "author": "Moheen Reeyad",
+        "assessed": true
+      },
+      {
+        "title": "File:B-Section, Maximum Security Prison, Robben Island (01).jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:B-Section,_Maximum_Security_Prison,_Robben_Island_(01).jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/B-Section%2C_Maximum_Security_Prison%2C_Robben_Island_%2801%29.jpg/1920px-B-Section%2C_Maximum_Security_Prison%2C_Robben_Island_%2801%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 3872,
+        "height": 2574,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-4.0",
+        "licenseShort": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "author": "Moheen Reeyad",
+        "assessed": true
+      },
+      {
+        "title": "File:Communal toilets, Maximum Security Prison, Robben Island (01).jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Communal_toilets,_Maximum_Security_Prison,_Robben_Island_(01).jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Communal_toilets%2C_Maximum_Security_Prison%2C_Robben_Island_%2801%29.jpg/1920px-Communal_toilets%2C_Maximum_Security_Prison%2C_Robben_Island_%2801%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 3872,
+        "height": 2574,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-4.0",
+        "licenseShort": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "author": "Moheen Reeyad",
+        "assessed": true
+      }
+    ]
+  },
+  {
+    "trip": "steam-educational-trip-to-orlando",
+    "day": 6,
+    "subject": "Wild Florida Airboat Adventure — Everglades headwaters, Boggy Creek",
+    "alt": "An airboat skimming the sawgrass of the Everglades headwaters",
+    "pick": {
+      "title": "File:Everglades Holiday Park Airboat.jpg",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Everglades_Holiday_Park_Airboat.jpg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/6/64/Everglades_Holiday_Park_Airboat.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+      "width": 1200,
+      "height": 800,
+      "mime": "image/jpeg",
+      "license": "cc-by-sa-4.0",
+      "licenseShort": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "Garytroutt",
+      "assessed": false
+    },
+    "runnersUp": [
+      {
+        "title": "File:Miami everglades airboat tourism.JPG",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Miami_everglades_airboat_tourism.JPG",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Miami_everglades_airboat_tourism.JPG/1920px-Miami_everglades_airboat_tourism.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 4288,
+        "height": 2848,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-4.0",
+        "licenseShort": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "author": "chensiyuan",
+        "assessed": false
+      },
+      {
+        "title": "File:Airboat in the Everglades - panoramio.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Airboat_in_the_Everglades_-_panoramio.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Airboat_in_the_Everglades_-_panoramio.jpg/1920px-Airboat_in_the_Everglades_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 3008,
+        "height": 2000,
+        "mime": "image/jpeg",
+        "license": "cc-by-3.0",
+        "licenseShort": "CC BY 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+        "author": "qwesy qwesy",
+        "assessed": false
+      },
+      {
+        "title": "File:Airboat near Everglades City - panoramio.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Airboat_near_Everglades_City_-_panoramio.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Airboat_near_Everglades_City_-_panoramio.jpg/1920px-Airboat_near_Everglades_City_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 2936,
+        "height": 1886,
+        "mime": "image/jpeg",
+        "license": "cc-by-3.0",
+        "licenseShort": "CC BY 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+        "author": "qwesy qwesy",
+        "assessed": false
+      }
+    ]
+  },
+  {
+    "trip": "steam-educational-trip-to-orlando",
+    "day": 7,
+    "subject": "Manatees of Crystal River — snorkelling in the springs",
+    "alt": "A Florida manatee drifting through the clear spring water of Crystal River",
+    "pick": {
+      "title": "File:Manatee in crystal river.JPG",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Manatee_in_crystal_river.JPG",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Manatee_in_crystal_river.JPG/1920px-Manatee_in_crystal_river.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 3264,
+      "height": 2448,
+      "mime": "image/jpeg",
+      "license": "cc-by-sa-4.0",
+      "licenseShort": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "Robxwiki",
+      "assessed": false
+    },
+    "runnersUp": [
+      {
+        "title": "File:Crystal River Manatees - panoramio.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Crystal_River_Manatees_-_panoramio.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Crystal_River_Manatees_-_panoramio.jpg/1920px-Crystal_River_Manatees_-_panoramio.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 3526,
+        "height": 2598,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-3.0",
+        "licenseShort": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "author": "Art Anderson",
+        "assessed": false
+      },
+      {
+        "title": "File:Crystal River NWR.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Crystal_River_NWR.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e1/Crystal_River_NWR.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "width": 1600,
+        "height": 1200,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-3.0",
+        "licenseShort": "CC BY-SA 3.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0",
+        "author": "Elkman",
+        "assessed": false
+      },
+      {
+        "title": "File:Florida Manatee FWS 23.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Florida_Manatee_FWS_23.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Florida_Manatee_FWS_23.jpg/1920px-Florida_Manatee_FWS_23.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 3000,
+        "height": 2000,
+        "mime": "image/jpeg",
+        "license": "pd",
+        "licenseShort": "Public domain",
+        "licenseUrl": null,
+        "author": "Keith Ramos / USFWS",
+        "assessed": false
+      }
+    ]
+  },
+  {
+    "trip": "mathematics-trip",
+    "day": 5,
+    "subject": "Semmering Alpine Pass — UNESCO mountain railway (trip still in draft)",
+    "alt": "A viaduct of the UNESCO-listed Semmering Railway threading the Eastern Alps",
+    "pick": {
+      "title": "File:Steinhaus am Semmering - Semmeringbahn - Steinhausviadukt.jpg",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Steinhaus_am_Semmering_-_Semmeringbahn_-_Steinhausviadukt.jpg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Steinhaus_am_Semmering_-_Semmeringbahn_-_Steinhausviadukt.jpg/1920px-Steinhaus_am_Semmering_-_Semmeringbahn_-_Steinhausviadukt.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 3550,
+      "height": 2663,
+      "mime": "image/jpeg",
+      "license": "cc-by-sa-3.0-at",
+      "licenseShort": "CC BY-SA 3.0 at",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/at/deed.en",
+      "author": "Häferl",
+      "assessed": false
+    },
+    "runnersUp": [
+      {
+        "title": "File:Huts beside the Semmering Railway, Austria (2026).jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Huts_beside_the_Semmering_Railway,_Austria_(2026).jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Huts_beside_the_Semmering_Railway%2C_Austria_%282026%29.jpg/1920px-Huts_beside_the_Semmering_Railway%2C_Austria_%282026%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 4032,
+        "height": 3024,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-4.0",
+        "licenseShort": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "author": "Max263",
+        "assessed": false
+      },
+      {
+        "title": "File:Steinhausviadukt.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Steinhausviadukt.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Steinhausviadukt.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "width": 1497,
+        "height": 1063,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-3.0",
+        "licenseShort": "CC BY-SA 3.0",
+        "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
+        "author": "Wolfgang Wallner",
+        "assessed": false
+      },
+      {
+        "title": "File:2020-05-24 Semmering railway viaduct restoration monument.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:2020-05-24_Semmering_railway_viaduct_restoration_monument.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/2020-05-24_Semmering_railway_viaduct_restoration_monument.jpg/1920px-2020-05-24_Semmering_railway_viaduct_restoration_monument.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 4608,
+        "height": 3456,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-4.0",
+        "licenseShort": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "author": "Rosso Robot",
+        "assessed": false
+      }
+    ]
+  }
+]
