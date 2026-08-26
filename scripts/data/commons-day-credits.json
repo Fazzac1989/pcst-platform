@@ -178,5 +178,125 @@
     "author": "Benjamin D. Esham (bdesham)",
     "license": "CC BY-SA 4.0",
     "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+    "trip": "geography-trip-to-east-coast-usa",
+    "day": 5,
+    "storagePath": "commons-fill/days/geography-trip-to-east-coast-usa/day05.jpg",
+    "file": "File:Exterior of the Independence Hall, Aug 2019.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Exterior_of_the_Independence_Hall,_Aug_2019.jpg",
+    "author": "Mys 721tx",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+  },
+  {
+    "trip": "jordan",
+    "day": 5,
+    "storagePath": "commons-fill/days/jordan/day05.jpg",
+    "file": "File:Dead Sea, Jordan 02.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Dead_Sea,_Jordan_02.jpg",
+    "author": "Bernard Gagnon",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+  },
+  {
+    "trip": "kenya-children-care-volunteering",
+    "day": 5,
+    "storagePath": "commons-fill/days/kenya-children-care-volunteering/day05.jpg",
+    "file": "File:Maasai Mara National Reserve Kenya.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Maasai_Mara_National_Reserve_Kenya.jpg",
+    "author": "Svein-Magne Tunli - tunliweb.no",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+    "trip": "mongolia-life-on-the-steppe",
+    "day": 3,
+    "storagePath": "commons-fill/days/mongolia-life-on-the-steppe/day03.jpg",
+    "file": "File:Złota Stupa w klasztorze Erdene Dzuu 01.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Z%C5%82ota_Stupa_w_klasztorze_Erdene_Dzuu_01.jpg",
+    "author": "Marcin Konsek",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+    "trip": "mongolia-life-on-the-steppe",
+    "day": 4,
+    "storagePath": "commons-fill/days/mongolia-life-on-the-steppe/day04.jpg",
+    "file": "File:Herders. in Khustain Nuruu National Park (Mongolia) (2).jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Herders._in_Khustain_Nuruu_National_Park_(Mongolia)_(2).jpg",
+    "author": "Pierre André Leclercq",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0"
+  },
+  {
+    "trip": "mongolia-life-on-the-steppe",
+    "day": 7,
+    "storagePath": "commons-fill/days/mongolia-life-on-the-steppe/day07.jpg",
+    "file": "File:Sükhbaatar Square.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:S%C3%BCkhbaatar_Square.jpg",
+    "author": "Bernard Gagnon",
+    "license": "CC0",
+    "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en"
+  },
+  {
+    "trip": "musical-trip-to-vienna",
+    "day": 4,
+    "storagePath": "commons-fill/days/musical-trip-to-vienna/day04.jpg",
+    "file": "File:Old Town Salzburg across the Salzach river.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Old_Town_Salzburg_across_the_Salzach_river.jpg",
+    "author": "Jiuguang Wang",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+  },
+  {
+    "trip": "salalah-oman",
+    "day": 3,
+    "storagePath": "commons-fill/days/salalah-oman/day03.jpg",
+    "file": "File:Uruq Bani Ma'arid Reserve, Saudi Arabia (2025).jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Uruq_Bani_Ma%27arid_Reserve,_Saudi_Arabia_(2025).jpg",
+    "author": "Saudi Press Agency (SPA)",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+    "trip": "service-learning-cape-town",
+    "day": 3,
+    "storagePath": "commons-fill/days/service-learning-cape-town/day03.jpg",
+    "file": "File:Maximum Security Prison, Robben Island (02).jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Maximum_Security_Prison,_Robben_Island_(02).jpg",
+    "author": "Moheen Reeyad",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+    "trip": "steam-educational-trip-to-orlando",
+    "day": 6,
+    "storagePath": "commons-fill/days/steam-educational-trip-to-orlando/day06.jpg",
+    "file": "File:Everglades Holiday Park Airboat.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Everglades_Holiday_Park_Airboat.jpg",
+    "author": "Garytroutt",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+    "trip": "steam-educational-trip-to-orlando",
+    "day": 7,
+    "storagePath": "commons-fill/days/steam-educational-trip-to-orlando/day07.jpg",
+    "file": "File:Manatee in crystal river.JPG",
+    "source": "https://commons.wikimedia.org/wiki/File:Manatee_in_crystal_river.JPG",
+    "author": "Robxwiki",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+    "trip": "mathematics-trip",
+    "day": 5,
+    "storagePath": "commons-fill/days/mathematics-trip/day05.jpg",
+    "file": "File:Steinhaus am Semmering - Semmeringbahn - Steinhausviadukt.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Steinhaus_am_Semmering_-_Semmeringbahn_-_Steinhausviadukt.jpg",
+    "author": "Häferl",
+    "license": "CC BY-SA 3.0 at",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/at/deed.en"
   }
 ]
