@@ -1,0 +1,182 @@
+[
+  {
+    "trip": "adventure-trip-to-new-zealand",
+    "day": 5,
+    "storagePath": "commons-fill/days/adventure-trip-to-new-zealand/day05.jpg",
+    "file": "File:Apteryx mantelli -Rotorua, North Island, New Zealand-8a.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Apteryx_mantelli_-Rotorua,_North_Island,_New_Zealand-8a.jpg",
+    "author": "The.Rohit",
+    "license": "CC BY 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/2.0"
+  },
+  {
+    "trip": "adventure-trip-to-new-zealand",
+    "day": 8,
+    "storagePath": "commons-fill/days/adventure-trip-to-new-zealand/day08.jpg",
+    "file": "File:Cathedral Cove 06.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Cathedral_Cove_06.jpg",
+    "author": "Krzysztof Golik",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+    "trip": "an-australian-adventure",
+    "day": 5,
+    "storagePath": "commons-fill/days/an-australian-adventure/day05.jpg",
+    "file": "File:Two Eastern grey kangaroos crouching in grass - DPLA - 620d73d0af48098f44b750f88ce29cac.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Two_Eastern_grey_kangaroos_crouching_in_grass_-_DPLA_-_620d73d0af48098f44b750f88ce29cac.jpg",
+    "author": "Garst, Warren, 1922-2016, photographer",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+    "trip": "an-australian-adventure",
+    "day": 7,
+    "storagePath": "commons-fill/days/an-australian-adventure/day07.jpg",
+    "file": "File:Train at Currumbin Wildlife Sanctuary, Gold Coast, Queensland, Australia.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Train_at_Currumbin_Wildlife_Sanctuary,_Gold_Coast,_Queensland,_Australia.jpg",
+    "author": "Jack Bain",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0"
+  },
+  {
+    "trip": "art-culture-study-tour-seoul",
+    "day": 3,
+    "storagePath": "commons-fill/days/art-culture-study-tour-seoul/day03.jpg",
+    "file": "File:Library in Seoul (53608020746).jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Library_in_Seoul_(53608020746).jpg",
+    "author": "chsyang",
+    "license": "Public domain",
+    "licenseUrl": null
+  },
+  {
+    "trip": "art-culture-study-tour-seoul",
+    "day": 4,
+    "storagePath": "commons-fill/days/art-culture-study-tour-seoul/day04.jpg",
+    "file": "File:20240602 075300 DMZ Imjingak 08.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:20240602_075300_DMZ_Imjingak_08.jpg",
+    "author": "Dwxn",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+    "trip": "art-culture-study-tour-seoul",
+    "day": 6,
+    "storagePath": "commons-fill/days/art-culture-study-tour-seoul/day06.jpg",
+    "file": "File:Lotte World morning view 8.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Lotte_World_morning_view_8.jpg",
+    "author": "kallerna",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+    "trip": "art-culture-study-tour-seoul",
+    "day": 7,
+    "storagePath": "commons-fill/days/art-culture-study-tour-seoul/day07.jpg",
+    "file": "File:N Seoul Tower view 2.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:N_Seoul_Tower_view_2.jpg",
+    "author": "kallerna",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+    "trip": "bali-educational-adventure",
+    "day": 2,
+    "storagePath": "commons-fill/days/bali-educational-adventure/day02.jpg",
+    "file": "File:Padangbai aerial 2026 02.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Padangbai_aerial_2026_02.jpg",
+    "author": "FBilula",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0"
+  },
+  {
+    "trip": "bali-educational-adventure",
+    "day": 3,
+    "storagePath": "commons-fill/days/bali-educational-adventure/day03.jpg",
+    "file": "File:Sunrise at Mt Batur, Bali.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Sunrise_at_Mt_Batur,_Bali.jpg",
+    "author": "Olderthangoogle",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+    "trip": "bali-educational-adventure",
+    "day": 4,
+    "storagePath": "commons-fill/days/bali-educational-adventure/day04.jpg",
+    "file": "File:Rice terraces, Bali.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Rice_terraces,_Bali.jpg",
+    "author": "Vyacheslav Argenberg",
+    "license": "CC BY 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0"
+  },
+  {
+    "trip": "bali-educational-adventure",
+    "day": 5,
+    "storagePath": "commons-fill/days/bali-educational-adventure/day05.jpg",
+    "file": "File:Morning in Sanur Beach, Bali.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Morning_in_Sanur_Beach,_Bali.jpg",
+    "author": "Danangtrihartanto",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+    "trip": "bali-educational-adventure",
+    "day": 6,
+    "storagePath": "commons-fill/days/bali-educational-adventure/day06.jpg",
+    "file": "File:Ubud Bali Indonesia The Market.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Ubud_Bali_Indonesia_The_Market.jpg",
+    "author": "tinofrey",
+    "license": "Public domain",
+    "licenseUrl": null
+  },
+  {
+    "trip": "barcelona-art-trip",
+    "day": 5,
+    "storagePath": "commons-fill/days/barcelona-art-trip/day05.jpg",
+    "file": "File:Dali Theatre and Museum in Figueres (1).jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Dali_Theatre_and_Museum_in_Figueres_(1).jpg",
+    "author": "Krzysztof Golik",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+  },
+  {
+    "trip": "community-service-trip-to-cambodia",
+    "day": 6,
+    "storagePath": "commons-fill/days/community-service-trip-to-cambodia/day06.jpg",
+    "file": "File:DKoehl Siem Reap Angkor Village Apsara Theatre 2023.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:DKoehl_Siem_Reap_Angkor_Village_Apsara_Theatre_2023.jpg",
+    "author": "Dan Koehl",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0"
+  },
+  {
+    "trip": "florida-business-studies-trip",
+    "day": 3,
+    "storagePath": "commons-fill/days/florida-business-studies-trip/day03.jpg",
+    "file": "File:Two different macaws -Jungle Island -Miami-6a.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Two_different_macaws_-Jungle_Island_-Miami-6a.jpg",
+    "author": "Keith Allison",
+    "license": "CC BY-SA 2.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/2.0"
+  },
+  {
+    "trip": "florida-business-studies-trip",
+    "day": 5,
+    "storagePath": "commons-fill/days/florida-business-studies-trip/day05.jpg",
+    "file": "File:Cinderella Castle @ Magic Kingdom.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Cinderella_Castle_@_Magic_Kingdom.jpg",
+    "author": "Rstoplabe14 Carlos Cruz",
+    "license": "CC BY-SA 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0"
+  },
+  {
+    "trip": "florida-business-studies-trip",
+    "day": 6,
+    "storagePath": "commons-fill/days/florida-business-studies-trip/day06.jpg",
+    "file": "File:Spaceship Earth at night.jpg",
+    "source": "https://commons.wikimedia.org/wiki/File:Spaceship_Earth_at_night.jpg",
+    "author": "Benjamin D. Esham (bdesham)",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0"
+  }
+]
