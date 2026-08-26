@@ -46,9 +46,9 @@
    "trip": "art-culture-study-tour-seoul",
    "day": 4,
    "subject": "Peace and Division at the DMZ — 3rd Infiltration Tunnel, observatories",
-   "queries": ["Joint Security Area Panmunjom conference", "Imjingak Paju", "Dora Observatory DMZ Korea", "Korean Demilitarized Zone Panmunjom"],
+   "queries": ["intitle:Imjingak", "intitle:Dorasan", "Imjingak Freedom Bridge Paju", "Korean Demilitarized Zone Panmunjom"],
    "prefer": [],
-   "avoid": "Mullen|Joint Chiefs|Secretary|Admiral|General |Minister|delegation",
+   "avoid": "Mullen|Joint Chiefs|Secretary|Admiral|General |Minister|delegation|Sailors|Soldiers|Carrier|Navy|Army|Marines|U\\.S\\.|USFK|Ronald Reagan",
    "alt": "The Korean Demilitarized Zone, the fortified border dividing the peninsula"
   },
   {
@@ -72,8 +72,8 @@
    "day": 2,
    "subject": "Blue Lagoon Reefs — snorkelling the coral gardens at Padang Bai",
    "queries": ["intitle:Padangbai", "Blue Lagoon Padang Bai Bali", "snorkeling coral reef Bali", "coral reef Indonesia fish"],
-   "prefer": [],
-   "avoid": "You Don T See",
+   "prefer": ["File:Padangbai aerial 2026 02.jpg"],
+   "avoid": "You Don T See|Temple|Pura",
    "alt": "Snorkellers over the coral gardens of Bali's Blue Lagoon at Padang Bai"
   },
   {
