@@ -46,8 +46,9 @@
    "trip": "art-culture-study-tour-seoul",
    "day": 4,
    "subject": "Peace and Division at the DMZ — 3rd Infiltration Tunnel, observatories",
-   "queries": ["Korean Demilitarized Zone Panmunjom", "Dora Observatory DMZ Korea", "Imjingak DMZ"],
+   "queries": ["Joint Security Area Panmunjom conference", "Imjingak Paju", "Dora Observatory DMZ Korea", "Korean Demilitarized Zone Panmunjom"],
    "prefer": [],
+   "avoid": "Mullen|Joint Chiefs|Secretary|Admiral|General |Minister|delegation",
    "alt": "The Korean Demilitarized Zone, the fortified border dividing the peninsula"
   },
   {
@@ -70,8 +71,9 @@
    "trip": "bali-educational-adventure",
    "day": 2,
    "subject": "Blue Lagoon Reefs — snorkelling the coral gardens at Padang Bai",
-   "queries": ["Blue Lagoon Padang Bai Bali", "snorkeling coral reef Bali", "coral reef Indonesia fish"],
+   "queries": ["intitle:Padangbai", "Blue Lagoon Padang Bai Bali", "snorkeling coral reef Bali", "coral reef Indonesia fish"],
    "prefer": [],
+   "avoid": "You Don T See",
    "alt": "Snorkellers over the coral gardens of Bali's Blue Lagoon at Padang Bai"
   },
   {
@@ -102,8 +104,9 @@
    "trip": "bali-educational-adventure",
    "day": 6,
    "subject": "A Final Taste of Bali — bargaining in a Kuta market",
-   "queries": ["Bali market stalls traditional", "Ubud market Bali", "pasar Bali market"],
+   "queries": ["intitle:Ubud market Bali", "intitle:Pasar Badung", "Kuta Beach Bali", "Balinese handicrafts market"],
    "prefer": [],
+   "avoid": "Kazimierz|Poland|festival club",
    "alt": "Stalls of Balinese handicrafts and produce at a traditional market"
   },
   {
@@ -142,8 +145,9 @@
    "trip": "florida-business-studies-trip",
    "day": 6,
    "subject": "Innovation Around the World — EPCOT, Spaceship Earth, World Showcase",
-   "queries": ["Spaceship Earth Epcot", "Epcot World Showcase"],
+   "queries": ["Spaceship Earth Epcot sphere", "Epcot entrance Spaceship Earth", "Epcot World Showcase"],
    "prefer": [],
+   "avoid": "tiles|close|interior|queue",
    "alt": "The geodesic sphere of Spaceship Earth at EPCOT"
   },
   {

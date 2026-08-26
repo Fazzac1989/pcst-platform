@@ -1,5 +1,5 @@
 {
  "_comment": "Touching this file on the branch fires the fill-days-from-commons workflow with the mode below — the stand-in trigger until the workflow reaches main and the Actions 'Run workflow' button takes over.",
  "mode": "dry-run",
- "requested": "2026-08-26 dry run #2 — commit the contact sheet back so it can be reviewed in chat"
+ "requested": "2026-08-26 dry run #3 — retake the Kuta market, EPCOT, DMZ and Blue Lagoon picks"
 }

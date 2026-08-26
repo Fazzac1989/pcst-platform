@@ -85,11 +85,14 @@ function candidateFrom(page) {
   };
 }
 
-function acceptable(c) {
+function acceptable(c, entry) {
   if (!c) return false;
   if (c.mime !== 'image/jpeg') return false;
   if (!LICENSE_OK.test(c.license) && !LICENSE_OK.test(c.licenseShort)) return false;
   if (TITLE_BAD.test(c.title)) return false;
+  // A per-day escape hatch: search sometimes lands on something from the
+  // wrong place or the wrong distance, and its title usually says so.
+  if (entry?.avoid && new RegExp(entry.avoid, 'i').test(c.title)) return false;
   if (c.width < 1100) return false;
   const aspect = c.width / c.height;
   return aspect >= 1.05 && aspect <= 2.4;
@@ -122,10 +125,10 @@ async function bySearch(query) {
  * one exception, pulled to the front because those are vetted pictures.
  */
 async function resolve(entry) {
-  const preferred = (await byTitles(entry.prefer ?? [])).filter(acceptable);
+  const preferred = (await byTitles(entry.prefer ?? [])).filter((c) => acceptable(c, entry));
   if (preferred.length) return { pick: preferred[0], runnersUp: [] };
   for (const q of entry.queries) {
-    const ok = (await bySearch(q)).filter(acceptable);
+    const ok = (await bySearch(q)).filter((c) => acceptable(c, entry));
     if (!ok.length) continue;
     ok.sort((a, b) => Number(b.assessed) - Number(a.assessed));
     return { pick: ok[0], runnersUp: ok.slice(1, 4) };
