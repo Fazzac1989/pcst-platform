@@ -1,5 +1,5 @@
 {
  "_comment": "Touching this file on the branch fires the fill-days-from-commons workflow with the mode below — the stand-in trigger until the workflow reaches main and the Actions 'Run workflow' button takes over.",
  "mode": "apply",
- "requested": "2026-08-26 apply — owner reviewed the contact sheet and asked for the pictures to go live"
+ "requested": "2026-08-26 apply #2 — Node 22, supabase-js needs its native WebSocket"
 }
