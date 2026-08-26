@@ -1,0 +1,1528 @@
+{
+ "takenAt": "2026-08-26T05:45:21.662Z",
+ "trips": [
+  {
+   "trip": {
+    "id": 59,
+    "slug": "the-uae-story-heritage-innovation-adventure",
+    "title": "The UAE Story — Heritage, Innovation & Adventure",
+    "subject_id": 1,
+    "country_id": null,
+    "city": "Dubai, Sharjah, Abu Dhabi, Al Ain & Ras Al Khaimah",
+    "duration_days": 7,
+    "duration_nights": 6,
+    "departs": "Dubai",
+    "hero_image": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/commons-fill/trips/59/hero-1787352992540.jpg",
+    "overview": [
+     "This seven-day multi-emirate programme is built as an immersive introduction to the United Arab Emirates, linking history, culture, geography, sustainability, architecture, innovation and outdoor learning. Students follow the country as a connected story: the coastal and desert communities that came first, the formation and rapid development of the nation, and the ideas now shaping its future. Educational themes include UAE history and national identity, Islamic culture and architecture, desert environments, archaeology and early settlement, sustainable cities, science and technology, art and global cultures, traditional crafts, water management and oases, mountain geology and responsible tourism.",
+     "The route moves from Al Fahidi Historical Neighbourhood, Dubai Creek and the Etihad Museum to Expo City Dubai and the Museum of the Future, then on to Sharjah and the desert archaeology of Mleiha, the capital's Sheikh Zayed Grand Mosque and Qasr Al Watan, Louvre Abu Dhabi and Qasr Al Hosn, the oasis landscape of Al Ain, and finally Dhayah Fort and Jebel Jais in Ras Al Khaimah. Guided educational visits are deliberately balanced with practical fieldwork and reflection time, and the same itinerary can be reframed for History, Geography, Design & Technology, Art, Business, Islamic Studies, Global Perspectives, Environmental Science or Citizenship.",
+     "Suggested for students aged 11–18 and adaptable by curriculum, age group and season. A practical routing is four nights in Dubai and two nights in Abu Dhabi, with the Al Ain excursion operating from Abu Dhabi. The programme is full board, with group menus agreed in advance and halal, vegetarian, vegan, allergy-aware and medically required options confirmed before travel. Private air-conditioned coach transport is used throughout with seat belts and licensed drivers. All visits should be risk-assessed for the age and needs of the group; students remain under school supervision throughout and supplier-led activities should be checked against school safeguarding and insurance requirements. Timed-entry attractions and workshops are subject to opening schedules, school-group capacity and advance confirmation, with equivalent educational alternatives used where needed."
+    ],
+    "includes": [
+     "Six nights' hotel accommodation (four nights Dubai, two nights Abu Dhabi), adaptable to school budget and rooming policy",
+     "Full board: breakfast, lunch and dinner daily",
+     "Group menus pre-arranged with dietary and allergy requirements",
+     "Private air-conditioned coach transport throughout",
+     "Guided educational visits and cultural tours across Dubai, Sharjah, Abu Dhabi, Al Ain and Ras Al Khaimah",
+     "Welcome dinner in Dubai and farewell dinner in Dubai",
+     "Teacher notes and guided reflection activities for each day"
+    ],
+    "base_price_pp": null,
+    "status": "published",
+    "featured": false,
+    "created_at": "2026-08-19T20:17:29.007714+00:00",
+    "updated_at": "2026-08-25T23:35:57.183628+00:00",
+    "gallery": [
+     "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/59/g0-1312801358.jpg",
+     "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/59/g1-515561680.jpg",
+     "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/59/g3-1975001219.jpg"
+    ],
+    "hero_alt": "Boats moored at Dubai Marina with sunlit skyscrapers rising behind the waterfront.",
+    "journey": [
+     {
+      "to_day": 2,
+      "from_day": 1,
+      "location": "Dubai"
+     },
+     {
+      "to_day": 3,
+      "from_day": 3,
+      "location": "Sharjah"
+     },
+     {
+      "to_day": 5,
+      "from_day": 4,
+      "location": "Abu Dhabi"
+     },
+     {
+      "to_day": 6,
+      "from_day": 6,
+      "location": "Al Ain"
+     },
+     {
+      "to_day": 7,
+      "from_day": 7,
+      "location": "Ras Al Khaimah"
+     }
+    ],
+    "trip_highlights": [
+     "Al Fahidi Heritage Lanes",
+     "Dubai Creek Abra Crossing",
+     "Museum Of The Future",
+     "Mleiha Desert Archaeology",
+     "Sheikh Zayed Grand Mosque",
+     "Louvre Abu Dhabi",
+     "Al Ain Oasis Falaj",
+     "Hajar Mountain Geology"
+    ],
+    "structured_at": "2026-08-19T21:54:21.953+00:00"
+   },
+   "children": {
+    "itinerary_days": [
+     {
+      "id": 1244,
+      "trip_id": 59,
+      "sort_order": 3,
+      "label": "Day 4",
+      "title": "Abu Dhabi — Faith, Leadership & Nationhood",
+      "description": "Following breakfast and check-out, the group travels to the federal capital for a guided cultural tour of Sheikh Zayed Grand Mosque, examining geometry, calligraphy, materials and symmetry alongside religious practice and the values of hospitality and respect; appropriate dress and visitor etiquette are discussed before arrival. After a group lunch, students visit Qasr Al Watan, the working Presidential palace, to discuss the institutions of the UAE, scholarship, diplomacy and national development, comparing its architectural language with that of the mosque. The afternoon includes time on the Corniche and waterfront, followed by dinner in Abu Dhabi and an evening reflection on the character of a capital city.",
+      "image_url": null,
+      "image_alt": null,
+      "display_title": "Faith, Leadership & Nationhood",
+      "summary": "Abu Dhabi's civic identity read through two buildings: the Grand Mosque's geometry and calligraphy, and a working Presidential palace devoted to governance and scholarship.",
+      "primary_location": "Abu Dhabi",
+      "highlights": [
+       {
+        "name": "Sheikh Zayed Grand Mosque",
+        "type": "culture",
+        "summary": "Guided tour of geometry, calligraphy, materials and religious practice",
+        "location": "Abu Dhabi",
+        "conditional": false,
+        "conditional_text": ""
+       },
+       {
+        "name": "Qasr Al Watan",
+        "type": "history",
+        "summary": "Working Presidential palace exploring UAE institutions and diplomacy",
+        "location": "Abu Dhabi",
+        "conditional": false,
+        "conditional_text": ""
+       },
+       {
+        "name": "Corniche and waterfront",
+        "type": "walking",
+        "summary": "Afternoon time along the capital's seafront promenade",
+        "location": "Abu Dhabi",
+        "conditional": false,
+        "conditional_text": ""
+       },
+       {
+        "name": "Evening reflection",
+        "type": "education",
+        "summary": "Group discussion on the character of a capital city",
+        "location": "Abu Dhabi",
+        "conditional": false,
+        "conditional_text": ""
+       }
+      ],
+      "learning_focus": [
+       "Islamic Art",
+       "Governance",
+       "Architecture",
+       "National Identity",
+       "Religious Studies"
+      ],
+      "experience_types": [
+       "Culture",
+       "History",
+       "Architecture",
+       "Walking"
+      ],
+      "locations": [
+       "Abu Dhabi",
+       "Sheikh Zayed Grand Mosque",
+       "Qasr Al Watan",
+       "Corniche"
+      ],
+      "meals": [
+       "Breakfast",
+       "Lunch",
+       "Dinner"
+      ],
+      "transport": [],
+      "notices": [
+       "Appropriate dress and visitor etiquette are discussed before arrival at the mosque."
+      ],
+      "review_flags": [
+       {
+        "kind": "unclear-location",
+        "note": "Departure point for the transfer to Abu Dhabi is not stated; day involves check-out from a previous base."
+       }
+      ],
+      "structured_at": "2026-08-19T21:53:47.683+00:00",
+      "structured_model": "claude-opus-5"
+     },
+     {
+      "id": 1241,
+      "trip_id": 59,
+      "sort_order": 0,
+      "label": "Day 1",
+      "title": "Dubai — From Creek to Union",
+      "description": "A guided walk through Al Fahidi Historical Neighbourhood introduces wind-tower architecture and life before air conditioning and oil wealth, prompting discussion of how climate, materials, family life and trade shaped the early city. The group then crosses Dubai Creek by traditional abra and explores the old trading districts and souks, learning about merchants, pearling, maritime connections and migration. After lunch in Old Dubai, a visit to the Etihad Museum examines the leadership, negotiation and shared vision behind the union of 1971. The day closes with a panoramic introduction to modern Dubai and a welcome dinner, with a short reflection on the speed of change.",
+      "image_url": null,
+      "image_alt": null,
+      "display_title": "From Creek to Union",
+      "summary": "Wind-tower lanes, an abra crossing and the souks of old Dubai set up the story of pearling, trade and the 1971 union.",
+      "primary_location": "Dubai",
+      "highlights": [
+       {
+        "name": "Al Fahidi Historical Neighbourhood",
+        "type": "history",
+        "summary": "Guided walk through wind-tower architecture and pre-oil life",
+        "location": "Dubai",
+        "conditional": false,
+        "conditional_text": ""
+       },
+       {
+        "name": "Dubai Creek abra crossing",
+        "type": "transport",
+        "summary": "Traditional water taxi to the old trading districts",
+        "location": "Dubai Creek",
+        "conditional": false,
+        "conditional_text": ""
+       },
+       {
+        "name": "Old trading districts and souks",
+        "type": "culture",
+        "summary": "Merchants, pearling, maritime links and migration",
+        "location": "Old Dubai",
+        "conditional": false,
+        "conditional_text": ""
+       },
+       {
+        "name": "Etihad Museum",
+        "type": "museum",
+        "summary": "Leadership and negotiation behind the 1971 union",
+        "location": "Dubai",
+        "conditional": false,
+        "conditional_text": ""
+       },
+       {
+        "name": "Welcome dinner",
+        "type": "food",
+        "summary": "Panoramic look at modern Dubai and group reflection",
+        "location": "Dubai",
+        "conditional": false,
+        "conditional_text": ""
+       }
+      ],
+      "learning_focus": [
+       "Urban History",
+       "Trade and Migration",
+       "Nation Building",
+       "Vernacular Architecture"
+      ],
+      "experience_types": [
+       "History",
+       "Culture",
+       "Museum",
+       "Walking",
+       "Food"
+      ],
+      "locations": [
+       "Dubai",
+       "Al Fahidi Historical Neighbourhood",
+       "Dubai Creek",
+       "Old Dubai",
+       "Etihad Museum"
+      ],
+      "meals": [
+       "Lunch",
+       "Dinner"
+      ],
+      "transport": [
+       {
+        "to": "Dubai Creek opposite bank",
+        "from": "Old Dubai",
+        "mode": "Abra",
+        "highlight": true
+       }
+      ],
+      "notices": [],
+      "review_flags": [
+       {
+        "kind": "other",
+        "note": "Lunch in Old Dubai and welcome dinner are described as part of the day; assumed included."
+       }
+      ],
+      "structured_at": "2026-08-19T21:53:23.017+00:00",
+      "structured_model": "claude-opus-5"
+     },
+     {
+      "id": 1243,
+      "trip_id": 59,
+      "sort_order": 2,
+      "label": "Day 3",
+      "title": "Sharjah — Culture Beneath the Sand",
+      "description": "A guided visit to the Sharjah Museum of Islamic Civilization, or a comparable heritage programme, explores the contribution of Islamic civilisation to art, science, navigation, architecture and learning, while time in the historic city shows how conservation protects traditional urban character. After lunch in the Sharjah or Mleiha area, the group travels inland to Mleiha Archaeological Centre to study evidence of early inhabitants, burial sites and geological formations, investigating how climate, water, movement and trade influenced settlement. A guided desert component allows students to read rock formations, dunes, wadis and plains before returning to Dubai for dinner.",
+      "image_url": null,
+      "image_alt": null,
+      "display_title": "Sharjah — Culture Beneath the Sand",
+      "summary": "Islamic civilisation's achievements in science and navigation set against Mleiha's prehistoric burial sites, where desert geology reveals why early people settled here.",
+      "primary_location": "Sharjah",
+      "highlights": [
+       {
+        "name": "Sharjah Museum of Islamic Civilization",
+        "type": "museum",
+        "summary": "Islamic art, science, navigation, architecture and learning",
+        "location": "Sharjah",
+        "conditional": true,
+        "conditional_text": "Or a comparable heritage programme"
+       },
+       {
+        "name": "Historic city conservation walk",
+        "type": "history",
+        "summary": "How conservation protects traditional urban character",
+        "location": "Sharjah",
+        "conditional": false,
+        "conditional_text": ""
+       },
+       {
+        "name": "Mleiha Archaeological Centre",
+        "type": "history",
+        "summary": "Early inhabitants, burial sites and geological formations",
+        "location": "Mleiha",
+        "conditional": false,
+        "conditional_text": ""
+       },
+       {
+        "name": "Guided desert component",
+        "type": "nature",
+        "summary": "Reading rock formations, dunes, wadis and plains",
+        "location": "Mleiha",
+        "conditional": false,
+        "conditional_text": ""
+       }
+      ],
+      "learning_focus": [
+       "Archaeology",
+       "Islamic Civilisation",
+       "Heritage Conservation",
+       "Geography",
+       "Settlement Patterns"
+      ],
+      "experience_types": [
+       "Museum",
+       "History",
+       "Culture",
+       "Nature"
+      ],
+      "locations": [
+       "Sharjah",
+       "Mleiha",
+       "Dubai"
+      ],
+      "meals": [
+       "Lunch",
+       "Dinner"
+      ],
+      "transport": [],
+      "notices": [
+       "The museum visit may be substituted with a comparable heritage programme.",
+       "Lunch is taken in the Sharjah or Mleiha area, location not fixed."
+      ],
+      "review_flags": [
+       {
+        "kind": "conditional",
+        "note": "Museum named but hedged with 'or a comparable heritage programme'."
+       },
+       {
+        "kind": "unclear-location",
+        "note": "Lunch location given as 'Sharjah or Mleiha area'; group returns to Dubai for dinner."
+       }
+      ],
+      "structured_at": "2026-08-19T21:53:40.101+00:00",
+      "structured_model": "claude-opus-5"
+     },
+     {
+      "id": 1245,
+      "trip_id": 59,
+      "sort_order": 4,
+      "label": "Day 5",
+      "title": "Abu Dhabi — Art, Identity & Living Heritage",
+      "description": "The morning is spent at Louvre Abu Dhabi on Saadiyat Island, exploring connections between civilisations, artistic traditions and belief systems, with the building offering a case study in architecture, light, geometry and environmental design; the visit can be tailored towards art, history, design, languages or global citizenship. After lunch on Saadiyat or in central Abu Dhabi, the group visits Qasr Al Hosn and the neighbouring House of Artisans to encounter traditional crafts such as Al Sadu weaving and palm-frond work, with a demonstration or hands-on workshop where available. Dinner in Abu Dhabi is followed by discussion of why cultural preservation matters in a rapidly changing society.",
+      "image_url": null,
+      "image_alt": null,
+      "display_title": "Art, Identity & Living Heritage",
+      "summary": "Louvre Abu Dhabi's cross-cultural galleries and luminous dome set against the city's oldest fort and workshops keeping Emirati crafts alive.",
+      "primary_location": "Abu Dhabi",
+      "highlights": [
+       {
+        "name": "Louvre Abu Dhabi",
+        "type": "museum",
+        "summary": "Civilisations, belief systems and a landmark of light and geometry",
+        "location": "Saadiyat Island",
+        "conditional": false,
+        "conditional_text": ""
+       },
+       {
+        "name": "Qasr Al Hosn",
+        "type": "history",
+        "summary": "Abu Dhabi's historic fort and centre of national identity",
+        "location": "Central Abu Dhabi",
+        "conditional": false,
+        "conditional_text": ""
+       },
+       {
+        "name": "House of Artisans",
+        "type": "culture",
+        "summary": "Al Sadu weaving and palm-frond craft traditions",
+        "location": "Abu Dhabi",
+        "conditional": false,
+        "conditional_text": ""
+       },
+       {
+        "name": "Traditional crafts demonstration or workshop",
+        "type": "workshop",
+        "summary": "Hands-on encounter with Emirati craft techniques",
+        "location": "House of Artisans",
+        "conditional": true,
+        "conditional_text": "Where available"
+       },
+       {
+        "name": "Discussion on cultural preservation",
+        "type": "education",
+        "summary": "Reflecting on heritage in a fast-changing society",
+        "location": "Abu Dhabi",
+        "conditional": false,
+        "conditional_text": ""
+       }
+      ],
+      "learning_focus": [
+       "History",
+       "Art & Design",
+       "Architecture",
+       "Global Citizenship",
+       "Cultural Heritage"
+      ],
+      "experience_types": [
+       "Museum",
+       "Culture",
+       "History",
+       "Workshop"
+      ],
+      "locations": [
+       "Abu Dhabi",
+       "Saadiyat Island",
+       "Louvre Abu Dhabi",
+       "Qasr Al Hosn",
+       "House of Artisans"
+      ],
+      "meals": [
+       "Lunch",
+       "Dinner"
+      ],
+      "transport": [],
+      "notices": [
+       "Craft demonstration or hands-on workshop offered where available.",
+       "Louvre Abu Dhabi visit can be tailored towards art, history, design, languages or global citizenship."
+      ],
+      "review_flags": [
+       {
+        "kind": "other",
+        "note": "Lunch and dinner are mentioned in passing; confirm whether both are included in the package."
+       },
+       {
+        "kind": "conditional",
+        "note": "Lunch location given as either Saadiyat or central Abu Dhabi — not fixed."
+       }
+      ],
+      "structured_at": "2026-08-19T21:53:59.074+00:00",
+      "structured_model": "claude-opus-5"
+     },
+     {
+      "id": 1246,
+      "trip_id": 59,
+      "sort_order": 5,
+      "label": "Day 6",
+      "title": "Al Ain — The Oasis City",
+      "description": "The group travels inland to Al Ain, where Al Ain Oasis and its traditional falaj irrigation systems provide a practical lesson in managing scarce water in an arid environment, linking date cultivation, groundwater and settlement. A visit to Al Jahili Fort, or another suitable heritage site, explores the defensive and administrative role of forts in the oasis. After lunch in Al Ain, the group heads to the Jebel Hafit landscape to consider geology, early settlement and long-distance trade, with viewpoints revealing the contrast between oasis, desert plain and mountain terrain. The return to Dubai is followed by dinner on arrival.",
+      "image_url": null,
+      "image_alt": null,
+      "display_title": "Al Ain — The Oasis City",
+      "summary": "Falaj channels, date gardens and a desert fort reveal how water, defence and trade shaped settlement, before Jebel Hafit's geology and viewpoints.",
+      "primary_location": "Al Ain",
+      "highlights": [
+       {
+        "name": "Al Ain Oasis",
+        "type": "history",
+        "summary": "Falaj irrigation and date cultivation in an arid landscape",
+        "location": "Al Ain",
+        "conditional": false,
+        "conditional_text": ""
+       },
+       {
+        "name": "Al Jahili Fort",
+        "type": "history",
+        "summary": "Defensive and administrative role of oasis forts",
+        "location": "Al Ain",
+        "conditional": true,
+        "conditional_text": "Or another suitable heritage site"
+       },
+       {
+        "name": "Jebel Hafit landscape",
+        "type": "nature",
+        "summary": "Geology, early settlement and long-distance trade viewpoints",
+        "location": "Al Ain",
+        "conditional": false,
+        "conditional_text": ""
+       }
+      ],
+      "learning_focus": [
+       "Water Management",
+       "Settlement Geography",
+       "Heritage Studies",
+       "Geology",
+       "Trade History"
+      ],
+      "experience_types": [
+       "History",
+       "Nature",
+       "Culture",
+       "Education"
+      ],
+      "locations": [
+       "Al Ain",
+       "Al Ain Oasis",
+       "Al Jahili Fort",
+       "Jebel Hafit",
+       "Dubai"
+      ],
+      "meals": [
+       "Lunch",
+       "Dinner"
+      ],
+      "transport": [],
+      "notices": [
+       "The fort visit may be replaced by another suitable heritage site."
+      ],
+      "review_flags": [
+       {
+        "kind": "conditional",
+        "note": "Al Jahili Fort hedged as 'or another suitable heritage site'."
+       },
+       {
+        "kind": "other",
+        "note": "Lunch and dinner mentioned but inclusion not explicitly stated."
+       }
+      ],
+      "structured_at": "2026-08-19T21:54:07.601+00:00",
+      "structured_model": "claude-opus-5"
+     },
+     {
+      "id": 1242,
+      "trip_id": 59,
+      "sort_order": 1,
+      "label": "Day 2",
+      "title": "Dubai — Designing the Future",
+      "description": "The morning is spent at Expo City Dubai, where Terra – The Sustainability Pavilion uses interactive exhibits and school-focused learning to explore energy, water, consumption and biodiversity, with the building itself serving as a case study in sustainable architecture. After lunch at Expo City or a nearby group venue, and subject to advance school-group availability, the Museum of the Future frames enquiry into science, technology, health, space and climate, encouraging students to question which innovations genuinely solve problems. The group then visits Downtown Dubai to consider urban planning and scale against the backdrop of Burj Khalifa, with dinner in the Downtown area.",
+      "image_url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/59/g0-1312801358.jpg",
+      "image_alt": "Designing the Future — The UAE Story — Heritage, Innovation & Adventure",
+      "display_title": "Designing the Future",
+      "summary": "Sustainability science at Terra, speculative technology at the Museum of the Future, and urban planning read against the Burj Khalifa skyline.",
+      "primary_location": "Dubai",
+      "highlights": [
+       {
+        "name": "Terra – The Sustainability Pavilion",
+        "type": "education",
+        "summary": "Interactive exhibits on energy, water, consumption and biodiversity",
+        "location": "Expo City Dubai",
+        "conditional": false,
+        "conditional_text": ""
+       },
+       {
+        "name": "Museum of the Future",
+        "type": "museum",
+        "summary": "Enquiry into science, technology, health, space and climate",
+        "location": "Dubai",
+        "conditional": true,
+        "conditional_text": "Subject to advance school-group availability"
+       },
+       {
+        "name": "Downtown Dubai",
+        "type": "landmark",
+        "summary": "Urban planning and scale beneath the Burj Khalifa",
+        "location": "Downtown Dubai",
+        "conditional": false,
+        "conditional_text": ""
+       }
+      ],
+      "learning_focus": [
+       "Sustainability",
+       "Architecture",
+       "Urban Planning",
+       "Innovation",
+       "Environmental Science"
+      ],
+      "experience_types": [
+       "Technology",
+       "Museum",
+       "Education",
+       "Architecture"
+      ],
+      "locations": [
+       "Dubai",
+       "Expo City Dubai",
+       "Downtown Dubai",
+       "Burj Khalifa"
+      ],
+      "meals": [
+       "Lunch",
+       "Dinner"
+      ],
+      "transport": [],
+      "notices": [
+       "Museum of the Future entry is subject to advance school-group availability."
+      ],
+      "review_flags": [
+       {
+        "kind": "other",
+        "note": "Lunch venue deliberately unspecific — 'Expo City or a nearby group venue'; kept unnamed."
+       },
+       {
+        "kind": "conditional",
+        "note": "Museum of the Future hedged; recorded both as highlight condition and day notice."
+       }
+      ],
+      "structured_at": "2026-08-19T21:53:31.515+00:00",
+      "structured_model": "claude-opus-5"
+     },
+     {
+      "id": 1247,
+      "trip_id": 59,
+      "sort_order": 6,
+      "label": "Day 7",
+      "title": "Ras Al Khaimah — Mountains, Forts & Farewell",
+      "description": "Travelling north to Ras Al Khaimah, the group visits the hilltop Dhayah Fort, where the relationship between geography and defence is clear, and discusses why settlements developed where water and fertile land were available. After lunch in the Ras Al Khaimah or Jebel Jais area, students view the Hajar Mountain scenery from a suitable viewing area and, subject to weather, age and risk-assessment requirements, join a guided low-intensity nature or geology walk examining rock, elevation, temperature, erosion and mountain habitats. The group returns to Dubai for a farewell dinner and guided reflection, which may include student presentations or a travel journal activity.",
+      "image_url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/59/g3-1975001219.jpg",
+      "image_alt": "Mountains, Forts & Farewell — The UAE Story — Heritage, Innovation & Adventure",
+      "display_title": "Mountains, Forts & Farewell",
+      "summary": "A hilltop fort explains why defence follows geography, then the Hajar Mountains offer a landscape lesson in rock, erosion and habitat before a farewell reflection.",
+      "primary_location": "Ras Al Khaimah",
+      "highlights": [
+       {
+        "name": "Dhayah Fort",
+        "type": "history",
+        "summary": "Hilltop fort showing geography's role in defence",
+        "location": "Ras Al Khaimah",
+        "conditional": false,
+        "conditional_text": ""
+       },
+       {
+        "name": "Hajar Mountain scenery viewing",
+        "type": "nature",
+        "summary": "Mountain panorama from a suitable viewing area",
+        "location": "Jebel Jais area",
+        "conditional": false,
+        "conditional_text": ""
+       },
+       {
+        "name": "Guided low-intensity nature or geology walk",
+        "type": "education",
+        "summary": "Rock, elevation, erosion and mountain habitats examined",
+        "location": "Hajar Mountains",
+        "conditional": true,
+        "conditional_text": "Subject to weather, age and risk-assessment requirements"
+       },
+       {
+        "name": "Farewell dinner and guided reflection",
+        "type": "culture",
+        "summary": "Closing meal with presentations or journal activity",
+        "location": "Dubai",
+        "conditional": true,
+        "conditional_text": "May include presentations or journal activity"
+       }
+      ],
+      "learning_focus": [
+       "Geography",
+       "Geology",
+       "Settlement History",
+       "Fortification",
+       "Reflective Practice"
+      ],
+      "experience_types": [
+       "History",
+       "Nature",
+       "Education",
+       "Culture"
+      ],
+      "locations": [
+       "Ras Al Khaimah",
+       "Dhayah Fort",
+       "Jebel Jais",
+       "Hajar Mountains",
+       "Dubai"
+      ],
+      "meals": [
+       "Lunch",
+       "Dinner"
+      ],
+      "transport": [],
+      "notices": [
+       "The mountain nature or geology walk is subject to weather, age and risk-assessment requirements.",
+       "Lunch location is given as the Ras Al Khaimah or Jebel Jais area."
+      ],
+      "review_flags": [
+       {
+        "kind": "unclear-location",
+        "note": "Lunch and mountain viewing area unspecified beyond 'Ras Al Khaimah or Jebel Jais area'."
+       },
+       {
+        "kind": "conditional",
+        "note": "Farewell reflection content hedged as 'may include' presentations or journal activity."
+       }
+      ],
+      "structured_at": "2026-08-19T21:54:17.492+00:00",
+      "structured_model": "claude-opus-5"
+     }
+    ],
+    "trip_views": [
+     {
+      "id": 107,
+      "trip_id": 59,
+      "viewed_at": "2026-08-19T20:43:55.166001+00:00",
+      "dwell_seconds": 14,
+      "referrer": null
+     },
+     {
+      "id": 111,
+      "trip_id": 59,
+      "viewed_at": "2026-08-19T22:45:36.401828+00:00",
+      "dwell_seconds": 3,
+      "referrer": null
+     },
+     {
+      "id": 184,
+      "trip_id": 59,
+      "viewed_at": "2026-08-20T18:16:59.422294+00:00",
+      "dwell_seconds": 27,
+      "referrer": null
+     },
+     {
+      "id": 185,
+      "trip_id": 59,
+      "viewed_at": "2026-08-20T18:17:39.315838+00:00",
+      "dwell_seconds": 2,
+      "referrer": null
+     },
+     {
+      "id": 187,
+      "trip_id": 59,
+      "viewed_at": "2026-08-20T18:17:56.157199+00:00",
+      "dwell_seconds": 3,
+      "referrer": null
+     },
+     {
+      "id": 188,
+      "trip_id": 59,
+      "viewed_at": "2026-08-20T18:18:33.483114+00:00",
+      "dwell_seconds": 2,
+      "referrer": null
+     },
+     {
+      "id": 189,
+      "trip_id": 59,
+      "viewed_at": "2026-08-20T18:18:38.20294+00:00",
+      "dwell_seconds": 2,
+      "referrer": null
+     },
+     {
+      "id": 519,
+      "trip_id": 59,
+      "viewed_at": "2026-08-25T21:31:53.520504+00:00",
+      "dwell_seconds": 51,
+      "referrer": null
+     },
+     {
+      "id": 546,
+      "trip_id": 59,
+      "viewed_at": "2026-08-25T23:38:49.752531+00:00",
+      "dwell_seconds": null,
+      "referrer": null
+     },
+     {
+      "id": 626,
+      "trip_id": 59,
+      "viewed_at": "2026-08-26T03:29:46.751858+00:00",
+      "dwell_seconds": 21,
+      "referrer": null
+     },
+     {
+      "id": 633,
+      "trip_id": 59,
+      "viewed_at": "2026-08-26T03:39:20.255302+00:00",
+      "dwell_seconds": null,
+      "referrer": null
+     }
+    ],
+    "enquiries": []
+   }
+  },
+  {
+   "trip": {
+    "id": 60,
+    "slug": "the-uae-story-heritage-innovation-adventure-2",
+    "title": "The UAE Story — Heritage, Innovation & Adventure",
+    "subject_id": 1,
+    "country_id": 49,
+    "city": "Dubai, Sharjah, Abu Dhabi, Al Ain & Ras Al Khaimah",
+    "duration_days": 7,
+    "duration_nights": 6,
+    "departs": "Dubai",
+    "hero_image": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/60/hero-159418664.jpg",
+    "overview": [
+     "This seven-day programme uses the United Arab Emirates as a classroom, tracing the country's story from the trading communities of Dubai Creek and the archaeology of the desert to the cultural landmarks of Abu Dhabi, the oasis landscape of Al Ain and the mountains of Ras Al Khaimah. Learning themes include UAE history and national identity, Islamic culture and architecture, desert and mountain geography, archaeology and early settlement, sustainable cities, science and innovation, art and global cultures, traditional crafts, water management and responsible tourism.",
+     "Each day pairs guided educational visits with reflection: students examine wind-tower architecture and pearling trade, interrogate future technologies at Terra and the Museum of the Future, read desert landscapes at Mleiha, compare the symbolism of Sheikh Zayed Grand Mosque and Qasr Al Watan, study conservation at Louvre Abu Dhabi and the House of Artisans, investigate falaj irrigation at Al Ain Oasis, and analyse mountain geology at Jebel Jais. The same route can be reframed for History, Geography, Design & Technology, Art, Business, Islamic Studies, Global Perspectives, Environmental Science or Citizenship, and is suggested for students aged 11–18.",
+     "Logistically the programme is full board, with breakfast at the hotel and pre-arranged group lunches and dinners; halal, vegetarian, vegan, allergy-aware and medically required options should be confirmed before travel. A practical routing is four nights in Dubai and two nights in Abu Dhabi, with the Al Ain excursion operating from Abu Dhabi. Private air-conditioned coach transport with seat belts and licensed drivers is used throughout. All visits should be risk-assessed for the age and needs of the group, students remain under school supervision at all times, and supplier-led activities should be checked against school safeguarding and insurance requirements. Timed-entry attractions and workshops are subject to availability, and outdoor components may be adapted for extreme heat."
+    ],
+    "includes": [
+     "Six nights' hotel accommodation (four nights Dubai, two nights Abu Dhabi)",
+     "Full board: breakfast, lunch and dinner daily",
+     "Private air-conditioned coach transport throughout",
+     "Guided visits and educational programmes as listed",
+     "Welcome dinner in Dubai and farewell dinner in Dubai",
+     "Group menus arranged in advance for dietary requirements"
+    ],
+    "base_price_pp": null,
+    "status": "published",
+    "featured": false,
+    "created_at": "2026-08-19T23:48:14.88592+00:00",
+    "updated_at": "2026-08-23T14:26:20.265371+00:00",
+    "gallery": [
+     "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/60/g0-1577850712.jpg",
+     "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/60/g1-334911068.jpg",
+     "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/60/g2-167385839.jpg",
+     "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/60/g3-1574436307.jpg"
+    ],
+    "hero_alt": "dubai city skyline   main road and new skyscrapers at sunset",
+    "journey": [
+     {
+      "to_day": 2,
+      "from_day": 1,
+      "location": "Dubai"
+     },
+     {
+      "to_day": 3,
+      "from_day": 3,
+      "location": "Sharjah"
+     },
+     {
+      "to_day": 5,
+      "from_day": 4,
+      "location": "Abu Dhabi"
+     },
+     {
+      "to_day": 6,
+      "from_day": 6,
+      "location": "Al Ain"
+     },
+     {
+      "to_day": 7,
+      "from_day": 7,
+      "location": "Ras Al Khaimah"
+     }
+    ],
+    "trip_highlights": [
+     "Al Fahidi Wind Towers",
+     "Museum Of The Future",
+     "Sheikh Zayed Grand Mosque",
+     "Louvre Abu Dhabi",
+     "Mleiha Desert Archaeology",
+     "Al Ain Oasis Falaj",
+     "Jebel Jais Geology",
+     "Al Sadu Weaving Crafts"
+    ],
+    "structured_at": "2026-08-23T14:26:19.873+00:00"
+   },
+   "children": {
+    "itinerary_days": [
+     {
+      "id": 1381,
+      "trip_id": 60,
+      "sort_order": 2,
+      "label": "Day 3",
+      "title": "Sharjah — Culture Beneath the Sand",
+      "description": "A guided visit to the Sharjah Museum of Islamic Civilization or comparable heritage programme, exploring Islamic contributions to art, science, navigation and architecture, alongside observation of urban conservation. After lunch, the group travels inland to Mleiha Archaeological Centre to study finds, burial sites and geological formations, with a guided desert component reading rock formations, dunes and wadis. Return to Dubai for dinner.",
+      "image_url": null,
+      "image_alt": null,
+      "display_title": "Sharjah — Culture Beneath the Sand",
+      "summary": "Islamic science, navigation and architecture in the morning; desert archaeology, burial sites and rock formations at Mleiha in the afternoon.",
+      "primary_location": "Sharjah",
+      "highlights": [
+       {
+        "name": "Sharjah Museum of Islamic Civilization or comparable heritage programme",
+        "type": "museum",
+        "summary": "Islamic art, science, navigation and architecture, guided",
+        "location": "Sharjah",
+        "conditional": true,
+        "conditional_text": "Or comparable heritage programme"
+       },
+       {
+        "name": "Urban conservation observation",
+        "type": "history",
+        "summary": "Studying how the historic city fabric is preserved",
+        "location": "Sharjah",
+        "conditional": false,
+        "conditional_text": ""
+       },
+       {
+        "name": "Mleiha Archaeological Centre",
+        "type": "history",
+        "summary": "Finds, burial sites and geological formations inland",
+        "location": "Mleiha",
+        "conditional": false,
+        "conditional_text": ""
+       },
+       {
+        "name": "Guided desert component",
+        "type": "nature",
+        "summary": "Reading rock formations, dunes and wadis",
+        "location": "Mleiha",
+        "conditional": false,
+        "conditional_text": ""
+       }
+      ],
+      "learning_focus": [
+       "Islamic Civilisation",
+       "Archaeology",
+       "Heritage Conservation",
+       "Geology"
+      ],
+      "experience_types": [
+       "Museum",
+       "History",
+       "Culture",
+       "Nature"
+      ],
+      "locations": [
+       "Sharjah",
+       "Mleiha",
+       "Dubai"
+      ],
+      "meals": [
+       "Lunch",
+       "Dinner"
+      ],
+      "transport": [],
+      "notices": [
+       "Museum visit may be replaced by a comparable heritage programme."
+      ],
+      "review_flags": [
+       {
+        "kind": "conditional",
+        "note": "Primary museum is offered as 'or comparable heritage programme' — supplier not fixed."
+       },
+       {
+        "kind": "other",
+        "note": "Lunch and dinner are mentioned in passing; confirm they are actually included."
+       }
+      ],
+      "structured_at": "2026-08-23T14:25:41.351+00:00",
+      "structured_model": "claude-opus-5"
+     },
+     {
+      "id": 1380,
+      "trip_id": 60,
+      "sort_order": 1,
+      "label": "Day 2",
+      "title": "Dubai — Designing the Future",
+      "description": "A morning at Expo City Dubai and Terra, The Sustainability Pavilion, with interactive school-focused learning on energy, water, consumption, biodiversity and sustainable architecture. After lunch at Expo City or a nearby group venue, a visit to the Museum of the Future (subject to school-group availability) prompts enquiry into science, technology, health, space and climate. The late afternoon is spent in Downtown Dubai beneath Burj Khalifa, followed by dinner in the Downtown area.",
+      "image_url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/60/g0-1577850712.jpg",
+      "image_alt": "Designing the Future — The UAE Story — Heritage, Innovation & Adventure",
+      "display_title": "Designing the Future",
+      "summary": "Sustainability learning at Terra pairs with speculative science at the Museum of the Future, closing beneath the world's tallest tower in Downtown Dubai.",
+      "primary_location": "Dubai",
+      "highlights": [
+       {
+        "name": "Expo City Dubai",
+        "type": "education",
+        "summary": "Legacy site of world expo, school-focused learning",
+        "location": "Dubai",
+        "conditional": false,
+        "conditional_text": ""
+       },
+       {
+        "name": "Terra, The Sustainability Pavilion",
+        "type": "technology",
+        "summary": "Interactive exhibits on energy, water, biodiversity, architecture",
+        "location": "Expo City Dubai",
+        "conditional": false,
+        "conditional_text": ""
+       },
+       {
+        "name": "Museum of the Future",
+        "type": "museum",
+        "summary": "Enquiry into science, health, space and climate",
+        "location": "Dubai",
+        "conditional": true,
+        "conditional_text": "Subject to school-group availability"
+       },
+       {
+        "name": "Burj Khalifa",
+        "type": "landmark",
+        "summary": "Time beneath the world's tallest tower",
+        "location": "Downtown Dubai",
+        "conditional": false,
+        "conditional_text": ""
+       }
+      ],
+      "learning_focus": [
+       "Sustainability",
+       "Environmental Science",
+       "Technology",
+       "Architecture",
+       "Innovation"
+      ],
+      "experience_types": [
+       "Technology",
+       "Museum",
+       "Education",
+       "Sustainability",
+       "Culture"
+      ],
+      "locations": [
+       "Dubai",
+       "Expo City Dubai",
+       "Terra, The Sustainability Pavilion",
+       "Museum of the Future",
+       "Downtown Dubai",
+       "Burj Khalifa"
+      ],
+      "meals": [
+       "Lunch",
+       "Dinner"
+      ],
+      "transport": [],
+      "notices": [
+       "Museum of the Future visit is subject to school-group availability.",
+       "Lunch is at Expo City or a nearby group venue."
+      ],
+      "review_flags": [
+       {
+        "kind": "unclear-location",
+        "note": "Lunch venue unspecified — 'Expo City or a nearby group venue'."
+       }
+      ],
+      "structured_at": "2026-08-23T14:25:30.579+00:00",
+      "structured_model": "claude-opus-5"
+     },
+     {
+      "id": 1385,
+      "trip_id": 60,
+      "sort_order": 6,
+      "label": "Day 7",
+      "title": "Ras Al Khaimah — Mountains, Forts & Farewell",
+      "description": "Travel north to Dhayah Fort, whose hilltop setting illustrates the link between geography and defence, with discussion of water, fertile land and settlement patterns. After lunch, the group takes in Hajar Mountain scenery at Jebel Jais and, subject to weather, age and risk assessment, joins a guided low-intensity nature or geology walk examining rock, elevation, erosion and habitats. Return to Dubai for a farewell dinner and guided reflection, which may include student presentations or a travel journal activity.",
+      "image_url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/60/g3-1574436307.jpg",
+      "image_alt": "Mountains, Forts & Farewell — The UAE Story — Heritage, Innovation & Adventure",
+      "display_title": "Mountains, Forts & Farewell",
+      "summary": "A hilltop fort reveals how water and terrain shaped settlement, before the Hajar Mountains offer a lesson in rock, erosion and habitat.",
+      "primary_location": "Ras Al Khaimah",
+      "highlights": [
+       {
+        "name": "Dhayah Fort",
+        "type": "history",
+        "summary": "Hilltop fort showing geography's role in defence and settlement",
+        "location": "Ras Al Khaimah",
+        "conditional": false,
+        "conditional_text": ""
+       },
+       {
+        "name": "Jebel Jais",
+        "type": "nature",
+        "summary": "Hajar Mountain scenery at the UAE's highest peak",
+        "location": "Ras Al Khaimah",
+        "conditional": false,
+        "conditional_text": ""
+       },
+       {
+        "name": "Guided nature or geology walk",
+        "type": "walking",
+        "summary": "Low-intensity walk studying rock, elevation, erosion and habitats",
+        "location": "Jebel Jais",
+        "conditional": true,
+        "conditional_text": "Subject to weather, age and risk assessment"
+       },
+       {
+        "name": "Farewell dinner and guided reflection",
+        "type": "culture",
+        "summary": "Closing meal with presentations or travel journal activity",
+        "location": "Dubai",
+        "conditional": true,
+        "conditional_text": "May include presentations or journal activity"
+       }
+      ],
+      "learning_focus": [
+       "Geography",
+       "Historical Settlement",
+       "Geology",
+       "Reflective Practice"
+      ],
+      "experience_types": [
+       "History",
+       "Nature",
+       "Culture",
+       "Adventure"
+      ],
+      "locations": [
+       "Ras Al Khaimah",
+       "Dhayah Fort",
+       "Jebel Jais",
+       "Hajar Mountains",
+       "Dubai"
+      ],
+      "meals": [
+       "Lunch",
+       "Dinner"
+      ],
+      "transport": [
+       {
+        "to": "Dubai",
+        "from": "Ras Al Khaimah",
+        "mode": "Coach",
+        "highlight": false
+       }
+      ],
+      "notices": [
+       "The mountain nature or geology walk is subject to weather, age and risk assessment."
+      ],
+      "review_flags": [
+       {
+        "kind": "conditional",
+        "note": "Reflection format (presentations or travel journal) is hedged as 'may include'."
+       },
+       {
+        "kind": "other",
+        "note": "Lunch implied by 'after lunch'; confirm whether it is included."
+       }
+      ],
+      "structured_at": "2026-08-23T14:26:16.886+00:00",
+      "structured_model": "claude-opus-5"
+     },
+     {
+      "id": 1379,
+      "trip_id": 60,
+      "sort_order": 0,
+      "label": "Day 1",
+      "title": "Dubai — From Creek to Union",
+      "description": "Guided walk through Al Fahidi Historical Neighbourhood, exploring wind-tower architecture and life before oil wealth. The group crosses Dubai Creek by traditional abra and explores the old trading districts and souks, learning about merchants, pearling and migration. After lunch in Old Dubai, a visit to Etihad Museum covers the leadership and negotiation behind the 1971 union. The day ends with a panoramic introduction to modern Dubai and a welcome dinner with reflection on the pace of change.",
+      "image_url": null,
+      "image_alt": null,
+      "display_title": "From Creek to Union",
+      "summary": "Wind-tower lanes, an abra crossing and the souks of old Dubai set up the story of pearling, migration and the 1971 federation.",
+      "primary_location": "Dubai",
+      "highlights": [
+       {
+        "name": "Al Fahidi Historical Neighbourhood",
+        "type": "history",
+        "summary": "Guided walk through wind-tower architecture and pre-oil life",
+        "location": "Dubai",
+        "conditional": false,
+        "conditional_text": ""
+       },
+       {
+        "name": "Dubai Creek abra crossing",
+        "type": "transport",
+        "summary": "Traditional water taxi to the old trading districts",
+        "location": "Dubai Creek",
+        "conditional": false,
+        "conditional_text": ""
+       },
+       {
+        "name": "Old trading districts and souks",
+        "type": "culture",
+        "summary": "Merchants, pearling and migration in the historic quarters",
+        "location": "Old Dubai",
+        "conditional": false,
+        "conditional_text": ""
+       },
+       {
+        "name": "Etihad Museum",
+        "type": "museum",
+        "summary": "Leadership and negotiation behind the 1971 union",
+        "location": "Dubai",
+        "conditional": false,
+        "conditional_text": ""
+       },
+       {
+        "name": "Welcome dinner",
+        "type": "food",
+        "summary": "Group reflection on Dubai's pace of change",
+        "location": "Dubai",
+        "conditional": false,
+        "conditional_text": ""
+       }
+      ],
+      "learning_focus": [
+       "Modern History",
+       "Urban Development",
+       "Trade and Migration",
+       "Nation Building"
+      ],
+      "experience_types": [
+       "History",
+       "Culture",
+       "Walking",
+       "Museum",
+       "Food"
+      ],
+      "locations": [
+       "Dubai",
+       "Al Fahidi Historical Neighbourhood",
+       "Dubai Creek",
+       "Old Dubai",
+       "Etihad Museum"
+      ],
+      "meals": [
+       "Lunch",
+       "Dinner"
+      ],
+      "transport": [
+       {
+        "to": "across Dubai Creek",
+        "from": "Old Dubai",
+        "mode": "Abra",
+        "highlight": true
+       }
+      ],
+      "notices": [],
+      "review_flags": [
+       {
+        "kind": "other",
+        "note": "Lunch in Old Dubai and welcome dinner mentioned; assumed included."
+       },
+       {
+        "kind": "unclear-location",
+        "note": "\"Panoramic introduction to modern Dubai\" viewpoint is unnamed; not listed as a highlight."
+       }
+      ],
+      "structured_at": "2026-08-23T14:25:22.295+00:00",
+      "structured_model": "claude-opus-5"
+     },
+     {
+      "id": 1382,
+      "trip_id": 60,
+      "sort_order": 3,
+      "label": "Day 4",
+      "title": "Abu Dhabi — Faith, Leadership & Nationhood",
+      "description": "Breakfast and check-out, then travel to the federal capital for a guided cultural tour of Sheikh Zayed Grand Mosque, studying geometry, calligraphy, materials and visitor etiquette. After lunch, a visit to Qasr Al Watan explores the institutions of the UAE, scholarship, diplomacy and national development, with comparison of the architectural language of palace and mosque. The afternoon includes time on the Corniche and waterfront, followed by dinner in Abu Dhabi and an evening reflection.",
+      "image_url": null,
+      "image_alt": null,
+      "display_title": "Faith, Leadership & Nationhood",
+      "summary": "The federal capital seen through its two great statements of identity: a mosque of geometry and calligraphy, and a palace of statecraft and scholarship.",
+      "primary_location": "Abu Dhabi",
+      "highlights": [
+       {
+        "name": "Sheikh Zayed Grand Mosque",
+        "type": "culture",
+        "summary": "Guided cultural tour of geometry, calligraphy and materials",
+        "location": "Abu Dhabi",
+        "conditional": false,
+        "conditional_text": ""
+       },
+       {
+        "name": "Qasr Al Watan",
+        "type": "history",
+        "summary": "Palace exploring UAE institutions, scholarship and diplomacy",
+        "location": "Abu Dhabi",
+        "conditional": false,
+        "conditional_text": ""
+       },
+       {
+        "name": "Corniche and waterfront",
+        "type": "walking",
+        "summary": "Time along Abu Dhabi's seafront promenade",
+        "location": "Abu Dhabi",
+        "conditional": false,
+        "conditional_text": ""
+       },
+       {
+        "name": "Evening reflection",
+        "type": "education",
+        "summary": "Group session reviewing the day's learning",
+        "location": "Abu Dhabi",
+        "conditional": false,
+        "conditional_text": ""
+       }
+      ],
+      "learning_focus": [
+       "Islamic Architecture",
+       "Nation Building",
+       "Governance",
+       "Cultural Studies",
+       "History"
+      ],
+      "experience_types": [
+       "Culture",
+       "History",
+       "Architecture",
+       "Walking"
+      ],
+      "locations": [
+       "Abu Dhabi",
+       "Sheikh Zayed Grand Mosque",
+       "Qasr Al Watan",
+       "Corniche"
+      ],
+      "meals": [
+       "Breakfast",
+       "Lunch",
+       "Dinner"
+      ],
+      "transport": [],
+      "notices": [
+       "Mosque visit requires observance of visitor etiquette and dress code."
+      ],
+      "review_flags": [
+       {
+        "kind": "other",
+        "note": "Departure city not stated; day begins with check-out and travel to Abu Dhabi."
+       },
+       {
+        "kind": "inferred-theme",
+        "note": "Dress code notice inferred from the source's mention of visitor etiquette."
+       }
+      ],
+      "structured_at": "2026-08-23T14:25:50.213+00:00",
+      "structured_model": "claude-opus-5"
+     },
+     {
+      "id": 1383,
+      "trip_id": 60,
+      "sort_order": 4,
+      "label": "Day 5",
+      "title": "Abu Dhabi — Art, Identity & Living Heritage",
+      "description": "A morning at Louvre Abu Dhabi on Saadiyat Island, exploring connections between civilisations and the building's architecture, light and environmental design; the visit can be tailored to art, history, design, languages or global citizenship. After lunch, Qasr Al Hosn and the neighbouring House of Artisans focus on Emirati crafts such as Al Sadu weaving and palm-frond work, with a demonstration or hands-on workshop where available. Dinner in Abu Dhabi with discussion of cultural preservation.",
+      "image_url": null,
+      "image_alt": null,
+      "display_title": "Art, Identity & Living Heritage",
+      "summary": "A universal museum under Nouvel's shimmering dome, then Abu Dhabi's oldest fort and the artisans keeping Al Sadu weaving and palm-frond craft alive.",
+      "primary_location": "Abu Dhabi",
+      "highlights": [
+       {
+        "name": "Louvre Abu Dhabi",
+        "type": "museum",
+        "summary": "Cross-civilisation collections and striking architectural light design",
+        "location": "Saadiyat Island, Abu Dhabi",
+        "conditional": false,
+        "conditional_text": ""
+       },
+       {
+        "name": "Qasr Al Hosn",
+        "type": "history",
+        "summary": "Abu Dhabi's oldest building and heritage site",
+        "location": "Abu Dhabi",
+        "conditional": false,
+        "conditional_text": ""
+       },
+       {
+        "name": "House of Artisans",
+        "type": "culture",
+        "summary": "Emirati crafts including Al Sadu weaving and palm-frond work",
+        "location": "Abu Dhabi",
+        "conditional": false,
+        "conditional_text": ""
+       },
+       {
+        "name": "Craft demonstration or hands-on workshop",
+        "type": "workshop",
+        "summary": "Trying traditional Emirati craft techniques",
+        "location": "House of Artisans, Abu Dhabi",
+        "conditional": true,
+        "conditional_text": "Where available"
+       },
+       {
+        "name": "Dinner discussion on cultural preservation",
+        "type": "food",
+        "summary": "Reflecting on heritage and identity over dinner",
+        "location": "Abu Dhabi",
+        "conditional": false,
+        "conditional_text": ""
+       }
+      ],
+      "learning_focus": [
+       "History",
+       "Global Citizenship",
+       "Art & Design",
+       "Cultural Heritage",
+       "Architecture"
+      ],
+      "experience_types": [
+       "Museum",
+       "Culture",
+       "History",
+       "Workshop"
+      ],
+      "locations": [
+       "Abu Dhabi",
+       "Saadiyat Island",
+       "Louvre Abu Dhabi",
+       "Qasr Al Hosn",
+       "House of Artisans"
+      ],
+      "meals": [
+       "Lunch",
+       "Dinner"
+      ],
+      "transport": [],
+      "notices": [
+       "Museum visit can be tailored to art, history, design, languages or global citizenship.",
+       "Craft demonstration or hands-on workshop offered where available."
+      ],
+      "review_flags": [
+       {
+        "kind": "conditional",
+        "note": "Workshop element hedged with 'where available'."
+       },
+       {
+        "kind": "other",
+        "note": "Lunch and dinner mentioned; unclear whether lunch is formally included."
+       }
+      ],
+      "structured_at": "2026-08-23T14:25:59.656+00:00",
+      "structured_model": "claude-opus-5"
+     },
+     {
+      "id": 1384,
+      "trip_id": 60,
+      "sort_order": 5,
+      "label": "Day 6",
+      "title": "Al Ain — The Oasis City",
+      "description": "Travel inland to Al Ain Oasis to study traditional falaj irrigation, date cultivation, groundwater and settlement in an arid environment. The programme continues to Al Jahili Fort or another suitable heritage site to examine the defensive and administrative role of forts. After lunch in Al Ain, the group heads towards the Jebel Hafit landscape for geology, early settlement and trade, with viewpoints contrasting oasis, desert plain and mountain. Return to Dubai for dinner.",
+      "image_url": null,
+      "image_alt": null,
+      "display_title": "Al Ain — The Oasis City",
+      "summary": "Falaj channels, date palms and desert forts reveal how settlements survived in arid Arabia, before Jebel Hafit's geology and trade routes.",
+      "primary_location": "Al Ain",
+      "highlights": [
+       {
+        "name": "Al Ain Oasis",
+        "type": "history",
+        "summary": "Traditional falaj irrigation, date cultivation and groundwater use",
+        "location": "Al Ain",
+        "conditional": false,
+        "conditional_text": ""
+       },
+       {
+        "name": "Al Jahili Fort or another suitable heritage site",
+        "type": "history",
+        "summary": "Defensive and administrative role of Emirati forts",
+        "location": "Al Ain",
+        "conditional": true,
+        "conditional_text": "Alternative heritage site possible"
+       },
+       {
+        "name": "Jebel Hafit landscape",
+        "type": "nature",
+        "summary": "Geology, early settlement, trade and contrasting viewpoints",
+        "location": "Al Ain",
+        "conditional": false,
+        "conditional_text": ""
+       }
+      ],
+      "learning_focus": [
+       "Water Management",
+       "Settlement Geography",
+       "Heritage Architecture",
+       "Geology",
+       "Trade History"
+      ],
+      "experience_types": [
+       "History",
+       "Nature",
+       "Culture",
+       "Education"
+      ],
+      "locations": [
+       "Al Ain",
+       "Al Ain Oasis",
+       "Al Jahili Fort",
+       "Jebel Hafit",
+       "Dubai"
+      ],
+      "meals": [
+       "Lunch",
+       "Dinner"
+      ],
+      "transport": [],
+      "notices": [],
+      "review_flags": [
+       {
+        "kind": "conditional",
+        "note": "Fort visit hedged as 'Al Jahili Fort or another suitable heritage site' — kept unspecific."
+       },
+       {
+        "kind": "other",
+        "note": "Lunch and dinner mentioned; unclear whether they are included in the package."
+       }
+      ],
+      "structured_at": "2026-08-23T14:26:07.56+00:00",
+      "structured_model": "claude-opus-5"
+     }
+    ],
+    "trip_views": [
+     {
+      "id": 129,
+      "trip_id": 60,
+      "viewed_at": "2026-08-20T11:20:16.649545+00:00",
+      "dwell_seconds": 17,
+      "referrer": null
+     },
+     {
+      "id": 186,
+      "trip_id": 60,
+      "viewed_at": "2026-08-20T18:17:43.481626+00:00",
+      "dwell_seconds": 11,
+      "referrer": null
+     },
+     {
+      "id": 190,
+      "trip_id": 60,
+      "viewed_at": "2026-08-20T18:18:44.202116+00:00",
+      "dwell_seconds": 13,
+      "referrer": null
+     },
+     {
+      "id": 459,
+      "trip_id": 60,
+      "viewed_at": "2026-08-25T11:40:19.667892+00:00",
+      "dwell_seconds": 35,
+      "referrer": "https://www.premiumchoiceschooltrips.com/our-app"
+     },
+     {
+      "id": 481,
+      "trip_id": 60,
+      "viewed_at": "2026-08-25T17:01:20.329577+00:00",
+      "dwell_seconds": 31,
+      "referrer": null
+     },
+     {
+      "id": 543,
+      "trip_id": 60,
+      "viewed_at": "2026-08-25T23:27:33.612573+00:00",
+      "dwell_seconds": null,
+      "referrer": null
+     },
+     {
+      "id": 608,
+      "trip_id": 60,
+      "viewed_at": "2026-08-26T03:23:33.555516+00:00",
+      "dwell_seconds": null,
+      "referrer": null
+     }
+    ],
+    "enquiries": []
+   }
+  }
+ ]
+}
