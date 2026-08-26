@@ -14,6 +14,13 @@ on:
         type: choice
         options: [dry-run, apply]
         default: dry-run
+  # The manual dispatch above only registers once this file reaches the
+  # default branch. Until then, pushing a change to the request file below
+  # fires the same job — which lets Claude drive the runs from a sandbox that
+  # can push to GitHub but reach nothing else.
+  push:
+    branches: [claude/thumbnails-layout-updates-m5cly1]
+    paths: [scripts/data/commons-run-request.json]
 
 permissions:
   contents: write
@@ -32,6 +39,18 @@ jobs:
           cache: npm
       - run: npm ci
 
+      # Dispatch carries the mode as an input; a push run reads it from the
+      # request file that triggered it.
+      - name: Work out the mode
+        id: mode
+        run: |
+          MODE="${{ inputs.mode }}"
+          if [ -z "$MODE" ]; then
+            MODE=$(node -p "require('./scripts/data/commons-run-request.json').mode")
+          fi
+          echo "mode=$MODE" >> "$GITHUB_OUTPUT"
+          echo "running in $MODE mode"
+
       # The dry run needs no secrets at all — it only talks to the Commons API
       # and writes the choices + contact sheet that apply then uses verbatim.
       - name: Resolve choices from Commons
@@ -46,7 +65,7 @@ jobs:
             scripts/data/commons-day-choices.json
 
       - name: Apply — upload images and write the days
-        if: inputs.mode == 'apply'
+        if: steps.mode.outputs.mode == 'apply'
         env:
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL || 'https://jdqvbzjzbyfrgnsluaon.supabase.co' }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
@@ -55,7 +74,7 @@ jobs:
       # Trip pages are statically generated; without this the new images wait
       # for the next revalidation. Skipped quietly when the secret is not set.
       - name: Revalidate the pages
-        if: inputs.mode == 'apply'
+        if: steps.mode.outputs.mode == 'apply'
         env:
           NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL || 'https://jdqvbzjzbyfrgnsluaon.supabase.co' }}
           SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
@@ -69,7 +88,7 @@ jobs:
           fi
 
       - name: Commit the credits record back to the branch
-        if: inputs.mode == 'apply'
+        if: steps.mode.outputs.mode == 'apply'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
