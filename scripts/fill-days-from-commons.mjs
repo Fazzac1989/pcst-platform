@@ -237,8 +237,20 @@ for (const c of found) {
   }
 
   try {
-    const res = await fetch(c.pick.downloadUrl, { headers: { 'user-agent': UA } });
-    if (!res.ok) throw new Error(`download ${res.status}`);
+    // Wikimedia rate-limits eager clients: pace the downloads and back off on
+    // a 429 rather than dropping the day.
+    await new Promise((r) => setTimeout(r, 1500));
+    let res;
+    for (let attempt = 1; ; attempt++) {
+      res = await fetch(c.pick.downloadUrl, { headers: { 'user-agent': UA } });
+      if (res.ok) break;
+      if ((res.status === 429 || res.status >= 500) && attempt < 5) {
+        const wait = Number(res.headers.get('retry-after')) * 1000 || 3000 * attempt * attempt;
+        await new Promise((r) => setTimeout(r, wait));
+        continue;
+      }
+      throw new Error(`download ${res.status}`);
+    }
     const body = Buffer.from(await res.arrayBuffer());
     const path = `commons-fill/days/${c.trip}/day${String(c.day).padStart(2, '0')}.jpg`;
     const { error: upErr } = await db.storage.from(BUCKET).upload(path, body, {
