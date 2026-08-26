@@ -1,0 +1,246 @@
+{
+ "_comment": "Wikimedia Commons sourcing plan for the itinerary days we own no photograph of — the 29 published days named in the day-image report, plus the draft Vienna maths trip's Semmering day so it is covered before publishing. Each entry carries the day's own subject, ordered search queries for the Commons API (most specific first), and the alt text to store. 'prefer' may list exact Commons file titles (File:...) to pin a choice after reviewing the dry-run contact sheet — a preferred title that exists and passes the licence check always beats a search result. Applied by fill-days-from-commons.mjs, which only ever writes days that still have no image.",
+
+ "entries": [
+  {
+   "trip": "adventure-trip-to-new-zealand",
+   "day": 5,
+   "subject": "Kiwi Conservation and ZORB — National Kiwi Hatchery, Rotorua",
+   "queries": ["North Island brown kiwi Apteryx mantelli", "kiwi bird New Zealand closeup"],
+   "prefer": [],
+   "alt": "A North Island brown kiwi, the endangered national bird raised at Rotorua's hatchery"
+  },
+  {
+   "trip": "adventure-trip-to-new-zealand",
+   "day": 8,
+   "subject": "Coromandel Coast and Fishing Challenge — Hauraki Gulf",
+   "queries": ["Cathedral Cove Coromandel", "Coromandel Peninsula coast New Zealand"],
+   "prefer": [],
+   "alt": "The rock arch and white-sand beach at Cathedral Cove on the Coromandel Peninsula"
+  },
+  {
+   "trip": "an-australian-adventure",
+   "day": 5,
+   "subject": "Brisbane Heritage to Bush Skills — Scenic Rim, kangaroo spotting, dark skies",
+   "queries": ["Eastern grey kangaroo grassland", "kangaroo Queensland bush"],
+   "prefer": [],
+   "alt": "An eastern grey kangaroo pausing in open Australian bush country"
+  },
+  {
+   "trip": "an-australian-adventure",
+   "day": 7,
+   "subject": "Wildlife Conservation & Aquaduck — Currumbin Wildlife Sanctuary, Gold Coast",
+   "queries": ["Currumbin Wildlife Sanctuary lorikeet", "Currumbin Wildlife Sanctuary", "rainbow lorikeet feeding Australia"],
+   "prefer": [],
+   "alt": "Rainbow lorikeets at Currumbin Wildlife Sanctuary on the Gold Coast"
+  },
+  {
+   "trip": "art-culture-study-tour-seoul",
+   "day": 3,
+   "subject": "Modern Seoul and K-Pop — COEX Starfield Library, Bukchon Hanok Village",
+   "queries": ["Starfield Library COEX Seoul", "Bukchon Hanok Village Seoul"],
+   "prefer": [],
+   "alt": "The towering bookshelves of the Starfield Library inside Seoul's COEX mall"
+  },
+  {
+   "trip": "art-culture-study-tour-seoul",
+   "day": 4,
+   "subject": "Peace and Division at the DMZ — 3rd Infiltration Tunnel, observatories",
+   "queries": ["Korean Demilitarized Zone Panmunjom", "Dora Observatory DMZ Korea", "Imjingak DMZ"],
+   "prefer": [],
+   "alt": "The Korean Demilitarized Zone, the fortified border dividing the peninsula"
+  },
+  {
+   "trip": "art-culture-study-tour-seoul",
+   "day": 6,
+   "subject": "A World of Fun at Lotte World — indoor theme park, parades",
+   "queries": ["Lotte World Seoul", "Lotte World Adventure interior"],
+   "prefer": [],
+   "alt": "Lotte World in Seoul, one of the world's largest indoor theme parks"
+  },
+  {
+   "trip": "art-culture-study-tour-seoul",
+   "day": 7,
+   "subject": "Art, Views and Departure — N Seoul Tower, Leeum Museum",
+   "queries": ["N Seoul Tower Namsan", "Seoul skyline Namsan Tower"],
+   "prefer": [],
+   "alt": "N Seoul Tower rising from Namsan above the city"
+  },
+  {
+   "trip": "bali-educational-adventure",
+   "day": 2,
+   "subject": "Blue Lagoon Reefs — snorkelling the coral gardens at Padang Bai",
+   "queries": ["Blue Lagoon Padang Bai Bali", "snorkeling coral reef Bali", "coral reef Indonesia fish"],
+   "prefer": [],
+   "alt": "Snorkellers over the coral gardens of Bali's Blue Lagoon at Padang Bai"
+  },
+  {
+   "trip": "bali-educational-adventure",
+   "day": 3,
+   "subject": "Sunrise Above the Volcano — Mount Batur ascent and crater rim",
+   "queries": ["Mount Batur sunrise", "Gunung Batur crater Bali"],
+   "prefer": [],
+   "alt": "Sunrise over the caldera from the summit of Mount Batur"
+  },
+  {
+   "trip": "bali-educational-adventure",
+   "day": 4,
+   "subject": "Subak Cycling and White Water — UNESCO rice terraces",
+   "queries": ["Tegallalang rice terraces", "Jatiluwih rice terraces Bali", "Subak Bali rice"],
+   "prefer": [],
+   "alt": "Bali's terraced rice paddies, shaped by the UNESCO-listed Subak irrigation system"
+  },
+  {
+   "trip": "bali-educational-adventure",
+   "day": 5,
+   "subject": "Coast, Mangroves & Coral — marine conservation at Sanur Beach",
+   "queries": ["Sanur beach Bali boats", "Sanur Bali beach", "mangrove forest Bali"],
+   "prefer": [],
+   "alt": "Traditional boats on the calm shoreline at Sanur Beach, Bali"
+  },
+  {
+   "trip": "bali-educational-adventure",
+   "day": 6,
+   "subject": "A Final Taste of Bali — bargaining in a Kuta market",
+   "queries": ["Bali market stalls traditional", "Ubud market Bali", "pasar Bali market"],
+   "prefer": [],
+   "alt": "Stalls of Balinese handicrafts and produce at a traditional market"
+  },
+  {
+   "trip": "barcelona-art-trip",
+   "day": 5,
+   "subject": "Dalí's Surreal Figueres — the Dalí Theatre-Museum",
+   "queries": ["Dalí Theatre-Museum Figueres", "Teatre-Museu Dalí Figueres exterior"],
+   "prefer": [],
+   "alt": "The egg-topped red towers of the Dalí Theatre-Museum in Figueres"
+  },
+  {
+   "trip": "community-service-trip-to-cambodia",
+   "day": 6,
+   "subject": "Khmer Food, Friendship and Apsara Dance — Siem Reap",
+   "queries": ["Apsara dance Cambodia", "Khmer classical dance Siem Reap"],
+   "prefer": [],
+   "alt": "A classical Apsara dancer in traditional Khmer costume"
+  },
+  {
+   "trip": "florida-business-studies-trip",
+   "day": 3,
+   "subject": "Wildlife and the Road to Orlando — Jungle Island, Miami",
+   "queries": ["Jungle Island Miami", "macaw parrot Florida", "scarlet macaw closeup"],
+   "prefer": [],
+   "alt": "Bright macaws like those met at Miami's Jungle Island"
+  },
+  {
+   "trip": "florida-business-studies-trip",
+   "day": 5,
+   "subject": "Magic Kingdom Adventures — Cinderella Castle and fireworks",
+   "queries": ["Cinderella Castle Magic Kingdom", "Magic Kingdom Walt Disney World castle"],
+   "prefer": [],
+   "alt": "Cinderella Castle at the heart of Walt Disney World's Magic Kingdom"
+  },
+  {
+   "trip": "florida-business-studies-trip",
+   "day": 6,
+   "subject": "Innovation Around the World — EPCOT, Spaceship Earth, World Showcase",
+   "queries": ["Spaceship Earth Epcot", "Epcot World Showcase"],
+   "prefer": [],
+   "alt": "The geodesic sphere of Spaceship Earth at EPCOT"
+  },
+  {
+   "trip": "geography-trip-to-east-coast-usa",
+   "day": 5,
+   "subject": "Liberty Bell and Independence Hall — Philadelphia",
+   "queries": ["Independence Hall Philadelphia", "Liberty Bell Philadelphia"],
+   "prefer": [],
+   "alt": "Independence Hall in Philadelphia, where the Declaration and Constitution were debated"
+  },
+  {
+   "trip": "jordan",
+   "day": 5,
+   "subject": "Mosaics, Mount Nebo & the Dead Sea",
+   "queries": ["Dead Sea Jordan shore", "Mount Nebo Jordan view", "Dead Sea salt formations"],
+   "prefer": [],
+   "alt": "The still blue water and salt-crusted shore of the Dead Sea"
+  },
+  {
+   "trip": "kenya-children-care-volunteering",
+   "day": 5,
+   "subject": "One Final Safari & Farewell — sunrise game drive, Masai Mara",
+   "queries": ["Maasai Mara sunrise", "Masai Mara savanna wildlife", "Masai Mara lion"],
+   "prefer": [],
+   "alt": "First light over the golden plains of the Masai Mara"
+  },
+  {
+   "trip": "mongolia-life-on-the-steppe",
+   "day": 3,
+   "subject": "Kharakhorum: Empires & Living Crafts — Erdene Zuu Monastery",
+   "queries": ["Erdene Zuu Monastery", "Kharkhorin Erdene Zuu stupas"],
+   "prefer": [],
+   "alt": "The white stupa walls of Erdene Zuu Monastery at Kharakhorum"
+  },
+  {
+   "trip": "mongolia-life-on-the-steppe",
+   "day": 4,
+   "subject": "Sand Dunes, Camels & Wild Horses — Elsen Tasarkhai, Khustai takhi",
+   "queries": ["Przewalski's horse Khustain Nuruu", "Przewalski horses Mongolia steppe", "Elsen Tasarkhai dunes"],
+   "prefer": [],
+   "alt": "Takhi — Przewalski's wild horses — grazing the Mongolian steppe at Khustai"
+  },
+  {
+   "trip": "mongolia-life-on-the-steppe",
+   "day": 7,
+   "subject": "Departure — a final Mongolian morning in Ulaanbaatar",
+   "queries": ["Sukhbaatar Square Ulaanbaatar", "Ulaanbaatar city view", "Gandan Monastery Ulaanbaatar"],
+   "prefer": [],
+   "alt": "Sükhbaatar Square at the centre of Ulaanbaatar on a clear morning"
+  },
+  {
+   "trip": "musical-trip-to-vienna",
+   "day": 4,
+   "subject": "Salzburg and the Story of Mozart — old town beneath the fortress",
+   "queries": ["Salzburg old town Hohensalzburg", "Salzburg Altstadt view", "Salzburg fortress city view"],
+   "prefer": [],
+   "alt": "Salzburg's church towers and old town beneath the Hohensalzburg fortress"
+  },
+  {
+   "trip": "salalah-oman",
+   "day": 3,
+   "subject": "Across the Empty Quarter — dunes, Shisr and desert stars",
+   "queries": ["Rub al Khali dunes", "Empty Quarter desert Oman", "Rub al Khali sand desert"],
+   "prefer": [],
+   "alt": "Wind-sculpted dunes of the Rub' al Khali, the Empty Quarter"
+  },
+  {
+   "trip": "service-learning-cape-town",
+   "day": 3,
+   "subject": "Apartheid Histories and Robben Island",
+   "queries": ["Robben Island prison", "Robben Island Nelson Mandela cell", "Robben Island Cape Town"],
+   "prefer": [],
+   "alt": "The former prison on Robben Island, where Nelson Mandela was held"
+  },
+  {
+   "trip": "steam-educational-trip-to-orlando",
+   "day": 6,
+   "subject": "Wild Florida Airboat Adventure — Everglades headwaters, Boggy Creek",
+   "queries": ["airboat Everglades", "Everglades airboat ride Florida", "American alligator Everglades"],
+   "prefer": [],
+   "alt": "An airboat skimming the sawgrass of the Everglades headwaters"
+  },
+  {
+   "trip": "steam-educational-trip-to-orlando",
+   "day": 7,
+   "subject": "Manatees of Crystal River — snorkelling in the springs",
+   "queries": ["manatee Crystal River", "Florida manatee underwater", "West Indian manatee"],
+   "prefer": [],
+   "alt": "A Florida manatee drifting through the clear spring water of Crystal River"
+  },
+  {
+   "trip": "mathematics-trip",
+   "day": 5,
+   "subject": "Semmering Alpine Pass — UNESCO mountain railway (trip still in draft)",
+   "queries": ["Semmering railway viaduct", "Semmeringbahn Kalte Rinne", "Semmering railway Austria"],
+   "prefer": [],
+   "alt": "A viaduct of the UNESCO-listed Semmering Railway threading the Eastern Alps"
+  }
+ ]
+}
