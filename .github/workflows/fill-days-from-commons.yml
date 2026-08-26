@@ -87,10 +87,17 @@ jobs:
             echo "No REVALIDATE_SECRET configured — pages will update on their next revalidation or deploy."
           fi
 
-      - name: Commit the credits record back to the branch
-        if: steps.mode.outputs.mode == 'apply'
+      # The artifact above suits the Actions UI; committing the same files
+      # back to the branch is what lets a network-restricted Claude session
+      # read the picks and hand the contact sheet to the owner in chat.
+      - name: Commit the record back to the branch
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add scripts/data/commons-day-choices.json scripts/data/commons-day-credits.json scripts/data/commons-day-preview.html
-          git diff --cached --quiet || { git commit -m "Record the applied Commons day images"; git push; }
+          for f in commons-day-choices.json commons-day-credits.json commons-day-preview.html; do
+            if [ -f "scripts/data/$f" ]; then git add "scripts/data/$f"; fi
+          done
+          git diff --cached --quiet || {
+            git commit -m "Record the Commons day-image ${{ steps.mode.outputs.mode == 'apply' && 'application' || 'picks (dry run)' }}"
+            git push
+          }
