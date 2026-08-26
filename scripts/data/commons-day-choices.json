@@ -32,19 +32,6 @@
         "assessed": false
       },
       {
-        "title": "File:Apteryx mantelli 1841361.jpg",
-        "pageUrl": "https://commons.wikimedia.org/wiki/File:Apteryx_mantelli_1841361.jpg",
-        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Apteryx_mantelli_1841361.jpg/1920px-Apteryx_mantelli_1841361.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "width": 2048,
-        "height": 1152,
-        "mime": "image/jpeg",
-        "license": "cc-by-sa-4.0",
-        "licenseShort": "CC BY-SA 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-        "author": "Tony Steer",
-        "assessed": false
-      },
-      {
         "title": "File:Apteryx mantelli 248655158.jpg",
         "pageUrl": "https://commons.wikimedia.org/wiki/File:Apteryx_mantelli_248655158.jpg",
         "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Apteryx_mantelli_248655158.jpg/1920px-Apteryx_mantelli_248655158.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -55,6 +42,19 @@
         "licenseShort": "CC BY 4.0",
         "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
         "author": "Kelvin Perrie",
+        "assessed": false
+      },
+      {
+        "title": "File:Apteryx mantelli 1841361.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Apteryx_mantelli_1841361.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Apteryx_mantelli_1841361.jpg/1920px-Apteryx_mantelli_1841361.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 2048,
+        "height": 1152,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-4.0",
+        "licenseShort": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "author": "Tony Steer",
         "assessed": false
       }
     ]
@@ -199,43 +199,56 @@
     "subject": "Peace and Division at the DMZ — 3rd Infiltration Tunnel, observatories",
     "alt": "The Korean Demilitarized Zone, the fortified border dividing the peninsula",
     "pick": {
-      "title": "File:U.S. Sailors assigned to the Ronald Reagan Carrier Strike Group listen to the history of the Joint Security Area in the Demilitarized Zone in Panmunjom, South Korea, July 17, 2008, during a tour of the area 080717-N-HX866-003.jpg",
-      "pageUrl": "https://commons.wikimedia.org/wiki/File:U.S._Sailors_assigned_to_the_Ronald_Reagan_Carrier_Strike_Group_listen_to_the_history_of_the_Joint_Security_Area_in_the_Demilitarized_Zone_in_Panmunjom,_South_Korea,_July_17,_2008,_during_a_tour_of_the_area_080717-N-HX866-003.jpg",
-      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/U.S._Sailors_assigned_to_the_Ronald_Reagan_Carrier_Strike_Group_listen_to_the_history_of_the_Joint_Security_Area_in_the_Demilitarized_Zone_in_Panmunjom%2C_South_Korea%2C_July_17%2C_2008%2C_during_a_tour_of_the_area_080717-N-HX866-003.jpg/1920px-thumbnail.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-      "width": 4288,
-      "height": 2848,
+      "title": "File:20240602 075300 DMZ Imjingak 08.jpg",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:20240602_075300_DMZ_Imjingak_08.jpg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/20240602_075300_DMZ_Imjingak_08.jpg/1920px-20240602_075300_DMZ_Imjingak_08.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 4096,
+      "height": 3072,
       "mime": "image/jpeg",
-      "license": "pd",
-      "licenseShort": "Public domain",
-      "licenseUrl": null,
-      "author": "MCCS Spike Call",
+      "license": "cc-by-sa-4.0",
+      "licenseShort": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "author": "Dwxn",
       "assessed": false
     },
     "runnersUp": [
       {
-        "title": "File:U.S. Sailors assigned to the Ronald Reagan Carrier Strike Group wait to view the Military Demarcation Line at the Joint Security Area in the Demilitarized Zone in Panmunjom, South Korea, July 17, 2008, during a 080717-N-HX866-002.jpg",
-        "pageUrl": "https://commons.wikimedia.org/wiki/File:U.S._Sailors_assigned_to_the_Ronald_Reagan_Carrier_Strike_Group_wait_to_view_the_Military_Demarcation_Line_at_the_Joint_Security_Area_in_the_Demilitarized_Zone_in_Panmunjom,_South_Korea,_July_17,_2008,_during_a_080717-N-HX866-002.jpg",
-        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/U.S._Sailors_assigned_to_the_Ronald_Reagan_Carrier_Strike_Group_wait_to_view_the_Military_Demarcation_Line_at_the_Joint_Security_Area_in_the_Demilitarized_Zone_in_Panmunjom%2C_South_Korea%2C_July_17%2C_2008%2C_during_a_080717-N-HX866-002.jpg/1920px-thumbnail.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "width": 4288,
-        "height": 2848,
+        "title": "File:20240602 075300 DMZ Imjingak 09.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:20240602_075300_DMZ_Imjingak_09.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/20240602_075300_DMZ_Imjingak_09.jpg/1920px-20240602_075300_DMZ_Imjingak_09.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 4032,
+        "height": 3024,
         "mime": "image/jpeg",
-        "license": "pd",
-        "licenseShort": "Public domain",
-        "licenseUrl": null,
-        "author": "MCCS Spike Call",
+        "license": "cc-by-sa-4.0",
+        "licenseShort": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "author": "Dwxn",
         "assessed": false
       },
       {
-        "title": "File:Two North Korean Soldiers look through a window of building T2 located on the Conference Row, during a recent tour of the Joint Security Area 030502-A-LD328-003.jpg",
-        "pageUrl": "https://commons.wikimedia.org/wiki/File:Two_North_Korean_Soldiers_look_through_a_window_of_building_T2_located_on_the_Conference_Row,_during_a_recent_tour_of_the_Joint_Security_Area_030502-A-LD328-003.jpg",
-        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/d/da/Two_North_Korean_Soldiers_look_through_a_window_of_building_T2_located_on_the_Conference_Row%2C_during_a_recent_tour_of_the_Joint_Security_Area_030502-A-LD328-003.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-        "width": 1411,
-        "height": 1013,
+        "title": "File:20240602 075300 DMZ Imjingak 02.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:20240602_075300_DMZ_Imjingak_02.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/20240602_075300_DMZ_Imjingak_02.jpg/1920px-20240602_075300_DMZ_Imjingak_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 4096,
+        "height": 3072,
         "mime": "image/jpeg",
-        "license": "pd",
-        "licenseShort": "Public domain",
-        "licenseUrl": null,
-        "author": "SGT DWIGHT CHANEY",
+        "license": "cc-by-sa-4.0",
+        "licenseShort": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "author": "Dwxn",
+        "assessed": false
+      },
+      {
+        "title": "File:20240602 075300 DMZ Imjingak 01.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:20240602_075300_DMZ_Imjingak_01.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/20240602_075300_DMZ_Imjingak_01.jpg/1920px-20240602_075300_DMZ_Imjingak_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 4032,
+        "height": 3024,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-4.0",
+        "licenseShort": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "author": "Dwxn",
         "assessed": false
       }
     ]
@@ -366,59 +379,19 @@
     "subject": "Blue Lagoon Reefs — snorkelling the coral gardens at Padang Bai",
     "alt": "Snorkellers over the coral gardens of Bali's Blue Lagoon at Padang Bai",
     "pick": {
-      "title": "File:Silayukti-Temple-Main-Temple-Padangbai.jpg",
-      "pageUrl": "https://commons.wikimedia.org/wiki/File:Silayukti-Temple-Main-Temple-Padangbai.jpg",
-      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/0/0c/Silayukti-Temple-Main-Temple-Padangbai.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-      "width": 1280,
-      "height": 960,
+      "title": "File:Padangbai aerial 2026 02.jpg",
+      "pageUrl": "https://commons.wikimedia.org/wiki/File:Padangbai_aerial_2026_02.jpg",
+      "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Padangbai_aerial_2026_02.jpg/1920px-Padangbai_aerial_2026_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+      "width": 4096,
+      "height": 3072,
       "mime": "image/jpeg",
-      "license": "cc-by-sa-4.0",
-      "licenseShort": "CC BY-SA 4.0",
-      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-      "author": "Padangbai.bali",
+      "license": "cc-by-4.0",
+      "licenseShort": "CC BY 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+      "author": "FBilula",
       "assessed": false
     },
-    "runnersUp": [
-      {
-        "title": "File:Padangbai aerial 2026 02.jpg",
-        "pageUrl": "https://commons.wikimedia.org/wiki/File:Padangbai_aerial_2026_02.jpg",
-        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Padangbai_aerial_2026_02.jpg/1920px-Padangbai_aerial_2026_02.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "width": 4096,
-        "height": 3072,
-        "mime": "image/jpeg",
-        "license": "cc-by-4.0",
-        "licenseShort": "CC BY 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-        "author": "FBilula",
-        "assessed": false
-      },
-      {
-        "title": "File:Padangbai aerial 2026 03.jpg",
-        "pageUrl": "https://commons.wikimedia.org/wiki/File:Padangbai_aerial_2026_03.jpg",
-        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Padangbai_aerial_2026_03.jpg/1920px-Padangbai_aerial_2026_03.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "width": 4032,
-        "height": 3024,
-        "mime": "image/jpeg",
-        "license": "cc-by-4.0",
-        "licenseShort": "CC BY 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-        "author": "FBilula",
-        "assessed": false
-      },
-      {
-        "title": "File:Padangbai aerial 2026 05.jpg",
-        "pageUrl": "https://commons.wikimedia.org/wiki/File:Padangbai_aerial_2026_05.jpg",
-        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Padangbai_aerial_2026_05.jpg/1920px-Padangbai_aerial_2026_05.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "width": 4096,
-        "height": 3072,
-        "mime": "image/jpeg",
-        "license": "cc-by-4.0",
-        "licenseShort": "CC BY 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
-        "author": "FBilula",
-        "assessed": false
-      }
-    ]
+    "runnersUp": []
   },
   {
     "trip": "bali-educational-adventure",
@@ -753,19 +726,6 @@
         "assessed": false
       },
       {
-        "title": "File:Featured Apsara Dancers Siem Reap 20091118 01.jpg",
-        "pageUrl": "https://commons.wikimedia.org/wiki/File:Featured_Apsara_Dancers_Siem_Reap_20091118_01.jpg",
-        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Featured_Apsara_Dancers_Siem_Reap_20091118_01.jpg/1920px-Featured_Apsara_Dancers_Siem_Reap_20091118_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "width": 4288,
-        "height": 2848,
-        "mime": "image/jpeg",
-        "license": "cc-by-sa-4.0",
-        "licenseShort": "CC BY-SA 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-        "author": "Viguent",
-        "assessed": false
-      },
-      {
         "title": "File:Siem-Reap Khmer Dance of Cambodia in 2014 (1).jpg",
         "pageUrl": "https://commons.wikimedia.org/wiki/File:Siem-Reap_Khmer_Dance_of_Cambodia_in_2014_(1).jpg",
         "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Siem-Reap_Khmer_Dance_of_Cambodia_in_2014_%281%29.jpg/1920px-Siem-Reap_Khmer_Dance_of_Cambodia_in_2014_%281%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
@@ -776,6 +736,19 @@
         "licenseShort": "CC BY-SA 4.0",
         "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
         "author": "Pierre André Leclercq",
+        "assessed": false
+      },
+      {
+        "title": "File:Featured Apsara Dancers Siem Reap 20091118 01.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Featured_Apsara_Dancers_Siem_Reap_20091118_01.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Featured_Apsara_Dancers_Siem_Reap_20091118_01.jpg/1920px-Featured_Apsara_Dancers_Siem_Reap_20091118_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 4288,
+        "height": 2848,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-4.0",
+        "licenseShort": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "author": "Viguent",
         "assessed": false
       }
     ]
@@ -886,9 +859,9 @@
         "assessed": false
       },
       {
-        "title": "File:Cinderella Castle, Magic Kingdom 3.JPG",
-        "pageUrl": "https://commons.wikimedia.org/wiki/File:Cinderella_Castle,_Magic_Kingdom_3.JPG",
-        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Cinderella_Castle%2C_Magic_Kingdom_3.JPG/1920px-Cinderella_Castle%2C_Magic_Kingdom_3.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "title": "File:Cinderella Castle, Magic Kingdom 5.JPG",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Cinderella_Castle,_Magic_Kingdom_5.JPG",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Cinderella_Castle%2C_Magic_Kingdom_5.JPG/1920px-Cinderella_Castle%2C_Magic_Kingdom_5.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
         "width": 2272,
         "height": 1704,
         "mime": "image/jpeg",
@@ -1160,16 +1133,16 @@
     },
     "runnersUp": [
       {
-        "title": "File:Sklep z pamiątkami i muzeum w klasztorze Erdene Dzuu 01.jpg",
-        "pageUrl": "https://commons.wikimedia.org/wiki/File:Sklep_z_pami%C4%85tkami_i_muzeum_w_klasztorze_Erdene_Dzuu_01.jpg",
-        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Sklep_z_pami%C4%85tkami_i_muzeum_w_klasztorze_Erdene_Dzuu_01.jpg/1920px-Sklep_z_pami%C4%85tkami_i_muzeum_w_klasztorze_Erdene_Dzuu_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "width": 2792,
-        "height": 1860,
+        "title": "File:Erdene Zuu Monastery 08.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Erdene_Zuu_Monastery_08.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Erdene_Zuu_Monastery_08.jpg/1920px-Erdene_Zuu_Monastery_08.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 4702,
+        "height": 3135,
         "mime": "image/jpeg",
-        "license": "cc-by-sa-4.0",
-        "licenseShort": "CC BY-SA 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-        "author": "Marcin Konsek",
+        "license": "cc0",
+        "licenseShort": "CC0",
+        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+        "author": "Bernard Gagnon",
         "assessed": true
       },
       {
@@ -1186,16 +1159,16 @@
         "assessed": true
       },
       {
-        "title": "File:Erdene Zuu Monastery 08.jpg",
-        "pageUrl": "https://commons.wikimedia.org/wiki/File:Erdene_Zuu_Monastery_08.jpg",
-        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Erdene_Zuu_Monastery_08.jpg/1920px-Erdene_Zuu_Monastery_08.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "width": 4702,
-        "height": 3135,
+        "title": "File:Sklep z pamiątkami i muzeum w klasztorze Erdene Dzuu 01.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:Sklep_z_pami%C4%85tkami_i_muzeum_w_klasztorze_Erdene_Dzuu_01.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Sklep_z_pami%C4%85tkami_i_muzeum_w_klasztorze_Erdene_Dzuu_01.jpg/1920px-Sklep_z_pami%C4%85tkami_i_muzeum_w_klasztorze_Erdene_Dzuu_01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 2792,
+        "height": 1860,
         "mime": "image/jpeg",
-        "license": "cc0",
-        "licenseShort": "CC0",
-        "licenseUrl": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-        "author": "Bernard Gagnon",
+        "license": "cc-by-sa-4.0",
+        "licenseShort": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "author": "Marcin Konsek",
         "assessed": true
       }
     ]
@@ -1306,16 +1279,16 @@
         "assessed": false
       },
       {
-        "title": "File:Panorama Ulan Bator 13.JPG",
-        "pageUrl": "https://commons.wikimedia.org/wiki/File:Panorama_Ulan_Bator_13.JPG",
-        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Panorama_Ulan_Bator_13.JPG/1920px-Panorama_Ulan_Bator_13.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "width": 3328,
-        "height": 1872,
+        "title": "File:2024-10-18 Ulaanbaatar, Sükhbaatar Square.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:2024-10-18_Ulaanbaatar,_S%C3%BCkhbaatar_Square.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/2024-10-18_Ulaanbaatar%2C_S%C3%BCkhbaatar_Square.jpg/1920px-2024-10-18_Ulaanbaatar%2C_S%C3%BCkhbaatar_Square.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 5086,
+        "height": 3390,
         "mime": "image/jpeg",
-        "license": "pd",
-        "licenseShort": "Public domain",
-        "licenseUrl": null,
-        "author": "Brücke-Osteuropa",
+        "license": "cc-by-4.0",
+        "licenseShort": "CC BY 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by/4.0",
+        "author": "Alexkom000",
         "assessed": false
       }
     ]
@@ -1653,19 +1626,6 @@
         "assessed": false
       },
       {
-        "title": "File:2020-05-24 Semmering railway viaduct restoration monument.jpg",
-        "pageUrl": "https://commons.wikimedia.org/wiki/File:2020-05-24_Semmering_railway_viaduct_restoration_monument.jpg",
-        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/2020-05-24_Semmering_railway_viaduct_restoration_monument.jpg/1920px-2020-05-24_Semmering_railway_viaduct_restoration_monument.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-        "width": 4608,
-        "height": 3456,
-        "mime": "image/jpeg",
-        "license": "cc-by-sa-4.0",
-        "licenseShort": "CC BY-SA 4.0",
-        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
-        "author": "Rosso Robot",
-        "assessed": false
-      },
-      {
         "title": "File:Steinhausviadukt.jpg",
         "pageUrl": "https://commons.wikimedia.org/wiki/File:Steinhausviadukt.jpg",
         "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Steinhausviadukt.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
@@ -1676,6 +1636,19 @@
         "licenseShort": "CC BY-SA 3.0",
         "licenseUrl": "http://creativecommons.org/licenses/by-sa/3.0/",
         "author": "Wolfgang Wallner",
+        "assessed": false
+      },
+      {
+        "title": "File:2020-05-24 Semmering railway viaduct restoration monument.jpg",
+        "pageUrl": "https://commons.wikimedia.org/wiki/File:2020-05-24_Semmering_railway_viaduct_restoration_monument.jpg",
+        "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/2020-05-24_Semmering_railway_viaduct_restoration_monument.jpg/1920px-2020-05-24_Semmering_railway_viaduct_restoration_monument.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+        "width": 4608,
+        "height": 3456,
+        "mime": "image/jpeg",
+        "license": "cc-by-sa-4.0",
+        "licenseShort": "CC BY-SA 4.0",
+        "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+        "author": "Rosso Robot",
         "assessed": false
       }
     ]
