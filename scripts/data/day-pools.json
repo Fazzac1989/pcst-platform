@@ -1,0 +1,4011 @@
+[
+ {
+  "trip": "adventure-trip-to-new-zealand",
+  "title": "New Zealand North Island, Adventure, Culture & Discovery",
+  "status": "published",
+  "country": "New Zealand",
+  "city": "Auckland",
+  "totalDays": 10,
+  "missing": [
+   {
+    "day": 3,
+    "title": "Coastal Walks and Surfing Adventures",
+    "place": "Mount Maunganui",
+    "summary": "Mauao's volcanic cone frames a morning of coastal walking and beach activity, before instructors teach surf safety, paddling and standing up on the board.",
+    "highlights": [
+     "Mauao",
+     "Scenic base walk around Mauao",
+     "Group activities on Mount Maunganui beach",
+     "Surfing lesson"
+    ]
+   },
+   {
+    "day": 5,
+    "title": "Kiwi Conservation and ZORB",
+    "place": "Rotorua",
+    "summary": "New Zealand's most endangered icon up close at a working hatchery, then the pure absurdity of rolling downhill inside a giant inflatable ball.",
+    "highlights": [
+     "National Kiwi Hatchery",
+     "ZORB"
+    ]
+   },
+   {
+    "day": 8,
+    "title": "Coromandel Coast and Fishing Challenge",
+    "place": "Coromandel",
+    "summary": "A four-hour charter on the Hauraki Gulf teaches line preparation, snapper-fishing technique and responsible marine practice, reached via the scenic Coromandel coast road.",
+    "highlights": [
+     "Scenic journey to the Coromandel Peninsula",
+     "Four-hour fishing charter",
+     "Snapper fishing and marine environment learning",
+     "Coromandel A TOP 10 Holiday Park"
+    ]
+   }
+  ],
+  "pool": [
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/adventure-trip-to-new-zealand/gallery-7.jpg",
+    "alt": "New Zealand North Island, Adventure, Culture & Discovery",
+    "from": "own",
+    "trip": "adventure-trip-to-new-zealand",
+    "idx": 7
+   },
+   {
+    "url": "https://nwpnlqdbawlfmmgvtthy.supabase.co/storage/v1/object/public/images/uploads/2026-08-24/ce6f5999-bfb9-4330-83b0-419ff0cd94a8.jpg",
+    "alt": "Milford Sound in Fiordland National Park on New Zealand's South Island, with steep forested peaks rising above the water",
+    "from": "country-record-hero",
+    "trip": "new-zealand",
+    "idx": 0
+   }
+  ]
+ },
+ {
+  "trip": "an-australian-adventure",
+  "title": "Queensland Eco Adventure",
+  "status": "published",
+  "country": "Australia",
+  "city": "Brisbane",
+  "totalDays": 9,
+  "missing": [
+   {
+    "day": 5,
+    "title": "Brisbane Heritage to Bush Skills",
+    "place": "Kooralbyn",
+    "summary": "Colonial-to-modern Brisbane unfolds along the river before the Scenic Rim delivers whip cracking, kangaroo spotting, bush dancing and constellations under dark country skies.",
+    "highlights": [
+     "Historical tour of Brisbane",
+     "Farm session",
+     "Bush skills: whip cracking and boomerang throwing",
+     "Kangaroo-spotting golf buggy tour",
+     "Bush dancing, campfire and stargazing"
+    ]
+   },
+   {
+    "day": 7,
+    "title": "Wildlife Conservation & Aquaduck Adventure",
+    "place": "Gold Coast",
+    "summary": "Behind-the-scenes access at a working wildlife hospital, then an amphibious vehicle that drives straight off the road into the Broadwater.",
+    "highlights": [
+     "Currumbin Wildlife Sanctuary",
+     "Behind-the-Scenes Experience",
+     "Currumbin Wildlife Hospital Viewing Deck",
+     "Animal Meet-and-Greet",
+     "Aquaduck Amphibious Tour"
+    ]
+   }
+  ],
+  "pool": [
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/commons-fill/countries/11/233-1787352341977.jpg",
+    "alt": "Sydney Opera House gleaming white beside the blue waters of Sydney Harbour on a sunny day.SEP",
+    "from": "country-record-hero",
+    "trip": "australia",
+    "idx": 0
+   }
+  ]
+ },
+ {
+  "trip": "art-culture-study-tour-seoul",
+  "title": "Art & Culture Study Tour — Seoul",
+  "status": "published",
+  "country": "South Korea",
+  "city": "Seoul",
+  "totalDays": 7,
+  "missing": [
+   {
+    "day": 3,
+    "title": "Modern Seoul and K-Pop",
+    "place": "Seoul",
+    "summary": "Contemporary architecture and traditional hanok streets sit side by side, before professional instructors teach a full K-Pop choreographed routine.",
+    "highlights": [
+     "Visit to a local school",
+     "COEX and the Starfield Library",
+     "Bukchon Hanok Village",
+     "K-Pop dance class"
+    ]
+   },
+   {
+    "day": 4,
+    "title": "Peace and Division at the DMZ",
+    "place": "Demilitarized Zone",
+    "summary": "Standing at the world's most fortified border, descending an infiltration tunnel and reading Korea's division through exhibitions, artefacts and hopes for reunification.",
+    "highlights": [
+     "3rd Infiltration Tunnel",
+     "DMZ observation point",
+     "DMZ exhibitions",
+     "War Memorial of Korea"
+    ]
+   },
+   {
+    "day": 5,
+    "title": "Culinary Arts & Youth Culture",
+    "place": "Seoul",
+    "summary": "Korean flavours learned first-hand in a cooking class, then Hongdae's street art, music and fashion, closing with the city skyline from the Han River.",
+    "highlights": [
+     "Korean cooking class",
+     "Hongdae",
+     "Han River cruise"
+    ]
+   },
+   {
+    "day": 6,
+    "title": "A World of Fun at Lotte World",
+    "place": "Seoul",
+    "summary": "One of the world's largest indoor theme parks delivers thrill rides, parades and themed zones, with outdoor attractions to explore whatever the weather.",
+    "highlights": [
+     "Lotte World",
+     "Parades and live entertainment",
+     "Imaginative themed zones",
+     "Group dinner at a local restaurant"
+    ]
+   },
+   {
+    "day": 7,
+    "title": "Art, Views and Departure",
+    "place": "Seoul",
+    "summary": "Panoramic views from Namsan, traditional and contemporary Korean art at the Leeum, and immersive K-Pop media installations close the tour.",
+    "highlights": [
+     "N Seoul Tower Observatory",
+     "Leeum Museum of Art",
+     "HiKR Ground"
+    ]
+   }
+  ],
+  "pool": [
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/62/g1-476487055.jpg",
+    "alt": "",
+    "from": "own",
+    "trip": "art-culture-study-tour-seoul",
+    "idx": 2
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/62/g3-1525881287.jpg",
+    "alt": "",
+    "from": "own",
+    "trip": "art-culture-study-tour-seoul",
+    "idx": 4
+   },
+   {
+    "url": "https://nwpnlqdbawlfmmgvtthy.supabase.co/storage/v1/object/public/images/uploads/2026-08-24/50b14742-d5f1-4a63-bf9b-c059fe522681.jpg",
+    "alt": "Gyeonghoeru royal banquet hall reflected in its pond at Gyeongbokgung Palace, Seoul, under blue skies.Nothing 5000 characters left.', 'end': 0}",
+    "from": "country-record-hero",
+    "trip": "south-korea",
+    "idx": 0
+   }
+  ]
+ },
+ {
+  "trip": "bali-educational-adventure",
+  "title": "Bali Conservation, Culture & Community in Action",
+  "status": "published",
+  "country": "Indonesia",
+  "city": "Bali (Sanur)",
+  "totalDays": 6,
+  "missing": [
+   {
+    "day": 2,
+    "title": "Blue Lagoon Reefs and Care Packages",
+    "place": "Padang Bai",
+    "summary": "Two supervised snorkelling sessions over the coral gardens of Blue Lagoon, followed by budgeting, buying and assembling community support packages back in Sanur.",
+    "highlights": [
+     "Blue Lagoon snorkelling sessions",
+     "Safety briefing and equipment check",
+     "Supermarket budgeting task",
+     "Assembling community support packages",
+     "Guided discussion and journal writing"
+    ]
+   },
+   {
+    "day": 3,
+    "title": "Sunrise Above the Volcano",
+    "place": "Mount Batur",
+    "summary": "A pre-dawn ascent of Mount Batur rewarded with sunrise over the caldera, crater-rim geology, hot springs, and hand-delivering community support packages.",
+    "highlights": [
+     "Guided ascent of Mount Batur",
+     "Crater rim trek",
+     "Natural hot springs",
+     "Community service distribution",
+     "Educational session with Ron Lilley"
+    ]
+   },
+   {
+    "day": 4,
+    "title": "Subak Cycling and White Water",
+    "place": "Bali",
+    "summary": "Cycling past rice terraces reveals Bali's UNESCO-listed Subak irrigation and the cooperation it demands, before white-water rapids test teamwork on the river.",
+    "highlights": [
+     "Countryside cycle ride",
+     "Subak irrigation system",
+     "White-water rafting",
+     "Guided reflection and journal writing"
+    ]
+   },
+   {
+    "day": 5,
+    "title": "Coast, Mangroves & Coral",
+    "place": "Sanur",
+    "summary": "Hands-on marine conservation at Sanur Beach: paddleboarding through mangrove channels, coral reef restoration fieldwork, then a farewell BBQ with Balinese music and dance.",
+    "highlights": [
+     "Stand-Up Paddleboarding",
+     "Mangrove Exploration",
+     "Coral Restoration Station",
+     "Marine Conservation Theory Session",
+     "Farewell BBQ & Balinese Cultural Performance"
+    ]
+   },
+   {
+    "day": 6,
+    "title": "A Final Taste of Bali",
+    "place": "Kuta",
+    "summary": "A Kuta market puts bargaining and budgeting skills to the test among Balinese handicrafts, followed by reflection time before the evening flight home.",
+    "highlights": [
+     "Local market in Kuta",
+     "Final free time and reflection",
+     "Return flight to Dubai"
+    ]
+   }
+  ],
+  "pool": [
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/63/g1-512856391.jpg",
+    "alt": "",
+    "from": "own",
+    "trip": "bali-educational-adventure",
+    "idx": 2
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/63/g2-1190413222.jpg",
+    "alt": "",
+    "from": "own",
+    "trip": "bali-educational-adventure",
+    "idx": 3
+   },
+   {
+    "url": "https://nwpnlqdbawlfmmgvtthy.supabase.co/storage/v1/object/public/images/uploads/2026-08-24/85f2562a-0727-457d-8280-f42d94b22ae1.jpg",
+    "alt": "Sunlit stone stupas and a Buddha statue on the upper terrace of Borobudur temple, Java, Indonesia",
+    "from": "country-record-hero",
+    "trip": "indonesia",
+    "idx": 0
+   }
+  ]
+ },
+ {
+  "trip": "barcelona-art-trip",
+  "title": "Barcelona Uncovered! Gaudí, Football & Mediterranean Adventure",
+  "status": "published",
+  "country": "Spain",
+  "city": "Barcelona",
+  "totalDays": 7,
+  "missing": [
+   {
+    "day": 3,
+    "title": "Paella, Park Güell & a Waterfront Cruise",
+    "place": "Barcelona",
+    "summary": "Hands-on paella cookery gives way to Gaudí's mosaic-strewn hillside park, then a harbour cruise reframes the city from the water.",
+    "highlights": [
+     "Ciutadella Park",
+     "Paella cookery workshop",
+     "Park Güell",
+     "Gaudí House Museum",
+     "Las Golondrinas sightseeing boat"
+    ]
+   },
+   {
+    "day": 4,
+    "title": "Wildlife, Montjuïc & Flamenco",
+    "place": "Barcelona",
+    "summary": "Conservation and habitats at the city zoo give way to Montjuïc's Olympic hill, a cable-car panorama and an hour of flamenco rhythm.",
+    "highlights": [
+     "Barcelona Zoo",
+     "Montjuïc",
+     "Cable-car journey",
+     "Magic Fountain of Montjuïc",
+     "Flamenco lesson"
+    ]
+   },
+   {
+    "day": 5,
+    "title": "Dalí's Surreal Figueres",
+    "place": "Figueres",
+    "summary": "Surrealism at its source: a museum the artist designed himself, packed with illusions, installations and provocations that push students to question what they see.",
+    "highlights": [
+     "Dalí Theatre-Museum",
+     "Free time in Figueres",
+     "Traditional tapas dinner"
+    ]
+   },
+   {
+    "day": 6,
+    "title": "Gaudí, Picasso & Final Farewell",
+    "place": "Barcelona",
+    "summary": "Casa Milà's undulating stone façade and rooftop chimneys set up an afternoon tracing Picasso's formative years in the city he called home.",
+    "highlights": [
+     "Casa Milà (La Pedrera)",
+     "Ciutadella Park",
+     "Picasso Museum",
+     "Supervised free time and souvenir shopping",
+     "Final group dinner"
+    ]
+   },
+   {
+    "day": 7,
+    "title": "Farewell to Barcelona",
+    "place": "Barcelona",
+    "summary": "A last unhurried morning in the neighbourhood before the airport transfer, closing a week of Gaudí, Mediterranean food, football and Catalan culture.",
+    "highlights": [
+     "Leisure time in the local area"
+    ]
+   }
+  ],
+  "pool": [
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/barcelona-art-trip/gallery-1.jpg",
+    "alt": "Barcelona Uncovered! Gaudí, Football & Mediterranean Adventure",
+    "from": "own",
+    "trip": "barcelona-art-trip",
+    "idx": 1
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/barcelona-art-trip/gallery-2.jpg",
+    "alt": "Barcelona Uncovered! Gaudí, Football & Mediterranean Adventure",
+    "from": "own",
+    "trip": "barcelona-art-trip",
+    "idx": 2
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/barcelona-art-trip/gallery-3.jpg",
+    "alt": "Barcelona Uncovered! Gaudí, Football & Mediterranean Adventure",
+    "from": "own",
+    "trip": "barcelona-art-trip",
+    "idx": 3
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/barcelona-art-trip/gallery-4.jpg",
+    "alt": "Barcelona Uncovered! Gaudí, Football & Mediterranean Adventure",
+    "from": "own",
+    "trip": "barcelona-art-trip",
+    "idx": 4
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/barcelona-art-trip/gallery-5.jpg",
+    "alt": "Barcelona Uncovered! Gaudí, Football & Mediterranean Adventure",
+    "from": "own",
+    "trip": "barcelona-art-trip",
+    "idx": 5
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/barcelona-art-trip/gallery-6.jpg",
+    "alt": "Barcelona Uncovered! Gaudí, Football & Mediterranean Adventure",
+    "from": "own",
+    "trip": "barcelona-art-trip",
+    "idx": 6
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/barcelona-art-trip/gallery-7.jpg",
+    "alt": "Barcelona Uncovered! Gaudí, Football & Mediterranean Adventure",
+    "from": "own",
+    "trip": "barcelona-art-trip",
+    "idx": 7
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/barcelona-art-trip/gallery-8.jpg",
+    "alt": "Barcelona Uncovered! Gaudí, Football & Mediterranean Adventure",
+    "from": "own",
+    "trip": "barcelona-art-trip",
+    "idx": 8
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/barcelona-language-trip/gallery-2.jpg",
+    "alt": "Barcelona's Celebration of Spanish Culture, Language & Adventure",
+    "from": "sibling-city",
+    "trip": "barcelona-language-trip",
+    "idx": 2
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/barcelona-language-trip/gallery-3.jpg",
+    "alt": "Barcelona's Celebration of Spanish Culture, Language & Adventure",
+    "from": "sibling-city",
+    "trip": "barcelona-language-trip",
+    "idx": 3
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/barcelona-language-trip/gallery-5.jpg",
+    "alt": "Barcelona's Celebration of Spanish Culture, Language & Adventure",
+    "from": "sibling-city",
+    "trip": "barcelona-language-trip",
+    "idx": 5
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/barcelona-language-trip/gallery-7.jpg",
+    "alt": "Barcelona's Celebration of Spanish Culture, Language & Adventure",
+    "from": "sibling-city",
+    "trip": "barcelona-language-trip",
+    "idx": 7
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/barcelona-language-trip/gallery-10.jpg",
+    "alt": "Barcelona's Celebration of Spanish Culture, Language & Adventure",
+    "from": "sibling-city",
+    "trip": "barcelona-language-trip",
+    "idx": 10
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/barcelona-language-trip/gallery-11.jpg",
+    "alt": "Barcelona's Celebration of Spanish Culture, Language & Adventure",
+    "from": "sibling-city",
+    "trip": "barcelona-language-trip",
+    "idx": 11
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/barcelona-language-trip/gallery-12.jpg",
+    "alt": "Barcelona's Celebration of Spanish Culture, Language & Adventure",
+    "from": "sibling-city",
+    "trip": "barcelona-language-trip",
+    "idx": 12
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/barcelona-language-trip/hero.jpg",
+    "alt": "",
+    "from": "sibling-city-hero",
+    "trip": "barcelona-language-trip",
+    "idx": 0
+   },
+   {
+    "url": "https://nwpnlqdbawlfmmgvtthy.supabase.co/storage/v1/object/public/images/uploads/2026-08-24/f181dc62-90c1-43d1-a8cf-548dd6f5eaa2.jpg",
+    "alt": "The Castle of La Mota under the sunlight and a blue sky at daytime in Medina del Campo, Spain",
+    "from": "country-record-hero",
+    "trip": "spain",
+    "idx": 0
+   }
+  ]
+ },
+ {
+  "trip": "battlefields-trip-london-france-and-belgium",
+  "title": "Battlefields Trip - London , France & Belgium",
+  "status": "published",
+  "country": "London, France & Belgium",
+  "city": "Folkestone, Arras , Ypres",
+  "totalDays": 8,
+  "missing": [
+   {
+    "day": 8,
+    "title": "Homeward Journey",
+    "place": "London",
+    "summary": "The final morning closes a week of battlefield study, with breakfast before the group begins the journey home.",
+    "highlights": []
+   }
+  ],
+  "pool": [
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/battlefields-trip-london-france-and-belgium/gallery-7.jpg",
+    "alt": "Battlefields Trip - London , France & Belgium",
+    "from": "own",
+    "trip": "battlefields-trip-london-france-and-belgium",
+    "idx": 7
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/countries/27/126-1476269780.jpg",
+    "alt": "Buildings and architecture in the Grand Place, or Grote Markt, the central square of Brussels, Belgium.",
+    "from": "country-record",
+    "trip": "london-france-and-belgium",
+    "idx": 1
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/countries/27/127-783122647.jpg",
+    "alt": "Amazing panoramic view of London at sunset, United Kingdom.",
+    "from": "country-record",
+    "trip": "london-france-and-belgium",
+    "idx": 2
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/countries/27/128-476514358.jpg",
+    "alt": "Various old and modern apartment buildings in European city with bright sunlight glare from corner",
+    "from": "country-record",
+    "trip": "london-france-and-belgium",
+    "idx": 3
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/countries/27/129-672162676.jpg",
+    "alt": "Valencia, Spain",
+    "from": "country-record",
+    "trip": "london-france-and-belgium",
+    "idx": 4
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/countries/27/130-1474164830.jpg",
+    "alt": "An aerial view of Antwerp, Belgium at sunset.",
+    "from": "country-record",
+    "trip": "london-france-and-belgium",
+    "idx": 5
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/countries/27/125-305195807.jpg",
+    "alt": "Westminster Bridge at sunset, London, UK",
+    "from": "country-record-hero",
+    "trip": "london-france-and-belgium",
+    "idx": 0
+   }
+  ]
+ },
+ {
+  "trip": "community-service-trip-to-cambodia",
+  "title": "Cambodia: Heritage, Community & Service",
+  "status": "published",
+  "country": "Cambodia",
+  "city": "Phnom Penh /Siem Reap",
+  "totalDays": 8,
+  "missing": [
+   {
+    "day": 2,
+    "title": "History, Heritage and the Capital",
+    "place": "Phnom Penh",
+    "summary": "Cambodia's Khmer Rouge past confronted at the Killing Fields and S-21, balanced by royal splendour, Khmer sculpture and a riverfront cyclo ride.",
+    "highlights": [
+     "Choeung Ek Genocidal Centre",
+     "Tuol Sleng Genocide Museum",
+     "National Museum",
+     "Royal Palace and Silver Pagoda",
+     "Cyclo ride to Wat Phnom"
+    ]
+   },
+   {
+    "day": 6,
+    "title": "Khmer Food, Friendship and Apsara Dance",
+    "place": "Siem Reap",
+    "summary": "Hand-pressed rice noodles and Khmer soup made with a local family, shared with students, then classical Apsara dance over dinner in Siem Reap.",
+    "highlights": [
+     "Traditional Cambodian rice-noodle making",
+     "Khmer soup preparation",
+     "Shared meal with local students and teachers",
+     "Farewell to the Camp Tbeng community",
+     "Apsara dance performance with dinner"
+    ]
+   }
+  ],
+  "pool": [
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/community-service-trip-to-cambodia/gallery-5.jpg",
+    "alt": "Cambodia: Heritage, Community & Service",
+    "from": "own",
+    "trip": "community-service-trip-to-cambodia",
+    "idx": 5
+   },
+   {
+    "url": "https://nwpnlqdbawlfmmgvtthy.supabase.co/storage/v1/object/public/images/uploads/2026-08-24/973bf5e1-759b-4efe-8ec8-a255f88da72a.jpg",
+    "alt": "Sunlit stone face tower at the Bayon temple, Angkor, against a clear blue sky in Cambodia",
+    "from": "country-record-hero",
+    "trip": "cambodia",
+    "idx": 0
+   }
+  ]
+ },
+ {
+  "trip": "community-service-zambia",
+  "title": "Community Service Zambia",
+  "status": "published",
+  "country": "Zambia",
+  "city": "Livingstone",
+  "totalDays": 4,
+  "missing": [
+   {
+    "day": 2,
+    "title": "Village Life and Heritage",
+    "place": "Livingstone",
+    "summary": "A walk through Sakubita Village opens a window onto everyday Zambian life, deepened by the national collections held at Livingstone Museum.",
+    "highlights": [
+     "Sakubita Village tour",
+     "Livingstone Museum",
+     "Movie night"
+    ]
+   }
+  ],
+  "pool": [
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/community-service-zambia/gallery-3.jpg",
+    "alt": "Community Service Zambia",
+    "from": "own",
+    "trip": "community-service-zambia",
+    "idx": 3
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/community-service-zambia/gallery-4.jpg",
+    "alt": "Community Service Zambia",
+    "from": "own",
+    "trip": "community-service-zambia",
+    "idx": 4
+   },
+   {
+    "url": "https://nwpnlqdbawlfmmgvtthy.supabase.co/storage/v1/object/public/images/uploads/2026-08-24/42d2e47b-412d-40a8-9f75-2b390e67b8d7.jpg",
+    "alt": "Victoria Falls thundering over the gorge in bright sunshine, framed by lush green trees in Zambia.jpg",
+    "from": "country-record-hero",
+    "trip": "zambia",
+    "idx": 0
+   }
+  ]
+ },
+ {
+  "trip": "creative-arts-and-musical-theatre-tour-to-new-york",
+  "title": "New York performing arts adventure",
+  "status": "published",
+  "country": "USA",
+  "city": "New York",
+  "totalDays": 11,
+  "missing": [
+   {
+    "day": 1,
+    "title": "Arrival in Manhattan",
+    "place": "New York City",
+    "summary": "The Manhattan skyline rising into view sets the tone, followed by a first walk through the bright lights and restless energy of the city.",
+    "highlights": [
+     "Journey into Manhattan",
+     "First taste of the city"
+    ]
+   },
+   {
+    "day": 4,
+    "title": "Broadway Masterclass and Live Jazz",
+    "place": "New York",
+    "summary": "Professional Broadway performers lead a rehearsal-studio masterclass in vocals and choreography, before an evening of live jazz overlooking the Manhattan skyline.",
+    "highlights": [
+     "Theatrical workshop with Broadway professionals",
+     "Broadway rehearsal workshop",
+     "Question-and-answer session",
+     "Live jazz at Lincoln Center for the Performing Arts",
+     "Free time for sightseeing and shopping"
+    ]
+   },
+   {
+    "day": 5,
+    "title": "Famous Faces and Artistic Discoveries",
+    "place": "New York",
+    "summary": "Interactive photo opportunities among lifelike celebrity figures on 42nd Street, then 5,000 years of world art at the Met with a hands-on studio workshop.",
+    "highlights": [
+     "Madame Tussauds New York",
+     "Metropolitan Museum of Art",
+     "Studio Art Workshop"
+    ]
+   },
+   {
+    "day": 6,
+    "title": "Designing Ideas, Discovering Our World",
+    "place": "New York",
+    "summary": "Design museum galleries and a data-visualisation workshop tackle human rights storytelling, before 33 million natural history specimens trace the story of life on Earth.",
+    "highlights": [
+     "Cooper Hewitt, Smithsonian Design Museum",
+     "Data visualisation workshop",
+     "American Museum of Natural History"
+    ]
+   },
+   {
+    "day": 7,
+    "title": "Brooklyn Art and Broadway Magic",
+    "place": "New York City",
+    "summary": "An expert-led gallery session at the Brooklyn Museum sharpens visual analysis, before Times Square's neon energy and a spectacular Broadway musical close the day.",
+    "highlights": [
+     "Brooklyn Museum",
+     "75-minute guided gallery experience",
+     "Times Square",
+     "Broadway musical"
+    ]
+   },
+   {
+    "day": 9,
+    "title": "Broadway Secrets and Skyline Views",
+    "place": "New York",
+    "summary": "Wicked cast members reveal the craft behind a Broadway blockbuster, followed by Manhattan from the 86th floor and 50,000 garments of fashion history.",
+    "highlights": [
+     "Behind the Emerald Curtain",
+     "Behind the Emerald Curtain Museum",
+     "Empire State Building",
+     "Museum at the Fashion Institute of Technology"
+    ]
+   },
+   {
+    "day": 10,
+    "title": "Central Park on Screen",
+    "place": "New York",
+    "summary": "More than thirty film and television locations across Central Park, from Bethesda Terrace to the Home Alone 2 pigeon steps, then a second Broadway show.",
+    "highlights": [
+     "Central Park television and movie locations walking tour",
+     "Bethesda Terrace and the Boathouse",
+     "Broadway production"
+    ]
+   }
+  ],
+  "pool": [
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/creative-arts-and-musical-theatre-tour-to-new-york/gallery-4.jpg",
+    "alt": "New York performing arts adventure",
+    "from": "own",
+    "trip": "creative-arts-and-musical-theatre-tour-to-new-york",
+    "idx": 4
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/creative-arts-and-musical-theatre-tour-to-new-york/gallery-5.jpg",
+    "alt": "New York performing arts adventure",
+    "from": "own",
+    "trip": "creative-arts-and-musical-theatre-tour-to-new-york",
+    "idx": 5
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/creative-arts-and-musical-theatre-tour-to-new-york/gallery-6.jpg",
+    "alt": "New York performing arts adventure",
+    "from": "own",
+    "trip": "creative-arts-and-musical-theatre-tour-to-new-york",
+    "idx": 6
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/new-york-media-and-film-studies/gallery-3.jpg",
+    "alt": "New York Film & Theatre",
+    "from": "sibling-city",
+    "trip": "new-york-media-and-film-studies",
+    "idx": 3
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/new-york-media-and-film-studies/gallery-4.jpg",
+    "alt": "New York Film & Theatre",
+    "from": "sibling-city",
+    "trip": "new-york-media-and-film-studies",
+    "idx": 4
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/new-york-media-and-film-studies/gallery-6.jpg",
+    "alt": "New York Film & Theatre",
+    "from": "sibling-city",
+    "trip": "new-york-media-and-film-studies",
+    "idx": 6
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/new-york-media-and-film-studies/gallery-9.jpg",
+    "alt": "New York Film & Theatre",
+    "from": "sibling-city",
+    "trip": "new-york-media-and-film-studies",
+    "idx": 9
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/new-york-media-and-film-studies/gallery-10.jpg",
+    "alt": "New York Film & Theatre",
+    "from": "sibling-city",
+    "trip": "new-york-media-and-film-studies",
+    "idx": 10
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/new-york-media-and-film-studies/gallery-11.jpg",
+    "alt": "New York Film & Theatre",
+    "from": "sibling-city",
+    "trip": "new-york-media-and-film-studies",
+    "idx": 11
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/new-york-media-and-film-studies/hero.jpg",
+    "alt": "",
+    "from": "sibling-city-hero",
+    "trip": "new-york-media-and-film-studies",
+    "idx": 0
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/45/g1-638036074.jpg",
+    "alt": "",
+    "from": "sibling",
+    "trip": "florida-business-studies-trip",
+    "idx": 2
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/geography-trip-to-east-coast-usa/gallery-1.jpg",
+    "alt": "American Icons & Heritage",
+    "from": "sibling",
+    "trip": "geography-trip-to-east-coast-usa",
+    "idx": 1
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/geography-trip-to-east-coast-usa/gallery-4.jpg",
+    "alt": "American Icons & Heritage",
+    "from": "sibling",
+    "trip": "geography-trip-to-east-coast-usa",
+    "idx": 4
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/geography-trip-to-east-coast-usa/gallery-6.jpg",
+    "alt": "American Icons & Heritage",
+    "from": "sibling",
+    "trip": "geography-trip-to-east-coast-usa",
+    "idx": 6
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/steam-educational-trip-to-orlando/gallery-1.jpg",
+    "alt": "Florida Discovery & Adventure",
+    "from": "sibling",
+    "trip": "steam-educational-trip-to-orlando",
+    "idx": 1
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/steam-educational-trip-to-orlando/gallery-2.jpg",
+    "alt": "Florida Discovery & Adventure",
+    "from": "sibling",
+    "trip": "steam-educational-trip-to-orlando",
+    "idx": 2
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/steam-educational-trip-to-orlando/gallery-4.jpg",
+    "alt": "Florida Discovery & Adventure",
+    "from": "sibling",
+    "trip": "steam-educational-trip-to-orlando",
+    "idx": 4
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/steam-educational-trip-to-orlando/gallery-5.jpg",
+    "alt": "Florida Discovery & Adventure",
+    "from": "sibling",
+    "trip": "steam-educational-trip-to-orlando",
+    "idx": 5
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/steam-educational-trip-to-orlando/gallery-7.jpg",
+    "alt": "Florida Discovery & Adventure",
+    "from": "sibling",
+    "trip": "steam-educational-trip-to-orlando",
+    "idx": 7
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/steam-educational-trip-to-orlando/gallery-8.jpg",
+    "alt": "Florida Discovery & Adventure",
+    "from": "sibling",
+    "trip": "steam-educational-trip-to-orlando",
+    "idx": 8
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/steam-educational-trip-to-orlando/gallery-9.jpg",
+    "alt": "Florida Discovery & Adventure",
+    "from": "sibling",
+    "trip": "steam-educational-trip-to-orlando",
+    "idx": 9
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/florida-business-studies-trip/hero.jpg",
+    "alt": "",
+    "from": "sibling-hero",
+    "trip": "florida-business-studies-trip",
+    "idx": 0
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/geography-trip-to-east-coast-usa/hero.jpg",
+    "alt": "",
+    "from": "sibling-hero",
+    "trip": "geography-trip-to-east-coast-usa",
+    "idx": 0
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/steam-educational-trip-to-orlando/hero.jpg",
+    "alt": "",
+    "from": "sibling-hero",
+    "trip": "steam-educational-trip-to-orlando",
+    "idx": 0
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/washington-new-york-business/hero.jpg",
+    "alt": "",
+    "from": "sibling-hero",
+    "trip": "washington-new-york-business",
+    "idx": 0
+   },
+   {
+    "url": "https://nwpnlqdbawlfmmgvtthy.supabase.co/storage/v1/object/public/images/uploads/2026-08-24/b5091776-434f-4505-b103-e26aa0a45eb2.jpg",
+    "alt": "Sweeping daytime panorama of the Grand Canyon's South Rim under a clear blue Arizona sky.  ‌",
+    "from": "country-record-hero",
+    "trip": "usa",
+    "idx": 0
+   }
+  ]
+ },
+ {
+  "trip": "florida-business-studies-trip",
+  "title": "Florida Enterprise, Innovation & Adventure",
+  "status": "published",
+  "country": "USA",
+  "city": "Florida",
+  "totalDays": 7,
+  "missing": [
+   {
+    "day": 3,
+    "title": "Wildlife and the Road to Orlando",
+    "place": "Orlando",
+    "summary": "A morning among tropical birds, reptiles and primates at Jungle Island, with conservation and animal behaviour in focus, before heading north through Florida to Orlando.",
+    "highlights": [
+     "Jungle Island",
+     "Interactive exhibits and wildlife presentations",
+     "Adventurous activities and animal encounters",
+     "Coach journey to Orlando",
+     "DoubleTree by Hilton Orlando at SeaWorld"
+    ]
+   },
+   {
+    "day": 4,
+    "title": "Journey into Space",
+    "place": "Kennedy Space Center",
+    "summary": "NASA's working spaceflight complex opens up: Atlantis suspended mid-orbit, a genuine Saturn V overhead, and the engineering behind humanity's journey beyond Earth.",
+    "highlights": [
+     "Space Shuttle Atlantis exhibit",
+     "Shuttle Launch Experience",
+     "Kennedy Space Center Bus Tour",
+     "Apollo/Saturn V Center"
+    ]
+   },
+   {
+    "day": 5,
+    "title": "Magic Kingdom Adventures",
+    "place": "Orlando",
+    "summary": "A full day inside Disney's flagship park, reading themed lands as masterclasses in storytelling, brand experience and visitor management, closing with fireworks over Cinderella Castle.",
+    "highlights": [
+     "Magic Kingdom",
+     "Themed lands exploration",
+     "Signature attractions",
+     "Live entertainment and character experiences",
+     "Cinderella Castle fireworks finale"
+    ]
+   },
+   {
+    "day": 6,
+    "title": "Innovation Around the World",
+    "place": "Orlando",
+    "summary": "EPCOT pairs technological optimism with global cultural branding, from the history of human communication to eleven national pavilions and a nighttime spectacular.",
+    "highlights": [
+     "Spaceship Earth",
+     "World Showcase",
+     "Attractions on space, transport and sustainable agriculture",
+     "Nighttime spectacular at World Showcase Lagoon"
+    ]
+   }
+  ],
+  "pool": [
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/45/g1-638036074.jpg",
+    "alt": "",
+    "from": "own",
+    "trip": "florida-business-studies-trip",
+    "idx": 2
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/creative-arts-and-musical-theatre-tour-to-new-york/gallery-4.jpg",
+    "alt": "New York performing arts adventure",
+    "from": "sibling",
+    "trip": "creative-arts-and-musical-theatre-tour-to-new-york",
+    "idx": 4
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/creative-arts-and-musical-theatre-tour-to-new-york/gallery-5.jpg",
+    "alt": "New York performing arts adventure",
+    "from": "sibling",
+    "trip": "creative-arts-and-musical-theatre-tour-to-new-york",
+    "idx": 5
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/creative-arts-and-musical-theatre-tour-to-new-york/gallery-6.jpg",
+    "alt": "New York performing arts adventure",
+    "from": "sibling",
+    "trip": "creative-arts-and-musical-theatre-tour-to-new-york",
+    "idx": 6
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/geography-trip-to-east-coast-usa/gallery-1.jpg",
+    "alt": "American Icons & Heritage",
+    "from": "sibling",
+    "trip": "geography-trip-to-east-coast-usa",
+    "idx": 1
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/geography-trip-to-east-coast-usa/gallery-4.jpg",
+    "alt": "American Icons & Heritage",
+    "from": "sibling",
+    "trip": "geography-trip-to-east-coast-usa",
+    "idx": 4
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/geography-trip-to-east-coast-usa/gallery-6.jpg",
+    "alt": "American Icons & Heritage",
+    "from": "sibling",
+    "trip": "geography-trip-to-east-coast-usa",
+    "idx": 6
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/new-york-media-and-film-studies/gallery-3.jpg",
+    "alt": "New York Film & Theatre",
+    "from": "sibling",
+    "trip": "new-york-media-and-film-studies",
+    "idx": 3
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/new-york-media-and-film-studies/gallery-4.jpg",
+    "alt": "New York Film & Theatre",
+    "from": "sibling",
+    "trip": "new-york-media-and-film-studies",
+    "idx": 4
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/new-york-media-and-film-studies/gallery-6.jpg",
+    "alt": "New York Film & Theatre",
+    "from": "sibling",
+    "trip": "new-york-media-and-film-studies",
+    "idx": 6
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/new-york-media-and-film-studies/gallery-9.jpg",
+    "alt": "New York Film & Theatre",
+    "from": "sibling",
+    "trip": "new-york-media-and-film-studies",
+    "idx": 9
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/new-york-media-and-film-studies/gallery-10.jpg",
+    "alt": "New York Film & Theatre",
+    "from": "sibling",
+    "trip": "new-york-media-and-film-studies",
+    "idx": 10
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/new-york-media-and-film-studies/gallery-11.jpg",
+    "alt": "New York Film & Theatre",
+    "from": "sibling",
+    "trip": "new-york-media-and-film-studies",
+    "idx": 11
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/steam-educational-trip-to-orlando/gallery-1.jpg",
+    "alt": "Florida Discovery & Adventure",
+    "from": "sibling",
+    "trip": "steam-educational-trip-to-orlando",
+    "idx": 1
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/steam-educational-trip-to-orlando/gallery-2.jpg",
+    "alt": "Florida Discovery & Adventure",
+    "from": "sibling",
+    "trip": "steam-educational-trip-to-orlando",
+    "idx": 2
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/steam-educational-trip-to-orlando/gallery-4.jpg",
+    "alt": "Florida Discovery & Adventure",
+    "from": "sibling",
+    "trip": "steam-educational-trip-to-orlando",
+    "idx": 4
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/steam-educational-trip-to-orlando/gallery-5.jpg",
+    "alt": "Florida Discovery & Adventure",
+    "from": "sibling",
+    "trip": "steam-educational-trip-to-orlando",
+    "idx": 5
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/steam-educational-trip-to-orlando/gallery-7.jpg",
+    "alt": "Florida Discovery & Adventure",
+    "from": "sibling",
+    "trip": "steam-educational-trip-to-orlando",
+    "idx": 7
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/steam-educational-trip-to-orlando/gallery-8.jpg",
+    "alt": "Florida Discovery & Adventure",
+    "from": "sibling",
+    "trip": "steam-educational-trip-to-orlando",
+    "idx": 8
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/steam-educational-trip-to-orlando/gallery-9.jpg",
+    "alt": "Florida Discovery & Adventure",
+    "from": "sibling",
+    "trip": "steam-educational-trip-to-orlando",
+    "idx": 9
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/creative-arts-and-musical-theatre-tour-to-new-york/hero.jpg",
+    "alt": "",
+    "from": "sibling-hero",
+    "trip": "creative-arts-and-musical-theatre-tour-to-new-york",
+    "idx": 0
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/geography-trip-to-east-coast-usa/hero.jpg",
+    "alt": "",
+    "from": "sibling-hero",
+    "trip": "geography-trip-to-east-coast-usa",
+    "idx": 0
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/new-york-media-and-film-studies/hero.jpg",
+    "alt": "",
+    "from": "sibling-hero",
+    "trip": "new-york-media-and-film-studies",
+    "idx": 0
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/steam-educational-trip-to-orlando/hero.jpg",
+    "alt": "",
+    "from": "sibling-hero",
+    "trip": "steam-educational-trip-to-orlando",
+    "idx": 0
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/washington-new-york-business/hero.jpg",
+    "alt": "",
+    "from": "sibling-hero",
+    "trip": "washington-new-york-business",
+    "idx": 0
+   },
+   {
+    "url": "https://nwpnlqdbawlfmmgvtthy.supabase.co/storage/v1/object/public/images/uploads/2026-08-24/b5091776-434f-4505-b103-e26aa0a45eb2.jpg",
+    "alt": "Sweeping daytime panorama of the Grand Canyon's South Rim under a clear blue Arizona sky.  ‌",
+    "from": "country-record-hero",
+    "trip": "usa",
+    "idx": 0
+   }
+  ]
+ },
+ {
+  "trip": "geography-trip-to-east-coast-usa",
+  "title": "American Icons & Heritage",
+  "status": "published",
+  "country": "USA",
+  "city": "New York/ Washington",
+  "totalDays": 7,
+  "missing": [
+   {
+    "day": 5,
+    "title": "Liberty Bell and Independence Hall",
+    "place": "Philadelphia",
+    "summary": "Philadelphia's founding landmarks — the Liberty Bell and the room where the Declaration and Constitution were debated — break the journey south to Washington DC.",
+    "highlights": [
+     "Liberty Bell",
+     "Independence Hall",
+     "Dinner at a local restaurant"
+    ]
+   },
+   {
+    "day": 6,
+    "title": "Monuments of Washington DC",
+    "place": "Washington DC",
+    "summary": "A Potomac cruise frames the capital from the water before the National Mall's memorial landscape brings war, leadership and civil rights into focus.",
+    "highlights": [
+     "Potomac River sightseeing cruise",
+     "World War II Memorial",
+     "Lincoln Memorial",
+     "National Mall walking tour"
+    ]
+   }
+  ],
+  "pool": [
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/geography-trip-to-east-coast-usa/gallery-1.jpg",
+    "alt": "American Icons & Heritage",
+    "from": "own",
+    "trip": "geography-trip-to-east-coast-usa",
+    "idx": 1
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/geography-trip-to-east-coast-usa/gallery-4.jpg",
+    "alt": "American Icons & Heritage",
+    "from": "own",
+    "trip": "geography-trip-to-east-coast-usa",
+    "idx": 4
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/geography-trip-to-east-coast-usa/gallery-6.jpg",
+    "alt": "American Icons & Heritage",
+    "from": "own",
+    "trip": "geography-trip-to-east-coast-usa",
+    "idx": 6
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/creative-arts-and-musical-theatre-tour-to-new-york/gallery-4.jpg",
+    "alt": "New York performing arts adventure",
+    "from": "sibling",
+    "trip": "creative-arts-and-musical-theatre-tour-to-new-york",
+    "idx": 4
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/creative-arts-and-musical-theatre-tour-to-new-york/gallery-5.jpg",
+    "alt": "New York performing arts adventure",
+    "from": "sibling",
+    "trip": "creative-arts-and-musical-theatre-tour-to-new-york",
+    "idx": 5
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/creative-arts-and-musical-theatre-tour-to-new-york/gallery-6.jpg",
+    "alt": "New York performing arts adventure",
+    "from": "sibling",
+    "trip": "creative-arts-and-musical-theatre-tour-to-new-york",
+    "idx": 6
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/45/g1-638036074.jpg",
+    "alt": "",
+    "from": "sibling",
+    "trip": "florida-business-studies-trip",
+    "idx": 2
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/new-york-media-and-film-studies/gallery-3.jpg",
+    "alt": "New York Film & Theatre",
+    "from": "sibling",
+    "trip": "new-york-media-and-film-studies",
+    "idx": 3
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/new-york-media-and-film-studies/gallery-4.jpg",
+    "alt": "New York Film & Theatre",
+    "from": "sibling",
+    "trip": "new-york-media-and-film-studies",
+    "idx": 4
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/new-york-media-and-film-studies/gallery-6.jpg",
+    "alt": "New York Film & Theatre",
+    "from": "sibling",
+    "trip": "new-york-media-and-film-studies",
+    "idx": 6
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/new-york-media-and-film-studies/gallery-9.jpg",
+    "alt": "New York Film & Theatre",
+    "from": "sibling",
+    "trip": "new-york-media-and-film-studies",
+    "idx": 9
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/new-york-media-and-film-studies/gallery-10.jpg",
+    "alt": "New York Film & Theatre",
+    "from": "sibling",
+    "trip": "new-york-media-and-film-studies",
+    "idx": 10
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/new-york-media-and-film-studies/gallery-11.jpg",
+    "alt": "New York Film & Theatre",
+    "from": "sibling",
+    "trip": "new-york-media-and-film-studies",
+    "idx": 11
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/steam-educational-trip-to-orlando/gallery-1.jpg",
+    "alt": "Florida Discovery & Adventure",
+    "from": "sibling",
+    "trip": "steam-educational-trip-to-orlando",
+    "idx": 1
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/steam-educational-trip-to-orlando/gallery-2.jpg",
+    "alt": "Florida Discovery & Adventure",
+    "from": "sibling",
+    "trip": "steam-educational-trip-to-orlando",
+    "idx": 2
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/steam-educational-trip-to-orlando/gallery-4.jpg",
+    "alt": "Florida Discovery & Adventure",
+    "from": "sibling",
+    "trip": "steam-educational-trip-to-orlando",
+    "idx": 4
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/steam-educational-trip-to-orlando/gallery-5.jpg",
+    "alt": "Florida Discovery & Adventure",
+    "from": "sibling",
+    "trip": "steam-educational-trip-to-orlando",
+    "idx": 5
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/steam-educational-trip-to-orlando/gallery-7.jpg",
+    "alt": "Florida Discovery & Adventure",
+    "from": "sibling",
+    "trip": "steam-educational-trip-to-orlando",
+    "idx": 7
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/steam-educational-trip-to-orlando/gallery-8.jpg",
+    "alt": "Florida Discovery & Adventure",
+    "from": "sibling",
+    "trip": "steam-educational-trip-to-orlando",
+    "idx": 8
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/steam-educational-trip-to-orlando/gallery-9.jpg",
+    "alt": "Florida Discovery & Adventure",
+    "from": "sibling",
+    "trip": "steam-educational-trip-to-orlando",
+    "idx": 9
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/creative-arts-and-musical-theatre-tour-to-new-york/hero.jpg",
+    "alt": "",
+    "from": "sibling-hero",
+    "trip": "creative-arts-and-musical-theatre-tour-to-new-york",
+    "idx": 0
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/florida-business-studies-trip/hero.jpg",
+    "alt": "",
+    "from": "sibling-hero",
+    "trip": "florida-business-studies-trip",
+    "idx": 0
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/new-york-media-and-film-studies/hero.jpg",
+    "alt": "",
+    "from": "sibling-hero",
+    "trip": "new-york-media-and-film-studies",
+    "idx": 0
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/steam-educational-trip-to-orlando/hero.jpg",
+    "alt": "",
+    "from": "sibling-hero",
+    "trip": "steam-educational-trip-to-orlando",
+    "idx": 0
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/washington-new-york-business/hero.jpg",
+    "alt": "",
+    "from": "sibling-hero",
+    "trip": "washington-new-york-business",
+    "idx": 0
+   },
+   {
+    "url": "https://nwpnlqdbawlfmmgvtthy.supabase.co/storage/v1/object/public/images/uploads/2026-08-24/b5091776-434f-4505-b103-e26aa0a45eb2.jpg",
+    "alt": "Sweeping daytime panorama of the Grand Canyon's South Rim under a clear blue Arizona sky.  ‌",
+    "from": "country-record-hero",
+    "trip": "usa",
+    "idx": 0
+   }
+  ]
+ },
+ {
+  "trip": "hongkong-business-studies",
+  "title": "Hong Kong Business & Innovation",
+  "status": "published",
+  "country": "Hong Kong",
+  "city": "Hong Kong",
+  "totalDays": 6,
+  "missing": [
+   {
+    "day": 1,
+    "title": "Arrival in Hong Kong",
+    "place": "Hong Kong",
+    "summary": "First impressions of one of Asia's great financial cities, with time to settle in and begin exploring before an evening meal.",
+    "highlights": [
+     "Start exploring Hong Kong",
+     "Dinner"
+    ]
+   }
+  ],
+  "pool": [
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/hongkong-business-studies/gallery-2.jpg",
+    "alt": "Hong Kong Business & Innovation",
+    "from": "own",
+    "trip": "hongkong-business-studies",
+    "idx": 2
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/hongkong-business-studies/gallery-4.jpg",
+    "alt": "Hong Kong Business & Innovation",
+    "from": "own",
+    "trip": "hongkong-business-studies",
+    "idx": 4
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/hongkong-business-studies/gallery-5.jpg",
+    "alt": "Hong Kong Business & Innovation",
+    "from": "own",
+    "trip": "hongkong-business-studies",
+    "idx": 5
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/hongkong-business-studies/gallery-6.jpg",
+    "alt": "Hong Kong Business & Innovation",
+    "from": "own",
+    "trip": "hongkong-business-studies",
+    "idx": 6
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/hongkong-business-studies/gallery-8.jpg",
+    "alt": "Hong Kong Business & Innovation",
+    "from": "own",
+    "trip": "hongkong-business-studies",
+    "idx": 8
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/hongkong-business-studies/gallery-9.jpg",
+    "alt": "Hong Kong Business & Innovation",
+    "from": "own",
+    "trip": "hongkong-business-studies",
+    "idx": 9
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/hongkong-business-studies/gallery-10.jpg",
+    "alt": "Hong Kong Business & Innovation",
+    "from": "own",
+    "trip": "hongkong-business-studies",
+    "idx": 10
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/hongkong-business-studies/gallery-11.jpg",
+    "alt": "Hong Kong Business & Innovation",
+    "from": "own",
+    "trip": "hongkong-business-studies",
+    "idx": 11
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/hongkong-business-studies/gallery-12.jpg",
+    "alt": "Hong Kong Business & Innovation",
+    "from": "own",
+    "trip": "hongkong-business-studies",
+    "idx": 12
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/hongkong-business-studies/gallery-14.jpg",
+    "alt": "Hong Kong Business & Innovation",
+    "from": "own",
+    "trip": "hongkong-business-studies",
+    "idx": 14
+   },
+   {
+    "url": "https://nwpnlqdbawlfmmgvtthy.supabase.co/storage/v1/object/public/images/uploads/2026-08-24/b9d48cdb-027a-44ed-935e-26de87412393.jpg",
+    "alt": "Hong Kong cityscape at daytime. View from Peak",
+    "from": "country-record-hero",
+    "trip": "hong-kong",
+    "idx": 0
+   }
+  ]
+ },
+ {
+  "trip": "india-adventure-and-community-service",
+  "title": "India Adventure and Community Service",
+  "status": "published",
+  "country": "India",
+  "city": "Himalayas",
+  "totalDays": 4,
+  "missing": [
+   {
+    "day": 2,
+    "title": "Palampur's Tea-Growing Heritage",
+    "place": "Palampur",
+    "summary": "Orientation for the community project pairs with tea gardens beneath the Dhauladhar peaks and a factory tracing the leaf from harvest to packaging.",
+    "highlights": [
+     "Orientation and safety briefing",
+     "Tea garden visit",
+     "Local tea factory",
+     "Kangra tea tasting"
+    ]
+   }
+  ],
+  "pool": [
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/india-adventure-and-community-service/gallery-1.jpg",
+    "alt": "India Adventure and Community Service",
+    "from": "own",
+    "trip": "india-adventure-and-community-service",
+    "idx": 1
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/india-adventure-and-community-service/gallery-2.jpg",
+    "alt": "India Adventure and Community Service",
+    "from": "own",
+    "trip": "india-adventure-and-community-service",
+    "idx": 2
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/india-adventure-and-community-service/gallery-4.jpg",
+    "alt": "India Adventure and Community Service",
+    "from": "own",
+    "trip": "india-adventure-and-community-service",
+    "idx": 4
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/india-adventure-and-community-service/gallery-5.jpg",
+    "alt": "India Adventure and Community Service",
+    "from": "own",
+    "trip": "india-adventure-and-community-service",
+    "idx": 5
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/india-adventure-and-community-service/gallery-6.jpg",
+    "alt": "India Adventure and Community Service",
+    "from": "own",
+    "trip": "india-adventure-and-community-service",
+    "idx": 6
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/india-adventure-and-community-service/gallery-8.jpg",
+    "alt": "India Adventure and Community Service",
+    "from": "own",
+    "trip": "india-adventure-and-community-service",
+    "idx": 8
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/india-adventure-and-community-service/gallery-10.jpg",
+    "alt": "India Adventure and Community Service",
+    "from": "own",
+    "trip": "india-adventure-and-community-service",
+    "idx": 10
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/64/g0-1489492220.jpg",
+    "alt": "",
+    "from": "sibling",
+    "trip": "rocksport-experiential-trip-mussoorie-india",
+    "idx": 1
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/64/g1-532678735.jpg",
+    "alt": "",
+    "from": "sibling",
+    "trip": "rocksport-experiential-trip-mussoorie-india",
+    "idx": 2
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/64/g2-710221300.jpg",
+    "alt": "",
+    "from": "sibling",
+    "trip": "rocksport-experiential-trip-mussoorie-india",
+    "idx": 3
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/street-children-project-delhi/gallery-5.jpg",
+    "alt": "India: Your real opportunity to make a positive difference",
+    "from": "sibling",
+    "trip": "street-children-project-delhi",
+    "idx": 5
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/commons-fill/trips/64/hero-1787353129227.jpg",
+    "alt": "",
+    "from": "sibling-hero",
+    "trip": "rocksport-experiential-trip-mussoorie-india",
+    "idx": 0
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/street-children-project-delhi/hero.jpg",
+    "alt": "",
+    "from": "sibling-hero",
+    "trip": "street-children-project-delhi",
+    "idx": 0
+   },
+   {
+    "url": "https://nwpnlqdbawlfmmgvtthy.supabase.co/storage/v1/object/public/images/uploads/2026-08-24/006247ee-b704-4bc2-8301-4f35ce8c5652.jpg",
+    "alt": "Rows of flags on colonial buildings in Cartagena, Colombia",
+    "from": "country-record-hero",
+    "trip": "india",
+    "idx": 0
+   }
+  ]
+ },
+ {
+  "trip": "japan-geography",
+  "title": "Geography Trip to Japan",
+  "status": "published",
+  "country": "Japan",
+  "city": "Tokyo · Kyoto · Hiroshima",
+  "totalDays": 9,
+  "missing": [
+   {
+    "day": 2,
+    "title": "Exploring Tokyo",
+    "place": "Tokyo",
+    "summary": "A full sweep of the capital by open-top bus or rail pass, reading Tokyo's districts, density and transport networks at street level.",
+    "highlights": [
+     "Tokyo Big Bus Tour",
+     "Tokyo Trains pass",
+     "Dinner at a local restaurant"
+    ]
+   },
+   {
+    "day": 5,
+    "title": "Bullet Train to Kyoto",
+    "place": "Kyoto",
+    "summary": "The Tokaido corridor unfolds at 300km/h on the Shinkansen, trading Tokyo's density for Kyoto's older grain and a free afternoon to settle in.",
+    "highlights": [
+     "Shinkansen bullet train to Kyoto",
+     "Free time in Kyoto"
+    ]
+   },
+   {
+    "day": 8,
+    "title": "Hiroshima: Memory and Recovery",
+    "place": "Hiroshima",
+    "summary": "Memorials and museums trace the events of 1945 and the extraordinary rebuilding that followed, set against a confident, thriving modern city.",
+    "highlights": [
+     "Hiroshima memorials",
+     "Hiroshima museums",
+     "Exploring the modern city",
+     "Dinner at a local restaurant"
+    ]
+   }
+  ],
+  "pool": [
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/japan-geography/gallery-6.jpg",
+    "alt": "Geography Trip to Japan",
+    "from": "own",
+    "trip": "japan-geography",
+    "idx": 6
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/japan-geography/gallery-7.jpg",
+    "alt": "Geography Trip to Japan",
+    "from": "own",
+    "trip": "japan-geography",
+    "idx": 7
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/fantastic-japan-skiing-and-tour-trip/gallery-1.jpg",
+    "alt": "",
+    "from": "sibling",
+    "trip": "fantastic-japan-skiing-and-tour-trip",
+    "idx": 1
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/fantastic-japan-skiing-and-tour-trip/gallery-2.jpg",
+    "alt": "",
+    "from": "sibling",
+    "trip": "fantastic-japan-skiing-and-tour-trip",
+    "idx": 2
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/fantastic-japan-skiing-and-tour-trip/gallery-3.jpg",
+    "alt": "",
+    "from": "sibling",
+    "trip": "fantastic-japan-skiing-and-tour-trip",
+    "idx": 3
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/fantastic-japan-skiing-and-tour-trip/gallery-4.jpg",
+    "alt": "",
+    "from": "sibling",
+    "trip": "fantastic-japan-skiing-and-tour-trip",
+    "idx": 4
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/fantastic-japan-skiing-and-tour-trip/gallery-5.jpg",
+    "alt": "",
+    "from": "sibling",
+    "trip": "fantastic-japan-skiing-and-tour-trip",
+    "idx": 5
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/fantastic-japan-skiing-and-tour-trip/gallery-6.jpg",
+    "alt": "",
+    "from": "sibling",
+    "trip": "fantastic-japan-skiing-and-tour-trip",
+    "idx": 6
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/fantastic-japan-skiing-and-tour-trip/gallery-7.jpg",
+    "alt": "",
+    "from": "sibling",
+    "trip": "fantastic-japan-skiing-and-tour-trip",
+    "idx": 7
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/fantastic-japan-skiing-and-tour-trip/gallery-8.jpg",
+    "alt": "",
+    "from": "sibling",
+    "trip": "fantastic-japan-skiing-and-tour-trip",
+    "idx": 8
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/fantastic-japan-skiing-and-tour-trip/gallery-9.jpg",
+    "alt": "",
+    "from": "sibling",
+    "trip": "fantastic-japan-skiing-and-tour-trip",
+    "idx": 9
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/fantastic-japan-skiing-and-tour-trip/gallery-10.jpg",
+    "alt": "",
+    "from": "sibling",
+    "trip": "fantastic-japan-skiing-and-tour-trip",
+    "idx": 10
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/fantastic-japan-skiing-and-tour-trip/gallery-11.jpg",
+    "alt": "",
+    "from": "sibling",
+    "trip": "fantastic-japan-skiing-and-tour-trip",
+    "idx": 11
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/fantastic-japan-skiing-and-tour-trip/gallery-12.jpg",
+    "alt": "",
+    "from": "sibling",
+    "trip": "fantastic-japan-skiing-and-tour-trip",
+    "idx": 12
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/japan-art-design-technology/gallery-1.jpg",
+    "alt": "Japan, Where Tradition Meets Tomorrow",
+    "from": "sibling",
+    "trip": "japan-art-design-technology",
+    "idx": 1
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/japan-art-design-technology/gallery-6.jpg",
+    "alt": "Japan, Where Tradition Meets Tomorrow",
+    "from": "sibling",
+    "trip": "japan-art-design-technology",
+    "idx": 6
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/japan-art-design-technology/gallery-7.jpg",
+    "alt": "Japan, Where Tradition Meets Tomorrow",
+    "from": "sibling",
+    "trip": "japan-art-design-technology",
+    "idx": 7
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/japan-art-design-technology/gallery-9.jpg",
+    "alt": "Japan, Where Tradition Meets Tomorrow",
+    "from": "sibling",
+    "trip": "japan-art-design-technology",
+    "idx": 9
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/japan-art-design-technology/gallery-10.jpg",
+    "alt": "Japan, Where Tradition Meets Tomorrow",
+    "from": "sibling",
+    "trip": "japan-art-design-technology",
+    "idx": 10
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/japan-art-design-technology/gallery-12.jpg",
+    "alt": "Japan, Where Tradition Meets Tomorrow",
+    "from": "sibling",
+    "trip": "japan-art-design-technology",
+    "idx": 12
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/japan-art-design-technology/gallery-14.jpg",
+    "alt": "Japan, Where Tradition Meets Tomorrow",
+    "from": "sibling",
+    "trip": "japan-art-design-technology",
+    "idx": 14
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/japan-art-design-technology/gallery-15.jpg",
+    "alt": "Japan, Where Tradition Meets Tomorrow",
+    "from": "sibling",
+    "trip": "japan-art-design-technology",
+    "idx": 15
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/japan-art-trip/gallery-3.jpg",
+    "alt": "Japan's Art, Culture & Technology",
+    "from": "sibling",
+    "trip": "japan-art-trip",
+    "idx": 3
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/japan-art-trip/gallery-5.jpg",
+    "alt": "Japan's Art, Culture & Technology",
+    "from": "sibling",
+    "trip": "japan-art-trip",
+    "idx": 5
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/japan-art-trip/gallery-6.jpg",
+    "alt": "Japan's Art, Culture & Technology",
+    "from": "sibling",
+    "trip": "japan-art-trip",
+    "idx": 6
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/japan-art-trip/gallery-7.jpg",
+    "alt": "Japan's Art, Culture & Technology",
+    "from": "sibling",
+    "trip": "japan-art-trip",
+    "idx": 7
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/japan-art-trip/gallery-9.jpg",
+    "alt": "Japan's Art, Culture & Technology",
+    "from": "sibling",
+    "trip": "japan-art-trip",
+    "idx": 9
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/japan-art-trip/gallery-11.jpg",
+    "alt": "Japan's Art, Culture & Technology",
+    "from": "sibling",
+    "trip": "japan-art-trip",
+    "idx": 11
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/japan-art-trip/gallery-13.jpg",
+    "alt": "Japan's Art, Culture & Technology",
+    "from": "sibling",
+    "trip": "japan-art-trip",
+    "idx": 13
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/japan-art-trip/gallery-15.jpg",
+    "alt": "Japan's Art, Culture & Technology",
+    "from": "sibling",
+    "trip": "japan-art-trip",
+    "idx": 15
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/japan-art-trip/gallery-16.jpg",
+    "alt": "Japan's Art, Culture & Technology",
+    "from": "sibling",
+    "trip": "japan-art-trip",
+    "idx": 16
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/japan-art-trip/gallery-17.jpg",
+    "alt": "Japan's Art, Culture & Technology",
+    "from": "sibling",
+    "trip": "japan-art-trip",
+    "idx": 17
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/japan-business-studies/gallery-1.jpg",
+    "alt": "",
+    "from": "sibling",
+    "trip": "japan-business-studies",
+    "idx": 1
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/japan-business-studies/gallery-2.jpg",
+    "alt": "",
+    "from": "sibling",
+    "trip": "japan-business-studies",
+    "idx": 2
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/japan-business-studies/gallery-3.jpg",
+    "alt": "",
+    "from": "sibling",
+    "trip": "japan-business-studies",
+    "idx": 3
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/japan-business-studies/gallery-4.jpg",
+    "alt": "",
+    "from": "sibling",
+    "trip": "japan-business-studies",
+    "idx": 4
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/japan-business-studies/gallery-5.jpg",
+    "alt": "",
+    "from": "sibling",
+    "trip": "japan-business-studies",
+    "idx": 5
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/japan-business-studies/gallery-6.jpg",
+    "alt": "",
+    "from": "sibling",
+    "trip": "japan-business-studies",
+    "idx": 6
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/japan-business-studies/gallery-7.jpg",
+    "alt": "",
+    "from": "sibling",
+    "trip": "japan-business-studies",
+    "idx": 7
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/japan-business-studies/gallery-8.jpg",
+    "alt": "",
+    "from": "sibling",
+    "trip": "japan-business-studies",
+    "idx": 8
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/japan-business-studies/gallery-9.jpg",
+    "alt": "",
+    "from": "sibling",
+    "trip": "japan-business-studies",
+    "idx": 9
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/japan-business-studies/gallery-10.jpg",
+    "alt": "",
+    "from": "sibling",
+    "trip": "japan-business-studies",
+    "idx": 10
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/japan-business-studies/gallery-11.jpg",
+    "alt": "",
+    "from": "sibling",
+    "trip": "japan-business-studies",
+    "idx": 11
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/fantastic-japan-skiing-and-tour-trip/hero.jpg",
+    "alt": "",
+    "from": "sibling-hero",
+    "trip": "fantastic-japan-skiing-and-tour-trip",
+    "idx": 0
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/japan-art-design-technology/hero.jpg",
+    "alt": "",
+    "from": "sibling-hero",
+    "trip": "japan-art-design-technology",
+    "idx": 0
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/japan-art-trip/hero.jpg",
+    "alt": "",
+    "from": "sibling-hero",
+    "trip": "japan-art-trip",
+    "idx": 0
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/japan-business-studies/hero.jpg",
+    "alt": "",
+    "from": "sibling-hero",
+    "trip": "japan-business-studies",
+    "idx": 0
+   },
+   {
+    "url": "https://nwpnlqdbawlfmmgvtthy.supabase.co/storage/v1/object/public/images/uploads/2026-08-25/23b0992d-0f8a-48cf-a714-074cc13f2cb8.jpg",
+    "alt": "",
+    "from": "sibling-hero",
+    "trip": "japan-design-and-technology",
+    "idx": 0
+   },
+   {
+    "url": "https://nwpnlqdbawlfmmgvtthy.supabase.co/storage/v1/object/public/images/uploads/2026-08-24/8851d1f5-4959-40d3-bd7d-929850910532.jpg",
+    "alt": "Kyoto, Japan bamboo forest.",
+    "from": "country-record-hero",
+    "trip": "japan",
+    "idx": 0
+   }
+  ]
+ },
+ {
+  "trip": "jordan",
+  "title": " Ancient Wonders & Desert Adventures of Jordan",
+  "status": "published",
+  "country": "Jordan",
+  "city": "Amman",
+  "totalDays": 6,
+  "missing": [
+   {
+    "day": 5,
+    "title": "Mosaics, Mount Nebo & the Dead Sea",
+    "place": "Dead Sea",
+    "summary": "A sixth-century mosaic map of the Holy Land, the summit where Moses surveyed the Promised Land, and floating on the lowest point on Earth.",
+    "highlights": [
+     "St George's Church",
+     "Mount Nebo",
+     "Views towards the Dead Sea",
+     "Floating in the Dead Sea"
+    ]
+   }
+  ],
+  "pool": [
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/jordan/gallery-3.jpg",
+    "alt": " Ancient Wonders & Desert Adventures of Jordan",
+    "from": "own",
+    "trip": "jordan",
+    "idx": 3
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/jordan/gallery-5.jpg",
+    "alt": " Ancient Wonders & Desert Adventures of Jordan",
+    "from": "own",
+    "trip": "jordan",
+    "idx": 5
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/jordan/gallery-8.jpg",
+    "alt": " Ancient Wonders & Desert Adventures of Jordan",
+    "from": "own",
+    "trip": "jordan",
+    "idx": 8
+   },
+   {
+    "url": "https://nwpnlqdbawlfmmgvtthy.supabase.co/storage/v1/object/public/images/uploads/2026-08-24/c6267963-b238-4cd7-85db-d5d30c5192ee.jpg",
+    "alt": "The rose-red Treasury facade at Petra, Jordan, lit by bright sunshine with visitors below.",
+    "from": "country-record-hero",
+    "trip": "jordan",
+    "idx": 0
+   }
+  ]
+ },
+ {
+  "trip": "kenya-children-care-volunteering",
+  "title": "Kenya Community & Safari Adventure",
+  "status": "published",
+  "country": "Kenya",
+  "city": "Nairobi",
+  "totalDays": 5,
+  "missing": [
+   {
+    "day": 1,
+    "title": "Nairobi Conservation Welcome",
+    "place": "Nairobi",
+    "summary": "Kenya's capital opens with two landmark wildlife projects — rescued elephant orphans and endangered Rothschild's giraffes — alongside a full cultural and safety orientation.",
+    "highlights": [
+     "Programme Orientation",
+     "Sheldrick Wildlife Trust",
+     "Giraffe Centre"
+    ]
+   },
+   {
+    "day": 3,
+    "title": "Great Rift Valley to the Mara",
+    "place": "Masai Mara",
+    "summary": "A journey from city to open savannah, pausing above the Great Rift Valley to read tectonic forces in the escarpments before reaching the Mara.",
+    "highlights": [
+     "Great Rift Valley Viewpoint",
+     "Journey to the Masai Mara National Reserve",
+     "Arrival at safari camp"
+    ]
+   },
+   {
+    "day": 4,
+    "title": "Full Day in the Masai Mara",
+    "place": "Masai Mara",
+    "summary": "A full day of game drives across grasslands, riverbanks and woodland, tracking predators and herds while learning how this ecosystem sustains itself.",
+    "highlights": [
+     "Full-day safari game drives",
+     "Guided wildlife interpretation",
+     "Picnic lunch in the reserve",
+     "Optional hot-air balloon safari",
+     "Visit to a Maasai community"
+    ]
+   },
+   {
+    "day": 5,
+    "title": "One Final Safari & Farewell",
+    "place": "Masai Mara",
+    "summary": "A sunrise game drive across the Mara's golden plains, hunting for predators returning from the night, before the scenic Rift Valley road back to Nairobi.",
+    "highlights": [
+     "Sunrise Game Drive",
+     "Wildlife Photography",
+     "Journey through the Great Rift Valley"
+    ]
+   }
+  ],
+  "pool": [
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/kenya-children-care-volunteering/gallery-1.jpg",
+    "alt": "Kenya Community & Safari Adventure",
+    "from": "own",
+    "trip": "kenya-children-care-volunteering",
+    "idx": 1
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/kenya-children-care-volunteering/gallery-2.jpg",
+    "alt": "Kenya Community & Safari Adventure",
+    "from": "own",
+    "trip": "kenya-children-care-volunteering",
+    "idx": 2
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/kenya-children-care-volunteering/gallery-3.jpg",
+    "alt": "Kenya Community & Safari Adventure",
+    "from": "own",
+    "trip": "kenya-children-care-volunteering",
+    "idx": 3
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/kenya-children-care-volunteering/gallery-5.jpg",
+    "alt": "Kenya Community & Safari Adventure",
+    "from": "own",
+    "trip": "kenya-children-care-volunteering",
+    "idx": 5
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/kenya-children-care-volunteering/gallery-6.jpg",
+    "alt": "Kenya Community & Safari Adventure",
+    "from": "own",
+    "trip": "kenya-children-care-volunteering",
+    "idx": 6
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/volunteering-trip-to-kenya/gallery-1.jpg",
+    "alt": "",
+    "from": "sibling-city",
+    "trip": "volunteering-trip-to-kenya",
+    "idx": 1
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/volunteering-trip-to-kenya/gallery-3.jpg",
+    "alt": "",
+    "from": "sibling-city",
+    "trip": "volunteering-trip-to-kenya",
+    "idx": 3
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/volunteering-trip-to-kenya/gallery-4.jpg",
+    "alt": "",
+    "from": "sibling-city",
+    "trip": "volunteering-trip-to-kenya",
+    "idx": 4
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/volunteering-trip-to-kenya/gallery-5.jpg",
+    "alt": "",
+    "from": "sibling-city",
+    "trip": "volunteering-trip-to-kenya",
+    "idx": 5
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/volunteering-trip-to-kenya/gallery-6.jpg",
+    "alt": "",
+    "from": "sibling-city",
+    "trip": "volunteering-trip-to-kenya",
+    "idx": 6
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/volunteering-trip-to-kenya/hero.jpg",
+    "alt": "",
+    "from": "sibling-city-hero",
+    "trip": "volunteering-trip-to-kenya",
+    "idx": 0
+   },
+   {
+    "url": "https://nwpnlqdbawlfmmgvtthy.supabase.co/storage/v1/object/public/images/uploads/2026-08-24/4fcdac2b-e569-424b-bcae-039c91ed56bd.jpg",
+    "alt": "The Kerio View Point on the Kieyo Escarpment near Iten, Kenya, looking out over the Great Rift Valley",
+    "from": "country-record-hero",
+    "trip": "kenya",
+    "idx": 0
+   }
+  ]
+ },
+ {
+  "trip": "london",
+  "title": "London's Stories, Stage & Royal Heritage",
+  "status": "published",
+  "country": "United Kingdom",
+  "city": "London",
+  "totalDays": 6,
+  "missing": [
+   {
+    "day": 5,
+    "title": "Harry Potter & the West End",
+    "place": "London",
+    "summary": "Behind the scenes at the studios where the wizarding world was built, then a live professional production in a famous West End theatre.",
+    "highlights": [
+     "Warner Bros. Studio Tour London – The Making of Harry Potter",
+     "The Great Hall, Diagon Alley, Forbidden Forest and Platform 9¾",
+     "Dinner at Planet Hollywood",
+     "West End show of your choice"
+    ]
+   }
+  ],
+  "pool": [
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london/gallery-2.jpg",
+    "alt": "London's Stories, Stage & Royal Heritage",
+    "from": "own",
+    "trip": "london",
+    "idx": 2
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london/gallery-3.jpg",
+    "alt": "London's Stories, Stage & Royal Heritage",
+    "from": "own",
+    "trip": "london",
+    "idx": 3
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london/gallery-5.jpg",
+    "alt": "London's Stories, Stage & Royal Heritage",
+    "from": "own",
+    "trip": "london",
+    "idx": 5
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london-film-and-drama-trip/gallery-2.jpg",
+    "alt": "London Film & Drama Trip",
+    "from": "sibling-city",
+    "trip": "london-film-and-drama-trip",
+    "idx": 2
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london-film-and-drama-trip/gallery-3.jpg",
+    "alt": "London Film & Drama Trip",
+    "from": "sibling-city",
+    "trip": "london-film-and-drama-trip",
+    "idx": 3
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london-film-and-drama-trip/gallery-5.jpg",
+    "alt": "London Film & Drama Trip",
+    "from": "sibling-city",
+    "trip": "london-film-and-drama-trip",
+    "idx": 5
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london-film-and-drama-trip/gallery-6.jpg",
+    "alt": "London Film & Drama Trip",
+    "from": "sibling-city",
+    "trip": "london-film-and-drama-trip",
+    "idx": 6
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london-film-and-drama-trip/gallery-8.jpg",
+    "alt": "London Film & Drama Trip",
+    "from": "sibling-city",
+    "trip": "london-film-and-drama-trip",
+    "idx": 8
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london-film-and-drama-trip/gallery-9.jpg",
+    "alt": "London Film & Drama Trip",
+    "from": "sibling-city",
+    "trip": "london-film-and-drama-trip",
+    "idx": 9
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london-film-and-drama-trip/gallery-12.jpg",
+    "alt": "London Film & Drama Trip",
+    "from": "sibling-city",
+    "trip": "london-film-and-drama-trip",
+    "idx": 12
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london-film-and-drama-trip/gallery-13.jpg",
+    "alt": "London Film & Drama Trip",
+    "from": "sibling-city",
+    "trip": "london-film-and-drama-trip",
+    "idx": 13
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london-film-and-drama-trip/gallery-14.jpg",
+    "alt": "London Film & Drama Trip",
+    "from": "sibling-city",
+    "trip": "london-film-and-drama-trip",
+    "idx": 14
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london-musical-trip/gallery-4.jpg",
+    "alt": "London Live, The Ultimate Music & West End Experience",
+    "from": "sibling-city",
+    "trip": "london-musical-trip",
+    "idx": 4
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london-musical-trip/gallery-6.jpg",
+    "alt": "London Live, The Ultimate Music & West End Experience",
+    "from": "sibling-city",
+    "trip": "london-musical-trip",
+    "idx": 6
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london-musical-trip/gallery-9.jpg",
+    "alt": "London Live, The Ultimate Music & West End Experience",
+    "from": "sibling-city",
+    "trip": "london-musical-trip",
+    "idx": 9
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london-musical-trip/gallery-11.jpg",
+    "alt": "London Live, The Ultimate Music & West End Experience",
+    "from": "sibling-city",
+    "trip": "london-musical-trip",
+    "idx": 11
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london-film-and-drama-trip/hero.jpg",
+    "alt": "",
+    "from": "sibling-city-hero",
+    "trip": "london-film-and-drama-trip",
+    "idx": 0
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london-musical-trip/hero.jpg",
+    "alt": "",
+    "from": "sibling-city-hero",
+    "trip": "london-musical-trip",
+    "idx": 0
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/56/g0-1449954317.jpg",
+    "alt": "",
+    "from": "sibling",
+    "trip": "studio-london",
+    "idx": 1
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/56/g1-735016045.jpg",
+    "alt": "",
+    "from": "sibling",
+    "trip": "studio-london",
+    "idx": 2
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/56/g2-1394225840.jpg",
+    "alt": "",
+    "from": "sibling",
+    "trip": "studio-london",
+    "idx": 3
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/56/g3-362072849.jpg",
+    "alt": "",
+    "from": "sibling",
+    "trip": "studio-london",
+    "idx": 4
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/56/hero-445156534.jpg",
+    "alt": "",
+    "from": "sibling-hero",
+    "trip": "studio-london",
+    "idx": 0
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/57/hero-741026698.jpg",
+    "alt": "",
+    "from": "sibling-hero",
+    "trip": "westminster-and-the-art-of-argument",
+    "idx": 0
+   },
+   {
+    "url": "https://nwpnlqdbawlfmmgvtthy.supabase.co/storage/v1/object/public/images/uploads/2026-08-24/7908228c-61d7-4907-a138-ea5672978139.jpg",
+    "alt": "St Paul's Cathedral and the City of London skyline rising beyond Blackfriars Bridge, seen across the River Thames",
+    "from": "country-record-hero",
+    "trip": "united-kingdom",
+    "idx": 0
+   }
+  ]
+ },
+ {
+  "trip": "london-film-and-drama-trip",
+  "title": "London Film & Drama Trip",
+  "status": "published",
+  "country": "United Kingdom",
+  "city": "London",
+  "totalDays": 6,
+  "missing": [
+   {
+    "day": 4,
+    "title": "Behind the Wizarding World",
+    "place": "Watford",
+    "summary": "A full day inside the making of the Harry Potter films — original sets, props and special-effects reveals — followed by theatreland dining and Covent Garden.",
+    "highlights": [
+     "Harry Potter Studios",
+     "Special Effects Exhibits",
+     "Hogwarts Express at Platform 9¾",
+     "Theatre Café Diner",
+     "Covent Garden"
+    ]
+   }
+  ],
+  "pool": [
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london-film-and-drama-trip/gallery-2.jpg",
+    "alt": "London Film & Drama Trip",
+    "from": "own",
+    "trip": "london-film-and-drama-trip",
+    "idx": 2
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london-film-and-drama-trip/gallery-3.jpg",
+    "alt": "London Film & Drama Trip",
+    "from": "own",
+    "trip": "london-film-and-drama-trip",
+    "idx": 3
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london-film-and-drama-trip/gallery-5.jpg",
+    "alt": "London Film & Drama Trip",
+    "from": "own",
+    "trip": "london-film-and-drama-trip",
+    "idx": 5
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london-film-and-drama-trip/gallery-6.jpg",
+    "alt": "London Film & Drama Trip",
+    "from": "own",
+    "trip": "london-film-and-drama-trip",
+    "idx": 6
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london-film-and-drama-trip/gallery-8.jpg",
+    "alt": "London Film & Drama Trip",
+    "from": "own",
+    "trip": "london-film-and-drama-trip",
+    "idx": 8
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london-film-and-drama-trip/gallery-9.jpg",
+    "alt": "London Film & Drama Trip",
+    "from": "own",
+    "trip": "london-film-and-drama-trip",
+    "idx": 9
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london-film-and-drama-trip/gallery-12.jpg",
+    "alt": "London Film & Drama Trip",
+    "from": "own",
+    "trip": "london-film-and-drama-trip",
+    "idx": 12
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london-film-and-drama-trip/gallery-13.jpg",
+    "alt": "London Film & Drama Trip",
+    "from": "own",
+    "trip": "london-film-and-drama-trip",
+    "idx": 13
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london-film-and-drama-trip/gallery-14.jpg",
+    "alt": "London Film & Drama Trip",
+    "from": "own",
+    "trip": "london-film-and-drama-trip",
+    "idx": 14
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london/gallery-2.jpg",
+    "alt": "London's Stories, Stage & Royal Heritage",
+    "from": "sibling-city",
+    "trip": "london",
+    "idx": 2
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london/gallery-3.jpg",
+    "alt": "London's Stories, Stage & Royal Heritage",
+    "from": "sibling-city",
+    "trip": "london",
+    "idx": 3
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london/gallery-5.jpg",
+    "alt": "London's Stories, Stage & Royal Heritage",
+    "from": "sibling-city",
+    "trip": "london",
+    "idx": 5
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london-musical-trip/gallery-4.jpg",
+    "alt": "London Live, The Ultimate Music & West End Experience",
+    "from": "sibling-city",
+    "trip": "london-musical-trip",
+    "idx": 4
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london-musical-trip/gallery-6.jpg",
+    "alt": "London Live, The Ultimate Music & West End Experience",
+    "from": "sibling-city",
+    "trip": "london-musical-trip",
+    "idx": 6
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london-musical-trip/gallery-9.jpg",
+    "alt": "London Live, The Ultimate Music & West End Experience",
+    "from": "sibling-city",
+    "trip": "london-musical-trip",
+    "idx": 9
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london-musical-trip/gallery-11.jpg",
+    "alt": "London Live, The Ultimate Music & West End Experience",
+    "from": "sibling-city",
+    "trip": "london-musical-trip",
+    "idx": 11
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london/hero.jpg",
+    "alt": "",
+    "from": "sibling-city-hero",
+    "trip": "london",
+    "idx": 0
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/london-musical-trip/hero.jpg",
+    "alt": "",
+    "from": "sibling-city-hero",
+    "trip": "london-musical-trip",
+    "idx": 0
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/56/g0-1449954317.jpg",
+    "alt": "",
+    "from": "sibling",
+    "trip": "studio-london",
+    "idx": 1
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/56/g1-735016045.jpg",
+    "alt": "",
+    "from": "sibling",
+    "trip": "studio-london",
+    "idx": 2
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/56/g2-1394225840.jpg",
+    "alt": "",
+    "from": "sibling",
+    "trip": "studio-london",
+    "idx": 3
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/56/g3-362072849.jpg",
+    "alt": "",
+    "from": "sibling",
+    "trip": "studio-london",
+    "idx": 4
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/56/hero-445156534.jpg",
+    "alt": "",
+    "from": "sibling-hero",
+    "trip": "studio-london",
+    "idx": 0
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/57/hero-741026698.jpg",
+    "alt": "",
+    "from": "sibling-hero",
+    "trip": "westminster-and-the-art-of-argument",
+    "idx": 0
+   },
+   {
+    "url": "https://nwpnlqdbawlfmmgvtthy.supabase.co/storage/v1/object/public/images/uploads/2026-08-24/7908228c-61d7-4907-a138-ea5672978139.jpg",
+    "alt": "St Paul's Cathedral and the City of London skyline rising beyond Blackfriars Bridge, seen across the River Thames",
+    "from": "country-record-hero",
+    "trip": "united-kingdom",
+    "idx": 0
+   }
+  ]
+ },
+ {
+  "trip": "mathematics-trip",
+  "title": "Mathematics Trip",
+  "status": "draft",
+  "country": "Austria",
+  "city": "Vienna",
+  "totalDays": 6,
+  "missing": [
+   {
+    "day": 5,
+    "title": "Semmering Alpine Pass",
+    "place": "Semmering",
+    "summary": "A UNESCO-listed mountain railway threads through the Eastern Alps, where dramatic cliffs, forests and viaducts show engineering solving a landscape problem.",
+    "highlights": [
+     "Semmering Railway",
+     "Semmering mountain pass",
+     "Alpine villages and scenery"
+    ]
+   }
+  ],
+  "pool": [
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/mathematics-trip/gallery-3.jpg",
+    "alt": "",
+    "from": "own",
+    "trip": "mathematics-trip",
+    "idx": 3
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/mathematics-trip/gallery-5.jpg",
+    "alt": "",
+    "from": "own",
+    "trip": "mathematics-trip",
+    "idx": 5
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/mathematics-trip/gallery-8.jpg",
+    "alt": "",
+    "from": "own",
+    "trip": "mathematics-trip",
+    "idx": 8
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/mathematics-trip/gallery-9.jpg",
+    "alt": "",
+    "from": "own",
+    "trip": "mathematics-trip",
+    "idx": 9
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/mathematics-trip/gallery-10.jpg",
+    "alt": "",
+    "from": "own",
+    "trip": "mathematics-trip",
+    "idx": 10
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/musical-trip-to-vienna/gallery-1.jpg",
+    "alt": "Musical Trip to Vienna",
+    "from": "sibling-city",
+    "trip": "musical-trip-to-vienna",
+    "idx": 1
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/musical-trip-to-vienna/gallery-3.jpg",
+    "alt": "Musical Trip to Vienna",
+    "from": "sibling-city",
+    "trip": "musical-trip-to-vienna",
+    "idx": 3
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/musical-trip-to-vienna/gallery-5.jpg",
+    "alt": "Musical Trip to Vienna",
+    "from": "sibling-city",
+    "trip": "musical-trip-to-vienna",
+    "idx": 5
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/musical-trip-to-vienna/gallery-6.jpg",
+    "alt": "Musical Trip to Vienna",
+    "from": "sibling-city",
+    "trip": "musical-trip-to-vienna",
+    "idx": 6
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/musical-trip-to-vienna/hero.jpg",
+    "alt": "",
+    "from": "sibling-city-hero",
+    "trip": "musical-trip-to-vienna",
+    "idx": 0
+   },
+   {
+    "url": "https://nwpnlqdbawlfmmgvtthy.supabase.co/storage/v1/object/public/images/uploads/2026-08-24/0b5676ea-2915-4a9c-b4a3-e59f31c63a98.jpg",
+    "alt": "Exterior Of Pass Museum At Timmelsjoch In Austria",
+    "from": "country-record-hero",
+    "trip": "austria",
+    "idx": 0
+   }
+  ]
+ },
+ {
+  "trip": "mongolia-life-on-the-steppe",
+  "title": "Mongolia — Life on the Steppe",
+  "status": "published",
+  "country": "Mongolia",
+  "city": "Ulaanbaatar",
+  "totalDays": 7,
+  "missing": [
+   {
+    "day": 3,
+    "title": "Kharakhorum: Empires & Living Crafts",
+    "place": "Kharakhorum",
+    "summary": "The vanished capital of the Mongol Empire, where a walled monastery rose from imperial ruins and felt-making still underpins nomadic survival.",
+    "highlights": [
+     "Kharakhorum Museum",
+     "Erdene Zuu Monastery",
+     "Felt-making workshop with local artisans"
+    ]
+   },
+   {
+    "day": 4,
+    "title": "Sand Dunes, Camels & Wild Horses",
+    "place": "Khustai National Park",
+    "summary": "Granite mountains give way to dunes and steppe, with camel herders, a hot-stone barbecue and the rare Takhi wild horses of Khustai.",
+    "highlights": [
+     "Khognokhan Nature Reserve",
+     "Camel ride at Elsen Tasarkhai",
+     "Mongolian hot-stone barbecue",
+     "Khustai National Park",
+     "Eco-camp overnight"
+    ]
+   },
+   {
+    "day": 5,
+    "title": "Living Nomadic Heritage",
+    "place": "Nomadic Cultural Heritage Center",
+    "summary": "A day inside herding life: Kazakh and Mongolian families, eagle hunting, horseback riding across the valley and calligraphy rooted in steppe traditions.",
+    "highlights": [
+     "Nomadic Cultural Heritage Center",
+     "Eagle-hunting demonstration",
+     "Horseback riding across the valley",
+     "Traditional calligraphy workshop",
+     "Folk music, singing and traditional foods"
+    ]
+   },
+   {
+    "day": 7,
+    "title": "Departure",
+    "place": "Ulaanbaatar",
+    "summary": "A final Mongolian morning before the transfer to the airport and the flight home, closing a week on the steppe.",
+    "highlights": [
+     "Airport transfer"
+    ]
+   }
+  ],
+  "pool": [
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/65/g1-1070972714.jpg",
+    "alt": "",
+    "from": "own",
+    "trip": "mongolia-life-on-the-steppe",
+    "idx": 2
+   },
+   {
+    "url": "https://nwpnlqdbawlfmmgvtthy.supabase.co/storage/v1/object/public/images/uploads/2026-08-24/c140cdad-fab1-4504-95fa-fbf7ccc60fa0.jpg",
+    "alt": "Red-walled temple buildings with tiled roofs inside Erdene Zuu Monastery, Mongolia",
+    "from": "country-record-hero",
+    "trip": "mongolia",
+    "idx": 0
+   }
+  ]
+ },
+ {
+  "trip": "musical-trip-to-vienna",
+  "title": "Musical Trip to Vienna",
+  "status": "published",
+  "country": "Austria",
+  "city": "Vienna",
+  "totalDays": 6,
+  "missing": [
+   {
+    "day": 4,
+    "title": "Salzburg and the Story of Mozart",
+    "place": "Salzburg",
+    "summary": "Mozart's birthplace city rewards a full day: a UNESCO-listed old town of squares and church towers beneath Alpine peaks and a hilltop fortress.",
+    "highlights": [
+     "Historic centre of Salzburg",
+     "Mozart's Birthplace on Getreidegasse",
+     "Mirabell Gardens",
+     "Hohensalzburg Fortress"
+    ]
+   },
+   {
+    "day": 5,
+    "title": "Vienna's Music Comes Alive",
+    "place": "Vienna",
+    "summary": "Concert halls, theatres and institutions that made Vienna the world capital of classical music, plus interactive sound experiments and virtual conducting.",
+    "highlights": [
+     "Vienna's concert halls, theatres and musical institutions",
+     "An interactive musical attraction such as the House of Music",
+     "Virtual conducting of the Vienna Philharmonic",
+     "Workshop, performance or guided visit"
+    ]
+   }
+  ],
+  "pool": [
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/musical-trip-to-vienna/gallery-1.jpg",
+    "alt": "Musical Trip to Vienna",
+    "from": "own",
+    "trip": "musical-trip-to-vienna",
+    "idx": 1
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/musical-trip-to-vienna/gallery-3.jpg",
+    "alt": "Musical Trip to Vienna",
+    "from": "own",
+    "trip": "musical-trip-to-vienna",
+    "idx": 3
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/musical-trip-to-vienna/gallery-5.jpg",
+    "alt": "Musical Trip to Vienna",
+    "from": "own",
+    "trip": "musical-trip-to-vienna",
+    "idx": 5
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/musical-trip-to-vienna/gallery-6.jpg",
+    "alt": "Musical Trip to Vienna",
+    "from": "own",
+    "trip": "musical-trip-to-vienna",
+    "idx": 6
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/mathematics-trip/gallery-3.jpg",
+    "alt": "",
+    "from": "sibling-city",
+    "trip": "mathematics-trip",
+    "idx": 3
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/mathematics-trip/gallery-5.jpg",
+    "alt": "",
+    "from": "sibling-city",
+    "trip": "mathematics-trip",
+    "idx": 5
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/mathematics-trip/gallery-8.jpg",
+    "alt": "",
+    "from": "sibling-city",
+    "trip": "mathematics-trip",
+    "idx": 8
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/mathematics-trip/gallery-9.jpg",
+    "alt": "",
+    "from": "sibling-city",
+    "trip": "mathematics-trip",
+    "idx": 9
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/mathematics-trip/gallery-10.jpg",
+    "alt": "",
+    "from": "sibling-city",
+    "trip": "mathematics-trip",
+    "idx": 10
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/mathematics-trip/hero.jpg",
+    "alt": "",
+    "from": "sibling-city-hero",
+    "trip": "mathematics-trip",
+    "idx": 0
+   },
+   {
+    "url": "https://nwpnlqdbawlfmmgvtthy.supabase.co/storage/v1/object/public/images/uploads/2026-08-24/0b5676ea-2915-4a9c-b4a3-e59f31c63a98.jpg",
+    "alt": "Exterior Of Pass Museum At Timmelsjoch In Austria",
+    "from": "country-record-hero",
+    "trip": "austria",
+    "idx": 0
+   }
+  ]
+ },
+ {
+  "trip": "nepal-volunteering",
+  "title": "Nepal, a trip of Culture, Community & Adventure",
+  "status": "published",
+  "country": "Nepal",
+  "city": "Kathmandu",
+  "totalDays": 7,
+  "missing": [
+   {
+    "day": 6,
+    "title": "Completing the Project",
+    "place": "Kathmandu",
+    "summary": "The final push at the school or community centre — finishing tasks, handing over a usable space, then reflecting on what teamwork and service really achieved.",
+    "highlights": [
+     "Final project session",
+     "Closing activity with the local team and children",
+     "Evening reflection"
+    ]
+   },
+   {
+    "day": 7,
+    "title": "Farewell to Nepal",
+    "place": "Kathmandu",
+    "summary": "A last morning in Kathmandu for shopping or quiet reflection on a journey of cultural discovery, teamwork and community engagement before flying home.",
+    "highlights": [
+     "Free time for last-minute shopping or a short walk"
+    ]
+   }
+  ],
+  "pool": [
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/nepal-volunteering/gallery-1.jpg",
+    "alt": "",
+    "from": "own",
+    "trip": "nepal-volunteering",
+    "idx": 1
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/nepal-volunteering/gallery-2.jpg",
+    "alt": "",
+    "from": "own",
+    "trip": "nepal-volunteering",
+    "idx": 2
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/nepal-volunteering/gallery-3.jpg",
+    "alt": "",
+    "from": "own",
+    "trip": "nepal-volunteering",
+    "idx": 3
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/nepal-volunteering/gallery-5.jpg",
+    "alt": "",
+    "from": "own",
+    "trip": "nepal-volunteering",
+    "idx": 4
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/nepal-volunteering/gallery-6.jpg",
+    "alt": "",
+    "from": "own",
+    "trip": "nepal-volunteering",
+    "idx": 5
+   },
+   {
+    "url": "https://nwpnlqdbawlfmmgvtthy.supabase.co/storage/v1/object/public/images/uploads/2026-08-24/5063e022-fc74-4453-b469-a7417fab7191.jpg",
+    "alt": "The golden spire and prayer flags of Boudhanath Stupa in Kathmandu against a bright blue sky",
+    "from": "country-record-hero",
+    "trip": "nepal",
+    "idx": 0
+   }
+  ]
+ },
+ {
+  "trip": "new-york-media-and-film-studies",
+  "title": "New York Film & Theatre",
+  "status": "published",
+  "country": "USA",
+  "city": "New York",
+  "totalDays": 8,
+  "missing": [
+   {
+    "day": 4,
+    "title": "Brooklyn and the Big Screen",
+    "place": "Brooklyn",
+    "summary": "A crossing of the Brooklyn Bridge sets up a day tracing how films are made, from cameras and costumes to a cinema dinner screening.",
+    "highlights": [
+     "Brooklyn Bridge",
+     "Time Out Market",
+     "Museum of the Moving Image",
+     "Alamo Drafthouse Cinema"
+    ]
+   },
+   {
+    "day": 7,
+    "title": "Campus and Creative Careers",
+    "place": "New York",
+    "summary": "University life in Greenwich Village meets fashion, costume and pop-culture design, closing with a dinner among rock memorabilia in Midtown.",
+    "highlights": [
+     "New York University",
+     "Museum at the Fashion Institute of Technology",
+     "Macy's Herald Square",
+     "Hard Rock Cafe"
+    ]
+   },
+   {
+    "day": 8,
+    "title": "Central Park and Home",
+    "place": "New York",
+    "summary": "Central Park's bridges, terraces and lakes offer a final filming location for photographs, sketches and short films before a farewell dinner and JFK departure.",
+    "highlights": [
+     "Central Park",
+     "Bethesda Terrace and Bow Bridge",
+     "Final creative filming and sketching",
+     "Farewell dinner at a traditional American restaurant"
+    ]
+   }
+  ],
+  "pool": [
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/new-york-media-and-film-studies/gallery-3.jpg",
+    "alt": "New York Film & Theatre",
+    "from": "own",
+    "trip": "new-york-media-and-film-studies",
+    "idx": 3
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/new-york-media-and-film-studies/gallery-4.jpg",
+    "alt": "New York Film & Theatre",
+    "from": "own",
+    "trip": "new-york-media-and-film-studies",
+    "idx": 4
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/new-york-media-and-film-studies/gallery-6.jpg",
+    "alt": "New York Film & Theatre",
+    "from": "own",
+    "trip": "new-york-media-and-film-studies",
+    "idx": 6
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/new-york-media-and-film-studies/gallery-9.jpg",
+    "alt": "New York Film & Theatre",
+    "from": "own",
+    "trip": "new-york-media-and-film-studies",
+    "idx": 9
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/new-york-media-and-film-studies/gallery-10.jpg",
+    "alt": "New York Film & Theatre",
+    "from": "own",
+    "trip": "new-york-media-and-film-studies",
+    "idx": 10
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/new-york-media-and-film-studies/gallery-11.jpg",
+    "alt": "New York Film & Theatre",
+    "from": "own",
+    "trip": "new-york-media-and-film-studies",
+    "idx": 11
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/creative-arts-and-musical-theatre-tour-to-new-york/gallery-4.jpg",
+    "alt": "New York performing arts adventure",
+    "from": "sibling-city",
+    "trip": "creative-arts-and-musical-theatre-tour-to-new-york",
+    "idx": 4
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/creative-arts-and-musical-theatre-tour-to-new-york/gallery-5.jpg",
+    "alt": "New York performing arts adventure",
+    "from": "sibling-city",
+    "trip": "creative-arts-and-musical-theatre-tour-to-new-york",
+    "idx": 5
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/creative-arts-and-musical-theatre-tour-to-new-york/gallery-6.jpg",
+    "alt": "New York performing arts adventure",
+    "from": "sibling-city",
+    "trip": "creative-arts-and-musical-theatre-tour-to-new-york",
+    "idx": 6
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/creative-arts-and-musical-theatre-tour-to-new-york/hero.jpg",
+    "alt": "",
+    "from": "sibling-city-hero",
+    "trip": "creative-arts-and-musical-theatre-tour-to-new-york",
+    "idx": 0
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/45/g1-638036074.jpg",
+    "alt": "",
+    "from": "sibling",
+    "trip": "florida-business-studies-trip",
+    "idx": 2
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/geography-trip-to-east-coast-usa/gallery-1.jpg",
+    "alt": "American Icons & Heritage",
+    "from": "sibling",
+    "trip": "geography-trip-to-east-coast-usa",
+    "idx": 1
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/geography-trip-to-east-coast-usa/gallery-4.jpg",
+    "alt": "American Icons & Heritage",
+    "from": "sibling",
+    "trip": "geography-trip-to-east-coast-usa",
+    "idx": 4
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/geography-trip-to-east-coast-usa/gallery-6.jpg",
+    "alt": "American Icons & Heritage",
+    "from": "sibling",
+    "trip": "geography-trip-to-east-coast-usa",
+    "idx": 6
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/steam-educational-trip-to-orlando/gallery-1.jpg",
+    "alt": "Florida Discovery & Adventure",
+    "from": "sibling",
+    "trip": "steam-educational-trip-to-orlando",
+    "idx": 1
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/steam-educational-trip-to-orlando/gallery-2.jpg",
+    "alt": "Florida Discovery & Adventure",
+    "from": "sibling",
+    "trip": "steam-educational-trip-to-orlando",
+    "idx": 2
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/steam-educational-trip-to-orlando/gallery-4.jpg",
+    "alt": "Florida Discovery & Adventure",
+    "from": "sibling",
+    "trip": "steam-educational-trip-to-orlando",
+    "idx": 4
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/steam-educational-trip-to-orlando/gallery-5.jpg",
+    "alt": "Florida Discovery & Adventure",
+    "from": "sibling",
+    "trip": "steam-educational-trip-to-orlando",
+    "idx": 5
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/steam-educational-trip-to-orlando/gallery-7.jpg",
+    "alt": "Florida Discovery & Adventure",
+    "from": "sibling",
+    "trip": "steam-educational-trip-to-orlando",
+    "idx": 7
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/steam-educational-trip-to-orlando/gallery-8.jpg",
+    "alt": "Florida Discovery & Adventure",
+    "from": "sibling",
+    "trip": "steam-educational-trip-to-orlando",
+    "idx": 8
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/steam-educational-trip-to-orlando/gallery-9.jpg",
+    "alt": "Florida Discovery & Adventure",
+    "from": "sibling",
+    "trip": "steam-educational-trip-to-orlando",
+    "idx": 9
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/florida-business-studies-trip/hero.jpg",
+    "alt": "",
+    "from": "sibling-hero",
+    "trip": "florida-business-studies-trip",
+    "idx": 0
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/geography-trip-to-east-coast-usa/hero.jpg",
+    "alt": "",
+    "from": "sibling-hero",
+    "trip": "geography-trip-to-east-coast-usa",
+    "idx": 0
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/steam-educational-trip-to-orlando/hero.jpg",
+    "alt": "",
+    "from": "sibling-hero",
+    "trip": "steam-educational-trip-to-orlando",
+    "idx": 0
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/washington-new-york-business/hero.jpg",
+    "alt": "",
+    "from": "sibling-hero",
+    "trip": "washington-new-york-business",
+    "idx": 0
+   },
+   {
+    "url": "https://nwpnlqdbawlfmmgvtthy.supabase.co/storage/v1/object/public/images/uploads/2026-08-24/b5091776-434f-4505-b103-e26aa0a45eb2.jpg",
+    "alt": "Sweeping daytime panorama of the Grand Canyon's South Rim under a clear blue Arizona sky.  ‌",
+    "from": "country-record-hero",
+    "trip": "usa",
+    "idx": 0
+   }
+  ]
+ },
+ {
+  "trip": "north-and-south-vietnam-experience",
+  "title": "Vietnam: Culture, History and Adventure",
+  "status": "published",
+  "country": "Vietnam",
+  "city": "Hanoi",
+  "totalDays": 8,
+  "missing": [
+   {
+    "day": 8,
+    "title": "A Fond Farewell",
+    "place": "Ho Chi Minh City",
+    "summary": "A relaxed final morning in Ho Chi Minh City for last souvenirs and favourite corners, before the transfer to Tan Son Nhat and the flight home.",
+    "highlights": [
+     "Free time in Ho Chi Minh City",
+     "Departure from Tan Son Nhat International Airport"
+    ]
+   }
+  ],
+  "pool": [
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/hue-hoi-an-heritage-tour/gallery-6.jpg",
+    "alt": "Hue- Hoi An Heritage Tour",
+    "from": "sibling",
+    "trip": "hue-hoi-an-heritage-tour",
+    "idx": 6
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/hue-hoi-an-heritage-tour/gallery-7.jpg",
+    "alt": "Hue- Hoi An Heritage Tour",
+    "from": "sibling",
+    "trip": "hue-hoi-an-heritage-tour",
+    "idx": 7
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/hue-hoi-an-heritage-tour/hero.jpg",
+    "alt": "",
+    "from": "sibling-hero",
+    "trip": "hue-hoi-an-heritage-tour",
+    "idx": 0
+   },
+   {
+    "url": "https://nwpnlqdbawlfmmgvtthy.supabase.co/storage/v1/object/public/images/uploads/2026-08-24/89382593-9225-4b39-ba5f-9de6d41d55c0.jpg",
+    "alt": "Limestone karst islands rising from the turquoise waters of Ha Long Bay under bright blue skies, Vietnam.z",
+    "from": "country-record-hero",
+    "trip": "vietnam",
+    "idx": 0
+   }
+  ]
+ },
+ {
+  "trip": "prague-business",
+  "title": "Prague Culture & Innovation",
+  "status": "published",
+  "country": "Czech Republic",
+  "city": "Prague",
+  "totalDays": 5,
+  "missing": [
+   {
+    "day": 2,
+    "title": "Josefov and Prague Castle",
+    "place": "Prague",
+    "summary": "Europe's oldest active synagogue and a thousand years of royal power in one day, tracing Prague's Jewish heritage and its seat of political authority.",
+    "highlights": [
+     "Josefov, Prague's historic Jewish Quarter",
+     "Old New Synagogue",
+     "Prague Castle"
+    ]
+   },
+   {
+    "day": 4,
+    "title": "Economics & Škoda Production",
+    "place": "Mladá Boleslav",
+    "summary": "An academic economics lecture is paired with the factory floor at Škoda's historic home, linking economic theory to real manufacturing, logistics and quality control.",
+    "highlights": [
+     "Economics lecture at CERGE-EI",
+     "Škoda Auto, Mladá Boleslav",
+     "Production, quality control and workforce study"
+    ]
+   }
+  ],
+  "pool": [
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/prague-business/gallery-1.jpg",
+    "alt": "Prague Culture & Innovation",
+    "from": "own",
+    "trip": "prague-business",
+    "idx": 1
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/prague-business/gallery-3.jpg",
+    "alt": "Prague Culture & Innovation",
+    "from": "own",
+    "trip": "prague-business",
+    "idx": 3
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/prague-business/gallery-6.jpg",
+    "alt": "Prague Culture & Innovation",
+    "from": "own",
+    "trip": "prague-business",
+    "idx": 6
+   },
+   {
+    "url": "https://nwpnlqdbawlfmmgvtthy.supabase.co/storage/v1/object/public/images/uploads/2026-08-24/0d542319-d71d-400d-8396-a9c8f752d5ec.jpg",
+    "alt": "The Old Town Bridge Tower on the Charles Bridge in Prague, Czech Republic",
+    "from": "country-record-hero",
+    "trip": "czech-republic",
+    "idx": 0
+   }
+  ]
+ },
+ {
+  "trip": "salalah-oman",
+  "title": "Oman's Mountains, Desert & Coastal Adventures",
+  "status": "published",
+  "country": "Oman",
+  "city": "Salalah",
+  "totalDays": 5,
+  "missing": [
+   {
+    "day": 1,
+    "title": "Welcome to Salalah",
+    "place": "Salalah",
+    "summary": "Frankincense-scented souqs, an ancient trading port and mountain viewpoints introduce Dhofar's distinctive culture on a first afternoon in Salalah.",
+    "highlights": [
+     "Sultan Qaboos Mosque",
+     "Al Haffa Souq",
+     "Al Baleed Archaeological Park",
+     "Ayn Jarziz spring and the Ittin Mountains",
+     "Tomb of Prophet Ayub (Job)"
+    ]
+   },
+   {
+    "day": 3,
+    "title": "Across the Empty Quarter",
+    "place": "Shisr",
+    "summary": "A 4x4 crossing of the Al Qara Mountains to the legendary ruins of Ubar, dune driving, sandboarding and a night under desert stars.",
+    "highlights": [
+     "Al Qara Mountains",
+     "Shisr (lost city of Ubar)",
+     "Rub' al Khali (Empty Quarter)",
+     "Dune driving and sandboarding",
+     "Bedouin-style desert camp"
+    ]
+   }
+  ],
+  "pool": [
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/salalah-oman/gallery-3.jpg",
+    "alt": "Oman's Mountains, Desert & Coastal Adventures",
+    "from": "own",
+    "trip": "salalah-oman",
+    "idx": 3
+   },
+   {
+    "url": "https://nwpnlqdbawlfmmgvtthy.supabase.co/storage/v1/object/public/images/uploads/2026-08-24/e01f4dda-66af-4ee6-a9db-2d734d305eda.jpg",
+    "alt": "The white marble Sultan Qaboos Grand Mosque in Muscat gleaming under bright blue skies.</br>Sorry — correcting: sunlit exterior of the Sultan Qaboos Grand Mosque in Muscat, Oman.<Br>",
+    "from": "country-record-hero",
+    "trip": "oman",
+    "idx": 0
+   }
+  ]
+ },
+ {
+  "trip": "service-learning-cape-town",
+  "title": "Cape Town Community Impact, Culture & Adventure",
+  "status": "published",
+  "country": "South Africa",
+  "city": "Cape Town",
+  "totalDays": 6,
+  "missing": [
+   {
+    "day": 3,
+    "title": "Apartheid Histories and Robben Island",
+    "place": "Cape Town",
+    "summary": "Forced removals at District Six, a ferry to Mandela's prison island, and a workshop linking that history to global development goals.",
+    "highlights": [
+     "District Six Museum",
+     "V&A Waterfront",
+     "Robben Island guided visit",
+     "UN Sustainable Development Goals workshop"
+    ]
+   },
+   {
+    "day": 5,
+    "title": "Table Mountain Summit",
+    "place": "Cape Town",
+    "summary": "A cable car climb to Cape Town's iconic flat-topped summit, then evening reflections and presentations on community, inequality and sustainable development over a farewell dinner.",
+    "highlights": [
+     "Table Mountain cable car",
+     "Summit panoramas",
+     "Reflection session and student presentations",
+     "Farewell dinner"
+    ]
+   }
+  ],
+  "pool": [
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/service-learning-cape-town/gallery-1.jpg",
+    "alt": "Cape Town Community Impact, Culture & Adventure",
+    "from": "own",
+    "trip": "service-learning-cape-town",
+    "idx": 1
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/service-learning-cape-town/gallery-2.jpg",
+    "alt": "Cape Town Community Impact, Culture & Adventure",
+    "from": "own",
+    "trip": "service-learning-cape-town",
+    "idx": 2
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/service-learning-cape-town/gallery-3.jpg",
+    "alt": "Cape Town Community Impact, Culture & Adventure",
+    "from": "own",
+    "trip": "service-learning-cape-town",
+    "idx": 3
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/service-learning-cape-town/gallery-6.jpg",
+    "alt": "Cape Town Community Impact, Culture & Adventure",
+    "from": "own",
+    "trip": "service-learning-cape-town",
+    "idx": 6
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/service-learning-cape-town/gallery-8.jpg",
+    "alt": "Cape Town Community Impact, Culture & Adventure",
+    "from": "own",
+    "trip": "service-learning-cape-town",
+    "idx": 8
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/service-learning-cape-town/gallery-10.jpg",
+    "alt": "Cape Town Community Impact, Culture & Adventure",
+    "from": "own",
+    "trip": "service-learning-cape-town",
+    "idx": 10
+   },
+   {
+    "url": "https://nwpnlqdbawlfmmgvtthy.supabase.co/storage/v1/object/public/images/uploads/2026-08-24/d4df5442-951c-4710-acc1-8817e324352e.jpg",
+    "alt": "The rocks surrounded by the wavy sea under the sunlight and a cloudy sky at daytime in South Africa",
+    "from": "country-record-hero",
+    "trip": "south-africa",
+    "idx": 0
+   }
+  ]
+ },
+ {
+  "trip": "space-camp-turkey",
+  "title": "Space Camp Turkey",
+  "status": "draft",
+  "country": "Turkey",
+  "city": "Izmir",
+  "totalDays": 2,
+  "missing": [
+   {
+    "day": 2,
+    "title": "Ephesus and the Stars",
+    "place": "Ephesus",
+    "summary": "Marble streets of a Roman metropolis, a hillside pilgrimage house and a mountain village, closing with planetarium stargazing back at camp.",
+    "highlights": [
+     "Şirince",
+     "Ancient city of Ephesus",
+     "House of the Virgin Mary",
+     "Starlab",
+     "Space Bowl"
+    ]
+   }
+  ],
+  "pool": [
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/space-camp-turkey/gallery-1.jpg",
+    "alt": "",
+    "from": "own",
+    "trip": "space-camp-turkey",
+    "idx": 1
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/space-camp-turkey/gallery-2.jpg",
+    "alt": "",
+    "from": "own",
+    "trip": "space-camp-turkey",
+    "idx": 2
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/space-camp-turkey/gallery-3.jpg",
+    "alt": "",
+    "from": "own",
+    "trip": "space-camp-turkey",
+    "idx": 3
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/space-camp-turkey/gallery-4.jpg",
+    "alt": "",
+    "from": "own",
+    "trip": "space-camp-turkey",
+    "idx": 4
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/space-camp-turkey/gallery-5.jpg",
+    "alt": "",
+    "from": "own",
+    "trip": "space-camp-turkey",
+    "idx": 5
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/space-camp-turkey/gallery-6.jpg",
+    "alt": "",
+    "from": "own",
+    "trip": "space-camp-turkey",
+    "idx": 6
+   },
+   {
+    "url": "https://nwpnlqdbawlfmmgvtthy.supabase.co/storage/v1/object/public/images/uploads/2026-08-24/272276a3-0500-4792-8086-cb53ed231bd4.jpg",
+    "alt": "The New Mosque in Istanbul, its domes and slender minarets rising against a bright blue sky",
+    "from": "country-record-hero",
+    "trip": "turkey",
+    "idx": 0
+   }
+  ]
+ },
+ {
+  "trip": "steam-educational-trip-to-orlando",
+  "title": "Florida Discovery & Adventure",
+  "status": "published",
+  "country": "USA",
+  "city": "Orlando",
+  "totalDays": 7,
+  "missing": [
+   {
+    "day": 6,
+    "title": "Wild Florida Airboat Adventure",
+    "place": "Boggy Creek",
+    "summary": "Skimming the Everglades headwaters by airboat brings alligators, wading birds and wetland ecology within reach, trading theme parks for genuine Florida wilderness.",
+    "highlights": [
+     "Airboat adventure through the headwaters of the Florida Everglades",
+     "Guided wildlife and ecosystem talk",
+     "American alligator observation",
+     "Native and migratory bird watching",
+     "Dinner at a local restaurant"
+    ]
+   },
+   {
+    "day": 7,
+    "title": "Manatees of Crystal River",
+    "place": "Crystal River",
+    "summary": "Snorkelling among wild manatees in spring-fed waters, guided by conservationists, before a final shared dinner and the flight home to Dubai.",
+    "highlights": [
+     "Manatee briefing with experienced guides",
+     "Snorkelling with manatees",
+     "Shopping and dining complex",
+     "Return flight to Dubai"
+    ]
+   }
+  ],
+  "pool": [
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/steam-educational-trip-to-orlando/gallery-1.jpg",
+    "alt": "Florida Discovery & Adventure",
+    "from": "own",
+    "trip": "steam-educational-trip-to-orlando",
+    "idx": 1
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/steam-educational-trip-to-orlando/gallery-2.jpg",
+    "alt": "Florida Discovery & Adventure",
+    "from": "own",
+    "trip": "steam-educational-trip-to-orlando",
+    "idx": 2
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/steam-educational-trip-to-orlando/gallery-4.jpg",
+    "alt": "Florida Discovery & Adventure",
+    "from": "own",
+    "trip": "steam-educational-trip-to-orlando",
+    "idx": 4
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/steam-educational-trip-to-orlando/gallery-5.jpg",
+    "alt": "Florida Discovery & Adventure",
+    "from": "own",
+    "trip": "steam-educational-trip-to-orlando",
+    "idx": 5
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/steam-educational-trip-to-orlando/gallery-7.jpg",
+    "alt": "Florida Discovery & Adventure",
+    "from": "own",
+    "trip": "steam-educational-trip-to-orlando",
+    "idx": 7
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/steam-educational-trip-to-orlando/gallery-8.jpg",
+    "alt": "Florida Discovery & Adventure",
+    "from": "own",
+    "trip": "steam-educational-trip-to-orlando",
+    "idx": 8
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/steam-educational-trip-to-orlando/gallery-9.jpg",
+    "alt": "Florida Discovery & Adventure",
+    "from": "own",
+    "trip": "steam-educational-trip-to-orlando",
+    "idx": 9
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/creative-arts-and-musical-theatre-tour-to-new-york/gallery-4.jpg",
+    "alt": "New York performing arts adventure",
+    "from": "sibling",
+    "trip": "creative-arts-and-musical-theatre-tour-to-new-york",
+    "idx": 4
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/creative-arts-and-musical-theatre-tour-to-new-york/gallery-5.jpg",
+    "alt": "New York performing arts adventure",
+    "from": "sibling",
+    "trip": "creative-arts-and-musical-theatre-tour-to-new-york",
+    "idx": 5
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/creative-arts-and-musical-theatre-tour-to-new-york/gallery-6.jpg",
+    "alt": "New York performing arts adventure",
+    "from": "sibling",
+    "trip": "creative-arts-and-musical-theatre-tour-to-new-york",
+    "idx": 6
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/45/g1-638036074.jpg",
+    "alt": "",
+    "from": "sibling",
+    "trip": "florida-business-studies-trip",
+    "idx": 2
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/geography-trip-to-east-coast-usa/gallery-1.jpg",
+    "alt": "American Icons & Heritage",
+    "from": "sibling",
+    "trip": "geography-trip-to-east-coast-usa",
+    "idx": 1
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/geography-trip-to-east-coast-usa/gallery-4.jpg",
+    "alt": "American Icons & Heritage",
+    "from": "sibling",
+    "trip": "geography-trip-to-east-coast-usa",
+    "idx": 4
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/geography-trip-to-east-coast-usa/gallery-6.jpg",
+    "alt": "American Icons & Heritage",
+    "from": "sibling",
+    "trip": "geography-trip-to-east-coast-usa",
+    "idx": 6
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/new-york-media-and-film-studies/gallery-3.jpg",
+    "alt": "New York Film & Theatre",
+    "from": "sibling",
+    "trip": "new-york-media-and-film-studies",
+    "idx": 3
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/new-york-media-and-film-studies/gallery-4.jpg",
+    "alt": "New York Film & Theatre",
+    "from": "sibling",
+    "trip": "new-york-media-and-film-studies",
+    "idx": 4
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/new-york-media-and-film-studies/gallery-6.jpg",
+    "alt": "New York Film & Theatre",
+    "from": "sibling",
+    "trip": "new-york-media-and-film-studies",
+    "idx": 6
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/new-york-media-and-film-studies/gallery-9.jpg",
+    "alt": "New York Film & Theatre",
+    "from": "sibling",
+    "trip": "new-york-media-and-film-studies",
+    "idx": 9
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/new-york-media-and-film-studies/gallery-10.jpg",
+    "alt": "New York Film & Theatre",
+    "from": "sibling",
+    "trip": "new-york-media-and-film-studies",
+    "idx": 10
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/new-york-media-and-film-studies/gallery-11.jpg",
+    "alt": "New York Film & Theatre",
+    "from": "sibling",
+    "trip": "new-york-media-and-film-studies",
+    "idx": 11
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/creative-arts-and-musical-theatre-tour-to-new-york/hero.jpg",
+    "alt": "",
+    "from": "sibling-hero",
+    "trip": "creative-arts-and-musical-theatre-tour-to-new-york",
+    "idx": 0
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/florida-business-studies-trip/hero.jpg",
+    "alt": "",
+    "from": "sibling-hero",
+    "trip": "florida-business-studies-trip",
+    "idx": 0
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/geography-trip-to-east-coast-usa/hero.jpg",
+    "alt": "",
+    "from": "sibling-hero",
+    "trip": "geography-trip-to-east-coast-usa",
+    "idx": 0
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/new-york-media-and-film-studies/hero.jpg",
+    "alt": "",
+    "from": "sibling-hero",
+    "trip": "new-york-media-and-film-studies",
+    "idx": 0
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/washington-new-york-business/hero.jpg",
+    "alt": "",
+    "from": "sibling-hero",
+    "trip": "washington-new-york-business",
+    "idx": 0
+   },
+   {
+    "url": "https://nwpnlqdbawlfmmgvtthy.supabase.co/storage/v1/object/public/images/uploads/2026-08-24/b5091776-434f-4505-b103-e26aa0a45eb2.jpg",
+    "alt": "Sweeping daytime panorama of the Grand Canyon's South Rim under a clear blue Arizona sky.  ‌",
+    "from": "country-record-hero",
+    "trip": "usa",
+    "idx": 0
+   }
+  ]
+ },
+ {
+  "trip": "street-children-project-delhi",
+  "title": "India: Your real opportunity to make a positive difference",
+  "status": "published",
+  "country": "India",
+  "city": "Delhi",
+  "totalDays": 6,
+  "missing": [
+   {
+    "day": 2,
+    "title": "The Magnificent Taj Mahal",
+    "place": "Agra",
+    "summary": "A Mughal masterpiece in white marble, explored with a local guide who unpicks the artistry, devotion and craftsmanship behind Shah Jahan's monument.",
+    "highlights": [
+     "Taj Mahal",
+     "Guided tour with expert local guide",
+     "Lunch at a local restaurant",
+     "Marble-inlay craft demonstration"
+    ]
+   }
+  ],
+  "pool": [
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/street-children-project-delhi/gallery-5.jpg",
+    "alt": "India: Your real opportunity to make a positive difference",
+    "from": "own",
+    "trip": "street-children-project-delhi",
+    "idx": 5
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/india-adventure-and-community-service/gallery-1.jpg",
+    "alt": "India Adventure and Community Service",
+    "from": "sibling",
+    "trip": "india-adventure-and-community-service",
+    "idx": 1
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/india-adventure-and-community-service/gallery-2.jpg",
+    "alt": "India Adventure and Community Service",
+    "from": "sibling",
+    "trip": "india-adventure-and-community-service",
+    "idx": 2
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/india-adventure-and-community-service/gallery-4.jpg",
+    "alt": "India Adventure and Community Service",
+    "from": "sibling",
+    "trip": "india-adventure-and-community-service",
+    "idx": 4
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/india-adventure-and-community-service/gallery-5.jpg",
+    "alt": "India Adventure and Community Service",
+    "from": "sibling",
+    "trip": "india-adventure-and-community-service",
+    "idx": 5
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/india-adventure-and-community-service/gallery-6.jpg",
+    "alt": "India Adventure and Community Service",
+    "from": "sibling",
+    "trip": "india-adventure-and-community-service",
+    "idx": 6
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/india-adventure-and-community-service/gallery-8.jpg",
+    "alt": "India Adventure and Community Service",
+    "from": "sibling",
+    "trip": "india-adventure-and-community-service",
+    "idx": 8
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/india-adventure-and-community-service/gallery-10.jpg",
+    "alt": "India Adventure and Community Service",
+    "from": "sibling",
+    "trip": "india-adventure-and-community-service",
+    "idx": 10
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/64/g0-1489492220.jpg",
+    "alt": "",
+    "from": "sibling",
+    "trip": "rocksport-experiential-trip-mussoorie-india",
+    "idx": 1
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/64/g1-532678735.jpg",
+    "alt": "",
+    "from": "sibling",
+    "trip": "rocksport-experiential-trip-mussoorie-india",
+    "idx": 2
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/64/g2-710221300.jpg",
+    "alt": "",
+    "from": "sibling",
+    "trip": "rocksport-experiential-trip-mussoorie-india",
+    "idx": 3
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/legacy/india-adventure-and-community-service/hero.jpg",
+    "alt": "",
+    "from": "sibling-hero",
+    "trip": "india-adventure-and-community-service",
+    "idx": 0
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/commons-fill/trips/64/hero-1787353129227.jpg",
+    "alt": "",
+    "from": "sibling-hero",
+    "trip": "rocksport-experiential-trip-mussoorie-india",
+    "idx": 0
+   },
+   {
+    "url": "https://nwpnlqdbawlfmmgvtthy.supabase.co/storage/v1/object/public/images/uploads/2026-08-24/006247ee-b704-4bc2-8301-4f35ce8c5652.jpg",
+    "alt": "Rows of flags on colonial buildings in Cartagena, Colombia",
+    "from": "country-record-hero",
+    "trip": "india",
+    "idx": 0
+   }
+  ]
+ },
+ {
+  "trip": "the-uae-story-heritage-innovation-adventure",
+  "title": "The UAE Story — Heritage, Innovation & Adventure",
+  "status": "published",
+  "country": null,
+  "city": "Dubai, Sharjah, Abu Dhabi, Al Ain & Ras Al Khaimah",
+  "totalDays": 7,
+  "missing": [
+   {
+    "day": 1,
+    "title": "From Creek to Union",
+    "place": "Dubai",
+    "summary": "Wind-tower lanes, an abra crossing and the souks of old Dubai set up the story of pearling, trade and the 1971 union.",
+    "highlights": [
+     "Al Fahidi Historical Neighbourhood",
+     "Dubai Creek abra crossing",
+     "Old trading districts and souks",
+     "Etihad Museum",
+     "Welcome dinner"
+    ]
+   },
+   {
+    "day": 3,
+    "title": "Sharjah — Culture Beneath the Sand",
+    "place": "Sharjah",
+    "summary": "Islamic civilisation's achievements in science and navigation set against Mleiha's prehistoric burial sites, where desert geology reveals why early people settled here.",
+    "highlights": [
+     "Sharjah Museum of Islamic Civilization",
+     "Historic city conservation walk",
+     "Mleiha Archaeological Centre",
+     "Guided desert component"
+    ]
+   },
+   {
+    "day": 4,
+    "title": "Faith, Leadership & Nationhood",
+    "place": "Abu Dhabi",
+    "summary": "Abu Dhabi's civic identity read through two buildings: the Grand Mosque's geometry and calligraphy, and a working Presidential palace devoted to governance and scholarship.",
+    "highlights": [
+     "Sheikh Zayed Grand Mosque",
+     "Qasr Al Watan",
+     "Corniche and waterfront",
+     "Evening reflection"
+    ]
+   },
+   {
+    "day": 5,
+    "title": "Art, Identity & Living Heritage",
+    "place": "Abu Dhabi",
+    "summary": "Louvre Abu Dhabi's cross-cultural galleries and luminous dome set against the city's oldest fort and workshops keeping Emirati crafts alive.",
+    "highlights": [
+     "Louvre Abu Dhabi",
+     "Qasr Al Hosn",
+     "House of Artisans",
+     "Traditional crafts demonstration or workshop",
+     "Discussion on cultural preservation"
+    ]
+   },
+   {
+    "day": 6,
+    "title": "Al Ain — The Oasis City",
+    "place": "Al Ain",
+    "summary": "Falaj channels, date gardens and a desert fort reveal how water, defence and trade shaped settlement, before Jebel Hafit's geology and viewpoints.",
+    "highlights": [
+     "Al Ain Oasis",
+     "Al Jahili Fort",
+     "Jebel Hafit landscape"
+    ]
+   }
+  ],
+  "pool": [
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/59/g1-515561680.jpg",
+    "alt": "",
+    "from": "own",
+    "trip": "the-uae-story-heritage-innovation-adventure",
+    "idx": 2
+   }
+  ]
+ },
+ {
+  "trip": "the-uae-story-heritage-innovation-adventure-2",
+  "title": "The UAE Story — Heritage, Innovation & Adventure",
+  "status": "published",
+  "country": "United Arab Emirates",
+  "city": "Dubai, Sharjah, Abu Dhabi, Al Ain & Ras Al Khaimah",
+  "totalDays": 7,
+  "missing": [
+   {
+    "day": 1,
+    "title": "From Creek to Union",
+    "place": "Dubai",
+    "summary": "Wind-tower lanes, an abra crossing and the souks of old Dubai set up the story of pearling, migration and the 1971 federation.",
+    "highlights": [
+     "Al Fahidi Historical Neighbourhood",
+     "Dubai Creek abra crossing",
+     "Old trading districts and souks",
+     "Etihad Museum",
+     "Welcome dinner"
+    ]
+   },
+   {
+    "day": 3,
+    "title": "Sharjah — Culture Beneath the Sand",
+    "place": "Sharjah",
+    "summary": "Islamic science, navigation and architecture in the morning; desert archaeology, burial sites and rock formations at Mleiha in the afternoon.",
+    "highlights": [
+     "Sharjah Museum of Islamic Civilization or comparable heritage programme",
+     "Urban conservation observation",
+     "Mleiha Archaeological Centre",
+     "Guided desert component"
+    ]
+   },
+   {
+    "day": 4,
+    "title": "Faith, Leadership & Nationhood",
+    "place": "Abu Dhabi",
+    "summary": "The federal capital seen through its two great statements of identity: a mosque of geometry and calligraphy, and a palace of statecraft and scholarship.",
+    "highlights": [
+     "Sheikh Zayed Grand Mosque",
+     "Qasr Al Watan",
+     "Corniche and waterfront",
+     "Evening reflection"
+    ]
+   },
+   {
+    "day": 5,
+    "title": "Art, Identity & Living Heritage",
+    "place": "Abu Dhabi",
+    "summary": "A universal museum under Nouvel's shimmering dome, then Abu Dhabi's oldest fort and the artisans keeping Al Sadu weaving and palm-frond craft alive.",
+    "highlights": [
+     "Louvre Abu Dhabi",
+     "Qasr Al Hosn",
+     "House of Artisans",
+     "Craft demonstration or hands-on workshop",
+     "Dinner discussion on cultural preservation"
+    ]
+   },
+   {
+    "day": 6,
+    "title": "Al Ain — The Oasis City",
+    "place": "Al Ain",
+    "summary": "Falaj channels, date palms and desert forts reveal how settlements survived in arid Arabia, before Jebel Hafit's geology and trade routes.",
+    "highlights": [
+     "Al Ain Oasis",
+     "Al Jahili Fort or another suitable heritage site",
+     "Jebel Hafit landscape"
+    ]
+   }
+  ],
+  "pool": [
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/60/g1-334911068.jpg",
+    "alt": "",
+    "from": "own",
+    "trip": "the-uae-story-heritage-innovation-adventure-2",
+    "idx": 2
+   },
+   {
+    "url": "https://jdqvbzjzbyfrgnsluaon.supabase.co/storage/v1/object/public/trip-images/shutterstock/trips/60/g2-167385839.jpg",
+    "alt": "",
+    "from": "own",
+    "trip": "the-uae-story-heritage-innovation-adventure-2",
+    "idx": 3
+   },
+   {
+    "url": "https://nwpnlqdbawlfmmgvtthy.supabase.co/storage/v1/object/public/images/uploads/2026-08-24/9a009399-2ef5-4585-9a70-2b7c377d3508.jpg",
+    "alt": "The Burj Khalifa rising above Dubai's skyline under a clear blue sky suitable=true index=0",
+    "from": "country-record-hero",
+    "trip": "united-arab-emirates",
+    "idx": 0
+   }
+  ]
+ }
+]
