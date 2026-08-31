@@ -26,7 +26,7 @@ export default async function SafetyPage() {
       <div className="thero thero--index">
         <div className="bg">
           <Image
-            src="/images/hero-home.jpg"
+            src={page.heroImage}
             alt=""
             fill
             priority

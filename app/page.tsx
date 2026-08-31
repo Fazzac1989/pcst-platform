@@ -6,6 +6,7 @@ import SiteHeader from '@/components/SiteHeaderWithData';
 import SubjectIcon from '@/components/SubjectIcon';
 import SiteFooter from '@/components/SiteFooterWithData';
 import { getFeaturedTrips, getPublishedTripCount, getPublishedTrips, getSubjects } from '@/lib/data';
+import { getSiteSettings } from '@/lib/settings';
 
 // Country display names as used on the reference featured cards.
 const COUNTRY_SHORT: Record<string, string> = { 'United Kingdom': 'UK' };
@@ -15,11 +16,12 @@ const DISTINCTIVE_COUNTRIES = ['Mongolia', 'New Zealand', 'Australia', 'Nepal', 
 const DISTINCTIVE_SUBJECTS = ['Volunteering', 'Outdoor Education', 'Skiing', 'STEAM'];
 
 export default async function HomePage() {
-  const [featured, allPublished, tripCount, subjects] = await Promise.all([
+  const [featured, allPublished, tripCount, subjects, settings] = await Promise.all([
     getFeaturedTrips(),
     getPublishedTrips(),
     getPublishedTripCount(),
     getSubjects(),
+    getSiteSettings(),
   ]);
 
   /**
@@ -84,7 +86,7 @@ export default async function HomePage() {
       <div className="hero">
         <div className="bg">
           <Image
-            src="/images/hero-home.jpg"
+            src={settings.hero.heroImage}
             alt=""
             fill
             priority
@@ -95,20 +97,17 @@ export default async function HomePage() {
         </div>
         <div className="scrim"></div>
         <div className="wrap">
-          <span className="eyebrow">Premium Choice School Trips</span>
+          <span className="eyebrow">{settings.hero.eyebrow}</span>
           <h1>
-            Educational journeys, <i>expertly delivered</i>
+            {settings.hero.headline} <i>{settings.hero.headlineAccent}</i>
           </h1>
-          <p className="lede">
-            Educational journeys created with experience, care and a genuine understanding of what
-            schools, students and parents need.
-          </p>
+          <p className="lede">{settings.hero.lede}</p>
           <div className="ctas">
             <a className="btn btn-brass" href="#trips">
-              Browse trips <span className="arrow">→</span>
+              {settings.hero.ctaPrimary} <span className="arrow">→</span>
             </a>
             <a className="btn btn-ghost" href="#contact">
-              Book an appointment
+              {settings.hero.ctaSecondary}
             </a>
           </div>
         </div>
@@ -120,27 +119,16 @@ export default async function HomePage() {
           <div className="wrap">
             <div className="split">
               <div>
-                <span className="eyebrow">Premium Choice School Trips</span>
+                <span className="eyebrow">{settings.intro.eyebrow}</span>
                 <h2 className="section-title serif">
-                  The future of school travel <i>starts here</i>
+                  {settings.intro.headline} <i>{settings.intro.headlineAccent}</i>
                 </h2>
                 <div className="intro-copy">
-                  <p className="section-sub full">
-                    Premium Choice School Trips combines extensive destination knowledge, trusted
-                    international partnerships and a highly personal approach to school travel.
-                  </p>
-                  <p className="section-sub full">
-                    We work closely with our customers to understand their objectives and create a
-                    journey that is engaging, rewarding and appropriate for all students.
-                  </p>
-                  <p className="section-sub full">
-                    From the first conversation through to the group&apos;s safe return, every detail
-                    is carefully considered and professionally managed. Our aim is to make the
-                    planning process straightforward for teachers while creating meaningful
-                    experiences that help students discover new places, encounter different cultures
-                    and develop confidence, independence and a broader understanding of the world
-                    beyond the classroom.
-                  </p>
+                  {settings.intro.paragraphs.map((para, i) => (
+                    <p className="section-sub full" key={i}>
+                      {para}
+                    </p>
+                  ))}
                 </div>
               </div>
               {introImages.length > 0 && (
