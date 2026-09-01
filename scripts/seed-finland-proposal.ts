@@ -387,10 +387,26 @@ async function main() {
   if (error || !brochure) throw new Error(`brochure: ${error?.message}`);
 
   // Terms: one versioned set, marked default so new proposals inherit it.
-  const { data: termsSet, error: termsError } = await db
+  //
+  // Reuse a set of the same name and version rather than inserting a second.
+  // Seeding twice previously left two identical sets both flagged as default,
+  // which made "the default" ambiguous for anything that looks it up.
+  const TERMS_NAME = 'Premium Choice Travel — service levels and booking conditions';
+  const { data: existingTerms } = await db
+    .from('brochure_terms_sets')
+    .select('id')
+    .eq('name', TERMS_NAME)
+    .eq('version', 1)
+    // limit(1) rather than maybeSingle(): an earlier double-seed left two
+    // identical sets in place, and maybeSingle() errors on more than one row.
+    .limit(1);
+
+  const { data: termsSet, error: termsError } = existingTerms?.length
+    ? { data: existingTerms[0], error: null }
+    : await db
     .from('brochure_terms_sets')
     .insert({
-      name: 'Premium Choice Travel — service levels and booking conditions',
+      name: TERMS_NAME,
       version: 1,
       sections: terms,
       is_default: true,

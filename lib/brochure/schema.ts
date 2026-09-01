@@ -5,8 +5,8 @@
  * of a brochure is data: an admin can reorder, hide or add pages without a code
  * change, and new page types can be introduced later without a migration.
  *
- * Nothing here duplicates trip data. A page carries only editorial copy â€” the
- * headline written for the brochure, the condensed highlights â€” plus a
+ * Nothing here duplicates trip data. A page carries only editorial copy — the
+ * headline written for the brochure, the condensed highlights — plus a
  * reference to the trip it presents. Titles, photography and itineraries are
  * read from the trips tables when the brochure renders.
  *
@@ -146,7 +146,7 @@ export type Brochure = {
   updatedAt: string;
 };
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ mapping â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ─────────────────────────────── mapping ─────────────────────────────── */
 
 const asArray = <T,>(v: unknown): T[] => (Array.isArray(v) ? (v as T[]) : []);
 

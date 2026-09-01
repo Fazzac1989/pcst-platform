@@ -86,3 +86,29 @@ timetable and the whole booking-conditions block — printed as bare headings.
 minutes fall back to the stored file. That protects the renderer, but a single
 reader repeatedly refreshing also throttles everyone else holding the same link.
 Fine at present volumes; revisit if proposals are shared widely.
+
+## Phase 4 — the studio
+
+**Two terms sets exist, both flagged default.** The Finland seed ran twice in an
+earlier phase and inserted an identical `brochure_terms_sets` row. Ids 1 and 2
+have byte-identical content and both carry `is_default = true`, so anything
+looking up "the default" gets an arbitrary one. Id 1 is unreferenced; id 2 is
+the one proposal 13 uses. The seed is now idempotent so it cannot recur, but the
+existing duplicate has not been deleted — that is a destructive database write
+and is left for a human to run:
+
+    delete from brochure_terms_sets where id = 1;
+
+**The image picker loads the whole library.** `brochure_images` is a shared
+library with no per-proposal scope, so the day editor lists every image (29
+today). That is fine now and will not be at several hundred; it needs a filter,
+by tag or by a search box, before the library grows.
+
+**The admin UI has not been clicked through.** The studio is behind an admin
+session, which is the operator's to hold, so the pages were verified by build,
+type-check and by running their queries directly against the database rather
+than by driving the interface.
+
+**The overview headline is still composed, not authored.** Flagged in phase 2:
+the reference's trip-specific overview sentence has no field, so the renderer
+builds a weaker one. It belongs in the Document tab and is not there yet.
