@@ -59,7 +59,9 @@ section{padding:clamp(64px,8vw,112px) 0}
 
 /* ---------- Hero ---------- */
 .hero{position:relative;min-height:min(92vh,860px);display:flex;align-items:flex-end;overflow:hidden;color:var(--white);padding:0}
-.hero .bg{position:absolute;inset:0;background:url("[IMG]") center/cover no-repeat;transform:scale(1.04)}
+/* The hero image comes from the database and is set inline on the element;
+   the CSS keeps only how it is positioned. */
+.hero .bg{position:absolute;inset:0;background-position:center;background-size:cover;background-repeat:no-repeat;background-color:var(--navy);transform:scale(1.04)}
 .hero .bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(22,36,46,.35) 0%,rgba(22,36,46,.55) 45%,rgba(22,36,46,.96) 100%)}
 .hero canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .hero .wrap{position:relative;padding-top:120px;padding-bottom:clamp(48px,7vw,84px);width:100%}
