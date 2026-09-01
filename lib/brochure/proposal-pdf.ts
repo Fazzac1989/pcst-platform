@@ -111,10 +111,24 @@ export async function generateProposalPdf(id: number, pageUrl: string): Promise<
       );
     });
 
+    // The document's own title and who it was prepared for, for the footer.
+    const footerFacts = await page.evaluate(() => ({
+      title: document.querySelector('h1')?.textContent?.replace(/s+/g, ' ').trim() ?? '',
+      preparedFor:
+        document.querySelector('.hero .prepared')?.textContent?.replace(/s+/g, ' ').trim() ?? '',
+    }));
+
     const buffer = await page.pdf({
       format: 'A4',
       printBackground: true,
-      preferCSSPageSize: true,
+      // Chromium reserves the header and footer strips out of the page margin,
+      // so the margin is set here rather than taken from the stylesheet's
+      // @page rule — with preferCSSPageSize on, the footer has nowhere to go.
+      preferCSSPageSize: false,
+      margin: { top: '11mm', right: '12mm', bottom: '16mm', left: '12mm' },
+      displayHeaderFooter: true,
+      headerTemplate: '<span></span>',
+      footerTemplate: footerTemplate(footerFacts),
     });
 
     const path = `proposals/${id}/${Date.now()}.pdf`;
@@ -161,4 +175,23 @@ export async function tooManyRecentRenders(id: number, limit = 5, windowMinutes 
     .eq('event', 'pdf_downloaded')
     .gte('created_at', since);
   return (count ?? 0) >= limit;
+}
+
+/**
+ * The running footer: what this is, who it is for, and which page you are on.
+ *
+ * Chromium renders header and footer templates in their own context — no
+ * stylesheet, no fonts from the page — so everything is inline and the type
+ * falls back to a system serif. The magic class names are Chromium's own.
+ */
+function footerTemplate(facts: { title: string; preparedFor: string }): string {
+  const escape = (t: string) =>
+    t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+  const left = [facts.title, facts.preparedFor].filter(Boolean).map(escape).join(' &middot; ');
+
+  return `<div style="width:100%;margin:0 12mm;font-family:Georgia,'Times New Roman',serif;font-size:7.5pt;color:#6B7873;display:flex;justify-content:space-between;align-items:center;border-top:0.5pt solid #D8DED9;padding-top:2mm">
+    <span style="overflow:hidden;white-space:nowrap;text-overflow:ellipsis;max-width:70%">${left}</span>
+    <span><span class="pageNumber"></span> / <span class="totalPages"></span></span>
+  </div>`;
 }

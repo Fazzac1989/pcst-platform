@@ -89,6 +89,9 @@ export type ProposalContent = {
   titleEmphasis: string;
   subtitle: string;
   intro: string[];
+  /** The overview headline; `overviewEmphasis` is rendered in italic within it. */
+  overviewHeading: string;
+  overviewEmphasis: string;
   pctParents: string;
   pctChildren: string;
   pctTeachers: string;
@@ -143,6 +146,8 @@ export const EMPTY_CONTENT: ProposalContent = {
   titleEmphasis: '',
   subtitle: '',
   intro: [],
+  overviewHeading: '',
+  overviewEmphasis: '',
   pctParents: '',
   pctChildren: '',
   pctTeachers: '',

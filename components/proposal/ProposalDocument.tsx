@@ -122,13 +122,52 @@ export default function ProposalDocument({
         </div>
       </div>
 
+      {/* ── what is inside: a contents page, print and PDF only ── */}
+      <nav className="contents" aria-hidden="true">
+        <div className="wrap">
+          <p className="eyebrow">What is inside</p>
+          <ol>
+            <li><span>Overview</span><span>The programme, and who it looks after</span></li>
+            {vm.days.length > 0 && (
+              <li>
+                <span>The journey</span>
+                <span>
+                  {vm.days.length} {vm.days.length === 1 ? 'day' : 'days'}, day by day
+                </span>
+              </li>
+            )}
+            {c.signatureExperiences.length > 0 && (
+              <li><span>Signature experiences</span><span>What the group will remember</span></li>
+            )}
+            {c.learningOutcomes.length > 0 && (
+              <li><span>Learning outcomes</span><span>What students take away</span></li>
+            )}
+            {vm.flights.length > 0 && (
+              <li><span>Flights</span><span>Routing as scheduled</span></li>
+            )}
+            <li><span>Price</span><span>What is and is not included</span></li>
+            {vm.terms && (
+              <li><span>Booking conditions</span><span>{vm.terms.name}</span></li>
+            )}
+            {c.nextSteps.length > 0 && (
+              <li><span>Next steps</span><span>How to confirm</span></li>
+            )}
+          </ol>
+        </div>
+      </nav>
+
       {/* ── overview ── */}
       <section className="overview" id="overview">
         <div className="wrap">
           <div className="grid">
             <div>
               <p className="eyebrow">The programme</p>
-              <h2>{vm.slug ? 'A programme built around learning, challenge and ' : ''}<em>teamwork</em></h2>
+              {/* Authored per proposal. The old version keyed off vm.slug, which is
+                  always truthy, so every proposal claimed the same sentence. */}
+              <h2>
+                {c.overviewHeading || 'What this trip is built around'}
+                {c.overviewEmphasis ? <> <em>{c.overviewEmphasis}</em></> : null}
+              </h2>
               {c.intro.map((para, i) => (
                 <p className="lede" key={i} style={i === 0 ? { marginTop: 24 } : undefined}>
                   {para}

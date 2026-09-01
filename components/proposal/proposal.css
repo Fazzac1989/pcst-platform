@@ -326,3 +326,35 @@ footer img{height:40px;opacity:.95}
   footer{margin-top:4mm;border-radius:6px}
   footer .wrap{padding:0 8mm}
 }
+
+/* ---------- Contents ----------
+   A print-only page. On screen the sticky bar already does this job, and a
+   contents list on a scrolling page is furniture nobody uses. It carries no
+   page numbers on purpose: this document flows, so the numbers would have to
+   be guessed or the whole thing rendered twice. */
+.contents{display:none}
+
+@media print{
+  .contents{
+    display:block;page-break-before:always;page-break-after:always;padding-top:14mm;
+  }
+  .contents .eyebrow{margin-bottom:10mm}
+  .contents ol{list-style:none;margin:0;padding:0;counter-reset:c}
+  .contents li{
+    counter-increment:c;
+    display:grid;grid-template-columns:12mm 1fr;gap:6mm;
+    align-items:baseline;
+    padding:5mm 0;border-top:0.4pt solid var(--line);
+  }
+  .contents li:last-child{border-bottom:0.4pt solid var(--line)}
+  .contents li::before{
+    content:counter(c,decimal-leading-zero);
+    font-family:var(--font-fraunces),Georgia,serif;font-size:12px;color:var(--teal);
+  }
+  .contents li span:first-of-type{
+    font-family:var(--font-fraunces),Georgia,serif;font-size:17px;color:var(--ink);
+  }
+  .contents li span:last-of-type{
+    grid-column:2;font-size:10px;color:var(--ink-soft);
+  }
+}
