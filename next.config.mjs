@@ -11,6 +11,14 @@ const nextConfig = {
     serverComponentsExternalPackages: ['mammoth', '@sparticuz/chromium', 'puppeteer-core'],
     // Trip documents are uploaded through a server action.
     serverActions: { bodySizeLimit: '10mb' },
+    // Externalising keeps the code and its binary together, but Vercel's file
+    // tracer still has to be told the binary exists: nothing imports it, it is
+    // resolved by path at runtime, so tracing leaves it out and the route fails
+    // with "/var/task/node_modules/@sparticuz/chromium/bin does not exist".
+    outputFileTracingIncludes: {
+      '/api/brochures/[slug]/pdf': ['./node_modules/@sparticuz/chromium/bin/**'],
+      '/api/proposals/[id]/pdf': ['./node_modules/@sparticuz/chromium/bin/**'],
+    },
   },
   images: {
     formats: ['image/avif', 'image/webp'],
