@@ -196,15 +196,72 @@ function parseList(cls: 'inc' | 'exc') {
     .filter(Boolean);
 }
 
+/** The hero's eyebrow, headline (with its italic word) and standfirst. */
+function parseHero() {
+  const i = html.indexOf('class="hero');
+  const block = html.slice(i, html.indexOf('</header>', i) > 0 ? html.indexOf('class="glance"', i) : i + 4000);
+  const h1 = (block.match(/<h1>([\s\S]*?)<\/h1>/) ?? ['', ''])[1];
+  return {
+    eyebrow: text((block.match(/<p class="eyebrow">([\s\S]*?)<\/p>/) ?? ['', ''])[1]),
+    title: text(h1.replace(/<em>[\s\S]*?<\/em>/, '')),
+    titleEmphasis: text((h1.match(/<em>([\s\S]*?)<\/em>/) ?? ['', ''])[1]),
+    subtitle: text((block.match(/<p class="sub">([\s\S]*?)<\/p>/) ?? ['', ''])[1]),
+  };
+}
+
+/** The overview lede paragraphs. */
+function parseIntro() {
+  const block = section('overview');
+  return all(/<p class="lede"[^>]*>([\s\S]*?)<\/p>/g, block)
+    .map((m) => text(m[1]))
+    .filter(Boolean);
+}
+
+/** Parents / Children / Teachers, in that order. */
+function parsePct() {
+  const i = html.indexOf('class="pct"');
+  const block = html.slice(i, i + 2600);
+  const cols = all(/<h3><span>[A-Z]<\/span>[a-z]*<\/h3>\s*<p>([\s\S]*?)<\/p>/g, block).map((m) => text(m[1]));
+  return { parents: cols[0] ?? '', children: cols[1] ?? '', teachers: cols[2] ?? '' };
+}
+
+function parseOutcomes() {
+  const block = section('outcomes');
+  return all(/<div><b>([\s\S]*?)<\/b><p>([\s\S]*?)<\/p><\/div>/g, block).map((m) => ({
+    title: text(m[1]),
+    description: text(m[2]),
+  }));
+}
+
+function parseNextSteps() {
+  const i = html.indexOf('class="steps"');
+  const block = html.slice(i, i + 2600);
+  return all(/<div><i>[^<]*<\/i><h4>([\s\S]*?)<\/h4><p>([\s\S]*?)<\/p><\/div>/g, block).map((m) => ({
+    title: text(m[1]),
+    text: text(m[2]),
+  }));
+}
+
+function parseContact() {
+  const i = html.indexOf('class="who"');
+  const block = html.slice(i, i + 1200);
+  const phones = all(/href="tel:([^"]*)"[^>]*>([\s\S]*?)<\/a>/g, block).map((m) => text(m[2]));
+  const address = text(
+    (html.slice(html.indexOf('<footer'), html.indexOf('</footer>')).match(/<span>([\s\S]*?)<\/span>/) ?? ['', ''])[1],
+  );
+  return {
+    name: text((block.match(/<b>([\s\S]*?)<\/b>/) ?? ['', ''])[1]),
+    phones,
+    email: (block.match(/href="mailto:([^"?]*)/) ?? ['', ''])[1],
+    website: (block.match(/href="(https:\/\/www\.premiumchoiceschooltrips\.com)"/) ?? ['', ''])[1],
+    address,
+  };
+}
+
 /* ────────────────────────────── seeding ────────────────────────────── */
 
 async function uploadImages() {
   const ids: number[] = [];
-  // Clear this seed's previous image rows so a re-run replaces rather than
-  // accumulates. Storage objects are content-addressed and overwritten in
-  // place, so only the rows need removing.
-  await db.from('brochure_images').delete().contains('tags', ['finland']);
-
   for (let i = 0; i < dataUris.length; i++) {
     const { base64, ext, mime } = dataUris[i];
     const buffer = Buffer.from(base64, 'base64');
@@ -220,9 +277,13 @@ async function uploadImages() {
       });
       if (error) throw new Error(`upload ${path}: ${error.message}`);
 
+      // One row per stored file, so a re-run updates rather than duplicating.
       const { data: row, error: rowError } = await db
         .from('brochure_images')
-        .insert({ storage_path: path, alt: imgTags[i]?.alt ?? '', tags: ['finland'] })
+        .upsert(
+          { storage_path: path, alt: imgTags[i]?.alt ?? '', tags: ['finland'] },
+          { onConflict: 'storage_path' },
+        )
         .select('id')
         .single();
       if (rowError) throw new Error(`image row ${path}: ${rowError.message}`);
@@ -242,6 +303,12 @@ async function main() {
   const experiences = parseExperiences();
   const inclusions = parseList('inc');
   const exclusions = parseList('exc');
+  const hero = parseHero();
+  const intro = parseIntro();
+  const pct = parsePct();
+  const outcomes = parseOutcomes();
+  const nextSteps = parseNextSteps();
+  const contact = parseContact();
 
   console.log('── parsed from the reference ──');
   console.log(`days          : ${days.length}`);
@@ -252,6 +319,10 @@ async function main() {
   console.log(`glance stats  : ${glance.length}`);
   console.log(`inclusions    : ${inclusions.length} · exclusions: ${exclusions.length}`);
   console.log(`images        : ${dataUris.length}`);
+  console.log(`hero          : ${hero.title} / ${hero.titleEmphasis}`);
+  console.log(`intro paras   : ${intro.length} · outcomes: ${outcomes.length} · steps: ${nextSteps.length}`);
+  console.log(`pct           : ${[pct.parents,pct.children,pct.teachers].filter(Boolean).length}/3 columns`);
+  console.log(`contact       : ${contact.phones.length} phones · ${contact.email}`);
 
   if (dry) {
     console.log('\nDry run — nothing written.');
@@ -286,6 +357,28 @@ async function main() {
       free_places_teachers: 2,
       free_places_pct_staff: 1,
       hero_effect: true,
+      content: {
+        // The first image in the document is the logo; the hero background is
+        // a CSS background in the reference, so the first photograph stands in.
+        heroImageId: imageIds[1] ?? null,
+        ...hero,
+        intro,
+        pctParents: pct.parents,
+        pctChildren: pct.children,
+        pctTeachers: pct.teachers,
+        learningOutcomes: outcomes,
+        signatureExperiences: experiences.map((e, i) => ({
+          ...e,
+          // The six experience figures follow the day photographs in document
+          // order, after the logo and the two overview images.
+          imageId: imageIds[1 + 2 + 18 + i] ?? null,
+          dayNumber: Number((e.caption.match(/Day (\d+)/) ?? [])[1]) || null,
+        })),
+        inclusions,
+        exclusions,
+        nextSteps,
+        contact,
+      },
       travel_start: '2026-01-18',
       travel_end: '2026-01-23',
     })
