@@ -1,3 +1,5 @@
+import '@/components/brochure/gate.css';
+
 /**
  * The gate on a bespoke proposal.
  *

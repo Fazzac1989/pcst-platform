@@ -1,0 +1,223 @@
+/* ============================================================
+   The brochure, as a report.
+
+   A brochure is a collection: several trips presented together. So it reads
+   cover, contents, then a spread per trip, rather than repeating a full
+   proposal layout for each one — twenty trips that way would run past a
+   hundred pages.
+
+   Every class is prefixed rep-. The site's own stylesheet already owns .trip,
+   .meta, .side, .journey and .closing, and an unprefixed .trip inherited a
+   dark card background and a 4/3 aspect ratio from it.
+
+   The tokens below must stay identical to components/proposal/proposal.css.
+   A brochure and a proposal go to the same school, often in the same week,
+   and they have to look like the same company wrote them. A test compares
+   the two blocks.
+   ============================================================ */
+
+:root{
+  --navy:#16242E; --navy-2:#1F3240; --teal:#19BAAB; --teal-ink:#0F8C81;
+  --cream:#F7F5F0; --ice:#E6EEF2; --white:#FFFFFF;
+  --ink:#1B262E; --muted:#5C6B74; --line:rgba(22,36,46,.14); --line-light:rgba(255,255,255,.16);
+  --display: var(--font-fraunces), Georgia, serif;
+  --body: var(--font-archivo), "Helvetica Neue", Arial, sans-serif;
+  --wrap:1140px; --gutter:clamp(20px,4vw,48px);
+}
+
+.rep{background:var(--white);color:var(--ink);font-family:var(--body);line-height:1.6}
+.rep .rep-wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--gutter)}
+.rep section{padding:clamp(48px,7vw,96px) 0;background:var(--white)}
+
+.rep h1,.rep h2,.rep h3,.rep h4{font-family:var(--display);font-weight:400;line-height:1.12;margin:0}
+.rep h1{font-size:clamp(38px,6vw,68px)}
+.rep h2{font-size:clamp(26px,3.4vw,40px)}
+.rep h3{font-size:clamp(19px,2.1vw,25px)}
+.rep p{margin:0 0 14px}
+.rep em{font-style:italic}
+
+.rep .rep-eyebrow{
+  font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--teal-ink);margin:0 0 10px;
+}
+.rep .rep-lede{font-size:clamp(15px,1.5vw,18px);color:var(--muted);max-width:62ch}
+
+/* ---------- Cover ---------- */
+.rep .rep-cover{
+  position:relative;min-height:88vh;display:flex;align-items:flex-end;
+  background:var(--navy);overflow:hidden;
+}
+.rep .rep-cover .rep-bg{
+  position:absolute;inset:0;object-fit:cover;width:100%;height:100%;opacity:.5;
+}
+.rep .rep-cover .rep-wrap{position:relative;padding-bottom:clamp(40px,6vw,80px)}
+.rep .rep-cover .rep-prepared{
+  font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.7);margin-bottom:18px;
+  border-left:2px solid var(--teal);padding-left:12px;
+}
+.rep .rep-cover .rep-eyebrow{color:var(--teal)}
+.rep .rep-cover h1{color:var(--white);max-width:18ch}
+.rep .rep-cover .rep-sub{
+  margin-top:18px;color:rgba(255,255,255,.78);
+  font-size:clamp(15px,1.6vw,19px);max-width:52ch;
+}
+.rep .rep-cover .rep-facts{
+  margin-top:34px;display:flex;flex-wrap:wrap;gap:28px;
+  border-top:1px solid var(--line-light);padding-top:20px;
+}
+.rep .rep-cover .rep-facts div b{
+  display:block;font-family:var(--display);font-size:24px;
+  color:var(--white);font-weight:400;
+}
+.rep .rep-cover .rep-facts div small{
+  font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);
+}
+
+/* ---------- Contents ---------- */
+.rep .rep-contents ol{list-style:none;margin:0;padding:0;counter-reset:c}
+.rep .rep-contents li{
+  counter-increment:c;display:grid;grid-template-columns:44px 1fr auto;gap:18px;
+  align-items:baseline;padding:14px 0;border-top:1px solid var(--line);
+}
+.rep .rep-contents li:last-child{border-bottom:1px solid var(--line)}
+.rep .rep-contents li::before{
+  content:counter(c,decimal-leading-zero);
+  font-family:var(--display);font-size:15px;color:var(--teal-ink);
+}
+.rep .rep-contents .rep-t{font-family:var(--display);font-size:21px;color:var(--ink)}
+.rep .rep-contents .rep-d{font-size:13px;color:var(--muted);grid-column:2}
+.rep .rep-contents .rep-meta{font-size:12px;color:var(--muted);white-space:nowrap}
+
+/* ---------- Editorial ---------- */
+.rep .rep-editorial .rep-grid{display:grid;grid-template-columns:1fr;gap:28px}
+@media(min-width:900px){
+  .rep .rep-editorial .rep-grid{grid-template-columns:1fr 1.4fr;gap:56px}
+}
+.rep .rep-editorial ul{margin:0;padding-left:18px;color:var(--muted)}
+.rep .rep-editorial li{margin-bottom:8px}
+
+/* ---------- A trip spread ---------- */
+.rep .rep-trip{border-top:1px solid var(--line);color:var(--ink)}
+.rep .rep-trip .rep-head{display:grid;grid-template-columns:1fr;gap:24px;align-items:end}
+@media(min-width:900px){
+  .rep .rep-trip .rep-head{grid-template-columns:1.1fr .9fr;gap:48px}
+}
+.rep .rep-trip figure{
+  margin:0;position:relative;border-radius:8px;overflow:hidden;background:var(--ice);
+}
+.rep .rep-trip figure img{
+  display:block;width:100%;height:auto;object-fit:cover;aspect-ratio:4/3;
+}
+.rep .rep-trip .rep-meta{
+  display:flex;flex-wrap:wrap;gap:8px 18px;margin:14px 0 0;
+  font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);
+}
+.rep .rep-trip .rep-meta b{color:var(--ink);font-weight:600}
+
+.rep .rep-trip .rep-cols{display:grid;grid-template-columns:1fr;gap:28px;margin-top:32px}
+@media(min-width:900px){
+  .rep .rep-trip .rep-cols{grid-template-columns:1.3fr .7fr;gap:48px}
+}
+
+.rep .rep-hl{list-style:none;margin:0;padding:0}
+.rep .rep-hl li{padding:10px 0;border-top:1px dashed var(--line)}
+.rep .rep-hl li:first-child{border-top:0}
+.rep .rep-hl strong{
+  display:block;font-family:var(--display);font-size:16px;font-weight:400;color:var(--ink);
+}
+.rep .rep-hl span{display:block;font-size:13px;color:var(--muted)}
+.rep .rep-hl em{
+  display:block;font-size:11.5px;color:var(--teal-ink);font-style:normal;margin-top:3px;
+}
+
+.rep .rep-side .rep-box{background:var(--cream);border-radius:8px;padding:20px}
+.rep .rep-side .rep-box + .rep-box{margin-top:16px}
+.rep .rep-side .rep-label{
+  font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--teal-ink);margin:0 0 8px;
+}
+.rep .rep-side p{font-size:13px;color:var(--muted);margin:0}
+.rep .rep-side .rep-qr{display:block;width:74px;height:74px;margin-top:12px}
+
+.rep .rep-journey{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.rep .rep-journey span{
+  font-size:12px;background:var(--ice);color:var(--ink);
+  border-radius:999px;padding:5px 12px;
+}
+
+.rep .rep-gallery{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:26px;
+}
+.rep .rep-gallery img{
+  width:100%;aspect-ratio:1;object-fit:cover;border-radius:6px;display:block;
+}
+/* Two pictures share the width rather than leaving a gap where a third
+   would have been. */
+.rep .rep-gallery:has(img:nth-child(2):last-child){grid-template-columns:repeat(2,1fr)}
+
+/* ---------- Closing ---------- */
+.rep .rep-closing{background:var(--navy);color:var(--white)}
+.rep .rep-closing .rep-eyebrow{color:var(--teal)}
+.rep .rep-closing .rep-lede{color:rgba(255,255,255,.78)}
+.rep .rep-closing .rep-contact{
+  margin-top:26px;display:flex;flex-wrap:wrap;align-items:center;gap:24px 44px;font-size:14px;
+  border-top:1px solid var(--line-light);padding-top:22px;
+}
+.rep .rep-closing a{color:var(--teal);text-decoration:none}
+.rep .rep-closing .rep-qr{display:block;width:74px;height:74px}
+
+/* ---------- Print ----------
+   Deliberate pagination: the cover is page one, contents is page two, and
+   every trip starts on a fresh page. Nothing is clipped — a longer trip
+   simply runs on, which is why this is not built as fixed-size pages. */
+@media print{
+  @page{size:A4;margin:11mm 12mm}
+  html,body{background:#fff}
+  .rep{font-size:10.5px;line-height:1.45;color:#000}
+  .rep .rep-wrap{max-width:none;padding:0}
+  .rep section{padding:8mm 0}
+  .rep h1{font-size:44px}
+  .rep h2{font-size:25px}
+  .rep h3{font-size:16px}
+  .rep .rep-eyebrow{font-size:9.5px}
+  .rep .rep-lede{font-size:11.5px;max-width:none}
+
+  .rep .rep-cover,.rep .rep-closing,.rep .rep-side .rep-box,.rep .rep-journey span{
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;
+  }
+
+  /* Rounded corners and a translucent cover image both force Chromium to
+     composite, which re-encodes each photograph into the PDF instead of
+     carrying the JPEG through. With them on, this file came to 55MB from
+     under 5MB of source images. */
+  .rep .rep-cover .rep-bg{opacity:1}
+  .rep .rep-cover::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(22,36,46,.35) 0%,rgba(22,36,46,.88) 72%);
+  }
+  .rep .rep-trip figure,.rep .rep-gallery img{border-radius:0}
+  .rep .rep-trip figure{overflow:visible}
+
+  .rep .rep-cover{min-height:0;height:248mm;page-break-after:always}
+  .rep .rep-cover .rep-wrap{padding:0 0 14mm}
+
+  .rep .rep-contents{page-break-after:always;padding-top:4mm}
+  .rep .rep-contents li{padding:9px 0}
+
+  .rep .rep-editorial{page-break-inside:avoid}
+
+  .rep .rep-trip{page-break-before:always;page-break-inside:avoid;border-top:0;padding-top:2mm}
+  .rep .rep-trip figure img{aspect-ratio:3/2}
+  .rep .rep-trip .rep-cols{margin-top:6mm}
+  /* The gallery strip is a screen pleasure, not a print one. Chromium
+     re-encodes every image losslessly into the PDF, so eighteen thumbnails
+     cost 26MB of the 43MB this file used to weigh — for pictures the hero
+     above them has already made the point with. */
+  .rep .rep-gallery{display:none}
+
+  .rep .rep-closing{page-break-before:always;padding-top:10mm}
+
+  /* Screen-only furniture. */
+  .rep-toolbar{display:none!important}
+}

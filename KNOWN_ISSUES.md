@@ -161,3 +161,35 @@ it found nine days and ten inclusions, and correctly refused to invent the
 price, the dates, the flights and the hotel names that document does not state.
 A messier document will do worse. Everything lands as a draft, which cannot be
 opened through a share link, and the gaps are listed before the editor opens.
+
+## The flipbook, retired
+
+**Brochures render as a collection report.** `/brochures/<slug>` serves cover,
+contents, a spread per trip, then a closing page. Flipbook.tsx,
+BrochurePageView.tsx and ReadingView.tsx are gone, along with `?view=read` —
+there is no separate accessible view to keep in step because the document
+itself is the accessible one. Password gating, unlisted visibility and the SEO
+rules are unchanged; all six published brochures still serve.
+
+**A brochure PDF is 12MB.** Chromium's PDF export re-encodes every image
+losslessly rather than carrying the JPEG through, so the file size follows
+pixel count almost exactly — thirty-two photographs came to 43MB from 4.8MB of
+source images, and Storage refused it outright. Two measured changes brought it
+down: images are requested at the size they are shown, and the gallery strips
+are hidden in print, where the hero above them has already made the point. It
+is still large. It is delivered as a link, not an attachment, which is the only
+reason 12MB is workable.
+
+**Report class names are prefixed rep-.** The site's own stylesheet already
+owns .trip, .meta, .side, .journey and .closing. An unprefixed .trip inherited
+a dark card background and a 4/3 aspect ratio from it, which is how the first
+version rendered every trip spread as a navy box.
+
+**Editorial pages with no content are skipped.** The block model keeps them as
+placeholders; rendering them produced five identical sections containing the
+word "About" and nothing else.
+
+**Design tokens are duplicated between the two stylesheets.** A proposal and a
+brochure are different documents and have separate CSS, but they go to the same
+school in the same week. A test compares the two :root blocks and fails if they
+drift.

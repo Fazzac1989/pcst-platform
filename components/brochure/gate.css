@@ -1,0 +1,12 @@
+/* The gate, and the "not published yet" screen behind it.
+   Lifted out of brochure.css when the flipbook was retired: the flipbook's
+   stylesheet went with it, and these two screens still need dressing. */
+
+.bgate { min-height: 100svh; display: grid; place-items: center; background: #0E1A21; padding: 24px; }
+.bgate form { width: min(100%, 26rem); display: grid; gap: 14px; text-align: center; }
+.bgate h1 { font-family: var(--font-fraunces), serif; font-weight: 400; color: #fff; font-size: 30px; }
+.bgate p { color: rgba(255,255,255,.6); font-size: 14px; }
+.bgate input { border: 1px solid rgba(255,255,255,.24); background: rgba(255,255,255,.06); border-radius: 8px; padding: 13px 16px; color: #fff; text-align: center; }
+.bgate input:focus { outline: none; border-color: var(--brass-light, #C9A227); }
+.bgate button { background: var(--brass, #B08D2F); color: #16242E; font-weight: 700; border-radius: 999px; padding: 13px; }
+.bgate .bgate-error { color: #FF9A8B; font-size: 13px; }

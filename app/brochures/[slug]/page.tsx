@@ -1,10 +1,9 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { loadBrochure } from '@/lib/brochure/data';
-import Flipbook from '@/components/brochure/Flipbook';
-import ReadingView from '@/components/brochure/ReadingView';
+import BrochureReport from '@/components/brochure/BrochureReport';
 import PasswordGate from '@/components/brochure/PasswordGate';
-import '../brochure.css';
+import '@/components/brochure/gate.css';
 
 /**
  * The public brochure.
@@ -12,12 +11,17 @@ import '../brochure.css';
  * Rendered per request rather than statically: a brochure can be unlisted or
  * password protected, and those checks have to happen before any content is
  * sent. Published public brochures are cached at the edge instead.
+ *
+ * It reads as a report — cover, contents, a spread per trip — rather than as a
+ * flipbook. One tree serves screen, print and PDF, so the download and the page
+ * cannot drift apart, and there is no separate accessible view to keep in step
+ * because the document itself is the accessible one.
  */
 export const dynamic = 'force-dynamic';
 
 type Props = {
   params: { slug: string };
-  searchParams: { view?: string; pw?: string; page?: string };
+  searchParams: { pw?: string };
 };
 
 export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
@@ -61,22 +65,19 @@ export default async function BrochurePage({ params, searchParams }: Props) {
 
   const { brochure, pages, trips, brochureQrSvg } = result.data;
 
-  if (searchParams.view === 'read') {
-    return <ReadingView brochure={brochure} pages={pages} trips={trips} slug={params.slug} />;
-  }
+  // The password travels with the PDF request, since that route has to load the
+  // brochure the same way this page did.
+  const pdfHref = `/api/brochures/${encodeURIComponent(params.slug)}/pdf${
+    searchParams.pw ? `?pw=${encodeURIComponent(searchParams.pw)}` : ''
+  }`;
 
   return (
-    <>
-      <Flipbook brochure={brochure} pages={pages} trips={trips} brochureQrSvg={brochureQrSvg} />
-      {/* Always reachable, and the only route for a screen reader. */}
-      <p style={{ textAlign: 'center', padding: '0 0 40px', background: '#0E1A21' }}>
-        <a
-          href={`/brochures/${params.slug}?view=read${searchParams.pw ? `&pw=${encodeURIComponent(searchParams.pw)}` : ''}`}
-          style={{ color: 'rgba(255,255,255,.6)', fontSize: 13, borderBottom: '1px solid currentColor' }}
-        >
-          Read as a standard page
-        </a>
-      </p>
-    </>
+    <BrochureReport
+      brochure={brochure}
+      pages={pages}
+      trips={trips}
+      brochureQrSvg={brochureQrSvg}
+      pdfHref={pdfHref}
+    />
   );
 }

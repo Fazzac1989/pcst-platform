@@ -3,7 +3,7 @@ import { createAdminClient } from '@/lib/supabase/admin';
 import { createClient } from '@/lib/supabase/server';
 import { getProposalByToken } from '@/lib/brochure/proposal-view-model';
 import {
-  generateProposalPdf,
+  renderPdf,
   isStale,
   signedPdfUrl,
   tooManyRecentRenders,
@@ -85,7 +85,7 @@ async function resolve(req: NextRequest, id: number, force: boolean) {
       return { status: 429, error: 'Too many renders for this proposal; try again shortly.' };
     }
 
-    const result = await generateProposalPdf(id, pageUrl(req, id, token));
+    const result = await renderPdf(id, pageUrl(req, id, token), 'proposals');
     if (!result.ok) return { status: 502, error: result.error };
 
     await db.from('proposal_events').insert({

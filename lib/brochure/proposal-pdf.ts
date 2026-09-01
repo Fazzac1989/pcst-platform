@@ -2,7 +2,10 @@ import 'server-only';
 import { createAdminClient } from '@/lib/supabase/admin';
 
 /**
- * Render a proposal to PDF by printing the page itself.
+ * Render a proposal or a brochure to PDF by printing the page itself.
+ *
+ * Both are rows in `brochures` and both carry pdf_storage_path, so one
+ * renderer serves them; only the storage folder differs.
  *
  * The PDF is the print stylesheet rendered in headless Chromium, not a second
  * document built from the same data. That is the whole point: a separately
@@ -58,7 +61,11 @@ export function isStale(brochure: { updated_at?: string | null; pdf_generated_at
   return new Date(brochure.updated_at).getTime() > new Date(brochure.pdf_generated_at).getTime();
 }
 
-export async function generateProposalPdf(id: number, pageUrl: string): Promise<PdfResult> {
+export async function renderPdf(
+  id: number,
+  pageUrl: string,
+  folder: 'proposals' | 'brochures' = 'proposals',
+): Promise<PdfResult> {
   const db = createAdminClient();
   let browser: Awaited<ReturnType<typeof launch>> | null = null;
 
@@ -131,7 +138,7 @@ export async function generateProposalPdf(id: number, pageUrl: string): Promise<
       footerTemplate: footerTemplate(footerFacts),
     });
 
-    const path = `proposals/${id}/${Date.now()}.pdf`;
+    const path = `${folder}/${id}/${Date.now()}.pdf`;
     const { error } = await db.storage.from(BUCKET).upload(path, Buffer.from(buffer), {
       contentType: 'application/pdf',
       upsert: true,
