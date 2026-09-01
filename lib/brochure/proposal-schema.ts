@@ -81,6 +81,8 @@ export type BrochureImage = {
 
 /** Editorial blocks that live on the brochure row rather than in their own table. */
 export type ProposalContent = {
+  /** Id into brochure_images for the full-bleed hero. */
+  heroImageId: number | null;
   eyebrow: string;
   /** The headline; `titleEmphasis` is rendered in italic within it. */
   title: string;
@@ -94,6 +96,9 @@ export type ProposalContent = {
   signatureExperiences: { title: string; caption: string; imageId: number | null; dayNumber: number | null }[];
   inclusions: string[];
   exclusions: string[];
+  /** The i. ii. iii. block that closes the proposal. */
+  nextSteps: { title: string; text: string }[];
+  contact: { name: string; phones: string[]; email: string; website: string; address: string };
 };
 
 /** Commercial fields, all optional while a proposal is still a template. */
@@ -132,6 +137,7 @@ export type ProposalViewModel = {
 };
 
 export const EMPTY_CONTENT: ProposalContent = {
+  heroImageId: null,
   eyebrow: '',
   title: '',
   titleEmphasis: '',
@@ -144,6 +150,8 @@ export const EMPTY_CONTENT: ProposalContent = {
   signatureExperiences: [],
   inclusions: [],
   exclusions: [],
+  nextSteps: [],
+  contact: { name: '', phones: [], email: '', website: '', address: '' },
 };
 
 /** Free places are shown as one number with a breakdown beneath it. */
