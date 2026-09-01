@@ -200,6 +200,11 @@ function parseList(cls: 'inc' | 'exc') {
 
 async function uploadImages() {
   const ids: number[] = [];
+  // Clear this seed's previous image rows so a re-run replaces rather than
+  // accumulates. Storage objects are content-addressed and overwritten in
+  // place, so only the rows need removing.
+  await db.from('brochure_images').delete().contains('tags', ['finland']);
+
   for (let i = 0; i < dataUris.length; i++) {
     const { base64, ext, mime } = dataUris[i];
     const buffer = Buffer.from(base64, 'base64');
@@ -217,10 +222,7 @@ async function uploadImages() {
 
       const { data: row, error: rowError } = await db
         .from('brochure_images')
-        .upsert(
-          { storage_path: path, alt: imgTags[i]?.alt ?? '', tags: ['finland'] },
-          { onConflict: 'storage_path' },
-        )
+        .insert({ storage_path: path, alt: imgTags[i]?.alt ?? '', tags: ['finland'] })
         .select('id')
         .single();
       if (rowError) throw new Error(`image row ${path}: ${rowError.message}`);
