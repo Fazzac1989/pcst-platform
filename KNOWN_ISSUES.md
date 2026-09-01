@@ -58,3 +58,31 @@ copies must be changed together.
 `reference/` is gitignored in this repo — it holds large local-only design
 files — so `reference/finland-proposal.html` must be placed by hand before the
 seed will run. The seed says so plainly rather than failing on a missing file.
+
+## Phase 3 — the PDF
+
+**Two PDF engines now live in this repo.** Quotes and trip pages use
+`@react-pdf/renderer`, which builds a document tree. Proposals use headless
+Chromium, because the proposal PDF has to *be* the print stylesheet rather than
+a second document that drifts from it. Neither is wrong; they answer different
+questions. Worth revisiting only if a third case appears.
+
+**Function size on Vercel is untested.** `@sparticuz/chromium` is roughly 50 MB
+and Vercel's compressed limit for a serverless function is 50 MB. The route sets
+`maxDuration = 60`, which needs a paid plan; on Hobby it is capped at 10 s and a
+cold render measured ~11.5 s locally, so it would time out. Both need proving on
+a real deploy — nothing here has run on Vercel yet.
+
+**Day photos are `loading="lazy"`.** A headless render never scrolls, so the
+route forces every image eager before printing. If the renderer is ever changed,
+that step has to survive: without it 18 of 26 images were absent from the PDF.
+
+**`page.pdf()` does not fire `beforeprint`.** The accordion handler in
+`Chrome.tsx` therefore never runs during PDF generation, and the route opens
+every `<details>` itself. Without it all 15 collapsible sections — every
+timetable and the whole booking-conditions block — printed as bare headings.
+
+**Rate limiting is per proposal, not per caller.** Six render requests in ten
+minutes fall back to the stored file. That protects the renderer, but a single
+reader repeatedly refreshing also throttles everyone else holding the same link.
+Fine at present volumes; revisit if proposals are shared widely.

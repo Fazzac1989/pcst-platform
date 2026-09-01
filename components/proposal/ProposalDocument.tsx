@@ -12,7 +12,14 @@ import '@/components/proposal/proposal.css';
  * does the rearranging rather than a second set of components, so the two can
  * never drift.
  */
-export default function ProposalDocument({ vm }: { vm: ProposalViewModel }) {
+export default function ProposalDocument({
+  vm,
+  shareToken,
+}: {
+  vm: ProposalViewModel;
+  /** Present on the shared link, so the reader's PDF request can prove itself. */
+  shareToken?: string;
+}) {
   const { content: c, commercials: m } = vm;
   const money = (n: number | null) =>
     n === null ? null : `${m.currency} ${Number(n).toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
@@ -38,7 +45,7 @@ export default function ProposalDocument({ vm }: { vm: ProposalViewModel }) {
             <a href="#price">Price</a>
             <a href="#terms">Booking conditions</a>
           </nav>
-          <TopBar pdfHref={`/api/proposals/${vm.id}/pdf`} />
+          <TopBar pdfHref={`/api/proposals/${vm.id}/pdf${shareToken ? `?token=${encodeURIComponent(shareToken)}` : ''}`} />
         </div>
       </header>
 

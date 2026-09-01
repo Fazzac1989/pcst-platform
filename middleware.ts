@@ -72,9 +72,25 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
+  // Staff proposal preview. Brochure ids are sequential, so without this an
+  // outsider could walk /proposals/1,2,3 and read every school's pricing. The
+  // customer-facing path is /p/<share token>, which stays public.
+  if (pathname.startsWith('/proposals') && !user) {
+    const url = request.nextUrl.clone();
+    url.pathname = '/admin/login';
+    return NextResponse.redirect(url);
+  }
+
   return response;
 }
 
 export const config = {
-  matcher: ['/admin/:path*', '/admin', '/portal/:path*', '/portal'],
+  matcher: [
+    '/admin/:path*',
+    '/admin',
+    '/portal/:path*',
+    '/portal',
+    '/proposals/:path*',
+    '/proposals',
+  ],
 };

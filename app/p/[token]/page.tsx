@@ -20,5 +20,5 @@ export default async function SharedProposalPage({ params }: { params: { token: 
   const vm = await getProposalByToken(params.token);
   if (!vm) notFound();
 
-  return <ProposalDocument vm={vm} />;
+  return <ProposalDocument vm={vm} shareToken={params.token} />;
 }
