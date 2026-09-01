@@ -170,3 +170,39 @@ export async function sendAppointmentNotification(d: AppointmentDetails): Promis
   </div>`;
   return sendEmail(notify, `New appointment request — ${d.name}, ${d.school}`, html);
 }
+
+/**
+ * The team's cue to pick up the phone.
+ *
+ * A proposal is usually followed up by a call, and the useful moment for that
+ * is when the school has actually opened it rather than when it was sent.
+ * Silent when PROPOSAL_NOTIFY_EMAIL is unset, like the other notifications.
+ */
+export async function sendProposalViewedNotification(d: {
+  title: string;
+  school: string | null;
+  id: number;
+}): Promise<boolean> {
+  const notify = process.env.PROPOSAL_NOTIFY_EMAIL ?? process.env.APPOINTMENT_NOTIFY_EMAIL;
+  if (!notify) return false;
+
+  const admin = process.env.PCT_ADMIN_URL ?? 'https://premium-choice-travel.vercel.app';
+  const html = `
+  <div style="font-family:Arial,sans-serif;font-size:14px;color:#16242E;line-height:1.6;">
+    <h2 style="margin:0 0 12px;">A proposal has been opened</h2>
+    <table cellpadding="6" style="border-collapse:collapse;">
+      <tr><td style="color:#425964;">Proposal</td><td><strong>${d.title}</strong></td></tr>
+      ${d.school ? `<tr><td style="color:#425964;">School</td><td>${d.school}</td></tr>` : ''}
+    </table>
+    <p style="color:#425964;">
+      This is the first time it has been opened.
+      <a href="${admin}/admin/school-trips/proposals/${d.id}" style="color:#12897E;">Open it in the admin panel</a>.
+    </p>
+  </div>`;
+
+  return sendEmail(
+    notify,
+    `Proposal opened — ${d.school ? `${d.school}, ` : ''}${d.title}`,
+    html
+  );
+}

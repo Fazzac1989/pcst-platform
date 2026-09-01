@@ -204,10 +204,24 @@ export async function getProposalById(id: number): Promise<ProposalViewModel | n
  * answer, and an expired link is indistinguishable from a wrong one.
  */
 export async function getProposalByToken(token: string): Promise<ProposalViewModel | null> {
+  const found = await findProposalByToken(token);
+  return found ? found.vm : null;
+}
+
+/**
+ * The same lookup, keeping the row.
+ *
+ * View tracking needs fields the view model deliberately does not carry —
+ * whether this is the first open, who it was prepared for — and re-reading the
+ * brochure to get them would double the query on every page load.
+ */
+export async function findProposalByToken(
+  token: string,
+): Promise<{ vm: ProposalViewModel; brochure: any } | null> {
   if (!isPlausibleToken(token)) return null;
   const brochure = await load({ share_token: token });
   if (!isShareable(brochure)) return null;
-  return build(brochure);
+  return { vm: await build(brochure), brochure };
 }
 
 async function build(brochure: any): Promise<ProposalViewModel> {

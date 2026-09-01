@@ -112,3 +112,31 @@ than by driving the interface.
 **The overview headline is still composed, not authored.** Flagged in phase 2:
 the reference's trip-specific overview sentence has no field, so the renderer
 builds a weaker one. It belongs in the Document tab and is not there yet.
+
+## Phase 5 — workflow and email
+
+**The "proposal opened" notification will not send.** This app has no
+`RESEND_API_KEY`, and neither `PROPOSAL_NOTIFY_EMAIL` nor the
+`APPOINTMENT_NOTIFY_EMAIL` it falls back to is set. The code no-ops quietly by
+design, so nothing breaks — but nobody is told when a school opens a proposal
+until those three are configured on this deployment. The Premium Choice Travel
+app, which sends the proposal to the school, is configured and does send.
+
+**The proposal email is sent from the wrong name.** `RESEND_FROM` in the
+Premium Choice Travel app is "Premium Choice Travel
+<enquiries@premiumchoicetravel.com>", so a School Trips proposal arrives from
+Premium Choice Travel while being branded School Trips inside. Fixing it means
+a verified sender for the School Trips domain in Resend, which is a DNS
+decision rather than a code change.
+
+**View counting is user-agent based.** Link previewers, crawlers, scripted
+fetches and our own PDF renderer are excluded by their user agent, which is a
+string anyone can set. It is right for the case it exists to handle — a
+proposal emailed to a school gets opened by Outlook and WhatsApp before any
+teacher sees it — but it is a heuristic, not a guarantee, and a previewer with
+a browser-shaped user agent would still be counted.
+
+**Every open is recorded as an event.** That keeps the count honest under
+concurrent opens, but a proposal read fifty times has fifty rows. The admin
+timeline summarises them into one line; anything else reading the table should
+expect the volume.

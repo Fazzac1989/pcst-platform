@@ -1,6 +1,8 @@
+import { headers } from 'next/headers';
 import { notFound } from 'next/navigation';
 import ProposalDocument from '@/components/proposal/ProposalDocument';
-import { getProposalByToken } from '@/lib/brochure/proposal-view-model';
+import { findProposalByToken } from '@/lib/brochure/proposal-view-model';
+import { recordProposalView } from '@/lib/brochure/proposal-tracking';
 
 export const dynamic = 'force-dynamic';
 
@@ -17,8 +19,13 @@ export const metadata = {
  * telling the holder which they have.
  */
 export default async function SharedProposalPage({ params }: { params: { token: string } }) {
-  const vm = await getProposalByToken(params.token);
-  if (!vm) notFound();
+  const found = await findProposalByToken(params.token);
+  if (!found) notFound();
 
-  return <ProposalDocument vm={vm} shareToken={params.token} />;
+  // Awaited rather than left dangling: work started and not awaited in a
+  // serverless function can be cut off when the response is sent. It is a
+  // couple of queries, and it must not throw — the proposal renders either way.
+  await recordProposalView(found.brochure, headers().get('user-agent'));
+
+  return <ProposalDocument vm={found.vm} shareToken={params.token} />;
 }
