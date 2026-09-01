@@ -140,3 +140,24 @@ a browser-shaped user agent would still be counted.
 concurrent opens, but a proposal read fifty times has fifty rows. The admin
 timeline summarises them into one line; anything else reading the table should
 expect the volume.
+
+## Phase 6 — document import
+
+**Imported proposals have no photographs.** The importer builds days, timetables
+and flights, but images are a shared library keyed by id and a document has no
+way to refer to them. Every imported day starts with none, and the hero is
+unset, so the opening page is a flat colour until someone picks images in the
+studio.
+
+**Booking conditions are not imported.** Documents carry them — the Japan
+reference has a deposit, a cancellation scale and a passport deadline — but
+terms are versioned sets shared across proposals, not per-proposal text, and
+guessing which set a document's wording corresponds to would be worse than
+leaving it. The extraction says so in its notes; a terms set has to be chosen
+in the studio.
+
+**Extraction quality depends on the document.** Run against the Japan reference
+it found nine days and ten inclusions, and correctly refused to invent the
+price, the dates, the flights and the hotel names that document does not state.
+A messier document will do worse. Everything lands as a draft, which cannot be
+opened through a share link, and the gaps are listed before the editor opens.
