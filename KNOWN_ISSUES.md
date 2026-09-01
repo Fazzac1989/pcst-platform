@@ -67,11 +67,19 @@ Chromium, because the proposal PDF has to *be* the print stylesheet rather than
 a second document that drifts from it. Neither is wrong; they answer different
 questions. Worth revisiting only if a third case appears.
 
-**Function size on Vercel is untested.** `@sparticuz/chromium` is roughly 50 MB
-and Vercel's compressed limit for a serverless function is 50 MB. The route sets
-`maxDuration = 60`, which needs a paid plan; on Hobby it is capped at 10 s and a
-cold render measured ~11.5 s locally, so it would time out. Both need proving on
-a real deploy — nothing here has run on Vercel yet.
+**PDF rendering works on Vercel, and took three attempts to get there.**
+`@sparticuz/chromium` carries a 65 MB binary that it resolves by path at
+runtime, so it needs two things a local build never exercises: externalising
+from the bundle, and an `outputFileTracingIncludes` entry naming the binary,
+because nothing imports it and the tracer therefore omits it. Without the first
+the route fails on the build path, without the second on `/var/task`. Measured
+on production: a cold render takes 15-18 s against the 60 s `maxDuration`, and
+the function deploys within the size limit.
+
+**A cold render is slow enough to notice.** Fifteen to eighteen seconds, most of
+it decompressing Chromium. The stored PDF is reused until the document changes,
+so only the first request after an edit pays it — but a school clicking straight
+after a price change waits.
 
 **Day photos are `loading="lazy"`.** A headless render never scrolls, so the
 route forces every image eager before printing. If the renderer is ever changed,
