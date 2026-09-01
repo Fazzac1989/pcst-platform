@@ -16,12 +16,16 @@ import {
  * they must share one resolved model too. Anything conditional resolved here
  * rather than in a component is one fewer way for the PDF to disagree with the
  * page it is supposed to be a copy of.
+ *
+ * Fetching and mapping are kept apart: `buildViewModel` is pure, so the rules
+ * that decide what a school sees — which price, which dates, whether a link
+ * still works — can be tested without a database.
  */
 
 const BUCKET = 'brochure-images';
 
 /** Values on the proposal win over the source brochure, field by field. */
-function applyOverrides<T extends object>(base: T, overrides: unknown): T {
+export function applyOverrides<T extends object>(base: T, overrides: unknown): T {
   if (!overrides || typeof overrides !== 'object') return base;
   const out: any = { ...base };
   for (const [k, v] of Object.entries(overrides as Record<string, unknown>)) {
@@ -39,80 +43,63 @@ function applyOverrides<T extends object>(base: T, overrides: unknown): T {
   return out as T;
 }
 
-async function load(match: { id: number } | { share_token: string }) {
-  const db = createAdminClient();
-  const query = db.from('brochures').select('*');
-  const { data: brochure } = await ('id' in match
-    ? query.eq('id', match.id)
-    : query.eq('share_token', match.share_token)
-  ).maybeSingle();
-  return brochure;
-}
-
-export async function getProposalById(id: number): Promise<ProposalViewModel | null> {
-  const brochure = await load({ id });
-  return brochure ? build(brochure) : null;
-}
-
 /**
- * A share link resolves only while it is live.
+ * Whether a share link should resolve.
  *
- * Expiry is checked here rather than in the page so every caller gets the same
- * answer, and an expired link is indistinguishable from a wrong one.
+ * A draft has not been sent to anyone, and an expired link has had its time.
+ * Both answer the same way as a wrong token, so a stale link tells its holder
+ * nothing about whether the proposal exists.
  */
-export async function getProposalByToken(token: string): Promise<ProposalViewModel | null> {
-  if (!token || token.length < 32) return null;
-  const brochure = await load({ share_token: token });
-  if (!brochure) return null;
-  if (brochure.status === 'draft') return null;
-  if (brochure.share_expires_at && new Date(brochure.share_expires_at).getTime() < Date.now()) {
-    return null;
+export function isShareable(
+  brochure: { status?: string | null; share_expires_at?: string | null } | null | undefined,
+  now: number = Date.now(),
+): boolean {
+  if (!brochure) return false;
+  if (brochure.status === 'draft') return false;
+  if (brochure.share_expires_at && new Date(brochure.share_expires_at).getTime() < now) {
+    return false;
   }
-  return build(brochure);
+  return true;
 }
 
-async function build(brochure: any): Promise<ProposalViewModel> {
-  const db = createAdminClient();
+/** A token too short to be one of ours is not worth a database round trip. */
+export function isPlausibleToken(token: string | null | undefined): boolean {
+  return Boolean(token && token.length >= 32);
+}
 
-  const [daysRes, flightsRes, termsRes, imagesRes] = await Promise.all([
-    db.from('brochure_days').select('*').eq('brochure_id', brochure.id).order('sort_order'),
-    db.from('brochure_flights').select('*').eq('brochure_id', brochure.id).order('sort_order'),
-    brochure.terms_set_id
-      ? db.from('brochure_terms_sets').select('*').eq('id', brochure.terms_set_id).maybeSingle()
-      : Promise.resolve({ data: null }),
-    db.from('brochure_images').select('*'),
-  ]);
+export type ProposalRows = {
+  brochure: any;
+  days: any[];
+  items: any[];
+  flights: any[];
+  terms: any | null;
+  images: any[];
+  /** Storage path to public URL. Injected so this stays free of the client. */
+  publicUrl: (storagePath: string) => string;
+};
 
-  const dayRows = daysRes.data ?? [];
-  const itemsRes = dayRows.length
-    ? await db
-        .from('brochure_day_items')
-        .select('*')
-        .in(
-          'day_id',
-          dayRows.map((d: any) => d.id),
-        )
-        .order('sort_order')
-    : { data: [] as any[] };
+/** The pure half: rows in, view model out. */
+export function buildViewModel(rows: ProposalRows): ProposalViewModel {
+  const { brochure } = rows;
 
   const itemsByDay = new Map<number, any[]>();
-  for (const item of itemsRes.data ?? []) {
+  for (const item of rows.items ?? []) {
     const list = itemsByDay.get(item.day_id) ?? [];
     list.push(item);
     itemsByDay.set(item.day_id, list);
   }
 
   const images: ProposalViewModel['images'] = {};
-  for (const img of imagesRes.data ?? []) {
+  for (const img of rows.images ?? []) {
     images[img.id] = {
-      url: db.storage.from(BUCKET).getPublicUrl(img.storage_path).data.publicUrl,
+      url: rows.publicUrl(img.storage_path),
       alt: img.alt ?? '',
       width: img.width ?? null,
       height: img.height ?? null,
     };
   }
 
-  const days: ProposalDay[] = dayRows.map((d: any) => ({
+  const days: ProposalDay[] = (rows.days ?? []).map((d: any) => ({
     id: d.id,
     dayNumber: d.day_number,
     date: d.date,
@@ -129,7 +116,7 @@ async function build(brochure: any): Promise<ProposalViewModel> {
     })),
   }));
 
-  const flights: ProposalFlight[] = (flightsRes.data ?? []).map((f: any) => ({
+  const flights: ProposalFlight[] = (rows.flights ?? []).map((f: any) => ({
     id: f.id,
     direction: f.direction === 'return' ? 'return' : 'outbound',
     flightNumber: f.flight_number ?? '',
@@ -144,7 +131,7 @@ async function build(brochure: any): Promise<ProposalViewModel> {
     sortOrder: f.sort_order ?? 0,
   }));
 
-  const termsRow = (termsRes as any).data;
+  const termsRow = rows.terms;
   const terms: TermsSet | null = termsRow
     ? {
         id: termsRow.id,
@@ -181,7 +168,8 @@ async function build(brochure: any): Promise<ProposalViewModel> {
     id: brochure.id,
     slug: brochure.slug,
     status: brochure.status,
-    heroImage: images[heroId]?.url ?? (typeof brochure.cover_image === 'string' ? brochure.cover_image : null),
+    heroImage:
+      images[heroId]?.url ?? (typeof brochure.cover_image === 'string' ? brochure.cover_image : null),
     heroEffect: Boolean(brochure.hero_effect),
     content,
     commercials,
@@ -190,4 +178,69 @@ async function build(brochure: any): Promise<ProposalViewModel> {
     terms,
     images,
   };
+}
+
+/* ─────────────────────────────── fetching ─────────────────────────────── */
+
+async function load(match: { id: number } | { share_token: string }) {
+  const db = createAdminClient();
+  const query = db.from('brochures').select('*');
+  const { data: brochure } = await ('id' in match
+    ? query.eq('id', match.id)
+    : query.eq('share_token', match.share_token)
+  ).maybeSingle();
+  return brochure;
+}
+
+export async function getProposalById(id: number): Promise<ProposalViewModel | null> {
+  const brochure = await load({ id });
+  return brochure ? build(brochure) : null;
+}
+
+/**
+ * A share link resolves only while it is live.
+ *
+ * Expiry is checked here rather than in the page so every caller gets the same
+ * answer, and an expired link is indistinguishable from a wrong one.
+ */
+export async function getProposalByToken(token: string): Promise<ProposalViewModel | null> {
+  if (!isPlausibleToken(token)) return null;
+  const brochure = await load({ share_token: token });
+  if (!isShareable(brochure)) return null;
+  return build(brochure);
+}
+
+async function build(brochure: any): Promise<ProposalViewModel> {
+  const db = createAdminClient();
+
+  const [daysRes, flightsRes, termsRes, imagesRes] = await Promise.all([
+    db.from('brochure_days').select('*').eq('brochure_id', brochure.id).order('sort_order'),
+    db.from('brochure_flights').select('*').eq('brochure_id', brochure.id).order('sort_order'),
+    brochure.terms_set_id
+      ? db.from('brochure_terms_sets').select('*').eq('id', brochure.terms_set_id).maybeSingle()
+      : Promise.resolve({ data: null }),
+    db.from('brochure_images').select('*'),
+  ]);
+
+  const dayRows = daysRes.data ?? [];
+  const itemsRes = dayRows.length
+    ? await db
+        .from('brochure_day_items')
+        .select('*')
+        .in(
+          'day_id',
+          dayRows.map((d: any) => d.id),
+        )
+        .order('sort_order')
+    : { data: [] as any[] };
+
+  return buildViewModel({
+    brochure,
+    days: dayRows,
+    items: itemsRes.data ?? [],
+    flights: flightsRes.data ?? [],
+    terms: (termsRes as any).data,
+    images: imagesRes.data ?? [],
+    publicUrl: (path: string) => db.storage.from(BUCKET).getPublicUrl(path).data.publicUrl,
+  });
 }
