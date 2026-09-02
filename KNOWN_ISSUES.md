@@ -201,3 +201,29 @@ word "About" and nothing else.
 brochure are different documents and have separate CSS, but they go to the same
 school in the same week. A test compares the two :root blocks and fails if they
 drift.
+
+## The brochure, as slides
+
+**A brochure is a deck now, not a scrolling report.** Cover, contents, a page
+per trip, then a closing page — one at a time, with a turn between them. Every
+slide is still rendered in the DOM and the print stylesheet lays them out as A4
+pages, so the PDF is this document rather than a second one built to match:
+nine slides produced exactly nine pages.
+
+**`overflow:hidden` is what makes a slide a slide, and it clips in print.** It
+was left on for the first render and silently cut a trip's conditional wording
+— "subject to the park's daily operating schedule" — off the bottom of its
+page. Print now sets `overflow:visible`, so a trip that runs long runs onto a
+second page instead of losing its tail. Worth remembering if the print rules
+are ever rewritten: the count of pages exceeding the count of slides is correct
+behaviour, not a bug.
+
+**A cover page is not a positioned page.** `.sl-cover` and `.sl-page` land on
+the same element with the same specificity, so `.sl-cover { position: relative }`
+quietly beat `.sl-page { position: absolute }` and the cover sized itself to its
+text instead of filling the stage. Section classes here must not set `position`.
+
+**The contents groups by country, or by subject for a subject brochure.** Trips
+with neither are collected under "More trips" rather than each becoming a
+heading of its own. With one trip per country the page is mostly headings —
+that is the data's shape, not the design's.

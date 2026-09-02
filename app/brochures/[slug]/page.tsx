@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { loadBrochure } from '@/lib/brochure/data';
-import BrochureReport from '@/components/brochure/BrochureReport';
+import BrochureSlides from '@/components/brochure/BrochureSlides';
+import { gatherTrips, groupSpreads } from '@/lib/brochure/spreads';
 import PasswordGate from '@/components/brochure/PasswordGate';
 import '@/components/brochure/gate.css';
 
@@ -12,10 +13,10 @@ import '@/components/brochure/gate.css';
  * password protected, and those checks have to happen before any content is
  * sent. Published public brochures are cached at the edge instead.
  *
- * It reads as a report — cover, contents, a spread per trip — rather than as a
- * flipbook. One tree serves screen, print and PDF, so the download and the page
- * cannot drift apart, and there is no separate accessible view to keep in step
- * because the document itself is the accessible one.
+ * It reads as a deck — cover, contents, a page per trip — one page at a time,
+ * with a turn between them. Every slide is rendered and the print stylesheet
+ * lays them out as A4 pages, so the PDF is this document rather than a second
+ * one built to match, and there is no separate accessible view to keep in step.
  */
 export const dynamic = 'force-dynamic';
 
@@ -71,11 +72,20 @@ export default async function BrochurePage({ params, searchParams }: Props) {
     searchParams.pw ? `?pw=${encodeURIComponent(searchParams.pw)}` : ''
   }`;
 
+  const visible = pages.filter((p) => !p.hidden);
+  const cover = visible.find((p) => p.pageType === 'cover')?.content ?? {};
+  const closing = visible.find(
+    (p) => p.pageType === 'contact' || p.pageType === 'callToAction',
+  )?.content;
+  const spreads = gatherTrips(visible, trips);
+
   return (
-    <BrochureReport
+    <BrochureSlides
       brochure={brochure}
-      pages={pages}
-      trips={trips}
+      cover={cover}
+      spreads={spreads}
+      groups={groupSpreads(spreads, brochure.kind === 'subject' ? 'subject' : 'country')}
+      closing={closing}
       brochureQrSvg={brochureQrSvg}
       pdfHref={pdfHref}
     />

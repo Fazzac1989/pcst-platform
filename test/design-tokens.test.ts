@@ -20,7 +20,7 @@ function tokens(file: string): Record<string, string> {
 }
 
 const proposal = tokens('components/proposal/proposal.css');
-const brochure = tokens('components/brochure/report.css');
+const brochure = tokens('components/brochure/slides.css');
 
 describe('report design tokens', () => {
   it('defines the palette in both stylesheets', () => {
