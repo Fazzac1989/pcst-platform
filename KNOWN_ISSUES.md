@@ -309,3 +309,28 @@ the same captions the home page uses, faded at the foot the way it fades them.
 gained two paragraphs so the page has something to fill it, and they assert only
 what the rest of the site already does — Dubai-based, curriculum-led, risk
 assessed twice, the trip runs on the app. No claim in it is new.
+
+## A proposal reads as a page and prints as a deck
+
+**Online it is one scrolling document; the download is the landscape slide
+deck.** Both come from the same component tree: `mode="page"` stacks the slides
+and shows them all, `mode="deck"` turns them one at a time, and the print rules
+are untouched by either — every `.sl-page` becomes one landscape A4 page from
+whichever mode rendered it. There is no second layout to keep in step, which is
+the only reason having two presentations is affordable.
+
+Brochures stay as decks, since a collection is browsed rather than read
+through.
+
+**Print is landscape for both.** A4 portrait was tried and was worse: the deck
+is 16:9, so a landscape page is the shape that holds it, and a slide prints as
+the slide rather than as a rearrangement of it. Verified against production —
+fourteen brochure slides to fourteen pages, twenty-two proposal slides to
+twenty-two, all 842 x 596.
+
+**The renderer will no longer store a PDF of an error page.** Chromium renders
+whatever it is given, and a transient failure had already been stored and
+served: a brochure's PDF was one page reading "This page could not be found".
+The route now checks the response status and that the page produced slides, and
+stores nothing when it did not. It caught a second instance within minutes of
+being written.

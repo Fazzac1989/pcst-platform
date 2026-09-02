@@ -209,3 +209,66 @@
   .sl-days{columns:3}
   .sl-toc button{cursor:default}
 }
+
+/* ============================================================
+   Reading mode.
+
+   The same slides, stacked and scrolled rather than turned one at a time.
+   A proposal is read on a phone as often as a desktop, and a fixed 16:9 box
+   is a poor thing to read on either — but the document underneath is the same
+   one, so the PDF is unaffected: the print rules below already make every
+   .sl-page a page, from whichever mode it was shown in.
+   ============================================================ */
+.sl-deck--page{display:block;background:var(--white);padding:0;min-height:0}
+
+.sl-deck--page .sl-bar{
+  position:sticky;top:0;z-index:20;width:auto;max-width:none;
+  background:var(--navy);padding:10px clamp(14px,4vw,40px);
+}
+
+.sl-deck--page .sl-stage{
+  position:static;height:auto;aspect-ratio:auto;width:100%;max-width:1100px;
+  perspective:none;margin:0 auto;
+}
+
+.sl-deck--page .sl-page{
+  position:static;width:100%;height:auto;
+  border-radius:0;box-shadow:none;overflow:visible;
+  transform:none!important;animation:none!important;
+  border-bottom:1px solid var(--line);
+}
+/* Every section is shown: there is nothing to turn to. */
+.sl-deck--page .sl-page[hidden]{display:flex!important}
+.sl-deck--page .sl-page:last-child{border-bottom:0}
+
+.sl-deck--page .sl-body{overflow:visible;padding:clamp(28px,5cqw,64px) clamp(20px,5cqw,64px)}
+
+/* The cover and the closing keep their height; the rest take what they need. */
+.sl-deck--page .sl-cover .sl-body{min-height:70svh}
+.sl-deck--page .sl-closing .sl-body{min-height:0}
+
+/* On a narrow screen the side-by-side arrangements stack, the way they would
+   on paper. */
+@media (max-width: 760px){
+  .sl-deck--page .sl-intro,
+  .sl-deck--page .sl-head,
+  .sl-deck--page .sl-cols,
+  .sl-deck--page .pr-day,
+  .sl-deck--page .pr-two,
+  .sl-deck--page .pr-price,
+  .sl-deck--page .ed-intro,
+  .sl-deck--page .ed-tech{grid-template-columns:1fr!important}
+  .sl-deck--page .ed-safety,
+  .sl-deck--page .pr-cards,
+  .sl-deck--page .sl-steps,
+  .sl-deck--page .pr-steps,
+  .sl-deck--page .pr-legs,
+  .sl-deck--page .pr-lists,
+  .sl-deck--page .pr-three{grid-template-columns:1fr!important}
+  .sl-deck--page .pr-toc,
+  .sl-deck--page .pr-terms,
+  .sl-deck--page .sl-toc-cols,
+  .sl-deck--page .sl-days,
+  .sl-deck--page .sl-days-dense,
+  .sl-deck--page .ed-ed-cols{columns:1!important}
+}

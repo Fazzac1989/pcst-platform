@@ -27,12 +27,20 @@ export default function ProposalSlides({
   vm,
   shareToken,
   editorial,
+  mode = 'page',
 }: {
   vm: ProposalViewModel;
   /** Present on the shared link, so the reader's PDF request can prove itself. */
   shareToken?: string;
   /** Who we are, safety and the app — shared with the brochure. */
   editorial: EditorialSlide[];
+  /**
+   * How it is shown. 'page' stacks the slides into one scrolling document,
+   * which is what a school opens; 'deck' turns them one at a time. The PDF is
+   * the same either way — the print rules make every slide a page from
+   * whichever mode rendered it.
+   */
+  mode?: 'page' | 'deck';
 }) {
   const { content: c, commercials: m } = vm;
   const [index, setIndex] = useState(0);
@@ -123,6 +131,7 @@ export default function ProposalSlides({
   }, [turning, index]);
 
   useEffect(() => {
+    if (mode === 'page') return;
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'ArrowRight' || e.key === 'PageDown') { e.preventDefault(); go(index + 1); }
       else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { e.preventDefault(); go(index - 1); }
@@ -131,7 +140,7 @@ export default function ProposalSlides({
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [go, index, total]);
+  }, [go, index, total, mode]);
 
   const pdfHref = `/api/proposals/${vm.id}/pdf${shareToken ? `?token=${encodeURIComponent(shareToken)}` : ''}`;
   const print = () => {
@@ -144,10 +153,11 @@ export default function ProposalSlides({
   };
 
   const cls = (i: number) =>
-    i === index && turning === 'forward' ? 'sl-page sl-entering'
-    : i === previous && turning ? 'sl-page sl-leaving'
+    mode === 'deck' && i === index && turning === 'forward' ? 'sl-page sl-entering'
+    : mode === 'deck' && i === previous && turning ? 'sl-page sl-leaving'
     : 'sl-page';
-  const shown = (i: number) => i === index || (turning !== null && i === previous);
+  const shown = (i: number) =>
+    mode === 'page' || i === index || (turning !== null && i === previous);
 
   const img = (id: number | null | undefined) => (id ? vm.images[id] : undefined);
   const Mark = () => (
@@ -471,21 +481,29 @@ export default function ProposalSlides({
   };
 
   return (
-    <div className="sl-deck">
+    <div className={`sl-deck${mode === 'page' ? ' sl-deck--page' : ''}`}>
       <div className="sl-bar">
-        <button type="button" onClick={() => go(index - 1)} disabled={index === 0}>
-          ← Back
-        </button>
-        <span className="sl-count" aria-hidden="true">
-          {index + 1} / {total}
-        </span>
+        {mode === 'deck' ? (
+          <button type="button" onClick={() => go(index - 1)} disabled={index === 0}>
+            ← Back
+          </button>
+        ) : (
+          <span className="sl-count">{c.title || 'Your proposal'}</span>
+        )}
+        {mode === 'deck' && (
+          <span className="sl-count" aria-hidden="true">
+            {index + 1} / {total}
+          </span>
+        )}
         <span style={{ display: 'flex', gap: 10 }}>
           <button type="button" onClick={print}>
-            Print / save as PDF
+            Download as PDF
           </button>
-          <button type="button" onClick={() => go(index + 1)} disabled={index === total - 1}>
-            Next →
-          </button>
+          {mode === 'deck' && (
+            <button type="button" onClick={() => go(index + 1)} disabled={index === total - 1}>
+              Next →
+            </button>
+          )}
         </span>
       </div>
 
@@ -512,9 +530,11 @@ export default function ProposalSlides({
         ))}
       </div>
 
-      <p aria-live="polite" style={SR_ONLY}>
-        Page {index + 1} of {total}
-      </p>
+      {mode === 'deck' && (
+        <p aria-live="polite" style={SR_ONLY}>
+          Page {index + 1} of {total}
+        </p>
+      )}
     </div>
   );
 }
