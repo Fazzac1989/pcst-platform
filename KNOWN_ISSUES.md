@@ -227,3 +227,30 @@ text instead of filling the stage. Section classes here must not set `position`.
 with neither are collected under "More trips" rather than each becoming a
 heading of its own. With one trip per country the page is mostly headings —
 that is the data's shape, not the design's.
+
+## The deck went landscape
+
+**16:9 on screen, landscape A4 in print.** Fifteen slides produce fifteen
+pages. Type is sized in `cqw` — hundredths of the slide's own width — so it
+scales with the slide on a laptop, a projector and on paper, and "smaller" is
+one number rather than thirty.
+
+**Every slide is measured, not eyeballed.** A probe walks the deck and reports
+any slide whose body scrolls; the layout was tuned against those numbers until
+all fifteen fit. Two things it caught that looking did not: the contents
+columns were on each group's list rather than the wrapper, so with one trip per
+country nothing could flow and half the slide sat empty; and the print cover
+was 180mm plus its mark against 192mm of printable height, which pushed a
+sixteenth page out of fifteen slides.
+
+**An introduction shows three highlights.** A fourth overflows at any readable
+size — measured, not assumed. That does mean a trip with six highlights shows
+half of them, and a conditional attached to a hidden one goes with it. The
+day-by-day page that follows carries the trip in full.
+
+**The PDF is 24MB, up from 9.6MB.** An introduction now carries three pictures
+and the contents a thumbnail each: twenty-four images against seven. Contents
+thumbnails are served at 220px, since they are 15mm wide on the page, but
+Chromium still re-encodes every image losslessly. It is delivered as a link,
+not an attachment. If it has to come down, the lever is the two secondary
+pictures on each introduction.

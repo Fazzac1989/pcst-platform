@@ -19,13 +19,15 @@
 const PUBLIC_OBJECT = '/storage/v1/object/public/';
 const RENDER_IMAGE = '/storage/v1/render/image/public/';
 
-export type ImageRole = 'cover' | 'hero' | 'thumb';
+export type ImageRole = 'cover' | 'hero' | 'thumb' | 'micro';
 
 /** Widths chosen for print: the largest each role occupies on an A4 page, doubled. */
 const WIDTHS: Record<ImageRole, number> = {
   cover: 1000,
-  hero: 700,
-  thumb: 450,
+  hero: 620,
+  thumb: 420,
+  /** A contents-page thumbnail, roughly 15mm across. */
+  micro: 220,
 };
 
 export function sizedImage(url: string | null | undefined, role: ImageRole): string | null {

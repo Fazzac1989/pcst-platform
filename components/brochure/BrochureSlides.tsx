@@ -39,10 +39,13 @@ export default function BrochureSlides({
   const previous = useRef(0);
   const liveRef = useRef<HTMLParagraphElement | null>(null);
 
-  // cover + contents + one per trip + closing
+  // cover + contents + (introduction, then itinerary) per trip + closing
   const hasContents = spreads.length > 0;
   const hasClosing = Boolean(closing || brochure.closingText);
-  const total = 1 + (hasContents ? 1 : 0) + spreads.length + (hasClosing ? 1 : 0);
+  // A trip contributes an itinerary slide only when it actually has days.
+  const slidesPerTrip = spreads.map((s) => ((s.trip?.days ?? []).length > 0 ? 2 : 1));
+  const tripSlideTotal = slidesPerTrip.reduce((a, b) => a + b, 0);
+  const total = 1 + (hasContents ? 1 : 0) + tripSlideTotal + (hasClosing ? 1 : 0);
   const firstTripIndex = hasContents ? 2 : 1;
 
   const go = useCallback(
@@ -83,9 +86,12 @@ export default function BrochureSlides({
     }
   };
 
-  /** Which slide a page is, so the contents can jump straight to it. */
-  const slideOf = (tripId: number) =>
-    firstTripIndex + spreads.findIndex((s) => s.tripId === tripId);
+  /** Where a trip's introduction sits, so the contents can jump straight to it. */
+  const slideOf = (tripId: number) => {
+    const n = spreads.findIndex((s) => s.tripId === tripId);
+    if (n < 0) return firstTripIndex;
+    return firstTripIndex + slidesPerTrip.slice(0, n).reduce((a, b) => a + b, 0);
+  };
 
   const pageClass = (i: number) => {
     if (i === index && turning) return turning === 'forward' ? 'sl-page sl-entering' : 'sl-page';
@@ -121,10 +127,14 @@ export default function BrochureSlides({
     slides.push(
       <article key="contents" className={pageClass(i)} hidden={!visible(i)}>
         <div className="sl-body">
-          <p className="sl-eyebrow">What is inside</p>
+          <div className="sl-masthead">
+            <p className="sl-eyebrow">What is inside</p>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/images/logo-navy.png" alt="Premium Choice School Trips" />
+          </div>
           <h2>The trips in this collection</h2>
 
-          <div style={{ marginTop: 22 }}>
+          <div className="sl-toc-cols">
             {groups.map((g) => (
               <section className="sl-group" key={g.label || 'all'}>
                 {g.label && <p className="sl-group-label">{g.label}</p>}
@@ -134,9 +144,15 @@ export default function BrochureSlides({
                     return (
                       <li key={s.tripId}>
                         <button type="button" onClick={() => go(target)}>
-                          <span className="sl-n">
-                            {String(target - firstTripIndex + 1).padStart(2, '0')}
-                          </span>
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            className="sl-thumb"
+                            src={
+                              sizedImage(s.trip?.heroImage ?? s.images[0] ?? null, 'micro') ??
+                              undefined
+                            }
+                            alt=""
+                          />
                           <span className="sl-t">
                             {s.trip?.title ?? s.content.headline ?? 'Trip'}
                           </span>
@@ -163,10 +179,38 @@ export default function BrochureSlides({
     slides.push(
       <article key={`trip-${s.tripId}`} className={pageClass(i)} hidden={!visible(i)}>
         <div className="sl-body">
-          <TripBody spread={s} />
+          <TripIntro spread={s} />
         </div>
       </article>,
     );
+
+    const days = s.trip?.days ?? [];
+    if (days.length > 0) {
+      const j = slides.length;
+      slides.push(
+        <article key={`days-${s.tripId}`} className={pageClass(j)} hidden={!visible(j)}>
+          <div className="sl-body">
+            <div className="sl-masthead">
+              <p className="sl-eyebrow">
+                {s.trip?.title ?? s.content.headline ?? 'Trip'} · Day by day
+              </p>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/images/logo-navy.png" alt="Premium Choice School Trips" />
+            </div>
+            <div className={`sl-days${days.length > 8 ? ' sl-days-dense' : ''}`}>
+              {days.map((d) => (
+                <div className="sl-day" key={d.dayNumber}>
+                  <p className="sl-day-n">{d.label || `Day ${d.dayNumber}`}</p>
+                  <h4>{d.title}</h4>
+                  {d.summary && <p>{d.summary}</p>}
+                  {d.location && <span className="sl-where">{d.location}</span>}
+                </div>
+              ))}
+            </div>
+          </div>
+        </article>,
+      );
+    }
   }
 
   if (hasClosing) {
@@ -233,18 +277,31 @@ const SR_ONLY: React.CSSProperties = {
   whiteSpace: 'nowrap',
 };
 
-function TripBody({ spread }: { spread: TripSpread }) {
+/**
+ * A trip's introduction: what it is, and what it looks like.
+ *
+ * The pictures earn half the slide here because this is the page that has to
+ * make someone want the trip; the itinerary that follows is where the detail
+ * lives.
+ */
+function TripIntro({ spread }: { spread: TripSpread }) {
   const { trip, content: c } = spread;
   const title = trip?.title ?? c.headline ?? 'Trip';
   const hero = trip?.heroImage ?? spread.images[0] ?? null;
+  // Two more beneath the hero, and never the hero again.
+  const rest = spread.images.filter((u) => u !== hero).slice(0, 2);
 
   return (
     <>
-      <div className="sl-head">
+      <div className="sl-masthead">
+        <p className="sl-eyebrow">{c.eyebrow ?? trip?.subject ?? 'Trip'}</p>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/images/logo-navy.png" alt="Premium Choice School Trips" />
+      </div>
+
+      <div className="sl-intro">
         <div>
-          <p className="sl-eyebrow">{c.eyebrow ?? trip?.subject ?? 'Trip'}</p>
           <h2>{title}</h2>
-          {c.proposition && <p className="sl-lede">{c.proposition}</p>}
           <p className="sl-meta">
             {trip?.country && (
               <span>
@@ -258,79 +315,50 @@ function TripBody({ spread }: { spread: TripSpread }) {
               </span>
             ) : null}
           </p>
-        </div>
-        {hero && (
-          <figure>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={sizedImage(hero, 'hero') ?? hero} alt={title} loading="lazy" />
-          </figure>
-        )}
-      </div>
 
-      <div className="sl-cols">
-        <div>
+          {c.proposition && <p className="sl-lede">{c.proposition}</p>}
           {c.intro && <p className="sl-lede">{c.intro}</p>}
-          {(c.body ?? []).map((para, i) => (
-            <p className="sl-lede" key={i}>
-              {para}
-            </p>
-          ))}
 
+          {/* Three, measured: a fourth overflows the slide at any size worth
+              reading. An introduction is a summary — the day-by-day page that
+              follows carries the trip in full. */}
           {(c.highlights ?? []).length > 0 && (
-            <>
-              <p className="sl-eyebrow" style={{ marginTop: 18 }}>
-                Highlights
-              </p>
-              <ul className="sl-hl">
-                {(c.highlights ?? []).map((h, i) => (
-                  <li key={i}>
-                    <strong>{h.name}</strong>
-                    {h.note && <span>{h.note}</span>}
-                    {/* Kept, not tidied away: "subject to availability" is the
-                        difference between a promise and an intention. */}
-                    {h.conditional && <em>{h.conditional}</em>}
-                  </li>
-                ))}
-              </ul>
-            </>
+            <ul className="sl-hl">
+              {(c.highlights ?? []).slice(0, 3).map((h, i) => (
+                <li key={i}>
+                  <strong>{h.name}</strong>
+                  {h.note && <span>{h.note}</span>}
+                  {/* Kept, not tidied away: "subject to availability" is the
+                      difference between a promise and an intention. */}
+                  {h.conditional && <em>{h.conditional}</em>}
+                </li>
+              ))}
+            </ul>
+          )}
+
+          {(trip?.journey ?? []).length > 0 && (
+            <div className="sl-chips">
+              {(trip?.journey ?? []).map((stop, i) => (
+                <span key={i}>{stop.location}</span>
+              ))}
+            </div>
           )}
         </div>
 
-        <aside>
-          {(trip?.journey ?? []).length > 0 && (
-            <div className="sl-box">
-              <p className="sl-label">Where the group goes</p>
-              <div className="sl-chips">
-                {(trip?.journey ?? []).map((stop, i) => (
-                  <span key={i}>{stop.location}</span>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {(c.learningFocus ?? []).length > 0 && (
-            <div className="sl-box">
-              <p className="sl-label">Learning focus</p>
-              <p>{(c.learningFocus ?? []).join(' · ')}</p>
-            </div>
-          )}
-
-          {(c.inclusions ?? []).length > 0 && (
-            <div className="sl-box">
-              <p className="sl-label">Included</p>
-              <p>{(c.inclusions ?? []).join(' · ')}</p>
-            </div>
-          )}
-
-          {trip?.qrSvg && (
-            <div className="sl-box">
-              <p className="sl-label">Full itinerary</p>
-              <p>Scan for the day-by-day plan.</p>
+        <div className="sl-shots">
+          {hero && (
+            <figure>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img className="sl-qr" src={trip.qrSvg} alt="" width={68} height={68} />
-            </div>
+              <img src={sizedImage(hero, 'hero') ?? hero} alt={title} loading="lazy" />
+            </figure>
           )}
-        </aside>
+          {rest.map((url, i) => (
+            <figure key={i}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={sizedImage(url, 'thumb') ?? url} alt="" loading="lazy" />
+            </figure>
+          ))}
+        </div>
       </div>
     </>
   );
