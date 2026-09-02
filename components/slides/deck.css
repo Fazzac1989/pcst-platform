@@ -187,6 +187,14 @@
     /* The container stays, so cqw type keeps working on paper. A landscape A4
        content box is about 277mm wide, which is what 100cqw then means. */
     container-type:inline-size;
+    /* A sheet, not a strip. Left to its content the slide stopped two-thirds
+       of the way down the paper, with the page number floating where it
+       ended. A minimum rather than a fixed height, so a long slide can still
+       run onto a second sheet instead of being clipped. Half a millimetre
+       under the sheet, not the sheet itself: twenty-two slides of exactly
+       210mm summed to a fraction of a pixel over twenty-two sheets, and the
+       fraction printed as a blank twenty-third. */
+    min-height:209.5mm;
     animation:none!important;transform:none!important;
     page-break-after:always;break-after:page;
   }
