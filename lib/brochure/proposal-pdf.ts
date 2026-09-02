@@ -49,16 +49,29 @@ async function launch() {
 export type PdfResult = { ok: true; path: string; bytes: number } | { ok: false; error: string };
 
 /**
- * Regenerate only when the proposal has changed since the last render.
+ * Regenerate when the proposal has changed since the last render, or the
+ * design has.
  *
  * A proposal is read far more often than it is edited, and each render costs a
  * browser launch, so the stored file is reused until `updated_at` moves past
- * `pdf_generated_at`.
+ * `pdf_generated_at`. But a deploy that changes how the deck looks edits no
+ * proposal, and every stored PDF kept serving the old design — the first
+ * margins, the missing pictures. So anything rendered before the design last
+ * changed is stale too. Move this date forward whenever the printed design
+ * changes.
  */
-export function isStale(brochure: { updated_at?: string | null; pdf_generated_at?: string | null; pdf_storage_path?: string | null }) {
+export const DESIGN_CHANGED_AT = '2026-09-02T12:00:00Z';
+
+export function isStale(brochure: {
+  updated_at?: string | null;
+  pdf_generated_at?: string | null;
+  pdf_storage_path?: string | null;
+}) {
   if (!brochure.pdf_storage_path || !brochure.pdf_generated_at) return true;
+  const generated = new Date(brochure.pdf_generated_at).getTime();
+  if (generated < new Date(DESIGN_CHANGED_AT).getTime()) return true;
   if (!brochure.updated_at) return false;
-  return new Date(brochure.updated_at).getTime() > new Date(brochure.pdf_generated_at).getTime();
+  return new Date(brochure.updated_at).getTime() > generated;
 }
 
 export async function renderPdf(

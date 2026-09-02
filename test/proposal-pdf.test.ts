@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { isStale } from '@/lib/brochure/proposal-pdf';
+import { DESIGN_CHANGED_AT, isStale } from '@/lib/brochure/proposal-pdf';
 
 /**
  * The staleness rule is the only thing standing between an edited proposal and
@@ -8,7 +8,7 @@ import { isStale } from '@/lib/brochure/proposal-pdf';
 describe('isStale', () => {
   it('is stale when no PDF has ever been built', () => {
     expect(isStale({})).toBe(true);
-    expect(isStale({ updated_at: '2026-09-01T00:00:00Z' })).toBe(true);
+    expect(isStale({ updated_at: '2026-10-01T00:00:00Z' })).toBe(true);
   });
 
   it('is stale when a file is recorded but no build time is', () => {
@@ -19,8 +19,8 @@ describe('isStale', () => {
     expect(
       isStale({
         pdf_storage_path: 'proposals/1/x.pdf',
-        pdf_generated_at: '2026-09-01T10:00:00Z',
-        updated_at: '2026-09-01T11:00:00Z',
+        pdf_generated_at: '2026-10-01T10:00:00Z',
+        updated_at: '2026-10-01T11:00:00Z',
       }),
     ).toBe(true);
   });
@@ -29,19 +29,19 @@ describe('isStale', () => {
     expect(
       isStale({
         pdf_storage_path: 'proposals/1/x.pdf',
-        pdf_generated_at: '2026-09-01T11:00:00Z',
-        updated_at: '2026-09-01T10:00:00Z',
+        pdf_generated_at: '2026-10-01T11:00:00Z',
+        updated_at: '2026-10-01T10:00:00Z',
       }),
     ).toBe(false);
   });
 
   it('is fresh when the two timestamps match exactly', () => {
-    const t = '2026-09-01T10:00:00Z';
+    const t = '2026-10-01T10:00:00Z';
     expect(isStale({ pdf_storage_path: 'p.pdf', pdf_generated_at: t, updated_at: t })).toBe(false);
   });
 
   it('is fresh when there is a PDF and nothing says the proposal changed', () => {
-    expect(isStale({ pdf_storage_path: 'p.pdf', pdf_generated_at: '2026-09-01T10:00:00Z' })).toBe(
+    expect(isStale({ pdf_storage_path: 'p.pdf', pdf_generated_at: '2026-10-01T10:00:00Z' })).toBe(
       false,
     );
   });
@@ -51,8 +51,30 @@ describe('isStale', () => {
     expect(
       isStale({
         pdf_storage_path: 'p.pdf',
-        pdf_generated_at: '2026-09-01T14:00:00+04:00',
-        updated_at: '2026-09-01T10:00:00Z',
+        pdf_generated_at: '2026-10-01T14:00:00+04:00',
+        updated_at: '2026-10-01T10:00:00Z',
+      }),
+    ).toBe(false);
+  });
+  it('is stale when it was rendered before the design last changed', () => {
+    // A deploy that changed the deck edits no proposal. Without this rule a
+    // file rendered under the old design would be served for ever.
+    const before = new Date(new Date(DESIGN_CHANGED_AT).getTime() - 60_000).toISOString();
+    expect(
+      isStale({
+        pdf_storage_path: 'p.pdf',
+        pdf_generated_at: before,
+        updated_at: '2020-01-01T00:00:00Z',
+      }),
+    ).toBe(true);
+  });
+
+  it('is fresh when rendered at the moment the design changed', () => {
+    expect(
+      isStale({
+        pdf_storage_path: 'p.pdf',
+        pdf_generated_at: DESIGN_CHANGED_AT,
+        updated_at: '2020-01-01T00:00:00Z',
       }),
     ).toBe(false);
   });
