@@ -158,16 +158,17 @@
 .sl-masthead .sl-eyebrow{margin:0}
 
 /* ---------- Print ----------
-   A4 portrait, one slide to a page.
+   A4 landscape, one slide to a page.
 
-   The deck is 16:9 on screen, and for a while it printed landscape to match.
-   Printed that way the wide layouts ran off the page, so print gets its own
-   proportions instead: the side-by-side grids stack, and a slide becomes a
-   portrait page that holds the same content in a taller shape. What is on
-   screen and what is on paper are the same words in a different arrangement,
-   which is the honest trade for a document people actually print. */
+   The deck is 16:9, so a landscape page is the shape that holds it: a slide
+   prints as the slide, not as a rearrangement of it. A portrait page was
+   tried and was worse — the same content in a shape it was not designed for.
+
+   Landscape A4 is 1.414:1 against the slide's 1.778:1, so a slide is
+   proportionally taller here than on screen. The rules below give that height
+   back rather than letting anything run off the foot of the page. */
 @media print{
-  @page{size:A4 portrait;margin:12mm 12mm}
+  @page{size:A4 landscape;margin:8mm 10mm}
   html,body{background:#fff}
   .sl-deck{display:block;background:#fff;min-height:0;padding:0;gap:0}
   .sl-bar{display:none!important}
@@ -197,10 +198,10 @@
      text — but not past it. Landscape A4 with 9mm margins leaves 192mm, and a
      180mm body plus the mark beneath came to 200mm, which pushed a sixteenth
      page out of fifteen slides. */
-  .sl-cover{min-height:240mm}
-  .sl-cover .sl-body{min-height:240mm;display:flex!important;justify-content:center}
-  .sl-closing{min-height:230mm}
-  .sl-closing .sl-body{min-height:230mm;display:flex!important;justify-content:center}
+  .sl-cover{min-height:168mm}
+  .sl-cover .sl-body{min-height:168mm;display:flex!important;justify-content:center}
+  .sl-closing{min-height:168mm}
+  .sl-closing .sl-body{min-height:168mm;display:flex!important;justify-content:center}
   .sl-cover .sl-mark{position:static;padding:0;margin-top:5mm}
 
   .sl-intro{display:grid!important}

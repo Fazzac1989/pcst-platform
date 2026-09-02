@@ -77,7 +77,22 @@ export async function renderPdf(
     // than the mobile ones a narrow viewport would trigger.
     await page.setViewport({ width: 1123, height: 1587, deviceScaleFactor: 2 });
     await page.emulateMediaType('print');
-    await page.goto(pageUrl, { waitUntil: 'load', timeout: 45_000 });
+    const response = await page.goto(pageUrl, { waitUntil: 'load', timeout: 45_000 });
+
+    // Chromium will render anything, including a 404, and we would then store
+    // it and serve it as the document until the row changes. A transient
+    // failure during a deploy did exactly that: a brochure's stored PDF became
+    // one page reading "This page could not be found."
+    if (response && !response.ok()) {
+      return { ok: false, error: `The page returned HTTP ${response.status()} — nothing was stored.` };
+    }
+    const rendered = await page.evaluate(() => document.querySelectorAll('.sl-page').length);
+    if (rendered === 0) {
+      return {
+        ok: false,
+        error: 'The page rendered no slides — it was probably an error page, so nothing was stored.',
+      };
+    }
 
     // Day photos are marked loading="lazy", and a headless render never
     // scrolls, so below-the-fold images would stay unloaded — missing from the

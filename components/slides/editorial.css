@@ -44,11 +44,8 @@
 }
 
 @media print{
-  /* A portrait page cannot take the side-by-side arrangements. */
-  .ed-intro,.ed-tech{grid-template-columns:1fr!important;gap:6mm!important}
-  .ed-safety{grid-template-columns:1fr 1fr!important}
-  .ed-mark img{max-width:60mm}
-  .ed-phones{grid-template-columns:repeat(3,1fr)!important}
+  /* A landscape page keeps the arrangements the slides were designed with. */
+  .ed-mark img{max-width:70mm}
   .ed-card,.ed-shot{-webkit-print-color-adjust:exact;print-color-adjust:exact}
 }
 
