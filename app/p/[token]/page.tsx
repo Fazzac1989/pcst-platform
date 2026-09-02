@@ -1,5 +1,6 @@
 import { headers } from 'next/headers';
 import { notFound } from 'next/navigation';
+import ProposalDocument from '@/components/proposal/ProposalDocument';
 import ProposalSlides from '@/components/proposal/ProposalSlides';
 import { buildEditorialSlides } from '@/lib/brochure/editorial';
 import { findProposalByToken } from '@/lib/brochure/proposal-view-model';
@@ -19,7 +20,20 @@ export const metadata = {
  * links, so a stale link and a wrong one both land on the same 404 rather than
  * telling the holder which they have.
  */
-export default async function SharedProposalPage({ params }: { params: { token: string } }) {
+/**
+ * Two presentations of one proposal.
+ *
+ * A school reads the document — the flowing page with the hero, the day tabs
+ * and the glance strip. The PDF route asks for the deck instead, so the
+ * download is the landscape slides; nothing else links to that view.
+ */
+export default async function SharedProposalPage({
+  params,
+  searchParams,
+}: {
+  params: { token: string };
+  searchParams: { view?: string };
+}) {
   const found = await findProposalByToken(params.token);
   if (!found) notFound();
 
@@ -28,9 +42,15 @@ export default async function SharedProposalPage({ params }: { params: { token: 
   // couple of queries, and it must not throw — the proposal renders either way.
   await recordProposalView(found.brochure, headers().get('user-agent'));
 
-  return <ProposalSlides
-      vm={found.vm}
-      shareToken={params.token}
-      editorial={await buildEditorialSlides()}
-    />;
+  if (searchParams.view === 'deck') {
+    return (
+      <ProposalSlides
+        vm={found.vm}
+        shareToken={params.token}
+        editorial={await buildEditorialSlides()}
+        mode="deck"
+      />
+    );
+  }
+  return <ProposalDocument vm={found.vm} shareToken={params.token} />;
 }

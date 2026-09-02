@@ -40,10 +40,22 @@ describe('deck design tokens', () => {
     expect(deck['--body']).toContain('--font-archivo');
   });
 
-  it('is the only stylesheet that defines them', () => {
+  it('is the only deck stylesheet that defines them', () => {
     // A second :root block is how the two copies drifted last time.
     for (const f of ['components/brochure/slides.css', 'components/proposal/slides.css']) {
       expect(Object.keys(tokens(f)), `${f} should not redefine the palette`).toEqual([]);
+    }
+  });
+
+  it('matches the proposal document, which keeps its own copy', () => {
+    // The flowing proposal page is a separate stylesheet with its own :root —
+    // it is the document a school reads online, and the deck is what they
+    // download. They must look like the same company's work, so every token
+    // has to agree exactly.
+    const doc = tokens('components/proposal/proposal.css');
+    expect(Object.keys(doc).sort()).toEqual(Object.keys(deck).sort());
+    for (const [name, value] of Object.entries(deck)) {
+      expect(doc[name], `${name} differs between the document and the deck`).toBe(value);
     }
   });
 });

@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import ProposalDocument from '@/components/proposal/ProposalDocument';
 import ProposalSlides from '@/components/proposal/ProposalSlides';
 import { buildEditorialSlides } from '@/lib/brochure/editorial';
 import { getProposalById } from '@/lib/brochure/proposal-view-model';
@@ -15,12 +16,21 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
   };
 }
 
-export default async function ProposalPage({ params }: { params: { id: string } }) {
+export default async function ProposalPage({
+  params,
+  searchParams,
+}: {
+  params: { id: string };
+  searchParams: { view?: string };
+}) {
   const id = Number(params.id);
   if (!Number.isFinite(id)) notFound();
 
   const vm = await getProposalById(id);
   if (!vm) notFound();
 
-  return <ProposalSlides vm={vm} editorial={await buildEditorialSlides()} />;
+  if (searchParams.view === 'deck') {
+    return <ProposalSlides vm={vm} editorial={await buildEditorialSlides()} mode="deck" />;
+  }
+  return <ProposalDocument vm={vm} />;
 }

@@ -43,7 +43,10 @@ async function authorise(id: number, token: string | null) {
 /** Where Chromium should point. Its own origin, so it renders this deploy. */
 function pageUrl(req: NextRequest, id: number, token: string | null) {
   const origin = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') || req.nextUrl.origin;
-  return token ? `${origin}/p/${token}` : `${origin}/proposals/${id}`;
+  // The deck, not the document: a school reads the flowing page online and
+  // downloads the landscape slides. The page serves either on request.
+  const base = token ? `${origin}/p/${token}` : `${origin}/proposals/${id}`;
+  return `${base}?view=deck`;
 }
 
 async function resolve(req: NextRequest, id: number, force: boolean) {
