@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { loadBrochure } from '@/lib/brochure/data';
 import BrochureSlides from '@/components/brochure/BrochureSlides';
 import { gatherTrips, groupSpreads } from '@/lib/brochure/spreads';
-import { STANDARD_COPY } from '@/lib/brochure/standard-copy';
+import { buildEditorialSlides } from '@/lib/brochure/editorial';
 import PasswordGate from '@/components/brochure/PasswordGate';
 import '@/components/brochure/gate.css';
 
@@ -80,28 +80,10 @@ export default async function BrochurePage({ params, searchParams }: Props) {
   )?.content;
   const spreads = gatherTrips(visible, trips);
 
-  // Introduction, how it works, health and safety, the app. These carry
-  // composed copy when a brochure has been through the studio and nothing at
-  // all when it has not, so the standard copy stands in — otherwise a brochure
-  // nobody has composed loses these pages entirely.
-  const EDITORIAL = new Set(['brandIntroduction', 'howItWorks', 'safety', 'appFeature', 'textEditorial']);
-  const editorial = visible
-    .filter((p) => EDITORIAL.has(p.pageType) && p.tripId === null)
-    .map((p) => {
-      const std = STANDARD_COPY[p.pageType];
-      const c = p.content ?? {};
-      return {
-        id: p.id,
-        eyebrow: c.eyebrow || std?.eyebrow || '',
-        headline: c.headline || std?.headline || '',
-        body: (c.body ?? []).length ? c.body! : (std?.body ?? []),
-        // The small print that closes a page, and the numbered steps on
-        // "how it works" — both live only in the standard copy.
-        note: std?.note ?? '',
-        steps: std?.steps ?? [],
-      };
-    })
-    .filter((p) => p.headline || p.body.length > 0);
+  // Who we are, how a group is kept safe, and the app the trip runs on. The
+  // safety content is the same the public safety page shows, rather than a
+  // second copy that would drift from it.
+  const editorial = await buildEditorialSlides();
 
   return (
     <BrochureSlides

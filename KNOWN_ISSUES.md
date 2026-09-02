@@ -287,3 +287,25 @@ match, but the wide layouts ran off the page. Print now has its own
 proportions: the side-by-side grids stack and a slide becomes a portrait page
 holding the same content in a taller shape. Twelve slides, twelve pages, and
 6.1MB rather than 24 — a portrait page shows images smaller.
+
+## Shared editorial pages
+
+**The introduction, health and safety, and the technology page are one set of
+slides, used by both the brochure and the proposal.** They are built in
+`lib/brochure/editorial.ts` and drawn by `components/slides/Editorial.tsx`.
+
+**Safety reads from the website's own content.** `getSafetyPage()` is what the
+public safety page uses, so the cards, their intros and their ticked points are
+the same words in both places rather than a second copy that would drift. Three
+cards to a slide, measured — four overflowed by about 120px, and safety is the
+last thing to set in type too small to read. The closing "questions?" section
+is dropped: it is a prompt with a form behind it, and a printed page has
+nowhere for it to lead.
+
+**The technology page shows the three real app screenshots**, the same ones and
+the same captions the home page uses, faded at the foot the way it fades them.
+
+**The introduction copy was written for this.** `STANDARD_COPY.brandIntroduction`
+gained two paragraphs so the page has something to fill it, and they assert only
+what the rest of the site already does — Dubai-based, curriculum-led, risk
+assessed twice, the trip runs on the app. No claim in it is new.

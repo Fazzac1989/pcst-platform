@@ -28,7 +28,9 @@ export const STANDARD_COPY: Partial<Record<PageType, StandardCopy>> = {
     headline: 'The world is your classroom.',
     body: [
       'We design educational travel around what a school actually teaches — then run it so carefully that teachers can concentrate on their students rather than the logistics.',
-      'Every itinerary in this brochure is a real programme we operate, built with schools in the region and refined trip after trip.',
+      'Every itinerary here is a real programme we operate, built with schools in the region and refined trip after trip. Nothing in it is a stock package bought in and relabelled: the days are shaped around a curriculum, the providers are ones we have used before, and the pace is set for the age group travelling.',
+      'We are based in Dubai, so we work in your week and your time zone. The same team that plans a trip is the team that answers the phone while it is running, and a member of it travels with the group.',
+      'Every programme is risk assessed before it is offered and again against the specific group, and the whole trip runs on our own app — the itinerary, the register, the vouchers and a way to reach every adult at once.',
     ],
     trio: [
       { word: 'Parents', after: 'reassured' },

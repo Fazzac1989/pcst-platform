@@ -5,6 +5,9 @@ import type { Brochure, PageContent } from '@/lib/brochure/schema';
 import type { TripGroup, TripSpread } from '@/lib/brochure/spreads';
 import { sizedImage } from '@/lib/brochure/image-size';
 import { introSummary } from '@/lib/brochure/spreads';
+import type { EditorialSlide } from '@/lib/brochure/editorial';
+import { EditorialBody } from '@/components/slides/Editorial';
+import '@/components/slides/editorial.css';
 import { STANDARD_COPY } from '@/lib/brochure/standard-copy';
 import '@/components/slides/deck.css';
 import '@/components/brochure/slides.css';
@@ -23,14 +26,7 @@ type Props = {
   cover: PageContent;
   spreads: TripSpread[];
   groups: TripGroup[];
-  editorial: {
-    id: number;
-    eyebrow: string;
-    headline: string;
-    body: string[];
-    note: string;
-    steps: { number: string; title: string; text: string }[];
-  }[];
+  editorial: EditorialSlide[];
   closing: PageContent | undefined;
   brochureQrSvg: string | null;
   pdfHref: string;
@@ -187,40 +183,14 @@ export default function BrochureSlides({
     );
   }
 
-  for (const e of editorial) {
+  editorial.forEach((e, n) => {
     const i = slides.length;
     slides.push(
-      <article key={`ed-${e.id}`} className={pageClass(i)} hidden={!visible(i)}>
-        <div className="sl-body">
-          <div className="sl-masthead">
-            <p className="sl-eyebrow">{e.eyebrow}</p>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/logo-navy.png" alt="Premium Choice School Trips" />
-          </div>
-          <h2>{e.headline}</h2>
-          <div className="sl-ed-cols">
-            {e.body.map((para, n) => (
-              <p className="sl-lede" key={n}>
-                {para}
-              </p>
-            ))}
-          </div>
-          {e.steps.length > 0 && (
-            <div className="sl-steps">
-              {e.steps.map((st, n) => (
-                <div key={n}>
-                  <p className="sl-step-n">{st.number}</p>
-                  <h3>{st.title}</h3>
-                  <p>{st.text}</p>
-                </div>
-              ))}
-            </div>
-          )}
-          {e.note && <p className="sl-note">{e.note}</p>}
-        </div>
+      <article key={`ed-${n}`} className={pageClass(i)} hidden={!visible(i)}>
+        <EditorialBody slide={e} />
       </article>,
     );
-  }
+  });
 
   for (const s of spreads) {
     const i = slides.length;

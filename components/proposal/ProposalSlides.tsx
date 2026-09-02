@@ -2,6 +2,9 @@
 
 import { useCallback, useEffect, useState } from 'react';
 import { freePlacesTotal, type ProposalViewModel } from '@/lib/brochure/proposal-schema';
+import type { EditorialSlide } from '@/lib/brochure/editorial';
+import { EditorialBody } from '@/components/slides/Editorial';
+import '@/components/slides/editorial.css';
 import '@/components/slides/deck.css';
 import '@/components/proposal/slides.css';
 
@@ -23,10 +26,13 @@ const TERMS_PER_SLIDE = 2;
 export default function ProposalSlides({
   vm,
   shareToken,
+  editorial,
 }: {
   vm: ProposalViewModel;
   /** Present on the shared link, so the reader's PDF request can prove itself. */
   shareToken?: string;
+  /** Who we are, safety and the app — shared with the brochure. */
+  editorial: EditorialSlide[];
 }) {
   const { content: c, commercials: m } = vm;
   const [index, setIndex] = useState(0);
@@ -66,6 +72,16 @@ export default function ProposalSlides({
     plan.push({ key: 'outcomes', label: 'Learning outcomes', detail: 'What students take away' });
   if (has.flights) plan.push({ key: 'flights', label: 'Flights', detail: 'Routing as scheduled' });
   if (has.price) plan.push({ key: 'price', label: 'Price', detail: 'What is and is not included' });
+  editorial.forEach((e, i) =>
+    plan.push({
+      key: `ed-${i}`,
+      label:
+        e.kind === 'introduction' ? 'About Premium Choice'
+        : e.kind === 'safety' ? 'Health, safety & security'
+        : 'Our technology',
+      detail: e.kind === 'safety' && e.parts > 1 ? `${e.part} of ${e.parts}` : '',
+    }),
+  );
   // Nine sections of booking conditions overflowed a single slide by more than
   // two slides' worth. They are chunked rather than shrunk: conditions a school
   // is asked to accept should be readable.
@@ -167,7 +183,11 @@ export default function ProposalSlides({
                   once rather than listing each of them. */}
               {plan
                 .slice(2)
-                .filter((s) => !s.key.startsWith('terms-') || s.key === 'terms-0')
+                .filter(
+                  (s) =>
+                    (!s.key.startsWith('terms-') || s.key === 'terms-0') &&
+                    !(s.label === 'Health, safety & security' && s.detail && !s.detail.startsWith('1')),
+                )
                 .map((s, i) => (
                   <li key={s.key}>
                     <span className="pr-n">{String(i + 1).padStart(2, '0')}</span>
@@ -441,6 +461,9 @@ export default function ProposalSlides({
             </div>
           </div>
         );
+
+      case key.startsWith('ed-'):
+        return <EditorialBody slide={editorial[Number(key.slice(3))]} />;
 
       default:
         return null;

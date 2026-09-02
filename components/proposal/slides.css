@@ -5,7 +5,9 @@
    booking conditions. */
 
 /* ---------- Contents ---------- */
-.pr-toc{list-style:none;margin:1.6cqw 0 0;padding:0;columns:2;column-gap:4cqw}
+/* Three columns: a proposal with a day per slide and several pages of
+   conditions runs to twenty entries, and two columns of that ran off. */
+.pr-toc{list-style:none;margin:1.4cqw 0 0;padding:0;columns:3;column-gap:3cqw}
 .pr-toc li{
   break-inside:avoid;display:grid;grid-template-columns:2.6cqw 1fr;gap:1cqw;
   align-items:baseline;padding:.42cqw 0;border-bottom:1px solid var(--line);

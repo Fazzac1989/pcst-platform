@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import ProposalSlides from '@/components/proposal/ProposalSlides';
+import { buildEditorialSlides } from '@/lib/brochure/editorial';
 import { getProposalById } from '@/lib/brochure/proposal-view-model';
 
 export const dynamic = 'force-dynamic';
@@ -21,5 +22,5 @@ export default async function ProposalPage({ params }: { params: { id: string } 
   const vm = await getProposalById(id);
   if (!vm) notFound();
 
-  return <ProposalSlides vm={vm} />;
+  return <ProposalSlides vm={vm} editorial={await buildEditorialSlides()} />;
 }

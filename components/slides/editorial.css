@@ -1,0 +1,64 @@
+/* The three shared editorial pages. Drawn to match the website: numbered
+   safety cards with ticked points, the app as its three real screens, and an
+   introduction with the mark large beside the text. */
+
+/* ---------- Introduction ---------- */
+.ed-intro{display:grid;grid-template-columns:1.3fr .7fr;gap:3.4cqw;align-items:center;margin-top:1.4cqw}
+.ed-intro h2{margin-bottom:1.2cqw}
+.ed-intro .sl-lede{max-width:60ch}
+.ed-mark{display:flex;align-items:center;justify-content:center}
+.ed-mark img{width:100%;max-width:34cqw;height:auto;opacity:.95}
+
+/* ---------- Health, safety & security ---------- */
+.ed-safety-intro{max-width:78ch;margin-top:.8cqw}
+.ed-safety{display:grid;grid-template-columns:1fr 1fr;gap:1.6cqw;margin-top:1.6cqw}
+.ed-card{border:1px solid var(--line);border-radius:4px;background:#fff;padding:1.4cqw 1.6cqw}
+.ed-num{
+  display:block;font-family:var(--display);font-style:italic;
+  font-size:1.15cqw;color:var(--teal-ink);margin-bottom:.4cqw;
+}
+.ed-card h3{font-family:var(--display);font-weight:500;font-size:1.35cqw;margin-bottom:.4cqw}
+.ed-card > p{font-size:.98cqw;color:var(--muted);line-height:1.55;margin:0}
+.ed-card ul{display:grid;gap:.4cqw;margin:.8cqw 0 0;padding:0;list-style:none}
+.ed-card li{display:flex;gap:.6cqw;font-size:.92cqw;color:var(--muted);line-height:1.45}
+.ed-tick{color:var(--teal);font-weight:700;flex:0 0 auto}
+
+/* ---------- Our technology ---------- */
+.ed-tech{display:grid;grid-template-columns:.9fr 1.1fr;gap:3cqw;align-items:center;margin-top:1.4cqw}
+.ed-phones{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4cqw}
+.ed-phones figure{margin:0}
+/* The screenshots are tall; show the top of the screen and fade it out, the
+   way the home page does, rather than squashing a whole phone in. */
+.ed-shot{
+  position:relative;border-radius:1.4cqw;overflow:hidden;background:#fff;
+  aspect-ratio:9/13;border:1px solid var(--line);
+}
+.ed-shot img{width:100%;height:auto;display:block}
+.ed-shot::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:35%;
+  background:linear-gradient(180deg,rgba(255,255,255,0),#fff);
+}
+.ed-phones figcaption{margin-top:.7cqw;font-size:.92cqw;color:var(--muted);text-align:center}
+.ed-phones figcaption b{
+  display:block;font-family:var(--display);font-weight:500;font-size:1.15cqw;color:var(--ink);
+}
+
+@media print{
+  /* A portrait page cannot take the side-by-side arrangements. */
+  .ed-intro,.ed-tech{grid-template-columns:1fr!important;gap:6mm!important}
+  .ed-safety{grid-template-columns:1fr 1fr!important}
+  .ed-mark img{max-width:60mm}
+  .ed-phones{grid-template-columns:repeat(3,1fr)!important}
+  .ed-card,.ed-shot{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+
+/* The three audiences, on one line beneath the introduction. */
+.ed-trio{
+  display:flex;flex-wrap:wrap;gap:1.6cqw;margin-top:1.6cqw!important;
+  padding-top:1.2cqw;border-top:1px solid var(--line);
+  font-size:1.05cqw;color:var(--muted);
+}
+.ed-trio b{font-family:var(--display);font-weight:500;color:var(--ink)}
+
+/* Three cards read as a row of two and one; a third column keeps them even. */
+.ed-safety:has(.ed-card:nth-child(3):last-child){grid-template-columns:repeat(3,1fr)}
