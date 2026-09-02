@@ -9,22 +9,18 @@ import { useEffect, useRef } from 'react';
 
 export function TopBar({ pdfHref }: { pdfHref: string }) {
   /**
-   * Printing is the primary path because it gives the reader their own dialogue
-   * and their own paper size. Inside an iframe, or where the browser blocks it,
-   * the server-rendered PDF is the fallback rather than a dead button.
+   * The download is the slide deck, rendered on the server, not a print of
+   * this page: the page is what a school reads on screen, and the deck is
+   * what they take away. Printing the page itself is still there under
+   * Ctrl+P, and the print stylesheet keeps it tidy.
    */
-  const print = () => {
-    try {
-      if (window.self !== window.top) throw new Error('framed');
-      window.print();
-    } catch {
-      window.location.href = pdfHref;
-    }
+  const download = () => {
+    window.location.href = pdfHref;
   };
 
   return (
-    <button className="btn print" type="button" onClick={print}>
-      Print / save as PDF
+    <button className="btn print" type="button" onClick={download}>
+      Download as PDF
     </button>
   );
 }

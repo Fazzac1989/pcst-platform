@@ -35,7 +35,7 @@ export default function ProposalDocument({
         <div className="wrap">
           <a href="#top" aria-label={c.contact.name || 'Premium Choice School Trips'}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/logo-white.png" alt="Premium Choice School Trips" />
+            <img src="/images/logo-navy.png" alt="Premium Choice School Trips" />
           </a>
           <nav aria-label="Sections">
             <a href="#overview">Overview</a>
