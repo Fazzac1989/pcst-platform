@@ -1,6 +1,6 @@
 import { headers } from 'next/headers';
 import { notFound } from 'next/navigation';
-import ProposalDocument from '@/components/proposal/ProposalDocument';
+import ProposalSlides from '@/components/proposal/ProposalSlides';
 import { findProposalByToken } from '@/lib/brochure/proposal-view-model';
 import { recordProposalView } from '@/lib/brochure/proposal-tracking';
 
@@ -27,5 +27,5 @@ export default async function SharedProposalPage({ params }: { params: { token: 
   // couple of queries, and it must not throw — the proposal renders either way.
   await recordProposalView(found.brochure, headers().get('user-agent'));
 
-  return <ProposalDocument vm={found.vm} shareToken={params.token} />;
+  return <ProposalSlides vm={found.vm} shareToken={params.token} />;
 }

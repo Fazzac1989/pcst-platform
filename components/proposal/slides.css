@@ -1,0 +1,100 @@
+/* The proposal's own slides. The deck shell lives in components/slides/deck.css.
+
+   A proposal is one trip written for one school, so where the brochure has a
+   contents page of many trips this has a day per slide, a price and the
+   booking conditions. */
+
+/* ---------- Contents ---------- */
+.pr-toc{list-style:none;margin:1.6cqw 0 0;padding:0;columns:2;column-gap:4cqw}
+.pr-toc li{
+  break-inside:avoid;display:grid;grid-template-columns:2.6cqw 1fr;gap:1cqw;
+  align-items:baseline;padding:.42cqw 0;border-bottom:1px solid var(--line);
+}
+.pr-toc .pr-n{font-family:var(--display);font-size:1.1cqw;color:var(--teal-ink)}
+.pr-toc .pr-t{font-family:var(--display);font-size:1.2cqw;color:var(--ink)}
+.pr-toc .pr-d{grid-column:2;font-size:.95cqw;color:var(--muted)}
+
+/* ---------- Two columns of prose, the overview shape ---------- */
+.pr-two{display:grid;grid-template-columns:1fr 1fr;gap:3cqw;align-items:start}
+.pr-three{display:grid;grid-template-columns:repeat(3,1fr);gap:2.4cqw;margin-top:1.6cqw}
+.pr-three h3{font-size:1.5cqw;margin-bottom:.5cqw}
+.pr-three p{font-size:1.05cqw;color:var(--muted)}
+.pr-three > div{border-top:2px solid var(--teal);padding-top:1cqw}
+
+/* ---------- A day ----------
+   Sized against the busiest day in the deck rather than a typical one: the
+   type has to hold the longest timetable without the slide running over. */
+.pr-day{display:grid;grid-template-columns:1.3fr .7fr;gap:2.6cqw;align-items:start}
+.pr-when{
+  font-size:.95cqw;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--teal-ink);margin:0 0 .4cqw;
+}
+.pr-day .sl-lede{font-size:1cqw;margin-bottom:.5cqw}
+.pr-times{list-style:none;margin:.8cqw 0 0;padding:0}
+.pr-times li{
+  display:grid;grid-template-columns:6.4cqw 1fr;gap:.9cqw;
+  padding:.26cqw 0;border-top:1px dashed var(--line);font-size:.9cqw;
+}
+.pr-times li:first-child{border-top:0}
+.pr-day h2{font-size:2.2cqw}
+.pr-times time{color:var(--teal-ink);font-weight:600}
+.pr-times b{color:var(--ink);font-weight:600}
+.pr-base{
+  margin-top:1cqw;background:var(--cream);border-radius:5px;padding:.8cqw 1.2cqw;
+  font-size:.98cqw;color:var(--muted);
+}
+.pr-base b{color:var(--ink);font-weight:600;display:block;font-size:.9cqw;letter-spacing:.12em;text-transform:uppercase}
+.pr-shots{display:grid;grid-template-columns:1fr 1fr;gap:1cqw}
+.pr-shots figure{margin:0;background:var(--ice);border-radius:4px;overflow:hidden;aspect-ratio:4/3}
+.pr-shots figure:first-child{grid-column:1 / -1;aspect-ratio:16/9}
+.pr-shots img{display:block;width:100%;height:100%;object-fit:cover}
+
+/* ---------- Cards: experiences, outcomes ---------- */
+.pr-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6cqw;margin-top:1.6cqw}
+.pr-card{border-top:2px solid var(--teal);padding-top:1cqw}
+.pr-card h3{font-size:1.4cqw;margin-bottom:.4cqw}
+.pr-card p{font-size:1.02cqw;color:var(--muted);margin:0}
+.pr-cards-4{grid-template-columns:repeat(4,1fr)}
+
+/* ---------- Flights ---------- */
+.pr-legs{display:grid;grid-template-columns:1fr 1fr;gap:2cqw;margin-top:1.6cqw}
+.pr-leg{background:rgba(255,255,255,.06);border-radius:6px;padding:1.6cqw 1.8cqw}
+.pr-leg .pr-dir{font-size:.9cqw;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin:0 0 .6cqw}
+.pr-leg .pr-route{font-family:var(--display);font-size:2cqw;color:#fff;margin:0}
+.pr-leg .pr-sub{font-size:1cqw;color:rgba(255,255,255,.7);margin:.4cqw 0 0}
+
+/* ---------- Price ---------- */
+.pr-price{display:grid;grid-template-columns:.85fr 1.15fr;gap:3cqw;align-items:start}
+.pr-figure{background:var(--navy);color:#fff;border-radius:6px;padding:2cqw}
+.pr-figure .pr-big{font-family:var(--display);font-size:4cqw;line-height:1;margin:0}
+.pr-figure .pr-basis{font-size:.95cqw;color:rgba(255,255,255,.7);margin:.6cqw 0 0}
+.pr-figure ul{list-style:none;margin:1.4cqw 0 0;padding:1.2cqw 0 0;border-top:1px solid var(--line-light)}
+.pr-figure li{font-size:1.05cqw;color:rgba(255,255,255,.85);margin-bottom:.4cqw}
+.pr-lists{display:grid;grid-template-columns:1fr 1fr;gap:2.4cqw}
+.pr-lists ul{list-style:none;margin:.6cqw 0 0;padding:0}
+.pr-lists li{font-size:1.02cqw;color:var(--muted);padding:.35cqw 0;border-top:1px solid var(--line)}
+.pr-lists li:first-child{border-top:0}
+.pr-lists .pr-exc li{color:var(--muted);opacity:.85}
+
+/* ---------- Booking conditions ---------- */
+.pr-terms{columns:2;column-gap:3cqw;margin-top:1.4cqw}
+/* Deliberately allowed to break: a single long condition has to be able to
+   flow across both columns, or it makes one column taller than the slide. */
+.pr-term{margin-bottom:1.1cqw}
+.pr-term h4{break-after:avoid}
+.pr-term h4{font-size:1.1cqw;margin-bottom:.25cqw}
+.pr-term div{font-size:.88cqw;color:var(--muted)}
+.pr-term p{font-size:.88cqw;margin:0 0 .35cqw}
+
+/* ---------- Next steps ---------- */
+.pr-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2cqw;margin-top:1.6cqw}
+.pr-step{border-top:2px solid var(--teal);padding-top:1cqw}
+.pr-step .pr-num{font-family:var(--display);font-size:1.6cqw;color:var(--teal);margin:0 0 .3cqw}
+.pr-step h3{font-size:1.3cqw;color:#fff;margin-bottom:.3cqw}
+.pr-step p{font-size:1cqw;color:rgba(255,255,255,.72);margin:0}
+
+@media print{
+  .pr-terms{columns:2}
+  .pr-cards,.pr-steps,.pr-three{display:grid!important}
+  .pr-day,.pr-two,.pr-price{display:grid!important}
+}

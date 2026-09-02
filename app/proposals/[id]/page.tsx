@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import ProposalDocument from '@/components/proposal/ProposalDocument';
+import ProposalSlides from '@/components/proposal/ProposalSlides';
 import { getProposalById } from '@/lib/brochure/proposal-view-model';
 
 export const dynamic = 'force-dynamic';
@@ -21,5 +21,5 @@ export default async function ProposalPage({ params }: { params: { id: string } 
   const vm = await getProposalById(id);
   if (!vm) notFound();
 
-  return <ProposalDocument vm={vm} />;
+  return <ProposalSlides vm={vm} />;
 }

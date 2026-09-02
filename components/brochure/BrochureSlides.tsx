@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import type { Brochure, PageContent } from '@/lib/brochure/schema';
 import type { TripGroup, TripSpread } from '@/lib/brochure/spreads';
 import { sizedImage } from '@/lib/brochure/image-size';
+import '@/components/slides/deck.css';
 import '@/components/brochure/slides.css';
 
 /**
