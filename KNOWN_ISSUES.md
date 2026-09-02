@@ -334,3 +334,27 @@ served: a brochure's PDF was one page reading "This page could not be found".
 The route now checks the response status and that the page produced slides, and
 stores nothing when it did not. It caught a second instance within minutes of
 being written.
+
+## The PDF is our own file, and the page has no margin
+
+**The download button fetches the rendered PDF rather than opening the
+browser's print dialogue.** Ctrl+P produces whatever the reader's settings say
+— its own header and footer, its own margins, and "Background graphics" off by
+default. The route renders the same document the same way every time.
+
+**`@page` margin is zero.** The cover's colour runs to the edge of the paper
+the way a printed cover does, and the inset comes from each slide's own
+padding. Chromium's header and footer are off, because both are drawn in a page
+margin that no longer exists; the running page number is drawn inside the slide
+instead, counting `.sl-page` elements — one slide is one page, so the count is
+the page number. Covers are not numbered.
+
+**Size the cover by structure, not arithmetic.** Adding min-heights and
+paddings to reach 210mm pushed a fifteenth page out of fourteen slides twice.
+The cover is now a flex column exactly one sheet tall with the body taking what
+is left, so nothing has to be kept in step by hand.
+
+**PDF output can now be looked at.** `pdf-parse` exposes `getScreenshot`, which
+renders a page to an image. Several verifications in this file were guessed at
+from byte patterns because that was not known; page geometry and layout should
+be checked by looking from here on.

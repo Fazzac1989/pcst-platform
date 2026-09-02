@@ -168,7 +168,10 @@
    proportionally taller here than on screen. The rules below give that height
    back rather than letting anything run off the foot of the page. */
 @media print{
-  @page{size:A4 landscape;margin:8mm 10mm}
+  /* No page margin: the cover's navy runs to the edge of the paper the way
+     a printed cover does. The inset comes from the slide's own padding
+     below, so text still has room to breathe. */
+  @page{size:A4 landscape;margin:0}
   html,body{background:#fff}
   .sl-deck{display:block;background:#fff;min-height:0;padding:0;gap:0}
   .sl-bar{display:none!important}
@@ -189,7 +192,20 @@
   }
   .sl-page[hidden]{display:block!important}
   .sl-page:last-child{page-break-after:auto;break-after:auto}
-  .sl-body{overflow:visible;padding:0;display:block!important}
+  /* The page has no margin, so the inset lives here — text still has room
+     to breathe while the cover's colour reaches the edge of the paper. */
+  .sl-body{overflow:visible;padding:11mm 13mm 14mm;display:block!important}
+
+  /* A running footer drawn inside the slide, because there is no page margin
+     to put one in. One slide is one page, so counting slides counts pages. */
+  .sl-deck{counter-reset:pg}
+  .sl-page{counter-increment:pg;position:relative!important}
+  .sl-page::after{
+    content:counter(pg);
+    position:absolute;right:13mm;bottom:6mm;
+    font-size:8pt;color:var(--muted);
+  }
+  .sl-cover::after,.sl-closing::after{color:rgba(255,255,255,.5)}
 
   .sl-cover,.sl-closing,.sl-chips span,.sl-toc .sl-thumb{
     -webkit-print-color-adjust:exact;print-color-adjust:exact;
@@ -198,11 +214,22 @@
      text — but not past it. Landscape A4 with 9mm margins leaves 192mm, and a
      180mm body plus the mark beneath came to 200mm, which pushed a sixteenth
      page out of fifteen slides. */
-  .sl-cover{min-height:168mm}
-  .sl-cover .sl-body{min-height:168mm;display:flex!important;justify-content:center}
-  .sl-closing{min-height:168mm}
-  .sl-closing .sl-body{min-height:168mm;display:flex!important;justify-content:center}
-  .sl-cover .sl-mark{position:static;padding:0;margin-top:5mm}
+  /* A4 landscape is 210mm tall and the cover fills it edge to edge.
+     Height by structure rather than arithmetic: the page is exactly one sheet,
+     the body takes what is left after the mark, and nothing has to be kept in
+     step by hand. Adding up min-heights and paddings instead pushed a
+     fifteenth page out of fourteen slides, twice. */
+  .sl-cover,.sl-closing{
+    height:210mm;display:flex!important;flex-direction:column;overflow:hidden;
+  }
+  .sl-cover .sl-body,.sl-closing .sl-body{
+    flex:1;min-height:0;display:flex!important;flex-direction:column;justify-content:center;
+  }
+  /* The mark is a sibling of the body, not inside it, so it does not inherit
+     the body's padding and would otherwise sit flush against the paper. */
+  .sl-cover .sl-mark{position:static;padding:0 13mm 11mm;margin-top:5mm}
+  /* A cover is not numbered, and the number was landing on the edition line. */
+  .sl-cover::after{content:none}
 
   .sl-intro{display:grid!important}
   .sl-toc{columns:2}

@@ -86,13 +86,15 @@ export default function BrochureSlides({
     return () => window.removeEventListener('keydown', onKey);
   }, [go, index, total]);
 
-  const print = () => {
-    try {
-      if (window.self !== window.top) throw new Error('framed');
-      window.print();
-    } catch {
-      window.location.href = pdfHref;
-    }
+  /**
+   * Our own PDF, not the browser's print dialogue.
+   *
+   * Ctrl+P produces whatever the reader's settings say: its own header and
+   * footer, its own margins, and "Background graphics" off by default. The
+   * route renders the same document the same way every time.
+   */
+  const download = () => {
+    window.location.href = pdfHref;
   };
 
   /** Where a trip's introduction sits, so the contents can jump straight to it. */
@@ -267,8 +269,8 @@ export default function BrochureSlides({
           {index + 1} / {total}
         </span>
         <span style={{ display: 'flex', gap: 10 }}>
-          <button type="button" onClick={print}>
-            Print / save as PDF
+          <button type="button" onClick={download}>
+            Download as PDF
           </button>
           <button type="button" onClick={() => go(index + 1)} disabled={index === total - 1}>
             Next →

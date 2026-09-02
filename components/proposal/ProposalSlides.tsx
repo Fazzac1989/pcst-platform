@@ -143,13 +143,15 @@ export default function ProposalSlides({
   }, [go, index, total, mode]);
 
   const pdfHref = `/api/proposals/${vm.id}/pdf${shareToken ? `?token=${encodeURIComponent(shareToken)}` : ''}`;
-  const print = () => {
-    try {
-      if (window.self !== window.top) throw new Error('framed');
-      window.print();
-    } catch {
-      window.location.href = pdfHref;
-    }
+  /**
+   * Our own PDF, not the browser's print dialogue.
+   *
+   * Ctrl+P produces whatever the reader's settings say: its own header and
+   * footer, its own margins, and "Background graphics" off by default. The
+   * route renders the same document the same way every time.
+   */
+  const download = () => {
+    window.location.href = pdfHref;
   };
 
   const cls = (i: number) =>
@@ -496,7 +498,7 @@ export default function ProposalSlides({
           </span>
         )}
         <span style={{ display: 'flex', gap: 10 }}>
-          <button type="button" onClick={print}>
+          <button type="button" onClick={download}>
             Download as PDF
           </button>
           {mode === 'deck' && (
