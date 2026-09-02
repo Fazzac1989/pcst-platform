@@ -254,3 +254,36 @@ thumbnails are served at 220px, since they are 15mm wide on the page, but
 Chromium still re-encodes every image losslessly. It is delivered as a link,
 not an attachment. If it has to come down, the lever is the two secondary
 pictures on each introduction.
+
+## The brochure reads from the trip, not only from composed copy
+
+**A brochure that has not been through the AI composer still reads as one.**
+Trip pages carry composed copy when a brochure has been composed and an empty
+object when it has not, and the deck was rendering the empty object: trips with
+no introduction, and no health-and-safety or technology pages at all. It now
+falls back to the trip's own `overview` and `trip_highlights`, and to
+`STANDARD_COPY` for the editorial pages, which is what that file was written
+for.
+
+**Getting there is quoted, not calculated.** Each country record already holds
+`getting_there` — "Direct flights from Dubai to Hanoi take around seven hours"
+— written by a person, set on 39 of 40 countries. The panel shows that text
+with the capital and the timezone. No flight time is computed from coordinates:
+an approximate hour count on a document a school quotes from is a guess, and
+guesses do not belong on one.
+
+**There is no map yet.** A Dubai-to-destination arc needs coordinates, and no
+table holds any. Adding them is reference data worth getting right rather than
+estimating, so the panel is typographic for now.
+
+**A trip's introduction is cut to whole sentences.** The trips' own overviews
+are written for a web page — one runs to twenty lines, four times what a slide
+holds. `introSummary` keeps whole sentences up to a budget and stops; a single
+over-long sentence is kept intact, because half a sentence in a brochure reads
+as a mistake. The full text is a QR scan away on the trip page.
+
+**Print is A4 portrait again.** The deck is 16:9 and printed landscape to
+match, but the wide layouts ran off the page. Print now has its own
+proportions: the side-by-side grids stack and a slide becomes a portrait page
+holding the same content in a taller shape. Twelve slides, twelve pages, and
+6.1MB rather than 24 — a portrait page shows images smaller.

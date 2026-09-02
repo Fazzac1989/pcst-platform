@@ -99,3 +99,27 @@ export function groupSpreads(
   const tail = order.includes(OTHER) ? [OTHER] : [];
   return [...named, ...tail].map((label) => ({ label, spreads: groups.get(label)! }));
 }
+
+/**
+ * A brochure-sized introduction, cut at a sentence.
+ *
+ * A trip's own overview is written for a web page with room to scroll — one
+ * of them runs to twenty lines, which is more than a slide holds. Cutting to
+ * a character count would end mid-thought, so this keeps whole sentences and
+ * stops once it has enough. The full text is a QR scan away on the trip page.
+ */
+export function introSummary(paragraphs: string[], maxChars = 380): string {
+  const text = (paragraphs[0] ?? '').trim();
+  if (!text || text.length <= maxChars) return text;
+
+  // Split on sentence ends, keeping the punctuation with the sentence.
+  const sentences = text.match(/[^.!?]+[.!?]+(\s|$)/g) ?? [text];
+  let out = '';
+  for (const s of sentences) {
+    if (out && (out + s).trim().length > maxChars) break;
+    out += s;
+  }
+  // A single sentence longer than the budget is kept whole rather than cut:
+  // half a sentence in a brochure reads as a mistake.
+  return (out.trim() || sentences[0] || text).trim();
+}

@@ -4,6 +4,8 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import type { Brochure, PageContent } from '@/lib/brochure/schema';
 import type { TripGroup, TripSpread } from '@/lib/brochure/spreads';
 import { sizedImage } from '@/lib/brochure/image-size';
+import { introSummary } from '@/lib/brochure/spreads';
+import { STANDARD_COPY } from '@/lib/brochure/standard-copy';
 import '@/components/slides/deck.css';
 import '@/components/brochure/slides.css';
 
@@ -21,6 +23,14 @@ type Props = {
   cover: PageContent;
   spreads: TripSpread[];
   groups: TripGroup[];
+  editorial: {
+    id: number;
+    eyebrow: string;
+    headline: string;
+    body: string[];
+    note: string;
+    steps: { number: string; title: string; text: string }[];
+  }[];
   closing: PageContent | undefined;
   brochureQrSvg: string | null;
   pdfHref: string;
@@ -31,6 +41,7 @@ export default function BrochureSlides({
   cover,
   spreads,
   groups,
+  editorial,
   closing,
   brochureQrSvg,
   pdfHref,
@@ -46,8 +57,9 @@ export default function BrochureSlides({
   // A trip contributes an itinerary slide only when it actually has days.
   const slidesPerTrip = spreads.map((s) => ((s.trip?.days ?? []).length > 0 ? 2 : 1));
   const tripSlideTotal = slidesPerTrip.reduce((a, b) => a + b, 0);
-  const total = 1 + (hasContents ? 1 : 0) + tripSlideTotal + (hasClosing ? 1 : 0);
-  const firstTripIndex = hasContents ? 2 : 1;
+  const total =
+    1 + (hasContents ? 1 : 0) + editorial.length + tripSlideTotal + (hasClosing ? 1 : 0);
+  const firstTripIndex = (hasContents ? 2 : 1) + editorial.length;
 
   const go = useCallback(
     (next: number) => {
@@ -175,6 +187,41 @@ export default function BrochureSlides({
     );
   }
 
+  for (const e of editorial) {
+    const i = slides.length;
+    slides.push(
+      <article key={`ed-${e.id}`} className={pageClass(i)} hidden={!visible(i)}>
+        <div className="sl-body">
+          <div className="sl-masthead">
+            <p className="sl-eyebrow">{e.eyebrow}</p>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/images/logo-navy.png" alt="Premium Choice School Trips" />
+          </div>
+          <h2>{e.headline}</h2>
+          <div className="sl-ed-cols">
+            {e.body.map((para, n) => (
+              <p className="sl-lede" key={n}>
+                {para}
+              </p>
+            ))}
+          </div>
+          {e.steps.length > 0 && (
+            <div className="sl-steps">
+              {e.steps.map((st, n) => (
+                <div key={n}>
+                  <p className="sl-step-n">{st.number}</p>
+                  <h3>{st.title}</h3>
+                  <p>{st.text}</p>
+                </div>
+              ))}
+            </div>
+          )}
+          {e.note && <p className="sl-note">{e.note}</p>}
+        </div>
+      </article>,
+    );
+  }
+
   for (const s of spreads) {
     const i = slides.length;
     slides.push(
@@ -291,6 +338,9 @@ function TripIntro({ spread }: { spread: TripSpread }) {
   const hero = trip?.heroImage ?? spread.images[0] ?? null;
   // Two more beneath the hero, and never the hero again.
   const rest = spread.images.filter((u) => u !== hero).slice(0, 2);
+  const highlights = (c.highlights ?? []).length
+    ? (c.highlights ?? [])
+    : (trip?.highlights ?? []).map((h) => ({ name: h.name, note: h.note, conditional: '' }));
 
   return (
     <>
@@ -317,15 +367,22 @@ function TripIntro({ spread }: { spread: TripSpread }) {
             ) : null}
           </p>
 
+          {/* Composed copy first; the trip's own overview when there is none.
+              A brochure that has not been through the studio was showing a
+              trip with no introduction at all. */}
           {c.proposition && <p className="sl-lede">{c.proposition}</p>}
-          {c.intro && <p className="sl-lede">{c.intro}</p>}
+          {c.intro ? (
+            <p className="sl-lede">{c.intro}</p>
+          ) : (
+            <p className="sl-lede">{introSummary(trip?.overview ?? [])}</p>
+          )}
 
           {/* Three, measured: a fourth overflows the slide at any size worth
               reading. An introduction is a summary — the day-by-day page that
               follows carries the trip in full. */}
-          {(c.highlights ?? []).length > 0 && (
+          {highlights.length > 0 && (
             <ul className="sl-hl">
-              {(c.highlights ?? []).slice(0, 3).map((h, i) => (
+              {highlights.slice(0, 3).map((h, i) => (
                 <li key={i}>
                   <strong>{h.name}</strong>
                   {h.note && <span>{h.note}</span>}
@@ -337,13 +394,6 @@ function TripIntro({ spread }: { spread: TripSpread }) {
             </ul>
           )}
 
-          {(trip?.journey ?? []).length > 0 && (
-            <div className="sl-chips">
-              {(trip?.journey ?? []).map((stop, i) => (
-                <span key={i}>{stop.location}</span>
-              ))}
-            </div>
-          )}
         </div>
 
         <div className="sl-shots">
@@ -359,6 +409,20 @@ function TripIntro({ spread }: { spread: TripSpread }) {
               <img src={sizedImage(url, 'thumb') ?? url} alt="" loading="lazy" />
             </figure>
           ))}
+
+          {/* Getting there sits with the pictures: the left column already
+              carries the introduction and the highlights. */}
+          {trip?.gettingThere && (
+            <div className="sl-flight">
+              <p className="sl-flight-route">
+                <span>{trip.departs ?? 'Dubai'}</span>
+                <span className="sl-flight-line" aria-hidden="true" />
+                <span>{trip.capital ?? trip.country}</span>
+              </p>
+              <p>{trip.gettingThere}</p>
+              {trip.timezone && <p className="sl-flight-tz">Local time: {trip.timezone}</p>}
+            </div>
+          )}
         </div>
       </div>
     </>

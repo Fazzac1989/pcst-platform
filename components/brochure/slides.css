@@ -88,3 +88,41 @@
   border-top:1px solid var(--line-light);padding-top:1.6cqw;
 }
 .sl-qr{display:block;width:6cqw;height:6cqw}
+
+/* ---------- An editorial page: introduction, how it works, safety, the app ---------- */
+.sl-ed-cols{columns:2;column-gap:3.4cqw;margin-top:1.6cqw}
+.sl-ed-cols p{break-inside:avoid}
+.sl-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2cqw;margin-top:1.8cqw}
+.sl-steps > div{border-top:2px solid var(--teal);padding-top:1cqw}
+.sl-step-n{font-family:var(--display);font-size:1.6cqw;color:var(--teal-ink);margin:0 0 .3cqw}
+.sl-steps h3{font-size:1.3cqw;margin-bottom:.3cqw}
+.sl-steps p{font-size:1.02cqw;color:var(--muted);margin:0}
+.sl-note{
+  margin-top:1.8cqw;padding-top:1cqw;border-top:1px solid var(--line);
+  font-size:1cqw;color:var(--muted);
+}
+
+/* ---------- Getting there ----------
+   The words come from the country record, which already says how long the
+   flight from Dubai takes. Nothing here is computed: an approximate flight
+   time on a document a school is quoting from would be a guess. */
+.sl-flight{
+  margin-top:1.4cqw;background:var(--navy);color:#fff;border-radius:5px;padding:1.2cqw 1.4cqw;
+}
+.sl-flight p{font-size:.98cqw;color:rgba(255,255,255,.8);margin:0}
+.sl-flight-route{
+  display:flex;align-items:center;gap:.9cqw;margin:0 0 .7cqw!important;
+  font-family:var(--display);font-size:1.4cqw;color:#fff!important;
+}
+.sl-flight-line{
+  flex:1;height:1px;background:linear-gradient(90deg,var(--teal),rgba(255,255,255,.25));
+  position:relative;
+}
+.sl-flight-line::after{
+  content:"";position:absolute;right:0;top:-3px;
+  border-left:6px solid var(--teal);border-top:3px solid transparent;border-bottom:3px solid transparent;
+}
+.sl-flight-tz{margin-top:.5cqw!important;font-size:.88cqw;color:rgba(255,255,255,.55)}
+
+/* The flight panel spans both picture columns beneath them. */
+.sl-shots .sl-flight{grid-column:1 / -1;margin-top:.4cqw}

@@ -26,6 +26,16 @@ export type BrochureTrip = {
   durationNights: number;
   heroImage: string | null;
   images: string[];
+  /** The trip's own introduction, two or three paragraphs. */
+  overview: string[];
+  highlights: { name: string; note: string }[];
+  includes: string[];
+  /** Where the group flies from, as the trip records it. */
+  departs: string | null;
+  /** How you get there from Dubai, in the country's own words. */
+  gettingThere: string | null;
+  capital: string | null;
+  timezone: string | null;
   journey: { location: string; fromDay: number; toDay: number }[];
   days: { dayNumber: number; label: string; title: string; location: string | null; summary: string | null }[];
   /** Generated once at render, embedded as a data URI so nothing loads at runtime. */
@@ -108,7 +118,8 @@ export async function loadBrochure(
       .from('trips')
       .select(
         `id, slug, title, city, duration_days, duration_nights, hero_image, gallery, journey,
-         subjects(name), countries(name),
+         overview, trip_highlights, includes, departs,
+         subjects(name), countries(name, capital, timezone, getting_there),
          itinerary_days(sort_order, label, title, display_title, summary, primary_location)`
       )
       .in('id', tripIds);
@@ -133,6 +144,17 @@ export async function loadBrochure(
         durationNights: t.duration_nights ?? 0,
         heroImage: hero,
         images: gallery,
+        // What the trip says about itself, used when the brochure's own copy
+        // has not been composed — which is most of the time.
+        overview: ((t.overview ?? []) as any[]).filter((x) => typeof x === 'string'),
+        highlights: ((t.trip_highlights ?? []) as any[])
+          .map((h) => (typeof h === 'string' ? { name: h, note: '' } : { name: h?.name ?? '', note: h?.note ?? '' }))
+          .filter((h) => h.name),
+        includes: ((t.includes ?? []) as any[]).filter((x) => typeof x === 'string'),
+        departs: t.departs ?? null,
+        gettingThere: t.countries?.getting_there ?? null,
+        capital: t.countries?.capital ?? null,
+        timezone: t.countries?.timezone ?? null,
         journey: ((t.journey ?? []) as any[]).map((j) => ({
           location: j.location,
           fromDay: j.from_day,
