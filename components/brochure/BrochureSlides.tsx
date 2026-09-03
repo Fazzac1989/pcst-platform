@@ -473,10 +473,20 @@ function TripWhy({ spread }: { spread: TripSpread }) {
               <b>{c.ageGroup}</b>
             </div>
           )}
-          {c.priceRange && (
+          {((c.priceBands ?? []).length > 0 || c.priceRange) && (
             <div className="sl-why-fact">
-              <span>Price range</span>
-              <b>{c.priceRange}</b>
+              <span>Price</span>
+              {(c.priceBands ?? []).length > 0 && (
+                <dl className="sl-why-bands">
+                  {(c.priceBands ?? []).map((band, i) => (
+                    <div key={i}>
+                      <dt>{band.dates}</dt>
+                      <dd>{band.price}</dd>
+                    </div>
+                  ))}
+                </dl>
+              )}
+              {c.priceRange && <small>{c.priceRange}</small>}
             </div>
           )}
         </div>

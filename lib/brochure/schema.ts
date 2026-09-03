@@ -96,8 +96,10 @@ export type PageContent = {
   pctView?: string;
   /** Who it suits, e.g. "Years 9–11 (ages 13–16)". A recommendation, not a fact. */
   ageGroup?: string;
-  /** Typed by a person, never by the composer: the trip's base price is not for print. */
+  /** A note on price, typed by a person, never by the composer: the trip's base price is not for print. */
   priceRange?: string;
+  /** Prices by date, free text on both sides, typed by a person and kept through a rewrite. */
+  priceBands?: { dates: string; price: string }[];
   /** Exactly five, each grounded in something the trip does. */
   educationalValues?: { title: string; detail: string }[];
 };

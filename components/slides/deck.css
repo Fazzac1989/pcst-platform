@@ -148,8 +148,10 @@
 .sl-cover .sl-sub{margin-top:1.4cqw;color:rgba(255,255,255,.74);font-size:1.7cqw;max-width:52ch}
 /* The school's logo, on white so any mark reads against the navy. */
 /* align-self: the cover body is a flex column, which would stretch the card to the full width. */
-.sl-cover .sl-school-logo{display:inline-block;align-self:flex-start;width:max-content;background:#fff;border-radius:4px;padding:.7cqw 1cqw;margin:1.6cqw 0 .4cqw}
-.sl-cover .sl-school-logo img{display:block;height:4.5cqw;width:auto;max-width:18cqw;object-fit:contain}
+/* Large enough to be the second thing seen after the title: about a quarter of
+   the width and 25mm tall on paper. It was a third of this and went unnoticed. */
+.sl-cover .sl-school-logo{display:inline-block;align-self:flex-start;width:max-content;background:#fff;border-radius:6px;padding:1.1cqw 1.5cqw;margin:2.2cqw 0 .8cqw}
+.sl-cover .sl-school-logo img{display:block;height:8.5cqw;width:auto;max-width:30cqw;object-fit:contain}
 .sl-cover .sl-prepared{
   margin-top:2cqw;font-size:1.05cqw;letter-spacing:.12em;text-transform:uppercase;
   color:rgba(255,255,255,.72);border-left:2px solid var(--teal);padding-left:1cqw;
@@ -170,7 +172,7 @@
 /* The school's mark at the foot of every page but the cover, drawn from the
    deck's --client-logo so one rule serves every slide. */
 .sl-deck--client .sl-page:not(.sl-cover)::before{
-  content:"";position:absolute;right:2.2cqw;bottom:1.5cqw;width:9cqw;height:3.2cqw;
+  content:"";position:absolute;right:2.2cqw;bottom:1.4cqw;width:11cqw;height:4cqw;
   background:var(--client-logo) no-repeat right bottom / contain;pointer-events:none;
 }
 
@@ -245,7 +247,7 @@
   }
   .sl-cover::after,.sl-closing::after{color:rgba(255,255,255,.5)}
   /* With the school's mark bottom right, the page number moves to the left. */
-  .sl-deck--client .sl-page:not(.sl-cover)::before{right:13mm;bottom:5mm;width:34mm;height:11mm}
+  .sl-deck--client .sl-page:not(.sl-cover)::before{right:13mm;bottom:5mm;width:40mm;height:13mm}
   .sl-deck--client .sl-page::after{right:auto;left:13mm}
 
   .sl-cover,.sl-closing,.sl-chips span,.sl-toc .sl-thumb{

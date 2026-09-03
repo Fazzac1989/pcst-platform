@@ -136,6 +136,13 @@
 .sl-why-fact{background:var(--cream);border-radius:5px;padding:1cqw 1.3cqw}
 .sl-why-fact span{display:block;font-size:.8cqw;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .sl-why-fact b{display:block;font-family:var(--display);font-weight:400;font-size:1.7cqw;color:var(--navy);margin-top:.2cqw}
+/* Prices by date: the dates small above each price. */
+.sl-why-bands{margin:.3cqw 0 0;display:grid;gap:.5cqw}
+.sl-why-bands div{border-top:1px solid var(--line);padding-top:.4cqw}
+.sl-why-bands div:first-child{border-top:0;padding-top:0}
+.sl-why-bands dt{font-size:.85cqw;color:var(--muted);margin:0}
+.sl-why-bands dd{font-family:var(--display);font-size:1.45cqw;color:var(--navy);margin:0;line-height:1.15}
+.sl-why-fact small{display:block;font-size:.8cqw;color:var(--muted);margin-top:.4cqw}
 .sl-why-values{margin-top:1.8cqw;border-top:1px solid var(--line);padding-top:1.2cqw}
 .sl-why-values ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:1.4cqw;counter-reset:ev}
 .sl-why-values li{counter-increment:ev;border-top:2px solid var(--teal);padding-top:.7cqw}

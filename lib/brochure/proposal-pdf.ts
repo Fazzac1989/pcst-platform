@@ -60,7 +60,7 @@ export type PdfResult = { ok: true; path: string; bytes: number } | { ok: false;
  * changed is stale too. Move this date forward whenever the printed design
  * changes.
  */
-export const DESIGN_CHANGED_AT = '2026-09-03T18:11:00Z';
+export const DESIGN_CHANGED_AT = '2026-09-03T18:31:00Z';
 
 export function isStale(brochure: {
   updated_at?: string | null;
