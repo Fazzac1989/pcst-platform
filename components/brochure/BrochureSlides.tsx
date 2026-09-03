@@ -255,7 +255,7 @@ export default function BrochureSlides({
     if (hasWhyPage(s.content)) {
       const k = slides.length;
       slides.push(
-        <article key={`why-${s.tripId}`} className={pageClass(k)} hidden={!visible(k)}>
+        <article key={`why-${s.tripId}`} className={`${pageClass(k)} sl-why-page`} hidden={!visible(k)}>
           <div className="sl-body">
             <TripWhy spread={s} />
           </div>
@@ -456,7 +456,7 @@ function TripWhy({ spread }: { spread: TripSpread }) {
           {trip?.title ?? c.headline ?? 'Trip'} · Why {country}
         </p>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/images/logo-navy.png" alt="Premium Choice School Trips" />
+        <img src="/images/logo-white.png" alt="Premium Choice School Trips" />
       </div>
 
       <div className="sl-why">
@@ -530,7 +530,7 @@ function Inclusions({ included, excluded }: { included: string[]; excluded: stri
       )}
       {excluded.length > 0 && (
         <p>
-          <b>Not included</b>
+          <b>Items to budget for</b>
           {line(excluded)}
         </p>
       )}
