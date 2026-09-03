@@ -81,7 +81,10 @@ export type PageContent = {
   learningFocus?: string[];
   keyLocations?: string[];
   journey?: JourneyStop[];
+  /** Pre-filled from the trip's own list; editable. */
   inclusions?: string[];
+  /** The trip records none, so this is typed by a person and survives a rewrite. */
+  exclusions?: string[];
   /** Conditional wording lifted from the trip, e.g. "subject to availability". */
   conditions?: string[];
   meta?: string;

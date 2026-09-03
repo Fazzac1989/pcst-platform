@@ -243,6 +243,10 @@ export default function BrochureSlides({
                 </div>
               ))}
             </div>
+            <Inclusions
+              included={s.content.inclusions?.length ? s.content.inclusions : (s.trip?.includes ?? [])}
+              excluded={s.content.exclusions ?? []}
+            />
           </div>
         </article>,
       );
@@ -506,5 +510,30 @@ function TripWhy({ spread }: { spread: TripSpread }) {
         </div>
       )}
     </>
+  );
+}
+
+/**
+ * What the price covers and what it does not, beneath the days. One line of
+ * type each, run together, so a nine-day trip still fits its page.
+ */
+function Inclusions({ included, excluded }: { included: string[]; excluded: string[] }) {
+  if (!included.length && !excluded.length) return null;
+  const line = (items: string[]) => items.map((i) => i.trim().replace(/\.$/, '')).filter(Boolean).join(' · ');
+  return (
+    <div className="sl-incl">
+      {included.length > 0 && (
+        <p>
+          <b>Included</b>
+          {line(included)}
+        </p>
+      )}
+      {excluded.length > 0 && (
+        <p>
+          <b>Not included</b>
+          {line(excluded)}
+        </p>
+      )}
+    </div>
   );
 }

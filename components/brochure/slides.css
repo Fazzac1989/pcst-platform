@@ -70,6 +70,11 @@
 /* A long trip gets a fourth column and slightly smaller type. Eleven days at
    the normal size ran off the bottom of the slide; shrinking is better than
    splitting one trip's itinerary across two pages. */
+/* Included and not included, beneath the days: two compact columns. */
+.sl-incl{margin-top:1cqw;border-top:1px solid var(--line);padding-top:.8cqw;display:grid;grid-template-columns:1fr 1fr;gap:2.4cqw}
+.sl-incl p{font-size:.9cqw;color:var(--muted);margin:0;line-height:1.45}
+.sl-incl b{display:block;font-size:.78cqw;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-ink);margin-bottom:.25cqw}
+@media print{.sl-incl{display:grid!important}}
 .sl-days-dense{columns:4}
 .sl-days-dense .sl-day{margin-bottom:1.1cqw;padding-bottom:.9cqw}
 .sl-days-dense h4{font-size:1.25cqw}
