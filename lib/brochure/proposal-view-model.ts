@@ -2,6 +2,7 @@ import 'server-only';
 import { createAdminClient } from '@/lib/supabase/admin';
 import {
   EMPTY_CONTENT,
+  referencedImageIds,
   type ProposalContent,
   type ProposalDay,
   type ProposalFlight,
@@ -227,16 +228,16 @@ export async function findProposalByToken(
 async function build(brochure: any): Promise<ProposalViewModel> {
   const db = createAdminClient();
 
-  const [daysRes, flightsRes, termsRes, imagesRes] = await Promise.all([
+  const [daysRes, flightsRes, termsRes] = await Promise.all([
     db.from('brochure_days').select('*').eq('brochure_id', brochure.id).order('sort_order'),
     db.from('brochure_flights').select('*').eq('brochure_id', brochure.id).order('sort_order'),
     brochure.terms_set_id
       ? db.from('brochure_terms_sets').select('*').eq('id', brochure.terms_set_id).maybeSingle()
       : Promise.resolve({ data: null }),
-    db.from('brochure_images').select('*'),
   ]);
 
   const dayRows = daysRes.data ?? [];
+  const imageRows = await loadImages(db, brochure, dayRows);
   const itemsRes = dayRows.length
     ? await db
         .from('brochure_day_items')
@@ -254,7 +255,37 @@ async function build(brochure: any): Promise<ProposalViewModel> {
     items: itemsRes.data ?? [],
     flights: flightsRes.data ?? [],
     terms: (termsRes as any).data,
-    images: imagesRes.data ?? [],
+    images: imageRows,
     publicUrl: (path: string) => db.storage.from(BUCKET).getPublicUrl(path).data.publicUrl,
   });
+}
+
+/**
+ * The proposal's own photographs, plus any it still points at from before
+ * images recorded an owner.
+ *
+ * Every image used to be offered to every proposal, which is why a new one
+ * opened with another trip's pictures. Until the owner migration has run the
+ * first query fails on the missing column, and the referenced set alone is
+ * used — nothing a school is already looking at disappears.
+ */
+async function loadImages(
+  db: ReturnType<typeof createAdminClient>,
+  brochure: any,
+  dayRows: any[],
+): Promise<any[]> {
+  const content: ProposalContent = { ...EMPTY_CONTENT, ...(brochure.content ?? {}) };
+  const ids = referencedImageIds(
+    content,
+    dayRows.map((d) => (Array.isArray(d.image_ids) ? d.image_ids : [])),
+    brochure.cover_image,
+  );
+  const idList = ids.length ? ids.join(',') : '0';
+  const owned = await db
+    .from('brochure_images')
+    .select('*')
+    .or(`brochure_id.eq.${brochure.id},id.in.(${idList})`);
+  if (!owned.error) return owned.data ?? [];
+  const referenced = await db.from('brochure_images').select('*').in('id', ids.length ? ids : [0]);
+  return referenced.data ?? [];
 }

@@ -66,6 +66,9 @@ section{padding:clamp(64px,8vw,112px) 0}
 .hero canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .hero .wrap{position:relative;padding-top:120px;padding-bottom:clamp(48px,7vw,84px);width:100%}
 .hero .prepared{display:inline-flex;align-items:baseline;gap:8px;font-size:14px;font-weight:600;color:rgba(255,255,255,.75);margin-bottom:28px;border-bottom:1px solid rgba(255,255,255,.3);padding-bottom:6px}
+/* The school's logo sits on a white card so any colour of mark reads against the photograph. */
+.hero .school-logo{display:inline-block;background:#fff;border-radius:6px;padding:10px 14px;margin-bottom:20px}
+.hero .school-logo img{display:block;height:52px;width:auto;max-width:220px;object-fit:contain}
 .hero .prepared span[contenteditable]{color:var(--white);min-width:160px;outline:none;border-bottom:1px dashed rgba(255,255,255,.5)}
 .hero .prepared span[contenteditable]:empty::before{content:"your school name";color:rgba(255,255,255,.45);font-weight:400;font-style:italic}
 .hero h1{max-width:12ch}
@@ -163,12 +166,15 @@ section{padding:clamp(64px,8vw,112px) 0}
 
 /* ---------- Flights (departures board) ---------- */
 .board{margin-top:36px;background:#0F1A21;border-radius:8px;overflow:hidden;border:1px solid var(--line-light)}
-.board .row{display:grid;grid-template-columns:110px 1.2fr 1fr 1fr 1fr;gap:14px;align-items:center;padding:18px 22px;border-top:1px solid rgba(255,255,255,.08);font-variant-numeric:tabular-nums}
+.board .row{display:grid;grid-template-columns:170px 1.2fr 1fr 1fr 1fr;gap:14px;align-items:center;padding:18px 22px;border-top:1px solid rgba(255,255,255,.08);font-variant-numeric:tabular-nums}
 .board .row.h{background:rgba(255,255,255,.05);font-size:12px;font-weight:600;color:rgba(255,255,255,.55);border-top:0}
-.board .row .fl{color:var(--teal);font-weight:700;letter-spacing:.06em}
+.board .row .fl{display:flex;align-items:center;gap:10px;color:var(--teal);font-weight:700;letter-spacing:.06em}
+/* The carrier's mark, on white so any airline's colours read against the dark board. */
+.board .row .fl .airline{height:24px;width:auto;max-width:76px;object-fit:contain;background:#fff;border-radius:4px;padding:3px 6px}
 .board .row .leg b{display:block;font-weight:600}
 .board .row .leg small{color:rgba(255,255,255,.55);font-size:13px}
-.board .t{font-family:var(--display);font-size:22px;font-weight:400}
+/* The details column is prose ("Departs 00:35 · Economy"), not a bare time, so it is set in body type. */
+.board .t{font-family:var(--body);font-size:14px;line-height:1.5;color:rgba(255,255,255,.82)}
 .board .t small{display:block;font-family:var(--body);font-size:12px;color:rgba(255,255,255,.5);margin-top:2px}
 .board .stat{font-size:13px;font-weight:600;color:rgba(255,255,255,.7)}
 .board .grp{padding:10px 22px;font-size:12px;font-weight:600;color:rgba(255,255,255,.45);background:rgba(25,186,171,.08);border-top:1px solid rgba(255,255,255,.08)}
@@ -298,7 +304,7 @@ footer img{height:40px;opacity:.95}
   .board{margin-top:10px;border-radius:5px;color:#fff}
   .board .row{padding:8px 12px;gap:8px;grid-template-columns:70px 1.3fr 1fr 1fr .8fr}
   .board .row .stat,.board .row .arr{display:block}
-  .board .t{font-size:14px}.board .t small{font-size:8px}
+  .board .t{font-size:9px;line-height:1.4}.board .t small{font-size:8px}
   .board .row .leg small{font-size:9px}.board .grp{padding:5px 12px;font-size:9px}
   .price{page-break-before:auto;page-break-after:always;padding-top:6mm}
   .price .top{grid-template-columns:1fr 1fr!important;gap:10mm}
@@ -357,4 +363,16 @@ footer img{height:40px;opacity:.95}
   .contents li span:last-of-type{
     grid-column:2;font-size:10px;color:var(--ink-soft);
   }
+}
+
+/* ---------- the author's own pages ---------- */
+.custom .grid{display:grid;gap:clamp(32px,6vw,90px);align-items:start}
+.custom .grid.with-image{grid-template-columns:1.1fr .9fr}
+.custom .lede{margin-top:18px}
+.custom figure{margin:0}
+.custom figure img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:6px;box-shadow:0 20px 50px rgba(22,36,46,.14)}
+@media (max-width:860px){.custom .grid.with-image{grid-template-columns:1fr}}
+@media print{
+  .custom{page-break-inside:avoid;break-inside:avoid;padding:10mm 0}
+  .custom figure img{box-shadow:none;border-radius:4px}
 }

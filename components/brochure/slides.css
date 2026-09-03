@@ -78,11 +78,7 @@
 .sl-days-dense .sl-where{font-size:.82cqw}
 
 /* ---------- Closing ---------- */
-.sl-closing{background:var(--navy);color:var(--white)}
-.sl-closing .sl-body{display:flex;flex-direction:column;justify-content:center}
-.sl-closing .sl-eyebrow{color:var(--teal)}
-.sl-closing .sl-lede{color:rgba(255,255,255,.76)}
-.sl-closing a{color:var(--teal);text-decoration:none}
+/* .sl-closing is styled in components/slides/deck.css: both decks end on navy. */
 .sl-contact{
   margin-top:2cqw;display:flex;flex-wrap:wrap;align-items:center;gap:1.4cqw 3cqw;font-size:1.2cqw;
   border-top:1px solid var(--line-light);padding-top:1.6cqw;

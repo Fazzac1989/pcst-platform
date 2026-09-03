@@ -131,6 +131,14 @@
 
 /* ---------- Cover ---------- */
 .sl-cover{background:var(--navy);color:var(--white)}
+/* A closing slide — flights, next steps, the brochure's last page — is navy
+   like the cover. These lived in the brochure's own stylesheet, so the
+   proposal's flights slide was white text on white, on screen and in print. */
+.sl-closing{background:var(--navy);color:var(--white)}
+.sl-closing .sl-body{display:flex;flex-direction:column;justify-content:center}
+.sl-closing .sl-eyebrow{color:var(--teal)}
+.sl-closing .sl-lede{color:rgba(255,255,255,.76)}
+.sl-closing a{color:var(--teal);text-decoration:none}
 .sl-cover .sl-body{
   display:flex;flex-direction:column;justify-content:center;
   padding-bottom:11cqw; /* room for the mark below */
@@ -138,6 +146,10 @@
 .sl-cover .sl-eyebrow{color:var(--teal)}
 .sl-cover h1{color:var(--white);max-width:17ch}
 .sl-cover .sl-sub{margin-top:1.4cqw;color:rgba(255,255,255,.74);font-size:1.7cqw;max-width:52ch}
+/* The school's logo, on white so any mark reads against the navy. */
+/* align-self: the cover body is a flex column, which would stretch the card to the full width. */
+.sl-cover .sl-school-logo{display:inline-block;align-self:flex-start;width:max-content;background:#fff;border-radius:4px;padding:.7cqw 1cqw;margin:1.6cqw 0 .4cqw}
+.sl-cover .sl-school-logo img{display:block;height:4.5cqw;width:auto;max-width:18cqw;object-fit:contain}
 .sl-cover .sl-prepared{
   margin-top:2cqw;font-size:1.05cqw;letter-spacing:.12em;text-transform:uppercase;
   color:rgba(255,255,255,.72);border-left:2px solid var(--teal);padding-left:1cqw;
@@ -200,6 +212,11 @@
   }
   .sl-page[hidden]{display:block!important}
   .sl-page:last-child{page-break-after:auto;break-after:auto}
+  /* A closing slide is exactly one sheet tall, and the last one has no forced
+     break to swallow the fraction of a pixel it runs over by — so a blank
+     sheet followed it. Pulling its margin box in by 2mm ends the flow inside
+     the sheet; the painted box is unchanged. */
+  .sl-page:last-child{margin-bottom:-2mm}
   /* The page has no margin, so the inset lives here — text still has room
      to breathe while the cover's colour reaches the edge of the paper. */
   .sl-body{overflow:visible;padding:11mm 13mm 14mm;display:block!important}

@@ -1,5 +1,6 @@
 'use client';
 
+import { airlineLogoUrl, pagesAt, type PagePlacement } from '@/lib/brochure/proposal-schema';
 import { useCallback, useEffect, useState } from 'react';
 import { freePlacesTotal, type ProposalViewModel } from '@/lib/brochure/proposal-schema';
 import type { EditorialSlide } from '@/lib/brochure/editorial';
@@ -68,17 +69,27 @@ export default function ProposalSlides({
 
   // Built in reading order, so a slide's number is its position.
   const plan: { key: string; label: string; detail: string }[] = [];
+  // The author's own pages, where they asked for them.
+  const pushPages = (where: PagePlacement) =>
+    pagesAt(c, where).forEach((p) =>
+      plan.push({ key: `page-${p.id}`, label: p.title || 'A page of our own', detail: p.eyebrow }),
+    );
   plan.push({ key: 'cover', label: 'Cover', detail: '' });
   plan.push({ key: 'contents', label: 'What is inside', detail: '' });
   if (has.overview) plan.push({ key: 'overview', label: 'Overview', detail: 'The programme' });
+  pushPages('after-overview');
   vm.days.forEach((d) =>
     plan.push({ key: `day-${d.dayNumber}`, label: `Day ${d.dayNumber}`, detail: d.title }),
   );
+  pushPages('after-itinerary');
   if (has.experiences)
     plan.push({ key: 'experiences', label: 'Signature experiences', detail: 'What they will remember' });
+  pushPages('after-experiences');
   if (has.outcomes)
     plan.push({ key: 'outcomes', label: 'Learning outcomes', detail: 'What students take away' });
+  pushPages('after-outcomes');
   if (has.flights) plan.push({ key: 'flights', label: 'Flights', detail: 'Routing as scheduled' });
+  pushPages('before-price');
   if (has.price) plan.push({ key: 'price', label: 'Price', detail: 'What is and is not included' });
   editorial.forEach((e, i) =>
     plan.push({
@@ -108,6 +119,7 @@ export default function ProposalSlides({
     );
   }
   if (has.next) plan.push({ key: 'next', label: 'Next steps', detail: 'How to confirm' });
+  pushPages('end');
 
   const total = plan.length;
 
@@ -162,6 +174,7 @@ export default function ProposalSlides({
     mode === 'page' || i === index || (turning !== null && i === previous);
 
   const img = (id: number | null | undefined) => (id ? vm.images[id] : undefined);
+  const schoolLogo = img(c.schoolLogoImageId);
   const Mark = () => (
     /* eslint-disable-next-line @next/next/no-img-element */
     <img src="/images/logo-navy.png" alt="Premium Choice School Trips" />
@@ -178,6 +191,12 @@ export default function ProposalSlides({
               {c.title} {c.titleEmphasis && <em>{c.titleEmphasis}</em>}
             </h1>
             {c.subtitle && <p className="sl-sub">{c.subtitle}</p>}
+            {schoolLogo && (
+              <div className="sl-school-logo">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={schoolLogo.url} alt={m.preparedFor ? `${m.preparedFor} logo` : 'School logo'} />
+              </div>
+            )}
             {m.preparedFor && <p className="sl-prepared">Prepared for {m.preparedFor}</p>}
           </div>
         );
@@ -297,6 +316,36 @@ export default function ProposalSlides({
         );
       }
 
+      case key.startsWith('page-'): {
+        const page = c.customPages.find((p) => `page-${p.id}` === key);
+        if (!page) return null;
+        const shot = img(page.imageId);
+        return (
+          <div className="sl-body">
+            <div className="sl-masthead">
+              <p className="sl-eyebrow">{page.eyebrow || 'A page of our own'}</p>
+              <Mark />
+            </div>
+            <h2>{page.title}</h2>
+            <div className={`pr-page${shot ? ' pr-page--image' : ''}`}>
+              <div className="pr-page-text">
+                {page.body.map((para, i) => (
+                  <p className="sl-lede" key={i}>
+                    {para}
+                  </p>
+                ))}
+              </div>
+              {shot && (
+                <figure className="pr-page-shot">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={shot.url} alt={shot.alt} loading="lazy" />
+                </figure>
+              )}
+            </div>
+          </div>
+        );
+      }
+
       case key === 'experiences':
         return (
           <div className="sl-body">
@@ -354,6 +403,10 @@ export default function ProposalSlides({
                     <p className="pr-dir">{label as string}</p>
                     {(legs as typeof outbound).map((f, i) => (
                       <div key={i} style={{ marginTop: i ? '1.2cqw' : 0 }}>
+                        {airlineLogoUrl(f) && (
+                          /* eslint-disable-next-line @next/next/no-img-element */
+                          <img className="pr-airline" src={airlineLogoUrl(f)!} alt={f.carrier || ''} loading="lazy" />
+                        )}
                         <p className="pr-route">
                           {f.fromCode} → {f.toCode}
                         </p>

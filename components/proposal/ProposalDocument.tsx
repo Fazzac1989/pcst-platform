@@ -1,5 +1,6 @@
 import Journey from '@/components/proposal/Journey';
 import { Snowfall, TermsToggle, TopBar } from '@/components/proposal/Chrome';
+import { airlineLogoUrl, pagesAt, type CustomPage, type PagePlacement } from '@/lib/brochure/proposal-schema';
 import { freePlacesTotal, type ProposalViewModel } from '@/lib/brochure/proposal-schema';
 import '@/components/proposal/proposal.css';
 
@@ -28,6 +29,17 @@ export default function ProposalDocument({
   const inbound = vm.flights.filter((f) => f.direction === 'return');
   const carrier = vm.flights.find((f) => f.carrier)?.carrier ?? '';
   const nights = vm.days.length > 1 ? vm.days.length - 1 : 0;
+  const schoolLogo = c.schoolLogoImageId ? vm.images[c.schoolLogoImageId] : null;
+
+  // The author's own pages, at the places they were asked to go.
+  const pages = (where: PagePlacement) => <CustomPages pages={pagesAt(c, where)} images={vm.images} />;
+  const toc = (where: PagePlacement) =>
+    pagesAt(c, where).map((p) => (
+      <li key={p.id}>
+        <span>{p.title}</span>
+        <span>{p.eyebrow}</span>
+      </li>
+    ));
 
   return (
     <>
@@ -59,6 +71,12 @@ export default function ProposalDocument({
         />
         {vm.heroEffect && <Snowfall />}
         <div className="wrap">
+          {schoolLogo && (
+            <div className="school-logo">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={schoolLogo.url} alt={m.preparedFor ? `${m.preparedFor} logo` : 'School logo'} />
+            </div>
+          )}
           {m.preparedFor && <div className="prepared">Proposal prepared for {m.preparedFor}</div>}
           {c.eyebrow && <p className="eyebrow">{c.eyebrow}</p>}
           <h1>
@@ -128,6 +146,7 @@ export default function ProposalDocument({
           <p className="eyebrow">What is inside</p>
           <ol>
             <li><span>Overview</span><span>The programme, and who it looks after</span></li>
+            {toc('after-overview')}
             {vm.days.length > 0 && (
               <li>
                 <span>The journey</span>
@@ -136,15 +155,19 @@ export default function ProposalDocument({
                 </span>
               </li>
             )}
+            {toc('after-itinerary')}
             {c.signatureExperiences.length > 0 && (
               <li><span>Signature experiences</span><span>What the group will remember</span></li>
             )}
+            {toc('after-experiences')}
             {c.learningOutcomes.length > 0 && (
               <li><span>Learning outcomes</span><span>What students take away</span></li>
             )}
+            {toc('after-outcomes')}
             {vm.flights.length > 0 && (
               <li><span>Flights</span><span>Routing as scheduled</span></li>
             )}
+            {toc('before-price')}
             <li><span>Price</span><span>What is and is not included</span></li>
             {vm.terms && (
               <li><span>Booking conditions</span><span>{vm.terms.name}</span></li>
@@ -152,6 +175,7 @@ export default function ProposalDocument({
             {c.nextSteps.length > 0 && (
               <li><span>Next steps</span><span>How to confirm</span></li>
             )}
+            {toc('end')}
           </ol>
         </div>
       </nav>
@@ -204,7 +228,11 @@ export default function ProposalDocument({
         </div>
       </section>
 
+      {pages('after-overview')}
+
       <Journey days={vm.days} images={vm.images} />
+
+      {pages('after-itinerary')}
 
       {/* ── signature experiences ── */}
       {c.signatureExperiences.length > 0 && (
@@ -233,6 +261,8 @@ export default function ProposalDocument({
         </section>
       )}
 
+      {pages('after-experiences')}
+
       {/* ── learning outcomes ── */}
       {c.learningOutcomes.length > 0 && (
         <section className="outcomes on-white" id="outcomes">
@@ -255,6 +285,8 @@ export default function ProposalDocument({
           </div>
         </section>
       )}
+
+      {pages('after-outcomes')}
 
       {/* ── flights ── */}
       {vm.flights.length > 0 && (
@@ -284,7 +316,13 @@ export default function ProposalDocument({
                     <div className="grp">{label as string}</div>
                     {(list as typeof outbound).map((f) => (
                       <div className="row" role="row" key={f.id}>
-                        <span className="fl">{f.flightNumber}</span>
+                        <span className="fl">
+                          {airlineLogoUrl(f) && (
+                            /* eslint-disable-next-line @next/next/no-img-element */
+                            <img className="airline" src={airlineLogoUrl(f)!} alt={f.carrier || ''} loading="lazy" />
+                          )}
+                          {f.flightNumber}
+                        </span>
                         <span className="leg">
                           <b>
                             {f.fromName} → {f.toName}
@@ -305,6 +343,8 @@ export default function ProposalDocument({
           </div>
         </section>
       )}
+
+      {pages('before-price')}
 
       {/* ── investment ── */}
       <section className="price" id="price">
@@ -433,6 +473,8 @@ export default function ProposalDocument({
         </section>
       )}
 
+      {pages('end')}
+
       <footer>
         <div className="wrap">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -453,4 +495,45 @@ function range(start: string, end: string) {
   return a.getUTCMonth() === b.getUTCMonth()
     ? `${day(a)}–${day(b)} ${monthYear(b)}`
     : `${day(a)} ${monthYear(a)} – ${day(b)} ${monthYear(b)}`;
+}
+
+/** The author's own pages: a heading, prose and one photograph if given. */
+function CustomPages({
+  pages,
+  images,
+}: {
+  pages: CustomPage[];
+  images: Record<number, { url: string; alt: string }>;
+}) {
+  if (pages.length === 0) return null;
+  return (
+    <>
+      {pages.map((p) => {
+        const img = p.imageId ? images[p.imageId] : null;
+        return (
+          <section className="custom on-white" id={`page-${p.id}`} key={p.id}>
+            <div className="wrap">
+              <div className={`grid${img ? ' with-image' : ''}`}>
+                <div>
+                  {p.eyebrow && <p className="eyebrow">{p.eyebrow}</p>}
+                  <h2>{p.title}</h2>
+                  {p.body.map((para, i) => (
+                    <p className="lede" key={i}>
+                      {para}
+                    </p>
+                  ))}
+                </div>
+                {img && (
+                  <figure>
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={img.url} alt={img.alt} loading="lazy" />
+                  </figure>
+                )}
+              </div>
+            </div>
+          </section>
+        );
+      })}
+    </>
+  );
 }
