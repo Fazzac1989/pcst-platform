@@ -30,6 +30,8 @@ type Props = {
   closing: PageContent | undefined;
   brochureQrSvg: string | null;
   pdfHref: string;
+  /** The day-by-day page after each trip. On unless the brochure turned it off. */
+  showItinerary?: boolean;
 };
 
 export default function BrochureSlides({
@@ -41,21 +43,25 @@ export default function BrochureSlides({
   closing,
   brochureQrSvg,
   pdfHref,
+  showItinerary = true,
 }: Props) {
   const [index, setIndex] = useState(0);
   const [turning, setTurning] = useState<'forward' | 'back' | null>(null);
   const previous = useRef(0);
   const liveRef = useRef<HTMLParagraphElement | null>(null);
 
-  // cover + contents + (introduction, then itinerary) per trip + closing
+  // cover + contents + (introduction, then itinerary) per trip + the pages
+  // about us + closing. The trips come first: they are what the reader opened
+  // the brochure for, and the standard pages read as an appendix.
   const hasContents = spreads.length > 0;
   const hasClosing = Boolean(closing || brochure.closingText);
-  // A trip contributes an itinerary slide only when it actually has days.
-  const slidesPerTrip = spreads.map((s) => ((s.trip?.days ?? []).length > 0 ? 2 : 1));
+  // A trip contributes an itinerary slide only when it has days and the
+  // brochure asked for them.
+  const slidesPerTrip = spreads.map((s) => (showItinerary && (s.trip?.days ?? []).length > 0 ? 2 : 1));
   const tripSlideTotal = slidesPerTrip.reduce((a, b) => a + b, 0);
   const total =
-    1 + (hasContents ? 1 : 0) + editorial.length + tripSlideTotal + (hasClosing ? 1 : 0);
-  const firstTripIndex = (hasContents ? 2 : 1) + editorial.length;
+    1 + (hasContents ? 1 : 0) + tripSlideTotal + editorial.length + (hasClosing ? 1 : 0);
+  const firstTripIndex = hasContents ? 2 : 1;
 
   const go = useCallback(
     (next: number) => {
@@ -116,7 +122,11 @@ export default function BrochureSlides({
   const slides: React.ReactNode[] = [];
 
   slides.push(
-    <article key="cover" className={`${pageClass(slides.length)} sl-cover`} hidden={!visible(0)}>
+    <article
+      key="cover"
+      className={`${pageClass(slides.length)} sl-cover${brochure.design.coverTheme === 'light' ? ' sl-cover--light' : ''}`}
+      hidden={!visible(0)}
+    >
       <div className="sl-body">
         <p className="sl-eyebrow">{cover.eyebrow ?? 'Premium Choice School Trips'}</p>
         <h1>{brochure.title}</h1>
@@ -125,7 +135,10 @@ export default function BrochureSlides({
       </div>
       <div className="sl-mark">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/images/logo-white.png" alt="Premium Choice School Trips" />
+        <img
+          src={brochure.design.coverTheme === 'light' ? '/images/logo-navy.png' : '/images/logo-white.png'}
+          alt="Premium Choice School Trips"
+        />
         {brochure.publishedAt && (
           <span className="sl-edition">{new Date(brochure.publishedAt).getFullYear()} edition</span>
         )}
@@ -185,15 +198,6 @@ export default function BrochureSlides({
     );
   }
 
-  editorial.forEach((e, n) => {
-    const i = slides.length;
-    slides.push(
-      <article key={`ed-${n}`} className={pageClass(i)} hidden={!visible(i)}>
-        <EditorialBody slide={e} />
-      </article>,
-    );
-  });
-
   for (const s of spreads) {
     const i = slides.length;
     slides.push(
@@ -205,7 +209,7 @@ export default function BrochureSlides({
     );
 
     const days = s.trip?.days ?? [];
-    if (days.length > 0) {
+    if (showItinerary && days.length > 0) {
       const j = slides.length;
       slides.push(
         <article key={`days-${s.tripId}`} className={pageClass(j)} hidden={!visible(j)}>
@@ -232,6 +236,15 @@ export default function BrochureSlides({
       );
     }
   }
+
+  editorial.forEach((e, n) => {
+    const i = slides.length;
+    slides.push(
+      <article key={`ed-${n}`} className={pageClass(i)} hidden={!visible(i)}>
+        <EditorialBody slide={e} />
+      </article>,
+    );
+  });
 
   if (hasClosing) {
     const i = slides.length;

@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { loadBrochure } from '@/lib/brochure/data';
 import BrochureSlides from '@/components/brochure/BrochureSlides';
 import { gatherTrips, groupSpreads } from '@/lib/brochure/spreads';
-import { buildEditorialSlides } from '@/lib/brochure/editorial';
+import { buildEditorialSlides, editorialFor } from '@/lib/brochure/editorial';
 import PasswordGate from '@/components/brochure/PasswordGate';
 import '@/components/brochure/gate.css';
 
@@ -80,10 +80,10 @@ export default async function BrochurePage({ params, searchParams }: Props) {
   )?.content;
   const spreads = gatherTrips(visible, trips);
 
-  // Who we are, how a group is kept safe, and the app the trip runs on. The
-  // safety content is the same the public safety page shows, rather than a
-  // second copy that would drift from it.
-  const editorial = await buildEditorialSlides();
+  // Who we are, how a group is kept safe, and the app the trip runs on — the
+  // ones this brochure asked for. The safety content is the same the public
+  // safety page shows, rather than a second copy that would drift from it.
+  const editorial = editorialFor(await buildEditorialSlides(), brochure.design);
 
   return (
     <BrochureSlides
@@ -92,6 +92,7 @@ export default async function BrochurePage({ params, searchParams }: Props) {
       spreads={spreads}
       groups={groupSpreads(spreads, brochure.kind === 'subject' ? 'subject' : 'country')}
       editorial={editorial}
+      showItinerary={brochure.design.showItinerary !== false}
       closing={closing}
       brochureQrSvg={brochureQrSvg}
       pdfHref={pdfHref}

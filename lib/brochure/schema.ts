@@ -108,6 +108,8 @@ export type BrochurePage = {
 export type BrochureDesign = {
   coverTheme?: 'light' | 'dark';
   showPricing?: boolean;
+  /** The "About Premium Choice" introduction. On unless turned off. */
+  showIntro?: boolean;
   showSafety?: boolean;
   showApp?: boolean;
   showItinerary?: boolean;

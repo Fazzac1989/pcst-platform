@@ -117,3 +117,18 @@ export async function buildEditorialSlides(): Promise<EditorialSlide[]> {
 
   return slides;
 }
+
+export type EditorialToggles = { showIntro?: boolean; showSafety?: boolean; showApp?: boolean };
+
+/**
+ * The standard pages a brochure asked for. Each is on unless it was turned
+ * off — the studio stored these choices from the start, but nothing read
+ * them, so a brochure made without the safety pages still had them.
+ */
+export function editorialFor(slides: EditorialSlide[], design: EditorialToggles): EditorialSlide[] {
+  return slides.filter((s) =>
+    s.kind === 'introduction' ? design.showIntro !== false
+    : s.kind === 'safety' ? design.showSafety !== false
+    : design.showApp !== false,
+  );
+}
