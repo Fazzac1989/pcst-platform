@@ -18,8 +18,9 @@ export const maxDuration = 60;
 
 async function resolve(req: NextRequest, slug: string, force: boolean) {
   const pw = req.nextUrl.searchParams.get('pw') ?? undefined;
+  const via = req.nextUrl.searchParams.get('via') ?? undefined;
 
-  const access = await loadBrochure(slug, { password: pw });
+  const access = await loadBrochure(slug, { password: pw, invite: via });
   if (access.state !== 'ok') {
     // Missing, draft and wrong-password all answer the same way: a brochure
     // nobody may read should not confirm that it exists.
@@ -45,8 +46,11 @@ async function resolve(req: NextRequest, slug: string, force: boolean) {
     }
 
     const origin = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') || req.nextUrl.origin;
+    const carried = new URLSearchParams();
+    if (pw) carried.set('pw', pw);
+    if (via) carried.set('via', via);
     const pageUrl = `${origin}/brochures/${encodeURIComponent(slug)}${
-      pw ? `?pw=${encodeURIComponent(pw)}` : ''
+      carried.toString() ? `?${carried}` : ''
     }`;
 
     const result = await renderPdf(id, pageUrl, 'brochures');

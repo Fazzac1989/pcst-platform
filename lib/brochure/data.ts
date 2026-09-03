@@ -2,6 +2,7 @@ import 'server-only';
 import { createHash } from 'node:crypto';
 import QRCode from 'qrcode';
 import { createAdminClient } from '@/lib/supabase/admin';
+import { inviteAllows } from '@/lib/brochure/invites';
 import { mapBrochure, mapBrochurePage, type Brochure, type BrochurePage } from './schema';
 
 /**
@@ -75,7 +76,11 @@ export type BrochureAccess =
 
 export async function loadBrochure(
   slug: string,
-  { password, allowDraft = false }: { password?: string; allowDraft?: boolean } = {}
+  {
+    password,
+    invite,
+    allowDraft = false,
+  }: { password?: string; invite?: string; allowDraft?: boolean } = {}
 ): Promise<BrochureAccess> {
   const db = createAdminClient();
 
@@ -87,9 +92,12 @@ export async function loadBrochure(
   if (brochure.status === 'archived') return { state: 'missing' };
   if (brochure.status !== 'published' && !allowDraft) return { state: 'draft' };
 
-  // The hash never leaves the server, and no content is loaded until it matches.
+  // The hash never leaves the server, and no content is loaded until it
+  // matches. A teacher's own invite link opens the brochure too: a password
+  // we would only have emailed them is no protection against them.
   if (row.password_hash && !allowDraft) {
-    if (!password || passwordHash(password) !== row.password_hash) {
+    const byPassword = Boolean(password) && passwordHash(password!) === row.password_hash;
+    if (!byPassword && !(await inviteAllows(invite, brochure.id))) {
       return { state: 'password', title: brochure.title };
     }
   }

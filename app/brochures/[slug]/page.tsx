@@ -23,11 +23,11 @@ export const dynamic = 'force-dynamic';
 
 type Props = {
   params: { slug: string };
-  searchParams: { pw?: string };
+  searchParams: { pw?: string; via?: string };
 };
 
 export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
-  const result = await loadBrochure(params.slug, { password: searchParams.pw });
+  const result = await loadBrochure(params.slug, { password: searchParams.pw, invite: searchParams.via });
   if (result.state !== 'ok') return { title: 'Brochure', robots: { index: false, follow: false } };
 
   const { brochure } = result.data;
@@ -48,7 +48,7 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
 }
 
 export default async function BrochurePage({ params, searchParams }: Props) {
-  const result = await loadBrochure(params.slug, { password: searchParams.pw });
+  const result = await loadBrochure(params.slug, { password: searchParams.pw, invite: searchParams.via });
 
   if (result.state === 'missing') notFound();
   if (result.state === 'draft') {
@@ -69,8 +69,11 @@ export default async function BrochurePage({ params, searchParams }: Props) {
 
   // The password travels with the PDF request, since that route has to load the
   // brochure the same way this page did.
+  const carried = new URLSearchParams();
+  if (searchParams.pw) carried.set('pw', searchParams.pw);
+  if (searchParams.via) carried.set('via', searchParams.via);
   const pdfHref = `/api/brochures/${encodeURIComponent(params.slug)}/pdf${
-    searchParams.pw ? `?pw=${encodeURIComponent(searchParams.pw)}` : ''
+    carried.toString() ? `?${carried}` : ''
   }`;
 
   const visible = pages.filter((p) => !p.hidden);
