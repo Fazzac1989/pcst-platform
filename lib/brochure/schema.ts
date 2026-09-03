@@ -26,6 +26,7 @@ export const PAGE_TYPES = [
   'tripHighlights',
   'tripItinerary',
   'tripGallery',
+  'tripWhy',
   'safety',
   'howItWorks',
   'appFeature',
@@ -88,6 +89,17 @@ export type PageContent = {
   ctaHref?: string;
   /** Chosen from the trip's approved imagery only. */
   imageUrls?: string[];
+  /* The "Why <country>" page that closes a trip's run of pages. */
+  /** Why this country is the right place to teach the subject. */
+  whyCountry?: string;
+  /** Premium Choice's own recommendation, in its own voice. */
+  pctView?: string;
+  /** Who it suits, e.g. "Years 9–11 (ages 13–16)". A recommendation, not a fact. */
+  ageGroup?: string;
+  /** Typed by a person, never by the composer: the trip's base price is not for print. */
+  priceRange?: string;
+  /** Exactly five, each grounded in something the trip does. */
+  educationalValues?: { title: string; detail: string }[];
 };
 
 export type BrochurePage = {
@@ -219,6 +231,7 @@ export const PAGE_LABELS: Record<PageType, string> = {
   tripHighlights: 'Trip highlights',
   tripItinerary: 'Journey',
   tripGallery: 'Gallery',
+  tripWhy: 'Why this country',
   safety: 'Health & safety',
   howItWorks: 'How it works',
   appFeature: 'Our technology',

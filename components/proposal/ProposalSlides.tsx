@@ -539,7 +539,10 @@ export default function ProposalSlides({
   };
 
   return (
-    <div className={`sl-deck${mode === 'page' ? ' sl-deck--page' : ''}`}>
+    <div
+      className={`sl-deck${mode === 'page' ? ' sl-deck--page' : ''}${schoolLogo ? ' sl-deck--client' : ''}`}
+      style={schoolLogo ? ({ '--client-logo': `url("${schoolLogo.url}")` } as React.CSSProperties) : undefined}
+    >
       <div className="sl-bar">
         {mode === 'deck' ? (
           <button type="button" onClick={() => go(index - 1)} disabled={index === 0}>

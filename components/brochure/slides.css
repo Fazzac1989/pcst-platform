@@ -122,3 +122,24 @@
 
 /* The flight panel spans both picture columns beneath them. */
 .sl-shots .sl-flight{grid-column:1 / -1;margin-top:.4cqw}
+
+/* ---------- Why <country> ----------
+   Prose and our view on the left, who it suits and what it costs on the
+   right, and the five educational values in a row beneath. */
+.sl-why{display:grid;grid-template-columns:1.35fr .65fr;gap:3cqw;align-items:start}
+.sl-why h2{font-size:2.6cqw;margin-bottom:.8cqw}
+.sl-why .sl-lede{font-size:1.15cqw;margin-bottom:.6cqw}
+.sl-why-label{font-size:.85cqw;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-ink);margin:0 0 .5cqw}
+.sl-why-view{margin-top:1.2cqw;border-left:3px solid var(--teal);padding-left:1.2cqw}
+.sl-why-view p:last-child{font-size:1.1cqw;color:var(--ink);margin:0;font-style:italic;line-height:1.5}
+.sl-why-side{display:grid;gap:1cqw}
+.sl-why-fact{background:var(--cream);border-radius:5px;padding:1cqw 1.3cqw}
+.sl-why-fact span{display:block;font-size:.8cqw;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.sl-why-fact b{display:block;font-family:var(--display);font-weight:400;font-size:1.7cqw;color:var(--navy);margin-top:.2cqw}
+.sl-why-values{margin-top:1.8cqw;border-top:1px solid var(--line);padding-top:1.2cqw}
+.sl-why-values ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:1.4cqw;counter-reset:ev}
+.sl-why-values li{counter-increment:ev;border-top:2px solid var(--teal);padding-top:.7cqw}
+.sl-why-values li::before{content:counter(ev,decimal-leading-zero);display:block;font-family:var(--display);font-size:1.3cqw;color:var(--teal-ink);margin-bottom:.3cqw}
+.sl-why-values b{display:block;font-size:1.05cqw;color:var(--ink);margin-bottom:.3cqw;line-height:1.3}
+.sl-why-values span{font-size:.92cqw;color:var(--muted);line-height:1.45}
+@media print{.sl-why,.sl-why-values ol{display:grid!important}}

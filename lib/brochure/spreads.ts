@@ -123,3 +123,11 @@ export function introSummary(paragraphs: string[], maxChars = 380): string {
   // half a sentence in a brochure reads as a mistake.
   return (out.trim() || sentences[0] || text).trim();
 }
+
+/**
+ * Whether a trip's "Why <country>" page has anything on it. A price alone is
+ * not a page; the words are.
+ */
+export function hasWhyPage(c: PageContent): boolean {
+  return Boolean(c.whyCountry?.trim() || c.pctView?.trim() || (c.educationalValues ?? []).length > 0);
+}

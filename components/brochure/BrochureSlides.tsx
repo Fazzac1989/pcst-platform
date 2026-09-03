@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { Brochure, PageContent } from '@/lib/brochure/schema';
-import type { TripGroup, TripSpread } from '@/lib/brochure/spreads';
+import { hasWhyPage, TripGroup, TripSpread } from '@/lib/brochure/spreads';
 import { sizedImage } from '@/lib/brochure/image-size';
 import { introSummary } from '@/lib/brochure/spreads';
 import type { EditorialSlide } from '@/lib/brochure/editorial';
@@ -54,10 +54,16 @@ export default function BrochureSlides({
   // about us + closing. The trips come first: they are what the reader opened
   // the brochure for, and the standard pages read as an appendix.
   const hasContents = spreads.length > 0;
+  // The school's mark: on the cover as a card, and at the foot of every other page.
+  // Uploading a logo is the decision to show it; no separate switch to forget.
+  const clientLogo = brochure.clientLogo;
   const hasClosing = Boolean(closing || brochure.closingText);
   // A trip contributes an itinerary slide only when it has days and the
   // brochure asked for them.
-  const slidesPerTrip = spreads.map((s) => (showItinerary && (s.trip?.days ?? []).length > 0 ? 2 : 1));
+  // Introduction, the day-by-day when asked for, and "Why <country>" when written.
+  const slidesPerTrip = spreads.map(
+    (s) => 1 + (showItinerary && (s.trip?.days ?? []).length > 0 ? 1 : 0) + (hasWhyPage(s.content) ? 1 : 0),
+  );
   const tripSlideTotal = slidesPerTrip.reduce((a, b) => a + b, 0);
   const total =
     1 + (hasContents ? 1 : 0) + tripSlideTotal + editorial.length + (hasClosing ? 1 : 0);
@@ -131,6 +137,12 @@ export default function BrochureSlides({
         <p className="sl-eyebrow">{cover.eyebrow ?? 'Premium Choice School Trips'}</p>
         <h1>{brochure.title}</h1>
         {brochure.subtitle && <p className="sl-sub">{brochure.subtitle}</p>}
+        {clientLogo && (
+          <div className="sl-school-logo">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={clientLogo} alt={brochure.clientName ? `${brochure.clientName} logo` : 'School logo'} />
+          </div>
+        )}
         {brochure.clientName && <p className="sl-prepared">Prepared for {brochure.clientName}</p>}
       </div>
       <div className="sl-mark">
@@ -235,6 +247,17 @@ export default function BrochureSlides({
         </article>,
       );
     }
+
+    if (hasWhyPage(s.content)) {
+      const k = slides.length;
+      slides.push(
+        <article key={`why-${s.tripId}`} className={pageClass(k)} hidden={!visible(k)}>
+          <div className="sl-body">
+            <TripWhy spread={s} />
+          </div>
+        </article>,
+      );
+    }
   }
 
   editorial.forEach((e, n) => {
@@ -273,7 +296,10 @@ export default function BrochureSlides({
   }
 
   return (
-    <div className="sl-deck">
+    <div
+      className={`sl-deck${clientLogo ? ' sl-deck--client' : ''}`}
+      style={clientLogo ? ({ '--client-logo': `url("${clientLogo}")` } as React.CSSProperties) : undefined}
+    >
       <div className="sl-bar">
         <button type="button" onClick={() => go(index - 1)} disabled={index === 0}>
           ← Back
@@ -410,6 +436,65 @@ function TripIntro({ spread }: { spread: TripSpread }) {
           )}
         </div>
       </div>
+    </>
+  );
+}
+
+/** The page that closes a trip: why the country, our view, who it suits, what it costs, what it teaches. */
+function TripWhy({ spread }: { spread: TripSpread }) {
+  const { trip, content: c } = spread;
+  const country = trip?.country ?? c.headline ?? 'this destination';
+  const values = (c.educationalValues ?? []).slice(0, 5);
+  return (
+    <>
+      <div className="sl-masthead">
+        <p className="sl-eyebrow">
+          {trip?.title ?? c.headline ?? 'Trip'} · Why {country}
+        </p>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/images/logo-navy.png" alt="Premium Choice School Trips" />
+      </div>
+
+      <div className="sl-why">
+        <div>
+          <h2>Why {country}</h2>
+          {c.whyCountry && <p className="sl-lede">{c.whyCountry}</p>}
+          {c.pctView && (
+            <div className="sl-why-view">
+              <p className="sl-why-label">Our view</p>
+              <p>{c.pctView}</p>
+            </div>
+          )}
+        </div>
+        <div className="sl-why-side">
+          {c.ageGroup && (
+            <div className="sl-why-fact">
+              <span>Suited to</span>
+              <b>{c.ageGroup}</b>
+            </div>
+          )}
+          {c.priceRange && (
+            <div className="sl-why-fact">
+              <span>Price range</span>
+              <b>{c.priceRange}</b>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {values.length > 0 && (
+        <div className="sl-why-values">
+          <p className="sl-why-label">Educational value</p>
+          <ol>
+            {values.map((v, i) => (
+              <li key={i}>
+                <b>{v.title}</b>
+                <span>{v.detail}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
+      )}
     </>
   );
 }
