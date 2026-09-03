@@ -33,6 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const city = cities.find((c) => c.slug === params.slug);
   if (!city) return {};
   return {
+    alternates: { canonical: `/cities/${params.slug}` },
     title: `School trips to ${city.name}`,
     description: `${city.tripCount} curriculum-built ${city.tripCount === 1 ? 'itinerary' : 'itineraries'} based in ${city.name}, ${city.country} — designed, priced and supported from Dubai.`,
   };

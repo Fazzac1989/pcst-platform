@@ -465,7 +465,7 @@ function TripWhy({ spread }: { spread: TripSpread }) {
           {c.whyCountry && <p className="sl-lede">{c.whyCountry}</p>}
           {c.pctView && (
             <div className="sl-why-view">
-              <p className="sl-why-label">Our view</p>
+              <p className="sl-why-label">PCT view</p>
               <p>{c.pctView}</p>
             </div>
           )}

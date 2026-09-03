@@ -1,3 +1,10 @@
+import { createRequire } from 'node:module';
+import { legacyRedirects } from './lib/legacy-redirects.mjs';
+
+const require = createRequire(import.meta.url);
+// Old site addresses → new pages; see lib/legacy-redirects.mjs.
+const legacy = require('./lib/generated/legacy-redirects.json');
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
@@ -32,6 +39,7 @@ const nextConfig = {
     // School Trips is managed in the Premium Choice Travel group console —
     // this platform's own admin is retired (remove these entries to restore it).
     return [
+      ...legacyRedirects(legacy),
       {
         source: '/admin',
         destination: 'https://premium-choice-travel.vercel.app/admin/school-trips',
