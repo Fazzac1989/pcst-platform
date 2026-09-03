@@ -1,6 +1,7 @@
 'use client';
 
 import { airlineLogoUrl, pagesAt, type PagePlacement } from '@/lib/brochure/proposal-schema';
+import Arrow from '@/components/slides/Arrow';
 import { useCallback, useEffect, useState } from 'react';
 import { freePlacesTotal, type ProposalViewModel } from '@/lib/brochure/proposal-schema';
 import type { EditorialSlide } from '@/lib/brochure/editorial';
@@ -408,14 +409,16 @@ export default function ProposalSlides({
                           <img className="pr-airline" src={airlineLogoUrl(f)!} alt={f.carrier || ''} loading="lazy" />
                         )}
                         <p className="pr-route">
-                          {f.fromCode} → {f.toCode}
+                          {f.fromCode} <Arrow /> {f.toCode}
                         </p>
                         <p className="pr-sub">
                           {[f.carrier, f.flightNumber].filter(Boolean).join(' ')}
                           {f.note ? ` · ${f.note}` : ''}
                         </p>
                         <p className="pr-sub">
-                          {[f.fromName, f.toName].filter(Boolean).join(' → ')}
+                          {f.fromName}
+                          {f.fromName && f.toName && <Arrow />}
+                          {f.toName}
                         </p>
                       </div>
                     ))}

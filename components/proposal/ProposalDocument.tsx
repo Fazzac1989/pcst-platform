@@ -1,6 +1,7 @@
 import Journey from '@/components/proposal/Journey';
 import { Snowfall, TermsToggle, TopBar } from '@/components/proposal/Chrome';
 import { airlineLogoUrl, pagesAt, type CustomPage, type PagePlacement } from '@/lib/brochure/proposal-schema';
+import Arrow from '@/components/slides/Arrow';
 import { freePlacesTotal, type ProposalViewModel } from '@/lib/brochure/proposal-schema';
 import '@/components/proposal/proposal.css';
 
@@ -325,11 +326,11 @@ export default function ProposalDocument({
                         </span>
                         <span className="leg">
                           <b>
-                            {f.fromName} → {f.toName}
+                            {f.fromName} <Arrow /> {f.toName}
                           </b>
                           {(f.fromCode || f.toCode) && (
                             <small>
-                              {f.fromCode} → {f.toCode}
+                              {f.fromCode} <Arrow /> {f.toCode}
                             </small>
                           )}
                         </span>
