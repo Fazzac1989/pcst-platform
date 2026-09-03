@@ -72,8 +72,15 @@
    splitting one trip's itinerary across two pages. */
 /* Included and not included, beneath the days: two compact columns. */
 .sl-incl{margin-top:1cqw;border-top:1px solid var(--line);padding-top:.8cqw;display:grid;grid-template-columns:1fr 1fr;gap:2.4cqw}
-.sl-incl p{font-size:.9cqw;color:var(--muted);margin:0;line-height:1.45}
-.sl-incl b{display:block;font-size:.78cqw;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-ink);margin-bottom:.25cqw}
+.sl-incl b{display:block;font-size:.78cqw;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-ink);margin-bottom:.35cqw}
+/* Vertical lists with navy dots, each flowing into two columns to stay short. */
+.sl-incl ul{list-style:none;margin:0;padding:0;columns:2;column-gap:1.6cqw}
+.sl-incl li{position:relative;padding-left:1.1cqw;font-size:.88cqw;line-height:1.35;color:var(--muted);margin-bottom:.22cqw;break-inside:avoid}
+.sl-incl li::before{content:"";position:absolute;left:0;top:.42cqw;width:.5cqw;height:.5cqw;border-radius:50%;background:var(--navy)}
+/* More than six items: three columns and a little smaller, so a nine-day trip with twelve inclusions still fits. */
+.sl-incl ul.sl-incl-many{columns:3;column-gap:1.4cqw}
+.sl-incl ul.sl-incl-many li{font-size:.8cqw;line-height:1.3;margin-bottom:.18cqw}
+.sl-days-dense + .sl-incl{margin-top:.6cqw;padding-top:.5cqw}
 @media print{.sl-incl{display:grid!important}}
 .sl-days-dense{columns:4}
 .sl-days-dense .sl-day{margin-bottom:1.1cqw;padding-bottom:.9cqw}

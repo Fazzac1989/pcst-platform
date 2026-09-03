@@ -514,26 +514,28 @@ function TripWhy({ spread }: { spread: TripSpread }) {
 }
 
 /**
- * What the price covers and what it does not, beneath the days. One line of
- * type each, run together, so a nine-day trip still fits its page.
+ * What the price covers and what to budget for, beneath the days: two
+ * bulleted lists, each flowing into two columns so a nine-day trip still
+ * fits its page.
  */
 function Inclusions({ included, excluded }: { included: string[]; excluded: string[] }) {
   if (!included.length && !excluded.length) return null;
-  const line = (items: string[]) => items.map((i) => i.trim().replace(/\.$/, '')).filter(Boolean).join(' · ');
+  const items = (list: string[]) => list.map((i) => i.trim().replace(/\.$/, '')).filter(Boolean);
+  const List = ({ label, list }: { label: string; list: string[] }) =>
+    list.length ? (
+      <div>
+        <b>{label}</b>
+        <ul className={items(list).length > 6 ? 'sl-incl-many' : undefined}>
+          {items(list).map((i, n) => (
+            <li key={n}>{i}</li>
+          ))}
+        </ul>
+      </div>
+    ) : null;
   return (
     <div className="sl-incl">
-      {included.length > 0 && (
-        <p>
-          <b>Included</b>
-          {line(included)}
-        </p>
-      )}
-      {excluded.length > 0 && (
-        <p>
-          <b>Items to budget for</b>
-          {line(excluded)}
-        </p>
-      )}
+      <List label="Included" list={included} />
+      <List label="Items to budget for" list={excluded} />
     </div>
   );
 }
