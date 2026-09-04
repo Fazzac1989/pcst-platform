@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import AppointmentForm from '@/components/AppointmentForm';
 import ScrollReveal from '@/components/ScrollReveal';
@@ -14,6 +15,8 @@ const COUNTRY_SHORT: Record<string, string> = { 'United Kingdom': 'UK' };
 /** The less predictable destinations and themes lead the spotlight band. */
 const DISTINCTIVE_COUNTRIES = ['Mongolia', 'New Zealand', 'Australia', 'Nepal', 'Vietnam', 'Iceland', 'Japan', 'South Africa'];
 const DISTINCTIVE_SUBJECTS = ['Volunteering', 'Outdoor Education', 'Skiing', 'STEAM'];
+
+export const metadata: Metadata = { alternates: { canonical: '/' } };
 
 export default async function HomePage() {
   const [featured, allPublished, tripCount, subjects, settings] = await Promise.all([

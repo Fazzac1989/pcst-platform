@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import InfoPage from '@/components/InfoPage';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/about' },
   title: 'Our story',
   description:
     'Premium Choice School Trips is part of a family-owned Dubai travel company: four decades in travel, a household that knows school life from the inside, and journeys built around parents, children and teachers.',

@@ -28,7 +28,6 @@ export const metadata: Metadata = {
   description:
     'Educational travel designed, priced and supported from Dubai — safe, inspiring, professionally managed school trips for schools across the UAE and beyond.',
   icons: { icon: '/images/favicon.png', apple: '/images/favicon.png' },
-  alternates: { canonical: '/' },
   openGraph: {
     type: 'website',
     siteName: 'Premium Choice School Trips',
