@@ -68,6 +68,8 @@ export default function BrochureSlides({
   const total =
     1 + (hasContents ? 1 : 0) + tripSlideTotal + editorial.length + (hasClosing ? 1 : 0);
   const firstTripIndex = hasContents ? 2 : 1;
+  // Where the contents page sits, so every page after it can offer a way back.
+  const contentsIndex = hasContents ? 1 : -1;
 
   const go = useCallback(
     (next: number) => {
@@ -321,7 +323,16 @@ export default function BrochureSlides({
         </span>
       </div>
 
-      <div className="sl-stage">{slides}</div>
+      <div className="sl-stage">
+        {slides}
+        {/* One button, on every page after the contents: a reader deep in the
+            trips should never have to press Back twenty times. */}
+        {hasContents && index > contentsIndex && (
+          <button type="button" className="sl-back" onClick={() => go(contentsIndex)}>
+            Contents
+          </button>
+        )}
+      </div>
 
       {/* Screen readers are told where they are; the count above is decorative. */}
       <p ref={liveRef} aria-live="polite" className="sr-only" style={SR_ONLY}>

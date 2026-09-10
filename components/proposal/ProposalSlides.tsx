@@ -569,6 +569,11 @@ export default function ProposalSlides({
       </div>
 
       <div className="sl-stage">
+        {index > 1 && (
+          <button type="button" className="sl-back" onClick={() => go(1)}>
+            Contents
+          </button>
+        )}
         {plan.map((s, i) => (
           <article
             key={s.key}
