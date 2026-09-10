@@ -37,3 +37,4 @@ supabase/.temp
 
 # Audit contact sheets: regenerate with scripts/build-contact-sheets.mjs
 scripts/data/contact/
+.claude/

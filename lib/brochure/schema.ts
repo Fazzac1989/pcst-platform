@@ -122,7 +122,19 @@ export type BrochurePage = {
   copyStatus: 'ai' | 'reviewed' | 'approved';
 };
 
+/**
+ * Which of the two presentations a brochure is published in.
+ *
+ * 'classic' is the deck: a cover, a contents and a sheet per page, the thing
+ * that prints to a PDF. 'collection' is the browsable one: a hero, filters and
+ * a card per trip, with a page of its own for each. Both read the same
+ * brochure record, so a brochure can be switched between them at any time.
+ */
+export type BrochurePresentation = 'classic' | 'collection';
+
 export type BrochureDesign = {
+  /** Defaults to 'classic', which is what every brochure was before the choice existed. */
+  presentation?: BrochurePresentation;
   coverTheme?: 'light' | 'dark';
   /** Every page but the cover: navy throughout, or white. Defaults to light. */
   documentTheme?: 'light' | 'dark';

@@ -2,10 +2,13 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { loadBrochure } from '@/lib/brochure/data';
 import BrochureSlides from '@/components/brochure/BrochureSlides';
+import SchoolCollection from '@/components/collection/SchoolCollection';
+import { schoolName, toCollectionTrip } from '@/lib/brochure/collection';
 import { gatherTrips, groupSpreads, orderByContinent } from '@/lib/brochure/spreads';
 import { buildEditorialSlides, editorialFor } from '@/lib/brochure/editorial';
 import PasswordGate from '@/components/brochure/PasswordGate';
 import '@/components/brochure/gate.css';
+import '@/components/collection/collection.css';
 
 /**
  * The public brochure.
@@ -14,16 +17,21 @@ import '@/components/brochure/gate.css';
  * password protected, and those checks have to happen before any content is
  * sent. Published public brochures are cached at the edge instead.
  *
- * It reads as a deck — cover, contents, a page per trip — one page at a time,
- * with a turn between them. Every slide is rendered and the print stylesheet
- * lays them out as A4 pages, so the PDF is this document rather than a second
- * one built to match, and there is no separate accessible view to keep in step.
+ * A brochure is published in one of two presentations, and the record says
+ * which. The classic one reads as a deck — cover, contents, a page per trip —
+ * one page at a time, with a turn between them; every slide is rendered and the
+ * print stylesheet lays them out as A4 pages, so the PDF is this document
+ * rather than a second one built to match. The collection reads as a website:
+ * a hero, filters and a card per trip, each with a page of its own.
+ *
+ * Both are built from the same spreads, and the PDF is the deck either way, so
+ * switching between them changes nothing about the content.
  */
 export const dynamic = 'force-dynamic';
 
 type Props = {
   params: { slug: string };
-  searchParams: { pw?: string; via?: string };
+  searchParams: { pw?: string; via?: string; style?: string };
 };
 
 export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
@@ -93,6 +101,36 @@ export default async function BrochurePage({ params, searchParams }: Props) {
   // ones this brochure asked for. The safety content is the same the public
   // safety page shows, rather than a second copy that would drift from it.
   const editorial = editorialFor(await buildEditorialSlides(), brochure.design);
+
+  // Which of the two presentations. The record decides; ?style= overrides it
+  // for one page view so the two can be compared side by side before either is
+  // saved. The override changes nothing that is stored, and both presentations
+  // show the same content, so it grants no access the link did not already.
+  const asked = searchParams.style === 'classic' || searchParams.style === 'collection'
+    ? searchParams.style
+    : null;
+  // Anything but 'collection' is the deck, which is what every brochure was
+  // before there was a choice.
+  const presentation = asked ?? brochure.design.presentation ?? 'classic';
+
+  if (presentation === 'collection') {
+    const collectionTrips = spreads.map(toCollectionTrip);
+    const edition = `Your school collection · ${
+      (brochure.publishedAt ?? brochure.createdAt).slice(0, 4)
+    }`;
+    return (
+      <SchoolCollection
+        brochure={brochure}
+        trips={collectionTrips}
+        schoolName={schoolName(brochure)}
+        edition={edition}
+        heroImage={brochure.coverImage ?? collectionTrips[0]?.image ?? null}
+        pdfHref={pdfHref}
+        // The existing teachers' page is the support content; no new route invented.
+        supportHref="/for-teachers"
+      />
+    );
+  }
 
   return (
     <BrochureSlides

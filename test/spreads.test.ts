@@ -65,7 +65,7 @@ describe('orderByContinent', () => {
   const s = (id: number, countrySlug: string | null, city: string | null, title = `T${id}`) =>
     ({ tripId: id, trip: { countrySlug, city, title } as any, content: {}, images: [] }) as any;
 
-  const cities = (out: any[]) => out.map((x) => x.trip.city);
+  const cities = (out: any[]) => out.map((x) => x.trip!.city);
 
   it('runs continent by continent, in the menu order', () => {
     const out = orderByContinent([
@@ -101,7 +101,7 @@ describe('orderByContinent', () => {
       s(1, 'spain', 'Barcelona', 'Gaudí and the coast'),
       s(2, 'spain', 'Barcelona', 'Barcelona uncovered'),
     ]);
-    expect(out.map((x) => x.trip.title)).toEqual(['Barcelona uncovered', 'Gaudí and the coast']);
+    expect(out.map((x) => x.trip!.title)).toEqual(['Barcelona uncovered', 'Gaudí and the coast']);
   });
 
   it('files a multi-country tour under its first real country', () => {
@@ -128,6 +128,6 @@ describe('groupSpreads by continent', () => {
     const ordered = orderByContinent([s(1, 'japan', 'Tokyo'), s(2, 'spain', 'Barcelona'), s(3, 'italy', 'Rome')]);
     const groups = groupSpreads(ordered, 'continent');
     expect(groups.map((g) => g.label)).toEqual(['Europe', 'Asia']);
-    expect(groups[0].spreads.map((x) => x.trip.city)).toEqual(['Barcelona', 'Rome']);
+    expect(groups[0].spreads.map((x) => x.trip!.city)).toEqual(['Barcelona', 'Rome']);
   });
 });
