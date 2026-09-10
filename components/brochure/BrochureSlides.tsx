@@ -206,7 +206,11 @@ export default function BrochureSlides({
                             {s.trip?.title ?? s.content.headline ?? 'Trip'}
                           </span>
                           <span className="sl-m">
-                            {[s.trip?.subject, s.trip?.durationDays ? `${s.trip.durationDays} days` : null]
+                            {[
+                              s.trip?.city,
+                              s.trip?.subject,
+                              s.trip?.durationDays ? `${s.trip.durationDays} days` : null,
+                            ]
                               .filter(Boolean)
                               .join(' · ')}
                           </span>
@@ -574,8 +578,10 @@ function Inclusions({ included, excluded }: { included: string[]; excluded: stri
         </ul>
       </div>
     ) : null;
+  // A lone list gets the whole width rather than half of it.
+  const solo = !included.length || !excluded.length;
   return (
-    <div className="sl-incl">
+    <div className={`sl-incl${solo ? ' sl-incl--solo' : ''}`}>
       <List label="Included" list={included} />
       <List label="Items to budget for" list={excluded} />
     </div>

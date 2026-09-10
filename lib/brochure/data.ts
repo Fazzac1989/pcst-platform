@@ -22,6 +22,8 @@ export type BrochureTrip = {
   title: string;
   subject: string | null;
   country: string | null;
+  /** The country's slug, which is how the continent map is keyed. */
+  countrySlug: string | null;
   city: string | null;
   durationDays: number;
   durationNights: number;
@@ -127,7 +129,7 @@ export async function loadBrochure(
       .select(
         `id, slug, title, city, duration_days, duration_nights, hero_image, gallery, journey,
          overview, trip_highlights, includes, departs,
-         subjects(name), countries(name, capital, timezone, getting_there),
+         subjects(name), countries(name, slug, capital, timezone, getting_there),
          itinerary_days(sort_order, label, title, display_title, summary, primary_location)`
       )
       .in('id', tripIds);
@@ -147,6 +149,7 @@ export async function loadBrochure(
         title: t.title,
         subject: t.subjects?.name ?? null,
         country: t.countries?.name ?? null,
+        countrySlug: t.countries?.slug ?? null,
         city: t.city ?? null,
         durationDays: t.duration_days ?? 0,
         durationNights: t.duration_nights ?? 0,
@@ -196,6 +199,7 @@ export async function loadBrochure(
         durationNights: frozen.duration_nights ?? live.durationNights,
         subject: frozen.subjects?.name ?? live.subject,
         country: frozen.countries?.name ?? live.country,
+        countrySlug: frozen.countries?.slug ?? live.countrySlug,
       };
     }
   }

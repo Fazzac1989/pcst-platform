@@ -1,5 +1,6 @@
 import type { BrochurePage, PageContent } from '@/lib/brochure/schema';
 import type { BrochureTrip } from '@/lib/brochure/data';
+import { COUNTRY_META, CONTINENT_ORDER, primaryCountrySlug } from '@/lib/country-meta';
 
 /**
  * Gather the pages belonging to one trip into a single spread.
@@ -66,6 +67,43 @@ export function gatherTrips(
 
 export type TripGroup = { label: string; spreads: TripSpread[] };
 
+/** The continent a trip belongs to, or '' when the map does not know it. */
+export function continentOf(trip: BrochureTrip | undefined): string {
+  const slug = trip?.countrySlug?.trim();
+  if (!slug) return '';
+  // A multi-country tour is filed under its first real country.
+  return COUNTRY_META[primaryCountrySlug(slug)]?.continent ?? COUNTRY_META[slug]?.continent ?? '';
+}
+
+/** Sorted the way a reader scans a list: A before B, and numbers before words. */
+const byName = (a: string, b: string) =>
+  a.localeCompare(b, 'en', { sensitivity: 'base', numeric: true });
+
+/**
+ * The order the collection reads in: continent by continent, and inside each
+ * one the cities alphabetically.
+ *
+ * The contents and the trip pages are driven by the same array, so ordering it
+ * once orders both. That matters on paper: a printed contents that lists the
+ * trips in one order while the sheets run in another is worse than no contents.
+ * Trips sharing a city keep their titles in alphabetical order too, so the
+ * three Barcelona trips do not shuffle between renders.
+ */
+export function orderByContinent(spreads: TripSpread[]): TripSpread[] {
+  const rank = (s: TripSpread) => {
+    const i = CONTINENT_ORDER.indexOf(continentOf(s.trip) as (typeof CONTINENT_ORDER)[number]);
+    // A trip whose continent is unknown sits at the end rather than the front.
+    return i === -1 ? CONTINENT_ORDER.length : i;
+  };
+  return [...spreads].sort((a, b) => {
+    const d = rank(a) - rank(b);
+    if (d !== 0) return d;
+    const city = byName((a.trip?.city ?? '').trim(), (b.trip?.city ?? '').trim());
+    if (city !== 0) return city;
+    return byName(a.trip?.title ?? '', b.trip?.title ?? '');
+  });
+}
+
 /**
  * Group the contents page by country, or by subject when a brochure is built
  * around a subject instead.
@@ -75,14 +113,15 @@ export type TripGroup = { label: string; spreads: TripSpread[] };
  */
 export function groupSpreads(
   spreads: TripSpread[],
-  by: 'country' | 'subject' = 'country',
+  by: 'country' | 'subject' | 'continent' = 'country',
 ): TripGroup[] {
   const order: string[] = [];
   const groups = new Map<string, TripSpread[]>();
   const OTHER = 'More trips';
 
   for (const s of spreads) {
-    const raw = by === 'subject' ? s.trip?.subject : s.trip?.country;
+    const raw =
+      by === 'subject' ? s.trip?.subject : by === 'continent' ? continentOf(s.trip) : s.trip?.country;
     const label = (raw ?? '').trim() || OTHER;
     if (!groups.has(label)) {
       order.push(label);

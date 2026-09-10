@@ -83,14 +83,21 @@
    splitting one trip's itinerary across two pages. */
 /* Included and not included, beneath the days: two compact columns. */
 .sl-incl{margin-top:1cqw;border-top:1px solid var(--line);padding-top:.8cqw;display:grid;grid-template-columns:1fr 1fr;gap:2.4cqw}
-.sl-incl b{display:block;font-size:.78cqw;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-ink);margin-bottom:.35cqw}
+.sl-incl b{display:block;font-size:.92cqw;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-ink);margin-bottom:.35cqw}
 /* Vertical lists with navy dots, each flowing into two columns to stay short. */
 .sl-incl ul{list-style:none;margin:0;padding:0;columns:2;column-gap:1.6cqw}
-.sl-incl li{position:relative;padding-left:1.1cqw;font-size:.88cqw;line-height:1.35;color:var(--muted);margin-bottom:.22cqw;break-inside:avoid}
-.sl-incl li::before{content:"";position:absolute;left:0;top:.42cqw;width:.5cqw;height:.5cqw;border-radius:50%;background:var(--navy)}
+.sl-incl li{position:relative;padding-left:1.2cqw;font-size:1.06cqw;line-height:1.35;color:var(--muted);margin-bottom:.22cqw;break-inside:avoid}
+.sl-incl li::before{content:"";position:absolute;left:0;top:.48cqw;width:.58cqw;height:.58cqw;border-radius:50%;background:var(--navy)}
 /* More than six items: three columns and a little smaller, so a nine-day trip with twelve inclusions still fits. */
 .sl-incl ul.sl-incl-many{columns:3;column-gap:1.4cqw}
-.sl-incl ul.sl-incl-many li{font-size:.8cqw;line-height:1.3;margin-bottom:.18cqw}
+.sl-incl ul.sl-incl-many li{font-size:.98cqw;line-height:1.3;margin-bottom:.18cqw}
+/* Only one of the two lists — a trip that says what is included but not what
+   to budget for. It was left sitting in half the width, flowing into columns
+   so narrow that every second item wrapped; the longest ran to 35 items and
+   350px. Given the whole width it is half as tall, which is what pays for the
+   larger type above. */
+.sl-incl--solo{grid-template-columns:1fr}
+.sl-incl--solo ul.sl-incl-many{columns:4}
 .sl-days-dense + .sl-incl{margin-top:.6cqw;padding-top:.5cqw}
 @media print{
   .sl-incl{display:grid!important}
@@ -175,9 +182,9 @@
 .sl-why-values{margin-top:1.8cqw;border-top:1px solid var(--line);padding-top:1.2cqw}
 .sl-why-values ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:1.4cqw;counter-reset:ev}
 .sl-why-values li{counter-increment:ev;border-top:2px solid var(--teal);padding-top:.7cqw}
-.sl-why-values li::before{content:counter(ev,decimal-leading-zero);display:block;font-family:var(--display);font-size:1.3cqw;color:var(--teal-ink);margin-bottom:.3cqw}
-.sl-why-values b{display:block;font-size:1.05cqw;color:var(--ink);margin-bottom:.3cqw;line-height:1.3}
-.sl-why-values span{font-size:.92cqw;color:var(--muted);line-height:1.45}
+.sl-why-values li::before{content:counter(ev,decimal-leading-zero);display:block;font-family:var(--display);font-size:1.5cqw;color:var(--teal-ink);margin-bottom:.3cqw}
+.sl-why-values b{display:block;font-size:1.3cqw;color:var(--ink);margin-bottom:.22cqw;line-height:1.12}
+.sl-why-values span{font-size:1.15cqw;color:var(--muted);line-height:1.18}
 @media print{.sl-why,.sl-why-values ol{display:grid!important}}
 
 /* The Why page is navy, like the cover: type in white, labels in teal,

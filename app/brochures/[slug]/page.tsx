@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { loadBrochure } from '@/lib/brochure/data';
 import BrochureSlides from '@/components/brochure/BrochureSlides';
-import { gatherTrips, groupSpreads } from '@/lib/brochure/spreads';
+import { gatherTrips, groupSpreads, orderByContinent } from '@/lib/brochure/spreads';
 import { buildEditorialSlides, editorialFor } from '@/lib/brochure/editorial';
 import PasswordGate from '@/components/brochure/PasswordGate';
 import '@/components/brochure/gate.css';
@@ -81,7 +81,13 @@ export default async function BrochurePage({ params, searchParams }: Props) {
   const closing = visible.find(
     (p) => p.pageType === 'contact' || p.pageType === 'callToAction',
   )?.content;
-  const spreads = gatherTrips(visible, trips);
+  // A collection of trips reads by region: continent by continent, cities in
+  // alphabetical order inside each. A brochure built around a subject keeps the
+  // order it was arranged in, because there the subject is the organising idea.
+  const bySubject = brochure.kind === 'subject';
+  const spreads = bySubject
+    ? gatherTrips(visible, trips)
+    : orderByContinent(gatherTrips(visible, trips));
 
   // Who we are, how a group is kept safe, and the app the trip runs on — the
   // ones this brochure asked for. The safety content is the same the public
@@ -93,7 +99,7 @@ export default async function BrochurePage({ params, searchParams }: Props) {
       brochure={brochure}
       cover={cover}
       spreads={spreads}
-      groups={groupSpreads(spreads, brochure.kind === 'subject' ? 'subject' : 'country')}
+      groups={groupSpreads(spreads, bySubject ? 'subject' : 'continent')}
       editorial={editorial}
       showItinerary={brochure.design.showItinerary !== false}
       closing={closing}
