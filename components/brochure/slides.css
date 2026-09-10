@@ -42,12 +42,23 @@
 }
 .sl-meta b{color:var(--ink);font-weight:600}
 
-.sl-hl{list-style:none;margin:1.1cqw 0 0;padding:0}
-.sl-hl li{padding:.45cqw 0;border-top:1px dashed var(--line)}
+.sl-hl{list-style:none;margin:1.2cqw 0 0;padding:0}
+/* Six highlights in one column ran past the foot of the slide; two columns
+   hold six at a size worth reading. */
+.sl-hl-two{columns:2;column-gap:2.2cqw}
+.sl-hl li{
+  display:grid;grid-template-columns:1.9cqw 1fr;gap:.8cqw;align-items:start;
+  padding:.5cqw 0;border-top:1px dashed var(--line);break-inside:avoid;
+}
 .sl-hl li:first-child{border-top:0}
-.sl-hl strong{display:block;font-family:var(--display);font-size:1.2cqw;font-weight:400;color:var(--ink)}
-.sl-hl span{display:block;font-size:.98cqw;color:var(--muted)}
-.sl-hl em{display:block;font-size:.95cqw;color:var(--teal-ink);font-style:normal;margin-top:.2cqw}
+.sl-hl-two li:first-child{border-top:1px dashed var(--line)}
+.sl-hl-icon{
+  width:1.9cqw;height:1.9cqw;margin-top:.15cqw;flex:0 0 auto;
+  fill:none;stroke:var(--teal);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;
+}
+.sl-hl strong{display:block;font-family:var(--display);font-size:1.35cqw;font-weight:400;color:var(--ink);line-height:1.2}
+.sl-hl span{display:block;font-size:1.05cqw;color:var(--muted);line-height:1.35}
+.sl-hl em{display:block;font-size:1cqw;color:var(--teal-ink);font-style:normal;margin-top:.2cqw}
 
 .sl-chips{display:flex;flex-wrap:wrap;gap:.5cqw;margin-top:1cqw}
 .sl-chips span{font-size:1cqw;background:var(--ice);color:var(--ink);border-radius:999px;padding:.35cqw .9cqw}
@@ -85,8 +96,8 @@
   .sl-incl{display:grid!important}
   /* The included lists are the last thing on a busy day page. A hair tighter
      on paper keeps an eight-day trip with sixteen inclusions on one sheet. */
-  .sl-incl{margin-top:.6cqw;padding-top:.5cqw}
-  .sl-incl li{margin-bottom:.1cqw;line-height:1.26}
+  .sl-incl{margin-top:.45cqw;padding-top:.4cqw}
+  .sl-incl li{margin-bottom:.08cqw;line-height:1.24}
 }
 .sl-days-dense{columns:4}
 .sl-days-dense .sl-day{margin-bottom:1.1cqw;padding-bottom:.9cqw}

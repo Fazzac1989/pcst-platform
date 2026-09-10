@@ -11,7 +11,9 @@ import type { EditorialSlide } from '@/lib/brochure/editorial';
 
 const Mark = () => (
   /* eslint-disable-next-line @next/next/no-img-element */
-  <img src="/images/logo-navy.png" alt="Premium Choice School Trips" />
+  <a className="sl-brand" href="https://www.premiumchoiceschooltrips.com" target="_blank" rel="noopener noreferrer">
+    <img src="/images/logo-navy.png" alt="Premium Choice School Trips" />
+  </a>
 );
 
 export function EditorialBody({ slide }: { slide: EditorialSlide }) {

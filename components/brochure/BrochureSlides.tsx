@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { Brochure, PageContent } from '@/lib/brochure/schema';
 import { hasWhyPage, TripGroup, TripSpread, paginateContents } from '@/lib/brochure/spreads';
+import { highlightIcon } from '@/lib/brochure/highlight-icons';
 import { sizedImage } from '@/lib/brochure/image-size';
 import { introSummary } from '@/lib/brochure/spreads';
 import type { EditorialSlide } from '@/lib/brochure/editorial';
@@ -137,6 +138,16 @@ export default function BrochureSlides({
       className={`${pageClass(slides.length)} sl-cover${brochure.design.coverTheme === 'light' ? ' sl-cover--light' : ''}`}
       hidden={!visible(0)}
     >
+      {/* Our mark first, so on paper it sits at the head of the page. */}
+      <div className="sl-mark">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <a className="sl-brand" href="https://www.premiumchoiceschooltrips.com" target="_blank" rel="noopener noreferrer">
+          <img
+          src={brochure.design.coverTheme === 'light' ? '/images/logo-navy.png' : '/images/logo-white.png'}
+          alt="Premium Choice School Trips"
+        />
+        </a>
+      </div>
       <div className="sl-body">
         <p className="sl-eyebrow">{cover.eyebrow ?? 'Premium Choice School Trips'}</p>
         <h1>{brochure.title}</h1>
@@ -149,16 +160,9 @@ export default function BrochureSlides({
         )}
         {brochure.clientName && <p className="sl-prepared">Prepared for {brochure.clientName}</p>}
       </div>
-      <div className="sl-mark">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={brochure.design.coverTheme === 'light' ? '/images/logo-navy.png' : '/images/logo-white.png'}
-          alt="Premium Choice School Trips"
-        />
-        {brochure.publishedAt && (
-          <span className="sl-edition">{new Date(brochure.publishedAt).getFullYear()} edition</span>
-        )}
-      </div>
+      {brochure.publishedAt && (
+        <span className="sl-edition sl-cover-edition">{new Date(brochure.publishedAt).getFullYear()} edition</span>
+      )}
     </article>,
   );
 
@@ -173,7 +177,9 @@ export default function BrochureSlides({
               {contentsPages.length > 1 ? ` · ${n + 1} of ${contentsPages.length}` : ''}
             </p>
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/images/logo-navy.png" alt="Premium Choice School Trips" />
+            <a className="sl-brand" href="https://www.premiumchoiceschooltrips.com" target="_blank" rel="noopener noreferrer">
+              <img src="/images/logo-navy.png" alt="Premium Choice School Trips" />
+            </a>
           </div>
           <h2>{n === 0 ? 'The trips in this collection' : 'The trips in this collection, continued'}</h2>
 
@@ -238,7 +244,9 @@ export default function BrochureSlides({
                 {s.trip?.title ?? s.content.headline ?? 'Trip'} · Day by day
               </p>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/logo-navy.png" alt="Premium Choice School Trips" />
+              <a className="sl-brand" href="https://www.premiumchoiceschooltrips.com" target="_blank" rel="noopener noreferrer">
+                <img src="/images/logo-navy.png" alt="Premium Choice School Trips" />
+              </a>
             </div>
             <div className={`sl-days${days.length > 8 ? ' sl-days-dense' : ''}`}>
               {days.map((d) => (
@@ -308,13 +316,23 @@ export default function BrochureSlides({
 
   return (
     <div
-      className={`sl-deck${clientLogo ? ' sl-deck--client' : ''}`}
+      className={`sl-deck${clientLogo ? ' sl-deck--client' : ''}${
+        brochure.design.documentTheme === 'dark' ? ' sl-deck--dark' : ''
+      }`}
       style={clientLogo ? ({ '--client-logo': `url("${clientLogo}")` } as React.CSSProperties) : undefined}
     >
       <div className="sl-bar">
-        <button type="button" onClick={() => go(index - 1)} disabled={index === 0}>
-          ← Back
-        </button>
+        <span style={{ display: 'flex', gap: 10 }}>
+          <button type="button" onClick={() => go(index - 1)} disabled={index === 0}>
+            ← Back
+          </button>
+          {/* A reader deep in the trips should never press Back twenty times. */}
+          {hasContents && index > contentsIndex && (
+            <button type="button" className="sl-back" onClick={() => go(contentsIndex)}>
+              Contents
+            </button>
+          )}
+        </span>
         <span className="sl-count" aria-hidden="true">
           {index + 1} / {total}
         </span>
@@ -328,16 +346,7 @@ export default function BrochureSlides({
         </span>
       </div>
 
-      <div className="sl-stage">
-        {slides}
-        {/* One button, on every page after the contents: a reader deep in the
-            trips should never have to press Back twenty times. */}
-        {hasContents && index > contentsIndex && (
-          <button type="button" className="sl-back" onClick={() => go(contentsIndex)}>
-            Contents
-          </button>
-        )}
-      </div>
+      <div className="sl-stage">{slides}</div>
 
       {/* Screen readers are told where they are; the count above is decorative. */}
       <p ref={liveRef} aria-live="polite" className="sr-only" style={SR_ONLY}>
@@ -369,16 +378,24 @@ function TripIntro({ spread }: { spread: TripSpread }) {
   const hero = trip?.heroImage ?? spread.images[0] ?? null;
   // Two more beneath the hero, and never the hero again.
   const rest = spread.images.filter((u) => u !== hero).slice(0, 2);
-  const highlights = (c.highlights ?? []).length
-    ? (c.highlights ?? [])
-    : (trip?.highlights ?? []).map((h) => ({ name: h.name, note: h.note, conditional: '' }));
+  // Six where the trip has six: the composed copy first, then anything from
+  // the trip's own list it did not mention. Never padded to reach a number —
+  // a trip with four real highlights shows four.
+  const composed = c.highlights ?? [];
+  const named = new Set(composed.map((h) => h.name.trim().toLowerCase()));
+  const own = (trip?.highlights ?? [])
+    .filter((h) => h.name && !named.has(h.name.trim().toLowerCase()))
+    .map((h) => ({ name: h.name, note: h.note, conditional: '' }));
+  const highlights = [...composed, ...own].slice(0, 6);
 
   return (
     <>
       <div className="sl-masthead">
         <p className="sl-eyebrow">{c.eyebrow ?? trip?.subject ?? 'Trip'}</p>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/images/logo-navy.png" alt="Premium Choice School Trips" />
+        <a className="sl-brand" href="https://www.premiumchoiceschooltrips.com" target="_blank" rel="noopener noreferrer">
+          <img src="/images/logo-navy.png" alt="Premium Choice School Trips" />
+        </a>
       </div>
 
       <div className="sl-intro">
@@ -408,20 +425,27 @@ function TripIntro({ spread }: { spread: TripSpread }) {
             <p className="sl-lede">{introSummary(trip?.overview ?? [])}</p>
           )}
 
-          {/* Three, measured: a fourth overflows the slide at any size worth
-              reading. An introduction is a summary — the day-by-day page that
-              follows carries the trip in full. */}
+          {/* Six, in two columns: one column of six ran past the foot of the
+              slide. Each takes an icon read from its own words. */}
           {highlights.length > 0 && (
-            <ul className="sl-hl">
-              {highlights.slice(0, 3).map((h, i) => (
-                <li key={i}>
-                  <strong>{h.name}</strong>
-                  {h.note && <span>{h.note}</span>}
-                  {/* Kept, not tidied away: "subject to availability" is the
-                      difference between a promise and an intention. */}
-                  {h.conditional && <em>{h.conditional}</em>}
-                </li>
-              ))}
+            <ul className={`sl-hl${highlights.length > 3 ? ' sl-hl-two' : ''}`}>
+              {highlights.map((h, i) => {
+                const icon = highlightIcon(h.name, h.note);
+                return (
+                  <li key={i}>
+                    <svg className="sl-hl-icon" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d={icon.path} />
+                    </svg>
+                    <div>
+                      <strong>{h.name}</strong>
+                      {h.note && <span>{h.note}</span>}
+                      {/* Kept, not tidied away: "subject to availability" is the
+                          difference between a promise and an intention. */}
+                      {h.conditional && <em>{h.conditional}</em>}
+                    </div>
+                  </li>
+                );
+              })}
             </ul>
           )}
 
@@ -472,7 +496,9 @@ function TripWhy({ spread }: { spread: TripSpread }) {
           {trip?.title ?? c.headline ?? 'Trip'} · Why {country}
         </p>
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/images/logo-white.png" alt="Premium Choice School Trips" />
+        <a className="sl-brand" href="https://www.premiumchoiceschooltrips.com" target="_blank" rel="noopener noreferrer">
+          <img src="/images/logo-white.png" alt="Premium Choice School Trips" />
+        </a>
       </div>
 
       <div className="sl-why">

@@ -141,7 +141,8 @@
 .sl-closing a{color:var(--teal);text-decoration:none}
 .sl-cover .sl-body{
   display:flex;flex-direction:column;justify-content:center;
-  padding-bottom:11cqw; /* room for the mark below */
+  /* The mark is at the top right now; the foot keeps room for the edition. */
+  padding-top:9cqw;padding-bottom:6cqw;
 }
 .sl-cover .sl-eyebrow{color:var(--teal)}
 .sl-cover h1{color:var(--white);max-width:17ch}
@@ -156,12 +157,14 @@
   margin-top:2cqw;font-size:1.05cqw;letter-spacing:.12em;text-transform:uppercase;
   color:rgba(255,255,255,.72);border-left:2px solid var(--teal);padding-left:1cqw;
 }
+/* Our mark heads the cover, at twice the size it closed it at. */
 .sl-cover .sl-mark{
-  position:absolute;left:0;right:0;bottom:0;padding:0 5cqw 4cqw;
-  display:flex;align-items:flex-end;justify-content:space-between;gap:2cqw;
+  position:absolute;top:4cqw;right:5cqw;left:auto;bottom:auto;padding:0;
+  display:flex;justify-content:flex-end;
 }
-.sl-cover .sl-mark img{height:4.2cqw;width:auto;opacity:.95}
+.sl-cover .sl-mark img{height:8.4cqw;width:auto;opacity:.95}
 .sl-cover .sl-edition{font-size:.95cqw;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.sl-cover-edition{position:absolute;left:5cqw;bottom:4cqw}
 /* The light cover, chosen per brochure: cream ground, navy type, the navy mark. */
 .sl-cover--light{background:var(--cream);color:var(--navy)}
 .sl-cover--light .sl-eyebrow{color:var(--teal-ink)}
@@ -169,41 +172,72 @@
 .sl-cover--light .sl-sub{color:var(--muted)}
 .sl-cover--light .sl-prepared{color:var(--muted);border-color:var(--teal-ink)}
 .sl-cover--light .sl-edition{color:var(--muted)}
-/* The school's mark at the foot of every page but the cover, drawn from the
-   deck's --client-logo so one rule serves every slide. */
-.sl-deck--client .sl-page:not(.sl-cover)::before{
-  content:"";position:absolute;right:2.2cqw;bottom:1.5cqw;
-  width:13cqw;height:6.4cqw;box-sizing:border-box;padding:.5cqw .7cqw;
-  /* The card is white and the mark sits inside it: a school's own logo is
-     often dark, and half the deck's pages are navy. */
-  background:#fff var(--client-logo) no-repeat center / contain;
-  background-origin:content-box;border-radius:5px;
-  box-shadow:0 2px 12px rgba(22,36,46,.14);
+/* The school's mark sits in the masthead beside ours, at the head of every
+   page but the cover. Drawn from the deck's --client-logo, so one rule
+   serves every slide and no page markup has to know about it. */
+.sl-deck--client .sl-page:not(.sl-cover) .sl-masthead::after{
+  content:"";flex:0 0 auto;width:11cqw;height:4.4cqw;
+  background:var(--client-logo) no-repeat right center / contain;
   -webkit-print-color-adjust:exact;print-color-adjust:exact;
-  pointer-events:none;
+}
+/* On a navy page a school's own mark — usually dark — would disappear, so it
+   is drawn as white writing rather than boxed in a white card. */
+.sl-deck--dark .sl-page:not(.sl-cover) .sl-masthead::after,
+.sl-why-page .sl-masthead::after{
+  filter:grayscale(1) invert(1);
+  /* Inverting a white ground gives black; screen drops it, leaving the mark. */
+  mix-blend-mode:screen;
 }
 
-/* A way back to the contents from anywhere in the deck. Screen only — on
-   paper the reader has the page numbers and the contents page itself. */
-.sl-back{
-  position:absolute;left:16px;bottom:14px;z-index:4;
-  border:0;border-radius:999px;background:var(--teal);color:#fff;
-  font-family:var(--body);font-size:12.5px;font-weight:700;letter-spacing:.02em;
-  padding:8px 16px;cursor:pointer;opacity:.92;
-  box-shadow:0 4px 14px rgba(22,36,46,.22);
-  transition:opacity .15s,transform .15s;
+/* A way back to the contents, beside Back in the deck's own controls rather
+   than laid over the page. Screen only — on paper the reader has the page
+   numbers and the contents page itself. */
+.sl-bar .sl-back{
+  border:0;background:var(--teal);color:#fff;font-weight:700;
+  padding:7px 15px;opacity:.95;transition:background .15s,opacity .15s;
 }
-.sl-back:hover{opacity:1;transform:translateY(-1px)}
-.sl-back::before{content:"↑ ";font-weight:400}
+.sl-bar .sl-back:hover{background:var(--teal-ink);opacity:1}
+.sl-bar .sl-back::before{content:"↑ ";font-weight:400}
 @media print{.sl-back{display:none!important}}
+
+/* ---------- The whole document in dark ----------
+   Every page draws its colours from the tokens above, so this is a change of
+   palette rather than a second set of rules to keep in step with the first.
+   The cover keeps its own theme: a dark document may still want a pale cover. */
+.sl-deck--dark .sl-page:not(.sl-cover){
+  --white:#16242E;
+  --ink:#FFFFFF;
+  --muted:rgba(255,255,255,.74);
+  --line:rgba(255,255,255,.20);
+  --line-light:rgba(255,255,255,.16);
+  --cream:rgba(255,255,255,.07);
+  --ice:rgba(255,255,255,.10);
+  /* The deep teal of the labels is unreadable on navy; the bright one is not. */
+  --teal-ink:#19BAAB;
+  color:#fff;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact;
+}
+/* Three places name the navy directly, and the navy is now the page itself. */
+.sl-deck--dark .sl-page:not(.sl-cover) .sl-flight{background:rgba(255,255,255,.09)}
+.sl-deck--dark .sl-page:not(.sl-cover) .sl-incl li::before{background:var(--teal)}
+.sl-deck--dark .sl-page:not(.sl-cover) .ed-card{background:rgba(255,255,255,.06)}
+/* Our mark is drawn for a pale page; on a dark one it is the white cut. */
+.sl-deck--dark .sl-page:not(.sl-cover) .sl-masthead img{content:url('/images/logo-white.png')}
 
 /* ---------- A masthead, for pages that are not the cover ---------- */
 .sl-masthead{
   display:flex;align-items:center;justify-content:space-between;gap:2cqw;
-  padding-bottom:1.2cqw;margin-bottom:1.5cqw;border-bottom:1px solid var(--line);
+  /* Tighter than it was: the marks either side of it are larger now, and the
+     busiest day page has only a few millimetres to give. */
+  padding-bottom:.8cqw;margin-bottom:1.1cqw;border-bottom:1px solid var(--line);
 }
-.sl-masthead img{height:3.1cqw;width:auto}
-.sl-masthead .sl-eyebrow{margin:0}
+/* Half again as large: it is the only thing on the page that says who we are. */
+.sl-masthead img{height:4.4cqw;width:auto}
+/* Our mark links to the site — in the PDF too, where the link stays live.
+   The anchor must sit as tightly as the image it wraps. */
+.sl-brand{display:inline-flex;flex:0 0 auto;line-height:0;text-decoration:none}
+/* The eyebrow takes the slack, so the two marks sit together at the right. */
+.sl-masthead .sl-eyebrow{margin:0 auto 0 0}
 
 /* ---------- Print ----------
    A4 landscape, one slide to a page.
@@ -268,8 +302,6 @@
   }
   .sl-cover::after,.sl-closing::after{color:rgba(255,255,255,.5)}
   /* With the school's mark bottom right, the page number moves to the left. */
-  .sl-deck--client .sl-page:not(.sl-cover)::before{right:13mm;bottom:4mm;width:46mm;height:21mm;padding:1.5mm 2mm;border-radius:1.5mm;box-shadow:none}
-  .sl-deck--client .sl-page::after{right:auto;left:13mm}
 
   .sl-cover,.sl-closing,.sl-chips span,.sl-toc .sl-thumb{
     -webkit-print-color-adjust:exact;print-color-adjust:exact;
@@ -291,7 +323,8 @@
   }
   /* The mark is a sibling of the body, not inside it, so it does not inherit
      the body's padding and would otherwise sit flush against the paper. */
-  .sl-cover .sl-mark{position:static;padding:0 13mm 11mm;margin-top:5mm}
+  .sl-cover .sl-mark{position:absolute;top:11mm;right:13mm;left:auto;bottom:auto;padding:0;margin:0}
+  .sl-cover-edition{position:absolute;left:13mm;bottom:11mm}
   /* A cover is not numbered, and the number was landing on the edition line. */
   .sl-cover::after{content:none}
 

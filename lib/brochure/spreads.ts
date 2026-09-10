@@ -146,7 +146,7 @@ export function hasWhyPage(c: PageContent): boolean {
  */
 const ENTRY_COST = 91;
 const GROUP_COST = 49;
-export const CONTENTS_CAPACITY = 1090;
+export const CONTENTS_CAPACITY = 1035;
 
 /**
  * Break the contents into pages that each fit one sheet.

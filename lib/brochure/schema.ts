@@ -124,6 +124,8 @@ export type BrochurePage = {
 
 export type BrochureDesign = {
   coverTheme?: 'light' | 'dark';
+  /** Every page but the cover: navy throughout, or white. Defaults to light. */
+  documentTheme?: 'light' | 'dark';
   showPricing?: boolean;
   /** The "About Premium Choice" introduction. On unless turned off. */
   showIntro?: boolean;

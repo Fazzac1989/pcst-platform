@@ -178,7 +178,9 @@ export default function ProposalSlides({
   const schoolLogo = img(c.schoolLogoImageId);
   const Mark = () => (
     /* eslint-disable-next-line @next/next/no-img-element */
-    <img src="/images/logo-navy.png" alt="Premium Choice School Trips" />
+    <a className="sl-brand" href="https://www.premiumchoiceschooltrips.com" target="_blank" rel="noopener noreferrer">
+      <img src="/images/logo-navy.png" alt="Premium Choice School Trips" />
+    </a>
   );
 
   /* ── the slides ── */
@@ -391,7 +393,9 @@ export default function ProposalSlides({
             <div className="sl-masthead">
               <p className="sl-eyebrow" style={{ color: 'var(--teal)' }}>Flights</p>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/logo-white.png" alt="Premium Choice School Trips" />
+              <a className="sl-brand" href="https://www.premiumchoiceschooltrips.com" target="_blank" rel="noopener noreferrer">
+                <img src="/images/logo-white.png" alt="Premium Choice School Trips" />
+              </a>
             </div>
             <h2 style={{ color: '#fff' }}>Getting there and back</h2>
             <div className="pr-legs">
@@ -509,7 +513,9 @@ export default function ProposalSlides({
             <div className="sl-masthead">
               <p className="sl-eyebrow" style={{ color: 'var(--teal)' }}>Next steps</p>
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/images/logo-white.png" alt="Premium Choice School Trips" />
+              <a className="sl-brand" href="https://www.premiumchoiceschooltrips.com" target="_blank" rel="noopener noreferrer">
+                <img src="/images/logo-white.png" alt="Premium Choice School Trips" />
+              </a>
             </div>
             <h2 style={{ color: '#fff' }}>How to confirm</h2>
             <div className="pr-steps">
@@ -545,9 +551,16 @@ export default function ProposalSlides({
     >
       <div className="sl-bar">
         {mode === 'deck' ? (
+          <span style={{ display: 'flex', gap: 10 }}>
           <button type="button" onClick={() => go(index - 1)} disabled={index === 0}>
             ← Back
           </button>
+          {index > 1 && (
+            <button type="button" className="sl-back" onClick={() => go(1)}>
+              Contents
+            </button>
+          )}
+        </span>
         ) : (
           <span className="sl-count">{c.title || 'Your proposal'}</span>
         )}
@@ -569,11 +582,6 @@ export default function ProposalSlides({
       </div>
 
       <div className="sl-stage">
-        {index > 1 && (
-          <button type="button" className="sl-back" onClick={() => go(1)}>
-            Contents
-          </button>
-        )}
         {plan.map((s, i) => (
           <article
             key={s.key}
@@ -586,7 +594,9 @@ export default function ProposalSlides({
             {s.key === 'cover' && (
               <div className="sl-mark">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="/images/logo-white.png" alt="Premium Choice School Trips" />
+                <a className="sl-brand" href="https://www.premiumchoiceschooltrips.com" target="_blank" rel="noopener noreferrer">
+                  <img src="/images/logo-white.png" alt="Premium Choice School Trips" />
+                </a>
                 {m.travelStart && (
                   <span className="sl-edition">{shortRange(m.travelStart, m.travelEnd)}</span>
                 )}
