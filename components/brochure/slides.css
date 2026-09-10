@@ -6,7 +6,11 @@
    would run off the bottom of it. */
 .sl-toc-cols{columns:2;column-gap:4cqw;margin-top:1.6cqw}
 .sl-toc{list-style:none;margin:0;padding:0}
-.sl-group{break-inside:avoid;margin-bottom:1.2cqw}
+/* A group used to be one country, which always fitted a column. A continent
+   does not — Europe runs to fifteen trips — so a group flows across the two
+   columns and its heading stays with the first of its entries. */
+.sl-group{margin-bottom:1.2cqw}
+.sl-group-label{break-after:avoid}
 .sl-group-label{
   font-size:.9cqw;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
   color:var(--teal-ink);margin:0 0 .5cqw;padding-bottom:.4cqw;border-bottom:1px solid var(--line);

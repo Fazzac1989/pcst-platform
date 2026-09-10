@@ -176,16 +176,16 @@ export function hasWhyPage(c: PageContent): boolean {
 /**
  * What the contents costs, in printed pixels at A4 landscape.
  *
- * Measured on a real 37-trip brochure rather than guessed: an entry with its
- * thumbnail runs to 91px, a country heading to 26px with 9px beneath it, and
- * each group leaves 14px after it. The columns have (210mm − the masthead and
- * heading above them − the body's bottom padding) to fill, twice over, which
- * came to 1167px; the capacity below keeps a little back, because a long trip
- * title wraps to a second line.
+ * Measured in the print layout on a real 37-trip brochure rather than guessed:
+ * the thumbnail fixes an entry at 81.2px whatever its title does, and a group
+ * heading with the margin under its section costs 48.8px. The columns have
+ * (210mm − the masthead and heading above them − the body's bottom padding) to
+ * fill, twice over, which comes to 1155px; the capacity below keeps a little of
+ * that back.
  */
-const ENTRY_COST = 91;
+const ENTRY_COST = 82;
 const GROUP_COST = 49;
-export const CONTENTS_CAPACITY = 1035;
+export const CONTENTS_CAPACITY = 1120;
 
 /**
  * Break the contents into pages that each fit one sheet.
