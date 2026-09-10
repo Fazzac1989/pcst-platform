@@ -134,7 +134,9 @@
 /* A closing slide — flights, next steps, the brochure's last page — is navy
    like the cover. These lived in the brochure's own stylesheet, so the
    proposal's flights slide was white text on white, on screen and in print. */
-.sl-closing{background:var(--navy);color:var(--white)}
+/* Literal white, not var(--white): the dark theme redefines that token to the
+   page ground, and this page is navy in either theme. */
+.sl-closing{background:var(--navy);color:#fff}
 .sl-closing .sl-body{display:flex;flex-direction:column;justify-content:center}
 .sl-closing .sl-eyebrow{color:var(--teal)}
 .sl-closing .sl-lede{color:rgba(255,255,255,.76)}

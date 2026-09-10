@@ -182,23 +182,25 @@
 
 /* The Why page is navy, like the cover: type in white, labels in teal,
    the cards a lighter navy. */
-.sl-why-page{background:var(--navy);color:var(--white)}
+/* Navy in either theme, so the type here is literally white — var(--white) is
+   the page-ground token, which the dark theme flips to navy. */
+.sl-why-page{background:var(--navy);color:#fff}
 .sl-why-page .sl-eyebrow{color:var(--teal)}
 .sl-why-page .sl-masthead{border-bottom-color:rgba(255,255,255,.18)}
-.sl-why-page h2{color:var(--white)}
+.sl-why-page h2{color:#fff}
 .sl-why-page .sl-lede{color:rgba(255,255,255,.8)}
 .sl-why-page .sl-why-label{color:var(--teal)}
 .sl-why-page .sl-why-view{border-left-color:var(--teal)}
-.sl-why-page .sl-why-view p:last-child{color:var(--white)}
+.sl-why-page .sl-why-view p:last-child{color:#fff}
 .sl-why-page .sl-why-fact{background:rgba(255,255,255,.08)}
 .sl-why-page .sl-why-fact span{color:rgba(255,255,255,.6)}
-.sl-why-page .sl-why-fact b,.sl-why-page .sl-why-bands dd{color:var(--white)}
+.sl-why-page .sl-why-fact b,.sl-why-page .sl-why-bands dd{color:#fff}
 .sl-why-page .sl-why-bands dt,.sl-why-page .sl-why-fact small{color:rgba(255,255,255,.65)}
 .sl-why-page .sl-why-bands div{border-top-color:rgba(255,255,255,.18)}
 .sl-why-page .sl-why-values{border-top-color:rgba(255,255,255,.18)}
 .sl-why-page .sl-why-values li{border-top-color:var(--teal)}
 .sl-why-page .sl-why-values li::before{color:var(--teal)}
-.sl-why-page .sl-why-values b{color:var(--white)}
+.sl-why-page .sl-why-values b{color:#fff}
 .sl-why-page .sl-why-values span{color:rgba(255,255,255,.72)}
 @media print{
   .sl-why-page{-webkit-print-color-adjust:exact;print-color-adjust:exact}
