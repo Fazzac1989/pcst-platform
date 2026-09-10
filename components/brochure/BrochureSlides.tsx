@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { Brochure, PageContent } from '@/lib/brochure/schema';
-import { hasWhyPage, TripGroup, TripSpread } from '@/lib/brochure/spreads';
+import { hasWhyPage, TripGroup, TripSpread, paginateContents } from '@/lib/brochure/spreads';
 import { sizedImage } from '@/lib/brochure/image-size';
 import { introSummary } from '@/lib/brochure/spreads';
 import type { EditorialSlide } from '@/lib/brochure/editorial';
@@ -54,6 +54,8 @@ export default function BrochureSlides({
   // about us + closing. The trips come first: they are what the reader opened
   // the brochure for, and the standard pages read as an appendix.
   const hasContents = spreads.length > 0;
+  // The contents runs to as many pages as the collection needs.
+  const contentsPages = hasContents ? paginateContents(groups) : [];
   // The school's mark: on the cover as a card, and at the foot of every other page.
   // Uploading a logo is the decision to show it; no separate switch to forget.
   const clientLogo = brochure.clientLogo;
@@ -66,8 +68,8 @@ export default function BrochureSlides({
   );
   const tripSlideTotal = slidesPerTrip.reduce((a, b) => a + b, 0);
   const total =
-    1 + (hasContents ? 1 : 0) + tripSlideTotal + editorial.length + (hasClosing ? 1 : 0);
-  const firstTripIndex = hasContents ? 2 : 1;
+    1 + contentsPages.length + tripSlideTotal + editorial.length + (hasClosing ? 1 : 0);
+  const firstTripIndex = 1 + contentsPages.length;
   // Where the contents page sits, so every page after it can offer a way back.
   const contentsIndex = hasContents ? 1 : -1;
 
@@ -160,21 +162,24 @@ export default function BrochureSlides({
     </article>,
   );
 
-  if (hasContents) {
+  contentsPages.forEach((page, n) => {
     const i = slides.length;
     slides.push(
-      <article key="contents" className={pageClass(i)} hidden={!visible(i)}>
+      <article key={`contents-${n}`} className={pageClass(i)} hidden={!visible(i)}>
         <div className="sl-body">
           <div className="sl-masthead">
-            <p className="sl-eyebrow">What is inside</p>
+            <p className="sl-eyebrow">
+              What is inside
+              {contentsPages.length > 1 ? ` · ${n + 1} of ${contentsPages.length}` : ''}
+            </p>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/images/logo-navy.png" alt="Premium Choice School Trips" />
           </div>
-          <h2>The trips in this collection</h2>
+          <h2>{n === 0 ? 'The trips in this collection' : 'The trips in this collection, continued'}</h2>
 
           <div className="sl-toc-cols">
-            {groups.map((g) => (
-              <section className="sl-group" key={g.label || 'all'}>
+            {page.map((g, k) => (
+              <section className="sl-group" key={`${g.label || 'all'}-${k}`}>
                 {g.label && <p className="sl-group-label">{g.label}</p>}
                 <ul className="sl-toc">
                   {g.spreads.map((s) => {
@@ -210,7 +215,7 @@ export default function BrochureSlides({
         </div>
       </article>,
     );
-  }
+  });
 
   for (const s of spreads) {
     const i = slides.length;

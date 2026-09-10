@@ -81,7 +81,13 @@
 .sl-incl ul.sl-incl-many{columns:3;column-gap:1.4cqw}
 .sl-incl ul.sl-incl-many li{font-size:.8cqw;line-height:1.3;margin-bottom:.18cqw}
 .sl-days-dense + .sl-incl{margin-top:.6cqw;padding-top:.5cqw}
-@media print{.sl-incl{display:grid!important}}
+@media print{
+  .sl-incl{display:grid!important}
+  /* The included lists are the last thing on a busy day page. A hair tighter
+     on paper keeps an eight-day trip with sixteen inclusions on one sheet. */
+  .sl-incl{margin-top:.6cqw;padding-top:.5cqw}
+  .sl-incl li{margin-bottom:.1cqw;line-height:1.26}
+}
 .sl-days-dense{columns:4}
 .sl-days-dense .sl-day{margin-bottom:1.1cqw;padding-bottom:.9cqw}
 .sl-days-dense h4{font-size:1.25cqw}

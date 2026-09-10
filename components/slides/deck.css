@@ -173,7 +173,7 @@
    deck's --client-logo so one rule serves every slide. */
 .sl-deck--client .sl-page:not(.sl-cover)::before{
   content:"";position:absolute;right:2.2cqw;bottom:1.5cqw;
-  width:13cqw;height:5cqw;box-sizing:border-box;padding:.5cqw .7cqw;
+  width:13cqw;height:6.4cqw;box-sizing:border-box;padding:.5cqw .7cqw;
   /* The card is white and the mark sits inside it: a school's own logo is
      often dark, and half the deck's pages are navy. */
   background:#fff var(--client-logo) no-repeat center / contain;
@@ -268,7 +268,7 @@
   }
   .sl-cover::after,.sl-closing::after{color:rgba(255,255,255,.5)}
   /* With the school's mark bottom right, the page number moves to the left. */
-  .sl-deck--client .sl-page:not(.sl-cover)::before{right:13mm;bottom:5mm;width:46mm;height:16mm;padding:1.5mm 2mm;border-radius:1.5mm;box-shadow:none}
+  .sl-deck--client .sl-page:not(.sl-cover)::before{right:13mm;bottom:4mm;width:46mm;height:21mm;padding:1.5mm 2mm;border-radius:1.5mm;box-shadow:none}
   .sl-deck--client .sl-page::after{right:auto;left:13mm}
 
   .sl-cover,.sl-closing,.sl-chips span,.sl-toc .sl-thumb{
@@ -296,7 +296,9 @@
   .sl-cover::after{content:none}
 
   .sl-intro{display:grid!important}
-  .sl-toc{columns:2}
+  /* The contents used to squeeze itself into nested columns to fit one
+     sheet. It runs to as many sheets as it needs now, so a group's list is
+     one column here as it is on screen. */
   .sl-days{columns:3}
   .sl-toc button{cursor:default}
 }

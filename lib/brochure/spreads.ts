@@ -131,3 +131,69 @@ export function introSummary(paragraphs: string[], maxChars = 380): string {
 export function hasWhyPage(c: PageContent): boolean {
   return Boolean(c.whyCountry?.trim() || c.pctView?.trim() || (c.educationalValues ?? []).length > 0);
 }
+
+/* ─────────────────────────── the contents page ─────────────────────────── */
+
+/**
+ * What the contents costs, in printed pixels at A4 landscape.
+ *
+ * Measured on a real 37-trip brochure rather than guessed: an entry with its
+ * thumbnail runs to 91px, a country heading to 26px with 9px beneath it, and
+ * each group leaves 14px after it. The columns have (210mm − the masthead and
+ * heading above them − the body's bottom padding) to fill, twice over, which
+ * came to 1167px; the capacity below keeps a little back, because a long trip
+ * title wraps to a second line.
+ */
+const ENTRY_COST = 91;
+const GROUP_COST = 49;
+export const CONTENTS_CAPACITY = 1090;
+
+/**
+ * Break the contents into pages that each fit one sheet.
+ *
+ * A thirty-seven trip collection listed every trip on a single contents page,
+ * which printed as three sheets with the page numbers counting one — so every
+ * number after it was wrong. Groups are kept whole where they fit, and a
+ * group too long for what is left is split, repeating its heading so a reader
+ * arriving mid-list still knows which country they are in.
+ */
+export function paginateContents(groups: TripGroup[], capacity = CONTENTS_CAPACITY): TripGroup[][] {
+  const pages: TripGroup[][] = [];
+  let page: TripGroup[] = [];
+  let used = 0;
+
+  for (const group of groups) {
+    let rest = group.spreads;
+    while (rest.length) {
+      const overhead = group.label ? GROUP_COST : 0;
+      const room = capacity - used - overhead;
+      let take = Math.max(0, Math.floor(room / ENTRY_COST));
+
+      if (take === 0) {
+        if (page.length) {
+          // Try again with a fresh page.
+          pages.push(page);
+          page = [];
+          used = 0;
+          continue;
+        }
+        // An empty page that still cannot hold one entry would loop for ever.
+        take = 1;
+      }
+
+      const n = Math.min(take, rest.length);
+      page.push({ label: group.label, spreads: rest.slice(0, n) });
+      used += overhead + n * ENTRY_COST;
+      rest = rest.slice(n);
+
+      if (rest.length) {
+        pages.push(page);
+        page = [];
+        used = 0;
+      }
+    }
+  }
+
+  if (page.length) pages.push(page);
+  return pages.length ? pages : [[]];
+}
