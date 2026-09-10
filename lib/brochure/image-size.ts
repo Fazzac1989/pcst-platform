@@ -8,7 +8,7 @@
  * Chromium's PDF export re-encodes every image losslessly rather than
  * carrying the JPEG through, so the file size follows pixel count almost
  * exactly: thirty-two photographs came to 43MB from 4.8MB of source. These
- * widths were measured against real renders, not guessed.
+ * sizes were measured against real renders, not guessed.
  *
  * Storage serves resized copies from a `render/image` path instead of
  * `object`. Anything that is not one of our public storage URLs is returned
@@ -21,13 +21,24 @@ const RENDER_IMAGE = '/storage/v1/render/image/public/';
 
 export type ImageRole = 'cover' | 'hero' | 'thumb' | 'micro';
 
-/** Widths chosen for print: the largest each role occupies on an A4 page, doubled. */
-const WIDTHS: Record<ImageRole, number> = {
-  cover: 1000,
-  hero: 620,
-  thumb: 420,
+/**
+ * The box each role fills on an A4 page, doubled — a height as well as a
+ * width.
+ *
+ * Width alone was not enough. A tall source photograph came back as tall as
+ * it liked: contents thumbnails 15mm across arrived at 220x1450, and a
+ * thirty-seven trip brochure carried 56 megapixels into a 76MB PDF, which
+ * Storage refused to keep. Every one of these images is displayed cropped to
+ * a fixed box, so cropping here shows exactly what the page already showed.
+ */
+const BOXES: Record<ImageRole, { width: number; height: number }> = {
+  /** The full-bleed cover, 16:9. */
+  cover: { width: 1000, height: 580 },
+  /** A trip's picture: 16:9 or 4:3 depending on the page, so 3:2 covers both. */
+  hero: { width: 620, height: 420 },
+  thumb: { width: 420, height: 300 },
   /** A contents-page thumbnail, roughly 15mm across. */
-  micro: 220,
+  micro: { width: 220, height: 150 },
 };
 
 export function sizedImage(url: string | null | undefined, role: ImageRole): string | null {
@@ -36,5 +47,7 @@ export function sizedImage(url: string | null | undefined, role: ImageRole): str
   // Already transformed, or carrying its own parameters — leave it alone.
   if (url.includes(RENDER_IMAGE) || url.includes('?')) return url;
 
-  return `${url.replace(PUBLIC_OBJECT, RENDER_IMAGE)}?width=${WIDTHS[role]}&quality=72`;
+  const { width, height } = BOXES[role];
+  const base = url.replace(PUBLIC_OBJECT, RENDER_IMAGE);
+  return `${base}?width=${width}&height=${height}&resize=cover&quality=72`;
 }

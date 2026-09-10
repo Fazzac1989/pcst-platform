@@ -30,6 +30,27 @@ describe('sizedImage', () => {
     expect(hero).toBeGreaterThan(thumb);
   });
 
+  it('bounds the height as well as the width', () => {
+    // Width alone let a tall photograph come back 220x1450 for a 15mm
+    // thumbnail, which is how a brochure PDF reached 76MB.
+    for (const role of ['cover', 'hero', 'thumb', 'micro'] as const) {
+      const out = sizedImage(OBJECT, role)!;
+      const height = Number(out.match(/height=(\d+)/)![1]);
+      const width = Number(out.match(/width=(\d+)/)![1]);
+      expect(height).toBeGreaterThan(0);
+      // Landscape boxes: nothing should come back taller than it is wide.
+      expect(height).toBeLessThan(width);
+      // Cropped, not squashed — the page crops to the same box anyway.
+      expect(out).toContain('resize=cover');
+    }
+  });
+
+  it('keeps a thumbnail small enough to be a thumbnail', () => {
+    const out = sizedImage(OBJECT, 'micro')!;
+    const px = Number(out.match(/width=(\d+)/)![1]) * Number(out.match(/height=(\d+)/)![1]);
+    expect(px).toBeLessThan(60_000);
+  });
+
   it('keeps the path, so it still points at the same file', () => {
     expect(sizedImage(OBJECT, 'hero')).toContain('trip-images/legacy/japan/hero.jpg');
   });
