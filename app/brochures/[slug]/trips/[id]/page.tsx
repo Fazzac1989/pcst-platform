@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { loadBrochure } from '@/lib/brochure/data';
 import { gatherTrips, orderByContinent } from '@/lib/brochure/spreads';
-import { schoolName, toCollectionTrip } from '@/lib/brochure/collection';
+import { preparedFor, schoolName, toCollectionTrip } from '@/lib/brochure/collection';
 import { contactHref } from '@/lib/brochure/collection-contact';
 import TripDetail from '@/components/collection/TripDetail';
 import PasswordGate from '@/components/brochure/PasswordGate';
@@ -74,6 +74,7 @@ export default async function BrochureTripPage({ params, searchParams }: Props) 
       schoolName={school}
       backQuery={back.toString()}
       supportHref="/for-teachers"
+      preparedFor={preparedFor(brochure)}
       contactHref={contactHref({
         to: brochure.design.contactEmail,
         schoolName: school,

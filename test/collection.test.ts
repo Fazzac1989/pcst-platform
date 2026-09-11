@@ -1,6 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import {
+  clientIsPerson,
   groupInclusions,
+  preparedFor,
+  schoolName,
   shortAge,
   suitsBand,
   travelConflict,
@@ -131,5 +134,39 @@ describe('groupInclusions', () => {
 
   it('returns nothing for nothing', () => {
     expect(groupInclusions([])).toEqual([]);
+  });
+});
+
+describe('schoolName and preparedFor', () => {
+  const b = (title: string, clientName: string | null) => ({ title, clientName }) as any;
+
+  it('keeps a school name that is a school name', () => {
+    expect(schoolName(b('Spring 2027', 'GEMS Modern Academy'))).toBe('GEMS Modern Academy');
+    expect(preparedFor(b('Spring 2027', 'GEMS Modern Academy'))).toBeNull();
+  });
+
+  it('does not let a coordinator stand in for the school', () => {
+    // The real record: the client-name field is where the contact got typed.
+    const long =
+      'Mr. Arjun Balu Offsite Educational Visits Coordinator  Round Square Co-Coordinator ' +
+      'The Duke of Edinburgh’s International Award Leader';
+    expect(schoolName(b('GEMS Modern Academy', long))).toBe('GEMS Modern Academy');
+    expect(preparedFor(b('GEMS Modern Academy', long))).toBe(
+      'Mr. Arjun Balu Offsite Educational Visits Coordinator Round Square Co-Coordinator ' +
+        'The Duke of Edinburgh’s International Award Leader',
+    );
+  });
+
+  it('spots an honorific even when the name is short', () => {
+    expect(clientIsPerson('Dr Helen Shaw')).toBe(true);
+    expect(clientIsPerson('Mrs. J Patel')).toBe(true);
+    expect(clientIsPerson('Doha College')).toBe(false);
+    expect(clientIsPerson('')).toBe(false);
+    expect(clientIsPerson(null)).toBe(false);
+  });
+
+  it('falls back to the brochure title, then to something honest', () => {
+    expect(schoolName(b('Iceland', null))).toBe('Iceland');
+    expect(schoolName(b('', null))).toBe('your school');
   });
 });

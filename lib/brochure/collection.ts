@@ -117,7 +117,11 @@ export function toCollectionTrip(s: TripSpread): CollectionTrip {
     educationalValues: c.educationalValues ?? [],
     whyCountry: clean(c.whyCountry),
     pctView: clean(c.pctView),
-    inclusions: (c.inclusions ?? []).filter(Boolean),
+    // The composed list when there is one, the trip's own when there is not —
+    // the same fallback the deck uses, so both presentations list the same things.
+    inclusions: (c.inclusions?.length ? c.inclusions : (t?.includes ?? []))
+      .map((i) => i.trim().replace(/\.$/, ''))
+      .filter(Boolean),
     exclusions: (c.exclusions ?? []).filter(Boolean),
     conditions: (c.conditions ?? []).filter(Boolean),
     days_: t?.days ?? [],
@@ -144,8 +148,40 @@ export const YEAR_BANDS = [
 export const suitsBand = (t: CollectionTrip, band: { from: number; to: number }) =>
   Boolean(t.years && t.years.from <= band.to && t.years.to >= band.from);
 
-/** The school's own name for the collection, falling back to the brochure's. */
-export const schoolName = (b: Brochure) => clean(b.clientName) ?? clean(b.title) ?? 'your school';
+/**
+ * Whether the record's client name is a person rather than an organisation.
+ *
+ * The field is meant for the school, but it is where a coordinator's name and
+ * titles get typed — one brochure carries "Mr. Arjun Balu Offsite Educational
+ * Visits Coordinator Round Square Co-Coordinator The Duke of Edinburgh's
+ * International Award Leader". Put that in a header that says "Prepared for"
+ * and the school disappears behind a job description.
+ */
+const HONORIFIC = /^\s*(?:mr|mrs|ms|miss|dr|prof|professor|sir|madam)\b\.?\s/i;
+
+export function clientIsPerson(name: string | null | undefined): boolean {
+  const n = (name ?? '').trim();
+  if (!n) return false;
+  // An honorific, or far longer than any school writes its own name.
+  return HONORIFIC.test(n) || n.length > 60;
+}
+
+/** The school the collection was built for. */
+export const schoolName = (b: Brochure) => {
+  const c = clean(b.clientName);
+  if (c && !clientIsPerson(c)) return c;
+  return clean(b.title) ?? 'your school';
+};
+
+/**
+ * The person it was prepared for, when the record names one. Shown where a
+ * contact belongs — beside the enquiry — rather than as the school's identity.
+ */
+export const preparedFor = (b: Brochure): string | null => {
+  const c = clean(b.clientName);
+  if (!c || !clientIsPerson(c)) return null;
+  return c.replace(/\s+/g, ' ').trim();
+};
 
 /**
  * Whether a country's "getting there" note actually describes this trip.

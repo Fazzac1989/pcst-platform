@@ -1,7 +1,7 @@
 'use client';
 
-import { useCallback, useMemo } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import type { Brochure } from '@/lib/brochure/schema';
 import {
   DURATION_BUCKETS,
@@ -23,6 +23,8 @@ type Props = {
   heroImage: string | null;
   pdfHref: string;
   supportHref: string;
+  /** The coordinator the collection was prepared for, when the record names one. */
+  preparedFor: string | null;
 };
 
 const GRID_ID = 'your-trips';
@@ -43,32 +45,107 @@ export default function SchoolCollection({
   heroImage,
   pdfHref,
   supportHref,
+  preparedFor,
 }: Props) {
-  const router = useRouter();
   const params = useSearchParams();
   const shortlist = useShortlist(brochure.slug);
 
-  const q = params.get('q') ?? '';
-  const subject = params.get('subject') ?? '';
-  const destination = params.get('to') ?? '';
-  const year = params.get('year') ?? '';
-  const duration = params.get('days') ?? '';
-  const includeUnknown = params.get('unknown') === '1';
+  /**
+   * The filters live in React state, and the address bar is kept in step with
+   * them — not the other way round.
+   *
+   * Reading them straight off useSearchParams and writing with router.replace
+   * looked tidier, but this page is force-dynamic: every replace asks the
+   * server to render the brochure again, and until that came back the
+   * component still held the old params. The second filter a teacher touched
+   * did nothing at all. history.replaceState changes the URL without asking
+   * Next to navigate, so filtering is instant and returning from a trip still
+   * restores exactly what was set.
+   */
+  const [filters, setFilters] = useState(() => ({
+    q: params.get('q') ?? '',
+    subject: params.get('subject') ?? '',
+    destination: params.get('to') ?? '',
+    year: params.get('year') ?? '',
+    duration: params.get('days') ?? '',
+    includeUnknown: params.get('unknown') === '1',
+  }));
+  const { q, subject, destination, year, duration, includeUnknown } = filters;
 
-  const setParam = useCallback(
-    (key: string, value: string) => {
-      const next = new URLSearchParams(params.toString());
-      if (value) next.set(key, value);
-      else next.delete(key);
-      // Choosing a different year band should not silently keep the old opt-in.
-      if (key === 'year' && !value) next.delete('unknown');
-      const qs = next.toString();
-      router.replace(qs ? `?${qs}` : '?', { scroll: false });
-    },
-    [params, router],
+  // Anything that is not a filter — the style preview, a password, an invite —
+  // belongs to the link the teacher arrived on and is carried through untouched.
+  const extras = useRef<string>('');
+  if (extras.current === '' && typeof window !== 'undefined') {
+    const keep = new URLSearchParams(params.toString());
+    for (const k of ['q', 'subject', 'to', 'year', 'days', 'unknown']) keep.delete(k);
+    extras.current = keep.toString();
+  }
+
+  const queryString = useMemo(() => {
+    const next = new URLSearchParams(extras.current);
+    const put = (k: string, v: string) => (v ? next.set(k, v) : next.delete(k));
+    put('q', q);
+    put('subject', subject);
+    put('to', destination);
+    put('year', year);
+    put('days', duration);
+    put('unknown', year && includeUnknown ? '1' : '');
+    return next.toString();
+  }, [q, subject, destination, year, duration, includeUnknown]);
+
+  useEffect(() => {
+    const url = queryString ? `?${queryString}` : window.location.pathname;
+    window.history.replaceState(null, '', url);
+  }, [queryString]);
+
+  const setParam = useCallback((key: string, value: string) => {
+    setFilters((prev) => {
+      switch (key) {
+        case 'q':
+          return { ...prev, q: value };
+        case 'subject':
+          return { ...prev, subject: value };
+        case 'to':
+          return { ...prev, destination: value };
+        // Choosing a different band should not silently keep the old opt-in.
+        case 'year':
+          return { ...prev, year: value, includeUnknown: value ? prev.includeUnknown : false };
+        case 'days':
+          return { ...prev, duration: value };
+        case 'unknown':
+          return { ...prev, includeUnknown: value === '1' };
+        default:
+          return prev;
+      }
+    });
+  }, []);
+
+  const clearAll = useCallback(
+    () =>
+      setFilters({ q: '', subject: '', destination: '', year: '', duration: '', includeUnknown: false }),
+    [],
   );
 
-  const clearAll = useCallback(() => router.replace('?', { scroll: false }), [router]);
+  /**
+   * On a narrow screen the four dropdowns live behind a Filters button rather
+   * than stacking five controls down the page. They are the same elements
+   * either way — display:contents puts them back in the desktop grid — so
+   * there is one set of filters, not a second mobile copy to keep in step.
+   */
+  const [sheetOpen, setSheetOpen] = useState(false);
+  const filterBtn = useRef<HTMLButtonElement | null>(null);
+  const chosen = [subject, destination, year, duration].filter(Boolean).length;
+
+  useEffect(() => {
+    if (!sheetOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== 'Escape') return;
+      setSheetOpen(false);
+      filterBtn.current?.focus();
+    };
+    document.addEventListener('keydown', onKey);
+    return () => document.removeEventListener('keydown', onKey);
+  }, [sheetOpen]);
 
   // Options come from what is actually in this collection, not a fixed list.
   const subjects = useMemo(
@@ -112,10 +189,10 @@ export default function SchoolCollection({
 
   const filtering = chips.length > 0;
   const unknownCount = useMemo(() => trips.filter((t) => !t.years).length, [trips]);
-  const tripHref = (t: CollectionTrip) => {
-    const qs = params.toString();
-    return `/brochures/${encodeURIComponent(brochure.slug)}/trips/${t.tripId}${qs ? `?${qs}` : ''}`;
-  };
+  const tripHref = (t: CollectionTrip) =>
+    `/brochures/${encodeURIComponent(brochure.slug)}/trips/${t.tripId}${
+      queryString ? `?${queryString}` : ''
+    }`;
 
   return (
     <div className="sc">
@@ -156,6 +233,18 @@ export default function SchoolCollection({
             />
           </div>
 
+          <button
+            type="button"
+            ref={filterBtn}
+            className="sc-filterbtn"
+            aria-expanded={sheetOpen}
+            aria-controls="sc-filterfields"
+            onClick={() => setSheetOpen((o) => !o)}
+          >
+            Filters{chosen > 0 ? ` (${chosen})` : ''}
+          </button>
+
+          <div className="sc-filterfields" id="sc-filterfields" data-open={sheetOpen ? 'true' : 'false'}>
           <div className="sc-field sc-hide-label">
             <label htmlFor="sc-subject">Subject</label>
             <select id="sc-subject" className="sc-select" value={subject} onChange={(e) => setParam('subject', e.target.value)}>
@@ -194,6 +283,23 @@ export default function SchoolCollection({
                 <option key={d.key} value={d.key}>{d.label}</option>
               ))}
             </select>
+          </div>
+
+          <div className="sc-sheetfoot">
+            <button type="button" className="sc-clear" onClick={clearAll}>
+              Clear filters
+            </button>
+            <button
+              type="button"
+              className="sc-cta"
+              onClick={() => {
+                setSheetOpen(false);
+                filterBtn.current?.focus();
+              }}
+            >
+              Apply filters
+            </button>
+          </div>
           </div>
         </div>
 
@@ -261,6 +367,7 @@ export default function SchoolCollection({
         </div>
 
         <footer className="sc-footer">
+          {preparedFor && <span>Prepared for {preparedFor}.</span>}
           <span>Premium Choice School Trips, powered by Premium Choice Travel.</span>
           <a href={pdfHref}>Download the full brochure</a>
           <a href={supportHref}>School support</a>

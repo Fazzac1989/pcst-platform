@@ -22,6 +22,7 @@ type Props = {
   backQuery: string;
   supportHref: string;
   contactHref: string;
+  preparedFor: string | null;
 };
 
 const SECTIONS = [
@@ -39,6 +40,7 @@ export default function TripDetail({
   backQuery,
   supportHref,
   contactHref,
+  preparedFor,
 }: Props) {
   const shortlist = useShortlist(brochure.slug);
   const saved = shortlist.has(trip.tripId);
@@ -300,6 +302,12 @@ export default function TripDetail({
                 <dt>School</dt>
                 <dd>{schoolName}</dd>
               </div>
+              {preparedFor && (
+                <div>
+                  <dt>Prepared for</dt>
+                  <dd>{preparedFor}</dd>
+                </div>
+              )}
               <div>
                 <dt>Trip</dt>
                 <dd>{trip.title}</dd>

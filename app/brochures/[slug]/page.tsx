@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { loadBrochure } from '@/lib/brochure/data';
 import BrochureSlides from '@/components/brochure/BrochureSlides';
 import SchoolCollection from '@/components/collection/SchoolCollection';
-import { schoolName, toCollectionTrip } from '@/lib/brochure/collection';
+import { preparedFor, schoolName, toCollectionTrip } from '@/lib/brochure/collection';
 import { gatherTrips, groupSpreads, orderByContinent } from '@/lib/brochure/spreads';
 import { buildEditorialSlides, editorialFor } from '@/lib/brochure/editorial';
 import PasswordGate from '@/components/brochure/PasswordGate';
@@ -128,6 +128,7 @@ export default async function BrochurePage({ params, searchParams }: Props) {
         pdfHref={pdfHref}
         // The existing teachers' page is the support content; no new route invented.
         supportHref="/for-teachers"
+        preparedFor={preparedFor(brochure)}
       />
     );
   }

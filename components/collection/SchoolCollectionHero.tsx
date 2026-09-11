@@ -64,12 +64,14 @@ export default function SchoolCollectionHero({
           // eslint-disable-next-line @next/next/no-img-element
           <img src={sizedImage(image, 'cover') ?? image} alt="" fetchPriority="high" />
         )}
-        <p className="sc-hero-quote">
-          Different places.
-          <br />
-          Brighter perspectives.
+        <div className="sc-hero-quote">
+          <p>
+            Different places.
+            <br />
+            Brighter perspectives.
+          </p>
           <hr />
-        </p>
+        </div>
       </div>
     </section>
   );
