@@ -1,0 +1,103 @@
+# Runs scripts/fill-days-from-commons.mjs from a GitHub runner, which has the
+# ordinary internet access that Claude's sandbox and a phone do not. Trigger it
+# from the Actions tab (or ask Claude to): dry-run resolves every day and
+# publishes the contact sheet as an artifact to review; apply re-resolves,
+# uploads the photographs, writes the days, revalidates the pages, and commits
+# the credits record back to the branch.
+name: Fill day images from Commons
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "dry-run previews the picks; apply uploads and writes"
+        type: choice
+        options: [dry-run, apply]
+        default: dry-run
+  # The manual dispatch above only registers once this file reaches the
+  # default branch. Until then, pushing a change to the request file below
+  # fires the same job — which lets Claude drive the runs from a sandbox that
+  # can push to GitHub but reach nothing else.
+  push:
+    branches: [claude/thumbnails-layout-updates-m5cly1]
+    paths: [scripts/data/commons-run-request.json]
+
+permissions:
+  contents: write
+
+concurrency: fill-days-from-commons
+
+jobs:
+  fill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+
+      # Dispatch carries the mode as an input; a push run reads it from the
+      # request file that triggered it.
+      - name: Work out the mode
+        id: mode
+        run: |
+          MODE="${{ inputs.mode }}"
+          if [ -z "$MODE" ]; then
+            MODE=$(node -p "require('./scripts/data/commons-run-request.json').mode")
+          fi
+          echo "mode=$MODE" >> "$GITHUB_OUTPUT"
+          echo "running in $MODE mode"
+
+      # The dry run needs no secrets at all — it only talks to the Commons API
+      # and writes the choices + contact sheet that apply then uses verbatim.
+      - name: Resolve choices from Commons
+        run: node scripts/fill-days-from-commons.mjs
+
+      - name: Publish the contact sheet to review
+        uses: actions/upload-artifact@v4
+        with:
+          name: commons-day-preview
+          path: |
+            scripts/data/commons-day-preview.html
+            scripts/data/commons-day-choices.json
+
+      - name: Apply — upload images and write the days
+        if: steps.mode.outputs.mode == 'apply'
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL || 'https://jdqvbzjzbyfrgnsluaon.supabase.co' }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+        run: node scripts/fill-days-from-commons.mjs --apply
+
+      # Trip pages are statically generated; without this the new images wait
+      # for the next revalidation. Skipped quietly when the secret is not set.
+      - name: Revalidate the pages
+        if: steps.mode.outputs.mode == 'apply'
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL || 'https://jdqvbzjzbyfrgnsluaon.supabase.co' }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+          REVALIDATE_SECRET: ${{ secrets.REVALIDATE_SECRET }}
+          PCST_SITE_URL: ${{ vars.PCST_SITE_URL }}
+        run: |
+          if [ -n "$REVALIDATE_SECRET" ]; then
+            node scripts/revalidate-all.mjs
+          else
+            echo "No REVALIDATE_SECRET configured — pages will update on their next revalidation or deploy."
+          fi
+
+      # The artifact above suits the Actions UI; committing the same files
+      # back to the branch is what lets a network-restricted Claude session
+      # read the picks and hand the contact sheet to the owner in chat.
+      - name: Commit the record back to the branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for f in commons-day-choices.json commons-day-credits.json commons-day-preview.html; do
+            if [ -f "scripts/data/$f" ]; then git add "scripts/data/$f"; fi
+          done
+          git diff --cached --quiet || {
+            git commit -m "Record the Commons day-image ${{ steps.mode.outputs.mode == 'apply' && 'application' || 'picks (dry run)' }}"
+            git push
+          }
