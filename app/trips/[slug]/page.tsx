@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import JsonLd, { breadcrumbs, touristTrip } from '@/components/JsonLd';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -38,6 +39,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: trip.title,
     description,
+    alternates: { canonical: `/trips/${trip.slug}` },
     openGraph: {
       title: `${trip.title} — Premium Choice School Trips`,
       description,
@@ -84,6 +86,27 @@ export default async function TripPage({ params }: Props) {
     avgTempC: trip.countryFacts?.avgTempC ?? null,
   });
   const culture = getDestinationNotes(trip.countrySlug)?.culture ?? [];
+
+  // What a search engine is told this page is: a trip, on the trail Home ›
+  // Trips › Subject › this trip.
+  const structured = [
+    breadcrumbs([
+      { name: 'Home', path: '/' },
+      { name: 'Trips', path: '/trips' },
+      { name: trip.subject, path: `/subjects/${trip.subjectSlug}` },
+      { name: trip.title, path: `/trips/${trip.slug}` },
+    ]),
+    touristTrip({
+      slug: trip.slug,
+      title: trip.title,
+      description: trip.overview[0] ?? trip.title,
+      country: trip.country,
+      city: trip.city,
+      subject: trip.subject,
+      durationDays: trip.durationDays,
+      heroImage: heroUrl,
+    }),
+  ];
 
   // A multi-country tour is filed under one combined record but visits several
   // countries, and each of those has its own page to link to.
@@ -150,6 +173,7 @@ export default async function TripPage({ params }: Props) {
 
   return (
     <>
+      <JsonLd data={structured} />
       <SiteHeader variant="trip" />
       <ViewTracker tripId={trip.id} />
 

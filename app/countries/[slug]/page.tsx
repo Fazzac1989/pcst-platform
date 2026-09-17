@@ -27,6 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const country = countries.find((c) => c.slug === params.slug);
   if (!country) return {};
   return {
+    alternates: { canonical: `/countries/${params.slug}` },
     title: `School trips to ${country.name}`,
     description: `${country.tripCount} curriculum-built itineraries in ${country.name} across ${country.subjects.join(', ')} — designed, priced and supported from Dubai.`,
   };

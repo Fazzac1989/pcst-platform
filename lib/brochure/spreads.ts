@@ -1,0 +1,238 @@
+import type { BrochurePage, PageContent } from '@/lib/brochure/schema';
+import type { BrochureTrip } from '@/lib/brochure/data';
+import { COUNTRY_META, CONTINENT_ORDER, primaryCountrySlug } from '@/lib/country-meta';
+
+/**
+ * Gather the pages belonging to one trip into a single spread.
+ *
+ * The block model stores roughly three pages per trip — a hero, an overview
+ * and a gallery. One block to a slide would give a twenty-trip brochure sixty
+ * slides; one trip to a slide gives it twenty.
+ */
+
+export type TripSpread = {
+  tripId: number;
+  trip: BrochureTrip | undefined;
+  content: PageContent;
+  images: string[];
+};
+
+function isEmpty(value: unknown): boolean {
+  return (
+    value === undefined ||
+    value === null ||
+    value === '' ||
+    (Array.isArray(value) && value.length === 0)
+  );
+}
+
+/**
+ * Later pages fill gaps rather than overwrite: a tripOverview carries the
+ * highlights and a tripHero the proposition, and neither should erase the
+ * other.
+ */
+export function gatherTrips(
+  pages: BrochurePage[],
+  trips: Record<number, BrochureTrip>,
+): TripSpread[] {
+  const order: number[] = [];
+  const byTrip = new Map<number, TripSpread>();
+
+  for (const page of pages) {
+    if (page.tripId === null) continue;
+    if (!byTrip.has(page.tripId)) {
+      order.push(page.tripId);
+      byTrip.set(page.tripId, {
+        tripId: page.tripId,
+        trip: trips[page.tripId],
+        content: {},
+        images: [],
+      });
+    }
+    const spread = byTrip.get(page.tripId)!;
+    const c = page.content ?? {};
+
+    for (const [key, value] of Object.entries(c)) {
+      if (key === 'imageUrls') continue;
+      if (isEmpty(value)) continue;
+      if ((spread.content as any)[key] === undefined) (spread.content as any)[key] = value;
+    }
+    for (const url of c.imageUrls ?? []) {
+      if (url && !spread.images.includes(url)) spread.images.push(url);
+    }
+  }
+
+  return order.map((id) => byTrip.get(id)!);
+}
+
+export type TripGroup = { label: string; spreads: TripSpread[] };
+
+/** The continent a trip belongs to, or '' when the map does not know it. */
+export function continentOf(trip: BrochureTrip | undefined): string {
+  const slug = trip?.countrySlug?.trim();
+  if (!slug) return '';
+  // A multi-country tour is filed under its first real country.
+  return COUNTRY_META[primaryCountrySlug(slug)]?.continent ?? COUNTRY_META[slug]?.continent ?? '';
+}
+
+/** Sorted the way a reader scans a list: A before B, and numbers before words. */
+const byName = (a: string, b: string) =>
+  a.localeCompare(b, 'en', { sensitivity: 'base', numeric: true });
+
+/**
+ * The order the collection reads in: continent by continent, and inside each
+ * one the cities alphabetically.
+ *
+ * The contents and the trip pages are driven by the same array, so ordering it
+ * once orders both. That matters on paper: a printed contents that lists the
+ * trips in one order while the sheets run in another is worse than no contents.
+ * Trips sharing a city keep their titles in alphabetical order too, so the
+ * three Barcelona trips do not shuffle between renders.
+ */
+export function orderByContinent(spreads: TripSpread[]): TripSpread[] {
+  const rank = (s: TripSpread) => {
+    const i = CONTINENT_ORDER.indexOf(continentOf(s.trip) as (typeof CONTINENT_ORDER)[number]);
+    // A trip whose continent is unknown sits at the end rather than the front.
+    return i === -1 ? CONTINENT_ORDER.length : i;
+  };
+  return [...spreads].sort((a, b) => {
+    const d = rank(a) - rank(b);
+    if (d !== 0) return d;
+    const city = byName((a.trip?.city ?? '').trim(), (b.trip?.city ?? '').trim());
+    if (city !== 0) return city;
+    return byName(a.trip?.title ?? '', b.trip?.title ?? '');
+  });
+}
+
+/**
+ * Group the contents page by country, or by subject when a brochure is built
+ * around a subject instead.
+ *
+ * Trips with nothing to group by are collected under one honest heading rather
+ * than each becoming a heading of its own.
+ */
+export function groupSpreads(
+  spreads: TripSpread[],
+  by: 'country' | 'subject' | 'continent' = 'country',
+): TripGroup[] {
+  const order: string[] = [];
+  const groups = new Map<string, TripSpread[]>();
+  const OTHER = 'More trips';
+
+  for (const s of spreads) {
+    const raw =
+      by === 'subject' ? s.trip?.subject : by === 'continent' ? continentOf(s.trip) : s.trip?.country;
+    const label = (raw ?? '').trim() || OTHER;
+    if (!groups.has(label)) {
+      order.push(label);
+      groups.set(label, []);
+    }
+    groups.get(label)!.push(s);
+  }
+
+  // A single group is not a grouping; the contents reads better as a plain list.
+  if (order.length <= 1) return [{ label: '', spreads }];
+
+  // "More trips" belongs at the end, whatever order it was met in.
+  const named = order.filter((l) => l !== OTHER);
+  const tail = order.includes(OTHER) ? [OTHER] : [];
+  return [...named, ...tail].map((label) => ({ label, spreads: groups.get(label)! }));
+}
+
+/**
+ * A brochure-sized introduction, cut at a sentence.
+ *
+ * A trip's own overview is written for a web page with room to scroll — one
+ * of them runs to twenty lines, which is more than a slide holds. Cutting to
+ * a character count would end mid-thought, so this keeps whole sentences and
+ * stops once it has enough. The full text is a QR scan away on the trip page.
+ */
+export function introSummary(paragraphs: string[], maxChars = 380): string {
+  const text = (paragraphs[0] ?? '').trim();
+  if (!text || text.length <= maxChars) return text;
+
+  // Split on sentence ends, keeping the punctuation with the sentence.
+  const sentences = text.match(/[^.!?]+[.!?]+(\s|$)/g) ?? [text];
+  let out = '';
+  for (const s of sentences) {
+    if (out && (out + s).trim().length > maxChars) break;
+    out += s;
+  }
+  // A single sentence longer than the budget is kept whole rather than cut:
+  // half a sentence in a brochure reads as a mistake.
+  return (out.trim() || sentences[0] || text).trim();
+}
+
+/**
+ * Whether a trip's "Why <country>" page has anything on it. A price alone is
+ * not a page; the words are.
+ */
+export function hasWhyPage(c: PageContent): boolean {
+  return Boolean(c.whyCountry?.trim() || c.pctView?.trim() || (c.educationalValues ?? []).length > 0);
+}
+
+/* ─────────────────────────── the contents page ─────────────────────────── */
+
+/**
+ * What the contents costs, in printed pixels at A4 landscape.
+ *
+ * Measured in the print layout on a real 37-trip brochure rather than guessed:
+ * the thumbnail fixes an entry at 81.2px whatever its title does, and a group
+ * heading with the margin under its section costs 48.8px. The columns have
+ * (210mm − the masthead and heading above them − the body's bottom padding) to
+ * fill, twice over, which comes to 1155px; the capacity below keeps a little of
+ * that back.
+ */
+const ENTRY_COST = 82;
+const GROUP_COST = 49;
+export const CONTENTS_CAPACITY = 1120;
+
+/**
+ * Break the contents into pages that each fit one sheet.
+ *
+ * A thirty-seven trip collection listed every trip on a single contents page,
+ * which printed as three sheets with the page numbers counting one — so every
+ * number after it was wrong. Groups are kept whole where they fit, and a
+ * group too long for what is left is split, repeating its heading so a reader
+ * arriving mid-list still knows which country they are in.
+ */
+export function paginateContents(groups: TripGroup[], capacity = CONTENTS_CAPACITY): TripGroup[][] {
+  const pages: TripGroup[][] = [];
+  let page: TripGroup[] = [];
+  let used = 0;
+
+  for (const group of groups) {
+    let rest = group.spreads;
+    while (rest.length) {
+      const overhead = group.label ? GROUP_COST : 0;
+      const room = capacity - used - overhead;
+      let take = Math.max(0, Math.floor(room / ENTRY_COST));
+
+      if (take === 0) {
+        if (page.length) {
+          // Try again with a fresh page.
+          pages.push(page);
+          page = [];
+          used = 0;
+          continue;
+        }
+        // An empty page that still cannot hold one entry would loop for ever.
+        take = 1;
+      }
+
+      const n = Math.min(take, rest.length);
+      page.push({ label: group.label, spreads: rest.slice(0, n) });
+      used += overhead + n * ENTRY_COST;
+      rest = rest.slice(n);
+
+      if (rest.length) {
+        pages.push(page);
+        page = [];
+        used = 0;
+      }
+    }
+  }
+
+  if (page.length) pages.push(page);
+  return pages.length ? pages : [[]];
+}

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import JsonLd, { ORGANISATION } from '@/components/JsonLd';
 import { Archivo, Fraunces } from 'next/font/google';
 import './globals.css';
 
@@ -43,7 +44,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link rel="preconnect" href="https://images.unsplash.com" />
       </head>
-      <body>{children}</body>
+      <body>
+        <JsonLd data={ORGANISATION} />
+        {children}
+      </body>
     </html>
   );
 }

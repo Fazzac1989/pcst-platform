@@ -6,6 +6,7 @@ import { getPublishedTrips } from '@/lib/data';
 import TripsExplorer, { type ExplorerTrip } from './TripsExplorer';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/trips' },
   title: 'All trips',
   description:
     'Every Premium Choice School Trips itinerary in one place — filter by subject, destination and length. Designed, priced and supported from Dubai.',

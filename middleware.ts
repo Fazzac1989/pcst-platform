@@ -1,5 +1,6 @@
 import { createServerClient, type CookieOptions } from '@supabase/ssr';
 import { NextResponse, type NextRequest } from 'next/server';
+import { verifyPreviewToken } from '@/lib/brochure/preview-token';
 
 export async function middleware(request: NextRequest) {
   if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
@@ -72,9 +73,39 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
+  // Staff proposal preview. Brochure ids are sequential, so without this an
+  // outsider could walk /proposals/1,2,3 and read every school's pricing. The
+  // customer-facing path is /p/<share token>, which stays public.
+  //
+  // The admin lives on another domain, so its session cookie never reaches
+  // here. It links with a signed, expiring preview token instead.
+  if (pathname.startsWith('/proposals') && !user) {
+    const id = Number(pathname.split('/')[2]);
+    const ok =
+      Number.isFinite(id) &&
+      (await verifyPreviewToken(
+        id,
+        request.nextUrl.searchParams.get('preview'),
+        process.env.SUPABASE_SERVICE_ROLE_KEY,
+      ));
+    if (ok) return response;
+  }
+  if (pathname.startsWith('/proposals') && !user) {
+    const url = request.nextUrl.clone();
+    url.pathname = '/admin/login';
+    return NextResponse.redirect(url);
+  }
+
   return response;
 }
 
 export const config = {
-  matcher: ['/admin/:path*', '/admin', '/portal/:path*', '/portal'],
+  matcher: [
+    '/admin/:path*',
+    '/admin',
+    '/portal/:path*',
+    '/portal',
+    '/proposals/:path*',
+    '/proposals',
+  ],
 };

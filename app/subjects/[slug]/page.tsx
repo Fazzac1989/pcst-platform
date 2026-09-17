@@ -20,6 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const subject = subjects.find((s) => s.slug === params.slug);
   if (!subject) return {};
   return {
+    alternates: { canonical: `/subjects/${params.slug}` },
     title: `${subject.name} school trips`,
     description:
       subject.tripCount > 0

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import InfoPage from '@/components/InfoPage';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/our-app' },
   title: 'Your travel companion',
   description:
     'Your travel companion: the Premium Choice School Trips app gives teachers, parents and students each their own view of the same journey.',

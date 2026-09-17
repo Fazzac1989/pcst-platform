@@ -2,6 +2,7 @@ import 'server-only';
 import { createHash } from 'node:crypto';
 import QRCode from 'qrcode';
 import { createAdminClient } from '@/lib/supabase/admin';
+import { inviteAllows } from '@/lib/brochure/invites';
 import { mapBrochure, mapBrochurePage, type Brochure, type BrochurePage } from './schema';
 
 /**
@@ -21,11 +22,23 @@ export type BrochureTrip = {
   title: string;
   subject: string | null;
   country: string | null;
+  /** The country's slug, which is how the continent map is keyed. */
+  countrySlug: string | null;
   city: string | null;
   durationDays: number;
   durationNights: number;
   heroImage: string | null;
   images: string[];
+  /** The trip's own introduction, two or three paragraphs. */
+  overview: string[];
+  highlights: { name: string; note: string }[];
+  includes: string[];
+  /** Where the group flies from, as the trip records it. */
+  departs: string | null;
+  /** How you get there from Dubai, in the country's own words. */
+  gettingThere: string | null;
+  capital: string | null;
+  timezone: string | null;
   journey: { location: string; fromDay: number; toDay: number }[];
   days: { dayNumber: number; label: string; title: string; location: string | null; summary: string | null }[];
   /** Generated once at render, embedded as a data URI so nothing loads at runtime. */
@@ -65,7 +78,11 @@ export type BrochureAccess =
 
 export async function loadBrochure(
   slug: string,
-  { password, allowDraft = false }: { password?: string; allowDraft?: boolean } = {}
+  {
+    password,
+    invite,
+    allowDraft = false,
+  }: { password?: string; invite?: string; allowDraft?: boolean } = {}
 ): Promise<BrochureAccess> {
   const db = createAdminClient();
 
@@ -77,9 +94,12 @@ export async function loadBrochure(
   if (brochure.status === 'archived') return { state: 'missing' };
   if (brochure.status !== 'published' && !allowDraft) return { state: 'draft' };
 
-  // The hash never leaves the server, and no content is loaded until it matches.
+  // The hash never leaves the server, and no content is loaded until it
+  // matches. A teacher's own invite link opens the brochure too: a password
+  // we would only have emailed them is no protection against them.
   if (row.password_hash && !allowDraft) {
-    if (!password || passwordHash(password) !== row.password_hash) {
+    const byPassword = Boolean(password) && passwordHash(password!) === row.password_hash;
+    if (!byPassword && !(await inviteAllows(invite, brochure.id))) {
       return { state: 'password', title: brochure.title };
     }
   }
@@ -108,7 +128,8 @@ export async function loadBrochure(
       .from('trips')
       .select(
         `id, slug, title, city, duration_days, duration_nights, hero_image, gallery, journey,
-         subjects(name), countries(name),
+         overview, trip_highlights, includes, departs,
+         subjects(name), countries(name, slug, capital, timezone, getting_there),
          itinerary_days(sort_order, label, title, display_title, summary, primary_location)`
       )
       .in('id', tripIds);
@@ -128,11 +149,23 @@ export async function loadBrochure(
         title: t.title,
         subject: t.subjects?.name ?? null,
         country: t.countries?.name ?? null,
+        countrySlug: t.countries?.slug ?? null,
         city: t.city ?? null,
         durationDays: t.duration_days ?? 0,
         durationNights: t.duration_nights ?? 0,
         heroImage: hero,
         images: gallery,
+        // What the trip says about itself, used when the brochure's own copy
+        // has not been composed — which is most of the time.
+        overview: ((t.overview ?? []) as any[]).filter((x) => typeof x === 'string'),
+        highlights: ((t.trip_highlights ?? []) as any[])
+          .map((h) => (typeof h === 'string' ? { name: h, note: '' } : { name: h?.name ?? '', note: h?.note ?? '' }))
+          .filter((h) => h.name),
+        includes: ((t.includes ?? []) as any[]).filter((x) => typeof x === 'string'),
+        departs: t.departs ?? null,
+        gettingThere: t.countries?.getting_there ?? null,
+        capital: t.countries?.capital ?? null,
+        timezone: t.countries?.timezone ?? null,
         journey: ((t.journey ?? []) as any[]).map((j) => ({
           location: j.location,
           fromDay: j.from_day,
@@ -166,6 +199,7 @@ export async function loadBrochure(
         durationNights: frozen.duration_nights ?? live.durationNights,
         subject: frozen.subjects?.name ?? live.subject,
         country: frozen.countries?.name ?? live.country,
+        countrySlug: frozen.countries?.slug ?? live.countrySlug,
       };
     }
   }

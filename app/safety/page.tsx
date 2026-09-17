@@ -6,6 +6,7 @@ import SiteFooter from '@/components/SiteFooterWithData';
 import { getSafetyPage } from '@/lib/settings';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/safety' },
   title: 'Health, Safety & Security',
   description:
     'How Premium Choice School Trips looks after every student on every journey — risk assessment, trusted partners, wellbeing, preparation, insurance and 24-hour assistance.',
@@ -26,7 +27,7 @@ export default async function SafetyPage() {
       <div className="thero thero--index">
         <div className="bg">
           <Image
-            src="/images/hero-home.jpg"
+            src={page.heroImage}
             alt=""
             fill
             priority

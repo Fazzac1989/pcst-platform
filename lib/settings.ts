@@ -12,6 +12,8 @@ import { createClient } from '@/lib/supabase/server';
 
 export type SiteSettings = {
   hero: {
+    /** Full-bleed background behind the headline. */
+    heroImage: string;
     eyebrow: string;
     /** The headline, with the italic accent carried separately so the design can set it. */
     headline: string;
@@ -72,21 +74,25 @@ export type SiteSettings = {
 
 export const DEFAULT_SETTINGS: SiteSettings = {
   hero: {
+    heroImage: '/images/hero-home.jpg',
     eyebrow: 'Premium Choice School Trips',
-    headline: 'School travel shaped by',
-    headlineAccent: 'experience',
+    // Matches the wording the site has been publishing. The defaults are what
+    // renders until an admin changes something, so they have to be the live
+    // copy or wiring the page to settings would silently reword the homepage.
+    headline: 'Educational journeys,',
+    headlineAccent: 'expertly delivered',
     lede:
       'Educational journeys created with experience, care and a genuine understanding of what schools, students and parents need.',
     ctaPrimary: 'Browse trips',
-    ctaSecondary: 'Arrange a consultation',
+    ctaSecondary: 'Book an appointment',
   },
   intro: {
-    eyebrow: 'The future of school travel starts here',
-    headline: 'Led by experience,',
-    headlineAccent: 'guided by care',
+    eyebrow: 'Premium Choice School Trips',
+    headline: 'The future of school travel',
+    headlineAccent: 'starts here',
     paragraphs: [
-      'Led by Paul Farrell, a travel professional with more than 20 years of experience in the Middle East, Premium Choice School Trips combines extensive destination knowledge, trusted international partnerships and a highly personal approach to school travel.',
-      'We work closely with our customers to understand their objectives and create journeys that are engaging, rewarding and appropriate for their students.',
+      'Premium Choice School Trips combines extensive destination knowledge, trusted international partnerships and a highly personal approach to school travel.',
+      'We work closely with our customers to understand their objectives and create a journey that is engaging, rewarding and appropriate for all students.',
       "From the first conversation through to the group's safe return, every detail is carefully considered and professionally managed. Our aim is to make the planning process straightforward for teachers while creating meaningful experiences that help students discover new places, encounter different cultures and develop confidence, independence and a broader understanding of the world beyond the classroom.",
     ],
   },
@@ -198,6 +204,8 @@ export async function getSiteSettings(): Promise<SiteSettings> {
 export type SafetySection = { title: string; intro: string; points: string[] };
 
 export type SafetyPage = {
+  /** Full-bleed background behind the page title. */
+  heroImage: string;
   heroTitle: string;
   heroSub: string;
   intro: string;
@@ -206,6 +214,7 @@ export type SafetyPage = {
 };
 
 export const DEFAULT_SAFETY: SafetyPage = {
+  heroImage: '/images/hero-home.jpg',
   heroTitle: 'Health, Safety & Security',
   heroSub: 'Carefully considered for every student, on every journey',
   intro:

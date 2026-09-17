@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { loadBrochure } from '@/lib/brochure/data';
-import Flipbook from '@/components/brochure/Flipbook';
-import ReadingView from '@/components/brochure/ReadingView';
+import BrochureSlides from '@/components/brochure/BrochureSlides';
+import { gatherTrips, groupSpreads, orderByContinent } from '@/lib/brochure/spreads';
+import { buildEditorialSlides, editorialFor } from '@/lib/brochure/editorial';
 import PasswordGate from '@/components/brochure/PasswordGate';
-import '../brochure.css';
+import '@/components/brochure/gate.css';
 
 /**
  * The public brochure.
@@ -12,16 +13,21 @@ import '../brochure.css';
  * Rendered per request rather than statically: a brochure can be unlisted or
  * password protected, and those checks have to happen before any content is
  * sent. Published public brochures are cached at the edge instead.
+ *
+ * It reads as a deck — cover, contents, a page per trip — one page at a time,
+ * with a turn between them. Every slide is rendered and the print stylesheet
+ * lays them out as A4 pages, so the PDF is this document rather than a second
+ * one built to match, and there is no separate accessible view to keep in step.
  */
 export const dynamic = 'force-dynamic';
 
 type Props = {
   params: { slug: string };
-  searchParams: { view?: string; pw?: string; page?: string };
+  searchParams: { pw?: string; via?: string };
 };
 
 export async function generateMetadata({ params, searchParams }: Props): Promise<Metadata> {
-  const result = await loadBrochure(params.slug, { password: searchParams.pw });
+  const result = await loadBrochure(params.slug, { password: searchParams.pw, invite: searchParams.via });
   if (result.state !== 'ok') return { title: 'Brochure', robots: { index: false, follow: false } };
 
   const { brochure } = result.data;
@@ -42,7 +48,7 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
 }
 
 export default async function BrochurePage({ params, searchParams }: Props) {
-  const result = await loadBrochure(params.slug, { password: searchParams.pw });
+  const result = await loadBrochure(params.slug, { password: searchParams.pw, invite: searchParams.via });
 
   if (result.state === 'missing') notFound();
   if (result.state === 'draft') {
@@ -61,22 +67,44 @@ export default async function BrochurePage({ params, searchParams }: Props) {
 
   const { brochure, pages, trips, brochureQrSvg } = result.data;
 
-  if (searchParams.view === 'read') {
-    return <ReadingView brochure={brochure} pages={pages} trips={trips} slug={params.slug} />;
-  }
+  // The password travels with the PDF request, since that route has to load the
+  // brochure the same way this page did.
+  const carried = new URLSearchParams();
+  if (searchParams.pw) carried.set('pw', searchParams.pw);
+  if (searchParams.via) carried.set('via', searchParams.via);
+  const pdfHref = `/api/brochures/${encodeURIComponent(params.slug)}/pdf${
+    carried.toString() ? `?${carried}` : ''
+  }`;
+
+  const visible = pages.filter((p) => !p.hidden);
+  const cover = visible.find((p) => p.pageType === 'cover')?.content ?? {};
+  const closing = visible.find(
+    (p) => p.pageType === 'contact' || p.pageType === 'callToAction',
+  )?.content;
+  // A collection of trips reads by region: continent by continent, cities in
+  // alphabetical order inside each. A brochure built around a subject keeps the
+  // order it was arranged in, because there the subject is the organising idea.
+  const bySubject = brochure.kind === 'subject';
+  const spreads = bySubject
+    ? gatherTrips(visible, trips)
+    : orderByContinent(gatherTrips(visible, trips));
+
+  // Who we are, how a group is kept safe, and the app the trip runs on — the
+  // ones this brochure asked for. The safety content is the same the public
+  // safety page shows, rather than a second copy that would drift from it.
+  const editorial = editorialFor(await buildEditorialSlides(), brochure.design);
 
   return (
-    <>
-      <Flipbook brochure={brochure} pages={pages} trips={trips} brochureQrSvg={brochureQrSvg} />
-      {/* Always reachable, and the only route for a screen reader. */}
-      <p style={{ textAlign: 'center', padding: '0 0 40px', background: '#0E1A21' }}>
-        <a
-          href={`/brochures/${params.slug}?view=read${searchParams.pw ? `&pw=${encodeURIComponent(searchParams.pw)}` : ''}`}
-          style={{ color: 'rgba(255,255,255,.6)', fontSize: 13, borderBottom: '1px solid currentColor' }}
-        >
-          Read as a standard page
-        </a>
-      </p>
-    </>
+    <BrochureSlides
+      brochure={brochure}
+      cover={cover}
+      spreads={spreads}
+      groups={groupSpreads(spreads, bySubject ? 'subject' : 'continent')}
+      editorial={editorial}
+      showItinerary={brochure.design.showItinerary !== false}
+      closing={closing}
+      brochureQrSvg={brochureQrSvg}
+      pdfHref={pdfHref}
+    />
   );
 }

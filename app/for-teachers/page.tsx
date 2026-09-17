@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import InfoPage from '@/components/InfoPage';
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/for-teachers' },
   title: 'For teachers & trip leaders',
   description:
     'How Premium Choice School Trips supports teachers and trip leaders — from the first idea to the paperwork, the parents and the safe return.',

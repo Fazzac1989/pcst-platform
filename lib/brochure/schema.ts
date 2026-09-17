@@ -5,8 +5,8 @@
  * of a brochure is data: an admin can reorder, hide or add pages without a code
  * change, and new page types can be introduced later without a migration.
  *
- * Nothing here duplicates trip data. A page carries only editorial copy â€” the
- * headline written for the brochure, the condensed highlights â€” plus a
+ * Nothing here duplicates trip data. A page carries only editorial copy — the
+ * headline written for the brochure, the condensed highlights — plus a
  * reference to the trip it presents. Titles, photography and itineraries are
  * read from the trips tables when the brochure renders.
  *
@@ -26,6 +26,7 @@ export const PAGE_TYPES = [
   'tripHighlights',
   'tripItinerary',
   'tripGallery',
+  'tripWhy',
   'safety',
   'howItWorks',
   'appFeature',
@@ -80,7 +81,10 @@ export type PageContent = {
   learningFocus?: string[];
   keyLocations?: string[];
   journey?: JourneyStop[];
+  /** Pre-filled from the trip's own list; editable. */
   inclusions?: string[];
+  /** The trip records none, so this is typed by a person and survives a rewrite. */
+  exclusions?: string[];
   /** Conditional wording lifted from the trip, e.g. "subject to availability". */
   conditions?: string[];
   meta?: string;
@@ -88,6 +92,19 @@ export type PageContent = {
   ctaHref?: string;
   /** Chosen from the trip's approved imagery only. */
   imageUrls?: string[];
+  /* The "Why <country>" page that closes a trip's run of pages. */
+  /** Why this country is the right place to teach the subject. */
+  whyCountry?: string;
+  /** Premium Choice's own recommendation, in its own voice. */
+  pctView?: string;
+  /** Who it suits, e.g. "Years 9–11 (ages 13–16)". A recommendation, not a fact. */
+  ageGroup?: string;
+  /** A note on price, typed by a person, never by the composer: the trip's base price is not for print. */
+  priceRange?: string;
+  /** Prices by date, free text on both sides, typed by a person and kept through a rewrite. */
+  priceBands?: { dates: string; price: string }[];
+  /** Exactly five, each grounded in something the trip does. */
+  educationalValues?: { title: string; detail: string }[];
 };
 
 export type BrochurePage = {
@@ -107,7 +124,11 @@ export type BrochurePage = {
 
 export type BrochureDesign = {
   coverTheme?: 'light' | 'dark';
+  /** Every page but the cover: navy throughout, or white. Defaults to light. */
+  documentTheme?: 'light' | 'dark';
   showPricing?: boolean;
+  /** The "About Premium Choice" introduction. On unless turned off. */
+  showIntro?: boolean;
   showSafety?: boolean;
   showApp?: boolean;
   showItinerary?: boolean;
@@ -146,7 +167,7 @@ export type Brochure = {
   updatedAt: string;
 };
 
-/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ mapping â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ─────────────────────────────── mapping ─────────────────────────────── */
 
 const asArray = <T,>(v: unknown): T[] => (Array.isArray(v) ? (v as T[]) : []);
 
@@ -217,6 +238,7 @@ export const PAGE_LABELS: Record<PageType, string> = {
   tripHighlights: 'Trip highlights',
   tripItinerary: 'Journey',
   tripGallery: 'Gallery',
+  tripWhy: 'Why this country',
   safety: 'Health & safety',
   howItWorks: 'How it works',
   appFeature: 'Our technology',

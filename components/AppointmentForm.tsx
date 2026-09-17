@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import GuardFields, { type GuardValues } from '@/components/GuardFields';
 
 const TYPES = [
   { value: 'we_visit', label: 'We visit your school' },
@@ -14,7 +15,7 @@ export default function AppointmentForm({ tripSlug }: { tripSlug?: string }) {
   const [email, setEmail] = useState('');
   const [appointmentType, setAppointmentType] = useState('');
   const [consent, setConsent] = useState(false);
-  const [website, setWebsite] = useState(''); // honeypot
+  const [guard, setGuard] = useState<GuardValues>({ honeypot: '', stamp: '', turnstile: '', ready: false });
   const [state, setState] = useState<'idle' | 'busy' | 'done'>('idle');
   const [error, setError] = useState<string | null>(null);
 
@@ -26,7 +27,10 @@ export default function AppointmentForm({ tripSlug }: { tripSlug?: string }) {
       const res = await fetch('/api/appointments', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, school, email, appointmentType, consent, tripSlug, website }),
+        body: JSON.stringify({
+          name, school, email, appointmentType, consent, tripSlug,
+          honeypot: guard.honeypot, stamp: guard.stamp, turnstile: guard.turnstile,
+        }),
       });
       const data = await res.json();
       if (!data.ok) throw new Error(data.error ?? 'Something went wrong — please try again.');
@@ -77,17 +81,7 @@ export default function AppointmentForm({ tripSlug }: { tripSlug?: string }) {
           ))}
         </select>
       </label>
-      {/* honeypot — hidden from real users */}
-      <input
-        type="text"
-        name="website"
-        value={website}
-        onChange={(e) => setWebsite(e.target.value)}
-        tabIndex={-1}
-        autoComplete="off"
-        aria-hidden="true"
-        style={{ position: 'absolute', left: -9999, width: 1, height: 1, opacity: 0 }}
-      />
+      <GuardFields onChange={setGuard} />
       <label className="apt-consent">
         <input
           type="checkbox"
@@ -101,7 +95,7 @@ export default function AppointmentForm({ tripSlug }: { tripSlug?: string }) {
         </span>
       </label>
       {error && <p className="apt-error">{error}</p>}
-      <button className="btn btn-brass" type="submit" disabled={state === 'busy'}>
+      <button className="btn btn-brass" type="submit" disabled={state === 'busy' || !guard.ready}>
         {state === 'busy' ? 'Sending…' : 'Book an appointment'}{' '}
         {state !== 'busy' && <span className="arrow">→</span>}
       </button>

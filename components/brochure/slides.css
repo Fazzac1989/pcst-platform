@@ -1,0 +1,219 @@
+/* The brochure's own slides: its contents page, a trip introduction and a
+   day-by-day itinerary. The deck shell lives in components/slides/deck.css. */
+
+/* ---------- Contents ---------- */
+/* Two columns, because a landscape slide is wide and a single list of trips
+   would run off the bottom of it. */
+.sl-toc-cols{columns:2;column-gap:4cqw;margin-top:1.6cqw}
+.sl-toc{list-style:none;margin:0;padding:0}
+/* A group used to be one country, which always fitted a column. A continent
+   does not — Europe runs to fifteen trips — so a group flows across the two
+   columns and its heading stays with the first of its entries. */
+.sl-group{margin-bottom:1.2cqw}
+.sl-group-label{break-after:avoid}
+.sl-group-label{
+  font-size:.9cqw;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--teal-ink);margin:0 0 .5cqw;padding-bottom:.4cqw;border-bottom:1px solid var(--line);
+}
+.sl-toc li{break-inside:avoid}
+.sl-toc button{
+  width:100%;display:grid;grid-template-columns:5.4cqw 1fr;gap:1cqw;
+  align-items:center;padding:.5cqw .2cqw;background:none;border:0;
+  text-align:left;cursor:pointer;font:inherit;transition:background .12s;
+  border-bottom:1px solid var(--line);
+}
+.sl-toc button:hover{background:var(--cream)}
+.sl-toc .sl-thumb{
+  width:5.4cqw;height:3.6cqw;object-fit:cover;border-radius:3px;
+  background:var(--ice);display:block;
+}
+.sl-toc .sl-t{font-family:var(--display);font-size:1.25cqw;color:var(--ink);line-height:1.2}
+/* Under the title rather than beside it: a landscape column is not wide
+   enough for both, and the trip names here run long. */
+.sl-toc .sl-m{grid-column:2;font-size:.9cqw;color:var(--muted);margin-top:.15cqw}
+
+/* ---------- A trip: the introduction ---------- */
+.sl-intro{display:grid;grid-template-columns:1.05fr .95fr;gap:3cqw;align-items:start}
+.sl-page figure{margin:0;background:var(--ice);overflow:hidden;border-radius:4px}
+.sl-page figure img{display:block;width:100%;height:100%;object-fit:cover}
+/* One big picture with two beneath it, which is what most trips have. */
+.sl-shots{display:grid;grid-template-columns:1fr 1fr;gap:1cqw}
+.sl-shots figure:first-child{grid-column:1 / -1;aspect-ratio:16/9}
+.sl-shots figure{aspect-ratio:4/3}
+.sl-meta{
+  display:flex;flex-wrap:wrap;gap:.5cqw 1.4cqw;margin:1cqw 0 0;
+  font-size:.95cqw;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);
+}
+.sl-meta b{color:var(--ink);font-weight:600}
+
+.sl-hl{list-style:none;margin:1.2cqw 0 0;padding:0}
+/* Six highlights in one column ran past the foot of the slide; two columns
+   hold six at a size worth reading. */
+.sl-hl-two{columns:2;column-gap:2.2cqw}
+.sl-hl li{
+  display:grid;grid-template-columns:1.9cqw 1fr;gap:.8cqw;align-items:start;
+  padding:.5cqw 0;border-top:1px dashed var(--line);break-inside:avoid;
+}
+.sl-hl li:first-child{border-top:0}
+.sl-hl-two li:first-child{border-top:1px dashed var(--line)}
+.sl-hl-icon{
+  width:1.9cqw;height:1.9cqw;margin-top:.15cqw;flex:0 0 auto;
+  fill:none;stroke:var(--teal);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;
+}
+.sl-hl strong{display:block;font-family:var(--display);font-size:1.35cqw;font-weight:400;color:var(--ink);line-height:1.2}
+.sl-hl span{display:block;font-size:1.05cqw;color:var(--muted);line-height:1.35}
+.sl-hl em{display:block;font-size:1cqw;color:var(--teal-ink);font-style:normal;margin-top:.2cqw}
+
+.sl-chips{display:flex;flex-wrap:wrap;gap:.5cqw;margin-top:1cqw}
+.sl-chips span{font-size:1cqw;background:var(--ice);color:var(--ink);border-radius:999px;padding:.35cqw .9cqw}
+
+/* ---------- A trip: the daily itinerary ---------- */
+/* Three columns of days: a landscape slide is wide, and eleven days in one
+   column would not fit on it. */
+.sl-days{columns:3;column-gap:2.6cqw;margin-top:.6cqw}
+.sl-day{break-inside:avoid;margin-bottom:1.5cqw;padding-bottom:1.2cqw;border-bottom:1px solid var(--line)}
+.sl-day-n{
+  font-size:.9cqw;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--teal-ink);margin:0 0 .3cqw;
+}
+.sl-day h4{margin:0 0 .35cqw;color:var(--ink)}
+.sl-day p{font-size:1.05cqw;color:var(--muted);margin:0}
+.sl-day .sl-where{
+  display:block;font-size:.9cqw;color:var(--ink);opacity:.7;margin-top:.35cqw;
+}
+
+/* A long trip gets a fourth column and slightly smaller type. Eleven days at
+   the normal size ran off the bottom of the slide; shrinking is better than
+   splitting one trip's itinerary across two pages. */
+/* Included and not included, beneath the days: two compact columns. */
+.sl-incl{margin-top:1cqw;border-top:1px solid var(--line);padding-top:.8cqw;display:grid;grid-template-columns:1fr 1fr;gap:2.4cqw}
+.sl-incl b{display:block;font-size:.92cqw;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-ink);margin-bottom:.35cqw}
+/* Vertical lists with navy dots, each flowing into two columns to stay short. */
+.sl-incl ul{list-style:none;margin:0;padding:0;columns:2;column-gap:1.6cqw}
+.sl-incl li{position:relative;padding-left:1.2cqw;font-size:1.06cqw;line-height:1.35;color:var(--muted);margin-bottom:.22cqw;break-inside:avoid}
+.sl-incl li::before{content:"";position:absolute;left:0;top:.48cqw;width:.58cqw;height:.58cqw;border-radius:50%;background:var(--navy)}
+/* More than six items: three columns and a little smaller, so a nine-day trip with twelve inclusions still fits. */
+.sl-incl ul.sl-incl-many{columns:3;column-gap:1.4cqw}
+.sl-incl ul.sl-incl-many li{font-size:.98cqw;line-height:1.3;margin-bottom:.18cqw}
+/* Only one of the two lists — a trip that says what is included but not what
+   to budget for. It was left sitting in half the width, flowing into columns
+   so narrow that every second item wrapped; the longest ran to 35 items and
+   350px. Given the whole width it is half as tall, which is what pays for the
+   larger type above. */
+.sl-incl--solo{grid-template-columns:1fr}
+.sl-incl--solo ul.sl-incl-many{columns:4}
+.sl-days-dense + .sl-incl{margin-top:.6cqw;padding-top:.5cqw}
+@media print{
+  .sl-incl{display:grid!important}
+  /* The included lists are the last thing on a busy day page. A hair tighter
+     on paper keeps an eight-day trip with sixteen inclusions on one sheet. */
+  .sl-incl{margin-top:.45cqw;padding-top:.4cqw}
+  .sl-incl li{margin-bottom:.08cqw;line-height:1.24}
+}
+.sl-days-dense{columns:4}
+.sl-days-dense .sl-day{margin-bottom:1.1cqw;padding-bottom:.9cqw}
+.sl-days-dense h4{font-size:1.25cqw}
+.sl-days-dense p{font-size:.92cqw}
+.sl-days-dense .sl-day-n{font-size:.8cqw}
+.sl-days-dense .sl-where{font-size:.82cqw}
+
+/* ---------- Closing ---------- */
+/* .sl-closing is styled in components/slides/deck.css: both decks end on navy. */
+.sl-contact{
+  margin-top:2cqw;display:flex;flex-wrap:wrap;align-items:center;gap:1.4cqw 3cqw;font-size:1.2cqw;
+  border-top:1px solid var(--line-light);padding-top:1.6cqw;
+}
+.sl-qr{display:block;width:6cqw;height:6cqw}
+
+/* ---------- An editorial page: introduction, how it works, safety, the app ---------- */
+.sl-ed-cols{columns:2;column-gap:3.4cqw;margin-top:1.6cqw}
+.sl-ed-cols p{break-inside:avoid}
+.sl-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2cqw;margin-top:1.8cqw}
+.sl-steps > div{border-top:2px solid var(--teal);padding-top:1cqw}
+.sl-step-n{font-family:var(--display);font-size:1.6cqw;color:var(--teal-ink);margin:0 0 .3cqw}
+.sl-steps h3{font-size:1.3cqw;margin-bottom:.3cqw}
+.sl-steps p{font-size:1.02cqw;color:var(--muted);margin:0}
+.sl-note{
+  margin-top:1.8cqw;padding-top:1cqw;border-top:1px solid var(--line);
+  font-size:1cqw;color:var(--muted);
+}
+
+/* ---------- Getting there ----------
+   The words come from the country record, which already says how long the
+   flight from Dubai takes. Nothing here is computed: an approximate flight
+   time on a document a school is quoting from would be a guess. */
+.sl-flight{
+  margin-top:1.4cqw;background:var(--navy);color:#fff;border-radius:5px;padding:1.2cqw 1.4cqw;
+}
+.sl-flight p{font-size:.98cqw;color:rgba(255,255,255,.8);margin:0}
+.sl-flight-route{
+  display:flex;align-items:center;gap:.9cqw;margin:0 0 .7cqw!important;
+  font-family:var(--display);font-size:1.4cqw;color:#fff!important;
+}
+.sl-flight-line{
+  flex:1;height:1px;background:linear-gradient(90deg,var(--teal),rgba(255,255,255,.25));
+  position:relative;
+}
+.sl-flight-line::after{
+  content:"";position:absolute;right:0;top:-3px;
+  border-left:6px solid var(--teal);border-top:3px solid transparent;border-bottom:3px solid transparent;
+}
+.sl-flight-tz{margin-top:.5cqw!important;font-size:.88cqw;color:rgba(255,255,255,.55)}
+
+/* The flight panel spans both picture columns beneath them. */
+.sl-shots .sl-flight{grid-column:1 / -1;margin-top:.4cqw}
+
+/* ---------- Why <country> ----------
+   Prose and our view on the left, who it suits and what it costs on the
+   right, and the five educational values in a row beneath. */
+.sl-why{display:grid;grid-template-columns:1.35fr .65fr;gap:3cqw;align-items:start}
+.sl-why h2{font-size:2.6cqw;margin-bottom:.8cqw}
+.sl-why .sl-lede{font-size:1.15cqw;margin-bottom:.6cqw}
+.sl-why-label{font-size:.85cqw;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-ink);margin:0 0 .5cqw}
+.sl-why-view{margin-top:1.2cqw;border-left:3px solid var(--teal);padding-left:1.2cqw}
+.sl-why-view p:last-child{font-size:1.1cqw;color:var(--ink);margin:0;font-style:italic;line-height:1.5}
+.sl-why-side{display:grid;gap:1cqw}
+.sl-why-fact{background:var(--cream);border-radius:5px;padding:1cqw 1.3cqw}
+.sl-why-fact span{display:block;font-size:.8cqw;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.sl-why-fact b{display:block;font-family:var(--display);font-weight:400;font-size:1.7cqw;color:var(--navy);margin-top:.2cqw}
+/* Prices by date: the dates small above each price. */
+.sl-why-bands{margin:.3cqw 0 0;display:grid;gap:.5cqw}
+.sl-why-bands div{border-top:1px solid var(--line);padding-top:.4cqw}
+.sl-why-bands div:first-child{border-top:0;padding-top:0}
+.sl-why-bands dt{font-size:.85cqw;color:var(--muted);margin:0}
+.sl-why-bands dd{font-family:var(--display);font-size:1.45cqw;color:var(--navy);margin:0;line-height:1.15}
+.sl-why-fact small{display:block;font-size:.8cqw;color:var(--muted);margin-top:.4cqw}
+.sl-why-values{margin-top:1.8cqw;border-top:1px solid var(--line);padding-top:1.2cqw}
+.sl-why-values ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:1.4cqw;counter-reset:ev}
+.sl-why-values li{counter-increment:ev;border-top:2px solid var(--teal);padding-top:.7cqw}
+.sl-why-values li::before{content:counter(ev,decimal-leading-zero);display:block;font-family:var(--display);font-size:1.5cqw;color:var(--teal-ink);margin-bottom:.3cqw}
+.sl-why-values b{display:block;font-size:1.3cqw;color:var(--ink);margin-bottom:.22cqw;line-height:1.12}
+.sl-why-values span{font-size:1.15cqw;color:var(--muted);line-height:1.18}
+@media print{.sl-why,.sl-why-values ol{display:grid!important}}
+
+/* The Why page is navy, like the cover: type in white, labels in teal,
+   the cards a lighter navy. */
+/* Navy in either theme, so the type here is literally white — var(--white) is
+   the page-ground token, which the dark theme flips to navy. */
+.sl-why-page{background:var(--navy);color:#fff}
+.sl-why-page .sl-eyebrow{color:var(--teal)}
+.sl-why-page .sl-masthead{border-bottom-color:rgba(255,255,255,.18)}
+.sl-why-page h2{color:#fff}
+.sl-why-page .sl-lede{color:rgba(255,255,255,.8)}
+.sl-why-page .sl-why-label{color:var(--teal)}
+.sl-why-page .sl-why-view{border-left-color:var(--teal)}
+.sl-why-page .sl-why-view p:last-child{color:#fff}
+.sl-why-page .sl-why-fact{background:rgba(255,255,255,.08)}
+.sl-why-page .sl-why-fact span{color:rgba(255,255,255,.6)}
+.sl-why-page .sl-why-fact b,.sl-why-page .sl-why-bands dd{color:#fff}
+.sl-why-page .sl-why-bands dt,.sl-why-page .sl-why-fact small{color:rgba(255,255,255,.65)}
+.sl-why-page .sl-why-bands div{border-top-color:rgba(255,255,255,.18)}
+.sl-why-page .sl-why-values{border-top-color:rgba(255,255,255,.18)}
+.sl-why-page .sl-why-values li{border-top-color:var(--teal)}
+.sl-why-page .sl-why-values li::before{color:var(--teal)}
+.sl-why-page .sl-why-values b{color:#fff}
+.sl-why-page .sl-why-values span{color:rgba(255,255,255,.72)}
+@media print{
+  .sl-why-page{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .sl-why-page::after{color:rgba(255,255,255,.5)}
+}

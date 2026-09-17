@@ -1,0 +1,402 @@
+/* ============================================================
+   The deck: the shell every slide document shares.
+
+   16:9 on screen, one page at a time with a turn between them; landscape A4
+   in print, one slide to a page, so the PDF is the same document rather than
+   a second one built to match.
+
+   Type is sized in cqw — hundredths of the slide's own width — so it scales
+   with the slide on a laptop, a projector and on paper, and "smaller" is one
+   number rather than thirty.
+
+   Both the brochure and the proposal import this, which is what keeps them
+   looking like the same company's work. Anything only one of them needs
+   belongs in its own stylesheet, not here.
+
+   Section classes must not set `position`: .sl-cover and .sl-page land on the
+   same element with the same specificity, and a later position:relative once
+   beat .sl-page's absolute and stopped the cover filling the stage.
+   ============================================================ */
+
+/* ============================================================
+   The brochure, as landscape slides.
+
+   16:9, the shape a deck is presented in. One page at a time on screen with a
+   turn between them; in print every slide is laid out on its own landscape A4
+   page, so the PDF is the same document rather than a second one built to
+   match.
+
+   Type is sized in cqw — hundredths of the slide's own width — rather than in
+   pixels or viewport units. A slide is a fixed canvas, so its text has to
+   scale with it: the same rules then give the right size on a laptop, on a
+   projector and on paper, and "smaller" is one number rather than thirty.
+
+   Every class is prefixed sl-. The site's own stylesheet owns .trip, .meta,
+   .side, .journey and .closing.
+
+   Section classes must not set `position`: .sl-cover and .sl-page land on the
+   same element with the same specificity, and a later position:relative once
+   beat .sl-page's absolute and stopped the cover filling the stage.
+
+   The tokens below must stay identical to components/proposal/proposal.css.
+   A brochure and a proposal go to the same school in the same week. A test
+   compares the two blocks.
+   ============================================================ */
+
+:root{
+  --navy:#16242E; --navy-2:#1F3240; --teal:#19BAAB; --teal-ink:#0F8C81;
+  --cream:#F7F5F0; --ice:#E6EEF2; --white:#FFFFFF;
+  --ink:#1B262E; --muted:#5C6B74; --line:rgba(22,36,46,.14); --line-light:rgba(255,255,255,.16);
+  --display: var(--font-fraunces), Georgia, serif;
+  --body: var(--font-archivo), "Helvetica Neue", Arial, sans-serif;
+  --wrap:1140px; --gutter:clamp(20px,4vw,48px);
+}
+
+/* ---------- The deck ---------- */
+.sl-deck{
+  background:#0E1A21;min-height:100svh;
+  font-family:var(--body);color:var(--ink);line-height:1.55;
+  display:flex;flex-direction:column;align-items:center;
+  padding:clamp(10px,1.6vw,22px);gap:12px;
+}
+
+/* Height-driven so the slide always fits the window and keeps 16:9. */
+.sl-stage{
+  position:relative;
+  height:min(calc(100svh - 104px), calc((100vw - 2 * clamp(10px,1.6vw,22px)) * 0.5625));
+  aspect-ratio:16 / 9;
+  width:auto;max-width:100%;
+  flex:none;margin:0 auto;perspective:2400px;
+}
+
+.sl-page{
+  position:absolute;top:0;left:0;width:100%;height:100%;
+  background:var(--white);
+  border-radius:5px;overflow:hidden;
+  box-shadow:0 16px 44px rgba(0,0,0,.45);
+  display:flex;flex-direction:column;
+  /* The type unit. Everything inside is sized from the slide's own width. */
+  container-type:inline-size;
+  transform-style:preserve-3d;backface-visibility:hidden;
+}
+.sl-page[hidden]{display:none}
+
+/* The turn: the outgoing page swings on its spine, the next is behind it. */
+@keyframes sl-turn-forward{
+  from{transform:rotateY(0deg);box-shadow:0 16px 44px rgba(0,0,0,.45)}
+  to{transform:rotateY(-96deg);box-shadow:0 16px 64px rgba(0,0,0,.15)}
+}
+@keyframes sl-turn-back{
+  from{transform:rotateY(96deg);box-shadow:0 16px 64px rgba(0,0,0,.15)}
+  to{transform:rotateY(0deg);box-shadow:0 16px 44px rgba(0,0,0,.45)}
+}
+.sl-page.sl-leaving{transform-origin:left center;animation:sl-turn-forward .42s ease-in forwards;z-index:2}
+.sl-page.sl-entering{transform-origin:left center;animation:sl-turn-back .42s ease-out both;z-index:1}
+
+@media (prefers-reduced-motion: reduce){
+  .sl-page.sl-leaving,.sl-page.sl-entering{animation:none}
+}
+
+/* ---------- Controls ---------- */
+.sl-bar{
+  width:min(100%,1400px);display:flex;align-items:center;justify-content:space-between;
+  gap:12px;color:rgba(255,255,255,.75);font-size:13px;
+}
+.sl-bar button{
+  border:1px solid rgba(255,255,255,.26);background:transparent;color:#fff;
+  border-radius:999px;padding:7px 15px;font-size:12.5px;cursor:pointer;
+  transition:background .15s,border-color .15s;
+}
+.sl-bar button:hover:not(:disabled){background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.5)}
+.sl-bar button:disabled{opacity:.35;cursor:default}
+.sl-count{font-variant-numeric:tabular-nums;letter-spacing:.04em}
+
+/* ---------- Inside a slide ----------
+   1cqw is one hundredth of the slide's width, so a 1200px slide gives 12px
+   per cqw. These are the only numbers to change to move the whole deck. */
+.sl-body{flex:1;overflow:auto;padding:4.4cqw 5cqw}
+.sl-page h1,.sl-page h2,.sl-page h3,.sl-page h4{
+  font-family:var(--display);font-weight:400;line-height:1.14;margin:0;
+}
+.sl-page h1{font-size:5.4cqw}
+.sl-page h2{font-size:2.5cqw}
+.sl-page h3{font-size:1.9cqw}
+.sl-page h4{font-size:1.5cqw}
+.sl-page p{margin:0 0 .8cqw;font-size:1.2cqw}
+.sl-eyebrow{
+  font-size:.95cqw;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--teal-ink);margin:0 0 .9cqw;
+}
+.sl-lede{font-size:1.2cqw;color:var(--muted);max-width:70ch}
+
+/* ---------- Cover ---------- */
+.sl-cover{background:var(--navy);color:var(--white)}
+/* A closing slide — flights, next steps, the brochure's last page — is navy
+   like the cover. These lived in the brochure's own stylesheet, so the
+   proposal's flights slide was white text on white, on screen and in print. */
+/* Literal white, not var(--white): the dark theme redefines that token to the
+   page ground, and this page is navy in either theme. */
+.sl-closing{background:var(--navy);color:#fff}
+.sl-closing .sl-body{display:flex;flex-direction:column;justify-content:center}
+.sl-closing .sl-eyebrow{color:var(--teal)}
+.sl-closing .sl-lede{color:rgba(255,255,255,.76)}
+.sl-closing a{color:var(--teal);text-decoration:none}
+.sl-cover .sl-body{
+  display:flex;flex-direction:column;justify-content:center;
+  /* The mark is at the top right now; the foot keeps room for the edition. */
+  padding-top:9cqw;padding-bottom:6cqw;
+}
+.sl-cover .sl-eyebrow{color:var(--teal)}
+.sl-cover h1{color:var(--white);max-width:17ch}
+.sl-cover .sl-sub{margin-top:1.4cqw;color:rgba(255,255,255,.74);font-size:1.7cqw;max-width:52ch}
+/* The school's logo, on white so any mark reads against the navy. */
+/* align-self: the cover body is a flex column, which would stretch the card to the full width. */
+/* Large enough to be the second thing seen after the title: about a quarter of
+   the width and 25mm tall on paper. It was a third of this and went unnoticed. */
+.sl-cover .sl-school-logo{display:inline-block;align-self:flex-start;width:max-content;background:#fff;border-radius:7px;padding:1.3cqw 1.8cqw;margin:2.4cqw 0 .8cqw;box-shadow:0 6px 24px rgba(0,0,0,.18)}
+.sl-cover .sl-school-logo img{display:block;height:11cqw;width:auto;max-width:34cqw;object-fit:contain}
+.sl-cover .sl-prepared{
+  margin-top:2cqw;font-size:1.05cqw;letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.72);border-left:2px solid var(--teal);padding-left:1cqw;
+}
+/* Our mark heads the cover, at twice the size it closed it at. */
+.sl-cover .sl-mark{
+  position:absolute;top:4cqw;right:5cqw;left:auto;bottom:auto;padding:0;
+  display:flex;justify-content:flex-end;
+}
+.sl-cover .sl-mark img{height:8.4cqw;width:auto;opacity:.95}
+.sl-cover .sl-edition{font-size:.95cqw;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.sl-cover-edition{position:absolute;left:5cqw;bottom:4cqw}
+/* The light cover, chosen per brochure: cream ground, navy type, the navy mark. */
+.sl-cover--light{background:var(--cream);color:var(--navy)}
+.sl-cover--light .sl-eyebrow{color:var(--teal-ink)}
+.sl-cover--light h1{color:var(--navy)}
+.sl-cover--light .sl-sub{color:var(--muted)}
+.sl-cover--light .sl-prepared{color:var(--muted);border-color:var(--teal-ink)}
+.sl-cover--light .sl-edition{color:var(--muted)}
+/* The school's mark sits in the masthead beside ours, at the head of every
+   page but the cover. Drawn from the deck's --client-logo, so one rule
+   serves every slide and no page markup has to know about it. */
+.sl-deck--client .sl-page:not(.sl-cover) .sl-masthead::after{
+  content:"";flex:0 0 auto;width:11cqw;height:4.4cqw;
+  background:var(--client-logo) no-repeat right center / contain;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact;
+}
+/* On a navy page a school's own mark — usually dark — would disappear, so it
+   is drawn as white writing rather than boxed in a white card. */
+.sl-deck--dark .sl-page:not(.sl-cover) .sl-masthead::after,
+.sl-why-page .sl-masthead::after{
+  filter:grayscale(1) invert(1);
+  /* Inverting a white ground gives black; screen drops it, leaving the mark. */
+  mix-blend-mode:screen;
+}
+
+/* A way back to the contents, beside Back in the deck's own controls rather
+   than laid over the page. Screen only — on paper the reader has the page
+   numbers and the contents page itself. */
+.sl-bar .sl-back{
+  border:0;background:var(--teal);color:#fff;font-weight:700;
+  padding:7px 15px;opacity:.95;transition:background .15s,opacity .15s;
+}
+.sl-bar .sl-back:hover{background:var(--teal-ink);opacity:1}
+.sl-bar .sl-back::before{content:"↑ ";font-weight:400}
+@media print{.sl-back{display:none!important}}
+
+/* ---------- The whole document in dark ----------
+   Every page draws its colours from the tokens above, so this is a change of
+   palette rather than a second set of rules to keep in step with the first.
+   The cover keeps its own theme: a dark document may still want a pale cover. */
+.sl-deck--dark .sl-page:not(.sl-cover){
+  --white:#16242E;
+  --ink:#FFFFFF;
+  --muted:rgba(255,255,255,.74);
+  --line:rgba(255,255,255,.20);
+  --line-light:rgba(255,255,255,.16);
+  --cream:rgba(255,255,255,.07);
+  --ice:rgba(255,255,255,.10);
+  /* The deep teal of the labels is unreadable on navy; the bright one is not. */
+  --teal-ink:#19BAAB;
+  color:#fff;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact;
+}
+/* Three places name the navy directly, and the navy is now the page itself. */
+.sl-deck--dark .sl-page:not(.sl-cover) .sl-flight{background:rgba(255,255,255,.09)}
+.sl-deck--dark .sl-page:not(.sl-cover) .sl-incl li::before{background:var(--teal)}
+.sl-deck--dark .sl-page:not(.sl-cover) .ed-card{background:rgba(255,255,255,.06)}
+/* Our mark is drawn for a pale page; on a dark one it is the white cut. */
+.sl-deck--dark .sl-page:not(.sl-cover) .sl-masthead img{content:url('/images/logo-white.png')}
+
+/* ---------- A masthead, for pages that are not the cover ---------- */
+.sl-masthead{
+  display:flex;align-items:center;justify-content:space-between;gap:2cqw;
+  /* Tighter than it was: the marks either side of it are larger now, and the
+     busiest day page has only a few millimetres to give. */
+  padding-bottom:.8cqw;margin-bottom:1.1cqw;border-bottom:1px solid var(--line);
+}
+/* Half again as large: it is the only thing on the page that says who we are. */
+.sl-masthead img{height:4.4cqw;width:auto}
+/* Our mark links to the site — in the PDF too, where the link stays live.
+   The anchor must sit as tightly as the image it wraps. */
+.sl-brand{display:inline-flex;flex:0 0 auto;line-height:0;text-decoration:none}
+/* The eyebrow takes the slack, so the two marks sit together at the right. */
+.sl-masthead .sl-eyebrow{margin:0 auto 0 0}
+
+/* ---------- Print ----------
+   A4 landscape, one slide to a page.
+
+   The deck is 16:9, so a landscape page is the shape that holds it: a slide
+   prints as the slide, not as a rearrangement of it. A portrait page was
+   tried and was worse — the same content in a shape it was not designed for.
+
+   Landscape A4 is 1.414:1 against the slide's 1.778:1, so a slide is
+   proportionally taller here than on screen. The rules below give that height
+   back rather than letting anything run off the foot of the page. */
+@media print{
+  /* No page margin: the cover's navy runs to the edge of the paper the way
+     a printed cover does. The inset comes from the slide's own padding
+     below, so text still has room to breathe. */
+  @page{size:A4 landscape;margin:0}
+  html,body{background:#fff}
+  .sl-deck{display:block;background:#fff;min-height:0;padding:0;gap:0}
+  .sl-bar{display:none!important}
+  .sl-stage{width:auto;height:auto;aspect-ratio:auto;perspective:none;max-width:none}
+
+  .sl-page{
+    position:static;display:block;border-radius:0;box-shadow:none;
+    /* overflow:hidden is what makes a slide a slide on screen. Left on in
+       print it silently clips whatever does not fit — a trip once lost its
+       conditional wording, which is the difference between a promise and an
+       intention. A long slide runs onto a second page instead. */
+    overflow:visible;
+    /* The container stays, so cqw type keeps working on paper. A landscape A4
+       content box is about 277mm wide, which is what 100cqw then means. */
+    container-type:inline-size;
+    /* A sheet, not a strip. Left to its content the slide stopped two-thirds
+       of the way down the paper, with the page number floating where it
+       ended. A minimum rather than a fixed height, so a long slide can still
+       run onto a second sheet instead of being clipped. Half a millimetre
+       under the sheet, not the sheet itself: twenty-two slides of exactly
+       210mm summed to a fraction of a pixel over twenty-two sheets, and the
+       fraction printed as a blank twenty-third. */
+    min-height:209.5mm;
+    animation:none!important;transform:none!important;
+    page-break-after:always;break-after:page;
+  }
+  .sl-page[hidden]{display:block!important}
+  .sl-page:last-child{page-break-after:auto;break-after:auto}
+  /* A closing slide is exactly one sheet tall, and the last one has no forced
+     break to swallow the fraction of a pixel it runs over by — so a blank
+     sheet followed it. Pulling its margin box in by 2mm ends the flow inside
+     the sheet; the painted box is unchanged. */
+  .sl-page:last-child{margin-bottom:-2mm}
+  /* The page has no margin, so the inset lives here — text still has room
+     to breathe while the cover's colour reaches the edge of the paper. */
+  .sl-body{overflow:visible;padding:11mm 13mm 14mm;display:block!important}
+
+  /* A running footer drawn inside the slide, because there is no page margin
+     to put one in. One slide is one page, so counting slides counts pages. */
+  .sl-deck{counter-reset:pg}
+  .sl-page{counter-increment:pg;position:relative!important}
+  .sl-page::after{
+    content:counter(pg);
+    position:absolute;right:13mm;bottom:6mm;
+    font-size:8pt;color:var(--muted);
+  }
+  .sl-cover::after,.sl-closing::after{color:rgba(255,255,255,.5)}
+  /* With the school's mark bottom right, the page number moves to the left. */
+
+  .sl-cover,.sl-closing,.sl-chips span,.sl-toc .sl-thumb{
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;
+  }
+  /* The cover and the closing fill their page rather than shrink to their
+     text — but not past it. Landscape A4 with 9mm margins leaves 192mm, and a
+     180mm body plus the mark beneath came to 200mm, which pushed a sixteenth
+     page out of fifteen slides. */
+  /* A4 landscape is 210mm tall and the cover fills it edge to edge.
+     Height by structure rather than arithmetic: the page is exactly one sheet,
+     the body takes what is left after the mark, and nothing has to be kept in
+     step by hand. Adding up min-heights and paddings instead pushed a
+     fifteenth page out of fourteen slides, twice. */
+  .sl-cover,.sl-closing{
+    height:210mm;display:flex!important;flex-direction:column;overflow:hidden;
+  }
+  .sl-cover .sl-body,.sl-closing .sl-body{
+    flex:1;min-height:0;display:flex!important;flex-direction:column;justify-content:center;
+  }
+  /* The mark is a sibling of the body, not inside it, so it does not inherit
+     the body's padding and would otherwise sit flush against the paper. */
+  .sl-cover .sl-mark{position:absolute;top:11mm;right:13mm;left:auto;bottom:auto;padding:0;margin:0}
+  .sl-cover-edition{position:absolute;left:13mm;bottom:11mm}
+  /* A cover is not numbered, and the number was landing on the edition line. */
+  .sl-cover::after{content:none}
+
+  .sl-intro{display:grid!important}
+  /* The contents used to squeeze itself into nested columns to fit one
+     sheet. It runs to as many sheets as it needs now, so a group's list is
+     one column here as it is on screen. */
+  .sl-days{columns:3}
+  .sl-toc button{cursor:default}
+}
+
+/* ============================================================
+   Reading mode.
+
+   The same slides, stacked and scrolled rather than turned one at a time.
+   A proposal is read on a phone as often as a desktop, and a fixed 16:9 box
+   is a poor thing to read on either — but the document underneath is the same
+   one, so the PDF is unaffected: the print rules below already make every
+   .sl-page a page, from whichever mode it was shown in.
+   ============================================================ */
+.sl-deck--page{display:block;background:var(--white);padding:0;min-height:0}
+
+.sl-deck--page .sl-bar{
+  position:sticky;top:0;z-index:20;width:auto;max-width:none;
+  background:var(--navy);padding:10px clamp(14px,4vw,40px);
+}
+
+.sl-deck--page .sl-stage{
+  position:static;height:auto;aspect-ratio:auto;width:100%;max-width:1100px;
+  perspective:none;margin:0 auto;
+}
+
+.sl-deck--page .sl-page{
+  position:static;width:100%;height:auto;
+  border-radius:0;box-shadow:none;overflow:visible;
+  transform:none!important;animation:none!important;
+  border-bottom:1px solid var(--line);
+}
+/* Every section is shown: there is nothing to turn to. */
+.sl-deck--page .sl-page[hidden]{display:flex!important}
+.sl-deck--page .sl-page:last-child{border-bottom:0}
+
+.sl-deck--page .sl-body{overflow:visible;padding:clamp(28px,5cqw,64px) clamp(20px,5cqw,64px)}
+
+/* The cover and the closing keep their height; the rest take what they need. */
+.sl-deck--page .sl-cover .sl-body{min-height:70svh}
+.sl-deck--page .sl-closing .sl-body{min-height:0}
+
+/* On a narrow screen the side-by-side arrangements stack, the way they would
+   on paper. */
+@media (max-width: 760px){
+  .sl-deck--page .sl-intro,
+  .sl-deck--page .sl-head,
+  .sl-deck--page .sl-cols,
+  .sl-deck--page .pr-day,
+  .sl-deck--page .pr-two,
+  .sl-deck--page .pr-price,
+  .sl-deck--page .ed-intro,
+  .sl-deck--page .ed-tech{grid-template-columns:1fr!important}
+  .sl-deck--page .ed-safety,
+  .sl-deck--page .pr-cards,
+  .sl-deck--page .sl-steps,
+  .sl-deck--page .pr-steps,
+  .sl-deck--page .pr-legs,
+  .sl-deck--page .pr-lists,
+  .sl-deck--page .pr-three{grid-template-columns:1fr!important}
+  .sl-deck--page .pr-toc,
+  .sl-deck--page .pr-terms,
+  .sl-deck--page .sl-toc-cols,
+  .sl-deck--page .sl-days,
+  .sl-deck--page .sl-days-dense,
+  .sl-deck--page .ed-ed-cols{columns:1!important}
+}
