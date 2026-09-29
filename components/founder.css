@@ -1,0 +1,66 @@
+/* Paul's photograph on the Our story page.
+
+   A cream band between the editorial cards and the closing ask, so the
+   portrait separates from the white cards above it rather than floating
+   between two white sections. The picture is 4:5, which is the shape the
+   photograph actually is, so it fills its frame without a crop. */
+
+.founder-band {
+  background: var(--cream);
+  padding: 64px 0;
+}
+
+.founder-figure {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.founder-shot {
+  position: relative;
+  width: 340px;
+  aspect-ratio: 4 / 5;
+  flex: 0 0 auto;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid var(--line);
+}
+
+.founder-img {
+  object-fit: cover;
+  /* Anchored to the top: if a narrower frame ever crops, it takes the jacket
+     and keeps the face. */
+  object-position: 50% 0%;
+}
+
+.founder-figure figcaption {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.founder-figure figcaption b {
+  font-family: var(--font-fraunces), serif;
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 1.2;
+  color: var(--ink);
+  margin-top: 8px;
+}
+
+.founder-figure figcaption > span:last-child {
+  font-size: 14.5px;
+  color: var(--ink-soft);
+}
+
+@media (max-width: 700px) {
+  .founder-band { padding: 48px 0; }
+  .founder-figure {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+  .founder-shot { width: 78%; max-width: 320px; }
+}

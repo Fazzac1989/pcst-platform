@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import InfoPage from '@/components/InfoPage';
+import FounderNote from '@/components/FounderNote';
 
 export const metadata: Metadata = {
   alternates: { canonical: '/about' },
@@ -60,6 +61,8 @@ export default function AboutPage() {
         { label: 'Safety & Safeguarding', href: '/safety' },
         { label: 'All trips', href: '/trips' },
       ]}
-    />
+    >
+      <FounderNote />
+    </InfoPage>
   );
 }
