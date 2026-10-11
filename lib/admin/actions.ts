@@ -36,24 +36,20 @@ export type TripPayload = {
   featured: boolean;
 };
 
-function revalidatePublic(slugs: string[]) {
-  revalidatePath('/');
-  revalidatePath('/trips');
-  revalidatePath('/subjects/[slug]', 'page'); // subject listings reflect any trip change
-  revalidatePath('/countries/[slug]', 'page'); // country listings too
-  for (const slug of slugs) revalidatePath(`/trips/${slug}`);
+/**
+ * A trip change can alter the header menus and the footer site map, which are
+ * baked into every statically generated page — publishing the first trip to a
+ * new country must put that country in the Destinations menu everywhere, not
+ * only on the pages that list trips. So the whole public site is marked stale;
+ * pages regenerate lazily on their next visit, so this costs nothing up front.
+ */
+function revalidatePublic() {
+  revalidatePath('/', 'layout');
 }
 
 export async function saveTrip(payload: TripPayload): Promise<ActionResult> {
   const db = createClient();
   const { itinerary, id, ...fields } = payload;
-
-  // Track the previous slug so a rename revalidates the old URL too.
-  let previousSlug: string | null = null;
-  if (id) {
-    const { data } = await db.from('trips').select('slug').eq('id', id).maybeSingle();
-    previousSlug = data?.slug ?? null;
-  }
 
   const query = id
     ? db.from('trips').update(fields).eq('id', id).select('id').single()
@@ -92,29 +88,23 @@ export async function saveTrip(payload: TripPayload): Promise<ActionResult> {
     if (insErr) return { ok: false, error: insErr.message };
   }
 
-  revalidatePublic(previousSlug && previousSlug !== fields.slug ? [previousSlug, fields.slug] : [fields.slug]);
+  revalidatePublic();
   return { ok: true, id: trip.id };
 }
 
 export async function deleteTrip(id: number): Promise<ActionResult> {
   const db = createClient();
-  const { data } = await db.from('trips').select('slug').eq('id', id).maybeSingle();
   const { error } = await db.from('trips').delete().eq('id', id);
   if (error) return { ok: false, error: error.message };
-  revalidatePublic(data ? [data.slug] : []);
+  revalidatePublic();
   return { ok: true };
 }
 
 export async function setTripFeatured(id: number, featured: boolean): Promise<ActionResult> {
   const db = createClient();
-  const { data, error } = await db
-    .from('trips')
-    .update({ featured })
-    .eq('id', id)
-    .select('slug')
-    .single();
+  const { error } = await db.from('trips').update({ featured }).eq('id', id);
   if (error) return { ok: false, error: error.message };
-  revalidatePublic([data.slug]);
+  revalidatePublic();
   return { ok: true };
 }
 
@@ -147,9 +137,7 @@ export async function updateCountry(id: number, name: string, region: string | n
   const slug = name.toLowerCase().replace(/&/g, 'and').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
   const { error } = await db.from('countries').update({ name: name.trim(), slug, region }).eq('id', id);
   if (error) return { ok: false, error: error.message };
-  revalidatePath('/');
-  revalidatePath('/trips');
-  revalidatePath('/subjects/[slug]', 'page');
+  revalidatePublic();
   return { ok: true };
 }
 
@@ -193,8 +181,7 @@ export async function saveBookingTerms(texts: string[]): Promise<ActionResult> {
     if (error) return { ok: false, error: error.message };
   }
   // Terms render on every trip page
-  const { data: trips } = await db.from('trips').select('slug');
-  revalidatePublic((trips ?? []).map((t) => t.slug));
+  revalidatePublic();
   return { ok: true };
 }
 

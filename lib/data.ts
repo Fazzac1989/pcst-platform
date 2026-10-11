@@ -615,6 +615,20 @@ export async function getCountries(): Promise<CountrySummary[]> {
   return [...map.values()].sort((a, b) => a.name.localeCompare(b.name));
 }
 
+/**
+ * Each country's own hero photograph, by slug, for the destinations index.
+ * Countries without one are absent; callers fall back to a trip's hero.
+ */
+export async function getCountryHeroes(): Promise<Map<string, { url: string; alt: string }>> {
+  const heroes = new Map<string, { url: string; alt: string }>();
+  if (!hasSupabase) return heroes;
+  const { data } = await createClient().from('countries').select('slug, hero_image, hero_alt');
+  for (const row of data ?? []) {
+    if (row.hero_image) heroes.set(row.slug, { url: row.hero_image, alt: row.hero_alt ?? '' });
+  }
+  return heroes;
+}
+
 /** Every trip that belongs on a given country's page. */
 export function tripsForCountry<T extends { countrySlug: string }>(trips: T[], slug: string): T[] {
   return trips.filter((t) => countrySlugsFor(t.countrySlug).includes(slug));
