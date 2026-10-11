@@ -244,6 +244,7 @@ export default async function CountryPage({ params }: Props) {
                   {c.name}
                 </Link>
               ))}
+              <Link href="/countries">All destinations →</Link>
               <Link href="/trips">← All trips</Link>
             </div>
           </div>

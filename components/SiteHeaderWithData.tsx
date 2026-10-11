@@ -1,5 +1,6 @@
 import SiteHeader from '@/components/SiteHeader';
 import { getAllSubjects, getCountries } from '@/lib/data';
+import { metaFor } from '@/lib/country-meta';
 
 /** Server wrapper: feeds the subjects + countries mega menus from the database. */
 export default async function SiteHeaderWithData({
@@ -17,11 +18,16 @@ export default async function SiteHeaderWithData({
         tripCount: s.tripCount,
         countries: s.countries,
       }))}
-      countries={countries.map((c) => ({
-        name: c.name,
-        slug: c.slug,
-        tripCount: c.tripCount,
-      }))}
+      countries={countries.map((c) => {
+        const meta = metaFor(c.slug, c.name);
+        return {
+          name: c.name,
+          slug: c.slug,
+          tripCount: c.tripCount,
+          continent: meta?.continent ?? null,
+          flags: meta?.flags ?? [],
+        };
+      })}
     />
   );
 }

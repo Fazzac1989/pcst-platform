@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import SubjectIcon from '@/components/SubjectIcon';
-import { COUNTRY_META, CONTINENT_ORDER } from '@/lib/country-meta';
+import { CONTINENT_ORDER } from '@/lib/country-meta';
 
 export type MegaSubject = {
   name: string;
@@ -17,6 +17,9 @@ export type MegaCountry = {
   name: string;
   slug: string;
   tripCount: number;
+  /** Resolved on the server from lib/country-meta; null files it under "More destinations". */
+  continent: string | null;
+  flags: string[];
 };
 
 type MenuKey = 'subjects' | 'countries';
@@ -120,7 +123,7 @@ export default function SiteHeader({
               return menu ? (
                 <a
                   key={l.anchor}
-                  href={menu === 'countries' ? '/trips' : href(l)}
+                  href={menu === 'countries' ? '/countries' : href(l)}
                   aria-haspopup="true"
                   aria-expanded={openMenu === menu}
                   onMouseEnter={() => openMega(menu)}
@@ -190,9 +193,7 @@ export default function SiteHeader({
                 .map((continent) => ({
                   continent,
                   items: countries.filter((c) =>
-                    continent === 'More destinations'
-                      ? !COUNTRY_META[c.slug]
-                      : COUNTRY_META[c.slug]?.continent === continent
+                    continent === 'More destinations' ? !c.continent : c.continent === continent
                   ),
                 }))
                 .filter((g) => g.items.length > 0)
@@ -208,7 +209,7 @@ export default function SiteHeader({
                             onClick={() => setOpenMenu(null)}
                           >
                             <span className="flags" aria-hidden="true">
-                              {(COUNTRY_META[c.slug]?.flags ?? []).map((code) => (
+                              {c.flags.map((code) => (
                                 // eslint-disable-next-line @next/next/no-img-element
                                 <img
                                   key={code}
@@ -230,8 +231,8 @@ export default function SiteHeader({
             </div>
             <div className="mega-foot">
               <span>Somewhere else in mind? We design trips to any destination.</span>
-              <Link href="/trips" onClick={() => setOpenMenu(null)}>
-                View all trips →
+              <Link href="/countries" onClick={() => setOpenMenu(null)}>
+                All destinations →
               </Link>
             </div>
           </div>

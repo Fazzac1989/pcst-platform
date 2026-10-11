@@ -56,6 +56,7 @@ export default async function SiteFooterWithData() {
             <h5>Explore</h5>
             <ul>
               <li><Link href="/trips">All trips</Link></li>
+              <li><Link href="/countries">All destinations</Link></li>
               <li><a href="/#subjects">Browse by subject</a></li>
               <li><a href="/#trips">Journey inspiration</a></li>
               <li><Link href="/our-app">Your travel companion</Link></li>

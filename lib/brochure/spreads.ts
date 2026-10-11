@@ -1,6 +1,6 @@
 import type { BrochurePage, PageContent } from '@/lib/brochure/schema';
 import type { BrochureTrip } from '@/lib/brochure/data';
-import { COUNTRY_META, CONTINENT_ORDER, primaryCountrySlug } from '@/lib/country-meta';
+import { CONTINENT_ORDER, metaFor, primaryCountrySlug } from '@/lib/country-meta';
 
 /**
  * Gather the pages belonging to one trip into a single spread.
@@ -72,7 +72,7 @@ export function continentOf(trip: BrochureTrip | undefined): string {
   const slug = trip?.countrySlug?.trim();
   if (!slug) return '';
   // A multi-country tour is filed under its first real country.
-  return COUNTRY_META[primaryCountrySlug(slug)]?.continent ?? COUNTRY_META[slug]?.continent ?? '';
+  return metaFor(primaryCountrySlug(slug))?.continent ?? metaFor(slug)?.continent ?? '';
 }
 
 /** Sorted the way a reader scans a list: A before B, and numbers before words. */

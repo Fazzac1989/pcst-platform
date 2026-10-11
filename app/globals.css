@@ -303,6 +303,18 @@ h2.section-title.pct-title { font-size: clamp(24px, 3.2vw, 38px); line-height: 1
 .dest-card .meta { position: relative; padding: 22px; }
 .dest-card h3 { font-family: var(--font-fraunces), serif; font-weight: 500; font-size: 22px; }
 .dest-card span { font-size: 12px; color: rgba(255, 255, 255, .72); letter-spacing: .06em; }
+.dest-card .flags { display: flex; gap: 4px; margin-bottom: 10px; }
+.dest-card .flags img { width: 30px; height: auto; border-radius: 2px; box-shadow: 0 0 0 1px rgba(255, 255, 255, .35); display: block; }
+.trip-main section.dest-group { padding: 56px 0 8px; }
+.trip-main section.dest-group:first-child { padding-top: 72px; }
+.dest-group .head { border-bottom: 1px solid var(--line); padding-bottom: 14px; }
+.dest-group .head h2.st { margin: 0; }
+.dest-count { font-size: 12px; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; color: var(--brass); }
+.dest-group .dest-grid { margin-top: 28px; }
+.trip-main section.dest-close { padding: 56px 0 88px; }
+.dest-close p { font-size: 16px; color: var(--ink-soft); }
+.dest-close a { color: var(--brass); font-weight: 600; }
+.dest-close a:hover { color: var(--ink); }
 
 /* ---------- trust ---------- */
 .trust { background: var(--cream); border-top: 1px solid var(--line); }
