@@ -1,6 +1,21 @@
 import type { MetadataRoute } from 'next';
 import { headers } from 'next/headers';
-import { getCountries, getPublishedTrips, getSubjects } from '@/lib/data';
+import { getCities, getCountries, getPublishedTrips, getSubjects } from '@/lib/data';
+
+/**
+ * The pages a teacher, parent or school leader reads before they choose a
+ * trip. They are linked from the footer, but a sitemap is how they get
+ * crawled promptly after a change rather than whenever the footer is found.
+ */
+const INFO_PAGES = [
+  '/why-premium-choice',
+  '/safety',
+  '/for-teachers',
+  '/for-parents',
+  '/for-school-leaders',
+  '/our-app',
+  '/about',
+];
 
 export const dynamic = 'force-dynamic';
 
@@ -15,10 +30,11 @@ export const dynamic = 'force-dynamic';
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const host = headers().get('host')?.toLowerCase().split(':')[0] ?? '';
   const base = `https://${host}`;
-  const [trips, subjects, countries] = await Promise.all([
+  const [trips, subjects, countries, cities] = await Promise.all([
     getPublishedTrips(),
     getSubjects(),
     getCountries(),
+    getCities(),
   ]);
   return [
     { url: base, changeFrequency: 'weekly', priority: 1 },
@@ -33,6 +49,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       url: `${base}/countries/${c.slug}`,
       changeFrequency: 'weekly' as const,
       priority: 0.85,
+    })),
+    ...cities.map((c) => ({
+      url: `${base}/cities/${c.slug}`,
+      changeFrequency: 'weekly' as const,
+      priority: 0.75,
+    })),
+    ...INFO_PAGES.map((path) => ({
+      url: `${base}${path}`,
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
     })),
     ...trips.map((t) => ({
       url: `${base}/trips/${t.slug}`,
