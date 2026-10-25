@@ -2,6 +2,7 @@ import 'server-only';
 import { cache } from 'react';
 import { cookies } from 'next/headers';
 import { createAdminClient } from '@/lib/supabase/admin';
+import { parseHotels, type Hotel } from './accommodation';
 
 export const APP_COOKIE = 'pcst_app_code';
 
@@ -27,6 +28,7 @@ export type AppTrip = {
   status: string;
   prize: string | null;
   challengesUnlock: 'daily' | 'all';
+  hotels: Hotel[];
 };
 
 /**
@@ -69,6 +71,7 @@ export const getAppSession = cache(async function getAppSession(): Promise<{ mem
       status: t.status,
       prize: t.prize ?? null,
       challengesUnlock: t.challenges_unlock === 'all' ? 'all' : 'daily',
+      hotels: parseHotels(t.hotels),
     },
   };
 });

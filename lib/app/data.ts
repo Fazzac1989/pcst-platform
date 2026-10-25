@@ -2,6 +2,7 @@ import 'server-only';
 import { createAdminClient } from '@/lib/supabase/admin';
 import type { AppMember } from './session';
 import type { Challenge, ChallengeAnswer, ChecklistItem, ChecklistTick } from './learning';
+import type { RoomingStudent } from './accommodation';
 
 export type AppPost = {
   id: number;
@@ -260,4 +261,31 @@ export async function getChecklistTicks(itemIds: number[]): Promise<ChecklistTic
   const db = createAdminClient();
   const { data } = await db.from('app_checklist_ticks').select('item_id, student_id, ticked_at').in('item_id', itemIds);
   return (data ?? []).map((t: any) => ({ itemId: t.item_id, studentId: t.student_id, tickedAt: t.ticked_at }));
+}
+
+// ─── Accommodation ────────────────────────────────────────────────────
+
+/**
+ * The rooming list for an app trip, from the teacher portal's planning
+ * workspace on the same booking. Empty when there isn't one.
+ */
+export async function getRooming(tripId: number): Promise<RoomingStudent[]> {
+  const db = createAdminClient();
+  const { data: booking, error } = await db
+    .from('bookings')
+    .select('portal_trip_id')
+    .eq('app_trip_id', tripId)
+    .not('portal_trip_id', 'is', null)
+    .limit(1)
+    .maybeSingle();
+  if (error || !booking?.portal_trip_id) return [];
+  const { data } = await db.from('portal_students').select('id, full_name, room_group').eq('portal_trip_id', booking.portal_trip_id);
+  return (data ?? []).map((s: any) => ({ id: s.id, fullName: s.full_name, room: s.room_group }));
+}
+
+/** Which portal student an app member is, if linked. */
+export async function getPortalStudentId(memberId: number): Promise<number | null> {
+  const db = createAdminClient();
+  const { data } = await db.from('app_members').select('portal_student_id').eq('id', memberId).maybeSingle();
+  return data?.portal_student_id ?? null;
 }
