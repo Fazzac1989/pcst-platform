@@ -25,6 +25,7 @@ const mapStudent = (r: any): PortalStudent => ({
   passportExpiry: r.passport_expiry,
   passportFile: r.passport_file,
   consentFile: r.consent_file,
+  photoFile: r.photo_file ?? null,
   dietary: r.dietary,
   medical: r.medical,
   emergencyContactName: r.emergency_contact_name,

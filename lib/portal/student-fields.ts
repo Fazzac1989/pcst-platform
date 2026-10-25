@@ -13,6 +13,7 @@ export type PortalStudent = {
   passportExpiry: string | null;
   passportFile: string | null;
   consentFile: string | null;
+  photoFile: string | null;
   dietary: string | null;
   medical: string | null;
   emergencyContactName: string | null;
@@ -66,3 +67,10 @@ export function passportExpiringSoon(s: PortalStudent, departure: string | null)
 /** A plain check that an address will reach someone: one @, a dot after it, no spaces. */
 export const looksLikeEmail = (v: string | null | undefined): v is string =>
   typeof v === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
+
+export type StudentDocKind = 'passport' | 'consent' | 'photo';
+export const DOC_COLUMN: Record<StudentDocKind, 'passport_file' | 'consent_file' | 'photo_file'> = {
+  passport: 'passport_file',
+  consent: 'consent_file',
+  photo: 'photo_file',
+};

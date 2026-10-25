@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import type { ScheduleItem } from '@/lib/app/data';
 import Icon from '../icons';
+import DailyRegister, { type RegisterStudent } from './DailyRegister';
 
 type LegacyDay = { label: string; title: string; description: string };
 
@@ -15,9 +16,12 @@ function dayLabel(iso: string, today: string) {
 export default function ItineraryView({
   schedule,
   legacyItinerary,
+  register,
 }: {
   schedule: ScheduleItem[];
   legacyItinerary: LegacyDay[];
+  /** Teachers only: the students and every day's marks. */
+  register: { students: RegisterStudent[]; marks: { date: string; studentId: number; status: 'present' | 'absent' }[] } | null;
 }) {
   const today = new Date().toISOString().slice(0, 10);
   const dates = useMemo(() => Array.from(new Set(schedule.map((s) => s.date))), [schedule]);
@@ -66,6 +70,7 @@ export default function ItineraryView({
     return (
       <div>
         <h1 className="papp-page-title">Itinerary</h1>
+        {register && <DailyRegister date={today} students={register.students} marks={register.marks} />}
         {legacyItinerary.length > 0 ? (
           <section className="papp-card">
             {legacyItinerary.map((day, i) => (
@@ -117,6 +122,8 @@ export default function ItineraryView({
           </button>
         ))}
       </div>
+
+      {register && <DailyRegister date={selected} students={register.students} marks={register.marks} />}
 
       <div className="papp-timeline">
         {dayItems.map((item) => (

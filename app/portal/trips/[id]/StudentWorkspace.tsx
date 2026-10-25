@@ -9,6 +9,7 @@ import {
   type MissingKey,
   type PortalStudent,
   type PortalTrip,
+  type StudentDocKind,
 } from '@/lib/portal/student-fields';
 import type { ChecklistSummary } from '@/lib/portal/checklist';
 import { addParentEmailsBulk, emailChecklistToParents } from '@/lib/portal/checklist-actions';
@@ -69,7 +70,7 @@ export default function StudentWorkspace({
     return res.ok;
   }
 
-  async function onUpload(studentId: number, kind: 'passport' | 'consent', file: File) {
+  async function onUpload(studentId: number, kind: StudentDocKind, file: File) {
     uploading.current = `${studentId}-${kind}`;
     setBusy(true);
     setError(null);
@@ -86,7 +87,7 @@ export default function StudentWorkspace({
     else router.refresh();
   }
 
-  async function onView(studentId: number, kind: 'passport' | 'consent') {
+  async function onView(studentId: number, kind: StudentDocKind) {
     setError(null);
     const res = await documentUrl(trip.id, studentId, kind);
     if (!res.ok) {
@@ -291,13 +292,13 @@ export default function StudentWorkspace({
                     </div>
 
                     <div className="pt-docs">
-                      {(['passport', 'consent'] as const).map((kind) => {
-                        const has = kind === 'passport' ? s.passportFile : s.consentFile;
+                      {(['photo', 'passport', 'consent'] as const).map((kind) => {
+                        const has = kind === 'photo' ? s.photoFile : kind === 'passport' ? s.passportFile : s.consentFile;
                         const key = `${s.id}-${kind}`;
                         return (
                           <div key={kind} className="pt-doc">
                             <span className="pt-doc-label">
-                              {kind === 'passport' ? 'Passport' : 'Consent'}
+                              {kind === 'photo' ? 'Photo' : kind === 'passport' ? 'Passport' : 'Consent'}
                             </span>
                             {has ? (
                               <>
@@ -317,7 +318,7 @@ export default function StudentWorkspace({
                                 {uploading.current === key ? 'Uploading…' : 'Upload'}
                                 <input
                                   type="file"
-                                  accept="image/*,application/pdf"
+                                  accept={kind === 'photo' ? 'image/*' : 'image/*,application/pdf'}
                                   hidden
                                   disabled={busy}
                                   onChange={(e) => {
