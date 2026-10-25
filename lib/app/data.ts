@@ -1,6 +1,7 @@
 import 'server-only';
 import { createAdminClient } from '@/lib/supabase/admin';
 import type { AppMember } from './session';
+import type { Challenge, ChallengeAnswer, ChecklistItem, ChecklistTick } from './learning';
 
 export type AppPost = {
   id: number;
@@ -197,4 +198,66 @@ export async function getTripRoster(tripId: number): Promise<Roster[]> {
     loginCode: m.login_code,
     parentOf: m.parent_of,
   }));
+}
+
+// ─── Learning challenges ──────────────────────────────────────────────
+
+export async function getChallenges(tripId: number): Promise<Challenge[]> {
+  const db = createAdminClient();
+  const { data } = await db
+    .from('app_challenges')
+    .select('id, date, title, fact, question, options, answer, points, sort_order')
+    .eq('app_trip_id', tripId)
+    .order('date', { nullsFirst: true })
+    .order('sort_order')
+    .order('id');
+  return (data ?? []).map((c: any) => ({
+    id: c.id,
+    date: c.date,
+    title: c.title,
+    fact: c.fact ?? '',
+    question: c.question,
+    options: Array.isArray(c.options) ? c.options.map(String) : [],
+    answer: c.answer,
+    points: c.points,
+    sortOrder: c.sort_order,
+  }));
+}
+
+/** Every answer given on this trip's challenges. */
+export async function getChallengeAnswers(challengeIds: number[]): Promise<ChallengeAnswer[]> {
+  if (!challengeIds.length) return [];
+  const db = createAdminClient();
+  const { data } = await db
+    .from('app_challenge_answers')
+    .select('challenge_id, member_id, choice, correct, points, answered_at')
+    .in('challenge_id', challengeIds);
+  return (data ?? []).map((a: any) => ({
+    challengeId: a.challenge_id,
+    memberId: a.member_id,
+    choice: a.choice,
+    correct: a.correct,
+    points: a.points,
+    answeredAt: a.answered_at,
+  }));
+}
+
+// ─── Pre-arrival checklist ────────────────────────────────────────────
+
+export async function getChecklist(tripId: number): Promise<ChecklistItem[]> {
+  const db = createAdminClient();
+  const { data } = await db
+    .from('app_checklist_items')
+    .select('id, title, detail, due_date, sort_order')
+    .eq('app_trip_id', tripId)
+    .order('sort_order')
+    .order('id');
+  return (data ?? []).map((i: any) => ({ id: i.id, title: i.title, detail: i.detail ?? '', dueDate: i.due_date, sortOrder: i.sort_order }));
+}
+
+export async function getChecklistTicks(itemIds: number[]): Promise<ChecklistTick[]> {
+  if (!itemIds.length) return [];
+  const db = createAdminClient();
+  const { data } = await db.from('app_checklist_ticks').select('item_id, student_id, ticked_at').in('item_id', itemIds);
+  return (data ?? []).map((t: any) => ({ itemId: t.item_id, studentId: t.student_id, tickedAt: t.ticked_at }));
 }

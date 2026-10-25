@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
 import { getPortalTeacher } from '@/lib/portal/session';
 import { studentsForTrip, tripForTeacher } from '@/lib/portal/planning';
+import { checklistForWorkspace } from '@/lib/portal/checklist';
 import StudentWorkspace from './StudentWorkspace';
 
 export const dynamic = 'force-dynamic';
@@ -16,7 +17,9 @@ export default async function PortalTripPage({ params }: { params: { id: string 
   const trip = await tripForTeacher(tripId, teacher.id);
   if (!trip) notFound();
 
-  const students = trip.dataPurgedAt ? [] : await studentsForTrip(tripId);
+  const [students, checklist] = trip.dataPurgedAt
+    ? [[], null]
+    : await Promise.all([studentsForTrip(tripId), checklistForWorkspace(tripId)]);
 
   return (
     <div>
@@ -38,7 +41,7 @@ export default async function PortalTripPage({ params }: { params: { id: string 
           </p>
         </div>
       ) : (
-        <StudentWorkspace trip={trip} students={students} />
+        <StudentWorkspace trip={trip} students={students} checklist={checklist} />
       )}
     </div>
   );

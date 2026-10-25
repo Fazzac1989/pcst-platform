@@ -206,3 +206,76 @@ export async function sendProposalViewedNotification(d: {
     html
   );
 }
+
+const esc = (s: string) =>
+  s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
+export const emailConfigured = () => Boolean(process.env.RESEND_API_KEY);
+
+/**
+ * A parent's pre-arrival checklist: what to sort before the trip, and a
+ * one-tap link that signs them in to the travel app to tick it off.
+ */
+export async function sendChecklistEmail(d: {
+  to: string;
+  parentName: string | null;
+  studentName: string;
+  tripTitle: string;
+  schoolName: string | null;
+  dates: string | null;
+  items: { title: string; detail: string; dueDate: string | null }[];
+  link: string;
+  code: string;
+  appUrl: string;
+}): Promise<boolean> {
+  const site = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000';
+  const logo = `${site}/images/logo-navy.png`;
+  const first = d.studentName.trim().split(/\s+/)[0];
+  const due = (iso: string) =>
+    new Date(iso + 'T00:00').toLocaleDateString('en-GB', { day: 'numeric', month: 'long' });
+  const list = d.items
+    .map(
+      (i) => `<tr><td style="padding:8px 10px 8px 0;vertical-align:top;color:#19BAAB;font-size:16px;">☐</td>
+        <td style="padding:8px 0;border-bottom:1px solid rgba(22,36,46,.08);font-size:14.5px;line-height:1.5;color:#16242E;">
+          <strong>${esc(i.title)}</strong>${i.dueDate ? ` <span style="color:#B0453A;font-size:12.5px;">by ${due(i.dueDate)}</span>` : ''}
+          ${i.detail ? `<br/><span style="color:#425964;font-size:13px;">${esc(i.detail)}</span>` : ''}
+        </td></tr>`
+    )
+    .join('');
+  const html = `
+  <div style="margin:0;padding:32px 16px;background:#f4f5f6;font-family:Georgia,'Times New Roman',serif;">
+    <div style="max-width:560px;margin:0 auto;background:#ffffff;border:1px solid rgba(22,36,46,.14);border-radius:4px;overflow:hidden;">
+      <div style="padding:32px 40px 24px;border-bottom:3px solid #19BAAB;">
+        <img src="${logo}" alt="Premium Choice School Trips" width="240" style="display:block;max-width:240px;height:auto;" />
+      </div>
+      <div style="padding:32px 40px;color:#16242E;">
+        <h1 style="margin:0 0 16px;font-size:23px;font-weight:normal;line-height:1.3;">
+          ${d.parentName ? `Dear ${esc(d.parentName)}` : 'Dear parent or guardian'} — <em style="color:#12897E;">${esc(first)}’s trip is coming up.</em>
+        </h1>
+        <p style="margin:0 0 14px;font-size:15px;line-height:1.65;color:#425964;">
+          <strong>${esc(d.tripTitle)}</strong>${d.schoolName ? ` with <strong>${esc(d.schoolName)}</strong>` : ''}${d.dates ? `, ${esc(d.dates)}` : ''}.
+          Here is everything to sort before departure. Tick each one off in the trip app as you go —
+          ${esc(first)} sees the same list, and the trip leaders can see when you’re ready.
+        </p>
+        <table cellpadding="0" cellspacing="0" style="width:100%;border-collapse:collapse;margin:8px 0 6px;">${list}</table>
+        <p style="margin:26px 0 18px;">
+          <a href="${d.link}" style="display:inline-block;background:#19BAAB;color:#16242E;font-family:Arial,sans-serif;font-size:14px;font-weight:bold;letter-spacing:.04em;padding:14px 28px;border-radius:2px;text-decoration:none;">
+            Tick it off in the app →
+          </a>
+        </p>
+        <p style="margin:0;font-size:13px;line-height:1.6;color:#425964;">
+          The button signs you straight in. On another device, go to
+          <a href="${d.appUrl}" style="color:#12897E;">${d.appUrl.replace(/^https?:\/\//, '')}</a> and enter your personal code:
+          <strong style="font-family:monospace;font-size:14px;color:#16242E;">${esc(d.code)}</strong>.
+          Please keep it to yourself — it’s your login for the trip, with photos, announcements and messages to the team.
+        </p>
+      </div>
+      <div style="padding:20px 40px;background:#16242E;color:rgba(244,243,238,.72);font-size:12.5px;line-height:1.7;">
+        Premium Choice Travel · Dubai, United Arab Emirates<br/>
+        <a href="tel:+97144206965" style="color:#19BAAB;text-decoration:none;">+971 4 420 6965</a> ·
+        <a href="mailto:info@premiumchoicetravel.com" style="color:#19BAAB;text-decoration:none;">info@premiumchoicetravel.com</a>
+      </div>
+    </div>
+  </div>`;
+  return sendEmail(d.to, `Pre-arrival checklist: ${d.tripTitle}`, html);
+}

@@ -10,6 +10,8 @@ import {
   type PortalStudent,
   type PortalTrip,
 } from '@/lib/portal/student-fields';
+import type { ChecklistSummary } from '@/lib/portal/checklist';
+import { addParentEmailsBulk, emailChecklistToParents } from '@/lib/portal/checklist-actions';
 import {
   addStudentsBulk,
   deleteStudent,
@@ -24,14 +26,19 @@ const dateStr = (v: string | null) =>
 export default function StudentWorkspace({
   trip,
   students,
+  checklist,
 }: {
   trip: PortalTrip;
   students: PortalStudent[];
+  checklist: ChecklistSummary | null;
 }) {
   const router = useRouter();
   const [open, setOpen] = useState<number | 'new' | null>(null);
   const [bulk, setBulk] = useState('');
   const [showBulk, setShowBulk] = useState(false);
+  const [parentBulk, setParentBulk] = useState('');
+  const [showParentBulk, setShowParentBulk] = useState(false);
+  const [notice, setNotice] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const uploading = useRef<string | null>(null);
@@ -146,7 +153,49 @@ export default function StudentWorkspace({
         <button className="pt-link-btn" onClick={() => setShowBulk((v) => !v)} disabled={busy}>
           {showBulk ? 'Cancel' : 'Paste a list of names'}
         </button>
+        {students.length > 0 && (
+          <button className="pt-link-btn" onClick={() => setShowParentBulk((v) => !v)} disabled={busy}>
+            {showParentBulk ? 'Cancel' : 'Paste parent emails'}
+          </button>
+        )}
       </div>
+
+      {showParentBulk && (
+        <div className="pt-card pt-bulk">
+          <p className="pt-hint">
+            One student per line: the student&rsquo;s name, then the parent&rsquo;s email — and their name, if you have it.
+            Copying two or three columns from a spreadsheet works too.
+          </p>
+          <textarea
+            rows={6}
+            value={parentBulk}
+            onChange={(e) => setParentBulk(e.target.value)}
+            placeholder={'Aisha Khan, sara.khan@example.com\nOmar Said, Mona Said, mona@example.com'}
+          />
+          <button
+            className="btn btn-brass"
+            disabled={busy || !parentBulk.trim()}
+            onClick={async () => {
+              setBusy(true);
+              setError(null);
+              setNotice(null);
+              const r = await addParentEmailsBulk(trip.id, parentBulk);
+              setBusy(false);
+              if (!r.ok) return setError(r.error);
+              setNotice(
+                `${r.matched} parent email${r.matched === 1 ? '' : 's'} saved.` +
+                  (r.unmatched.length ? ` Not matched to a student (check the spelling): ${r.unmatched.join(' · ')}` : '')
+              );
+              setParentBulk(r.unmatched.join('\n'));
+              if (!r.unmatched.length) setShowParentBulk(false);
+              router.refresh();
+            }}
+          >
+            {busy ? 'Saving…' : 'Save parent emails'}
+          </button>
+        </div>
+      )}
+      {notice && <p className="pt-notice">{notice}</p>}
 
       {showBulk && (
         <div className="pt-card pt-bulk">
@@ -213,6 +262,22 @@ export default function StudentWorkspace({
                           {s.medical && <span className="pt-flag pt-flag--med">Medical</span>}
                         </div>
                       )}
+                      <div className="pt-student-meta">
+                        {s.parentEmail ? (
+                          <>
+                            Parent: {s.parentName ? `${s.parentName} · ` : ''}
+                            {s.parentEmail}
+                            {checklist?.sent[s.id] && (
+                              <>
+                                {' · '}checklist sent
+                                {checklist.items.length > 0 && `, ${checklist.ticked[s.id] ?? 0}/${checklist.items.length} ticked`}
+                              </>
+                            )}
+                          </>
+                        ) : (
+                          'No parent email yet'
+                        )}
+                      </div>
                       {missing.length > 0 && (
                         <div className="pt-missing">
                           Missing: {missing.map((k) => MISSING_LABELS[k]).join(', ')}
@@ -221,7 +286,7 @@ export default function StudentWorkspace({
                       {/* The name opens the form too, but nothing said so: dietary,
                           medical and room details went unfound. */}
                       <button className="pt-link-btn" onClick={() => setOpen(s.id)}>
-                        Edit details — passport, dietary, medical, room
+                        Edit details — passport, dietary, medical, room, parent
                       </button>
                     </div>
 
@@ -283,6 +348,8 @@ export default function StudentWorkspace({
               })}
             </div>
           </section>
+
+          <ChecklistPanel tripId={trip.id} students={students} checklist={checklist} busy={busy} setBusy={setBusy} setError={setError} />
 
           <section className="pt-section">
             <h2>Rooming</h2>
@@ -383,6 +450,14 @@ function StudentForm({
             <span>Emergency phone</span>
             <input name="emergency_contact_phone" defaultValue={student?.emergencyContactPhone ?? ''} />
           </label>
+          <label>
+            <span>Parent / guardian name</span>
+            <input name="parent_name" defaultValue={student?.parentName ?? ''} placeholder="Sara Khan" />
+          </label>
+          <label>
+            <span>Parent / guardian email</span>
+            <input name="parent_email" type="email" defaultValue={student?.parentEmail ?? ''} placeholder="For the pre-arrival checklist" />
+          </label>
           <label className="wide">
             <span>Dietary requirements</span>
             <input name="dietary" defaultValue={student?.dietary ?? ''} placeholder="Vegetarian, nut allergy…" />
@@ -408,5 +483,94 @@ function StudentForm({
         </div>
       </form>
     </div>
+  );
+}
+
+/**
+ * The pre-arrival checklist: the PCT team writes it; teachers send it to
+ * every parent with an email address, and see who has ticked everything off.
+ */
+function ChecklistPanel({
+  tripId,
+  students,
+  checklist,
+  busy,
+  setBusy,
+  setError,
+}: {
+  tripId: number;
+  students: PortalStudent[];
+  checklist: ChecklistSummary | null;
+  busy: boolean;
+  setBusy: (b: boolean) => void;
+  setError: (e: string | null) => void;
+}) {
+  const router = useRouter();
+  const [result, setResult] = useState<string | null>(null);
+  const withEmail = students.filter((s) => s.parentEmail);
+  const unsent = withEmail.filter((s) => !checklist?.sent[s.id]);
+  const total = checklist?.items.length ?? 0;
+  const ready = students.filter((s) => total > 0 && (checklist?.ticked[s.id] ?? 0) >= total).length;
+
+  async function send(again: boolean) {
+    if (again && !window.confirm(`Send the checklist again to all ${withEmail.length} parents?`)) return;
+    setBusy(true);
+    setError(null);
+    setResult(null);
+    const r = await emailChecklistToParents(tripId, again);
+    setBusy(false);
+    if (!r.ok) return setError(r.error);
+    setResult(
+      [
+        `${r.sent} email${r.sent === 1 ? '' : 's'} sent`,
+        r.skipped ? `${r.skipped} already had it` : '',
+        r.failed ? `${r.failed} couldn’t be sent — check those addresses` : '',
+      ]
+        .filter(Boolean)
+        .join(' · ')
+    );
+    router.refresh();
+  }
+
+  return (
+    <section className="pt-section">
+      <h2>Pre-arrival checklist</h2>
+      <div className="pt-card">
+        {!checklist ? (
+          <p className="pt-lede">
+            Once your PCT contact has set up the travel app for this trip, you can email each parent the pre-arrival
+            checklist from here. They tick it off in the app.
+          </p>
+        ) : total === 0 ? (
+          <p className="pt-lede">The travel app is ready — your PCT contact is adding the checklist, then you can send it to parents here.</p>
+        ) : (
+          <>
+            <p className="pt-lede">
+              {total} things for each family to sort before the trip: {checklist.items.slice(0, 4).join(' · ')}
+              {total > 4 ? ' …' : ''}
+            </p>
+            <p className="pt-hint">
+              <strong>{withEmail.length}</strong> of {students.length} students have a parent email ·{' '}
+              <strong>{Object.keys(checklist.sent).length}</strong> sent · <strong>{ready}</strong> families have ticked everything
+            </p>
+            <div className="pt-ws-actions">
+              <button className="btn btn-brass" disabled={busy || unsent.length === 0} onClick={() => send(false)}>
+                {busy ? 'Sending…' : unsent.length ? `Email the checklist to ${unsent.length} parent${unsent.length === 1 ? '' : 's'}` : 'Every parent has it'}
+              </button>
+              {withEmail.length > unsent.length && (
+                <button className="pt-link-btn" disabled={busy} onClick={() => send(true)}>
+                  Send again to everyone
+                </button>
+              )}
+            </div>
+            <p className="pt-hint">
+              Each parent gets the list and a button that signs them straight in to the travel app with their own code, where
+              they tick items off. Add parent emails in each student&rsquo;s details, or paste them all at once above.
+            </p>
+            {result && <p className="pt-notice">{result}</p>}
+          </>
+        )}
+      </div>
+    </section>
   );
 }

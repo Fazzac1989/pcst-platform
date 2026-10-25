@@ -5,6 +5,7 @@ import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { APP_COOKIE, getAppSession } from './session';
+import { isUnlocked, markAnswer, todayIso } from './learning';
 
 export async function appLogin(formData: FormData): Promise<{ ok: false; error: string } | void> {
   const code = String(formData.get('code') ?? '').trim().toUpperCase();
@@ -99,5 +100,74 @@ export async function sendAppMessage(body: string): Promise<{ ok: boolean; error
   });
   if (error) return { ok: false, error: error.message };
   revalidatePath('/app/trip/messages');
+  return { ok: true };
+}
+
+/**
+ * A student answers a learning challenge. One try each: the answer is marked
+ * here against the stored option, and a second attempt is refused.
+ */
+export async function answerChallenge(
+  challengeId: number,
+  choice: number
+): Promise<{ ok: true; correct: boolean; points: number; answer: number } | { ok: false; error: string }> {
+  const session = await getAppSession();
+  if (!session) return { ok: false, error: 'Signed out — please log in again.' };
+  if (session.member.role !== 'student') return { ok: false, error: 'Only students can answer.' };
+
+  const db = createAdminClient();
+  const { data: c } = await db
+    .from('app_challenges')
+    .select('id, app_trip_id, date, options, answer, points')
+    .eq('id', challengeId)
+    .maybeSingle();
+  if (!c || c.app_trip_id !== session.member.tripId) return { ok: false, error: 'That question isn’t on your trip.' };
+  if (!isUnlocked(c.date, session.trip.challengesUnlock, todayIso())) {
+    return { ok: false, error: 'This one opens on its day — come back then.' };
+  }
+
+  const options = Array.isArray(c.options) ? c.options.map(String) : [];
+  const mark = markAnswer({ answer: c.answer, options, points: c.points }, choice);
+  if (!mark.valid) return { ok: false, error: 'Pick one of the answers.' };
+
+  const { error } = await db.from('app_challenge_answers').insert({
+    challenge_id: c.id,
+    member_id: session.member.id,
+    choice,
+    correct: mark.correct,
+    points: mark.points,
+  });
+  if (error) {
+    return { ok: false, error: error.code === '23505' ? 'You’ve already answered this one.' : error.message };
+  }
+  revalidatePath('/app/trip/learning');
+  return { ok: true, correct: mark.correct, points: mark.points, answer: c.answer };
+}
+
+/**
+ * Tick (or untick) a pre-arrival checklist item. Students tick their own
+ * list, parents their child's — the same list, so either can do it.
+ */
+export async function setChecklistTick(itemId: number, done: boolean): Promise<{ ok: boolean; error?: string }> {
+  const session = await getAppSession();
+  if (!session) return { ok: false, error: 'Signed out — please log in again.' };
+  const m = session.member;
+  const studentId = m.role === 'student' ? m.id : m.role === 'parent' ? m.parentOf : null;
+  if (!studentId) {
+    return { ok: false, error: m.role === 'teacher' ? 'Families tick their own lists.' : 'No linked student on this account — ask your trip organiser.' };
+  }
+
+  const db = createAdminClient();
+  const { data: item } = await db.from('app_checklist_items').select('id, app_trip_id').eq('id', itemId).maybeSingle();
+  if (!item || item.app_trip_id !== m.tripId) return { ok: false, error: 'That item isn’t on your trip.' };
+
+  const { error } = done
+    ? await db
+        .from('app_checklist_ticks')
+        .upsert({ item_id: itemId, student_id: studentId, ticked_by: m.id }, { onConflict: 'item_id,student_id', ignoreDuplicates: true })
+    : await db.from('app_checklist_ticks').delete().eq('item_id', itemId).eq('student_id', studentId);
+  if (error) return { ok: false, error: error.message };
+  revalidatePath('/app/trip/checklist');
+  revalidatePath('/app/trip');
   return { ok: true };
 }

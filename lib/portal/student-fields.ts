@@ -19,6 +19,8 @@ export type PortalStudent = {
   emergencyContactPhone: string | null;
   roomGroup: string | null;
   notes: string | null;
+  parentName: string | null;
+  parentEmail: string | null;
 };
 
 export type PortalTrip = {
@@ -60,3 +62,7 @@ export function passportExpiringSoon(s: PortalStudent, departure: string | null)
   const sixMonthsAfter = new Date(departure).getTime() + 182 * 86400_000;
   return expiry < sixMonthsAfter;
 }
+
+/** A plain check that an address will reach someone: one @, a dot after it, no spaces. */
+export const looksLikeEmail = (v: string | null | undefined): v is string =>
+  typeof v === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim());
