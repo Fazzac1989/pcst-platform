@@ -1299,3 +1299,21 @@ details.terms ol { padding: 0 32px 26px 50px; font-size: 13.5px; color: var(--in
 .papp-famlist .papp-tick-detail { margin-top: 6px; }
 .papp-fam-done { color: var(--brass); font-weight: 600; }
 .papp-fam-count { color: var(--ink-soft); font-weight: 600; }
+
+/* Travel app: accommodation */
+.papp-myroom { text-align: center; background: var(--ink); color: #fff; border-color: var(--ink); }
+.papp-myroom-label { font-size: 11.5px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--brass-light); }
+.papp-myroom-name { font-family: var(--font-fraunces), serif; font-size: 30px; font-weight: 600; margin: 4px 0 8px; }
+.papp-myroom p { font-size: 14px; line-height: 1.5; color: rgba(255, 255, 255, .88); }
+.papp-myroom .papp-note { color: rgba(255, 255, 255, .6); margin: 8px 0 0; }
+.papp-hotel h2 { margin-bottom: 4px; }
+.papp-hotel-stay { font-size: 11.5px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; color: var(--brass); margin-bottom: 4px; }
+.papp-hotel-dates { font-size: 13px; color: var(--ink-soft); margin-bottom: 10px; }
+.papp-hotel-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 10px 0; border-top: 1px solid var(--line); font-size: 13.5px; line-height: 1.45; }
+.papp-hotel-row:first-of-type { margin-top: 8px; }
+.papp-hotel-notes { font-size: 13px; color: var(--ink-soft); line-height: 1.55; border-top: 1px solid var(--line); padding-top: 10px; white-space: pre-line; }
+.papp-rooms { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+.papp-room { border: 1px solid var(--line); border-radius: 8px; padding: 10px; font-size: 13px; line-height: 1.6; }
+.papp-room.none { border-style: dashed; }
+.papp-room-head { display: flex; justify-content: space-between; margin-bottom: 2px; }
+.papp-room-head span { color: var(--ink-soft); font-weight: 600; }
