@@ -218,6 +218,11 @@ export default function StudentWorkspace({
                           Missing: {missing.map((k) => MISSING_LABELS[k]).join(', ')}
                         </div>
                       )}
+                      {/* The name opens the form too, but nothing said so: dietary,
+                          medical and room details went unfound. */}
+                      <button className="pt-link-btn" onClick={() => setOpen(s.id)}>
+                        Edit details — passport, dietary, medical, room
+                      </button>
                     </div>
 
                     <div className="pt-docs">
@@ -297,7 +302,10 @@ export default function StudentWorkspace({
                   </div>
                 ))}
             </div>
-            <p className="pt-hint">Set a room name on each student to group them here.</p>
+            <p className="pt-hint">
+              To put students in rooms, open a student (&ldquo;Edit details&rdquo;) and type a room name, e.g. Room 3. Everyone
+              with the same room name is grouped together here.
+            </p>
           </section>
         </>
       )}
