@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { DOCS_BUCKET, tripForTeacher } from '@/lib/portal/planning';
 import { getPortalTeacher } from '@/lib/portal/session';
+import { DOC_COLUMN, type StudentDocKind } from '@/lib/portal/student-fields';
 
 export const runtime = 'nodejs';
 
@@ -9,7 +10,7 @@ const MAX_BYTES = 10 * 1024 * 1024;
 const ALLOWED = ['image/jpeg', 'image/png', 'image/webp', 'image/heic', 'application/pdf'];
 
 /**
- * Uploads a passport copy or consent form into the private bucket. Teachers
+ * Uploads a passport copy, consent form or photo into the private bucket. Teachers
  * have no storage credentials of their own — this route checks the session and
  * that they are on the trip, then writes with the service role.
  */
@@ -26,7 +27,7 @@ export async function POST(request: Request) {
   if (!Number.isInteger(tripId) || !Number.isInteger(studentId)) {
     return NextResponse.json({ ok: false, error: 'Bad request.' }, { status: 400 });
   }
-  if (kind !== 'passport' && kind !== 'consent') {
+  if (!(kind in DOC_COLUMN)) {
     return NextResponse.json({ ok: false, error: 'Bad request.' }, { status: 400 });
   }
   if (!(file instanceof File) || file.size === 0) {
@@ -34,6 +35,9 @@ export async function POST(request: Request) {
   }
   if (file.size > MAX_BYTES) {
     return NextResponse.json({ ok: false, error: 'That file is over 10MB.' }, { status: 400 });
+  }
+  if (kind === 'photo' && !file.type.startsWith('image/')) {
+    return NextResponse.json({ ok: false, error: 'The photo needs to be an image (JPG, PNG, WEBP or HEIC).' }, { status: 400 });
   }
   if (!ALLOWED.includes(file.type)) {
     return NextResponse.json(
@@ -51,7 +55,7 @@ export async function POST(request: Request) {
   const db = createAdminClient();
   const { data: student } = await db
     .from('portal_students')
-    .select('id, passport_file, consent_file')
+    .select('id, passport_file, consent_file, photo_file')
     .eq('id', studentId)
     .eq('portal_trip_id', tripId)
     .maybeSingle();
@@ -69,7 +73,7 @@ export async function POST(request: Request) {
   if (upErr) return NextResponse.json({ ok: false, error: upErr.message }, { status: 500 });
 
   // Replace any previous file for this slot rather than orphaning it.
-  const column = kind === 'passport' ? 'passport_file' : 'consent_file';
+  const column = DOC_COLUMN[kind as StudentDocKind];
   const previous = (student as any)[column] as string | null;
 
   const { error } = await db

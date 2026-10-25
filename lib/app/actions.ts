@@ -171,3 +171,56 @@ export async function setChecklistTick(itemId: number, done: boolean): Promise<{
   revalidatePath('/app/trip');
   return { ok: true };
 }
+
+/**
+ * The daily register: a teacher marks a student present or absent for a day
+ * (or clears the mark). Every teacher on the trip shares the same register.
+ */
+export async function setRegisterMark(
+  date: string,
+  studentId: number,
+  status: 'present' | 'absent' | null
+): Promise<{ ok: boolean; error?: string }> {
+  const session = await getAppSession();
+  if (!session) return { ok: false, error: 'Signed out — please log in again.' };
+  if (session.member.role !== 'teacher') return { ok: false, error: 'Only teachers take the register.' };
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return { ok: false, error: 'Pick a day.' };
+
+  const db = createAdminClient();
+  const { data: student } = await db.from('app_members').select('id').eq('id', studentId).eq('app_trip_id', session.member.tripId).eq('role', 'student').maybeSingle();
+  if (!student) return { ok: false, error: 'That student isn’t on this trip.' };
+
+  const { error } = status
+    ? await db.from('app_register').upsert(
+        { app_trip_id: session.member.tripId, date, student_id: studentId, status, marked_by: session.member.id, marked_at: new Date().toISOString() },
+        { onConflict: 'date,student_id' }
+      )
+    : await db.from('app_register').delete().eq('date', date).eq('student_id', studentId);
+  if (error) return { ok: false, error: error.message };
+  revalidatePath('/app/trip/itinerary');
+  return { ok: true };
+}
+
+/** Mark everyone not yet marked as present — then change the few who aren't. */
+export async function markAllPresent(date: string): Promise<{ ok: boolean; error?: string }> {
+  const session = await getAppSession();
+  if (!session) return { ok: false, error: 'Signed out — please log in again.' };
+  if (session.member.role !== 'teacher') return { ok: false, error: 'Only teachers take the register.' };
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return { ok: false, error: 'Pick a day.' };
+
+  const db = createAdminClient();
+  const [{ data: students }, { data: marked }] = await Promise.all([
+    db.from('app_members').select('id').eq('app_trip_id', session.member.tripId).eq('role', 'student'),
+    db.from('app_register').select('student_id').eq('app_trip_id', session.member.tripId).eq('date', date),
+  ]);
+  const done = new Set((marked ?? []).map((r: any) => r.student_id));
+  const rows = (students ?? [])
+    .filter((s: any) => !done.has(s.id))
+    .map((s: any) => ({ app_trip_id: session.member.tripId, date, student_id: s.id, status: 'present', marked_by: session.member.id }));
+  if (rows.length) {
+    const { error } = await db.from('app_register').insert(rows);
+    if (error) return { ok: false, error: error.message };
+  }
+  revalidatePath('/app/trip/itinerary');
+  return { ok: true };
+}

@@ -4,7 +4,7 @@ import { revalidatePath } from 'next/cache';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { getPortalTeacher, type PortalTeacher } from './session';
 import { DOCS_BUCKET, tripForTeacher, type PortalTrip } from './planning';
-import { looksLikeEmail } from './student-fields';
+import { DOC_COLUMN, looksLikeEmail, type StudentDocKind } from './student-fields';
 
 export type Result = { ok: true; id?: number } | { ok: false; error: string };
 
@@ -82,7 +82,7 @@ export async function deleteStudent(tripId: number, studentId: number): Promise<
   const db = createAdminClient();
   const { data: student } = await db
     .from('portal_students')
-    .select('passport_file, consent_file')
+    .select('passport_file, consent_file, photo_file')
     .eq('id', studentId)
     .eq('portal_trip_id', tripId)
     .maybeSingle();
@@ -95,7 +95,7 @@ export async function deleteStudent(tripId: number, studentId: number): Promise<
   if (error) return { ok: false, error: error.message };
 
   // Take the documents with them.
-  const paths = [student?.passport_file, student?.consent_file].filter(Boolean) as string[];
+  const paths = [student?.passport_file, student?.consent_file, student?.photo_file].filter(Boolean) as string[];
   if (paths.length) await db.storage.from(DOCS_BUCKET).remove(paths);
 
   revalidatePath(`/portal/trips/${tripId}`);
@@ -126,12 +126,12 @@ export async function addStudentsBulk(tripId: number, names: string): Promise<Re
 export async function removeDocument(
   tripId: number,
   studentId: number,
-  kind: 'passport' | 'consent'
+  kind: StudentDocKind
 ): Promise<Result> {
   const auth = await authorise(tripId);
   if (!auth.ok) return auth;
 
-  const column = kind === 'passport' ? 'passport_file' : 'consent_file';
+  const column = DOC_COLUMN[kind];
   const db = createAdminClient();
   const { data: student } = await db
     .from('portal_students')
@@ -158,12 +158,12 @@ export async function removeDocument(
 export async function documentUrl(
   tripId: number,
   studentId: number,
-  kind: 'passport' | 'consent'
+  kind: StudentDocKind
 ): Promise<{ ok: true; url: string } | { ok: false; error: string }> {
   const auth = await authorise(tripId);
   if (!auth.ok) return auth;
 
-  const column = kind === 'passport' ? 'passport_file' : 'consent_file';
+  const column = DOC_COLUMN[kind];
   const db = createAdminClient();
   const { data: student } = await db
     .from('portal_students')

@@ -1317,3 +1317,46 @@ details.terms ol { padding: 0 32px 26px 50px; font-size: 13.5px; color: var(--in
 .papp-room.none { border-style: dashed; }
 .papp-room-head { display: flex; justify-content: space-between; margin-bottom: 2px; }
 .papp-room-head span { color: var(--ink-soft); font-weight: 600; }
+
+/* Travel app: teacher's register */
+.papp-avatar { flex: none; width: 44px; height: 44px; border-radius: 50%; object-fit: cover; background: rgba(22, 36, 46, .08); }
+.papp-avatar.sm { width: 34px; height: 34px; }
+.papp-avatar-blank { display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: var(--ink-soft); }
+.papp-avatar.sm.papp-avatar-blank { font-size: 11.5px; }
+.papp-students { display: grid; }
+.papp-student { border-bottom: 1px solid var(--line); }
+.papp-student:last-child { border-bottom: 0; }
+.papp-student summary { display: flex; align-items: center; gap: 12px; padding: 10px 0; cursor: pointer; list-style: none; }
+.papp-student summary::-webkit-details-marker { display: none; }
+.papp-student-name { flex: 1; font-size: 14.5px; font-weight: 600; line-height: 1.3; }
+.papp-student-name small { display: block; font-size: 12px; font-weight: 400; color: var(--ink-soft); }
+.papp-dot { flex: none; width: 22px; height: 22px; border-radius: 50%; background: rgba(25, 186, 171, .15); color: var(--brass); font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+.papp-dot.med { background: #F6E3E0; color: #B0453A; }
+.papp-student-body { padding: 4px 0 16px; }
+.papp-student-photo { display: block; width: 140px; height: 140px; border-radius: 12px; object-fit: cover; margin: 0 auto 12px; }
+.papp-facts { display: grid; grid-template-columns: 110px 1fr; gap: 6px 10px; font-size: 13.5px; margin-bottom: 12px; }
+.papp-facts dt { color: var(--ink-soft); }
+.papp-facts dd { margin: 0; font-weight: 500; }
+.papp-med { color: #B0453A; font-weight: 600 !important; }
+.papp-call { width: 100%; justify-content: center; text-align: center; }
+.papp-needs p { font-size: 13.5px; line-height: 1.5; padding: 6px 0; border-bottom: 1px solid var(--line); display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.papp-needs p:last-child { border-bottom: 0; }
+.papp-flag { font-size: 12px; background: rgba(25, 186, 171, .12); border-radius: 999px; padding: 2px 9px; }
+.papp-flag.med { background: #F6E3E0; color: #8F3329; }
+
+.papp-register summary { display: flex; align-items: center; justify-content: space-between; gap: 12px; cursor: pointer; list-style: none; }
+.papp-register summary::-webkit-details-marker { display: none; }
+.papp-register summary strong { display: block; font-family: var(--font-fraunces), serif; font-weight: 500; font-size: 17px; }
+.papp-register summary small { font-size: 12.5px; color: var(--ink-soft); }
+.papp-register[open] summary { margin-bottom: 8px; }
+.papp-register-badge { flex: none; border-radius: 999px; padding: 6px 12px; font-size: 13px; font-weight: 700; background: rgba(22, 36, 46, .07); }
+.papp-register-badge.done { background: var(--brass); color: #fff; }
+.papp-register-badge.warn { background: #F6E3E0; color: #B0453A; }
+.papp-reglist { list-style: none; display: grid; }
+.papp-reglist button { display: flex; align-items: center; gap: 10px; width: 100%; background: none; border: 0; border-bottom: 1px solid var(--line); padding: 8px 2px; text-align: left; cursor: pointer; color: var(--ink); }
+.papp-reglist li:last-child button { border-bottom: 0; }
+.papp-reg-name { flex: 1; font-size: 14px; font-weight: 500; }
+.papp-reg-mark { flex: none; min-width: 30px; height: 30px; border-radius: 999px; border: 2px solid var(--line); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; padding: 0 8px; }
+.papp-reglist button.present .papp-reg-mark { background: var(--brass); border-color: var(--brass); color: #fff; font-size: 15px; }
+.papp-reglist button.absent .papp-reg-mark { background: #F6E3E0; border-color: #E8B9B1; color: #B0453A; }
+.papp-reglist button.absent .papp-reg-name { color: #B0453A; }
