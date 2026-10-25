@@ -949,6 +949,7 @@ details.terms ol { padding: 0 32px 26px 50px; font-size: 13.5px; color: var(--in
 .pt-lede a { color: var(--brass); font-weight: 600; }
 .pt-hint { font-size: 12.5px; color: var(--ink-soft); margin-top: 10px; }
 .pt-error { font-size: 13.5px; color: var(--danger, #B4423C); }
+.pt-notice { font-size: 13.5px; color: var(--ink); background: rgba(25, 186, 171, .1); border-radius: 6px; padding: 10px 14px; margin: 10px 0; }
 
 .pt-form { display: grid; gap: 16px; margin-top: 24px; }
 .pt-form label { display: grid; gap: 6px; }
@@ -1226,3 +1227,75 @@ details.terms ol { padding: 0 32px 26px 50px; font-size: 13.5px; color: var(--in
 /* the structured timeline keeps the booking card alongside it */
 .itin-body { display: grid; grid-template-columns: 1.05fr .8fr; gap: 64px; align-items: start; }
 @media (max-width: 980px) { .itin-body { grid-template-columns: 1fr; gap: 40px; } }
+
+/* Travel app: learning challenges, leaderboard and pre-arrival checklist */
+.papp-section-title { font-family: var(--font-fraunces), serif; font-weight: 500; font-size: 18px; margin: 22px 4px 10px; }
+.papp-banner { display: flex; align-items: center; justify-content: space-between; gap: 12px; background: var(--ink); color: #fff; border-radius: 14px; padding: 14px 16px; margin-bottom: 14px; font-size: 13px; line-height: 1.45; }
+.papp-banner strong { display: block; font-size: 14.5px; color: var(--brass-light); }
+.papp-banner > span:last-child { font-size: 20px; color: var(--brass-light); }
+
+.papp-score-row { display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; gap: 8px; }
+.papp-score-pts { font-family: var(--font-fraunces), serif; font-size: 28px; font-weight: 600; color: var(--ink); line-height: 1.1; }
+.papp-score-label { font-size: 11.5px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .05em; }
+.papp-prize { margin-top: 14px; background: rgba(25, 186, 171, .09); border-radius: 10px; padding: 10px 12px; font-size: 13.5px; line-height: 1.5; }
+.papp-score-row + .papp-score-foot, .papp-prize + .papp-score-foot { margin-top: 10px; }
+.papp-score-foot { font-size: 12px; color: var(--ink-soft); text-align: center; }
+
+.papp-chals { display: grid; gap: 8px; }
+.papp-chal { border: 1px solid var(--line); border-radius: 10px; }
+.papp-chal[open] { border-color: var(--brass-light); }
+.papp-chal summary { display: flex; align-items: center; gap: 10px; padding: 12px; cursor: pointer; list-style: none; }
+.papp-chal summary::-webkit-details-marker { display: none; }
+.papp-chal-mark { flex: none; width: 26px; height: 26px; border-radius: 50%; border: 2px solid var(--line); display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; }
+.papp-chal.right .papp-chal-mark { background: var(--brass); border-color: var(--brass); color: #fff; }
+.papp-chal.wrong .papp-chal-mark { background: #F6E3E0; border-color: #E8B9B1; color: #B0453A; }
+.papp-chal.locked .papp-chal-mark { border-style: dashed; font-size: 11px; }
+.papp-chal-title { flex: 1; font-size: 14px; font-weight: 600; line-height: 1.35; }
+.papp-chal-title small { display: block; font-size: 11.5px; font-weight: 400; color: var(--ink-soft); }
+.papp-chal-pts { flex: none; font-size: 12px; font-weight: 700; color: var(--brass); }
+.papp-chal.locked .papp-chal-title, .papp-chal.locked .papp-chal-pts { color: var(--ink-soft); }
+.papp-chal-body, .papp-chal > .papp-chal-fact { padding: 0 12px 14px; }
+.papp-chal-fact { font-size: 13.5px; line-height: 1.6; color: var(--ink-soft); margin-bottom: 10px; }
+.papp-chal-q { font-size: 14.5px; font-weight: 600; margin-bottom: 8px; }
+.papp-chal-opts { display: grid; gap: 6px; }
+.papp-chal-opt { text-align: left; border: 1px solid var(--line); background: #fff; border-radius: 8px; padding: 10px 12px; font-size: 13.5px; color: var(--ink); cursor: pointer; }
+.papp-chal-opt:disabled { cursor: default; }
+.papp-chal-opt.picked { border-color: var(--ink); background: rgba(22, 36, 46, .05); font-weight: 600; }
+.papp-chal-opt.right { border-color: var(--brass); background: rgba(25, 186, 171, .12); font-weight: 600; }
+.papp-chal-opt.wrong { border-color: #E8B9B1; background: #F9EDEA; text-decoration: line-through; }
+.papp-chal-go { margin-top: 10px; width: 100%; justify-content: center; }
+.papp-chal-result { margin-top: 10px; font-size: 13.5px; font-weight: 600; }
+.papp-chal-result.right { color: var(--brass); }
+.papp-chal-result.wrong { color: #B0453A; }
+
+.papp-board { list-style: none; display: grid; gap: 2px; margin-bottom: 8px; }
+.papp-board li { display: flex; align-items: center; gap: 10px; padding: 9px 8px; border-radius: 8px; font-size: 14px; }
+.papp-board li:nth-child(-n+3) .papp-board-rank { background: var(--brass); color: #fff; }
+.papp-board li.me { background: rgba(25, 186, 171, .1); font-weight: 600; }
+.papp-board-rank { flex: none; width: 26px; height: 26px; border-radius: 50%; background: rgba(22, 36, 46, .07); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; }
+.papp-board-name { flex: 1; }
+.papp-board-meta { font-size: 11.5px; color: var(--ink-soft); }
+.papp-board-pts { font-weight: 700; color: var(--ink); min-width: 36px; text-align: right; }
+
+.papp-progress-head { display: flex; justify-content: space-between; font-size: 14px; margin-bottom: 8px; }
+.papp-progress-head span { color: var(--brass); font-weight: 600; }
+.papp-progress { height: 8px; border-radius: 999px; background: rgba(22, 36, 46, .08); overflow: hidden; }
+.papp-progress i { display: block; height: 100%; background: var(--brass); border-radius: 999px; transition: width .3s ease; }
+.papp-ticks { list-style: none; display: grid; gap: 4px; }
+.papp-ticks button { display: flex; align-items: flex-start; gap: 12px; width: 100%; text-align: left; background: none; border: 0; border-bottom: 1px solid var(--line); padding: 12px 2px; cursor: pointer; color: var(--ink); }
+.papp-ticks li:last-child button { border-bottom: 0; }
+.papp-tick-box { flex: none; width: 24px; height: 24px; border-radius: 6px; border: 2px solid var(--line); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: #fff; margin-top: 1px; }
+.papp-ticks button.on .papp-tick-box { background: var(--brass); border-color: var(--brass); }
+.papp-ticks button.on .papp-tick-title { color: var(--ink-soft); text-decoration: line-through; }
+.papp-tick-text { display: grid; gap: 2px; }
+.papp-tick-title { font-size: 14.5px; font-weight: 600; }
+.papp-tick-detail { font-size: 12.5px; color: var(--ink-soft); line-height: 1.5; }
+.papp-tick-due { font-size: 11.5px; font-weight: 600; color: #B0453A; }
+.papp-famlist { list-style: none; display: grid; }
+.papp-famlist li { border-bottom: 1px solid var(--line); padding: 10px 0; }
+.papp-famlist li:last-child { border-bottom: 0; }
+.papp-famlist summary { display: flex; justify-content: space-between; font-size: 14px; cursor: pointer; list-style: none; }
+.papp-famlist summary::-webkit-details-marker { display: none; }
+.papp-famlist .papp-tick-detail { margin-top: 6px; }
+.papp-fam-done { color: var(--brass); font-weight: 600; }
+.papp-fam-count { color: var(--ink-soft); font-weight: 600; }

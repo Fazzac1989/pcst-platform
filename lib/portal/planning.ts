@@ -31,6 +31,8 @@ const mapStudent = (r: any): PortalStudent => ({
   emergencyContactPhone: r.emergency_contact_phone,
   roomGroup: r.room_group,
   notes: r.notes,
+  parentName: r.parent_name ?? null,
+  parentEmail: r.parent_email ?? null,
 });
 
 const mapTrip = (r: any): PortalTrip => ({

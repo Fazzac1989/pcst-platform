@@ -4,6 +4,7 @@ import { revalidatePath } from 'next/cache';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { getPortalTeacher, type PortalTeacher } from './session';
 import { DOCS_BUCKET, tripForTeacher, type PortalTrip } from './planning';
+import { looksLikeEmail } from './student-fields';
 
 export type Result = { ok: true; id?: number } | { ok: false; error: string };
 
@@ -50,7 +51,12 @@ export async function saveStudent(tripId: number, formData: FormData): Promise<R
     emergency_contact_phone: text(formData, 'emergency_contact_phone'),
     room_group: text(formData, 'room_group'),
     notes: text(formData, 'notes'),
+    parent_name: text(formData, 'parent_name'),
+    parent_email: text(formData, 'parent_email')?.toLowerCase() ?? null,
   };
+  if (fields.parent_email && !looksLikeEmail(fields.parent_email)) {
+    return { ok: false, error: 'That parent email doesn’t look right — check it and try again.' };
+  }
 
   const db = createAdminClient();
   if (studentId) {

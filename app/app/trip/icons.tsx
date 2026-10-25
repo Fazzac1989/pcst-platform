@@ -78,6 +78,18 @@ const PATHS: Record<string, React.ReactNode> = {
       <circle cx="12" cy="10" r="3" />
     </>
   ),
+  check: (
+    <>
+      <rect x="3" y="3" width="18" height="18" rx="2" />
+      <path d="m8 12 3 3 5-6" />
+    </>
+  ),
+  trophy: (
+    <>
+      <path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z" />
+      <path d="M7 6H4a3 3 0 0 0 3 4M17 6h3a3 3 0 0 1-3 4" />
+    </>
+  ),
   clock: (
     <>
       <circle cx="12" cy="12" r="9" />

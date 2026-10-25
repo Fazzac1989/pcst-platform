@@ -3,7 +3,8 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { getAppSession } from '@/lib/app/session';
 import { getDestinationWeather } from '@/lib/app/weather';
-import { getHighlights } from '@/lib/app/data';
+import { getChecklist, getChecklistTicks, getHighlights } from '@/lib/app/data';
+import { checklistProgress } from '@/lib/app/learning';
 import Greeting from './Greeting';
 import Icon from './icons';
 
@@ -17,26 +18,39 @@ export default async function TripHomePage() {
   const { member, trip } = session;
 
   const today = new Date().toISOString().slice(0, 10);
-  const [weather, highlights] = await Promise.all([
+  const [weather, highlights, checklist] = await Promise.all([
     getDestinationWeather(trip.destination),
     getHighlights(trip.id, today),
+    getChecklist(trip.id),
   ]);
+
+  // Families see how far their pre-arrival checklist has got until it's done
+  // or the trip is over.
+  const familyId = member.role === 'student' ? member.id : member.role === 'parent' ? member.parentOf : null;
+  const progress =
+    familyId && checklist.length
+      ? checklistProgress(checklist, await getChecklistTicks(checklist.map((i) => i.id)), familyId)
+      : null;
+  const showChecklist = progress && progress.done < progress.total && (!trip.endDate || trip.endDate >= today);
 
   const cards =
     member.role === 'teacher'
       ? [
           { href: '/app/trip/register', label: 'Student Register', icon: 'register' },
+          { href: '/app/trip/checklist', label: 'Pre-arrival Checklists', icon: 'check' },
+          { href: '/app/trip/learning#leaderboard', label: 'Leaderboard', icon: 'trophy' },
           { href: '/app/trip/flights', label: 'Flights & E-Tickets', icon: 'plane' },
           { href: '/app/trip/accommodation', label: 'Accommodation', icon: 'bed' },
           { href: '/app/trip/vouchers', label: 'Vouchers', icon: 'ticket' },
           { href: '/app/trip/broadcast', label: 'Broadcast', icon: 'megaphone' },
           { href: '/app/trip/translate', label: 'Translate', icon: 'translate' },
+          { href: '/app/trip/support', label: 'Support', icon: 'support' },
         ]
       : [
+          { href: '/app/trip/checklist', label: 'Pre-arrival Checklist', icon: 'check' },
           { href: '/app/trip/flights', label: 'Flights & E-Tickets', icon: 'plane' },
           { href: '/app/trip/accommodation', label: 'Accommodation', icon: 'bed' },
-          { href: '/app/trip/vouchers', label: 'Vouchers', icon: 'ticket' },
-          { href: '/app/trip/photos', label: 'Photos', icon: 'photos' },
+          { href: '/app/trip/maps', label: 'Maps & Sights', icon: 'pin' },
           { href: '/app/trip/broadcast', label: 'Announcements', icon: 'megaphone' },
           { href: '/app/trip/translate', label: 'Translate', icon: 'translate' },
         ];
@@ -62,6 +76,16 @@ export default async function TripHomePage() {
           </>
         )}
       </p>
+
+      {showChecklist && progress && (
+        <Link href="/app/trip/checklist" className="papp-banner">
+          <span>
+            <strong>Pre-arrival checklist</strong>
+            {progress.done} of {progress.total} done · next: {progress.open[0]?.title}
+          </span>
+          <span aria-hidden="true">→</span>
+        </Link>
+      )}
 
       <div className="papp-cardgrid">
         {cards.map((c) => (

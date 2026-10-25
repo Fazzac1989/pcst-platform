@@ -25,6 +25,8 @@ export type AppTrip = {
   contacts: { label: string; phone: string }[];
   confirmations: { label: string; ref: string }[];
   status: string;
+  prize: string | null;
+  challengesUnlock: 'daily' | 'all';
 };
 
 /**
@@ -65,6 +67,8 @@ export const getAppSession = cache(async function getAppSession(): Promise<{ mem
       contacts: t.contacts ?? [],
       confirmations: t.confirmations ?? [],
       status: t.status,
+      prize: t.prize ?? null,
+      challengesUnlock: t.challenges_unlock === 'all' ? 'all' : 'daily',
     },
   };
 });
