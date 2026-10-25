@@ -21,6 +21,9 @@ import {
   saveStudent,
 } from '@/lib/portal/planning-actions';
 
+// Teachers type "Room 3" or just "3"; only the bare number needs the word.
+const roomLabel = (room: string) => (/^\d+$/.test(room.trim()) ? `Room ${room.trim()}` : room);
+
 const dateStr = (v: string | null) =>
   v ? new Date(v).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) : '—';
 
@@ -253,7 +256,7 @@ export default function StudentWorkspace({
                         {s.fullName}
                       </button>
                       <div className="pt-student-meta">
-                        {[s.yearGroup, s.dateOfBirth ? dateStr(s.dateOfBirth) : null, s.roomGroup ? `Room ${s.roomGroup}` : null]
+                        {[s.yearGroup, s.dateOfBirth ? dateStr(s.dateOfBirth) : null, s.roomGroup ? roomLabel(s.roomGroup) : null]
                           .filter(Boolean)
                           .join(' · ') || 'No details yet'}
                       </div>
@@ -552,7 +555,7 @@ function ChecklistPanel({
             </p>
             <p className="pt-hint">
               <strong>{withEmail.length}</strong> of {students.length} students have a parent email ·{' '}
-              <strong>{Object.keys(checklist.sent).length}</strong> sent · <strong>{ready}</strong> families have ticked everything
+              <strong>{Object.keys(checklist.sent).length}</strong> sent · <strong>{ready}</strong> {ready === 1 ? 'family has' : 'families have'} ticked everything
             </p>
             <div className="pt-ws-actions">
               <button className="btn btn-brass" disabled={busy || unsent.length === 0} onClick={() => send(false)}>
