@@ -1,4 +1,5 @@
 import { proposalPdfHref } from '@/lib/brochure/pdf-href';
+import { overviewPhotos } from '@/lib/brochure/overview-photos';
 import Journey from '@/components/proposal/Journey';
 import { Snowfall, TermsToggle, TopBar } from '@/components/proposal/Chrome';
 import { airlineLogoUrl, pagesAt, type CustomPage, type PagePlacement } from '@/lib/brochure/proposal-schema';
@@ -35,6 +36,7 @@ export default function ProposalDocument({
   const carrier = vm.flights.find((f) => f.carrier)?.carrier ?? '';
   const nights = vm.days.length > 1 ? vm.days.length - 1 : 0;
   const schoolLogo = c.schoolLogoImageId ? vm.images[c.schoolLogoImageId] : null;
+  const photos = overviewPhotos(vm);
 
   // The author's own pages, at the places they were asked to go.
   const pages = (where: PagePlacement) => <CustomPages pages={pagesAt(c, where)} images={vm.images} />;
@@ -198,11 +200,19 @@ export default function ProposalDocument({
                 {c.overviewEmphasis ? <> <em>{c.overviewEmphasis}</em></> : null}
               </h2>
               {c.intro.map((para, i) => (
-                <p className="lede" key={i} style={i === 0 ? { marginTop: 24 } : undefined}>
+                <p className="lede" key={i} style={i === 0 ? { marginTop: 20 } : undefined}>
                   {para}
                 </p>
               ))}
             </div>
+            {photos.length > 0 && (
+              <div className="mosaic">
+                {photos.map((p, i) => (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img key={p.url} src={p.url} alt={p.alt} loading={i === 0 ? 'eager' : 'lazy'} />
+                ))}
+              </div>
+            )}
           </div>
 
           {(c.pctParents || c.pctChildren || c.pctTeachers) && (
