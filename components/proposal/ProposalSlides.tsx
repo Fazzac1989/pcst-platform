@@ -1,5 +1,6 @@
 'use client';
 
+import { proposalPdfHref } from '@/lib/brochure/pdf-href';
 import { airlineLogoUrl, pagesAt, type PagePlacement } from '@/lib/brochure/proposal-schema';
 import Arrow from '@/components/slides/Arrow';
 import { useCallback, useEffect, useState } from 'react';
@@ -28,12 +29,15 @@ const TERMS_PER_SLIDE = 2;
 export default function ProposalSlides({
   vm,
   shareToken,
+  previewToken,
   editorial,
   mode = 'page',
 }: {
   vm: ProposalViewModel;
   /** Present on the shared link, so the reader's PDF request can prove itself. */
   shareToken?: string;
+  /** Present on the staff preview, for the same reason. */
+  previewToken?: string;
   /** Who we are, safety and the app — shared with the brochure. */
   editorial: EditorialSlide[];
   /**
@@ -155,7 +159,7 @@ export default function ProposalSlides({
     return () => window.removeEventListener('keydown', onKey);
   }, [go, index, total, mode]);
 
-  const pdfHref = `/api/proposals/${vm.id}/pdf${shareToken ? `?token=${encodeURIComponent(shareToken)}` : ''}`;
+  const pdfHref = proposalPdfHref(vm.id, shareToken, previewToken);
   /**
    * Our own PDF, not the browser's print dialogue.
    *

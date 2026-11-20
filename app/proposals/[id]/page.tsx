@@ -21,16 +21,19 @@ export default async function ProposalPage({
   searchParams,
 }: {
   params: { id: string };
-  searchParams: { view?: string };
+  searchParams: { view?: string; preview?: string };
 }) {
   const id = Number(params.id);
+  // The staff preview arrives with a signed pass (middleware checked it). The
+  // PDF button carries it on, or the download is refused for want of a login.
+  const preview = searchParams.preview || undefined;
   if (!Number.isFinite(id)) notFound();
 
   const vm = await getProposalById(id);
   if (!vm) notFound();
 
   if (searchParams.view === 'deck') {
-    return <ProposalSlides vm={vm} editorial={await buildEditorialSlides()} mode="deck" />;
+    return <ProposalSlides vm={vm} previewToken={preview} editorial={await buildEditorialSlides()} mode="deck" />;
   }
-  return <ProposalDocument vm={vm} />;
+  return <ProposalDocument vm={vm} previewToken={preview} />;
 }
