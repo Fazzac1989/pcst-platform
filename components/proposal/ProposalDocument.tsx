@@ -1,3 +1,4 @@
+import { proposalPdfHref } from '@/lib/brochure/pdf-href';
 import Journey from '@/components/proposal/Journey';
 import { Snowfall, TermsToggle, TopBar } from '@/components/proposal/Chrome';
 import { airlineLogoUrl, pagesAt, type CustomPage, type PagePlacement } from '@/lib/brochure/proposal-schema';
@@ -17,10 +18,13 @@ import '@/components/proposal/proposal.css';
 export default function ProposalDocument({
   vm,
   shareToken,
+  previewToken,
 }: {
   vm: ProposalViewModel;
   /** Present on the shared link, so the reader's PDF request can prove itself. */
   shareToken?: string;
+  /** Present on the staff preview, for the same reason. */
+  previewToken?: string;
 }) {
   const { content: c, commercials: m } = vm;
   const money = (n: number | null) =>
@@ -58,7 +62,7 @@ export default function ProposalDocument({
             <a href="#price">Price</a>
             <a href="#terms">Booking conditions</a>
           </nav>
-          <TopBar pdfHref={`/api/proposals/${vm.id}/pdf${shareToken ? `?token=${encodeURIComponent(shareToken)}` : ''}`} />
+          <TopBar pdfHref={proposalPdfHref(vm.id, shareToken, previewToken)} />
         </div>
       </header>
 

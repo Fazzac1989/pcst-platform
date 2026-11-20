@@ -2,6 +2,7 @@ import { NextResponse, type NextRequest } from 'next/server';
 import { createAdminClient } from '@/lib/supabase/admin';
 import { createClient } from '@/lib/supabase/server';
 import { getProposalByToken } from '@/lib/brochure/proposal-view-model';
+import { signPreviewToken, verifyPreviewToken } from '@/lib/brochure/preview-token';
 import {
   renderPdf,
   isStale,
@@ -24,37 +25,54 @@ export const dynamic = 'force-dynamic';
 export const maxDuration = 60;
 
 /**
- * Two ways in, and no third.
+ * Three ways in, and no fourth.
  *
- * A share token proves the holder was sent this proposal; a signed-in staff
- * session proves the caller works here. Without one of them the id alone is
- * just a small integer, and guessing it should get nothing.
+ * A share token proves the holder was sent this proposal; the signed preview
+ * pass proves the link came from the admin (whose login lives on another
+ * domain, so no session arrives here); a signed-in staff session proves the
+ * caller works here. Without one of them the id alone is just a small
+ * integer, and guessing it should get nothing.
  */
-async function authorise(id: number, token: string | null) {
+async function authorise(id: number, token: string | null, preview: string | null) {
   if (token) {
     const vm = await getProposalByToken(token);
     if (vm && vm.id === id) return { ok: true as const, via: 'token' as const };
+  }
+  if (preview && (await verifyPreviewToken(id, preview, process.env.SUPABASE_SERVICE_ROLE_KEY))) {
+    return { ok: true as const, via: 'preview' as const };
   }
   const { data } = await createClient().auth.getUser();
   if (data.user) return { ok: true as const, via: 'staff' as const };
   return { ok: false as const };
 }
 
-/** Where Chromium should point. Its own origin, so it renders this deploy. */
-function pageUrl(req: NextRequest, id: number, token: string | null) {
+/**
+ * Where Chromium should point. Its own origin, so it renders this deploy.
+ *
+ * Chromium carries no login, so without a share token it gets a short pass of
+ * its own; the staff page is guarded and would otherwise send it to the login
+ * screen, which is what it printed.
+ */
+async function pageUrl(req: NextRequest, id: number, token: string | null) {
   const origin = process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, '') || req.nextUrl.origin;
   // The deck, not the document: a school reads the flowing page online and
   // downloads the landscape slides. The page serves either on request.
-  const base = token ? `${origin}/p/${token}` : `${origin}/proposals/${id}`;
-  return `${base}?view=deck`;
+  if (token) return `${origin}/p/${token}?view=deck`;
+  const pass = await signPreviewToken(id, process.env.SUPABASE_SERVICE_ROLE_KEY ?? '', 5);
+  return `${origin}/proposals/${id}?view=deck&preview=${encodeURIComponent(pass)}`;
 }
 
 async function resolve(req: NextRequest, id: number, force: boolean) {
   const token = req.nextUrl.searchParams.get('token');
+  const preview = req.nextUrl.searchParams.get('preview');
 
   if (!Number.isFinite(id)) return { status: 400, error: 'Bad proposal id' };
 
-  const auth = await authorise(id, token);
+  const auth = await authorise(id, token, preview);
+  if (!auth.ok && preview && !token) {
+    // A preview pass lasts half an hour; say so rather than a bare "not found".
+    return { status: 403, error: 'This preview link has expired. Open the proposal again from the admin, then download the PDF.' };
+  }
   if (!auth.ok) {
     // The same answer whether the proposal exists or not.
     return { status: 404, error: 'Not found' };
@@ -88,7 +106,7 @@ async function resolve(req: NextRequest, id: number, force: boolean) {
       return { status: 429, error: 'Too many renders for this proposal; try again shortly.' };
     }
 
-    const result = await renderPdf(id, pageUrl(req, id, token), 'proposals');
+    const result = await renderPdf(id, await pageUrl(req, id, token), 'proposals');
     if (!result.ok) return { status: 502, error: result.error };
 
     await db.from('proposal_events').insert({
